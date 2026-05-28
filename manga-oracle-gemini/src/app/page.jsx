@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { QUESTIONS_SIMPLE, QUESTIONS_DETAILED } from "@/data/questions";
 
 // ============================================================
@@ -47,8 +47,7 @@ const T = {
     startQuiz: "診断を始める",
     intro: "AIが厳選1500作品DBを分析し、あなたの好みに合った漫画を最大20作品ランキング形式で推薦します。",
     next: "次へ", back: "戻る", submit: "AIに判定させる", progress: "問",
-    loading: "AIが分析中…", loadingSub: "厳選1500作品DBから最適な漫画を探しています",
-    searchSteps: ["▌好みのプロファイルを分析中", "▌厳選DB（1500作品）から候補を選定中", "▌作品の相性を比較中", "▌ランキングと推薦理由を作成中"],
+    loading: "AIが分析中…",
     yourProfile: "あなたの読書プロファイル",
     top3: "絶対読んでほしい", next7: "これも合うはず", last10: "気が向いたら",
     retake: "もう一度診断する", error: "エラーが発生しました。もう一度お試しください。",
@@ -79,8 +78,7 @@ const T = {
     startQuiz: "Start Quiz",
     intro: "AI analyzes a curated 1500-title database to find up to 20 manga matched to your tastes.",
     next: "Next", back: "Back", submit: "Let AI Decide", progress: "of",
-    loading: "AI is analyzing…", loadingSub: "Using the curated 1500-title DB to find your perfect manga",
-    searchSteps: ["▌Analyzing your preference profile", "▌Selecting from curated DB (1500 titles)", "▌Comparing title fit", "▌Creating rankings and explanations"],
+    loading: "AI is analyzing…",
     yourProfile: "Your Reading Profile",
     top3: "Must Reads", next7: "Highly Recommended", last10: "Worth Exploring",
     retake: "Take Quiz Again", error: "Something went wrong. Please try again.",
@@ -160,19 +158,9 @@ export default function App() {
   const [freeText, setFreeText] = useState("");
   const [results, setResults] = useState(null);
   const [error, setError] = useState(null);
-  const [loadingStep, setLoadingStep] = useState(0);
 
   const t = T[language];
   const QUESTIONS = mode === "simple" ? QUESTIONS_SIMPLE : QUESTIONS_DETAILED;
-
-  useEffect(() => {
-    if (screen === "loading") {
-      const interval = setInterval(() => {
-        setLoadingStep((prev) => Math.min(prev + 1, t.searchSteps.length - 1));
-      }, 8000);
-      return () => clearInterval(interval);
-    }
-  }, [screen, t.searchSteps.length]);
 
   const startMode = (selectedMode) => {
     setMode(selectedMode);
@@ -211,7 +199,6 @@ export default function App() {
 
   const submitQuiz = async () => {
     setScreen("loading");
-    setLoadingStep(0);
     setError(null);
     try {
       const res = await fetch("/api/recommend", {
@@ -242,7 +229,6 @@ export default function App() {
     setFreeText("");
     setCurrentQ(0);
     setResults(null);
-    setLoadingStep(0);
     setScreen("landing");
   };
 
@@ -429,12 +415,7 @@ export default function App() {
                 <div className="absolute inset-2 border-b-2 border-l-2 animate-spin" style={{ borderColor: "#c0392b", animationDuration: "2s", animationDirection: "reverse" }} />
               </div>
             </div>
-            <div className="text-xs tracking-[0.3em] mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>{t.searchSteps[loadingStep]}</div>
-            <h2 className="text-2xl md:text-3xl font-medium mb-3 italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.loading}</h2>
-            <p className="text-sm text-gray-700 mb-8">{t.loadingSub}</p>
-            <div className="flex justify-center gap-2">
-              {t.searchSteps.map((_, idx) => (<div key={idx} className="h-1 w-8 transition-all" style={{ backgroundColor: idx <= loadingStep ? "#c0392b" : "rgba(10,10,10,0.15)" }} />))}
-            </div>
+            <h2 className="text-2xl md:text-3xl font-medium italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.loading}</h2>
           </div>
         </div>
       )}
