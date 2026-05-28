@@ -76,17 +76,14 @@ function buildPrompt(answers, questions, freeText, language) {
 
   return `You are a world-class manga recommendation expert.
 
-You have TWO sources to recommend from:
+Recommend only from this source:
 
-## SOURCE 1: Curated Database (1500 hand-picked titles)
+## Curated Database (1500 hand-picked titles)
 These are pre-vetted works spanning all genres & eras. Use them as RELIABLE quality picks.
 
 \`\`\`json
 ${dbJson}
 \`\`\`
-
-## SOURCE 2: Google Search (grounding)
-Use Google Search to find ADDITIONAL recommendations BEYOND the database — especially recent releases (2023-2026), niche/hidden gems, and works for under-served preferences.
 
 ## User's Quiz Answers
 ${profileSummary}
@@ -95,11 +92,8 @@ ${freeTextSection}
 
 1. Analyze the user's preference profile.
 2. Review the curated DB carefully — with 1500 titles, there are likely many strong matches.
-3. Use Google Search to verify facts and discover a few ADDITIONAL picks NOT in the DB (recent releases, niche gems). Don't search for titles already in the DB.
-4. Combine both sources into ONE ranked list of 20 manga:
-   - Roughly 15-17 picks from the DB (high-confidence, top ranks)
-   - 4-6 picks from Google Search (recency & discovery, lower ranks)
-5. Mark each recommendation's source.
+3. Choose ONE ranked list of 20 manga from the curated database.
+4. Mark each recommendation's source as "db".
 
 ## Output Format
 
@@ -110,20 +104,18 @@ Return ONLY a valid JSON object (no markdown fences, no preamble):
 {
   "userProfile": "1-2 sentence vivid description in second person",
   "recommendations": [
-    { "rank": 1, "source": "db", "id": "one_piece", "title_ja": "...", "title_en": "...", "author": "...", "year": 1997, "volumes": 108, "status": "ongoing", "demographic": "shonen", "anime": true, "description": "1-2 sentence summary", "reason": "2-3 sentences why THIS fits THIS reader" },
-    { "rank": 11, "source": "web", "id": null, "title_ja": "...", "title_en": "...", "author": "...", "year": 2024, "volumes": 5, "status": "ongoing", "demographic": "seinen", "anime": false, "description": "...", "reason": "..." }
+    { "rank": 1, "source": "db", "id": "one_piece", "title_ja": "...", "title_en": "...", "author": "...", "year": 1997, "volumes": 108, "status": "ongoing", "demographic": "shonen", "anime": true, "description": "1-2 sentence summary", "reason": "2-3 sentences why THIS fits THIS reader" }
   ]
 }
 
 ## Rules
 
 - ${langInstruction}
-- "source" must be "db" (include the id from DB) or "web" (id=null, from Google Search).
+- "source" must be "db" and include the id from DB.
 - Rank by best fit (rank 1 = strongest).
 - Top 3: enthusiastic, detailed reasons. Items 4-10: concise. Items 11-20: brief.
 - ALWAYS reference the user's specific answers in your reasons.
 - If the user provided a free-text request, treat it as top priority: respect dislikes (exclude matching works) and lean into stated likes.
-- For web finds, verify facts (volumes, year, status) via Google Search.
 - "status": "completed" | "ongoing" | "hiatus"
 - "demographic": "shonen" | "shojo" | "seinen" | "josei" | "kodomo" | "web"
 - Output ONLY the JSON. No fences, no commentary.`;
@@ -226,7 +218,6 @@ export async function POST(req) {
       },
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
-        tools: [{ google_search: {} }],
         generationConfig: {
           temperature: 0.7,
           maxOutputTokens: 16000,
