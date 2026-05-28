@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "マンガマッチ診断 — AI漫画おすすめ診断",
-  description: "質問に答えるだけで、AIが1500作品DBとGoogle検索を組み合わせて、あなたに合う漫画をランキング形式でおすすめします。",
+  description: "質問に答えるだけで、AIが1500作品DBを分析し、あなたに合う漫画をランキング形式でおすすめします。",
 };
 
 export default function RootLayout({ children }) {

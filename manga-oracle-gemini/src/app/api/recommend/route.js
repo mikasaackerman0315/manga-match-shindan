@@ -3,7 +3,7 @@
 // ============================================================
 // 役割:
 //   - フロントから「12問の回答 + 自由記述 + 言語」を受け取る
-//   - 207作品DB + Google検索グラウンディングを使って Gemini 3.1 Pro に推薦させる
+//   - 1500作品DBを使って Gemini 2.5 Flash に推薦させる
 //   - 結果のJSONをパースしてフロントに返す
 // セキュリティ: APIキーはサーバー側のみ（NEXT_PUBLIC_ を付けない）
 // ============================================================
@@ -165,8 +165,8 @@ function buildPreviewResponse(answers, language) {
     anime: manga.anime,
     description: language === "en" ? manga.desc_en : manga.desc_ja,
     reason: language === "en"
-      ? "Preview mode recommendation from the curated database. Add GEMINI_API_KEY to enable AI-written reasons and Google Search grounding."
-      : "プレビューモードのため、厳選DBから仮推薦しています。GEMINI_API_KEYを設定するとAIによる理由生成とGoogle検索連携が有効になります。",
+      ? "Preview mode recommendation from the curated database. Add GEMINI_API_KEY to enable AI-written reasons."
+      : "プレビューモードのため、厳選DBから仮推薦しています。GEMINI_API_KEYを設定するとAIによる理由生成が有効になります。",
   }));
 
   return {
@@ -209,7 +209,7 @@ export async function POST(req) {
 
     const prompt = buildPrompt(answers, questions, freeText, language || "ja");
 
-    // Gemini 3.1 Pro 呼び出し（Google検索グラウンディング有効）
+    // Gemini 2.5 Flash 呼び出し（JSONレスポンス優先）
     const geminiRes = await fetch(`${GEMINI_URL}`, {
       method: "POST",
       headers: {
