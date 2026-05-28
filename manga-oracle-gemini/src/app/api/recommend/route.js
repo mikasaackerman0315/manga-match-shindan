@@ -18,7 +18,7 @@ import { CORE_DB_EXTRA3 } from "@/data/coreDB_extra3";
 const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3];
 
 // Gemini APIのエンドポイント（v1beta / generateContent）
-const GEMINI_MODEL = "gemini-3.1-pro-preview";
+const GEMINI_MODEL = "gemini-2.5-flash";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 // ------------------------------------------------------------
