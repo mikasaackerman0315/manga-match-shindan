@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { QUESTIONS_SIMPLE, QUESTIONS_DETAILED } from "@/data/questions";
 
 // ============================================================
@@ -103,6 +103,8 @@ const T = {
   },
 };
 
+const LOADING_STEP_COUNT = 4;
+
 function getMangaSearchQuery(rec) {
   return `${rec.title_ja || rec.title_en || ""}`.trim();
 }
@@ -158,9 +160,19 @@ export default function App() {
   const [freeText, setFreeText] = useState("");
   const [results, setResults] = useState(null);
   const [error, setError] = useState(null);
+  const [loadingStep, setLoadingStep] = useState(0);
 
   const t = T[language];
   const QUESTIONS = mode === "simple" ? QUESTIONS_SIMPLE : QUESTIONS_DETAILED;
+
+  useEffect(() => {
+    if (screen === "loading") {
+      const interval = setInterval(() => {
+        setLoadingStep((prev) => Math.min(prev + 1, LOADING_STEP_COUNT - 1));
+      }, 8000);
+      return () => clearInterval(interval);
+    }
+  }, [screen]);
 
   const startMode = (selectedMode) => {
     setMode(selectedMode);
@@ -199,6 +211,7 @@ export default function App() {
 
   const submitQuiz = async () => {
     setScreen("loading");
+    setLoadingStep(0);
     setError(null);
     try {
       const res = await fetch("/api/recommend", {
@@ -229,6 +242,7 @@ export default function App() {
     setFreeText("");
     setCurrentQ(0);
     setResults(null);
+    setLoadingStep(0);
     setScreen("landing");
   };
 
@@ -415,7 +429,10 @@ export default function App() {
                 <div className="absolute inset-2 border-b-2 border-l-2 animate-spin" style={{ borderColor: "#c0392b", animationDuration: "2s", animationDirection: "reverse" }} />
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl font-medium italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.loading}</h2>
+            <h2 className="text-2xl md:text-3xl font-medium mb-8 italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.loading}</h2>
+            <div className="flex justify-center gap-2">
+              {Array.from({ length: LOADING_STEP_COUNT }).map((_, idx) => (<div key={idx} className="h-1 w-8 transition-all" style={{ backgroundColor: idx <= loadingStep ? "#c0392b" : "rgba(10,10,10,0.15)" }} />))}
+            </div>
           </div>
         </div>
       )}
