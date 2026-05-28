@@ -229,7 +229,8 @@ export async function POST(req) {
         tools: [{ google_search: {} }],
         generationConfig: {
           temperature: 0.7,
-          maxOutputTokens: 8000,
+          maxOutputTokens: 16000,
+          responseMimeType: "application/json",
         },
       }),
     });
