@@ -1,0 +1,268 @@
+// ============================================================
+// /api/recommend — Gemini 3.1 Pro バックエンド
+// ============================================================
+// 役割:
+//   - フロントから「12問の回答 + 自由記述 + 言語」を受け取る
+//   - 207作品DB + Google検索グラウンディングを使って Gemini 3.1 Pro に推薦させる
+//   - 結果のJSONをパースしてフロントに返す
+// セキュリティ: APIキーはサーバー側のみ（NEXT_PUBLIC_ を付けない）
+// ============================================================
+
+import { NextResponse } from "next/server";
+import { CORE_DB as CORE_DB_BASE } from "@/data/coreDB";
+import { CORE_DB_EXTRA } from "@/data/coreDB_extra";
+import { CORE_DB_EXTRA2 } from "@/data/coreDB_extra2";
+import { CORE_DB_EXTRA3 } from "@/data/coreDB_extra3";
+
+// 既存207作品 + 追加193作品 + 追加600作品 + 追加500作品 = 計1500作品
+const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3];
+
+// Gemini APIのエンドポイント（v1beta / generateContent）
+const GEMINI_MODEL = "gemini-3.1-pro-preview";
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+
+// ------------------------------------------------------------
+// シンプルなメモリ内レート制限（本番ではRedis等を推奨）
+// ------------------------------------------------------------
+const rateLimitStore = new Map(); // key: ip-date, value: count
+const DAILY_GLOBAL_LIMIT = 300;   // サイト全体の1日あたり上限
+const PER_USER_DAILY_LIMIT = 5;   // 1IPあたりの1日上限
+
+function checkRateLimit(ip) {
+  const today = new Date().toISOString().slice(0, 10);
+  const globalKey = `global-${today}`;
+  const userKey = `${ip}-${today}`;
+
+  const globalCount = (rateLimitStore.get(globalKey) || 0) + 1;
+  const userCount = (rateLimitStore.get(userKey) || 0) + 1;
+
+  if (globalCount > DAILY_GLOBAL_LIMIT) return { ok: false, reason: "global" };
+  if (userCount > PER_USER_DAILY_LIMIT) return { ok: false, reason: "user" };
+
+  rateLimitStore.set(globalKey, globalCount);
+  rateLimitStore.set(userKey, userCount);
+  return { ok: true };
+}
+
+// ------------------------------------------------------------
+// プロンプト構築
+// ------------------------------------------------------------
+function buildPrompt(answers, questions, freeText, language) {
+  const profileSummary = questions.map((q) => {
+    const selectedValues = answers[q.id] || [];
+    const labels = selectedValues.map((v) => {
+      const opt = q.options.find((o) => o.v === v);
+      return opt ? (language === "ja" ? opt.ja : opt.en) : v;
+    });
+    const questionText = language === "ja" ? q.text_ja : q.text_en;
+    return `- ${questionText}\n  → ${labels.join(", ")}`;
+  }).join("\n");
+
+  const dbJson = JSON.stringify(
+    CORE_DB.map((m) => ({
+      id: m.id, title_ja: m.title_ja, title_en: m.title_en, author: m.author,
+      year: m.year, volumes: m.volumes, status: m.status, demographic: m.demographic,
+      anime: m.anime, tags: m.tags, desc: language === "ja" ? m.desc_ja : m.desc_en,
+    }))
+  );
+
+  const langInstruction = language === "ja"
+    ? `CRITICAL LANGUAGE REQUIREMENT: Write ALL text fields (userProfile, description, reason) ENTIRELY in natural Japanese. Prefer Japanese titles for "title_ja". Do NOT mix English sentences into description or reason.`
+    : `CRITICAL LANGUAGE REQUIREMENT: Write ALL text fields (userProfile, description, reason) ENTIRELY in natural English. Even though the curated database provides Japanese descriptions, you MUST write your own "description" and "reason" in English — do NOT copy the Japanese desc. Use English titles for display where available.`;
+
+  const freeTextSection = freeText && freeText.trim()
+    ? `\n## User's Free-Text Request (IMPORTANT — honor this carefully)\nThe user added this note in their own words. Treat it as a high-priority signal (e.g. if they say they dislike something, avoid recommending it):\n"${freeText.trim()}"\n`
+    : "";
+
+  return `You are a world-class manga recommendation expert.
+
+You have TWO sources to recommend from:
+
+## SOURCE 1: Curated Database (1500 hand-picked titles)
+These are pre-vetted works spanning all genres & eras. Use them as RELIABLE quality picks.
+
+\`\`\`json
+${dbJson}
+\`\`\`
+
+## SOURCE 2: Google Search (grounding)
+Use Google Search to find ADDITIONAL recommendations BEYOND the database — especially recent releases (2023-2026), niche/hidden gems, and works for under-served preferences.
+
+## User's Quiz Answers
+${profileSummary}
+${freeTextSection}
+## Your Task
+
+1. Analyze the user's preference profile.
+2. Review the curated DB carefully — with 1500 titles, there are likely many strong matches.
+3. Use Google Search to verify facts and discover a few ADDITIONAL picks NOT in the DB (recent releases, niche gems). Don't search for titles already in the DB.
+4. Combine both sources into ONE ranked list of 20 manga:
+   - Roughly 15-17 picks from the DB (high-confidence, top ranks)
+   - 4-6 picks from Google Search (recency & discovery, lower ranks)
+5. Mark each recommendation's source.
+
+## Output Format
+
+${langInstruction}
+
+Return ONLY a valid JSON object (no markdown fences, no preamble):
+
+{
+  "userProfile": "1-2 sentence vivid description in second person",
+  "recommendations": [
+    { "rank": 1, "source": "db", "id": "one_piece", "title_ja": "...", "title_en": "...", "author": "...", "year": 1997, "volumes": 108, "status": "ongoing", "demographic": "shonen", "anime": true, "description": "1-2 sentence summary", "reason": "2-3 sentences why THIS fits THIS reader" },
+    { "rank": 11, "source": "web", "id": null, "title_ja": "...", "title_en": "...", "author": "...", "year": 2024, "volumes": 5, "status": "ongoing", "demographic": "seinen", "anime": false, "description": "...", "reason": "..." }
+  ]
+}
+
+## Rules
+
+- ${langInstruction}
+- "source" must be "db" (include the id from DB) or "web" (id=null, from Google Search).
+- Rank by best fit (rank 1 = strongest).
+- Top 3: enthusiastic, detailed reasons. Items 4-10: concise. Items 11-20: brief.
+- ALWAYS reference the user's specific answers in your reasons.
+- If the user provided a free-text request, treat it as top priority: respect dislikes (exclude matching works) and lean into stated likes.
+- For web finds, verify facts (volumes, year, status) via Google Search.
+- "status": "completed" | "ongoing" | "hiatus"
+- "demographic": "shonen" | "shojo" | "seinen" | "josei" | "kodomo" | "web"
+- Output ONLY the JSON. No fences, no commentary.`;
+}
+
+// ------------------------------------------------------------
+// Geminiレスポンスから本文テキストを抽出
+// ------------------------------------------------------------
+function extractText(data) {
+  // Gemini の generateContent レスポンス構造:
+  // data.candidates[0].content.parts[].text
+  const candidates = data?.candidates;
+  if (!candidates || candidates.length === 0) return "";
+  const parts = candidates[0]?.content?.parts || [];
+  return parts.map((p) => p.text || "").join("\n");
+}
+
+function extractJSON(fullText) {
+  let jsonText = fullText;
+  const jsonStart = fullText.indexOf("{");
+  const jsonEnd = fullText.lastIndexOf("}");
+  if (jsonStart !== -1 && jsonEnd !== -1) {
+    jsonText = fullText.substring(jsonStart, jsonEnd + 1);
+  }
+  jsonText = jsonText.replace(/```json|```/g, "").trim();
+  return JSON.parse(jsonText);
+}
+
+function buildPreviewResponse(answers, language) {
+  const selected = Object.values(answers || {}).flat();
+  const scored = CORE_DB.map((m) => {
+    const score = selected.reduce((sum, v) => sum + (m.tags?.includes(v) ? 1 : 0), 0);
+    return { manga: m, score };
+  }).sort((a, b) => b.score - a.score);
+
+  const picked = scored.slice(0, 20).map(({ manga }, i) => ({
+    rank: i + 1,
+    source: "db",
+    id: manga.id,
+    title_ja: manga.title_ja,
+    title_en: manga.title_en,
+    author: manga.author,
+    year: manga.year,
+    volumes: manga.volumes,
+    status: manga.status,
+    demographic: manga.demographic,
+    anime: manga.anime,
+    description: language === "en" ? manga.desc_en : manga.desc_ja,
+    reason: language === "en"
+      ? "Preview mode recommendation from the curated database. Add GEMINI_API_KEY to enable AI-written reasons and Google Search grounding."
+      : "プレビューモードのため、厳選DBから仮推薦しています。GEMINI_API_KEYを設定するとAIによる理由生成とGoogle検索連携が有効になります。",
+  }));
+
+  return {
+    userProfile: language === "en"
+      ? "Preview mode is active because GEMINI_API_KEY is not set."
+      : "GEMINI_API_KEY未設定のため、現在はプレビューモードで表示しています。",
+    recommendations: picked,
+  };
+}
+
+// ------------------------------------------------------------
+// POST ハンドラ
+// ------------------------------------------------------------
+export async function POST(req) {
+  try {
+    // レート制限
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    const rl = checkRateLimit(ip);
+    if (!rl.ok) {
+      const msg = rl.reason === "global"
+        ? "現在混雑しています。しばらく経ってからお試しください。"
+        : "本日の診断回数の上限に達しました。明日またお試しください。";
+      return NextResponse.json({ error: msg }, { status: 429 });
+    }
+
+    const body = await req.json();
+    const { answers, questions, freeText, language } = body;
+
+    if (!answers || !questions) {
+      return NextResponse.json({ error: "Missing answers or questions." }, { status: 400 });
+    }
+
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      if (process.env.NODE_ENV !== "production") {
+        return NextResponse.json(buildPreviewResponse(answers, language || "ja"));
+      }
+      return NextResponse.json({ error: "Server misconfiguration: missing API key." }, { status: 500 });
+    }
+
+    const prompt = buildPrompt(answers, questions, freeText, language || "ja");
+
+    // Gemini 3.1 Pro 呼び出し（Google検索グラウンディング有効）
+    const geminiRes = await fetch(`${GEMINI_URL}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-goog-api-key": apiKey,
+      },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        tools: [{ google_search: {} }],
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 8000,
+        },
+      }),
+    });
+
+    if (!geminiRes.ok) {
+      const errText = await geminiRes.text();
+      console.error("Gemini API error:", geminiRes.status, errText);
+      return NextResponse.json(
+        { error: "AI service error. Please try again." },
+        { status: 502 }
+      );
+    }
+
+    const data = await geminiRes.json();
+    const fullText = extractText(data);
+
+    let parsed;
+    try {
+      parsed = extractJSON(fullText);
+    } catch (parseErr) {
+      console.error("JSON parse error:", parseErr, "\nRaw:", fullText.slice(0, 500));
+      return NextResponse.json(
+        { error: "Failed to parse AI response. Please try again." },
+        { status: 502 }
+      );
+    }
+
+    return NextResponse.json(parsed);
+  } catch (err) {
+    console.error("Recommend route error:", err);
+    return NextResponse.json(
+      { error: "Unexpected server error. Please try again." },
+      { status: 500 }
+    );
+  }
+}

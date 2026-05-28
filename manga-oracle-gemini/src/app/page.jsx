@@ -1,0 +1,559 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { QUESTIONS_SIMPLE, QUESTIONS_DETAILED } from "@/data/questions";
+
+// ============================================================
+// 広告枠コンポーネント（将来 Google AdSense 等を入れる場所）
+// ============================================================
+// 使い方:
+//   - 今は枠だけ表示（プレースホルダー）
+//   - AdSense導入時は、下の <!-- AD --> 部分に広告コードを貼る
+//   - slot prop でどの位置の広告かを区別
+function AdSlot({ slot, label = "Advertisement" }) {
+  return (
+    <div
+      className="w-full my-8 flex items-center justify-center"
+      data-ad-slot={slot}
+      style={{
+        minHeight: "90px",
+        border: "1px dashed rgba(10,10,10,0.2)",
+        backgroundColor: "rgba(10,10,10,0.02)",
+      }}
+    >
+      {/* ▼▼▼ 広告コードをここに貼る（例: Google AdSense の <ins> タグ）▼▼▼ */}
+      {/* <ins className="adsbygoogle" style={{display:'block'}} data-ad-client="ca-pub-XXXX" data-ad-slot="XXXX" /> */}
+      {/* ▲▲▲ ここまで ▲▲▲ */}
+      <span
+        className="text-xs tracking-[0.3em] uppercase"
+        style={{ color: "#bbb", fontFamily: "'JetBrains Mono', monospace" }}
+      >
+        {label} · {slot}
+      </span>
+    </div>
+  );
+}
+
+
+// ============================================================
+// UI Translations
+// ============================================================
+const T = {
+  ja: {
+    appTitle: "マンガマッチ診断", appSubtitle: "質問に答えるだけで、あなたに合う漫画をAIが見つけます。",
+    chooseMode: "診断モードを選んでください",
+    simpleTitle: "シンプル診断", simpleDesc: "6つの質問でサクッと。気軽に試したい人向け。", simpleTime: "約1分",
+    detailedTitle: "こだわり診断", detailedDesc: "15の質問で深く掘り下げ。選択肢も豊富。じっくり選びたい人向け。", detailedTime: "約4分",
+    startQuiz: "診断を始める",
+    intro: "AIが厳選1500作品DBとGoogle検索を組み合わせ、あなたの好みに合った漫画を最大20作品ランキング形式で推薦します。",
+    next: "次へ", back: "戻る", submit: "AIに判定させる", progress: "問",
+    loading: "AIが分析中…", loadingSub: "厳選1500作品DB + Google検索で最適な漫画を探しています",
+    searchSteps: ["▌好みのプロファイルを分析中", "▌厳選DB（1500作品）から候補を選定中", "▌Google検索で新作・名作を探索中", "▌ランキングと推薦理由を作成中"],
+    yourProfile: "あなたの読書プロファイル",
+    top3: "絶対読んでほしい", next7: "これも合うはず", last10: "気が向いたら",
+    retake: "もう一度診断する", error: "エラーが発生しました。もう一度お試しください。",
+    selectMax: "最大", selectMaxSuffix: "つまで選択可能",
+    volumes: "巻", anime: "アニメ化",
+    status_completed: "完結", status_ongoing: "連載中", status_hiatus: "休載中",
+    poweredBy: "POWERED BY GEMINI 3.1 PRO · 1500作品DB + GOOGLE検索",
+    sourceDB: "DB", sourceWeb: "Web発掘",
+    buyLinks: "読む・探す",
+    kindle: "Kindle",
+    volume1: "1巻",
+    set: "全巻",
+    rakuten: "楽天",
+    ebookjapan: "ebookjapan",
+    modeBadgeSimple: "シンプル", modeBadgeDetailed: "こだわり",
+    freeTextStep: "あと少し（任意）",
+    freeTextTitle: "その他、こだわりはある？",
+    freeTextDesc: "選択肢で表せなかった希望を自由に書いてください（任意）。AIがしっかり汲み取ります。書かなくてもOK。",
+    freeTextPlaceholder: "例：鬱展開は苦手 / 主人公が報われる話がいい",
+    freeTextExamples: ["鬱展開は苦手", "報われる結末がいい", "頭脳戦が好き", "動物が死ぬのは無理", "余韻が残る作品"],
+    skip: "スキップ",
+  },
+  en: {
+    appTitle: "MANGA MATCH QUIZ", appSubtitle: "Answer a few questions and let AI find manga that fits you.",
+    chooseMode: "Choose your quiz mode",
+    simpleTitle: "Quick Quiz", simpleDesc: "Just 6 questions. For a fast, casual try.", simpleTime: "~1 min",
+    detailedTitle: "Deep Dive", detailedDesc: "15 questions with rich options. For those who want precision.", detailedTime: "~4 min",
+    startQuiz: "Start Quiz",
+    intro: "AI combines a curated 1500-title database with Google Search to find up to 20 manga matched to your tastes.",
+    next: "Next", back: "Back", submit: "Let AI Decide", progress: "of",
+    loading: "AI is analyzing…", loadingSub: "Using curated 1500-title DB + Google Search to find your perfect manga",
+    searchSteps: ["▌Analyzing your preference profile", "▌Selecting from curated DB (1500 titles)", "▌Searching Google for new releases & gems", "▌Creating rankings and explanations"],
+    yourProfile: "Your Reading Profile",
+    top3: "Must Reads", next7: "Highly Recommended", last10: "Worth Exploring",
+    retake: "Take Quiz Again", error: "Something went wrong. Please try again.",
+    selectMax: "Select up to", selectMaxSuffix: "",
+    volumes: " vol", anime: "Anime",
+    status_completed: "Completed", status_ongoing: "Ongoing", status_hiatus: "On hiatus",
+    poweredBy: "POWERED BY GEMINI 3.1 PRO · 1500-TITLE DB + GOOGLE SEARCH",
+    sourceDB: "Curated", sourceWeb: "Web Find",
+    buyLinks: "Read / Shop",
+    kindle: "Kindle",
+    volume1: "Vol. 1",
+    set: "Full Set",
+    rakuten: "Rakuten",
+    ebookjapan: "ebookjapan",
+    modeBadgeSimple: "Quick", modeBadgeDetailed: "Deep",
+    freeTextStep: "ALMOST DONE (OPTIONAL)",
+    freeTextTitle: "Anything else you care about?",
+    freeTextDesc: "Write any preferences the options couldn't capture (optional). The AI will take it into account.",
+    freeTextPlaceholder: "e.g. No depressing endings / I like mind games",
+    freeTextExamples: ["No depressing plots", "Want a rewarding ending", "Love mind games", "No animal deaths", "Leaves an impression"],
+    skip: "Skip",
+  },
+};
+
+function getMangaSearchQuery(rec) {
+  return `${rec.title_ja || rec.title_en || ""}`.trim();
+}
+
+function getPurchaseLinks(rec) {
+  const query = encodeURIComponent(getMangaSearchQuery(rec));
+  return [
+    { key: "kindle", href: `/api/out?store=amazon&intent=kindle&title=${query}` },
+    { key: "volume1", href: `/api/out?store=amazon&intent=volume1&title=${query}` },
+    { key: "set", href: `/api/out?store=amazon&intent=set&title=${query}` },
+    { key: "rakuten", href: `/api/out?store=rakuten&intent=set&title=${query}` },
+    { key: "ebookjapan", href: `/api/out?store=ebookjapan&intent=ebook&title=${query}` },
+  ];
+}
+
+function PurchaseLinks({ rec, t, compact = false }) {
+  return (
+    <div className={compact ? "mt-2 flex flex-wrap gap-1.5" : "mt-5"}>
+      {!compact && (
+        <div className="text-[10px] tracking-[0.25em] mb-2 uppercase" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>
+          {t.buyLinks}
+        </div>
+      )}
+      <div className="flex flex-wrap gap-2">
+        {getPurchaseLinks(rec).map((link) => (
+          <a
+            key={link.key}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            className={compact ? "text-[10px] px-2 py-1 transition-all hover:translate-y-[-1px]" : "text-[11px] px-3 py-1.5 tracking-[0.12em] uppercase transition-all hover:translate-y-[-1px]"}
+            style={{
+              border: "1px solid rgba(10,10,10,0.18)",
+              color: link.key === "set" || link.key === "ebookjapan" ? "#c0392b" : "#0a0a0a",
+              backgroundColor: "rgba(245,243,238,0.55)",
+              fontFamily: "'JetBrains Mono', monospace",
+            }}
+          >
+            {t[link.key]}
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function App() {
+  const [screen, setScreen] = useState("landing");
+  const [language, setLanguage] = useState("ja");
+  const [mode, setMode] = useState("detailed");
+  const [currentQ, setCurrentQ] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [freeText, setFreeText] = useState("");
+  const [results, setResults] = useState(null);
+  const [error, setError] = useState(null);
+  const [loadingStep, setLoadingStep] = useState(0);
+
+  const t = T[language];
+  const QUESTIONS = mode === "simple" ? QUESTIONS_SIMPLE : QUESTIONS_DETAILED;
+
+  useEffect(() => {
+    if (screen === "loading") {
+      const interval = setInterval(() => {
+        setLoadingStep((prev) => Math.min(prev + 1, t.searchSteps.length - 1));
+      }, 8000);
+      return () => clearInterval(interval);
+    }
+  }, [screen, t.searchSteps.length]);
+
+  const startMode = (selectedMode) => {
+    setMode(selectedMode);
+    setAnswers({});
+    setFreeText("");
+    setCurrentQ(0);
+    setScreen("quiz");
+  };
+
+  const handleAnswer = (qId, value, type, max) => {
+    if (type === "single") {
+      setAnswers({ ...answers, [qId]: [value] });
+    } else {
+      const current = answers[qId] || [];
+      if (value === "any") { setAnswers({ ...answers, [qId]: ["any"] }); return; }
+      const filtered = current.filter((v) => v !== "any");
+      if (filtered.includes(value)) setAnswers({ ...answers, [qId]: filtered.filter((v) => v !== value) });
+      else if (filtered.length < max) setAnswers({ ...answers, [qId]: [...filtered, value] });
+    }
+  };
+
+  const canProceed = () => {
+    const q = QUESTIONS[currentQ];
+    return answers[q.id] && answers[q.id].length > 0;
+  };
+
+  const goNext = () => {
+    if (currentQ < QUESTIONS.length - 1) setCurrentQ(currentQ + 1);
+    else setScreen("freetext");
+  };
+
+  const goBack = () => {
+    if (currentQ > 0) setCurrentQ(currentQ - 1);
+    else setScreen("mode");
+  };
+
+  const submitQuiz = async () => {
+    setScreen("loading");
+    setLoadingStep(0);
+    setError(null);
+    try {
+      const res = await fetch("/api/recommend", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          answers,
+          questions: QUESTIONS,
+          freeText,
+          language,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Request failed");
+
+      setResults(data);
+      setScreen("results");
+    } catch (err) {
+      console.error("Error:", err);
+      setError(t.error + (err.message ? ` (${err.message})` : ""));
+      setScreen("freetext");
+    }
+  };
+
+  const reset = () => {
+    setAnswers({});
+    setFreeText("");
+    setCurrentQ(0);
+    setResults(null);
+    setLoadingStep(0);
+    setScreen("landing");
+  };
+
+  return (
+    <div className="min-h-screen w-full" style={{
+      backgroundColor: "#f5f3ee",
+      backgroundImage: "radial-gradient(circle at 1px 1px, rgba(10,10,10,0.05) 1px, transparent 0)",
+      backgroundSize: "24px 24px",
+      fontFamily: "'Noto Serif JP', 'Cormorant Garamond', serif",
+      color: "#0a0a0a",
+    }}>
+      <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+        <button onClick={() => setLanguage("ja")} className="px-3 py-1 text-xs tracking-wider transition-all"
+          style={{ backgroundColor: language === "ja" ? "#0a0a0a" : "transparent", color: language === "ja" ? "#f5f3ee" : "#0a0a0a", border: "1px solid #0a0a0a" }}>JA</button>
+        <button onClick={() => setLanguage("en")} className="px-3 py-1 text-xs tracking-wider transition-all"
+          style={{ backgroundColor: language === "en" ? "#0a0a0a" : "transparent", color: language === "en" ? "#f5f3ee" : "#0a0a0a", border: "1px solid #0a0a0a" }}>EN</button>
+      </div>
+
+      {screen === "landing" && (
+        <div className="min-h-screen flex flex-col items-center justify-center px-8 relative">
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 opacity-10" style={{ background: "radial-gradient(ellipse, #c0392b 0%, transparent 70%)" }} />
+          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 opacity-10" style={{ background: "radial-gradient(ellipse, #0a0a0a 0%, transparent 70%)" }} />
+          <div className="max-w-2xl text-center relative z-10">
+            <div className="mb-2 text-xs tracking-[0.4em] invisible pointer-events-none" aria-hidden="true" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
+              PLACEHOLDER
+            </div>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 leading-none whitespace-nowrap" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif", fontWeight: 700 }}>
+              {t.appTitle}
+            </h1>
+            <div className="w-24 h-px bg-black mx-auto my-8" />
+            <p className="text-xl md:text-2xl mb-6 leading-relaxed italic font-light">{t.appSubtitle}</p>
+            <div className="h-10 md:h-12 mb-10 pointer-events-none" aria-hidden="true" />
+            <button onClick={() => setScreen("mode")} className="px-12 py-4 text-sm tracking-[0.3em] uppercase transition-all hover:scale-105"
+              style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>
+              {t.startQuiz} →
+            </button>
+          </div>
+          <div className="absolute bottom-8 text-xs tracking-widest text-center invisible pointer-events-none" aria-hidden="true" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>
+            {t.poweredBy}
+          </div>
+        </div>
+      )}
+
+      {screen === "mode" && (
+        <div className="min-h-screen flex flex-col items-center justify-center px-6 md:px-8 relative">
+          <div className="max-w-4xl w-full">
+            <div className="text-center mb-12">
+              <div className="text-xs tracking-[0.4em] mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>▌SELECT MODE</div>
+              <h2 className="text-3xl md:text-4xl font-medium italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.chooseMode}</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <button onClick={() => startMode("simple")} className="text-left p-8 transition-all hover:scale-[1.02] group"
+                style={{ backgroundColor: "transparent", border: "1px solid rgba(10,10,10,0.2)" }}>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-5xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#0a0a0a" }}>06</div>
+                  <div className="text-xs tracking-widest px-3 py-1" style={{ fontFamily: "'JetBrains Mono', monospace", border: "1px solid #0a0a0a" }}>{t.simpleTime}</div>
+                </div>
+                <h3 className="text-2xl font-medium mb-3" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{t.simpleTitle}</h3>
+                <p className="text-sm text-gray-700 leading-relaxed mb-4">{t.simpleDesc}</p>
+                <div className="text-xs tracking-[0.2em] transition-all group-hover:translate-x-1" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>SELECT →</div>
+              </button>
+              <button onClick={() => startMode("detailed")} className="text-left p-8 transition-all hover:scale-[1.02] group"
+                style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", border: "1px solid #0a0a0a" }}>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-5xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#c0392b" }}>15</div>
+                  <div className="text-xs tracking-widest px-3 py-1" style={{ fontFamily: "'JetBrains Mono', monospace", border: "1px solid #f5f3ee" }}>{t.detailedTime}</div>
+                </div>
+                <h3 className="text-2xl font-medium mb-3" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{t.detailedTitle}</h3>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(245,243,238,0.75)" }}>{t.detailedDesc}</p>
+                <div className="text-xs tracking-[0.2em] transition-all group-hover:translate-x-1" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>SELECT →</div>
+              </button>
+            </div>
+            <div className="text-center mt-10">
+              <button onClick={() => setScreen("landing")} className="text-sm tracking-[0.2em] uppercase opacity-60 hover:opacity-100 transition-all" style={{ fontFamily: "'JetBrains Mono', monospace" }}>← {t.back}</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {screen === "quiz" && (
+        <div className="min-h-screen flex flex-col px-4 md:px-8 py-12">
+          <div className="max-w-3xl mx-auto w-full mb-12">
+            <div className="flex justify-between items-center mb-3">
+              <div className="text-xs tracking-[0.3em]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }}>
+                {String(currentQ + 1).padStart(2, "0")} {t.progress} {String(QUESTIONS.length).padStart(2, "0")}
+              </div>
+              <div className="text-xs tracking-[0.3em]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#c0392b" }}>
+                ▌{mode === "simple" ? t.modeBadgeSimple : t.modeBadgeDetailed}
+              </div>
+            </div>
+            <div className="h-px w-full" style={{ backgroundColor: "rgba(10,10,10,0.15)" }}>
+              <div className="h-px transition-all duration-500" style={{ width: `${((currentQ + 1) / QUESTIONS.length) * 100}%`, backgroundColor: "#c0392b" }} />
+            </div>
+          </div>
+
+          <div className="max-w-3xl mx-auto w-full flex-grow">
+            <h2 className="text-3xl md:text-4xl font-medium mb-2 leading-snug" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>
+              {language === "ja" ? QUESTIONS[currentQ].text_ja : QUESTIONS[currentQ].text_en}
+            </h2>
+            {QUESTIONS[currentQ].type === "multi" && (
+              <p className="text-xs tracking-wider mb-8" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>
+                {t.selectMax} {QUESTIONS[currentQ].max} {t.selectMaxSuffix}
+                {answers[QUESTIONS[currentQ].id] && ` (${answers[QUESTIONS[currentQ].id].length}/${QUESTIONS[currentQ].max})`}
+              </p>
+            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-8 auto-rows-fr">
+              {QUESTIONS[currentQ].options.map((opt) => {
+                const isSelected = (answers[QUESTIONS[currentQ].id] || []).includes(opt.v);
+                const isAny = opt.v === "any";
+                return (
+                  <button key={opt.v} onClick={() => handleAnswer(QUESTIONS[currentQ].id, opt.v, QUESTIONS[currentQ].type, QUESTIONS[currentQ].max)}
+                    className="text-left p-4 min-h-[76px] h-full transition-all hover:translate-x-1"
+                    style={{
+                      backgroundColor: isSelected ? "#0a0a0a" : "transparent",
+                      color: isSelected ? "#f5f3ee" : "#0a0a0a",
+                      border: `1px solid ${isSelected ? "#0a0a0a" : "rgba(10,10,10,0.2)"}`,
+                      fontStyle: isAny ? "italic" : "normal", opacity: isAny ? 0.75 : 1,
+                    }}>
+                    <div className="flex items-center gap-3 h-full">
+                      <div className="text-xs w-4" style={{ fontFamily: "'JetBrains Mono', monospace", color: isSelected ? "#c0392b" : "#888" }}>{isSelected ? "▌" : "○"}</div>
+                      <div className="text-sm md:text-base leading-snug">{language === "ja" ? opt.ja : opt.en}</div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="max-w-3xl mx-auto w-full flex justify-between items-center mt-12">
+            <button onClick={goBack} className="text-sm tracking-[0.2em] uppercase opacity-60 hover:opacity-100 transition-all" style={{ fontFamily: "'JetBrains Mono', monospace" }}>← {t.back}</button>
+            <button onClick={goNext} disabled={!canProceed()}
+              className="px-8 py-3 text-sm tracking-[0.2em] uppercase transition-all hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
+              style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>
+              {t.next} →
+            </button>
+          </div>
+        </div>
+      )}
+
+      {screen === "freetext" && (
+        <div className="min-h-screen flex flex-col px-4 md:px-8 py-12">
+          <div className="max-w-3xl mx-auto w-full mb-12">
+            <div className="flex justify-between items-center mb-3">
+              <div className="text-xs tracking-[0.3em]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }}>{t.freeTextStep}</div>
+              <div className="text-xs tracking-[0.3em]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#c0392b" }}>▌{mode === "simple" ? t.modeBadgeSimple : t.modeBadgeDetailed}</div>
+            </div>
+            <div className="h-px w-full" style={{ backgroundColor: "rgba(10,10,10,0.15)" }}>
+              <div className="h-px transition-all duration-500" style={{ width: "100%", backgroundColor: "#c0392b" }} />
+            </div>
+          </div>
+          <div className="max-w-3xl mx-auto w-full flex-grow">
+            <h2 className="text-3xl md:text-4xl font-medium mb-3 leading-snug" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{t.freeTextTitle}</h2>
+            <p className="text-sm mb-8 leading-relaxed" style={{ color: "#888" }}>{t.freeTextDesc}</p>
+            <input type="text" value={freeText} onChange={(e) => setFreeText(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") submitQuiz(); }}
+              placeholder={t.freeTextPlaceholder} maxLength={200}
+              className="w-full p-4 text-base md:text-lg outline-none transition-all focus:translate-x-1"
+              style={{ backgroundColor: "transparent", border: "1px solid rgba(10,10,10,0.3)", color: "#0a0a0a", fontFamily: "'Noto Serif JP', 'Cormorant Garamond', serif" }} />
+            <div className="text-right text-xs mt-2" style={{ color: "#aaa", fontFamily: "'JetBrains Mono', monospace" }}>{freeText.length}/200</div>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {t.freeTextExamples.map((ex, i) => (
+                <button key={i} onClick={() => setFreeText(ex)} className="text-xs px-3 py-1.5 transition-all hover:scale-105"
+                  style={{ border: "1px solid rgba(10,10,10,0.2)", color: "#666", fontFamily: "'Noto Serif JP', sans-serif" }}>{ex}</button>
+              ))}
+            </div>
+          </div>
+          <div className="max-w-3xl mx-auto w-full flex justify-between items-center mt-12">
+            <button onClick={() => { setScreen("quiz"); setCurrentQ(QUESTIONS.length - 1); }} className="text-sm tracking-[0.2em] uppercase opacity-60 hover:opacity-100 transition-all" style={{ fontFamily: "'JetBrains Mono', monospace" }}>← {t.back}</button>
+            <div className="flex items-center gap-4">
+              <button onClick={submitQuiz} className="text-sm tracking-[0.2em] uppercase opacity-50 hover:opacity-100 transition-all" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{t.skip}</button>
+              <button onClick={submitQuiz} className="px-8 py-3 text-sm tracking-[0.2em] uppercase transition-all hover:scale-105" style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>{t.submit} →</button>
+            </div>
+          </div>
+          {error && (<div className="max-w-3xl mx-auto w-full mt-6 p-4 text-center text-sm" style={{ backgroundColor: "#c0392b", color: "#f5f3ee" }}>{error}</div>)}
+        </div>
+      )}
+
+      {screen === "loading" && (
+        <div className="min-h-screen flex flex-col items-center justify-center px-8">
+          <div className="text-center max-w-md">
+            <div className="mb-8 flex justify-center">
+              <div className="relative w-20 h-20">
+                <div className="absolute inset-0 border-2 border-black opacity-10" />
+                <div className="absolute inset-0 border-t-2 border-r-2 border-black animate-spin" />
+                <div className="absolute inset-2 border-b-2 border-l-2 animate-spin" style={{ borderColor: "#c0392b", animationDuration: "2s", animationDirection: "reverse" }} />
+              </div>
+            </div>
+            <div className="text-xs tracking-[0.3em] mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>{t.searchSteps[loadingStep]}</div>
+            <h2 className="text-2xl md:text-3xl font-medium mb-3 italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.loading}</h2>
+            <p className="text-sm text-gray-700 mb-8">{t.loadingSub}</p>
+            <div className="flex justify-center gap-2">
+              {t.searchSteps.map((_, idx) => (<div key={idx} className="h-1 w-8 transition-all" style={{ backgroundColor: idx <= loadingStep ? "#c0392b" : "rgba(10,10,10,0.15)" }} />))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {screen === "results" && results && (
+        <div className="min-h-screen px-4 md:px-8 py-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-16 text-center">
+              <div className="text-xs tracking-[0.4em] mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>▌YOUR PROFILE</div>
+              <h2 className="text-3xl md:text-5xl font-medium mb-6 italic leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.yourProfile}</h2>
+              <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed italic" style={{ color: "#0a0a0a", borderLeft: "2px solid #c0392b", paddingLeft: "1.5rem", textAlign: "left" }}>{results.userProfile}</p>
+            </div>
+
+            {/* 広告枠 1: プロフィール直後（最も目立つ位置） */}
+            <AdSlot slot="results-top" />
+
+            {results.recommendations && results.recommendations.length > 0 && (
+              <div className="mb-20">
+                <div className="flex items-baseline gap-4 mb-10">
+                  <div className="text-xs tracking-[0.3em]" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>01 — 03</div>
+                  <h3 className="text-2xl md:text-3xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.top3}</h3>
+                  <div className="flex-grow h-px bg-black opacity-20" />
+                </div>
+                <div className="space-y-12">
+                  {results.recommendations.slice(0, 3).map((rec, idx) => (
+                    <article key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="grid grid-cols-12 gap-6 md:gap-8 pb-12 border-b" style={{ borderColor: "rgba(10,10,10,0.1)" }}>
+                      <div className="col-span-12 md:col-span-2">
+                        <div className="text-6xl md:text-7xl font-bold leading-none" style={{ fontFamily: "'Cormorant Garamond', serif", color: idx === 0 ? "#c0392b" : "#0a0a0a" }}>{String(rec.rank).padStart(2, "0")}</div>
+                      </div>
+                      <div className="col-span-12 md:col-span-10">
+                        <div className="flex items-center gap-3 mb-2 flex-wrap">
+                          <h4 className="text-2xl md:text-3xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
+                          {rec.source && (<span className="text-[10px] tracking-widest px-2 py-1" style={{ fontFamily: "'JetBrains Mono', monospace", backgroundColor: rec.source === "db" ? "#0a0a0a" : "#c0392b", color: "#f5f3ee" }}>{rec.source === "db" ? t.sourceDB : t.sourceWeb}</span>)}
+                        </div>
+                        <div className="text-sm mb-4 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }}>
+                          {rec.author && <>{rec.author} · </>}{rec.year && <>{rec.year} · </>}{rec.volumes && <>{rec.volumes}{t.volumes} · </>}{rec.status && t["status_" + rec.status]}{rec.anime && <> · {t.anime} ✓</>}
+                        </div>
+                        {rec.description && (<p className="text-base leading-relaxed mb-4" style={{ color: "#333" }}>{rec.description}</p>)}
+                        <div className="pl-4 border-l-2" style={{ borderColor: "#c0392b" }}>
+                          <div className="text-xs tracking-[0.2em] mb-2" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>▌WHY YOU'LL LOVE IT</div>
+                          <p className="text-sm md:text-base italic leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{rec.reason}</p>
+                        </div>
+                        <PurchaseLinks rec={rec} t={t} />
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {results.recommendations && results.recommendations.length > 3 && (
+              <div className="mb-20">
+                <div className="flex items-baseline gap-4 mb-10">
+                  <div className="text-xs tracking-[0.3em]" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>04 — {String(Math.min(10, results.recommendations.length)).padStart(2, "0")}</div>
+                  <h3 className="text-xl md:text-2xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.next7}</h3>
+                  <div className="flex-grow h-px bg-black opacity-10" />
+                </div>
+                <div className="space-y-6">
+                  {results.recommendations.slice(3, 10).map((rec) => (
+                    <article key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="grid grid-cols-12 gap-4 pb-6 border-b" style={{ borderColor: "rgba(10,10,10,0.08)" }}>
+                      <div className="col-span-2 md:col-span-1">
+                        <div className="text-2xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#888" }}>{String(rec.rank).padStart(2, "0")}</div>
+                      </div>
+                      <div className="col-span-10 md:col-span-11">
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                          <h4 className="text-lg md:text-xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
+                          {rec.source && (<span className="text-[9px] tracking-widest px-1.5 py-0.5" style={{ fontFamily: "'JetBrains Mono', monospace", backgroundColor: rec.source === "db" ? "rgba(10,10,10,0.7)" : "rgba(192,57,43,0.85)", color: "#f5f3ee" }}>{rec.source === "db" ? t.sourceDB : t.sourceWeb}</span>)}
+                        </div>
+                        <div className="text-xs mb-2 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }}>
+                          {rec.author && <>{rec.author} · </>}{rec.volumes && <>{rec.volumes}{t.volumes} · </>}{rec.status && t["status_" + rec.status]}
+                        </div>
+                        <p className="text-sm leading-relaxed italic" style={{ color: "#444", fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{rec.reason}</p>
+                        <PurchaseLinks rec={rec} t={t} compact />
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 広告枠 2: 中間（おすすめリストの途中） */}
+            {results.recommendations && results.recommendations.length > 3 && (
+              <AdSlot slot="results-mid" />
+            )}
+
+            {results.recommendations && results.recommendations.length > 10 && (
+              <div className="mb-20">
+                <div className="flex items-baseline gap-4 mb-8">
+                  <div className="text-xs tracking-[0.3em]" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>11 — {String(results.recommendations.length).padStart(2, "0")}</div>
+                  <h3 className="text-xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.last10}</h3>
+                  <div className="flex-grow h-px bg-black opacity-10" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+                  {results.recommendations.slice(10, 20).map((rec) => (
+                    <div key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="flex gap-3 items-baseline py-2">
+                      <span className="text-sm" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#c0392b", minWidth: "1.5rem" }}>{String(rec.rank).padStart(2, "0")}</span>
+                      <div className="flex-grow">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <div className="text-base font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</div>
+                          {rec.source === "web" && (<span className="text-[8px] tracking-widest px-1 py-0.5" style={{ fontFamily: "'JetBrains Mono', monospace", backgroundColor: "rgba(192,57,43,0.85)", color: "#f5f3ee" }}>{t.sourceWeb}</span>)}
+                        </div>
+                        <div className="text-xs" style={{ color: "#888" }}>{rec.author}{rec.volumes && ` · ${rec.volumes}${t.volumes}`}</div>
+                        <PurchaseLinks rec={rec} t={t} compact />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 広告枠 3: 最下部（再診断ボタンの前） */}
+            <AdSlot slot="results-bottom" />
+
+            <div className="text-center mt-16">
+              <button onClick={reset} className="px-12 py-4 text-sm tracking-[0.3em] uppercase transition-all hover:scale-105" style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>↻ {t.retake}</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
