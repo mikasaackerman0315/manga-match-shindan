@@ -312,6 +312,14 @@ export default function App() {
               style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>
               {t.startQuiz} →
             </button>
+            <div className="mt-10">
+              <div className="text-[10px] tracking-[0.28em] uppercase mb-3" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>THEME GUIDES</div>
+              <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs">
+                <a href="/completed-manga" className="hover:text-[#c0392b] transition-colors">完結済み漫画</a>
+                <a href="/emotional-manga" className="hover:text-[#c0392b] transition-colors">泣ける漫画</a>
+                <a href="/fantasy-manga" className="hover:text-[#c0392b] transition-colors">異世界・ファンタジー</a>
+              </div>
+            </div>
             <nav className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] tracking-[0.18em] uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#777" }}>
               <a href="/privacy" className="hover:text-[#c0392b] transition-colors">Privacy</a>
               <a href="/contact" className="hover:text-[#c0392b] transition-colors">Contact</a>
