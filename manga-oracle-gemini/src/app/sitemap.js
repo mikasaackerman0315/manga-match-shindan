@@ -1,3 +1,5 @@
+import { THEME_GUIDES } from "./themeData";
+
 const siteUrl = "https://www.mangamatchquiz.com";
 
 export default function sitemap() {
@@ -16,6 +18,18 @@ export default function sitemap() {
       changeFrequency: "monthly",
       priority: 0.4,
     },
+    {
+      url: `${siteUrl}/themes`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    ...THEME_GUIDES.map((theme) => ({
+      url: `${siteUrl}/themes/${theme.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    })),
     {
       url: `${siteUrl}/completed-manga`,
       lastModified: now,
