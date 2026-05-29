@@ -1,4 +1,5 @@
 import StoreLinks from "./StoreLinks";
+import MangaCover from "./MangaCover";
 
 export function ArticlePage({ eyebrow, title, lead, items }) {
   return (
@@ -23,12 +24,15 @@ export function ArticlePage({ eyebrow, title, lead, items }) {
               <div className="col-span-2 md:col-span-1 text-3xl md:text-4xl font-bold leading-none" style={{ color: index === 0 ? "#c0392b" : "#0a0a0a", fontFamily: "'Cormorant Garamond', serif" }}>
                 {String(index + 1).padStart(2, "0")}
               </div>
-              <div className="col-span-10 md:col-span-11">
-                <h2 className="text-2xl md:text-3xl font-semibold mb-2" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{item.title}</h2>
-                <div className="text-xs tracking-[0.12em] mb-4" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>{item.meta}</div>
-                <p className="leading-8 mb-4" style={{ color: "#333" }}>{item.text}</p>
-                <p className="text-sm leading-7 mb-4 italic" style={{ color: "#555" }}>{item.fit}</p>
-                <StoreLinks title={item.title} compact showPreview={false} labels={{ amazon: "Amazon", kindle: "Kindle", paper: "紙の本", rakuten: "楽天" }} />
+              <div className="col-span-10 md:col-span-11 flex flex-col sm:flex-row gap-4 md:gap-6">
+                <MangaCover title={item.title} />
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-2xl md:text-3xl font-semibold mb-2" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{item.title}</h2>
+                  <div className="text-xs tracking-[0.12em] mb-4" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>{item.meta}</div>
+                  <p className="leading-8 mb-4" style={{ color: "#333" }}>{item.text}</p>
+                  <p className="text-sm leading-7 mb-4 italic" style={{ color: "#555" }}>{item.fit}</p>
+                  <StoreLinks title={item.title} compact showPreview={false} labels={{ amazon: "Amazon", kindle: "Kindle", paper: "紙の本", rakuten: "楽天" }} />
+                </div>
               </div>
             </div>
           ))}

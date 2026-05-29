@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { QUESTIONS_SIMPLE, QUESTIONS_DETAILED } from "@/data/questions";
+import MangaCover from "./MangaCover";
 import StoreLinks from "./StoreLinks";
 
 // ============================================================
@@ -464,7 +465,9 @@ export default function App() {
                       <div className="col-span-12 md:col-span-2">
                         <div className="text-6xl md:text-7xl font-bold leading-none" style={{ fontFamily: "'Cormorant Garamond', serif", color: idx === 0 ? "#c0392b" : "#0a0a0a" }}>{String(rec.rank).padStart(2, "0")}</div>
                       </div>
-                      <div className="col-span-12 md:col-span-10">
+                      <div className="col-span-12 md:col-span-10 flex flex-col sm:flex-row gap-5 md:gap-7">
+                        <MangaCover title={rec.title_ja || rec.title_en} size="large" />
+                        <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-3 mb-2 flex-wrap">
                           <h4 className="text-2xl md:text-3xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
                           {rec.source && (<span className="text-[10px] tracking-widest px-2 py-1" style={{ fontFamily: "'JetBrains Mono', monospace", backgroundColor: rec.source === "db" ? "#0a0a0a" : "#c0392b", color: "#f5f3ee" }}>{rec.source === "db" ? t.sourceDB : t.sourceWeb}</span>)}
@@ -478,6 +481,7 @@ export default function App() {
                           <p className="text-sm md:text-base italic leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{rec.reason}</p>
                         </div>
                         <PurchaseLinks rec={rec} t={t} />
+                        </div>
                       </div>
                     </article>
                   ))}
@@ -498,7 +502,9 @@ export default function App() {
                       <div className="col-span-2 md:col-span-1">
                         <div className="text-2xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#888" }}>{String(rec.rank).padStart(2, "0")}</div>
                       </div>
-                      <div className="col-span-10 md:col-span-11">
+                      <div className="col-span-10 md:col-span-11 flex flex-col sm:flex-row gap-4">
+                        <MangaCover title={rec.title_ja || rec.title_en} />
+                        <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
                           <h4 className="text-lg md:text-xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
                           {rec.source && (<span className="text-[9px] tracking-widest px-1.5 py-0.5" style={{ fontFamily: "'JetBrains Mono', monospace", backgroundColor: rec.source === "db" ? "rgba(10,10,10,0.7)" : "rgba(192,57,43,0.85)", color: "#f5f3ee" }}>{rec.source === "db" ? t.sourceDB : t.sourceWeb}</span>)}
@@ -508,6 +514,7 @@ export default function App() {
                         </div>
                         <p className="text-sm leading-relaxed italic" style={{ color: "#444", fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{rec.reason}</p>
                         <PurchaseLinks rec={rec} t={t} compact />
+                        </div>
                       </div>
                     </article>
                   ))}
@@ -529,8 +536,9 @@ export default function App() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
                   {results.recommendations.slice(10, 20).map((rec) => (
-                    <div key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="flex gap-3 items-baseline py-2">
+                    <div key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="flex gap-3 items-start py-2">
                       <span className="text-sm" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#c0392b", minWidth: "1.5rem" }}>{String(rec.rank).padStart(2, "0")}</span>
+                      <MangaCover title={rec.title_ja || rec.title_en} size="small" />
                       <div className="flex-grow">
                         <div className="flex items-center gap-2 flex-wrap">
                           <div className="text-base font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</div>
