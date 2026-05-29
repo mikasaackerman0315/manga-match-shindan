@@ -1,8 +1,27 @@
 import "./globals.css";
 
+const siteUrl = "https://www.mangamatchquiz.com";
+
 export const metadata = {
+  metadataBase: new URL(siteUrl),
   title: "マンガマッチ診断 — AI漫画おすすめ診断",
   description: "質問に答えるだけで、AIが1500作品DBを分析し、あなたに合う漫画をランキング形式でおすすめします。",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "マンガマッチ診断 — AI漫画おすすめ診断",
+    description: "質問に答えるだけで、AIがあなたに合う漫画をランキング形式でおすすめします。",
+    url: siteUrl,
+    siteName: "マンガマッチ診断",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "マンガマッチ診断 — AI漫画おすすめ診断",
+    description: "質問に答えるだけで、AIがあなたに合う漫画をランキング形式でおすすめします。",
+  },
 };
 
 export default function RootLayout({ children }) {
