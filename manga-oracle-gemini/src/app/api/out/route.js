@@ -43,7 +43,7 @@ export function GET(req) {
       : intent === "set"
         ? " 全巻セット"
         : intent === "preview"
-          ? " 試し読み"
+          ? ""
           : intent === "ebook"
           ? ""
           : " 漫画";
