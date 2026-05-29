@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { QUESTIONS_SIMPLE, QUESTIONS_DETAILED } from "@/data/questions";
+import StoreLinks from "./StoreLinks";
 
 // ============================================================
 // 広告枠コンポーネント（将来 Google AdSense 等を入れる場所）
@@ -105,65 +106,9 @@ const T = {
 
 const LOADING_STEP_COUNT = 4;
 
-function getMangaSearchQuery(rec) {
-  return `${rec.title_ja || rec.title_en || ""}`.trim();
-}
-
-function getPurchaseLinks(rec) {
-  const query = encodeURIComponent(getMangaSearchQuery(rec));
-  return [
-    { key: "preview", href: `/api/out?store=ebookjapan&intent=preview&title=${query}` },
-    { key: "amazon", children: [
-      { key: "kindle", href: `/api/out?store=amazon&intent=kindle&title=${query}` },
-      { key: "paper", href: `/api/out?store=amazon&intent=paper&title=${query}` },
-    ] },
-    { key: "rakuten", href: `/api/out?store=rakuten&intent=store&title=${query}` },
-  ];
-}
-
 function PurchaseLinks({ rec, t, compact = false }) {
-  return (
-    <div className={compact ? "mt-2 flex flex-wrap gap-1.5" : "mt-5"}>
-      {!compact && (
-        <div className="text-[10px] tracking-[0.25em] mb-2 uppercase" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>
-          {t.buyLinks}
-        </div>
-      )}
-      <div className="flex flex-wrap gap-2">
-        {getPurchaseLinks(rec).map((link) => link.children ? (
-          <details key={link.key} className="relative">
-            <summary
-              className={compact ? "list-none cursor-pointer text-[10px] px-2 py-1 transition-all hover:translate-y-[-1px]" : "list-none cursor-pointer text-[11px] px-3 py-1.5 tracking-[0.12em] uppercase transition-all hover:translate-y-[-1px]"}
-              style={{ border: "1px solid rgba(10,10,10,0.18)", color: "#0a0a0a", backgroundColor: "rgba(245,243,238,0.55)", fontFamily: "'JetBrains Mono', monospace" }}
-            >
-              {t[link.key]}
-            </summary>
-            <div className="absolute left-0 top-full z-20 mt-1 min-w-[7rem] p-1" style={{ border: "1px solid rgba(10,10,10,0.18)", backgroundColor: "#f5f3ee", boxShadow: "0 10px 24px rgba(10,10,10,0.12)" }}>
-              {link.children.map((child) => (
-                <a key={child.key} href={child.href} target="_blank" rel="noopener noreferrer sponsored" className="block whitespace-nowrap px-3 py-2 text-[11px] tracking-[0.12em] uppercase hover:text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{t[child.key]}</a>
-              ))}
-            </div>
-          </details>
-        ) : (
-          <a
-            key={link.key}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            className={compact ? "text-[10px] px-2 py-1 transition-all hover:translate-y-[-1px]" : "text-[11px] px-3 py-1.5 tracking-[0.12em] uppercase transition-all hover:translate-y-[-1px]"}
-            style={{
-              border: "1px solid rgba(10,10,10,0.18)",
-              color: link.key === "preview" ? "#c0392b" : "#0a0a0a",
-              backgroundColor: "rgba(245,243,238,0.55)",
-              fontFamily: "'JetBrains Mono', monospace",
-            }}
-          >
-            {t[link.key]}
-          </a>
-        ))}
-      </div>
-    </div>
-  );
+  const title = `${rec.title_ja || rec.title_en || ""}`.trim();
+  return <StoreLinks title={title} labels={t} compact={compact} showHeading={!compact} />;
 }
 
 export default function App() {
