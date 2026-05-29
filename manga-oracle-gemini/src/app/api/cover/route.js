@@ -1,6 +1,21 @@
 import { NextResponse } from "next/server";
 
 const RAKUTEN_BOOKS_ENDPOINT = "https://openapi.rakuten.co.jp/services/api/BooksBook/Search/20170404";
+const TITLE_ALIASES = {
+  "SLAM DUNK": ["スラムダンク", "SLAM DUNK 1"],
+  "DRAGON BALL": ["ドラゴンボール", "DRAGON BALL 1"],
+  "ONE PIECE": ["ワンピース", "ONE PIECE 1"],
+  "DEATH NOTE": ["デスノート", "DEATH NOTE 1"],
+  "HUNTER×HUNTER": ["ハンターハンター", "HUNTER HUNTER 1"],
+  "HUNTER x HUNTER": ["ハンターハンター", "HUNTER HUNTER 1"],
+  "NANA": ["NANA 1"],
+  "AKIRA": ["AKIRA 1"],
+  "ARIA": ["ARIA 1"],
+};
+
+function getSearchTitles(title) {
+  return [title, ...(TITLE_ALIASES[title] || [])].filter(Boolean);
+}
 
 function getCoverImage(item) {
   return item?.largeImageUrl || item?.mediumImageUrl || item?.smallImageUrl || null;
@@ -22,7 +37,7 @@ function scoreVolumeOne(item, title) {
   return score;
 }
 
-async function searchRakutenBooks({ title, applicationId, accessKey, affiliateId }) {
+async function searchRakutenBooks({ queryTitle, applicationId, accessKey, affiliateId }) {
   const apiUrl = new URL(RAKUTEN_BOOKS_ENDPOINT);
   apiUrl.searchParams.set("applicationId", applicationId);
   apiUrl.searchParams.set("accessKey", accessKey);
@@ -31,7 +46,7 @@ async function searchRakutenBooks({ title, applicationId, accessKey, affiliateId
   }
   apiUrl.searchParams.set("format", "json");
   apiUrl.searchParams.set("formatVersion", "2");
-  apiUrl.searchParams.set("title", title);
+  apiUrl.searchParams.set("title", queryTitle);
   apiUrl.searchParams.set("size", "9");
   apiUrl.searchParams.set("hits", "10");
   apiUrl.searchParams.set("sort", "standard");
@@ -62,9 +77,16 @@ export async function GET(req) {
   }
 
   try {
-    const items = await searchRakutenBooks({ title, applicationId, accessKey, affiliateId });
-    const rankedItems = [...items].sort((a, b) => scoreVolumeOne(b, title) - scoreVolumeOne(a, title));
-    const item = rankedItems.find((candidate) => scoreVolumeOne(candidate, title) > 0) || items.find((candidate) => getCoverImage(candidate));
+    const searchTitles = getSearchTitles(title);
+    let item = null;
+
+    for (const queryTitle of searchTitles) {
+      const items = await searchRakutenBooks({ queryTitle, applicationId, accessKey, affiliateId });
+      const rankedItems = [...items].sort((a, b) => scoreVolumeOne(b, queryTitle) - scoreVolumeOne(a, queryTitle));
+      item = rankedItems.find((candidate) => scoreVolumeOne(candidate, queryTitle) > 0) || items.find((candidate) => getCoverImage(candidate));
+      if (item) break;
+    }
+
     const imageUrl = getCoverImage(item);
     const itemUrl = item?.affiliateUrl || item?.itemUrl || null;
 
