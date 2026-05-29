@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+const DEFAULT_AMAZON_ASSOCIATE_TAG = "mangamatchquiz-22";
+
 const STORES = {
   amazon: {
     base: "https://www.amazon.co.jp/s",
@@ -48,7 +50,9 @@ export function GET(req) {
   destination.searchParams.set("utm_medium", "affiliate_button");
   destination.searchParams.set("utm_campaign", "recommendation_results");
 
-  const affiliateId = config.affiliateEnv ? process.env[config.affiliateEnv] : null;
+  const affiliateId = config.affiliateEnv
+    ? process.env[config.affiliateEnv] || (store === "amazon" ? DEFAULT_AMAZON_ASSOCIATE_TAG : null)
+    : null;
   if (affiliateId && config.affiliateParam) {
     destination.searchParams.set(config.affiliateParam, affiliateId);
   }
