@@ -58,6 +58,8 @@ const T = {
     sourceDB: "DB", sourceWeb: "Web発掘",
     buyLinks: "読む・探す",
     amazon: "Amazon",
+    kindle: "Kindle",
+    paper: "紙の本",
     rakuten: "楽天",
     preview: "試し読み",
     modeBadgeSimple: "シンプル", modeBadgeDetailed: "こだわり",
@@ -87,6 +89,8 @@ const T = {
     sourceDB: "Curated", sourceWeb: "Web Find",
     buyLinks: "Read / Shop",
     amazon: "Amazon",
+    kindle: "Kindle",
+    paper: "Print",
     rakuten: "Rakuten",
     preview: "Preview",
     modeBadgeSimple: "Quick", modeBadgeDetailed: "Deep",
@@ -109,7 +113,10 @@ function getPurchaseLinks(rec) {
   const query = encodeURIComponent(getMangaSearchQuery(rec));
   return [
     { key: "preview", href: `/api/out?store=ebookjapan&intent=preview&title=${query}` },
-    { key: "amazon", href: `/api/out?store=amazon&intent=store&title=${query}` },
+    { key: "amazon", children: [
+      { key: "kindle", href: `/api/out?store=amazon&intent=kindle&title=${query}` },
+      { key: "paper", href: `/api/out?store=amazon&intent=paper&title=${query}` },
+    ] },
     { key: "rakuten", href: `/api/out?store=rakuten&intent=store&title=${query}` },
   ];
 }
@@ -123,7 +130,21 @@ function PurchaseLinks({ rec, t, compact = false }) {
         </div>
       )}
       <div className="flex flex-wrap gap-2">
-        {getPurchaseLinks(rec).map((link) => (
+        {getPurchaseLinks(rec).map((link) => link.children ? (
+          <details key={link.key} className="relative">
+            <summary
+              className={compact ? "list-none cursor-pointer text-[10px] px-2 py-1 transition-all hover:translate-y-[-1px]" : "list-none cursor-pointer text-[11px] px-3 py-1.5 tracking-[0.12em] uppercase transition-all hover:translate-y-[-1px]"}
+              style={{ border: "1px solid rgba(10,10,10,0.18)", color: "#0a0a0a", backgroundColor: "rgba(245,243,238,0.55)", fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              {t[link.key]}
+            </summary>
+            <div className="absolute left-0 top-full z-20 mt-1 min-w-[7rem] p-1" style={{ border: "1px solid rgba(10,10,10,0.18)", backgroundColor: "#f5f3ee", boxShadow: "0 10px 24px rgba(10,10,10,0.12)" }}>
+              {link.children.map((child) => (
+                <a key={child.key} href={child.href} target="_blank" rel="noopener noreferrer sponsored" className="block whitespace-nowrap px-3 py-2 text-[11px] tracking-[0.12em] uppercase hover:text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{t[child.key]}</a>
+              ))}
+            </div>
+          </details>
+        ) : (
           <a
             key={link.key}
             href={link.href}

@@ -1,7 +1,10 @@
 function shopLinks(title) {
   const query = encodeURIComponent(title);
   return [
-    { label: "Amazon", href: `/api/out?store=amazon&intent=store&title=${query}` },
+    { label: "Amazon", children: [
+      { label: "Kindle", href: `/api/out?store=amazon&intent=kindle&title=${query}` },
+      { label: "紙の本", href: `/api/out?store=amazon&intent=paper&title=${query}` },
+    ] },
     { label: "楽天", href: `/api/out?store=rakuten&intent=store&title=${query}` },
   ];
 }
@@ -35,7 +38,18 @@ export function ArticlePage({ eyebrow, title, lead, items }) {
                 <p className="leading-8 mb-4" style={{ color: "#333" }}>{item.text}</p>
                 <p className="text-sm leading-7 mb-4 italic" style={{ color: "#555" }}>{item.fit}</p>
                 <div className="flex flex-wrap gap-2">
-                  {shopLinks(item.title).map((link) => (
+                  {shopLinks(item.title).map((link) => link.children ? (
+                    <details key={link.label} className="relative">
+                      <summary className="list-none cursor-pointer text-[11px] px-3 py-1.5 tracking-[0.12em] uppercase transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.18)", color: "#0a0a0a", backgroundColor: "rgba(245,243,238,0.55)", fontFamily: "'JetBrains Mono', monospace" }}>
+                        {link.label}
+                      </summary>
+                      <div className="absolute left-0 top-full z-20 mt-1 min-w-[7rem] p-1" style={{ border: "1px solid rgba(10,10,10,0.18)", backgroundColor: "#f5f3ee", boxShadow: "0 10px 24px rgba(10,10,10,0.12)" }}>
+                        {link.children.map((child) => (
+                          <a key={child.label} href={child.href} target="_blank" rel="noopener noreferrer sponsored" className="block whitespace-nowrap px-3 py-2 text-[11px] tracking-[0.12em] uppercase hover:text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{child.label}</a>
+                        ))}
+                      </div>
+                    </details>
+                  ) : (
                     <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer sponsored" className="text-[11px] px-3 py-1.5 tracking-[0.12em] uppercase transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.18)", color: link.label === "楽天" ? "#c0392b" : "#0a0a0a", backgroundColor: "rgba(245,243,238,0.55)", fontFamily: "'JetBrains Mono', monospace" }}>
                       {link.label}
                     </a>
