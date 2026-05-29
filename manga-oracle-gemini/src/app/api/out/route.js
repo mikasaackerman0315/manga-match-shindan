@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 const DEFAULT_AMAZON_ASSOCIATE_TAG = "mangamatchquiz-22";
+const DEFAULT_RAKUTEN_AFFILIATE_BASE = "https://hb.afl.rakuten.co.jp/ichiba/544efdb0.c2fbd832.544efdb1.c9054ec8/";
 
 const STORES = {
   amazon: {
@@ -49,6 +50,13 @@ export function GET(req) {
   destination.searchParams.set("utm_source", "manga_oracle");
   destination.searchParams.set("utm_medium", "affiliate_button");
   destination.searchParams.set("utm_campaign", "recommendation_results");
+
+  if (store === "rakuten") {
+    const affiliateDestination = new URL(process.env.RAKUTEN_AFFILIATE_BASE || DEFAULT_RAKUTEN_AFFILIATE_BASE);
+    affiliateDestination.searchParams.set("pc", destination.toString());
+    affiliateDestination.searchParams.set("link_type", "hybrid_url");
+    return NextResponse.redirect(affiliateDestination);
+  }
 
   const affiliateId = config.affiliateEnv
     ? process.env[config.affiliateEnv] || (store === "amazon" ? DEFAULT_AMAZON_ASSOCIATE_TAG : null)
