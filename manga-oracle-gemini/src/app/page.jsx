@@ -312,6 +312,11 @@ export default function App() {
               style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>
               {t.startQuiz} →
             </button>
+            <nav className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] tracking-[0.18em] uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#777" }}>
+              <a href="/privacy" className="hover:text-[#c0392b] transition-colors">Privacy</a>
+              <a href="/contact" className="hover:text-[#c0392b] transition-colors">Contact</a>
+              <a href="/disclaimer" className="hover:text-[#c0392b] transition-colors">Disclaimer</a>
+            </nav>
           </div>
           <div className="absolute bottom-8 text-xs tracking-widest text-center invisible pointer-events-none" aria-hidden="true" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>
             {t.poweredBy}
