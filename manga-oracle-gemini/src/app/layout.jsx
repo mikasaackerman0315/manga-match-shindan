@@ -3,6 +3,7 @@ import Script from "next/script";
 
 const siteUrl = "https://www.mangamatchquiz.com";
 const gaMeasurementId = "G-MBE4WLCLX2";
+const adsenseClientId = "ca-pub-6726748690737074";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -30,6 +31,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ja">
       <head>
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
