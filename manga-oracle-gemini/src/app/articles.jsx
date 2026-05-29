@@ -1,9 +1,8 @@
 function shopLinks(title) {
   const query = encodeURIComponent(title);
   return [
-    { label: "Kindle", href: `/api/out?store=amazon&intent=kindle&title=${query}` },
-    { label: "1巻", href: `/api/out?store=amazon&intent=volume1&title=${query}` },
-    { label: "楽天", href: `/api/out?store=rakuten&intent=set&title=${query}` },
+    { label: "Amazon", href: `/api/out?store=amazon&intent=store&title=${query}` },
+    { label: "楽天", href: `/api/out?store=rakuten&intent=store&title=${query}` },
   ];
 }
 

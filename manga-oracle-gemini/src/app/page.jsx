@@ -57,9 +57,7 @@ const T = {
     poweredBy: "POWERED BY GEMINI 2.5 FLASH · 1500作品DB",
     sourceDB: "DB", sourceWeb: "Web発掘",
     buyLinks: "読む・探す",
-    kindle: "Kindle",
-    volume1: "1巻",
-    set: "全巻",
+    amazon: "Amazon",
     rakuten: "楽天",
     preview: "試し読み",
     modeBadgeSimple: "シンプル", modeBadgeDetailed: "こだわり",
@@ -88,9 +86,7 @@ const T = {
     poweredBy: "POWERED BY GEMINI 2.5 FLASH · 1500-TITLE DB",
     sourceDB: "Curated", sourceWeb: "Web Find",
     buyLinks: "Read / Shop",
-    kindle: "Kindle",
-    volume1: "Vol. 1",
-    set: "Full Set",
+    amazon: "Amazon",
     rakuten: "Rakuten",
     preview: "Preview",
     modeBadgeSimple: "Quick", modeBadgeDetailed: "Deep",
@@ -113,10 +109,8 @@ function getPurchaseLinks(rec) {
   const query = encodeURIComponent(getMangaSearchQuery(rec));
   return [
     { key: "preview", href: `/api/out?store=ebookjapan&intent=preview&title=${query}` },
-    { key: "kindle", href: `/api/out?store=amazon&intent=kindle&title=${query}` },
-    { key: "volume1", href: `/api/out?store=amazon&intent=volume1&title=${query}` },
-    { key: "set", href: `/api/out?store=amazon&intent=set&title=${query}` },
-    { key: "rakuten", href: `/api/out?store=rakuten&intent=set&title=${query}` },
+    { key: "amazon", href: `/api/out?store=amazon&intent=store&title=${query}` },
+    { key: "rakuten", href: `/api/out?store=rakuten&intent=store&title=${query}` },
   ];
 }
 
@@ -138,7 +132,7 @@ function PurchaseLinks({ rec, t, compact = false }) {
             className={compact ? "text-[10px] px-2 py-1 transition-all hover:translate-y-[-1px]" : "text-[11px] px-3 py-1.5 tracking-[0.12em] uppercase transition-all hover:translate-y-[-1px]"}
             style={{
               border: "1px solid rgba(10,10,10,0.18)",
-              color: link.key === "set" || link.key === "preview" ? "#c0392b" : "#0a0a0a",
+              color: link.key === "preview" ? "#c0392b" : "#0a0a0a",
               backgroundColor: "rgba(245,243,238,0.55)",
               fontFamily: "'JetBrains Mono', monospace",
             }}
