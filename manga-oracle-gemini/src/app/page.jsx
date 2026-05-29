@@ -61,7 +61,7 @@ const T = {
     volume1: "1巻",
     set: "全巻",
     rakuten: "楽天",
-    ebookjapan: "ebookjapan",
+    preview: "試し読み",
     modeBadgeSimple: "シンプル", modeBadgeDetailed: "こだわり",
     freeTextStep: "あと少し（任意）",
     freeTextTitle: "その他、こだわりはある？",
@@ -92,7 +92,7 @@ const T = {
     volume1: "Vol. 1",
     set: "Full Set",
     rakuten: "Rakuten",
-    ebookjapan: "ebookjapan",
+    preview: "Preview",
     modeBadgeSimple: "Quick", modeBadgeDetailed: "Deep",
     freeTextStep: "ALMOST DONE (OPTIONAL)",
     freeTextTitle: "Anything else you care about?",
@@ -112,11 +112,11 @@ function getMangaSearchQuery(rec) {
 function getPurchaseLinks(rec) {
   const query = encodeURIComponent(getMangaSearchQuery(rec));
   return [
+    { key: "preview", href: `/api/out?store=ebookjapan&intent=preview&title=${query}` },
     { key: "kindle", href: `/api/out?store=amazon&intent=kindle&title=${query}` },
     { key: "volume1", href: `/api/out?store=amazon&intent=volume1&title=${query}` },
     { key: "set", href: `/api/out?store=amazon&intent=set&title=${query}` },
     { key: "rakuten", href: `/api/out?store=rakuten&intent=set&title=${query}` },
-    { key: "ebookjapan", href: `/api/out?store=ebookjapan&intent=ebook&title=${query}` },
   ];
 }
 
@@ -138,7 +138,7 @@ function PurchaseLinks({ rec, t, compact = false }) {
             className={compact ? "text-[10px] px-2 py-1 transition-all hover:translate-y-[-1px]" : "text-[11px] px-3 py-1.5 tracking-[0.12em] uppercase transition-all hover:translate-y-[-1px]"}
             style={{
               border: "1px solid rgba(10,10,10,0.18)",
-              color: link.key === "set" || link.key === "ebookjapan" ? "#c0392b" : "#0a0a0a",
+              color: link.key === "set" || link.key === "preview" ? "#c0392b" : "#0a0a0a",
               backgroundColor: "rgba(245,243,238,0.55)",
               fontFamily: "'JetBrains Mono', monospace",
             }}
