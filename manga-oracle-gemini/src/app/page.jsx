@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { QUESTIONS_SIMPLE, QUESTIONS_DETAILED } from "@/data/questions";
 
 // ============================================================
@@ -161,6 +161,7 @@ export default function App() {
   const [results, setResults] = useState(null);
   const [error, setError] = useState(null);
   const [loadingStep, setLoadingStep] = useState(0);
+  const prefetchRef = useRef({ key: "", promise: null });
 
   const t = T[language];
   const QUESTIONS = mode === "simple" ? QUESTIONS_SIMPLE : QUESTIONS_DETAILED;
@@ -179,7 +180,42 @@ export default function App() {
     setAnswers({});
     setFreeText("");
     setCurrentQ(0);
+    prefetchRef.current = { key: "", promise: null };
     setScreen("quiz");
+  };
+
+  const buildRecommendBody = (nextAnswers, nextFreeText = freeText) => ({
+    answers: nextAnswers,
+    questions: QUESTIONS,
+    freeText: nextFreeText,
+    language,
+  });
+
+  const requestRecommendation = async (body) => {
+    const res = await fetch("/api/recommend", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Request failed");
+    return data;
+  };
+
+  const prefetchRecommendation = (nextAnswers) => {
+    const body = buildRecommendBody(nextAnswers, "");
+    const key = JSON.stringify(body);
+    if (prefetchRef.current.key === key && prefetchRef.current.promise) return;
+
+    prefetchRef.current = {
+      key,
+      promise: requestRecommendation(body).catch((err) => {
+        console.error("Prefetch error:", err);
+        if (prefetchRef.current.key === key) prefetchRef.current = { key: "", promise: null };
+        return null;
+      }),
+    };
   };
 
   const handleAnswer = (qId, value, type, max) => {
@@ -201,7 +237,10 @@ export default function App() {
 
   const goNext = () => {
     if (currentQ < QUESTIONS.length - 1) setCurrentQ(currentQ + 1);
-    else setScreen("freetext");
+    else {
+      prefetchRecommendation(answers);
+      setScreen("freetext");
+    }
   };
 
   const goBack = () => {
@@ -214,19 +253,12 @@ export default function App() {
     setLoadingStep(0);
     setError(null);
     try {
-      const res = await fetch("/api/recommend", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          answers,
-          questions: QUESTIONS,
-          freeText,
-          language,
-        }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Request failed");
+      const body = buildRecommendBody(answers, freeText);
+      const key = JSON.stringify(body);
+      const prefetched = prefetchRef.current.key === key && prefetchRef.current.promise
+        ? await prefetchRef.current.promise
+        : null;
+      const data = prefetched || await requestRecommendation(body);
 
       setResults(data);
       setScreen("results");
@@ -243,6 +275,7 @@ export default function App() {
     setCurrentQ(0);
     setResults(null);
     setLoadingStep(0);
+    prefetchRef.current = { key: "", promise: null };
     setScreen("landing");
   };
 
