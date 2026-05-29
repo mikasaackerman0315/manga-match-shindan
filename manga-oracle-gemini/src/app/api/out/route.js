@@ -53,6 +53,12 @@ export function GET(req) {
           : " 漫画";
 
   destination.searchParams.set(config.queryParam, `${title.trim()}${suffix}`);
+  if (store === "amazon" && intent === "kindle") {
+    destination.searchParams.set("i", "digital-text");
+  }
+  if (store === "amazon" && intent === "paper") {
+    destination.searchParams.set("i", "stripbooks");
+  }
   destination.searchParams.set("utm_source", "manga_oracle");
   destination.searchParams.set("utm_medium", "affiliate_button");
   destination.searchParams.set("utm_campaign", "recommendation_results");
