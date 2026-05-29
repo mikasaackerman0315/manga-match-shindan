@@ -20,6 +20,7 @@ const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_D
 // Gemini APIのエンドポイント（v1beta / generateContent）
 const GEMINI_MODEL = "gemini-2.5-flash";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const GEMINI_MAX_ATTEMPTS = 2;
 
 // ------------------------------------------------------------
 // シンプルなメモリ内レート制限（本番ではRedis等を推奨）
@@ -144,6 +145,79 @@ function extractJSON(fullText) {
   return JSON.parse(jsonText);
 }
 
+function validateResponse(payload) {
+  if (!payload || typeof payload !== "object") return false;
+  if (!Array.isArray(payload.recommendations)) return false;
+  if (payload.recommendations.length === 0) return false;
+  return payload.recommendations.every((rec) => rec && typeof rec === "object" && rec.title_ja && rec.reason);
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function requestGeminiRecommendation(prompt, apiKey) {
+  let lastError;
+
+  for (let attempt = 0; attempt < GEMINI_MAX_ATTEMPTS; attempt += 1) {
+    try {
+      const geminiRes = await fetch(`${GEMINI_URL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": apiKey,
+        },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: attempt === 0 ? 0.7 : 0.35,
+            maxOutputTokens: 16000,
+            responseMimeType: "application/json",
+          },
+        }),
+      });
+
+      if (!geminiRes.ok) {
+        const errText = await geminiRes.text();
+        const retryable = geminiRes.status === 429 || geminiRes.status >= 500;
+        lastError = new Error(`Gemini API error ${geminiRes.status}: ${errText.slice(0, 500)}`);
+        console.error("Gemini API error:", geminiRes.status, errText);
+        if (!retryable) throw lastError;
+      } else {
+        const data = await geminiRes.json();
+        const fullText = extractText(data);
+        const parsed = extractJSON(fullText);
+        if (!validateResponse(parsed)) throw new Error("Gemini response did not match expected shape.");
+        return parsed;
+      }
+    } catch (err) {
+      lastError = err;
+      console.error(`Gemini recommendation attempt ${attempt + 1} failed:`, err);
+    }
+
+    if (attempt < GEMINI_MAX_ATTEMPTS - 1) {
+      await sleep(900);
+    }
+  }
+
+  throw lastError || new Error("Gemini recommendation failed.");
+}
+
+function buildFallbackResponse(answers, language) {
+  const fallback = buildPreviewResponse(answers, language);
+  return {
+    userProfile: language === "en"
+      ? "AI was busy, so these picks were selected from the curated database based on your answers."
+      : "AIが混み合っていたため、回答に近い作品を厳選DBから選びました。",
+    recommendations: fallback.recommendations.map((rec) => ({
+      ...rec,
+      reason: language === "en"
+        ? "This title was selected from the curated database because its tags match your quiz answers."
+        : "診断の回答と作品タグの相性が高いため、厳選DBから選びました。",
+    })),
+  };
+}
+
 function buildPreviewResponse(answers, language) {
   const selected = Object.values(answers || {}).flat();
   const scored = CORE_DB.map((m) => {
@@ -208,48 +282,14 @@ export async function POST(req) {
     }
 
     const prompt = buildPrompt(answers, questions, freeText, language || "ja");
-
     // Gemini 2.5 Flash 呼び出し（JSONレスポンス優先）
-    const geminiRes = await fetch(`${GEMINI_URL}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-goog-api-key": apiKey,
-      },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 16000,
-          responseMimeType: "application/json",
-        },
-      }),
-    });
-
-    if (!geminiRes.ok) {
-      const errText = await geminiRes.text();
-      console.error("Gemini API error:", geminiRes.status, errText);
-      return NextResponse.json(
-        { error: "AI service error. Please try again." },
-        { status: 502 }
-      );
-    }
-
-    const data = await geminiRes.json();
-    const fullText = extractText(data);
-
-    let parsed;
     try {
-      parsed = extractJSON(fullText);
-    } catch (parseErr) {
-      console.error("JSON parse error:", parseErr, "\nRaw:", fullText.slice(0, 500));
-      return NextResponse.json(
-        { error: "Failed to parse AI response. Please try again." },
-        { status: 502 }
-      );
+      const parsed = await requestGeminiRecommendation(prompt, apiKey);
+      return NextResponse.json(parsed);
+    } catch (aiErr) {
+      console.error("Gemini failed after retries. Returning fallback recommendations:", aiErr);
+      return NextResponse.json(buildFallbackResponse(answers, language || "ja"));
     }
-
-    return NextResponse.json(parsed);
   } catch (err) {
     console.error("Recommend route error:", err);
     return NextResponse.json(
