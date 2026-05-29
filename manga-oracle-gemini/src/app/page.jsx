@@ -128,6 +128,12 @@ export default function App() {
   const QUESTIONS = mode === "simple" ? QUESTIONS_SIMPLE : QUESTIONS_DETAILED;
 
   useEffect(() => {
+    if (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("start") === "1") {
+      setScreen("mode");
+    }
+  }, []);
+
+  useEffect(() => {
     if (screen === "loading") {
       const interval = setInterval(() => {
         setLoadingStep((prev) => Math.min(prev + 1, LOADING_STEP_COUNT - 1));
