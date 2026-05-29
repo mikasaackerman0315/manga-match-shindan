@@ -41,7 +41,7 @@ export function GET(req) {
     : intent === "volume1"
       ? " 1巻"
       : intent === "paper"
-        ? " 1巻"
+        ? " 漫画"
       : intent === "set"
         ? " 全巻セット"
         : intent === "store"
