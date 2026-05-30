@@ -7,13 +7,18 @@ const adsenseClientId = "ca-pub-6726748690737074";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title: "マンガマッチ診断 — AI漫画おすすめ診断",
-  description: "質問に答えるだけで、AIが1500作品DBを分析し、あなたに合う漫画をランキング形式でおすすめします。",
+  applicationName: "マンガマッチ診断",
+  title: {
+    default: "マンガマッチ診断 | AI漫画おすすめ診断",
+    template: "%s",
+  },
+  description: "質問に答えるだけで、AIが1500作品DBからあなたに合う漫画をランキング形式でおすすめ。恋愛、異世界、ホラー、スポーツ、名作まで幅広く診断します。",
+  keywords: ["漫画おすすめ", "漫画診断", "マンガ診断", "AI漫画推薦", "マンガマッチ診断"],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "マンガマッチ診断 — AI漫画おすすめ診断",
+    title: "マンガマッチ診断 | AI漫画おすすめ診断",
     description: "質問に答えるだけで、AIがあなたに合う漫画をランキング形式でおすすめします。",
     url: siteUrl,
     siteName: "マンガマッチ診断",
@@ -22,15 +27,39 @@ export const metadata = {
   },
   twitter: {
     card: "summary",
-    title: "マンガマッチ診断 — AI漫画おすすめ診断",
+    title: "マンガマッチ診断 | AI漫画おすすめ診断",
     description: "質問に答えるだけで、AIがあなたに合う漫画をランキング形式でおすすめします。",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
 export default function RootLayout({ children }) {
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "マンガマッチ診断",
+    url: siteUrl,
+    description: metadata.description,
+    inLanguage: "ja",
+  };
+  const appJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "マンガマッチ診断",
+    url: siteUrl,
+    applicationCategory: "EntertainmentApplication",
+    operatingSystem: "Any",
+    description: metadata.description,
+  };
+
   return (
     <html lang="ja">
       <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appJsonLd) }} />
         <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`} crossOrigin="anonymous"></script>
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">

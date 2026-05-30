@@ -1,13 +1,43 @@
 import { THEME_GUIDES } from "../themeData";
 
+const siteUrl = "https://www.mangamatchquiz.com";
+
 export const metadata = {
-  title: "テーマ別おすすめ漫画 | マンガマッチ診断",
-  description: "世界観や気分から選べる、テーマ別のおすすめ漫画ガイドです。",
+  title: "テーマ別おすすめ漫画一覧 | マンガマッチ診断",
+  description: "異世界、恋愛、ホラー、SF、スポーツ、癒しなど、気分やジャンルから漫画を探せるテーマ別おすすめ漫画一覧です。",
+  alternates: {
+    canonical: "/themes",
+  },
+  openGraph: {
+    title: "テーマ別おすすめ漫画一覧 | マンガマッチ診断",
+    description: "気分やジャンルから漫画を探せるテーマ別おすすめ漫画一覧です。",
+    url: `${siteUrl}/themes`,
+    siteName: "マンガマッチ診断",
+    locale: "ja_JP",
+    type: "website",
+  },
 };
 
 export default function ThemesPage() {
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "テーマ別おすすめ漫画一覧",
+    description: metadata.description,
+    url: `${siteUrl}/themes`,
+    numberOfItems: THEME_GUIDES.length,
+    itemListElement: THEME_GUIDES.map((theme, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: theme.label,
+      description: theme.lead,
+      url: `${siteUrl}/themes/${theme.slug}`,
+    })),
+  };
+
   return (
     <main className="min-h-screen px-5 py-14 md:px-8 md:py-20" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
       <section className="max-w-5xl mx-auto">
         <a href="/" className="text-xs tracking-[0.25em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>← 診断トップへ</a>
         <div className="mt-10 mb-12">

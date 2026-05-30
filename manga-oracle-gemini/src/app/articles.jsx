@@ -1,11 +1,48 @@
 import StoreLinks from "./StoreLinks";
 import MangaCover from "./MangaCover";
 
-export function ArticlePage({ eyebrow, title, lead, items }) {
+const siteUrl = "https://www.mangamatchquiz.com";
+
+function JsonLd({ data }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
+export function ArticlePage({ eyebrow, title, lead, items, slug }) {
   const displayTitle = title.replace(/漫画おすすめ$/, "");
+  const pageUrl = slug ? `${siteUrl}/themes/${slug}` : siteUrl;
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${displayTitle}漫画おすすめ10選`,
+    description: lead,
+    url: pageUrl,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.title,
+      description: item.text,
+      url: `${pageUrl}#rank-${index + 1}`,
+    })),
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "マンガマッチ診断", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "テーマ別おすすめ漫画", item: `${siteUrl}/themes` },
+      { "@type": "ListItem", position: 3, name: displayTitle, item: pageUrl },
+    ],
+  };
 
   return (
     <main className="min-h-screen px-5 py-14 md:px-8 md:py-20" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
+      {slug && (
+        <>
+          <JsonLd data={itemListJsonLd} />
+          <JsonLd data={breadcrumbJsonLd} />
+        </>
+      )}
       <article className="max-w-4xl mx-auto">
         <a href="/" className="text-xs tracking-[0.25em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>← 診断トップへ</a>
         <div className="mt-10 mb-14">
@@ -22,7 +59,7 @@ export function ArticlePage({ eyebrow, title, lead, items }) {
 
         <section className="space-y-8">
           {items.map((item, index) => (
-            <div key={item.title} className="grid grid-cols-12 gap-4 md:gap-6 pb-8" style={{ borderBottom: "1px solid rgba(10,10,10,0.1)" }}>
+            <div id={`rank-${index + 1}`} key={item.title} className="grid grid-cols-12 gap-4 md:gap-6 pb-8 scroll-mt-8" style={{ borderBottom: "1px solid rgba(10,10,10,0.1)" }}>
               <div className="col-span-2 md:col-span-1 text-3xl md:text-4xl font-bold leading-none" style={{ color: index === 0 ? "#c0392b" : "#0a0a0a", fontFamily: "'Cormorant Garamond', serif" }}>
                 {String(index + 1).padStart(2, "0")}
               </div>
