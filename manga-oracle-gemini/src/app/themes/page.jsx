@@ -10,6 +10,14 @@ const keywordArticles = [
   { href: "/beginner-manga", label: "初心者におすすめの漫画", description: "何から読むか迷っている人向け。" },
   { href: "/binge-read-manga", label: "一気読みしたい漫画おすすめ", description: "続きが気になる漫画をまとめて紹介。" },
   { href: "/lighthearted-manga", label: "鬱展開が少ない漫画おすすめ", description: "重すぎない漫画を読みたい人向け。" },
+  { href: "/romance-manga", label: "恋愛漫画おすすめ", description: "甘さだけでなく、心の揺れや距離感まで楽しめる恋愛漫画。" },
+  { href: "/completed-romance-manga", label: "完結済み恋愛漫画おすすめ", description: "最後まで安心して読み切れる恋愛漫画を探したい人向け。" },
+  { href: "/isekai-manga", label: "異世界漫画おすすめ", description: "冒険、転生、成長、世界観の広がりで選ぶ異世界漫画。" },
+  { href: "/horror-manga", label: "ホラー漫画おすすめ", description: "怖さ、緊張感、不穏な余韻を楽しみたい人向け。" },
+  { href: "/sports-manga", label: "スポーツ漫画おすすめ", description: "努力、才能、チーム、勝負の熱さが刺さるスポーツ漫画。" },
+  { href: "/working-adult-manga", label: "社会人におすすめ漫画", description: "仕事終わりにも読みやすい、大人向けの漫画を紹介。" },
+  { href: "/middle-school-manga", label: "中学生におすすめ漫画", description: "友情、成長、冒険など読み始めやすい漫画をまとめました。" },
+  { href: "/high-school-manga", label: "高校生におすすめ漫画", description: "青春、進路、恋愛、熱い挑戦を感じられる漫画を紹介。" },
 ];
 
 export const metadata = {

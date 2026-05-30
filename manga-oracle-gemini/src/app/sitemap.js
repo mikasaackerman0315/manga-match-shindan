@@ -11,6 +11,14 @@ const articlePaths = [
   "/beginner-manga",
   "/binge-read-manga",
   "/lighthearted-manga",
+  "/romance-manga",
+  "/completed-romance-manga",
+  "/isekai-manga",
+  "/horror-manga",
+  "/sports-manga",
+  "/working-adult-manga",
+  "/middle-school-manga",
+  "/high-school-manga",
 ];
 
 export default function sitemap() {
