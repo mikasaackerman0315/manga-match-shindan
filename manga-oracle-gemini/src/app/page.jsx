@@ -338,7 +338,7 @@ export default function App() {
             <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs" style={{ color: "#555" }}>
               <a href="/completed-manga" className="hover:text-[#c0392b] transition-colors">完結済み</a>
               <a href="/beginner-manga" className="hover:text-[#c0392b] transition-colors">初心者向け</a>
-              <a href="/romance-manga" className="hover:text-[#c0392b] transition-colors">恋愛漫画</a>
+              <a href="/trending-manga" className="hover:text-[#c0392b] transition-colors">トレンド漫画</a>
             </div>
             <nav className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] tracking-[0.18em] uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#777" }}>
               <a href="/privacy" className="hover:text-[#c0392b] transition-colors">Privacy</a>

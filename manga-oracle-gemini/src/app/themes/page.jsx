@@ -10,6 +10,7 @@ const keywordArticles = [
   { href: "/beginner-manga", label: "初心者におすすめの漫画", description: "何から読むか迷っている人向け。" },
   { href: "/binge-read-manga", label: "一気読みしたい漫画おすすめ", description: "続きが気になる漫画をまとめて紹介。" },
   { href: "/lighthearted-manga", label: "鬱展開が少ない漫画おすすめ", description: "重すぎない漫画を読みたい人向け。" },
+  { href: "/trending-manga", label: "トレンド漫画おすすめ", description: "いま話題になりやすい人気漫画を読み始めたい人向け。" },
   { href: "/romance-manga", label: "恋愛漫画おすすめ", description: "甘さだけでなく、心の揺れや距離感まで楽しめる恋愛漫画。" },
   { href: "/completed-romance-manga", label: "完結済み恋愛漫画おすすめ", description: "最後まで安心して読み切れる恋愛漫画を探したい人向け。" },
   { href: "/isekai-manga", label: "異世界漫画おすすめ", description: "冒険、転生、成長、世界観の広がりで選ぶ異世界漫画。" },

@@ -11,6 +11,7 @@ const articlePaths = [
   "/beginner-manga",
   "/binge-read-manga",
   "/lighthearted-manga",
+  "/trending-manga",
   "/romance-manga",
   "/completed-romance-manga",
   "/isekai-manga",
