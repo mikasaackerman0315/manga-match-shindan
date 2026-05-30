@@ -1,22 +1,107 @@
 import { NextResponse } from "next/server";
+import { CORE_DB as CORE_DB_BASE } from "@/data/coreDB";
+import { CORE_DB_EXTRA } from "@/data/coreDB_extra";
+import { CORE_DB_EXTRA2 } from "@/data/coreDB_extra2";
+import { CORE_DB_EXTRA3 } from "@/data/coreDB_extra3";
 
 const RAKUTEN_BOOKS_ENDPOINT = "https://openapi.rakuten.co.jp/services/api/BooksBook/Search/20170404";
+const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3];
 const TITLE_ALIASES = {
   "3月のライオン": ["三月のライオン", "3月のライオン 1"],
   "20世紀少年": ["20世紀少年 1"],
+  "A Silent Voice": ["聲の形", "聲の形 1"],
   "AKIRA": ["AKIRA 1", "アキラ"],
+  "Alice in Borderland": ["今際の国のアリス", "今際の国のアリス 1"],
   "ARIA": ["ARIA 1", "ARIA 完全版"],
+  "Assassination Classroom": ["暗殺教室", "暗殺教室 1"],
+  "Attack on Titan": ["進撃の巨人", "進撃の巨人 1"],
+  "Bakuman": ["バクマン。", "バクマン 1"],
+  "Banana Fish": ["BANANA FISH", "BANANA FISH 1"],
+  "Beastars": ["BEASTARS", "BEASTARS 1"],
+  "Black Butler": ["黒執事", "黒執事 1"],
+  "Black Clover": ["ブラッククローバー", "ブラッククローバー 1"],
+  "Black Jack": ["ブラック・ジャック", "ブラックジャック 1"],
   "BLAME!": ["BLAME 1", "ブラム"],
-  "SLAM DUNK": ["スラムダンク", "SLAM DUNK 1"],
-  "DRAGON BALL": ["ドラゴンボール", "DRAGON BALL 1"],
-  "ONE PIECE": ["ワンピース", "ONE PIECE 1"],
+  "Bleach": ["BLEACH", "ブリーチ", "BLEACH 1"],
+  "Blue Exorcist": ["青の祓魔師", "青の祓魔師 1"],
+  "Blue Giant": ["BLUE GIANT", "BLUE GIANT 1"],
+  "Blue Lock": ["ブルーロック", "ブルーロック 1"],
+  "Bocchi the Rock!": ["ぼっち・ざ・ろっく!", "ぼっち・ざ・ろっく 1"],
+  "Boys Over Flowers": ["花より男子", "花より男子 1"],
+  "Call of the Night": ["よふかしのうた", "よふかしのうた 1"],
+  "Case Closed": ["名探偵コナン", "名探偵コナン 1"],
+  "Chainsaw Man": ["チェンソーマン", "チェンソーマン 1"],
   "DEATH NOTE": ["デスノート", "DEATH NOTE 1"],
+  "Delicious in Dungeon": ["ダンジョン飯", "ダンジョン飯 1"],
+  "Demon Slayer": ["鬼滅の刃", "鬼滅の刃 1"],
+  "Dorohedoro": ["ドロヘドロ", "ドロヘドロ 1"],
+  "Dragon Ball": ["ドラゴンボール", "DRAGON BALL 1"],
+  "DRAGON BALL": ["ドラゴンボール", "DRAGON BALL 1"],
+  "Dr. Stone": ["Dr.STONE", "ドクターストーン", "Dr.STONE 1"],
+  "Erased": ["僕だけがいない街", "僕だけがいない街 1"],
+  "Eyeshield 21": ["アイシールド21", "アイシールド21 1"],
+  "Fire Force": ["炎炎ノ消防隊", "炎炎ノ消防隊 1"],
+  "Food Wars!": ["食戟のソーマ", "食戟のソーマ 1"],
+  "Frieren": ["葬送のフリーレン", "葬送のフリーレン 1"],
+  "Fullmetal Alchemist": ["鋼の錬金術師", "鋼の錬金術師 1"],
+  "Gantz": ["GANTZ", "GANTZ 1"],
+  "Golden Kamuy": ["ゴールデンカムイ", "ゴールデンカムイ 1"],
+  "Haikyu!!": ["ハイキュー!!", "ハイキュー", "ハイキュー!! 1"],
+  "Hell's Paradise": ["地獄楽", "地獄楽 1"],
   "HUNTER×HUNTER": ["ハンターハンター", "HUNTER HUNTER 1"],
   "HUNTER x HUNTER": ["ハンターハンター", "HUNTER HUNTER 1"],
+  "Hunter x Hunter": ["HUNTER×HUNTER", "ハンターハンター", "HUNTER×HUNTER 1"],
+  "I Am a Hero": ["アイアムアヒーロー", "アイアムアヒーロー 1"],
+  "Initial D": ["頭文字D", "頭文字D 1"],
+  "Inuyasha": ["犬夜叉", "犬夜叉 1"],
+  "Jujutsu Kaisen": ["呪術廻戦", "呪術廻戦 1"],
+  "Kaiju No. 8": ["怪獣8号", "怪獣8号 1"],
+  "Kaguya-sama": ["かぐや様は告らせたい", "かぐや様は告らせたい 1"],
+  "Kingdom": ["キングダム", "キングダム 1"],
+  "Komi Can't Communicate": ["古見さんは、コミュ症です。", "古見さんはコミュ症です 1"],
+  "Kuroko's Basketball": ["黒子のバスケ", "黒子のバスケ 1"],
   "LIAR GAME": ["ライアーゲーム", "LIAR GAME 1"],
+  "Made in Abyss": ["メイドインアビス", "メイドインアビス 1"],
+  "March Comes in Like a Lion": ["3月のライオン", "3月のライオン 1"],
+  "Mashle": ["マッシュル", "マッシュル 1"],
+  "Mob Psycho 100": ["モブサイコ100", "モブサイコ100 1"],
   "MONSTER": ["モンスター 浦沢直樹", "MONSTER 1"],
+  "My Dress-Up Darling": ["その着せ替え人形は恋をする", "その着せ替え人形は恋をする 1"],
+  "My Hero Academia": ["僕のヒーローアカデミア", "ヒロアカ", "僕のヒーローアカデミア 1"],
   "NANA": ["NANA 1"],
+  "Naruto": ["NARUTO", "ナルト", "NARUTO 1"],
+  "Nausicaa": ["風の谷のナウシカ", "風の谷のナウシカ 1"],
+  "Noragami": ["ノラガミ", "ノラガミ 1"],
+  "One Punch Man": ["ワンパンマン", "ワンパンマン 1"],
+  "ONE PIECE": ["ワンピース", "ONE PIECE 1"],
+  "One Piece": ["ワンピース", "ONE PIECE 1"],
+  "Oshi no Ko": ["推しの子", "【推しの子】", "推しの子 1"],
+  "Pluto": ["PLUTO", "PLUTO 1"],
   "Q.E.D. 証明終了": ["QED 証明終了", "Q.E.D. 1"],
+  "Ranking of Kings": ["王様ランキング", "王様ランキング 1"],
+  "Real": ["リアル 井上雄彦", "リアル 1"],
+  "Sailor Moon": ["美少女戦士セーラームーン", "セーラームーン 1"],
+  "Sakamoto Days": ["SAKAMOTO DAYS", "SAKAMOTO DAYS 1"],
+  "Silver Spoon": ["銀の匙", "銀の匙 1"],
+  "Skip and Loafer": ["スキップとローファー", "スキップとローファー 1"],
+  "SLAM DUNK": ["スラムダンク", "SLAM DUNK 1"],
+  "Slam Dunk": ["スラムダンク", "SLAM DUNK 1"],
+  "Solo Leveling": ["俺だけレベルアップな件", "俺だけレベルアップな件 1"],
+  "Soul Eater": ["ソウルイーター", "ソウルイーター 1"],
+  "Spy x Family": ["SPY×FAMILY", "SPY FAMILY", "SPY×FAMILY 1"],
+  "The Apothecary Diaries": ["薬屋のひとりごと", "薬屋のひとりごと 1"],
+  "The Fable": ["ザ・ファブル", "ザ・ファブル 1"],
+  "The Promised Neverland": ["約束のネバーランド", "約束のネバーランド 1"],
+  "Tokyo Ghoul": ["東京喰種", "東京喰種 1", "トーキョーグール"],
+  "Tokyo Revengers": ["東京卍リベンジャーズ", "東京リベンジャーズ", "東京卍リベンジャーズ 1"],
+  "Toriko": ["トリコ", "トリコ 1"],
+  "Uzumaki": ["うずまき 伊藤潤二", "うずまき 1"],
+  "Vagabond": ["バガボンド", "バガボンド 1"],
+  "Vinland Saga": ["ヴィンランド・サガ", "ヴィンランドサガ", "ヴィンランド・サガ 1"],
+  "Witch Hat Atelier": ["とんがり帽子のアトリエ", "とんがり帽子のアトリエ 1"],
+  "World Trigger": ["ワールドトリガー", "ワールドトリガー 1"],
+  "Yona of the Dawn": ["暁のヨナ", "暁のヨナ 1"],
+  "Yu Yu Hakusho": ["幽遊白書", "幽遊白書 1"],
   "あしたのジョー": ["あしたのジョー 1"],
   "あひるの空": ["あひるの空 1"],
   "あまんちゅ!": ["あまんちゅ 1"],
@@ -97,10 +182,33 @@ const TITLE_ALIASES = {
   "黒子のバスケ": ["黒子のバスケ 1"],
 };
 
+function normalizeTitleKey(title) {
+  return (title || "").toLowerCase().replace(/[！!？?。・･\s:：'’"“”\-‐‑‒–—―_]/g, "");
+}
+
+function getDatabaseAliases(title) {
+  const normalizedTitle = normalizeTitleKey(title);
+  const match = CORE_DB.find((entry) => (
+    normalizeTitleKey(entry.title_ja) === normalizedTitle ||
+    normalizeTitleKey(entry.title_en) === normalizedTitle
+  ));
+
+  if (!match) return [];
+
+  return [
+    match.title_ja,
+    match.title_en,
+    match.title_ja && `${match.title_ja} 1`,
+    match.title_ja && `${match.title_ja} 1巻`,
+    match.title_en && `${match.title_en} 1`,
+  ].filter(Boolean);
+}
+
 function getSearchTitles(title) {
   return Array.from(new Set([
     title,
     ...(TITLE_ALIASES[title] || []),
+    ...getDatabaseAliases(title),
     `${title} 1`,
     `${title} 1巻`,
     `${title} 漫画`,
