@@ -472,7 +472,7 @@ export default function App() {
                         <div className="text-6xl md:text-7xl font-bold leading-none" style={{ fontFamily: "'Cormorant Garamond', serif", color: idx === 0 ? "#c0392b" : "#0a0a0a" }}>{String(rec.rank).padStart(2, "0")}</div>
                       </div>
                       <div className="col-span-12 md:col-span-10 flex flex-col sm:flex-row gap-5 md:gap-7">
-                        <MangaCover title={rec.title_ja || rec.title_en} size="large" />
+                        <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} size="large" />
                         <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-3 mb-2 flex-wrap">
                           <h4 className="text-2xl md:text-3xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
@@ -509,7 +509,7 @@ export default function App() {
                         <div className="text-2xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#888" }}>{String(rec.rank).padStart(2, "0")}</div>
                       </div>
                       <div className="col-span-10 md:col-span-11 flex flex-col sm:flex-row gap-4">
-                        <MangaCover title={rec.title_ja || rec.title_en} />
+                        <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} />
                         <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
                           <h4 className="text-lg md:text-xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
@@ -544,7 +544,7 @@ export default function App() {
                   {results.recommendations.slice(10, 20).map((rec) => (
                     <div key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="flex gap-3 items-start py-2">
                       <span className="text-sm" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#c0392b", minWidth: "1.5rem" }}>{String(rec.rank).padStart(2, "0")}</span>
-                      <MangaCover title={rec.title_ja || rec.title_en} size="small" />
+                      <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} size="small" />
                       <div className="flex-grow">
                         <div className="flex items-center gap-2 flex-wrap">
                           <div className="text-base font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</div>

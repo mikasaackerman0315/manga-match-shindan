@@ -260,9 +260,9 @@ function normalizeTitleKey(title) {
   return (title || "").toLowerCase().replace(/[！!？?。・･\s:：'’"“”\-‐‑‒–—―_]/g, "");
 }
 
-function getDatabaseAliases(title) {
+function getDatabaseAliases(title, id, author) {
   const normalizedTitle = normalizeTitleKey(title);
-  const match = CORE_DB.find((entry) => {
+  const match = CORE_DB.find((entry) => entry.id === id) || CORE_DB.find((entry) => {
     const titleJa = normalizeTitleKey(entry.title_ja);
     const titleEn = normalizeTitleKey(entry.title_en);
     return (
@@ -283,10 +283,12 @@ function getDatabaseAliases(title) {
     match.title_ja && `${match.title_ja} 1巻`,
     match.title_ja && `${match.title_ja} ${match.author}`,
     match.title_en && `${match.title_en} 1`,
+    match.title_en && `${match.title_en} ${match.author}`,
+    author && `${match.title_ja} ${author}`,
   ].filter(Boolean);
 }
 
-function getSearchTitles(title) {
+function getSearchTitles(title, id, author) {
   const compactTitle = title.replace(/[【】\[\]（）()]/g, "").trim();
 
   return Array.from(new Set([
@@ -294,8 +296,10 @@ function getSearchTitles(title) {
     compactTitle,
     ...(TITLE_ALIASES[title] || []),
     ...(TITLE_ALIASES[compactTitle] || []),
-    ...getDatabaseAliases(title),
-    ...getDatabaseAliases(compactTitle),
+    ...getDatabaseAliases(title, id, author),
+    ...getDatabaseAliases(compactTitle, id, author),
+    author && `${title} ${author}`,
+    author && `${compactTitle} ${author}`,
     `${title} 1`,
     `${title} 1巻`,
     `${title} 漫画`,
@@ -358,6 +362,8 @@ async function searchRakutenBooks({ queryTitle, applicationId, accessKey, affili
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const title = (searchParams.get("title") || "").trim();
+  const id = (searchParams.get("id") || "").trim();
+  const author = (searchParams.get("author") || "").trim();
   const applicationId = process.env.RAKUTEN_APP_ID;
   const accessKey = process.env.RAKUTEN_ACCESS_KEY;
   const affiliateId = process.env.RAKUTEN_AFFILIATE_ID;
@@ -367,7 +373,7 @@ export async function GET(req) {
   }
 
   try {
-    const searchTitles = getSearchTitles(title);
+    const searchTitles = getSearchTitles(title, id, author);
     let item = null;
 
     for (const queryTitle of searchTitles) {

@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 
-export default function MangaCover({ title, size = "medium" }) {
+export default function MangaCover({ title, id, author, size = "medium" }) {
   const [cover, setCover] = useState({ loading: true, imageUrl: null, itemUrl: null });
   const encodedTitle = encodeURIComponent(title || "");
+  const encodedId = encodeURIComponent(id || "");
+  const encodedAuthor = encodeURIComponent(author || "");
   const frameClass = size === "small" ? "w-14 h-20" : size === "large" ? "w-28 h-40 md:w-32 md:h-48" : "w-20 h-28 md:w-24 md:h-36";
 
   useEffect(() => {
@@ -18,7 +20,7 @@ export default function MangaCover({ title, size = "medium" }) {
     }
 
     setCover({ loading: true, imageUrl: null, itemUrl: null });
-    fetch(`/api/cover?title=${encodedTitle}`)
+    fetch(`/api/cover?title=${encodedTitle}&id=${encodedId}&author=${encodedAuthor}`)
       .then((response) => response.json())
       .then((data) => {
         if (active) setCover({ loading: false, imageUrl: data.imageUrl || null, itemUrl: data.itemUrl || null });
@@ -30,7 +32,7 @@ export default function MangaCover({ title, size = "medium" }) {
     return () => {
       active = false;
     };
-  }, [encodedTitle, title]);
+  }, [encodedAuthor, encodedId, encodedTitle, title]);
 
   if (!cover.loading && !cover.imageUrl) {
     return null;
