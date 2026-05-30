@@ -336,10 +336,9 @@ export default function App() {
               <a href="/themes" className="text-sm underline underline-offset-4 hover:text-[#c0392b] transition-colors">テーマ別おすすめを見る</a>
             </div>
             <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs" style={{ color: "#555" }}>
-              <a href="/manga-diagnosis" className="hover:text-[#c0392b] transition-colors">漫画おすすめ診断</a>
               <a href="/completed-manga" className="hover:text-[#c0392b] transition-colors">完結済み</a>
-              <a href="/short-manga" className="hover:text-[#c0392b] transition-colors">短い漫画</a>
               <a href="/beginner-manga" className="hover:text-[#c0392b] transition-colors">初心者向け</a>
+              <a href="/romance-manga" className="hover:text-[#c0392b] transition-colors">恋愛漫画</a>
             </div>
             <nav className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] tracking-[0.18em] uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#777" }}>
               <a href="/privacy" className="hover:text-[#c0392b] transition-colors">Privacy</a>
