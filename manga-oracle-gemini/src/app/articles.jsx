@@ -7,9 +7,10 @@ function JsonLd({ data }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
-export function ArticlePage({ eyebrow, title, lead, items, slug }) {
+export function ArticlePage({ eyebrow, title, lead, items, slug, path }) {
   const displayTitle = title.replace(/漫画おすすめ$/, "");
-  const pageUrl = slug ? `${siteUrl}/themes/${slug}` : siteUrl;
+  const pagePath = slug ? `/themes/${slug}` : path;
+  const pageUrl = pagePath ? `${siteUrl}${pagePath}` : siteUrl;
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -25,19 +26,24 @@ export function ArticlePage({ eyebrow, title, lead, items, slug }) {
       url: `${pageUrl}#rank-${index + 1}`,
     })),
   };
+  const breadcrumbItems = [
+    { "@type": "ListItem", position: 1, name: "マンガマッチ診断", item: siteUrl },
+    slug
+      ? { "@type": "ListItem", position: 2, name: "テーマ別おすすめ漫画", item: `${siteUrl}/themes` }
+      : { "@type": "ListItem", position: 2, name: displayTitle, item: pageUrl },
+  ];
+  if (slug) {
+    breadcrumbItems.push({ "@type": "ListItem", position: 3, name: displayTitle, item: pageUrl });
+  }
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "マンガマッチ診断", item: siteUrl },
-      { "@type": "ListItem", position: 2, name: "テーマ別おすすめ漫画", item: `${siteUrl}/themes` },
-      { "@type": "ListItem", position: 3, name: displayTitle, item: pageUrl },
-    ],
+    itemListElement: breadcrumbItems,
   };
 
   return (
     <main className="min-h-screen px-5 py-14 md:px-8 md:py-20" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
-      {slug && (
+      {pagePath && (
         <>
           <JsonLd data={itemListJsonLd} />
           <JsonLd data={breadcrumbJsonLd} />

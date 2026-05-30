@@ -1,6 +1,16 @@
 import { THEME_GUIDES } from "../themeData";
 
 const siteUrl = "https://www.mangamatchquiz.com";
+const keywordArticles = [
+  { href: "/manga-diagnosis", label: "漫画おすすめ診断", description: "自分に合う漫画をAIで探したい人向け。" },
+  { href: "/completed-manga", label: "完結済み漫画おすすめ", description: "最後まで読み切れる名作を探したい人向け。" },
+  { href: "/emotional-manga", label: "泣ける漫画おすすめ", description: "感動したい時に読みたい漫画を紹介。" },
+  { href: "/short-manga", label: "短い漫画おすすめ", description: "短めに読み切れる漫画を探したい人向け。" },
+  { href: "/adult-manga", label: "大人向け漫画おすすめ", description: "人生や仕事に響く漫画を読みたい人向け。" },
+  { href: "/beginner-manga", label: "初心者におすすめの漫画", description: "何から読むか迷っている人向け。" },
+  { href: "/binge-read-manga", label: "一気読みしたい漫画おすすめ", description: "続きが気になる漫画をまとめて紹介。" },
+  { href: "/lighthearted-manga", label: "鬱展開が少ない漫画おすすめ", description: "重すぎない漫画を読みたい人向け。" },
+];
 
 export const metadata = {
   title: "テーマ別おすすめ漫画一覧 | マンガマッチ診断",
@@ -55,6 +65,19 @@ export default function ThemesPage() {
               <div className="mt-4 text-xs tracking-[0.18em] uppercase group-hover:text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>Read →</div>
             </a>
           ))}
+        </div>
+
+        <div className="mt-16">
+          <div className="text-xs tracking-[0.35em] uppercase mb-5" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>Keyword Guides</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {keywordArticles.map((article) => (
+              <a key={article.href} href={article.href} className="group p-5 transition-all hover:translate-x-1" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.45)" }}>
+                <h2 className="text-xl font-semibold mb-2" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{article.label}</h2>
+                <p className="text-sm leading-7" style={{ color: "#555" }}>{article.description}</p>
+                <div className="mt-4 text-xs tracking-[0.18em] uppercase group-hover:text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>Read →</div>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
     </main>

@@ -1,6 +1,17 @@
 import { THEME_GUIDES } from "./themeData";
 
 const siteUrl = "https://www.mangamatchquiz.com";
+const articlePaths = [
+  "/manga-diagnosis",
+  "/completed-manga",
+  "/emotional-manga",
+  "/fantasy-manga",
+  "/short-manga",
+  "/adult-manga",
+  "/beginner-manga",
+  "/binge-read-manga",
+  "/lighthearted-manga",
+];
 
 export default function sitemap() {
   const now = new Date();
@@ -30,24 +41,12 @@ export default function sitemap() {
       changeFrequency: "monthly",
       priority: 0.75,
     })),
-    {
-      url: `${siteUrl}/completed-manga`,
+    ...articlePaths.map((path) => ({
+      url: `${siteUrl}${path}`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/emotional-manga`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/fantasy-manga`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
+      priority: path === "/manga-diagnosis" ? 0.9 : 0.8,
+    })),
     {
       url: `${siteUrl}/contact`,
       lastModified: now,
