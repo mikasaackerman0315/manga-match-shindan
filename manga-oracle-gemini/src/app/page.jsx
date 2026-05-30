@@ -106,10 +106,62 @@ const T = {
 };
 
 const LOADING_STEP_COUNT = 4;
+const RELATED_THEMES = [
+  { slug: "fantasy", label_ja: "異世界・ファンタジー", label_en: "Fantasy", tags: ["fantasy", "adventure", "worldbuilding", "mythology", "urban_fantasy"] },
+  { slug: "modern", label_ja: "現代・日常", label_en: "Modern / Slice of Life", tags: ["modern", "school", "slice_of_life", "daily_buildup", "warm"] },
+  { slug: "sci-fi", label_ja: "SF・近未来", label_en: "Sci-Fi", tags: ["sci_fi", "space", "post_apocalypse", "virtual", "philosophical"] },
+  { slug: "horror", label_ja: "ホラー・ダーク", label_en: "Horror / Dark", tags: ["horror", "dark", "brutal", "survival", "shock"] },
+  { slug: "romance", label_ja: "恋愛・ロマンス", label_en: "Romance", tags: ["romance", "shojo_kirakira", "emotional", "family_theme"] },
+  { slug: "mystery", label_ja: "ミステリー・頭脳戦", label_en: "Mystery", tags: ["mystery", "mysterious", "suspense", "psychological", "twist"] },
+  { slug: "sports", label_ja: "スポーツ", label_en: "Sports", tags: ["sports", "tournament", "burning", "underdog_growth"] },
+  { slug: "healing", label_ja: "癒し・ほのぼの", label_en: "Healing", tags: ["healing", "wholesome", "comfort", "cute", "soft"] },
+  { slug: "workplace", label_ja: "仕事・専門職", label_en: "Workplace", tags: ["workplace", "specialty", "educational", "workplace_pro"] },
+  { slug: "classic", label_ja: "名作・クラシック", label_en: "Classics", tags: ["classic", "legendary", "award", "long_running"] },
+];
 
 function PurchaseLinks({ rec, t, compact = false }) {
   const title = `${rec.title_ja || rec.title_en || ""}`.trim();
   return <StoreLinks title={title} labels={t} compact={compact} showHeading={!compact} />;
+}
+
+function getRelatedThemes(recommendations = [], language = "ja") {
+  const tagCounts = new Map();
+  recommendations.forEach((rec) => {
+    (rec.tags || []).forEach((tag) => tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1));
+    if (rec.demographic === "shojo" || rec.demographic === "josei") tagCounts.set("romance", (tagCounts.get("romance") || 0) + 1);
+  });
+
+  return RELATED_THEMES.map((theme) => ({
+    ...theme,
+    score: theme.tags.reduce((sum, tag) => sum + (tagCounts.get(tag) || 0), 0),
+  }))
+    .filter((theme) => theme.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map((theme) => ({ ...theme, label: language === "ja" ? theme.label_ja : theme.label_en }));
+}
+
+function RelatedThemeLinks({ recommendations, language }) {
+  const themes = getRelatedThemes(recommendations, language);
+  if (themes.length === 0) return null;
+
+  return (
+    <div className="mb-14 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.6)" }}>
+      <div className="text-[10px] tracking-[0.28em] uppercase mb-3" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
+        RELATED GUIDES
+      </div>
+      <h3 className="text-xl md:text-2xl font-medium mb-4" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>
+        {language === "ja" ? "この系統の漫画をもっと見る" : "Explore Similar Themes"}
+      </h3>
+      <div className="flex flex-wrap gap-2">
+        {themes.map((theme) => (
+          <a key={theme.slug} href={`/themes/${theme.slug}`} className="px-4 py-2 text-xs tracking-[0.16em] uppercase transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.18)", color: "#0a0a0a", fontFamily: "'JetBrains Mono', monospace" }}>
+            {theme.label} →
+          </a>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default function App() {
@@ -561,6 +613,8 @@ export default function App() {
 
             {/* 広告枠 3: 最下部（再診断ボタンの前） */}
             <AdSlot slot="results-bottom" />
+
+            <RelatedThemeLinks recommendations={results.recommendations} language={language} />
 
             <div className="text-center mt-16">
               <button onClick={reset} className="px-12 py-4 text-sm tracking-[0.3em] uppercase transition-all hover:scale-105" style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>↻ {t.retake}</button>

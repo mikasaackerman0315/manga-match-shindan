@@ -156,6 +156,24 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function enrichRecommendations(payload) {
+  if (!payload?.recommendations) return payload;
+
+  return {
+    ...payload,
+    recommendations: payload.recommendations.map((rec) => {
+      const dbEntry = CORE_DB.find((m) => m.id === rec.id);
+      if (!dbEntry) return rec;
+
+      return {
+        ...rec,
+        tags: dbEntry.tags,
+        demographic: rec.demographic || dbEntry.demographic,
+      };
+    }),
+  };
+}
+
 async function requestGeminiRecommendation(prompt, apiKey) {
   let lastError;
 
@@ -188,7 +206,7 @@ async function requestGeminiRecommendation(prompt, apiKey) {
         const fullText = extractText(data);
         const parsed = extractJSON(fullText);
         if (!validateResponse(parsed)) throw new Error("Gemini response did not match expected shape.");
-        return parsed;
+        return enrichRecommendations(parsed);
       }
     } catch (err) {
       lastError = err;
@@ -237,6 +255,7 @@ function buildPreviewResponse(answers, language) {
     status: manga.status,
     demographic: manga.demographic,
     anime: manga.anime,
+    tags: manga.tags,
     description: language === "en" ? manga.desc_en : manga.desc_ja,
     reason: language === "en"
       ? "Preview mode recommendation from the curated database. Add GEMINI_API_KEY to enable AI-written reasons."
