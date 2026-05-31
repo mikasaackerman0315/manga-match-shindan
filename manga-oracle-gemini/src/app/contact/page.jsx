@@ -1,6 +1,6 @@
 export const metadata = {
   title: "お問い合わせ | マンガマッチ診断",
-  description: "マンガマッチ診断へのお問い合わせについて。",
+  description: "マンガマッチ診断へのお問い合わせについて掲載しています。",
 };
 
 export default function ContactPage() {
@@ -12,11 +12,11 @@ export default function ContactPage() {
         <div className="space-y-8 leading-8 text-sm md:text-base">
           <section>
             <h2 className="text-xl font-semibold mb-3">お問い合わせについて</h2>
-            <p>マンガマッチ診断へのご意見、不具合報告、掲載内容に関するお問い合わせは、今後設置予定のお問い合わせフォームまたは連絡先メールアドレスから受け付けます。</p>
+            <p>マンガマッチ診断へのご意見、不具合報告、掲載内容に関するご連絡は、今後設置予定のお問い合わせフォームまたは専用メールアドレスから受け付けます。</p>
           </section>
           <section>
-            <h2 className="text-xl font-semibold mb-3">お願い</h2>
-            <p>作品情報やリンク先情報は、変更される場合があります。誤りを見つけた場合は、対象作品名と内容を添えてご連絡ください。</p>
+            <h2 className="text-xl font-semibold mb-3">ご連絡時のお願い</h2>
+            <p>作品情報やリンク先情報の誤りを見つけた場合は、対象作品名と内容を添えてご連絡ください。</p>
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-3">連絡先</h2>

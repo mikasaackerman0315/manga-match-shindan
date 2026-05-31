@@ -38,6 +38,12 @@ export default function sitemap() {
       priority: 0.4,
     },
     {
+      url: `${siteUrl}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
+    {
       url: `${siteUrl}/themes`,
       lastModified: now,
       changeFrequency: "weekly",

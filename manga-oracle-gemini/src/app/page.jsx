@@ -392,6 +392,7 @@ export default function App() {
               <a href="/trending-manga" className="hover:text-[#c0392b] transition-colors">トレンド漫画</a>
             </div>
             <nav className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] tracking-[0.18em] uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#777" }}>
+              <a href="/about" className="hover:text-[#c0392b] transition-colors">About</a>
               <a href="/privacy" className="hover:text-[#c0392b] transition-colors">Privacy</a>
               <a href="/contact" className="hover:text-[#c0392b] transition-colors">Contact</a>
               <a href="/disclaimer" className="hover:text-[#c0392b] transition-colors">Disclaimer</a>

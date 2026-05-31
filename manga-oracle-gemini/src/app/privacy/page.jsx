@@ -1,6 +1,6 @@
 export const metadata = {
   title: "プライバシーポリシー | マンガマッチ診断",
-  description: "マンガマッチ診断のプライバシーポリシーです。",
+  description: "マンガマッチ診断のプライバシーポリシーです。取得する情報、利用目的、Cookie、広告、アクセス解析について掲載しています。",
 };
 
 export default function PrivacyPage() {
@@ -12,7 +12,7 @@ export default function PrivacyPage() {
         <div className="space-y-8 leading-8 text-sm md:text-base">
           <section>
             <h2 className="text-xl font-semibold mb-3">取得する情報</h2>
-            <p>当サイトでは、漫画推薦のために、ユーザーが診断で選択した回答や自由記述の内容を処理します。氏名、住所、電話番号など、個人を直接特定する情報の入力は求めていません。</p>
+            <p>当サイトでは、漫画推薦のために、診断で選択された回答や自由記述の内容を処理します。氏名、住所、電話番号など、個人を直接特定する情報の入力は求めていません。</p>
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-3">利用目的</h2>
@@ -20,21 +20,21 @@ export default function PrivacyPage() {
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-3">外部サービス</h2>
-            <p>当サイトでは、AIによる推薦生成のためにGoogle Gemini APIを利用します。また、今後Google Analytics、Google AdSense、アフィリエイトサービスを利用する場合があります。</p>
-          </section>
-          <section>
-            <h2 className="text-xl font-semibold mb-3">広告とアフィリエイト</h2>
-            <p>当サイトは、広告配信サービスおよびアフィリエイトプログラムを利用する場合があります。リンク先の商品やサービスの購入、契約、問い合わせはユーザー自身の判断で行ってください。</p>
+            <p>当サイトでは、AIによる推薦生成のためにGoogle Gemini APIを利用します。また、Google Analytics、Google AdSense、アフィリエイトサービスを利用する場合があります。</p>
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-3">Cookieについて</h2>
-            <p>広告配信やアクセス解析のためにCookieを使用する場合があります。Cookieはブラウザ設定から無効化できます。</p>
+            <p>広告配信やアクセス解析のためにCookieを使用する場合があります。Cookieはブラウザ設定から無効にできます。</p>
+          </section>
+          <section>
+            <h2 className="text-xl font-semibold mb-3">広告とアフィリエイト</h2>
+            <p>当サイトは広告およびアフィリエイトリンクを掲載する場合があります。リンク先での購入や契約はユーザー自身の判断で行ってください。</p>
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-3">改定</h2>
-            <p>本ポリシーは、必要に応じて予告なく変更されることがあります。変更後の内容は当ページに掲載した時点で有効になります。</p>
+            <p>本ポリシーは、必要に応じて予告なく変更されることがあります。変更後の内容は当ページに掲載された時点で有効になります。</p>
           </section>
-          <p className="text-xs tracking-widest" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>LAST UPDATED: 2026-05-29</p>
+          <p className="text-xs tracking-widest" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>LAST UPDATED: 2026-05-31</p>
         </div>
       </article>
     </main>
