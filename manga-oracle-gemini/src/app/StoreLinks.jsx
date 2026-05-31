@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { trackEvent } from "./analytics";
 
 function makeLinks(title) {
   const query = encodeURIComponent(title || "");
   return {
     preview: `/api/out?store=ebookjapan&intent=preview&title=${query}`,
-    kindle: `/api/out?store=amazon&intent=kindle&title=${query}`,
-    paper: `/api/out?store=amazon&intent=paper&title=${query}`,
-    rakuten: `/api/out?store=rakuten&intent=store&title=${query}`,
+    amazonKindle: `/api/out?store=amazon&intent=kindle&title=${query}`,
+    amazonPaper: `/api/out?store=amazon&intent=paper&title=${query}`,
+    amazonSearch: `/api/out?store=amazon&intent=search&title=${query}`,
+    rakutenSet: `/api/out?store=rakuten&intent=set&title=${query}`,
+    rakutenBooks: `/api/out?store=rakuten&intent=books&title=${query}`,
   };
 }
 
@@ -33,40 +35,43 @@ function trackAffiliateClick({ title, store, intent, pageType }) {
 }
 
 export default function StoreLinks({ title, labels, compact = false, showHeading = false, showPreview = true, pageType = "diagnosis_result" }) {
-  const [amazonOpen, setAmazonOpen] = useState(false);
   const [pressed, setPressed] = useState("");
-  const rootRef = useRef(null);
   const links = makeLinks(title);
   const label = {
-    buyLinks: "読む・探す",
-    preview: "試し読み",
-    amazon: "Amazon",
-    kindle: "Kindle",
-    paper: "紙の本",
-    rakuten: "楽天",
-    shopHint: "気になった作品は、電子版・紙の本・楽天で探せます。",
     ...labels,
+    buyLinks: "購入・検索する",
+    preview: "試し読みを探す",
+    amazonKindle: "Kindleで今すぐ読む",
+    amazonPaper: "Amazonで紙の本を探す",
+    amazonSearch: "Amazonで関連商品を探す",
+    rakutenSet: "楽天で全巻・ポイント還元を見る",
+    rakutenBooks: "楽天ブックスで探す",
+    amazonNote: "電子書籍ならすぐ読めます。紙の本や関連商品も探せます。",
+    rakutenNote: "紙の本や全巻セット、ポイント還元をリンク先で確認できます。",
+    priceNote: "価格や在庫はリンク先で確認してください。",
   };
 
-  useEffect(() => {
-    const closeOnOutside = (event) => {
-      if (rootRef.current && !rootRef.current.contains(event.target)) {
-        setAmazonOpen(false);
-      }
-    };
-
-    document.addEventListener("pointerdown", closeOnOutside);
-    return () => document.removeEventListener("pointerdown", closeOnOutside);
-  }, []);
-
-  const baseClass = compact
-    ? "text-[10px] px-2 py-1 transition-all hover:translate-y-[-1px] active:scale-95"
-    : "text-[11px] px-3 py-1.5 tracking-[0.12em] uppercase transition-all hover:translate-y-[-1px] active:scale-95";
-  const baseStyle = (key, accent = false) => ({
-    border: "1px solid rgba(10,10,10,0.18)",
+  const wrapClass = compact
+    ? "mt-3 w-full"
+    : "mt-5 w-full p-4";
+  const wrapStyle = compact ? {} : {
+    border: "1px solid rgba(10,10,10,0.14)",
+    backgroundColor: "rgba(245,243,238,0.62)",
+  };
+  const gridClass = compact
+    ? "grid grid-cols-1 sm:grid-cols-2 gap-2"
+    : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2";
+  const buttonClass = compact
+    ? "min-h-[42px] px-3 py-2 text-[11px] leading-snug text-center transition-all hover:translate-y-[-1px] active:scale-[0.98]"
+    : "min-h-[46px] px-4 py-3 text-[12px] leading-snug text-center tracking-[0.08em] transition-all hover:translate-y-[-1px] active:scale-[0.98]";
+  const buttonStyle = (key, accent = false) => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: accent ? "1px solid rgba(192,57,43,0.45)" : "1px solid rgba(10,10,10,0.18)",
     color: accent ? "#c0392b" : "#0a0a0a",
-    backgroundColor: pressed === key ? "rgba(192,57,43,0.12)" : "rgba(245,243,238,0.55)",
-    fontFamily: "'JetBrains Mono', monospace",
+    backgroundColor: pressed === key ? "rgba(192,57,43,0.12)" : "rgba(245,243,238,0.85)",
+    fontFamily: "'Noto Serif JP', 'JetBrains Mono', serif",
   });
   const pressHandlers = (key) => ({
     onPointerDown: () => setPressed(key),
@@ -77,42 +82,53 @@ export default function StoreLinks({ title, labels, compact = false, showHeading
   const clickHandlers = (store, intent) => ({
     onClick: () => trackAffiliateClick({ title, store, intent, pageType }),
   });
+  const rel = "nofollow sponsored noopener noreferrer";
 
   return (
-    <div ref={rootRef} className={compact ? "mt-2 flex flex-wrap gap-1.5" : "mt-5"}>
+    <div className={wrapClass} style={wrapStyle}>
       {showHeading && (
         <>
           <div className="w-full text-[10px] tracking-[0.25em] mb-2 uppercase" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>
             {label.buyLinks}
           </div>
-          <p className="w-full text-xs leading-6 mb-2" style={{ color: "#666" }}>{label.shopHint}</p>
+          <p className="w-full text-xs leading-6 mb-3" style={{ color: "#666" }}>{label.priceNote}</p>
         </>
       )}
-      <div className="flex flex-wrap gap-2">
-        {showPreview && (
-          <a href={links.preview} target="_blank" rel="noopener noreferrer sponsored" className={baseClass} style={baseStyle("preview", true)} {...pressHandlers("preview")} {...clickHandlers("ebookjapan", "preview")}>
-            {label.preview}
+
+      <div className="mb-3">
+        <div className="text-[10px] tracking-[0.2em] uppercase mb-2" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>Amazon</div>
+        <div className={gridClass}>
+          <a href={links.amazonKindle} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("amazon-kindle", true)} {...pressHandlers("amazon-kindle")} {...clickHandlers("amazon", "kindle")}>
+            {label.amazonKindle}
           </a>
-        )}
-        <div className="relative">
-          <button type="button" className={`${baseClass} cursor-pointer`} style={baseStyle("amazon")} onClick={() => setAmazonOpen((value) => !value)} {...pressHandlers("amazon")}>
-            {label.amazon}
-          </button>
-          {amazonOpen && (
-            <div className="absolute left-0 top-full z-20 mt-1 min-w-[7rem] p-1" style={{ border: "1px solid rgba(10,10,10,0.18)", backgroundColor: "#f5f3ee", boxShadow: "0 10px 24px rgba(10,10,10,0.12)" }}>
-              <a href={links.kindle} target="_blank" rel="noopener noreferrer sponsored" className="block whitespace-nowrap px-3 py-2 text-[11px] tracking-[0.12em] uppercase hover:text-[#c0392b] active:bg-[rgba(192,57,43,0.12)]" style={{ fontFamily: "'JetBrains Mono', monospace" }} {...clickHandlers("amazon", "kindle")}>
-                {label.kindle}
-              </a>
-              <a href={links.paper} target="_blank" rel="noopener noreferrer sponsored" className="block whitespace-nowrap px-3 py-2 text-[11px] tracking-[0.12em] uppercase hover:text-[#c0392b] active:bg-[rgba(192,57,43,0.12)]" style={{ fontFamily: "'JetBrains Mono', monospace" }} {...clickHandlers("amazon", "paper")}>
-                {label.paper}
-              </a>
-            </div>
-          )}
+          <a href={links.amazonPaper} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("amazon-paper")} {...pressHandlers("amazon-paper")} {...clickHandlers("amazon", "paper")}>
+            {label.amazonPaper}
+          </a>
+          <a href={links.amazonSearch} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("amazon-search")} {...pressHandlers("amazon-search")} {...clickHandlers("amazon", "search")}>
+            {label.amazonSearch}
+          </a>
         </div>
-        <a href={links.rakuten} target="_blank" rel="noopener noreferrer sponsored" className={baseClass} style={baseStyle("rakuten")} {...pressHandlers("rakuten")} {...clickHandlers("rakuten", "store")}>
-          {label.rakuten}
-        </a>
+        <p className="mt-2 text-[11px] leading-5" style={{ color: "#777" }}>{label.amazonNote}</p>
       </div>
+
+      <div>
+        <div className="text-[10px] tracking-[0.2em] uppercase mb-2" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>Rakuten</div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <a href={links.rakutenSet} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("rakuten-set", true)} {...pressHandlers("rakuten-set")} {...clickHandlers("rakuten", "set")}>
+            {label.rakutenSet}
+          </a>
+          <a href={links.rakutenBooks} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("rakuten-books")} {...pressHandlers("rakuten-books")} {...clickHandlers("rakuten", "books")}>
+            {label.rakutenBooks}
+          </a>
+        </div>
+        <p className="mt-2 text-[11px] leading-5" style={{ color: "#777" }}>{label.rakutenNote}</p>
+      </div>
+
+      {showPreview && (
+        <a href={links.preview} target="_blank" rel={rel} className={`${buttonClass} mt-3 w-full`} style={buttonStyle("preview")} {...pressHandlers("preview")}>
+          {label.preview}
+        </a>
+      )}
     </div>
   );
 }

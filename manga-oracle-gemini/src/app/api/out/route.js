@@ -24,6 +24,14 @@ const STORES = {
   },
 };
 
+function getSearchSuffix(intent) {
+  if (intent === "kindle") return " Kindle";
+  if (intent === "volume1") return " 1巻";
+  if (intent === "set") return " 全巻セット";
+  if (intent === "preview" || intent === "ebook") return "";
+  return " 漫画";
+}
+
 export function GET(req) {
   const { searchParams } = new URL(req.url);
   const store = searchParams.get("store");
@@ -36,23 +44,7 @@ export function GET(req) {
   }
 
   const destination = new URL(config.base);
-  const suffix = intent === "kindle"
-    ? " Kindle"
-    : intent === "volume1"
-      ? " 1巻"
-      : intent === "paper"
-        ? " 漫画"
-      : intent === "set"
-        ? " 全巻セット"
-        : intent === "store"
-          ? " 漫画"
-          : intent === "preview"
-          ? ""
-          : intent === "ebook"
-          ? ""
-          : " 漫画";
-
-  destination.searchParams.set(config.queryParam, `${title.trim()}${suffix}`);
+  destination.searchParams.set(config.queryParam, `${title.trim()}${getSearchSuffix(intent)}`);
   if (store === "amazon" && intent === "kindle") {
     destination.searchParams.set("i", "digital-text");
   }
