@@ -35,6 +35,7 @@ export default function StoreLinks({ title, labels, compact = false, showHeading
     kindle: "Kindle",
     paper: "紙の本",
     rakuten: "楽天",
+    shopHint: "気になった作品は、電子版・紙の本・楽天で探せます。",
     ...labels,
   };
 
@@ -71,9 +72,12 @@ export default function StoreLinks({ title, labels, compact = false, showHeading
   return (
     <div ref={rootRef} className={compact ? "mt-2 flex flex-wrap gap-1.5" : "mt-5"}>
       {showHeading && (
-        <div className="w-full text-[10px] tracking-[0.25em] mb-2 uppercase" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>
-          {label.buyLinks}
-        </div>
+        <>
+          <div className="w-full text-[10px] tracking-[0.25em] mb-2 uppercase" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>
+            {label.buyLinks}
+          </div>
+          <p className="w-full text-xs leading-6 mb-2" style={{ color: "#666" }}>{label.shopHint}</p>
+        </>
       )}
       <div className="flex flex-wrap gap-2">
         {showPreview && (

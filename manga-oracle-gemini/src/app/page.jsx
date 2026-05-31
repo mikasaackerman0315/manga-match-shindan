@@ -71,6 +71,9 @@ const T = {
     freeTextPlaceholder: "例：鬱展開は苦手 / 主人公が報われる話がいい",
     freeTextExamples: ["鬱展開は苦手", "報われる結末がいい", "頭脳戦が好き", "動物が死ぬのは無理", "余韻が残る作品"],
     skip: "スキップ",
+    shareResult: "結果をシェア",
+    shareLead: "おすすめされた漫画をメモ代わりに共有できます。",
+    shareText: "マンガマッチ診断で自分に合う漫画を診断しました。",
   },
   en: {
     appTitle: "MANGA MATCH QUIZ", appSubtitle: "Answer a few questions and let AI find manga that fits you.",
@@ -102,6 +105,9 @@ const T = {
     freeTextPlaceholder: "e.g. No depressing endings / I like mind games",
     freeTextExamples: ["No depressing plots", "Want a rewarding ending", "Love mind games", "No animal deaths", "Leaves an impression"],
     skip: "Skip",
+    shareResult: "Share Results",
+    shareLead: "Save or share your manga match results.",
+    shareText: "I found my manga matches with Manga Match Quiz.",
   },
 };
 
@@ -127,6 +133,11 @@ function PurchaseLinks({ rec, t, compact = false }) {
 function trackAppEvent(name, params = {}) {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
   window.gtag("event", name, params);
+}
+
+function getShareUrl() {
+  if (typeof window === "undefined") return "https://www.mangamatchquiz.com/";
+  return window.location.origin;
 }
 
 function getRelatedThemes(recommendations = [], language = "ja") {
@@ -309,6 +320,32 @@ export default function App() {
     setScreen("landing");
   };
 
+  const shareResults = async () => {
+    const topTitles = (results?.recommendations || [])
+      .slice(0, 3)
+      .map((rec, index) => `${index + 1}. ${language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}`)
+      .join("\n");
+    const text = `${t.shareText}${topTitles ? `\n\n${topTitles}` : ""}`;
+    const url = getShareUrl();
+
+    trackAppEvent("share_results", {
+      mode,
+      language,
+      recommendation_count: results?.recommendations?.length || 0,
+    });
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: t.appTitle, text, url });
+        return;
+      } catch {
+        return;
+      }
+    }
+
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <div className="min-h-screen w-full" style={{
       backgroundColor: "#f5f3ee",
@@ -337,6 +374,9 @@ export default function App() {
             </h1>
             <div className="w-24 h-px bg-black mx-auto my-8" />
             <p className="text-xl md:text-2xl mb-6 leading-relaxed italic font-light">{t.appSubtitle}</p>
+            <p className="text-sm md:text-base leading-7 max-w-xl mx-auto mb-4" style={{ color: "#555" }}>
+              {language === "ja" ? "恋愛、異世界、ホラー、スポーツ、完結済みまで。好みを選ぶだけで、次に読む漫画を絞り込みます。" : "From romance and fantasy to horror, sports, and completed series, narrow down your next read in a few clicks."}
+            </p>
             <div className="h-10 md:h-12 mb-10 pointer-events-none" aria-hidden="true" />
             <button onClick={() => setScreen("mode")} className="px-12 py-4 text-sm tracking-[0.3em] uppercase transition-all hover:scale-105"
               style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>
@@ -521,6 +561,12 @@ export default function App() {
               <div className="text-xs tracking-[0.4em] mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>▌YOUR PROFILE</div>
               <h2 className="text-3xl md:text-5xl font-medium mb-6 italic leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.yourProfile}</h2>
               <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed italic" style={{ color: "#0a0a0a", borderLeft: "2px solid #c0392b", paddingLeft: "1.5rem", textAlign: "left" }}>{results.userProfile}</p>
+              <div className="mt-8 flex flex-col items-center gap-3">
+                <p className="text-xs leading-6" style={{ color: "#666" }}>{t.shareLead}</p>
+                <button onClick={shareResults} className="px-6 py-3 text-xs tracking-[0.22em] uppercase transition-all hover:scale-105" style={{ backgroundColor: "transparent", color: "#0a0a0a", border: "1px solid rgba(10,10,10,0.25)", fontFamily: "'JetBrains Mono', monospace" }}>
+                  {t.shareResult}
+                </button>
+              </div>
             </div>
 
             {/* 広告枠 1: プロフィール直後（最も目立つ位置） */}

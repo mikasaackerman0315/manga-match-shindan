@@ -40,6 +40,28 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path }) {
     "@type": "BreadcrumbList",
     itemListElement: breadcrumbItems,
   };
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `${displayTitle}はどんな基準で選べばいいですか？`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "まずは完結済みか連載中か、重い展開が平気か、恋愛・バトル・日常など読みたい気分が近いかで選ぶと失敗しにくくなります。",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "迷ったときはどうすればいいですか？",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "ランキング上位から読むか、診断で好みを絞り込むのがおすすめです。短時間で今の気分に合う作品を探せます。",
+        },
+      },
+    ],
+  };
 
   return (
     <main className="min-h-screen px-5 py-14 md:px-8 md:py-20" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
@@ -47,6 +69,7 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path }) {
         <>
           <JsonLd data={itemListJsonLd} />
           <JsonLd data={breadcrumbJsonLd} />
+          <JsonLd data={faqJsonLd} />
         </>
       )}
       <article className="max-w-4xl mx-auto">
@@ -56,6 +79,19 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path }) {
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{displayTitle}</h1>
           <p className="text-base md:text-lg leading-8 max-w-2xl" style={{ color: "#333" }}>{lead}</p>
         </div>
+
+        <section className="mb-12 grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            ["読み切りやすさ", "巻数や完結状況を見て、今すぐ最後まで読みたいのか、長く追いたいのかで選ぶ。"],
+            ["気分との相性", "泣きたい、熱くなりたい、軽く読みたいなど、その日の気分に近い作品を優先する。"],
+            ["購入しやすさ", "電子で試すか、紙で集めるかを先に決めると、読み始めるまでが早くなる。"],
+          ].map(([heading, text]) => (
+            <div key={heading} className="p-4" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.45)" }}>
+              <h2 className="text-base font-semibold mb-2">{heading}</h2>
+              <p className="text-sm leading-7" style={{ color: "#555" }}>{text}</p>
+            </div>
+          ))}
+        </section>
 
         <div className="mb-14 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.16)", backgroundColor: "rgba(245,243,238,0.65)" }}>
           <h2 className="text-xl md:text-2xl font-semibold mb-3">自分に合う漫画をもっと絞り込む</h2>
@@ -81,6 +117,20 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path }) {
               </div>
             </div>
           ))}
+        </section>
+
+        <section className="mt-14 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.45)" }}>
+          <h2 className="text-2xl font-semibold mb-5">よくある選び方</h2>
+          <div className="space-y-5">
+            <div>
+              <h3 className="text-base font-semibold mb-2">ランキング上位から読めば大丈夫？</h3>
+              <p className="text-sm leading-7" style={{ color: "#555" }}>迷ったら上位からで大丈夫です。ただ、絵柄や重さの好みがある人は、診断で条件を絞ると外しにくくなります。</p>
+            </div>
+            <div>
+              <h3 className="text-base font-semibold mb-2">電子と紙はどちらがおすすめ？</h3>
+              <p className="text-sm leading-7" style={{ color: "#555" }}>まず試したい作品は電子、長く手元に置きたい作品は紙が向いています。気になる作品はリンク先で価格や在庫を比べて選べます。</p>
+            </div>
+          </div>
         </section>
       </article>
     </main>
