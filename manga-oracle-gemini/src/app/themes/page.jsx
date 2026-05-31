@@ -2,7 +2,6 @@ import { THEME_GUIDES } from "../themeData";
 
 const siteUrl = "https://www.mangamatchquiz.com";
 const keywordArticles = [
-  { href: "/manga-diagnosis", label: "漫画おすすめ診断", description: "自分に合う漫画をAIで探したい人向け。" },
   { href: "/completed-manga", label: "完結済み漫画おすすめ", description: "最後まで読み切れる名作を探したい人向け。" },
   { href: "/emotional-manga", label: "泣ける漫画おすすめ", description: "感動したい時に読みたい漫画を紹介。" },
   { href: "/short-manga", label: "短い漫画おすすめ", description: "短めに読み切れる漫画を探したい人向け。" },

@@ -2,7 +2,6 @@ import { THEME_GUIDES } from "./themeData";
 
 const siteUrl = "https://www.mangamatchquiz.com";
 const articlePaths = [
-  "/manga-diagnosis",
   "/completed-manga",
   "/emotional-manga",
   "/fantasy-manga",
@@ -54,7 +53,7 @@ export default function sitemap() {
       url: `${siteUrl}${path}`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: path === "/manga-diagnosis" ? 0.9 : 0.8,
+      priority: 0.8,
     })),
     {
       url: `${siteUrl}/contact`,
