@@ -9,11 +9,11 @@ export const metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: "マンガマッチ診断",
   title: {
-    default: "マンガマッチ診断 | AI漫画おすすめ診断",
+    default: "漫画おすすめ診断 | 自分に合う漫画をAIで探す",
     template: "%s",
   },
-  description: "質問に答えるだけで、AIが1500作品DBからあなたに合う漫画をランキング形式でおすすめ。恋愛、異世界、ホラー、スポーツ、名作まで幅広く診断します。",
-  keywords: ["漫画おすすめ", "漫画診断", "マンガ診断", "AI漫画推薦", "マンガマッチ診断"],
+  description: "質問に答えるだけで、AIが1500作品データベースから自分に合う漫画をランキング形式でおすすめ。恋愛、異世界、ホラー、スポーツ、名作まで幅広く診断します。",
+  keywords: ["漫画おすすめ", "漫画診断", "マンガ診断", "AI漫画推薦", "マンガマッチ診断", "自分に合う漫画"],
   alternates: {
     canonical: "/",
   },
@@ -27,8 +27,8 @@ export const metadata = {
     ],
   },
   openGraph: {
-    title: "マンガマッチ診断 | AI漫画おすすめ診断",
-    description: "質問に答えるだけで、AIがあなたに合う漫画をランキング形式でおすすめします。",
+    title: "漫画おすすめ診断 | 自分に合う漫画をAIで探す",
+    description: "質問に答えるだけで、AIが自分に合う漫画をランキング形式でおすすめします。",
     url: siteUrl,
     siteName: "マンガマッチ診断",
     locale: "ja_JP",
@@ -36,8 +36,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary",
-    title: "マンガマッチ診断 | AI漫画おすすめ診断",
-    description: "質問に答えるだけで、AIがあなたに合う漫画をランキング形式でおすすめします。",
+    title: "漫画おすすめ診断 | 自分に合う漫画をAIで探す",
+    description: "質問に答えるだけで、AIが自分に合う漫画をランキング形式でおすすめします。",
   },
   robots: {
     index: true,
@@ -50,9 +50,15 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "マンガマッチ診断",
+    alternateName: ["漫画おすすめ診断", "漫画診断", "AI漫画診断"],
     url: siteUrl,
     description: metadata.description,
     inLanguage: "ja",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${siteUrl}/?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
   };
   const appJsonLd = {
     "@context": "https://schema.org",
