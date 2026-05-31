@@ -4,6 +4,7 @@ export const metadata = {
   title: "短い漫画おすすめ10選 | マンガマッチ診断",
   description: "全10巻前後から短めに読み切れる漫画を中心に、忙しい人でも手を伸ばしやすい名作を紹介します。",
   alternates: { canonical: "/short-manga" },
+  robots: { index: false, follow: true },
 };
 
 const items = [

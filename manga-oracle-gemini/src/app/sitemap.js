@@ -5,7 +5,6 @@ const articlePaths = [
   "/completed-manga",
   "/emotional-manga",
   "/fantasy-manga",
-  "/short-manga",
   "/adult-manga",
   "/beginner-manga",
   "/binge-read-manga",

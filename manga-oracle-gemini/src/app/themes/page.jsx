@@ -4,9 +4,8 @@ const siteUrl = "https://www.mangamatchquiz.com";
 const keywordArticles = [
   { href: "/completed-manga", label: "完結済み漫画おすすめ", description: "最後まで読み切れる名作を探したい人向け。" },
   { href: "/emotional-manga", label: "泣ける漫画おすすめ", description: "感動したい時に読みたい漫画を紹介。" },
-  { href: "/short-manga", label: "短い漫画おすすめ", description: "短めに読み切れる漫画を探したい人向け。" },
   { href: "/adult-manga", label: "大人向け漫画おすすめ", description: "人生や仕事に響く漫画を読みたい人向け。" },
-  { href: "/beginner-manga", label: "初心者におすすめの漫画", description: "何から読むか迷っている人向け。" },
+  { href: "/beginner-manga", label: "初心者におすすめの漫画", description: "何から読めばいいか迷っている人向け。" },
   { href: "/binge-read-manga", label: "一気読みしたい漫画おすすめ", description: "続きが気になる漫画をまとめて紹介。" },
   { href: "/lighthearted-manga", label: "鬱展開が少ない漫画おすすめ", description: "重すぎない漫画を読みたい人向け。" },
   { href: "/trending-manga", label: "トレンド漫画おすすめ", description: "いま話題になりやすい人気漫画を読み始めたい人向け。" },
@@ -57,7 +56,7 @@ export default function ThemesPage() {
     <main className="min-h-screen px-5 py-14 md:px-8 md:py-20" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
       <section className="max-w-5xl mx-auto">
-        <a href="/" className="text-xs tracking-[0.25em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>← 診断トップへ</a>
+        <a href="/" className="text-xs tracking-[0.25em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>診断トップへ</a>
         <div className="mt-10 mb-12">
           <div className="text-xs tracking-[0.35em] uppercase mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>Theme Guides</div>
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-5" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>テーマ別おすすめ漫画</h1>
