@@ -124,6 +124,11 @@ function PurchaseLinks({ rec, t, compact = false }) {
   return <StoreLinks title={title} labels={t} compact={compact} showHeading={!compact} />;
 }
 
+function trackAppEvent(name, params = {}) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  window.gtag("event", name, params);
+}
+
 function getRelatedThemes(recommendations = [], language = "ja") {
   const tagCounts = new Map();
   recommendations.forEach((rec) => {
@@ -195,6 +200,7 @@ export default function App() {
   }, [screen]);
 
   const startMode = (selectedMode) => {
+    trackAppEvent("quiz_start", { mode: selectedMode, language });
     setMode(selectedMode);
     setAnswers({});
     setFreeText("");
@@ -280,6 +286,11 @@ export default function App() {
       const data = prefetched || await requestRecommendation(body);
 
       setResults(data);
+      trackAppEvent("quiz_complete", {
+        mode,
+        language,
+        recommendation_count: data.recommendations?.length || 0,
+      });
       setScreen("results");
     } catch (err) {
       console.error("Error:", err);

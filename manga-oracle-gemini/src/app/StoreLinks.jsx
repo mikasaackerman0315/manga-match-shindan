@@ -12,6 +12,17 @@ function makeLinks(title) {
   };
 }
 
+function trackAffiliateClick({ title, store, intent, compact }) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+
+  window.gtag("event", "affiliate_click", {
+    manga_title: title || "",
+    store,
+    intent,
+    link_style: compact ? "compact" : "standard",
+  });
+}
+
 export default function StoreLinks({ title, labels, compact = false, showHeading = false, showPreview = true }) {
   const [amazonOpen, setAmazonOpen] = useState(false);
   const [pressed, setPressed] = useState("");
@@ -53,6 +64,9 @@ export default function StoreLinks({ title, labels, compact = false, showHeading
     onPointerCancel: () => setPressed(""),
     onPointerLeave: () => setPressed(""),
   });
+  const clickHandlers = (store, intent) => ({
+    onClick: () => trackAffiliateClick({ title, store, intent, compact }),
+  });
 
   return (
     <div ref={rootRef} className={compact ? "mt-2 flex flex-wrap gap-1.5" : "mt-5"}>
@@ -63,7 +77,7 @@ export default function StoreLinks({ title, labels, compact = false, showHeading
       )}
       <div className="flex flex-wrap gap-2">
         {showPreview && (
-          <a href={links.preview} target="_blank" rel="noopener noreferrer sponsored" className={baseClass} style={baseStyle("preview", true)} {...pressHandlers("preview")}>
+          <a href={links.preview} target="_blank" rel="noopener noreferrer sponsored" className={baseClass} style={baseStyle("preview", true)} {...pressHandlers("preview")} {...clickHandlers("ebookjapan", "preview")}>
             {label.preview}
           </a>
         )}
@@ -73,16 +87,16 @@ export default function StoreLinks({ title, labels, compact = false, showHeading
           </button>
           {amazonOpen && (
             <div className="absolute left-0 top-full z-20 mt-1 min-w-[7rem] p-1" style={{ border: "1px solid rgba(10,10,10,0.18)", backgroundColor: "#f5f3ee", boxShadow: "0 10px 24px rgba(10,10,10,0.12)" }}>
-              <a href={links.kindle} target="_blank" rel="noopener noreferrer sponsored" className="block whitespace-nowrap px-3 py-2 text-[11px] tracking-[0.12em] uppercase hover:text-[#c0392b] active:bg-[rgba(192,57,43,0.12)]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+              <a href={links.kindle} target="_blank" rel="noopener noreferrer sponsored" className="block whitespace-nowrap px-3 py-2 text-[11px] tracking-[0.12em] uppercase hover:text-[#c0392b] active:bg-[rgba(192,57,43,0.12)]" style={{ fontFamily: "'JetBrains Mono', monospace" }} {...clickHandlers("amazon", "kindle")}>
                 {label.kindle}
               </a>
-              <a href={links.paper} target="_blank" rel="noopener noreferrer sponsored" className="block whitespace-nowrap px-3 py-2 text-[11px] tracking-[0.12em] uppercase hover:text-[#c0392b] active:bg-[rgba(192,57,43,0.12)]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+              <a href={links.paper} target="_blank" rel="noopener noreferrer sponsored" className="block whitespace-nowrap px-3 py-2 text-[11px] tracking-[0.12em] uppercase hover:text-[#c0392b] active:bg-[rgba(192,57,43,0.12)]" style={{ fontFamily: "'JetBrains Mono', monospace" }} {...clickHandlers("amazon", "paper")}>
                 {label.paper}
               </a>
             </div>
           )}
         </div>
-        <a href={links.rakuten} target="_blank" rel="noopener noreferrer sponsored" className={baseClass} style={baseStyle("rakuten")} {...pressHandlers("rakuten")}>
+        <a href={links.rakuten} target="_blank" rel="noopener noreferrer sponsored" className={baseClass} style={baseStyle("rakuten")} {...pressHandlers("rakuten")} {...clickHandlers("rakuten", "store")}>
           {label.rakuten}
         </a>
       </div>
