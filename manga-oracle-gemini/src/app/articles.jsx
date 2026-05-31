@@ -7,7 +7,7 @@ function JsonLd({ data }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
-export function ArticlePage({ eyebrow, title, lead, items, slug, path }) {
+export function ArticlePage({ eyebrow, title, lead, items, slug, path, guideTitle = "選び方のポイント", guideItems = [] }) {
   const displayTitle = title.replace(/漫画おすすめ$/, "");
   const pagePath = slug ? `/themes/${slug}` : path;
   const pageUrl = pagePath ? `${siteUrl}${pagePath}` : siteUrl;
@@ -49,12 +49,12 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path }) {
         name: `${displayTitle}はどんな基準で選べばいいですか？`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: "まずは完結済みか連載中か、重い展開が平気か、恋愛・バトル・日常など読みたい気分が近いかで選ぶと失敗しにくくなります。",
+          text: "まずは完結済みか連載中か、明るい話がいいか重い話がいいかなど、今の気分に近い条件で選ぶと失敗しにくくなります。",
         },
       },
       {
         "@type": "Question",
-        name: "迷ったときはどうすればいいですか？",
+        name: "迷ったときはどれから読めばいいですか？",
         acceptedAnswer: {
           "@type": "Answer",
           text: "ランキング上位から読むか、診断で好みを絞り込むのがおすすめです。短時間で今の気分に合う作品を探せます。",
@@ -73,18 +73,32 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path }) {
         </>
       )}
       <article className="max-w-4xl mx-auto">
-        <a href="/" className="text-xs tracking-[0.25em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>← 診断トップへ</a>
+        <a href="/" className="text-xs tracking-[0.25em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>診断トップへ</a>
         <div className="mt-10 mb-14">
           <div className="text-xs tracking-[0.35em] uppercase mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>{eyebrow}</div>
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{displayTitle}</h1>
           <p className="text-base md:text-lg leading-8 max-w-2xl" style={{ color: "#333" }}>{lead}</p>
         </div>
 
+        {guideItems.length > 0 && (
+          <section className="mb-12 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.16)", backgroundColor: "rgba(245,243,238,0.65)" }}>
+            <h2 className="text-2xl font-semibold mb-5">{guideTitle}</h2>
+            <div className="space-y-5">
+              {guideItems.map((item) => (
+                <div key={item.heading}>
+                  <h3 className="text-base font-semibold mb-2">{item.heading}</h3>
+                  <p className="text-sm leading-7" style={{ color: "#555" }}>{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         <section className="mb-12 grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
-            ["読み切りやすさ", "巻数や完結状況を見て、今すぐ最後まで読みたいのか、長く追いたいのかで選ぶ。"],
+            ["読み切りやすさ", "巻数や完結状況を見て、今すぐ最後まで読みたいのか、時間をかけて追いたいのかで選ぶ。"],
             ["気分との相性", "泣きたい、熱くなりたい、軽く読みたいなど、その日の気分に近い作品を優先する。"],
-            ["購入しやすさ", "電子で試すか、紙で集めるかを先に決めると、読み始めるまでが早くなる。"],
+            ["購入しやすさ", "電子で試すか、紙で集めるかを先に決めると、読み始めるまでが速くなる。"],
           ].map(([heading, text]) => (
             <div key={heading} className="p-4" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.45)" }}>
               <h2 className="text-base font-semibold mb-2">{heading}</h2>
@@ -96,7 +110,7 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path }) {
         <div className="mb-14 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.16)", backgroundColor: "rgba(245,243,238,0.65)" }}>
           <h2 className="text-xl md:text-2xl font-semibold mb-3">自分に合う漫画をもっと絞り込む</h2>
           <p className="text-sm leading-7 mb-5" style={{ color: "#555" }}>好みがまだ固まっていない人は、診断で読むべき作品をランキング形式で探せます。</p>
-          <a href="/?start=1" className="inline-block px-7 py-3 text-xs tracking-[0.22em] uppercase transition-all hover:scale-105" style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>診断を始める →</a>
+          <a href="/?start=1" className="inline-block px-7 py-3 text-xs tracking-[0.22em] uppercase transition-all hover:scale-105" style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>診断を始める</a>
         </div>
 
         <section className="space-y-8">
@@ -127,8 +141,8 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path }) {
               <p className="text-sm leading-7" style={{ color: "#555" }}>迷ったら上位からで大丈夫です。ただ、絵柄や重さの好みがある人は、診断で条件を絞ると外しにくくなります。</p>
             </div>
             <div>
-              <h3 className="text-base font-semibold mb-2">電子と紙はどちらがおすすめ？</h3>
-              <p className="text-sm leading-7" style={{ color: "#555" }}>まず試したい作品は電子、長く手元に置きたい作品は紙が向いています。気になる作品はリンク先で価格や在庫を比べて選べます。</p>
+              <h3 className="text-base font-semibold mb-2">電子と紙のどちらがおすすめ？</h3>
+              <p className="text-sm leading-7" style={{ color: "#555" }}>まず試したい作品は電子、手元に置きたい作品は紙が向いています。気になる作品はリンク先で価格や在庫を比べて選べます。</p>
             </div>
           </div>
         </section>
