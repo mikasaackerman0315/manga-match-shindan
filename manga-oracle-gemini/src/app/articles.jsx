@@ -126,7 +126,7 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path, guideTitl
                   <div className="text-xs tracking-[0.12em] mb-4" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>{item.meta}</div>
                   <p className="leading-8 mb-4" style={{ color: "#333" }}>{item.text}</p>
                   <p className="text-sm leading-7 mb-4 italic" style={{ color: "#555" }}>{item.fit}</p>
-                  <StoreLinks title={item.title} compact showPreview={false} labels={{ amazon: "Amazon", kindle: "Kindle", paper: "紙の本", rakuten: "楽天" }} />
+                  <StoreLinks title={item.title} compact showPreview={false} pageType={slug ? "theme_article" : "seo_article"} labels={{ amazon: "Amazon", kindle: "Kindle", paper: "紙の本", rakuten: "楽天" }} />
                 </div>
               </div>
             </div>

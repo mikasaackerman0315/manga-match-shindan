@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { trackEvent } from "./analytics";
 
 function makeLinks(title) {
   const query = encodeURIComponent(title || "");
@@ -12,18 +13,26 @@ function makeLinks(title) {
   };
 }
 
-function trackAffiliateClick({ title, store, intent, compact }) {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+function trackAffiliateClick({ title, store, intent, pageType }) {
+  if (store === "amazon") {
+    trackEvent("affiliate_click_amazon", {
+      title: title || "",
+      link_type: intent === "paper" ? "paper" : intent === "kindle" ? "kindle" : "search",
+      page_type: pageType,
+    });
+    return;
+  }
 
-  window.gtag("event", "affiliate_click", {
-    manga_title: title || "",
-    store,
-    intent,
-    link_style: compact ? "compact" : "standard",
-  });
+  if (store === "rakuten") {
+    trackEvent("affiliate_click_rakuten", {
+      title: title || "",
+      link_type: intent === "set" ? "set" : intent === "books" ? "books" : "search",
+      page_type: pageType,
+    });
+  }
 }
 
-export default function StoreLinks({ title, labels, compact = false, showHeading = false, showPreview = true }) {
+export default function StoreLinks({ title, labels, compact = false, showHeading = false, showPreview = true, pageType = "diagnosis_result" }) {
   const [amazonOpen, setAmazonOpen] = useState(false);
   const [pressed, setPressed] = useState("");
   const rootRef = useRef(null);
@@ -66,7 +75,7 @@ export default function StoreLinks({ title, labels, compact = false, showHeading
     onPointerLeave: () => setPressed(""),
   });
   const clickHandlers = (store, intent) => ({
-    onClick: () => trackAffiliateClick({ title, store, intent, compact }),
+    onClick: () => trackAffiliateClick({ title, store, intent, pageType }),
   });
 
   return (

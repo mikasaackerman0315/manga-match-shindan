@@ -1,4 +1,5 @@
 import { THEME_GUIDES } from "../themeData";
+import TrackedThemeLink from "../TrackedThemeLink";
 
 const siteUrl = "https://www.mangamatchquiz.com";
 const keywordArticles = [
@@ -65,12 +66,12 @@ export default function ThemesPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {THEME_GUIDES.map((theme, index) => (
-            <a key={theme.slug} href={`/themes/${theme.slug}`} className="group p-5 md:p-6 transition-all hover:translate-x-1" style={{ border: "1px solid rgba(10,10,10,0.16)", backgroundColor: "rgba(245,243,238,0.55)" }}>
+            <TrackedThemeLink key={theme.slug} href={`/themes/${theme.slug}`} themeSlug={theme.slug} themeTitle={theme.label} className="group p-5 md:p-6 transition-all hover:translate-x-1" style={{ border: "1px solid rgba(10,10,10,0.16)", backgroundColor: "rgba(245,243,238,0.55)" }}>
               <div className="text-xs tracking-[0.25em] mb-3" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>{String(index + 1).padStart(2, "0")}</div>
               <h2 className="text-2xl font-semibold mb-2" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{theme.label}</h2>
               <p className="text-sm leading-7" style={{ color: "#555" }}>{theme.lead}</p>
               <div className="mt-4 text-xs tracking-[0.18em] uppercase group-hover:text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>Read →</div>
-            </a>
+            </TrackedThemeLink>
           ))}
         </div>
 

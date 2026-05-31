@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { QUESTIONS_SIMPLE, QUESTIONS_DETAILED } from "@/data/questions";
 import MangaCover from "./MangaCover";
 import StoreLinks from "./StoreLinks";
+import { getDiagnosisType, trackEvent } from "./analytics";
 
 // ============================================================
 // 広告枠コンポーネント（将来 Google AdSense 等を入れる場所）
@@ -127,12 +128,7 @@ const RELATED_THEMES = [
 
 function PurchaseLinks({ rec, t, compact = false }) {
   const title = `${rec.title_ja || rec.title_en || ""}`.trim();
-  return <StoreLinks title={title} labels={t} compact={compact} showHeading={!compact} />;
-}
-
-function trackAppEvent(name, params = {}) {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-  window.gtag("event", name, params);
+  return <StoreLinks title={title} labels={t} compact={compact} showHeading={!compact} pageType="diagnosis_result" />;
 }
 
 function getShareUrl() {
@@ -171,7 +167,7 @@ function RelatedThemeLinks({ recommendations, language }) {
       </h3>
       <div className="flex flex-wrap gap-2">
         {themes.map((theme) => (
-          <a key={theme.slug} href={`/themes/${theme.slug}`} className="px-4 py-2 text-xs tracking-[0.16em] uppercase transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.18)", color: "#0a0a0a", fontFamily: "'JetBrains Mono', monospace" }}>
+          <a key={theme.slug} href={`/themes/${theme.slug}`} onClick={() => trackEvent("theme_article_click", { theme_slug: theme.slug, theme_title: theme.label })} className="px-4 py-2 text-xs tracking-[0.16em] uppercase transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.18)", color: "#0a0a0a", fontFamily: "'JetBrains Mono', monospace" }}>
             {theme.label} →
           </a>
         ))}
@@ -194,6 +190,7 @@ export default function App() {
 
   const t = T[language];
   const QUESTIONS = mode === "simple" ? QUESTIONS_SIMPLE : QUESTIONS_DETAILED;
+  const diagnosisType = getDiagnosisType(mode);
 
   useEffect(() => {
     if (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("start") === "1") {
@@ -211,7 +208,7 @@ export default function App() {
   }, [screen]);
 
   const startMode = (selectedMode) => {
-    trackAppEvent("quiz_start", { mode: selectedMode, language });
+    trackEvent("diagnosis_start", { diagnosis_type: getDiagnosisType(selectedMode) });
     setMode(selectedMode);
     setAnswers({});
     setFreeText("");
@@ -255,15 +252,25 @@ export default function App() {
   };
 
   const handleAnswer = (qId, value, type, max) => {
+    let nextValues = [];
     if (type === "single") {
-      setAnswers({ ...answers, [qId]: [value] });
+      nextValues = [value];
+      setAnswers({ ...answers, [qId]: nextValues });
     } else {
       const current = answers[qId] || [];
-      if (value === "any") { setAnswers({ ...answers, [qId]: ["any"] }); return; }
+      if (value === "any") {
+        nextValues = ["any"];
+        setAnswers({ ...answers, [qId]: nextValues });
+        trackEvent("diagnosis_answer", { diagnosis_type: diagnosisType, question_id: qId, answer_value: nextValues.join(",") });
+        return;
+      }
       const filtered = current.filter((v) => v !== "any");
-      if (filtered.includes(value)) setAnswers({ ...answers, [qId]: filtered.filter((v) => v !== value) });
-      else if (filtered.length < max) setAnswers({ ...answers, [qId]: [...filtered, value] });
+      if (filtered.includes(value)) nextValues = filtered.filter((v) => v !== value);
+      else if (filtered.length < max) nextValues = [...filtered, value];
+      else nextValues = filtered;
+      setAnswers({ ...answers, [qId]: nextValues });
     }
+    trackEvent("diagnosis_answer", { diagnosis_type: diagnosisType, question_id: qId, answer_value: nextValues.join(",") });
   };
 
   const canProceed = () => {
@@ -297,14 +304,18 @@ export default function App() {
       const data = prefetched || await requestRecommendation(body);
 
       setResults(data);
-      trackAppEvent("quiz_complete", {
-        mode,
-        language,
-        recommendation_count: data.recommendations?.length || 0,
+      trackEvent("diagnosis_complete", {
+        diagnosis_type: diagnosisType,
+        result_count: data.recommendations?.length || 0,
+        has_free_text: freeText.trim().length > 0,
       });
       setScreen("results");
     } catch (err) {
       console.error("Error:", err);
+      trackEvent("diagnosis_error", {
+        diagnosis_type: diagnosisType,
+        error_type: err.message?.toLowerCase().includes("parse") ? "json_parse_failed" : "recommendation_failed",
+      });
       setError(t.error + (err.message ? ` (${err.message})` : ""));
       setScreen("freetext");
     }
@@ -328,7 +339,7 @@ export default function App() {
     const text = `${t.shareText}${topTitles ? `\n\n${topTitles}` : ""}`;
     const url = getShareUrl();
 
-    trackAppEvent("share_results", {
+    trackEvent("share_results", {
       mode,
       language,
       recommendation_count: results?.recommendations?.length || 0,
