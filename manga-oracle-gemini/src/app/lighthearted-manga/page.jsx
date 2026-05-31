@@ -2,9 +2,15 @@ import { ArticlePage } from "../articles";
 
 export const metadata = {
   title: "鬱展開が少ない漫画おすすめ10選 | マンガマッチ診断",
-  description: "重すぎる展開が苦手な人向けに、安心して読みやすい明るめ・癒し寄りの漫画を紹介します。",
+  description: "重すぎる展開が苦手な人向けに、安心して読みやすい、ゆるめ・癒し寄りの漫画おすすめ10選を紹介します。",
   alternates: { canonical: "/lighthearted-manga" },
 };
+
+const guideItems = [
+  { heading: "読後感の軽さで選ぶ", text: "鬱展開を避けたい時は、事件の大きさよりも読後感が大事です。日常、コメディ、癒し系は安心して読みやすい傾向があります。" },
+  { heading: "笑えるか、癒されるか", text: "気分転換ならギャグ寄り、疲れている時は癒し寄りがおすすめです。同じ軽い漫画でも、笑いと温かさで読み味は変わります。" },
+  { heading: "刺激が少ない作品から入る", text: "バトルやサスペンスよりも、日常や趣味漫画の方が穏やかに読み進めやすいです。" },
+];
 
 const items = [
   { title: "よつばと!", meta: "あずまきよひこ", text: "子どもの目線で日常を新鮮に見せてくれる漫画。大事件より小さな楽しさが中心です。", fit: "安心して笑える漫画を読みたい人に。" },
@@ -15,10 +21,10 @@ const items = [
   { title: "スキップとローファー", meta: "高松美咲", text: "高校生活と人間関係を爽やかに描く作品。悩みはあっても、読後感がやさしいです。", fit: "前向きな青春漫画が好きな人に。" },
   { title: "ばらかもん", meta: "ヨシノサツキ", text: "島で暮らす書道家と子どもたちの日々を描く温かいコメディ。人の優しさが残ります。", fit: "笑えて癒される漫画を探している人に。" },
   { title: "銀の匙", meta: "荒川弘", text: "農業高校での生活を描く青春漫画。大変さもありますが、明るく学びのある読後感です。", fit: "笑いと成長をバランスよく読みたい人に。" },
-  { title: "日常", meta: "あらゐけいいち", text: "普通の日常を極端なギャグで跳ねさせる作品。理屈抜きで笑える場面が多いです。", fit: "シュールなギャグで気分転換したい人に。" },
+  { title: "日常", meta: "あらゐけいいち", text: "普通の毎日を極端なギャグで跳ねさせる作品。理屈抜きで笑える場面が多いです。", fit: "シュールなギャグで気分転換したい人に。" },
   { title: "ふらいんぐうぃっち", meta: "石塚千尋", text: "青森で暮らす魔女見習いの日々を、穏やかに描く作品。少し不思議で優しい空気です。", fit: "ゆっくり読める癒し系が欲しい人に。" },
 ];
 
 export default function LightheartedMangaPage() {
-  return <ArticlePage eyebrow="Lighthearted Manga" title="鬱展開が少ない漫画おすすめ10選" lead="重い展開を避けたい時に読みやすい、明るめ・癒し寄り・安心感のある漫画を選びました。" items={items} path="/lighthearted-manga" />;
+  return <ArticlePage eyebrow="Lighthearted Manga" title="鬱展開が少ない漫画おすすめ10選" lead="重い展開を避けたい時に読みやすい、明るめ・癒し寄り・安心感のある漫画を選びました。" items={items} path="/lighthearted-manga" guideTitle="鬱展開が少ない漫画を選ぶポイント" guideItems={guideItems} />;
 }
