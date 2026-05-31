@@ -2,9 +2,15 @@ import { ArticlePage } from "../articles";
 
 export const metadata = {
   title: "社会人におすすめの漫画10選 | マンガマッチ診断",
-  description: "仕事、人生、キャリア、人間関係に響く、社会人におすすめの漫画を紹介します。",
+  description: "仕事、人生、キャリア、人間関係に響く、社会人におすすめの漫画10選。仕事終わりにも読みやすい作品を紹介します。",
   alternates: { canonical: "/working-adult-manga" },
 };
+
+const guideItems = [
+  { heading: "仕事終わりに読める重さで選ぶ", text: "社会人向け漫画は深い作品が多いですが、疲れている日は読みやすさも大事です。短めの作品や会話劇から入るのもおすすめです。" },
+  { heading: "励まされたいか、考えたいかで選ぶ", text: "前向きになりたい時は挑戦の物語、人生を見直したい時は人間ドラマ寄りの作品が向いています。" },
+  { heading: "仕事のジャンルで選ぶ", text: "出版、医療、教育、クリエイティブなど、自分の仕事に近い分野から選ぶと刺さりやすくなります。" },
+];
 
 const items = [
   { title: "宇宙兄弟", meta: "小山宙哉", text: "大人になってから夢に挑む兄弟の物語。仕事や挫折に向き合う描写が社会人に響きます。", fit: "挑戦する気持ちを取り戻したい人に。" },
@@ -20,5 +26,5 @@ const items = [
 ];
 
 export default function WorkingAdultMangaPage() {
-  return <ArticlePage eyebrow="Working Adult Manga" title="社会人におすすめの漫画10選" lead="仕事に疲れた時、何かに挑戦したい時、人生を少し見直したい時に読みたい漫画を集めました。" items={items} path="/working-adult-manga" />;
+  return <ArticlePage eyebrow="Working Adult Manga" title="社会人におすすめの漫画10選" lead="仕事に疲れた時、何かに挑戦したい時、人生を少し見直したい時に読みたい漫画を集めました。" items={items} path="/working-adult-manga" guideTitle="社会人向け漫画を選ぶポイント" guideItems={guideItems} />;
 }

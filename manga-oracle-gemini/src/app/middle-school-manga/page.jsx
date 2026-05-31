@@ -2,13 +2,19 @@ import { ArticlePage } from "../articles";
 
 export const metadata = {
   title: "中学生におすすめの漫画10選 | マンガマッチ診断",
-  description: "中学生でも読みやすい、友情・成長・冒険・スポーツを楽しめるおすすめ漫画を紹介します。",
+  description: "中学生でも読みやすい、友情・成長・冒険・スポーツを楽しめるおすすめ漫画10選を紹介します。",
   alternates: { canonical: "/middle-school-manga" },
 };
 
+const guideItems = [
+  { heading: "読みやすさを優先する", text: "中学生向けなら、設定がわかりやすく、キャラクターの目標がはっきりしている作品がおすすめです。" },
+  { heading: "友情や成長がある作品を選ぶ", text: "仲間との関係や部活、努力の描写がある漫画は、読みやすく心に残りやすいです。" },
+  { heading: "重すぎる作品は少し注意する", text: "ダークな作品も面白いですが、最初は明るさや達成感のある作品から入ると安心です。" },
+];
+
 const items = [
   { title: "ハイキュー!!", meta: "古舘春一", text: "バレーに打ち込む高校生たちの成長を描く作品。部活や仲間の熱さが伝わります。", fit: "スポーツや部活が好きな中学生に。" },
-  { title: "僕のヒーローアカデミア", meta: "堀越耕平", text: "ヒーローを目指す少年たちの成長を描くバトル漫画。キャラクターの目標が分かりやすいです。", fit: "王道バトルが好きな人に。" },
+  { title: "僕のヒーローアカデミア", meta: "堀越耕平", text: "ヒーローを目指す少年たちの成長を描くバトル漫画。キャラクターの目標がわかりやすいです。", fit: "王道バトルが好きな人に。" },
   { title: "鬼滅の刃", meta: "吾峠呼世晴", text: "家族の絆と鬼との戦いを描く人気作。テンポよく読めて感情も動きます。", fit: "漫画を読み始めたい人にも。" },
   { title: "SPY×FAMILY", meta: "遠藤達哉", text: "偽装家族の日常と任務を描くコメディアクション。重すぎず読みやすいです。", fit: "楽しく読める漫画を探している人に。" },
   { title: "暗殺教室", meta: "松井優征", text: "謎の先生と生徒たちの一年を描く学園漫画。笑いと感動のバランスが良いです。", fit: "クラスものが好きな人に。" },
@@ -20,5 +26,5 @@ const items = [
 ];
 
 export default function MiddleSchoolMangaPage() {
-  return <ArticlePage eyebrow="Middle School Manga" title="中学生におすすめの漫画10選" lead="友情、成長、部活、冒険。中学生でも入りやすく、長く楽しめる漫画を選びました。" items={items} path="/middle-school-manga" />;
+  return <ArticlePage eyebrow="Middle School Manga" title="中学生におすすめの漫画10選" lead="友情、成長、部活、冒険。中学生でも入りやすく、長く楽しめる漫画を選びました。" items={items} path="/middle-school-manga" guideTitle="中学生向け漫画を選ぶポイント" guideItems={guideItems} />;
 }

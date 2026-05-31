@@ -2,16 +2,22 @@ import { ArticlePage } from "../articles";
 
 export const metadata = {
   title: "高校生におすすめの漫画10選 | マンガマッチ診断",
-  description: "青春、恋愛、部活、進路、人間関係に響く、高校生におすすめの漫画を紹介します。",
+  description: "青春、恋愛、部活、進路、人間関係に響く、高校生におすすめの漫画10選を紹介します。",
   alternates: { canonical: "/high-school-manga" },
 };
+
+const guideItems = [
+  { heading: "今の気分に近いテーマで選ぶ", text: "恋愛、部活、進路、友情など、高校生向け漫画はテーマが幅広いです。今気になっている悩みや興味から選ぶと刺さりやすいです。" },
+  { heading: "明るい作品か深い作品かを見る", text: "気分転換なら明るい青春もの、じっくり考えたいなら人間ドラマ寄りがおすすめです。" },
+  { heading: "学校外の世界にも触れる", text: "進路や将来を考える時期には、仕事や夢を扱う作品も読み応えがあります。" },
+];
 
 const items = [
   { title: "アオハライド", meta: "咲坂伊緒", text: "再会した二人の距離と変化を描く青春恋愛。高校生活のもどかしさが詰まっています。", fit: "青春恋愛を読みたい高校生に。" },
   { title: "君に届け", meta: "椎名軽穂", text: "不器用な少女が人とつながっていく青春漫画。恋愛と友情の両方が丁寧です。", fit: "優しい恋愛漫画が好きな人に。" },
   { title: "ハイキュー!!", meta: "古舘春一", text: "バレーに懸ける高校生たちの成長を描く作品。部活の熱さが強く伝わります。", fit: "部活漫画を読みたい人に。" },
   { title: "ちはやふる", meta: "末次由紀", text: "競技かるたに打ち込む高校生たちの青春を描く名作。恋愛と競技の熱が両立しています。", fit: "文化系競技の熱さを知りたい人に。" },
-  { title: "ブルーピリオド", meta: "山口つばさ", text: "美術に出会った高校生が進路と才能に向き合う作品。進路に悩む時期に刺さります。", fit: "将来や夢に悩んでいる人に。" },
+  { title: "ブルーピリオド", meta: "山口つばさ", text: "美術に出会った高校生が進路と才能に向き合う作品。将来に悩む時期に刺さります。", fit: "将来や夢に悩んでいる人に。" },
   { title: "スキップとローファー", meta: "高松美咲", text: "地方から上京した少女とクラスメイトたちの関係を爽やかに描く作品。人間関係が優しいです。", fit: "学校生活の空気を楽しみたい人に。" },
   { title: "僕等がいた", meta: "小畑友紀", text: "高校生の恋と傷を描く恋愛漫画。甘さだけでなく苦さも強く残ります。", fit: "切ない恋愛を読みたい人に。" },
   { title: "3月のライオン", meta: "羽海野チカ", text: "若き棋士の孤独と再生を描く人間ドラマ。学校や家庭とは違う孤独にも触れます。", fit: "静かな感動が欲しい人に。" },
@@ -20,5 +26,5 @@ const items = [
 ];
 
 export default function HighSchoolMangaPage() {
-  return <ArticlePage eyebrow="High School Manga" title="高校生におすすめの漫画10選" lead="青春、恋愛、部活、進路。高校生の今だから刺さる漫画を集めました。" items={items} path="/high-school-manga" />;
+  return <ArticlePage eyebrow="High School Manga" title="高校生におすすめの漫画10選" lead="青春、恋愛、部活、進路。高校生の今だから刺さる漫画を集めました。" items={items} path="/high-school-manga" guideTitle="高校生向け漫画を選ぶポイント" guideItems={guideItems} />;
 }
