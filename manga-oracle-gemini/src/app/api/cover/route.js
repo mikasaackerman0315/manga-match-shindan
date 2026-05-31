@@ -3,6 +3,7 @@ import { CORE_DB as CORE_DB_BASE } from "@/data/coreDB";
 import { CORE_DB_EXTRA } from "@/data/coreDB_extra";
 import { CORE_DB_EXTRA2 } from "@/data/coreDB_extra2";
 import { CORE_DB_EXTRA3 } from "@/data/coreDB_extra3";
+import { COVER_OVERRIDES } from "@/data/coverOverrides.generated";
 
 const RAKUTEN_BOOKS_ENDPOINT = "https://openapi.rakuten.co.jp/services/api/BooksBook/Search/20170404";
 const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3];
@@ -260,6 +261,18 @@ function normalizeTitleKey(title) {
   return (title || "").toLowerCase().replace(/[！!？?。・･\s:：'’"“”\-‐‑‒–—―_]/g, "");
 }
 
+function getCoverOverride(id, title) {
+  if (id && COVER_OVERRIDES[id]?.coverUrl) return COVER_OVERRIDES[id];
+
+  const normalizedTitle = normalizeTitleKey(title);
+  if (!normalizedTitle) return null;
+
+  return Object.values(COVER_OVERRIDES).find((entry) => {
+    if (!entry?.coverUrl) return false;
+    return normalizeTitleKey(entry.title_ja) === normalizedTitle || normalizeTitleKey(entry.title_en) === normalizedTitle;
+  }) || null;
+}
+
 function getDatabaseAliases(title, id, author) {
   const normalizedTitle = normalizeTitleKey(title);
   const match = CORE_DB.find((entry) => entry.id === id) || CORE_DB.find((entry) => {
@@ -367,6 +380,21 @@ export async function GET(req) {
   const applicationId = process.env.RAKUTEN_APP_ID;
   const accessKey = process.env.RAKUTEN_ACCESS_KEY;
   const affiliateId = process.env.RAKUTEN_AFFILIATE_ID;
+  const override = getCoverOverride(id, title);
+
+  if (override) {
+    return NextResponse.json(
+      {
+        imageUrl: override.coverUrl,
+        itemUrl: override.itemUrl || null,
+        isbn13: override.isbn13 || null,
+        coverSource: override.coverSource || "override",
+        coverConfidence: override.coverConfidence || null,
+        reviewNeeded: Boolean(override.reviewNeeded),
+      },
+      { headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800" } }
+    );
+  }
 
   if (!title || !applicationId || !accessKey) {
     return NextResponse.json({ imageUrl: null, itemUrl: null });
