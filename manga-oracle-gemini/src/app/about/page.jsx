@@ -1,6 +1,6 @@
 export const metadata = {
   title: "運営者情報 | マンガマッチ診断",
-  description: "マンガマッチ診断の運営者情報、サイト目的、広告・アフィリエイト方針について掲載しています。",
+  description: "マンガマッチ診断の運営者情報、サイトの目的、広告・アフィリエイト方針について掲載しています。",
 };
 
 export default function AboutPage() {
@@ -20,7 +20,7 @@ export default function AboutPage() {
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-3">サイトの目的</h2>
-            <p>当サイトは、漫画を探している人が自分の好みや気分に合う作品を見つけやすくすることを目的とした漫画推薦サービスです。</p>
+            <p>当サイトは、漫画を探している方が自分の好みや気分に合う作品を見つけやすくすることを目的とした漫画推薦サービスです。</p>
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-3">広告・アフィリエイト方針</h2>
@@ -28,9 +28,9 @@ export default function AboutPage() {
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-3">お問い合わせ</h2>
-            <p>お問い合わせは、今後設置予定の専用フォームまたはメールアドレスにて受け付けます。</p>
+            <p>お問い合わせは、サイト内の「お問い合わせ」ページから受け付けています。</p>
           </section>
-          <p className="text-xs tracking-widest" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>LAST UPDATED: 2026-05-31</p>
+          <p className="text-xs tracking-widest" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>LAST UPDATED: 2026-06-01</p>
         </div>
       </article>
     </main>

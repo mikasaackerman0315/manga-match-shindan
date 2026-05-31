@@ -21,7 +21,7 @@ export default function DisclaimerPage() {
           <section>
             <h2 className="text-xl font-semibold mb-3">広告・アフィリエイトについて</h2>
             <p>当サイトは広告配信サービスおよびアフィリエイトプログラムを利用しています。リンク先で商品を購入した場合、当サイトが紹介料を受け取ることがあります。</p>
-            <p className="mt-3">当サイトはAmazonアソシエイト・プログラムの参加者です。適格販売により収入を得ています。</p>
+            <p className="mt-3">マンガマッチ診断は、Amazon.co.jpを宣伝しリンクすることによって紹介料を獲得できるAmazonアソシエイト・プログラムの参加者です。</p>
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-3">外部リンクについて</h2>
@@ -35,7 +35,7 @@ export default function DisclaimerPage() {
             <h2 className="text-xl font-semibold mb-3">損害等の責任</h2>
             <p>当サイトの利用により発生した損害、トラブル、不利益について、当サイトは責任を負いかねます。</p>
           </section>
-          <p className="text-xs tracking-widest" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>LAST UPDATED: 2026-05-31</p>
+          <p className="text-xs tracking-widest" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>LAST UPDATED: 2026-06-01</p>
         </div>
       </article>
     </main>

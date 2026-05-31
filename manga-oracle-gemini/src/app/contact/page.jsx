@@ -20,8 +20,9 @@ export default function ContactPage() {
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-3">連絡先</h2>
-            <p>現在、正式な連絡先を準備中です。広告審査や公開運用に向けて、専用のメールアドレスまたはフォームを追加予定です。</p>
+            <p>現在、正式な連絡先を準備中です。広告審査や一般公開に向けて、専用のメールアドレスまたはフォームを追加予定です。</p>
           </section>
+          <p className="text-xs tracking-widest" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>LAST UPDATED: 2026-06-01</p>
         </div>
       </article>
     </main>

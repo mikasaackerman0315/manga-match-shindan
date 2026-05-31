@@ -28,13 +28,13 @@ export default function PrivacyPage() {
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-3">広告とアフィリエイト</h2>
-            <p>当サイトは広告およびアフィリエイトリンクを掲載する場合があります。リンク先での購入や契約はユーザー自身の判断で行ってください。</p>
+            <p>当サイトは広告およびアフィリエイトリンクを掲載する場合があります。リンク先での購入や契約は、ユーザー自身の判断で行ってください。</p>
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-3">改定</h2>
             <p>本ポリシーは、必要に応じて予告なく変更されることがあります。変更後の内容は当ページに掲載された時点で有効になります。</p>
           </section>
-          <p className="text-xs tracking-widest" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>LAST UPDATED: 2026-05-31</p>
+          <p className="text-xs tracking-widest" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>LAST UPDATED: 2026-06-01</p>
         </div>
       </article>
     </main>

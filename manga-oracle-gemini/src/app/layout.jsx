@@ -26,6 +26,7 @@ export const metadata = {
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     title: "漫画おすすめ診断 | 自分に合う漫画をAIで探す",
     description: "質問に答えるだけで、AIが自分に合う漫画をランキング形式でおすすめします。",
@@ -33,16 +34,29 @@ export const metadata = {
     siteName: "マンガマッチ診断",
     locale: "ja_JP",
     type: "website",
+    images: [
+      {
+        url: "/icon-192.png",
+        width: 192,
+        height: 192,
+        alt: "マンガマッチ診断",
+      },
+    ],
   },
   twitter: {
     card: "summary",
     title: "漫画おすすめ診断 | 自分に合う漫画をAIで探す",
     description: "質問に答えるだけで、AIが自分に合う漫画をランキング形式でおすすめします。",
+    images: ["/icon-192.png"],
   },
   robots: {
     index: true,
     follow: true,
   },
+};
+
+export const viewport = {
+  themeColor: "#f5f3ee",
 };
 
 export default function RootLayout({ children }) {
@@ -54,11 +68,6 @@ export default function RootLayout({ children }) {
     url: siteUrl,
     description: metadata.description,
     inLanguage: "ja",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${siteUrl}/?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
   const appJsonLd = {
     "@context": "https://schema.org",
@@ -68,6 +77,18 @@ export default function RootLayout({ children }) {
     applicationCategory: "EntertainmentApplication",
     operatingSystem: "Any",
     description: metadata.description,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "JPY",
+    },
+  };
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "マンガマッチ診断",
+    url: siteUrl,
+    logo: `${siteUrl}/icon-192.png`,
   };
 
   return (
@@ -75,9 +96,11 @@ export default function RootLayout({ children }) {
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
         <link rel="icon" href="/favicon-48x48.png" sizes="48x48" type="image/png" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <meta name="theme-color" content="#f5f3ee" />
         <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`} crossOrigin="anonymous"></script>
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
