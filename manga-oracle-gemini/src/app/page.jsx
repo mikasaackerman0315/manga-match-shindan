@@ -131,6 +131,14 @@ function PurchaseLinks({ rec, t, compact = false }) {
   return <StoreLinks title={title} labels={t} compact={compact} showHeading={!compact} pageType="diagnosis_result" />;
 }
 
+function getDiagnosisErrorType(error) {
+  const message = error?.message?.toLowerCase?.() || "";
+  if (message.includes("parse") || message.includes("json")) return "json_parse_error";
+  if (message.includes("empty_result")) return "empty_result";
+  if (message.includes("api") || message.includes("request") || message.includes("failed")) return "api_error";
+  return "unknown_error";
+}
+
 function getShareUrl() {
   if (typeof window === "undefined") return "https://www.mangamatchquiz.com/";
   return window.location.origin;
@@ -302,11 +310,13 @@ export default function App() {
         ? await prefetchRef.current.promise
         : null;
       const data = prefetched || await requestRecommendation(body);
+      const resultCount = data.recommendations?.length || 0;
+      if (resultCount === 0) throw new Error("empty_result");
 
       setResults(data);
       trackEvent("diagnosis_complete", {
         diagnosis_type: diagnosisType,
-        result_count: data.recommendations?.length || 0,
+        result_count: resultCount,
         has_free_text: freeText.trim().length > 0,
       });
       setScreen("results");
@@ -314,7 +324,7 @@ export default function App() {
       console.error("Error:", err);
       trackEvent("diagnosis_error", {
         diagnosis_type: diagnosisType,
-        error_type: err.message?.toLowerCase().includes("parse") ? "json_parse_failed" : "recommendation_failed",
+        error_type: getDiagnosisErrorType(err),
       });
       setError(t.error + (err.message ? ` (${err.message})` : ""));
       setScreen("freetext");

@@ -19,8 +19,8 @@ function trackAffiliateClick({ title, store, intent, pageType }) {
   if (store === "amazon") {
     trackEvent("affiliate_click_amazon", {
       title: title || "",
-      link_type: intent === "paper" ? "paper" : intent === "kindle" ? "kindle" : "search",
-      page_type: pageType,
+      link_type: intent === "paper" ? "paper" : intent === "kindle" ? "kindle" : intent === "search" ? "search" : "other",
+      page_type: pageType || "other",
     });
     return;
   }
@@ -28,8 +28,8 @@ function trackAffiliateClick({ title, store, intent, pageType }) {
   if (store === "rakuten") {
     trackEvent("affiliate_click_rakuten", {
       title: title || "",
-      link_type: intent === "set" ? "set" : intent === "books" ? "books" : "search",
-      page_type: pageType,
+      link_type: intent === "set" ? "set" : intent === "books" ? "books" : intent === "search" ? "search" : "other",
+      page_type: pageType || "other",
     });
   }
 }
