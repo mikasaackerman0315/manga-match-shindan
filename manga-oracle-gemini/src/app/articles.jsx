@@ -1,6 +1,24 @@
 import StoreLinks from "./StoreLinks";
 
 const siteUrl = "https://www.mangamatchquiz.com";
+const relatedArticleLinks = [
+  { href: "/trending-manga", label: "今話題の漫画", description: "SNS、漫画アプリ、アニメ化で読まれている作品を見る" },
+  { href: "/beginner-manga", label: "初心者向け漫画", description: "久しぶりに漫画を読む人でも入りやすい作品を見る" },
+  { href: "/completed-manga", label: "完結済み漫画", description: "最後まで一気に読める名作を探す" },
+  { href: "/binge-read-manga", label: "一気読み漫画", description: "続きが気になって止まらない作品を探す" },
+  { href: "/emotional-manga", label: "泣ける漫画", description: "感動や余韻が強い作品を探す" },
+  { href: "/fantasy-manga", label: "ファンタジー漫画", description: "世界観に浸れる冒険や異世界作品を見る" },
+  { href: "/romance-manga", label: "恋愛漫画", description: "青春、胸きゅん、大人の恋を探す" },
+  { href: "/completed-romance-manga", label: "完結済み恋愛漫画", description: "結末まで安心して読める恋愛漫画を見る" },
+  { href: "/sports-manga", label: "スポーツ漫画", description: "試合、努力、チームの熱さを味わえる作品を見る" },
+  { href: "/horror-manga", label: "ホラー漫画", description: "怖さ、サスペンス、不穏な空気を楽しめる作品を見る" },
+  { href: "/isekai-manga", label: "異世界漫画", description: "転生、冒険、成り上がり系の作品を見る" },
+  { href: "/adult-manga", label: "大人向け漫画", description: "仕事、人生、人間関係に刺さる作品を見る" },
+  { href: "/working-adult-manga", label: "社会人向け漫画", description: "働く日々に響く漫画を探す" },
+  { href: "/middle-school-manga", label: "中学生向け漫画", description: "読みやすさと熱さのバランスがいい作品を見る" },
+  { href: "/high-school-manga", label: "高校生向け漫画", description: "青春、進路、部活、恋愛に寄り添う作品を見る" },
+  { href: "/lighthearted-manga", label: "鬱展開が少ない漫画", description: "気軽に読めて重すぎない作品を探す" },
+];
 
 function JsonLd({ data }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
@@ -15,6 +33,11 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path, guideTitl
   const pagePath = slug ? `/themes/${slug}` : path;
   const pageUrl = pagePath ? `${siteUrl}${pagePath}` : siteUrl;
   const pageType = slug ? "theme_article" : "seo_article";
+  const currentRelatedIndex = relatedArticleLinks.findIndex((link) => link.href === pagePath);
+  const rotatedRelatedLinks = currentRelatedIndex >= 0
+    ? [...relatedArticleLinks.slice(currentRelatedIndex + 1), ...relatedArticleLinks.slice(0, currentRelatedIndex)]
+    : relatedArticleLinks;
+  const relatedLinks = rotatedRelatedLinks.slice(0, 6);
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -133,6 +156,26 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path, guideTitl
             </div>
           ))}
         </section>
+
+        {relatedLinks.length > 0 && (
+          <section className="mt-14 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.45)" }}>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-5">
+              <div>
+                <div className="text-xs tracking-[0.22em] uppercase mb-2" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>More Guides</div>
+                <h2 className="text-2xl font-semibold">ほかの切り口でも探す</h2>
+              </div>
+              <a href="/themes" className="text-xs tracking-[0.18em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>テーマ一覧へ</a>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {relatedLinks.map((link) => (
+                <a key={link.href} href={link.href} className="block p-4 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.72)" }}>
+                  <h3 className="text-base font-semibold mb-2">{link.label}</h3>
+                  <p className="text-sm leading-7" style={{ color: "#555" }}>{link.description}</p>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mt-14 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.45)" }}>
           <h2 className="text-2xl font-semibold mb-5">よくある選び方</h2>
