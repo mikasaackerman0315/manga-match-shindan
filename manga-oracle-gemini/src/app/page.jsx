@@ -131,6 +131,19 @@ function PurchaseLinks({ rec, t, compact = false }) {
   return <StoreLinks title={title} labels={t} compact={compact} showHeading={!compact} pageType="diagnosis_result" />;
 }
 
+function ReadingActionHint({ compact = false }) {
+  const items = ["電子書籍ならすぐ読めます", "紙の本や全巻セットも探せます", "価格や在庫はリンク先で確認してください"];
+  return (
+    <div className={compact ? "mt-3 flex flex-wrap gap-1.5" : "mt-4 flex flex-wrap gap-2"}>
+      {items.map((item) => (
+        <span key={item} className={compact ? "px-2 py-1 text-[10px]" : "px-3 py-1.5 text-[11px]"} style={{ border: "1px solid rgba(10,10,10,0.12)", color: "#666", backgroundColor: "rgba(245,243,238,0.55)" }}>
+          {item}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function getDiagnosisErrorType(error) {
   const message = error?.message?.toLowerCase?.() || "";
   if (message.includes("parse") || message.includes("json")) return "json_parse_error";
@@ -622,6 +635,7 @@ export default function App() {
                           <div className="text-xs tracking-[0.2em] mb-2" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>▌WHY YOU'LL LOVE IT</div>
                           <p className="text-sm md:text-base italic leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{rec.reason}</p>
                         </div>
+                        <ReadingActionHint />
                         <PurchaseLinks rec={rec} t={t} />
                         </div>
                       </div>
@@ -655,6 +669,7 @@ export default function App() {
                           {rec.author && <>{rec.author} · </>}{rec.volumes && <>{rec.volumes}{t.volumes} · </>}{rec.status && t["status_" + rec.status]}
                         </div>
                         <p className="text-sm leading-relaxed italic" style={{ color: "#444", fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{rec.reason}</p>
+                        <ReadingActionHint compact />
                         <PurchaseLinks rec={rec} t={t} compact />
                         </div>
                       </div>
@@ -687,6 +702,7 @@ export default function App() {
                           {rec.source === "web" && (<span className="text-[8px] tracking-widest px-1 py-0.5" style={{ fontFamily: "'JetBrains Mono', monospace", backgroundColor: "rgba(192,57,43,0.85)", color: "#f5f3ee" }}>{t.sourceWeb}</span>)}
                         </div>
                         <div className="text-xs" style={{ color: "#888" }}>{rec.author}{rec.volumes && ` · ${rec.volumes}${t.volumes}`}</div>
+                        <ReadingActionHint compact />
                         <PurchaseLinks rec={rec} t={t} compact />
                       </div>
                     </div>
