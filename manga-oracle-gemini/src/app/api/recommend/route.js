@@ -21,6 +21,7 @@ const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_D
 const GEMINI_MODEL = "gemini-2.5-flash";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 const GEMINI_MAX_ATTEMPTS = 2;
+const GEMINI_TIMEOUT_MS = 28000;
 
 // ------------------------------------------------------------
 // シンプルなメモリ内レート制限（本番ではRedis等を推奨）
@@ -28,6 +29,107 @@ const GEMINI_MAX_ATTEMPTS = 2;
 const rateLimitStore = new Map(); // key: ip-date, value: count
 const DAILY_GLOBAL_LIMIT = 300;   // サイト全体の1日あたり上限
 const PER_USER_DAILY_LIMIT = 5;   // 1IPあたりの1日上限
+
+const QUESTION_WEIGHTS = {
+  setting: 5,
+  elements: 5,
+  tone: 4,
+  scale: 2,
+  protagonist: 3,
+  relationship: 3,
+  structure: 3,
+  pacing: 2,
+  depth: 4,
+  presentation: 3,
+  art: 2,
+  demographic: 5,
+  status: 4,
+  media: 3,
+  ending: 2,
+};
+
+const ANSWER_TAG_ALIASES = {
+  healing_story: ["healing", "warm", "comfort", "wholesome"],
+  historical_west: ["historical", "war", "politics"],
+  mystery_supernatural: ["mystery", "supernatural", "mysterious"],
+  money: ["specialty", "social", "underworld"],
+  romance_sweet: ["romance", "warm", "wholesome", "shojo_kirakira"],
+  romance_complex: ["romance", "human_drama", "melancholic", "psychological"],
+  family_bond: ["family_theme", "family", "warm"],
+  found_family: ["friendship", "group", "family_theme"],
+  ensemble_cast: ["ensemble", "group", "multiple"],
+  team: ["group", "friendship", "sports"],
+  tragic_bond: ["emotional", "melancholic", "human_drama"],
+  duo_buddy: ["duo", "friendship", "dialogue"],
+  page_turner: ["fast_paced", "suspense", "twist"],
+  savor: ["slow_burn", "atmosphere", "human_drama"],
+  light_read: ["light_comedy", "slice_of_life", "comfort"],
+  dense: ["detailed", "worldbuilding", "philosophical"],
+  binge: ["long_arc", "fast_paced", "entertainment"],
+  relaxing: ["healing", "warm", "comfort"],
+  intense: ["tense", "brutal", "suspense"],
+  episodic_easy: ["episodic", "slice_of_life", "light_comedy"],
+  emotional_rollercoaster: ["emotional", "shock", "emotional_catharsis"],
+  thoughtful: ["philosophical", "psychological", "dialogue"],
+  comfort_reread: ["comfort", "wholesome", "warm"],
+  quick_hit: ["fast_paced", "entertainment"],
+  slow_build: ["slow_burn", "daily_buildup"],
+  worldbuilding_detail: ["worldbuilding", "detailed", "fantasy"],
+  romance_tension: ["romance", "slow_burn", "emotional"],
+  dark_art: ["dark", "horror", "atmosphere"],
+  sketchy: ["loose", "unique"],
+  shonen_modern: ["shonen_classic", "dynamic", "battle"],
+  indie: ["unique", "cult"],
+  gekiga: ["realistic", "adult", "social"],
+  bl_gl: ["romance", "human_drama"],
+  alt: ["unique", "cult"],
+  overseas: ["global", "webtoon_color"],
+  new: ["viral", "trending_now"],
+  ending: ["completed"],
+  recently_ended: ["completed"],
+  weekly: ["ongoing"],
+  monthly: ["ongoing"],
+  live_action: ["viral"],
+  movie_anime: ["anime_yes"],
+  trending_now: ["viral", "bestseller"],
+  underground: ["cult", "unique"],
+  game: ["virtual", "battle"],
+  happy: ["warm", "wholesome", "emotional_catharsis"],
+  bittersweet: ["melancholic", "emotional", "human_drama"],
+  rewarding: ["emotional_catharsis", "coming_of_age"],
+  open: ["philosophical", "mysterious"],
+  shocking: ["shock", "twist", "dark"],
+  cathartic: ["emotional_catharsis", "revenge"],
+  thought: ["philosophical", "psychological"],
+  uplifting: ["warm", "burning", "underdog_growth"],
+  tragic: ["dark", "melancholic", "emotional"],
+  epic_finale: ["long_arc", "world", "emotional_catharsis"],
+  realistic_end: ["realism", "human_drama"],
+  hopeful: ["warm", "coming_of_age"],
+};
+
+const DEMOGRAPHIC_VALUES = new Set(["shonen", "shojo", "seinen", "josei", "web", "kodomo"]);
+
+const TAG_LABELS_JA = {
+  fantasy: "ファンタジー",
+  battle: "バトル",
+  romance: "恋愛",
+  mystery: "ミステリー",
+  sports: "スポーツ",
+  horror: "ホラー",
+  healing: "癒し",
+  emotional: "感情の深さ",
+  light_comedy: "軽い読み味",
+  dark: "ダークな雰囲気",
+  warm: "温かさ",
+  school: "青春",
+  workplace: "仕事",
+  human_drama: "人間ドラマ",
+  worldbuilding: "世界観",
+  psychological: "心理描写",
+  friendship: "友情",
+  completed: "完結済み",
+};
 
 function checkRateLimit(ip) {
   const today = new Date().toISOString().slice(0, 10);
@@ -156,6 +258,131 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function getAnswerTags(value) {
+  if (!value || value === "any") return [];
+  return ANSWER_TAG_ALIASES[value] || [value];
+}
+
+function getSelectedEntries(answers, questions = []) {
+  const questionById = new Map((questions || []).map((q) => [q.id, q]));
+  return Object.entries(answers || {}).flatMap(([questionId, values]) => {
+    const q = questionById.get(questionId);
+    return (Array.isArray(values) ? values : [values])
+      .filter((value) => value && value !== "any")
+      .map((value) => ({ questionId, value, question: q }));
+  });
+}
+
+function getOptionLabel(entry, language) {
+  const option = entry.question?.options?.find((o) => o.v === entry.value);
+  if (!option) return entry.value;
+  return language === "en" ? option.en || entry.value : option.ja || entry.value;
+}
+
+function buildPreferenceSignals(answers, questions, freeText = "", language = "ja") {
+  const entries = getSelectedEntries(answers, questions);
+  const tagWeights = new Map();
+  const selectedLabels = [];
+  const demographics = new Set();
+  const statusPrefs = new Set();
+  const mediaPrefs = new Set();
+  const freeTextValue = `${freeText || ""}`.toLowerCase();
+  const avoidTags = new Set();
+  const boostTags = new Set();
+
+  entries.forEach((entry) => {
+    const weight = QUESTION_WEIGHTS[entry.questionId] || 2;
+    selectedLabels.push(getOptionLabel(entry, language));
+
+    if (entry.questionId === "demographic" && DEMOGRAPHIC_VALUES.has(entry.value)) {
+      demographics.add(entry.value);
+    }
+    if (entry.questionId === "status") statusPrefs.add(entry.value);
+    if (entry.questionId === "media") mediaPrefs.add(entry.value);
+
+    getAnswerTags(entry.value).forEach((tag) => {
+      tagWeights.set(tag, (tagWeights.get(tag) || 0) + weight);
+    });
+  });
+
+  if (/鬱|胸糞|救われない|しんどい|暗すぎ|重すぎ/.test(freeTextValue)) {
+    ["dark", "brutal", "shock", "melancholic", "horror"].forEach((tag) => avoidTags.add(tag));
+    ["warm", "wholesome", "healing", "emotional_catharsis"].forEach((tag) => boostTags.add(tag));
+  }
+  if (/グロ|残酷|怖い|ホラー/.test(freeTextValue)) {
+    ["horror", "brutal", "shock"].forEach((tag) => avoidTags.add(tag));
+  }
+  if (/完結|終わって/.test(freeTextValue)) statusPrefs.add("completed_only");
+  if (/短め|短い|サクッ|すぐ読/.test(freeTextValue)) statusPrefs.add("short");
+  if (/明る|笑える|楽しい|軽い/.test(freeTextValue)) {
+    ["light_comedy", "warm", "wholesome", "comedy_gag"].forEach((tag) => boostTags.add(tag));
+  }
+  if (/泣ける|感動|余韻/.test(freeTextValue)) {
+    ["emotional", "human_drama", "emotional_catharsis"].forEach((tag) => boostTags.add(tag));
+  }
+
+  boostTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) + 4));
+  avoidTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) - 6));
+
+  return { tagWeights, demographics, statusPrefs, mediaPrefs, selectedLabels };
+}
+
+function scoreManga(manga, signals) {
+  const tags = new Set(manga.tags || []);
+  let score = 0;
+  const matchedTags = [];
+
+  signals.tagWeights.forEach((weight, tag) => {
+    const matched = tags.has(tag) || manga.demographic === tag || manga.status === tag || (tag === "anime_yes" && manga.anime);
+    if (matched) {
+      score += weight;
+      if (weight > 0) matchedTags.push(tag);
+    }
+  });
+
+  if (signals.demographics.size > 0) {
+    score += signals.demographics.has(manga.demographic) ? 8 : -2;
+  }
+
+  if (signals.statusPrefs.has("completed_only")) score += manga.status === "completed" ? 10 : -8;
+  if (signals.statusPrefs.has("ongoing_only")) score += manga.status === "ongoing" ? 8 : -5;
+  if (signals.statusPrefs.has("hiatus_ok") && manga.status === "hiatus") score += 3;
+  if (signals.statusPrefs.has("short")) score += manga.volumes && manga.volumes <= 10 ? 9 : -2;
+  if (signals.statusPrefs.has("medium")) score += manga.volumes && manga.volumes > 10 && manga.volumes <= 30 ? 6 : 0;
+  if (signals.statusPrefs.has("long") || signals.statusPrefs.has("epic") || signals.statusPrefs.has("long_running")) {
+    score += manga.volumes && manga.volumes >= 30 ? 6 : 0;
+  }
+
+  if (signals.mediaPrefs.has("anime_yes")) score += manga.anime ? 6 : -2;
+  if (signals.mediaPrefs.has("anime_no")) score += manga.anime ? -2 : 4;
+  ["award", "global", "viral", "critic", "cult", "bestseller", "legendary"].forEach((tag) => {
+    if (signals.mediaPrefs.has(tag) && tags.has(tag)) score += 5;
+  });
+
+  if (tags.has("award")) score += 1.2;
+  if (tags.has("bestseller") || tags.has("legendary")) score += 1;
+  if (manga.anime) score += 0.5;
+
+  return { score, matchedTags };
+}
+
+function buildFallbackReason(manga, matchedTags, language) {
+  if (language === "en") {
+    const labels = matchedTags.slice(0, 3).join(", ");
+    return labels
+      ? `Selected from the curated database because it strongly matches your answers around ${labels}.`
+      : "Selected from the curated database as a balanced match for your quiz answers.";
+  }
+
+  const labels = matchedTags
+    .slice(0, 3)
+    .map((tag) => TAG_LABELS_JA[tag] || tag)
+    .join("・");
+  return labels
+    ? `${labels}の好みに合いやすいため、厳選DBから選びました。${manga.title_ja}は読み味とテーマの相性がよく、次に読む候補として外しにくい作品です。`
+    : "診断の回答と作品情報のバランスを見て、厳選DBから選びました。迷った時の候補として読み始めやすい作品です。";
+}
+
 function enrichRecommendations(payload) {
   if (!payload?.recommendations) return payload;
 
@@ -178,6 +405,8 @@ async function requestGeminiRecommendation(prompt, apiKey) {
   let lastError;
 
   for (let attempt = 0; attempt < GEMINI_MAX_ATTEMPTS; attempt += 1) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), GEMINI_TIMEOUT_MS);
     try {
       const geminiRes = await fetch(`${GEMINI_URL}`, {
         method: "POST",
@@ -185,6 +414,7 @@ async function requestGeminiRecommendation(prompt, apiKey) {
           "Content-Type": "application/json",
           "x-goog-api-key": apiKey,
         },
+        signal: controller.signal,
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
@@ -211,6 +441,8 @@ async function requestGeminiRecommendation(prompt, apiKey) {
     } catch (err) {
       lastError = err;
       console.error(`Gemini recommendation attempt ${attempt + 1} failed:`, err);
+    } finally {
+      clearTimeout(timeoutId);
     }
 
     if (attempt < GEMINI_MAX_ATTEMPTS - 1) {
@@ -221,29 +453,28 @@ async function requestGeminiRecommendation(prompt, apiKey) {
   throw lastError || new Error("Gemini recommendation failed.");
 }
 
-function buildFallbackResponse(answers, language) {
-  const fallback = buildPreviewResponse(answers, language);
+function buildFallbackResponse(answers, questions, freeText, language) {
+  const fallback = buildPreviewResponse(answers, questions, freeText, language);
   return {
+    fallback: true,
     userProfile: language === "en"
       ? "AI was busy, so these picks were selected from the curated database based on your answers."
       : "AIが混み合っていたため、回答に近い作品を厳選DBから選びました。",
-    recommendations: fallback.recommendations.map((rec) => ({
-      ...rec,
-      reason: language === "en"
-        ? "This title was selected from the curated database because its tags match your quiz answers."
-        : "診断の回答と作品タグの相性が高いため、厳選DBから選びました。",
-    })),
+    recommendations: fallback.recommendations,
   };
 }
 
-function buildPreviewResponse(answers, language) {
-  const selected = Object.values(answers || {}).flat();
+function buildPreviewResponse(answers, questions = [], freeText = "", language = "ja") {
+  const signals = buildPreferenceSignals(answers, questions, freeText, language);
   const scored = CORE_DB.map((m) => {
-    const score = selected.reduce((sum, v) => sum + (m.tags?.includes(v) ? 1 : 0), 0);
-    return { manga: m, score };
-  }).sort((a, b) => b.score - a.score);
+    const result = scoreManga(m, signals);
+    return { manga: m, score: result.score, matchedTags: result.matchedTags };
+  }).sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return (b.manga.anime === true) - (a.manga.anime === true);
+  });
 
-  const picked = scored.slice(0, 20).map(({ manga }, i) => ({
+  const picked = scored.slice(0, 20).map(({ manga, matchedTags }, i) => ({
     rank: i + 1,
     source: "db",
     id: manga.id,
@@ -257,15 +488,14 @@ function buildPreviewResponse(answers, language) {
     anime: manga.anime,
     tags: manga.tags,
     description: language === "en" ? manga.desc_en : manga.desc_ja,
-    reason: language === "en"
-      ? "Preview mode recommendation from the curated database. Add GEMINI_API_KEY to enable AI-written reasons."
-      : "プレビューモードのため、厳選DBから仮推薦しています。GEMINI_API_KEYを設定するとAIによる理由生成が有効になります。",
+    reason: buildFallbackReason(manga, matchedTags, language),
   }));
 
   return {
+    preview: true,
     userProfile: language === "en"
-      ? "Preview mode is active because GEMINI_API_KEY is not set."
-      : "GEMINI_API_KEY未設定のため、現在はプレビューモードで表示しています。",
+      ? "These picks were selected from the curated database by matching your answers to genres, tone, length, demographic, and media preferences."
+      : "ジャンル、読み味、巻数、対象読者、メディア化の希望をもとに、厳選DBから相性のよい作品を選びました。",
     recommendations: picked,
   };
 }
@@ -295,7 +525,7 @@ export async function POST(req) {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       if (process.env.NODE_ENV !== "production") {
-        return NextResponse.json(buildPreviewResponse(answers, language || "ja"));
+        return NextResponse.json(buildPreviewResponse(answers, questions, freeText, language || "ja"));
       }
       return NextResponse.json({ error: "Server misconfiguration: missing API key." }, { status: 500 });
     }
@@ -307,7 +537,7 @@ export async function POST(req) {
       return NextResponse.json(parsed);
     } catch (aiErr) {
       console.error("Gemini failed after retries. Returning fallback recommendations:", aiErr);
-      return NextResponse.json(buildFallbackResponse(answers, language || "ja"));
+      return NextResponse.json(buildFallbackResponse(answers, questions, freeText, language || "ja"));
     }
   } catch (err) {
     console.error("Recommend route error:", err);

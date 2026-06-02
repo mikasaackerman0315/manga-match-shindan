@@ -51,9 +51,10 @@ export function GET(req) {
   if (store === "amazon" && intent === "paper") {
     destination.searchParams.set("i", "stripbooks");
   }
-  destination.searchParams.set("utm_source", "manga_oracle");
+  destination.searchParams.set("utm_source", "manga_match_shindan");
   destination.searchParams.set("utm_medium", "affiliate_button");
   destination.searchParams.set("utm_campaign", "recommendation_results");
+  destination.searchParams.set("utm_content", `${store}_${intent || "search"}`);
 
   if (store === "rakuten") {
     const affiliateDestination = new URL(process.env.RAKUTEN_AFFILIATE_BASE || DEFAULT_RAKUTEN_AFFILIATE_BASE);

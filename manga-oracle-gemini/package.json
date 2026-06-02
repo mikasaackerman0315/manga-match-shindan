@@ -8,6 +8,9 @@
     "build": "next build",
     "start": "next start",
     "enrich:covers": "node scripts/enrichCovers.mjs",
+    "check:db": "node scripts/checkMangaDb.mjs",
+    "check:db:strict": "node scripts/checkMangaDb.mjs --strict",
+    "check:all": "npm run check:db && npm run build",
     "lint": "next lint"
   },
   "dependencies": {

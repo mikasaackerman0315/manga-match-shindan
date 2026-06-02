@@ -1,4 +1,5 @@
 import StoreLinks from "./StoreLinks";
+import TrackedArticleLink from "./TrackedArticleLink";
 
 const siteUrl = "https://www.mangamatchquiz.com";
 const relatedArticleLinks = [
@@ -168,10 +169,10 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path, guideTitl
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {relatedLinks.map((link) => (
-                <a key={link.href} href={link.href} className="block p-4 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.72)" }}>
+                <TrackedArticleLink key={link.href} href={link.href} label={link.label} sourcePath={pagePath} className="block p-4 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.72)" }}>
                   <h3 className="text-base font-semibold mb-2">{link.label}</h3>
                   <p className="text-sm leading-7" style={{ color: "#555" }}>{link.description}</p>
-                </a>
+                </TrackedArticleLink>
               ))}
             </div>
           </section>

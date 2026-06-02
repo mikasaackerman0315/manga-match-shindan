@@ -282,7 +282,7 @@ export default function App() {
       if (value === "any") {
         nextValues = ["any"];
         setAnswers({ ...answers, [qId]: nextValues });
-        trackEvent("diagnosis_answer", { diagnosis_type: diagnosisType, question_id: qId, answer_value: nextValues.join(",") });
+        trackEvent("diagnosis_answer", { diagnosis_type: diagnosisType, question_id: qId, question_index: currentQ + 1, answer_value: nextValues.join(",") });
         return;
       }
       const filtered = current.filter((v) => v !== "any");
@@ -291,7 +291,7 @@ export default function App() {
       else nextValues = filtered;
       setAnswers({ ...answers, [qId]: nextValues });
     }
-    trackEvent("diagnosis_answer", { diagnosis_type: diagnosisType, question_id: qId, answer_value: nextValues.join(",") });
+    trackEvent("diagnosis_answer", { diagnosis_type: diagnosisType, question_id: qId, question_index: currentQ + 1, answer_value: nextValues.join(",") });
   };
 
   const canProceed = () => {
@@ -313,6 +313,7 @@ export default function App() {
   };
 
   const submitQuiz = async () => {
+    const diagnosisStartedAt = Date.now();
     setScreen("loading");
     setLoadingStep(0);
     setError(null);
@@ -331,6 +332,9 @@ export default function App() {
         diagnosis_type: diagnosisType,
         result_count: resultCount,
         has_free_text: freeText.trim().length > 0,
+        fallback_used: Boolean(data.fallback),
+        preview_mode: Boolean(data.preview),
+        duration_ms: Date.now() - diagnosisStartedAt,
       });
       setScreen("results");
     } catch (err) {
@@ -338,6 +342,7 @@ export default function App() {
       trackEvent("diagnosis_error", {
         diagnosis_type: diagnosisType,
         error_type: getDiagnosisErrorType(err),
+        duration_ms: Date.now() - diagnosisStartedAt,
       });
       setError(t.error + (err.message ? ` (${err.message})` : ""));
       setScreen("freetext");
