@@ -258,6 +258,13 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function normalizeMangaTitle(title) {
+  return `${title || ""}`
+    .toLowerCase()
+    .replace(/[!！?？:：・.\s　\-ー〜~]/g, "")
+    .trim();
+}
+
 function getAnswerTags(value) {
   if (!value || value === "any") return [];
   return ANSWER_TAG_ALIASES[value] || [value];
@@ -385,6 +392,7 @@ function buildFallbackReason(manga, matchedTags, language) {
 
 function enrichRecommendations(payload) {
   if (!payload?.recommendations) return payload;
+  const seenTitles = new Set();
 
   return {
     ...payload,
@@ -397,7 +405,13 @@ function enrichRecommendations(payload) {
         tags: dbEntry.tags,
         demographic: rec.demographic || dbEntry.demographic,
       };
-    }),
+    }).filter((rec) => {
+      const key = normalizeMangaTitle(rec.title_ja || rec.title_en || rec.id);
+      if (!key) return true;
+      if (seenTitles.has(key)) return false;
+      seenTitles.add(key);
+      return true;
+    }).map((rec, index) => ({ ...rec, rank: index + 1 })),
   };
 }
 
@@ -474,22 +488,30 @@ function buildPreviewResponse(answers, questions = [], freeText = "", language =
     return (b.manga.anime === true) - (a.manga.anime === true);
   });
 
-  const picked = scored.slice(0, 20).map(({ manga, matchedTags }, i) => ({
-    rank: i + 1,
-    source: "db",
-    id: manga.id,
-    title_ja: manga.title_ja,
-    title_en: manga.title_en,
-    author: manga.author,
-    year: manga.year,
-    volumes: manga.volumes,
-    status: manga.status,
-    demographic: manga.demographic,
-    anime: manga.anime,
-    tags: manga.tags,
-    description: language === "en" ? manga.desc_en : manga.desc_ja,
-    reason: buildFallbackReason(manga, matchedTags, language),
-  }));
+  const seenTitles = new Set();
+  const picked = [];
+  for (const { manga, matchedTags } of scored) {
+    const titleKey = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
+    if (titleKey && seenTitles.has(titleKey)) continue;
+    if (titleKey) seenTitles.add(titleKey);
+    picked.push({
+      rank: picked.length + 1,
+      source: "db",
+      id: manga.id,
+      title_ja: manga.title_ja,
+      title_en: manga.title_en,
+      author: manga.author,
+      year: manga.year,
+      volumes: manga.volumes,
+      status: manga.status,
+      demographic: manga.demographic,
+      anime: manga.anime,
+      tags: manga.tags,
+      description: language === "en" ? manga.desc_en : manga.desc_ja,
+      reason: buildFallbackReason(manga, matchedTags, language),
+    });
+    if (picked.length >= 20) break;
+  }
 
   return {
     preview: true,
