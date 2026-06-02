@@ -31,11 +31,12 @@ function JsonLd({ data }) {
 }
 
 function stripRecommendationSuffix(title) {
-  return title.replace(/漫画おすすめ(ランキング|10選)?$/, "").replace(/おすすめ(ランキング|10選)?$/, "");
+  return title.replace(/漫画おすすめ(ランキング|10選)?$/, "漫画").replace(/おすすめ(ランキング|10選)?$/, "");
 }
 
 export function ArticlePage({ eyebrow, title, lead, items, slug, path, guideTitle = "選び方のポイント", guideItems = [] }) {
   const displayTitle = stripRecommendationSuffix(title);
+  const recommendationTitle = displayTitle.endsWith("漫画") ? `${displayTitle}おすすめランキング` : `${displayTitle}漫画おすすめランキング`;
   const pagePath = slug ? `/themes/${slug}` : path;
   const pageUrl = pagePath ? `${siteUrl}${pagePath}` : siteUrl;
   const pageType = slug ? "theme_article" : "seo_article";
@@ -47,7 +48,7 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path, guideTitl
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: `${displayTitle}漫画おすすめランキング`,
+    name: recommendationTitle,
     description: lead,
     url: pageUrl,
     numberOfItems: items.length,
@@ -79,7 +80,7 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path, guideTitl
     mainEntity: [
       {
         "@type": "Question",
-        name: `${displayTitle}漫画はどう選べばいいですか？`,
+        name: `${displayTitle}はどう選べばいいですか？`,
         acceptedAnswer: {
           "@type": "Answer",
           text: "まずは読みたい気分、巻数、完結済みか連載中か、重い話が平気かを決めると選びやすくなります。迷う場合は診断で好みを絞り込むのがおすすめです。",

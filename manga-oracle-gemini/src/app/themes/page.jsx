@@ -9,6 +9,7 @@ const keywordArticles = [
   { href: "/battle-manga", label: "バトル漫画おすすめ", description: "王道少年バトル、異能バトル、ダークアクションを紹介。" },
   { href: "/mystery-manga", label: "ミステリー漫画おすすめ", description: "推理、心理戦、サスペンスを考えながら読みたい人向け。" },
   { href: "/emotional-manga", label: "泣ける漫画おすすめ", description: "感動したい時に読みたい漫画を紹介。" },
+  { href: "/fantasy-manga", label: "ファンタジー漫画おすすめ", description: "魔法、冒険、ダンジョンなど世界観に浸れる漫画を紹介。" },
   { href: "/adult-manga", label: "大人向け漫画おすすめ", description: "人生や仕事に響く漫画を読みたい人向け。" },
   { href: "/beginner-manga", label: "初心者におすすめの漫画", description: "何から読めばいいか迷っている人向け。" },
   { href: "/binge-read-manga", label: "一気読みしたい漫画おすすめ", description: "続きが気になる漫画をまとめて紹介。" },
