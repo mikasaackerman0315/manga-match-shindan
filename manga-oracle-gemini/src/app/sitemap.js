@@ -3,6 +3,9 @@ import { THEME_GUIDES } from "./themeData";
 const siteUrl = "https://www.mangamatchquiz.com";
 const articlePaths = [
   "/completed-manga",
+  "/new-manga-2020s",
+  "/battle-manga",
+  "/mystery-manga",
   "/emotional-manga",
   "/fantasy-manga",
   "/adult-manga",
@@ -16,6 +19,8 @@ const articlePaths = [
   "/horror-manga",
   "/sports-manga",
   "/working-adult-manga",
+  "/workplace-manga",
+  "/healing-manga",
   "/middle-school-manga",
   "/high-school-manga",
 ];

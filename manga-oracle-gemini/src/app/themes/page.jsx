@@ -1,9 +1,13 @@
 import { THEME_GUIDES } from "../themeData";
+import TrackedArticleLink from "../TrackedArticleLink";
 import TrackedThemeLink from "../TrackedThemeLink";
 
 const siteUrl = "https://www.mangamatchquiz.com";
 const keywordArticles = [
   { href: "/completed-manga", label: "完結済み漫画おすすめ", description: "最後まで読み切れる名作を探したい人向け。" },
+  { href: "/new-manga-2020s", label: "2020年代漫画おすすめ", description: "今から追いやすい新しめの漫画を探したい人向け。" },
+  { href: "/battle-manga", label: "バトル漫画おすすめ", description: "王道少年バトル、異能バトル、ダークアクションを紹介。" },
+  { href: "/mystery-manga", label: "ミステリー漫画おすすめ", description: "推理、心理戦、サスペンスを考えながら読みたい人向け。" },
   { href: "/emotional-manga", label: "泣ける漫画おすすめ", description: "感動したい時に読みたい漫画を紹介。" },
   { href: "/adult-manga", label: "大人向け漫画おすすめ", description: "人生や仕事に響く漫画を読みたい人向け。" },
   { href: "/beginner-manga", label: "初心者におすすめの漫画", description: "何から読めばいいか迷っている人向け。" },
@@ -16,6 +20,8 @@ const keywordArticles = [
   { href: "/horror-manga", label: "ホラー漫画おすすめ", description: "怖さ、緊張感、不穏な余韻を楽しみたい人向け。" },
   { href: "/sports-manga", label: "スポーツ漫画おすすめ", description: "努力、才能、チーム、勝負の熱さが刺さるスポーツ漫画。" },
   { href: "/working-adult-manga", label: "社会人におすすめ漫画", description: "仕事終わりにも読みやすい、大人向けの漫画を紹介。" },
+  { href: "/workplace-manga", label: "仕事漫画おすすめ", description: "出版、警察、広告、接客など働く人に刺さる漫画。" },
+  { href: "/healing-manga", label: "癒し漫画おすすめ", description: "仕事終わりや寝る前にも読みやすい漫画を紹介。" },
   { href: "/middle-school-manga", label: "中学生におすすめ漫画", description: "友情、成長、冒険など読み始めやすい漫画をまとめました。" },
   { href: "/high-school-manga", label: "高校生におすすめ漫画", description: "青春、進路、恋愛、熱い挑戦を感じられる漫画を紹介。" },
 ];
@@ -79,11 +85,11 @@ export default function ThemesPage() {
           <div className="text-xs tracking-[0.35em] uppercase mb-5" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>Keyword Guides</div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {keywordArticles.map((article) => (
-              <a key={article.href} href={article.href} className="group p-5 transition-all hover:translate-x-1" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.45)" }}>
+              <TrackedArticleLink key={article.href} href={article.href} label={article.label} sourcePath="/themes" className="group p-5 transition-all hover:translate-x-1" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.45)" }}>
                 <h2 className="text-xl font-semibold mb-2" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{article.label}</h2>
                 <p className="text-sm leading-7" style={{ color: "#555" }}>{article.description}</p>
                 <div className="mt-4 text-xs tracking-[0.18em] uppercase group-hover:text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>Read →</div>
-              </a>
+              </TrackedArticleLink>
             ))}
           </div>
         </div>

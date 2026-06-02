@@ -4,9 +4,12 @@ import TrackedArticleLink from "./TrackedArticleLink";
 const siteUrl = "https://www.mangamatchquiz.com";
 const relatedArticleLinks = [
   { href: "/trending-manga", label: "今話題の漫画", description: "SNS、漫画アプリ、アニメ化で読まれている作品を見る" },
+  { href: "/new-manga-2020s", label: "2020年代漫画", description: "今から追いやすい新しめの漫画を見る" },
   { href: "/beginner-manga", label: "初心者向け漫画", description: "久しぶりに漫画を読む人でも入りやすい作品を見る" },
   { href: "/completed-manga", label: "完結済み漫画", description: "最後まで一気に読める名作を探す" },
   { href: "/binge-read-manga", label: "一気読み漫画", description: "続きが気になって止まらない作品を探す" },
+  { href: "/battle-manga", label: "バトル漫画", description: "王道少年バトルや異能バトルを探す" },
+  { href: "/mystery-manga", label: "ミステリー漫画", description: "推理、心理戦、サスペンス漫画を見る" },
   { href: "/emotional-manga", label: "泣ける漫画", description: "感動や余韻が強い作品を探す" },
   { href: "/fantasy-manga", label: "ファンタジー漫画", description: "世界観に浸れる冒険や異世界作品を見る" },
   { href: "/romance-manga", label: "恋愛漫画", description: "青春、胸きゅん、大人の恋を探す" },
@@ -16,6 +19,8 @@ const relatedArticleLinks = [
   { href: "/isekai-manga", label: "異世界漫画", description: "転生、冒険、成り上がり系の作品を見る" },
   { href: "/adult-manga", label: "大人向け漫画", description: "仕事、人生、人間関係に刺さる作品を見る" },
   { href: "/working-adult-manga", label: "社会人向け漫画", description: "働く日々に響く漫画を探す" },
+  { href: "/workplace-manga", label: "仕事漫画", description: "職場、専門職、働く人に刺さる漫画を見る" },
+  { href: "/healing-manga", label: "癒し漫画", description: "仕事終わりや寝る前に読みやすい漫画を見る" },
   { href: "/middle-school-manga", label: "中学生向け漫画", description: "読みやすさと熱さのバランスがいい作品を見る" },
   { href: "/high-school-manga", label: "高校生向け漫画", description: "青春、進路、部活、恋愛に寄り添う作品を見る" },
   { href: "/lighthearted-manga", label: "鬱展開が少ない漫画", description: "気軽に読めて重すぎない作品を探す" },
