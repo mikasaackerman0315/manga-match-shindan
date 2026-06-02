@@ -217,6 +217,7 @@ Return ONLY a valid JSON object (no markdown fences, no preamble):
 - ${langInstruction}
 - "source" must be "db" and include the id from DB.
 - Rank by best fit (rank 1 = strongest).
+- Do NOT recommend the same manga title twice, even if duplicate or variant entries exist in the database.
 - Top 3: enthusiastic, detailed reasons. Items 4-10: concise. Items 11-20: brief.
 - ALWAYS reference the user's specific answers in your reasons.
 - If the user provided a free-text request, treat it as top priority: respect dislikes (exclude matching works) and lean into stated likes.

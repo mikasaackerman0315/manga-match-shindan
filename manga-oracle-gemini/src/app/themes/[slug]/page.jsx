@@ -15,13 +15,13 @@ export function generateMetadata({ params }) {
   const description = `${theme.lead} ${theme.items.slice(0, 3).map((item) => item.title).join("、")}など10作品をランキング形式で紹介します。`;
 
   return {
-    title: `${cleanTitle}漫画おすすめ10選 | マンガマッチ診断`,
+    title: `${cleanTitle}テーマ別おすすめ10選 | マンガマッチ診断`,
     description,
     alternates: {
       canonical: `/themes/${theme.slug}`,
     },
     openGraph: {
-      title: `${cleanTitle}漫画おすすめ10選 | マンガマッチ診断`,
+      title: `${cleanTitle}テーマ別おすすめ10選 | マンガマッチ診断`,
       description,
       url: `${siteUrl}/themes/${theme.slug}`,
       siteName: "マンガマッチ診断",
@@ -30,7 +30,7 @@ export function generateMetadata({ params }) {
     },
     twitter: {
       card: "summary",
-      title: `${cleanTitle}漫画おすすめ10選 | マンガマッチ診断`,
+      title: `${cleanTitle}テーマ別おすすめ10選 | マンガマッチ診断`,
       description,
     },
   };
