@@ -4,11 +4,11 @@
 
 ## 全体
 
-- 合計作品数: 1500
-- ユニークID数: 1500
+- 合計作品数: 1800
+- ユニークID数: 1800
 - 重複IDグループ: 0
 - タイトル重複候補グループ: 106
-- 巻数未確認作品: 371
+- 巻数未確認作品: 540
 
 ## ファイル別件数
 
@@ -16,21 +16,22 @@
 - src/data/coreDB_extra.js: 193
 - src/data/coreDB_extra2.js: 600
 - src/data/coreDB_extra3.js: 500
+- src/data/coreDB_extra4.js: 300
 
 ## デモグラフィック別件数
 
-- shonen: 353
-- seinen: 684
-- shojo: 190
-- josei: 55
+- shonen: 501
+- seinen: 818
+- shojo: 204
+- josei: 59
 - web: 215
 - kodomo: 3
 
 ## ステータス別件数
 
-- ongoing: 417
-- completed: 1060
-- hiatus: 23
+- ongoing: 587
+- completed: 1188
+- hiatus: 25
 
 ## タイトル重複候補
 
@@ -74,15 +75,16 @@
 - src/data/coreDB_extra.js: 8
 - src/data/coreDB_extra2.js: 194
 - src/data/coreDB_extra3.js: 161
+- src/data/coreDB_extra4.js: 169
 - src/data/coreDB.js: 8
 
 デモグラフィック別:
 
 - web: 151
-- seinen: 148
-- josei: 8
-- shonen: 50
-- shojo: 14
+- seinen: 238
+- josei: 10
+- shonen: 121
+- shojo: 20
 
 ## 出力ファイル
 

@@ -9,6 +9,7 @@ const dbFiles = [
   "src/data/coreDB_extra.js",
   "src/data/coreDB_extra2.js",
   "src/data/coreDB_extra3.js",
+  "src/data/coreDB_extra4.js",
 ];
 
 const allowedStatuses = new Set(["completed", "ongoing", "hiatus"]);

@@ -3,7 +3,7 @@ import path from "node:path";
 
 const rootDir = process.cwd();
 const dataDir = path.join(rootDir, "src", "data");
-const dbFiles = ["coreDB.js", "coreDB_extra.js", "coreDB_extra2.js", "coreDB_extra3.js"];
+const dbFiles = ["coreDB.js", "coreDB_extra.js", "coreDB_extra2.js", "coreDB_extra3.js", "coreDB_extra4.js"];
 const outputPath = path.join(dataDir, "coverOverrides.generated.js");
 const reviewCsvPath = path.join(rootDir, "cover-review.csv");
 const resultJsonPath = path.join(rootDir, "cover-results.json");

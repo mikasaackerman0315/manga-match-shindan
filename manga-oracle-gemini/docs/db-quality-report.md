@@ -4,19 +4,20 @@
 
 ## 現在の件数
 
-- 合計: 1500作品
+- 合計: 1800作品
 - `src/data/coreDB.js`: 207作品
 - `src/data/coreDB_extra.js`: 193作品
 - `src/data/coreDB_extra2.js`: 600作品
 - `src/data/coreDB_extra3.js`: 500作品
-- ユニークID: 1500
+- `src/data/coreDB_extra4.js`: 300作品
+- ユニークID: 1800
 
 ## 検出されている課題
 
 `npm run check:db` の結果:
 
 - 重複ID: 0件
-- 巻数未確認 `0`: 371件
+- 巻数未確認 `0`: 540件
 - タイトル重複候補: 106件
 
 ## 優先順位

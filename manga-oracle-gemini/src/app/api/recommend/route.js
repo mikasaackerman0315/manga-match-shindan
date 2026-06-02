@@ -3,7 +3,7 @@
 // ============================================================
 // 役割:
 //   - フロントから「12問の回答 + 自由記述 + 言語」を受け取る
-//   - 1500作品DBを使って Gemini 2.5 Flash に推薦させる
+//   - 1800作品DBを使って Gemini 2.5 Flash に推薦させる
 //   - 結果のJSONをパースしてフロントに返す
 // セキュリティ: APIキーはサーバー側のみ（NEXT_PUBLIC_ を付けない）
 // ============================================================
@@ -13,9 +13,10 @@ import { CORE_DB as CORE_DB_BASE } from "@/data/coreDB";
 import { CORE_DB_EXTRA } from "@/data/coreDB_extra";
 import { CORE_DB_EXTRA2 } from "@/data/coreDB_extra2";
 import { CORE_DB_EXTRA3 } from "@/data/coreDB_extra3";
+import { CORE_DB_EXTRA4 } from "@/data/coreDB_extra4";
 
-// 既存207作品 + 追加193作品 + 追加600作品 + 追加500作品 = 計1500作品
-const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3];
+// 既存207作品 + 追加193作品 + 追加600作品 + 追加500作品 + 追加300作品 = 計1800作品
+const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3, ...CORE_DB_EXTRA4];
 
 // Gemini APIのエンドポイント（v1beta / generateContent）
 const GEMINI_MODEL = "gemini-2.5-flash";
@@ -181,7 +182,7 @@ function buildPrompt(answers, questions, freeText, language) {
 
 Recommend only from this source:
 
-## Curated Database (1500 hand-picked titles)
+## Curated Database (1800 hand-picked titles)
 These are pre-vetted works spanning all genres & eras. Use them as RELIABLE quality picks.
 
 \`\`\`json
@@ -194,7 +195,7 @@ ${freeTextSection}
 ## Your Task
 
 1. Analyze the user's preference profile.
-2. Review the curated DB carefully — with 1500 titles, there are likely many strong matches.
+2. Review the curated DB carefully — with 1800 titles, there are likely many strong matches.
 3. Choose ONE ranked list of 20 manga from the curated database.
 4. Mark each recommendation's source as "db".
 

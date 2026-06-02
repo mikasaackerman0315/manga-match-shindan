@@ -3,10 +3,11 @@ import { CORE_DB as CORE_DB_BASE } from "@/data/coreDB";
 import { CORE_DB_EXTRA } from "@/data/coreDB_extra";
 import { CORE_DB_EXTRA2 } from "@/data/coreDB_extra2";
 import { CORE_DB_EXTRA3 } from "@/data/coreDB_extra3";
+import { CORE_DB_EXTRA4 } from "@/data/coreDB_extra4";
 import { COVER_OVERRIDES } from "@/data/coverOverrides.generated";
 
 const RAKUTEN_BOOKS_ENDPOINT = "https://openapi.rakuten.co.jp/services/api/BooksBook/Search/20170404";
-const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3];
+const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3, ...CORE_DB_EXTRA4];
 const TITLE_ALIASES = {
   "3月のライオン": ["三月のライオン", "3月のライオン 1"],
   "20世紀少年": ["20世紀少年 1"],
