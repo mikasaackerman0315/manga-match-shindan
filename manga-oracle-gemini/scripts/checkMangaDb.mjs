@@ -57,7 +57,11 @@ function validateEntry(entry, sourceFile, index) {
 
   if (!/^[a-z0-9_]+$/.test(entry.id || "")) issues.push(`${location}: invalid id "${entry.id}"`);
   if (!Number.isInteger(entry.year) || entry.year < 1900 || entry.year > 2030) issues.push(`${location}: suspicious year "${entry.year}"`);
-  if (!Number.isInteger(entry.volumes) || entry.volumes < 1 || entry.volumes > 250) issues.push(`${location}: suspicious volumes "${entry.volumes}"`);
+  if (!Number.isInteger(entry.volumes) || entry.volumes < 0 || entry.volumes > 250) {
+    issues.push(`${location}: suspicious volumes "${entry.volumes}"`);
+  } else if (entry.volumes === 0) {
+    issues.push(`${location}: unknown volumes "${entry.volumes}"`);
+  }
   if (!allowedStatuses.has(entry.status)) issues.push(`${location}: invalid status "${entry.status}"`);
   if (!allowedDemographics.has(entry.demographic)) issues.push(`${location}: invalid demographic "${entry.demographic}"`);
   if (typeof entry.anime !== "boolean") issues.push(`${location}: anime must be boolean`);
@@ -118,6 +122,7 @@ if (issues.length > 0) {
     const key = issue.includes("duplicate id") ? "duplicate_id"
       : issue.includes("possible duplicate title") ? "possible_duplicate_title"
       : issue.includes("suspicious volumes") ? "suspicious_volumes"
+      : issue.includes("unknown volumes") ? "unknown_volumes"
       : issue.includes("unknown tag") ? "unknown_tag"
       : issue.includes("missing field") ? "missing_field"
       : "other";
