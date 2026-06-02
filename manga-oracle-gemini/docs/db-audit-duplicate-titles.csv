@@ -1,0 +1,215 @@
+priority,title_key,match_count,id,title_ja,title_en,author,year,volumes,status,demographic,source_file,source_index
+high,プルトウ,3,pluto_x,プルートウ,Pluto,浦沢直樹/手塚治虫,2003,8,completed,seinen,src/data/coreDB_extra.js,187
+high,プルトウ,3,pluto,プルートウ,Pluto,浦沢直樹/手塚治虫,2003,8,completed,seinen,src/data/coreDB.js,88
+high,プルトウ,3,pluto_2,プルートウ,Pluto (Urasawa),浦沢直樹/手塚治虫,2003,8,completed,seinen,src/data/coreDB.js,202
+high,るろうに剣心,2,rurouni_kenshin,るろうに剣心,Rurouni Kenshin,和月伸宏,1994,28,completed,shonen,src/data/coreDB.js,15
+high,るろうに剣心,2,rurouni_kenshin2,るろうに剣心,Rurouni Kenshin,和月伸宏,1994,28,completed,shonen,src/data/coreDB.js,94
+high,サムライ8八丸伝,2,samurai_8_extra,サムライ8 八丸伝,Samurai 8,岸本斉史/大久保彰,2019,5,completed,shonen,src/data/coreDB_extra.js,19
+high,サムライ8八丸伝,2,samurai_8,サムライ8 八丸伝,Samurai 8,岸本斉史/大久保彰,2019,5,completed,shonen,src/data/coreDB.js,16
+high,青の祓魔師,2,blue_exorcist_x,青の祓魔師,Blue Exorcist,加藤和恵,2009,31,ongoing,shonen,src/data/coreDB_extra.js,20
+high,青の祓魔師,2,blue_exorcist,青の祓魔師,Blue Exorcist,加藤和恵,2009,31,ongoing,shonen,src/data/coreDB.js,24
+high,ソウルイタ,2,soul_eater_x,ソウルイーター,Soul Eater,大久保篤,2003,25,completed,shonen,src/data/coreDB_extra.js,21
+high,ソウルイタ,2,soul_eater,ソウルイーター,Soul Eater,大久保篤,2003,25,completed,shonen,src/data/coreDB.js,25
+high,ブルロック,2,blue_lock,ブルーロック,Blue Lock,金城宗幸/ノ村優介,2018,30,ongoing,shonen,src/data/coreDB.js,26
+high,ブルロック,2,blue_lock2,ブルーロック,Blue Lock,金城宗幸/ノ村優介,2018,30,ongoing,shonen,src/data/coreDB.js,109
+high,キングダム,2,kingdom_x,キングダム,Kingdom,原泰久,2006,72,ongoing,seinen,src/data/coreDB_extra.js,22
+high,キングダム,2,kingdom,キングダム,Kingdom,原泰久,2006,72,ongoing,seinen,src/data/coreDB.js,27
+high,シグルイ,2,samurai_x,シグルイ,Shigurui,山口貴由/南條範夫,2003,15,completed,seinen,src/data/coreDB.js,28
+high,シグルイ,2,shigurui,シグルイ,Shigurui,山口貴由/南條範夫,2003,15,completed,seinen,src/data/coreDB.js,97
+high,魔法使いの嫁,2,magus_no_yome,魔法使いの嫁,The Ancient Magus' Bride,ヤマザキコレ,2013,22,ongoing,shonen,src/data/coreDB_extra.js,25
+high,魔法使いの嫁,2,magus_bride,魔法使いの嫁,The Ancient Magus' Bride,ヤマザキコレ,2013,22,ongoing,shonen,src/data/coreDB.js,30
+high,東京喰種,2,tokyo_ghoul_x,東京喰種,Tokyo Ghoul,石田スイ,2011,14,completed,seinen,src/data/coreDB_extra.js,191
+high,東京喰種,2,tokyo_ghoul,東京喰種,Tokyo Ghoul,石田スイ,2011,14,completed,seinen,src/data/coreDB.js,31
+high,ベルセルク,2,berserk_x,ベルセルク,Berserk,三浦建太郎,1989,42,hiatus,seinen,src/data/coreDB_extra.js,190
+high,ベルセルク,2,berserk,ベルセルク,Berserk,三浦建太郎,1989,42,hiatus,seinen,src/data/coreDB.js,32
+high,monster,2,monster_x,MONSTER,Monster,浦沢直樹,1994,18,completed,seinen,src/data/coreDB_extra.js,186
+high,monster,2,monster,MONSTER,Monster,浦沢直樹,1994,18,completed,seinen,src/data/coreDB.js,36
+high,deathnote,2,death_note_x,DEATH NOTE,Death Note,大場つぐみ/小畑健,2003,12,completed,shonen,src/data/coreDB_extra.js,189
+high,deathnote,2,deathnote,DEATH NOTE,Death Note,大場つぐみ/小畑健,2003,12,completed,shonen,src/data/coreDB.js,39
+high,約束のネバランド,2,promised_neverland_x,約束のネバーランド,The Promised Neverland,白井カイウ/出水ぽすか,2016,20,completed,shonen,src/data/coreDB_extra.js,185
+high,約束のネバランド,2,promised_neverland,約束のネバーランド,The Promised Neverland,白井カイウ/出水ぽすか,2016,20,completed,shonen,src/data/coreDB.js,42
+high,btooom,2,btooom_x,BTOOOM!,BTOOOM!,井上淳哉,2009,27,completed,seinen,src/data/coreDB_extra.js,37
+high,btooom,2,btooom,BTOOOM!,BTOOOM!,井上淳哉,2009,27,completed,seinen,src/data/coreDB.js,43
+high,漂流教室,2,drifting_classroom_x,漂流教室,The Drifting Classroom,楳図かずお,1972,11,completed,shonen,src/data/coreDB_extra.js,39
+high,漂流教室,2,drifting_classroom,漂流教室,The Drifting Classroom,楳図かずお,1972,11,completed,shonen,src/data/coreDB.js,48
+high,バトルロワイアル,2,battle_royale_x,バトル・ロワイアル,Battle Royale,高見広春/田口雅之,2000,15,completed,seinen,src/data/coreDB_extra.js,184
+high,バトルロワイアル,2,battle_royale,バトル・ロワイアル,Battle Royale,高見広春/田口雅之,2000,15,completed,seinen,src/data/coreDB.js,50
+high,亜人,2,ajin_x,亜人,Ajin: Demi-Human,桜井画門,2012,17,completed,seinen,src/data/coreDB_extra.js,38
+high,亜人,2,ajin,亜人,Ajin: Demi-Human,桜井画門,2012,17,completed,seinen,src/data/coreDB.js,51
+high,biomega,2,biomega_x,BIOMEGA,Biomega,弐瓶勉,2004,6,completed,seinen,src/data/coreDB_extra.js,77
+high,biomega,2,biomega,BIOMEGA,Biomega,弐瓶勉,2004,6,completed,seinen,src/data/coreDB.js,52
+high,シドニアの騎士,2,sgz,シドニアの騎士,Knights of Sidonia,弐瓶勉,2009,15,completed,seinen,src/data/coreDB.js,54
+high,シドニアの騎士,2,knights_sidonia_main,シドニアの騎士,Knights of Sidonia,弐瓶勉,2009,15,completed,seinen,src/data/coreDB.js,90
+high,盾の勇者の成り上がり,2,tate_no_yusha,盾の勇者の成り上がり,Rising of the Shield Hero,アネコユサギ/藍屋球,2014,22,ongoing,seinen,src/data/coreDB_extra.js,55
+high,盾の勇者の成り上がり,2,tate_no_yuusha,盾の勇者の成り上がり,Rising of the Shield Hero,アネコユサギ/藍屋球,2014,22,ongoing,seinen,src/data/coreDB.js,60
+high,この素晴らしい世界に祝福を,2,konosuba_x,この素晴らしい世界に祝福を!,KonoSuba,暁なつめ/渡真仁,2014,12,ongoing,seinen,src/data/coreDB_extra.js,50
+high,この素晴らしい世界に祝福を,2,konosuba,この素晴らしい世界に祝福を!,KonoSuba,暁なつめ/渡真仁,2014,12,ongoing,seinen,src/data/coreDB.js,61
+high,reゼロから始める異世界生活,2,rezero_x,Re:ゼロから始める異世界生活,Re:Zero,長月達平,2014,33,ongoing,seinen,src/data/coreDB_extra.js,51
+high,reゼロから始める異世界生活,2,re_zero,Re:ゼロから始める異世界生活,Re:Zero,長月達平,2014,33,ongoing,seinen,src/data/coreDB.js,62
+high,オバロド,2,overlord_x,オーバーロード,Overlord,丸山くがね/so-bin,2010,18,ongoing,seinen,src/data/coreDB_extra.js,52
+high,オバロド,2,overlord,オーバーロード,Overlord,丸山くがね/so-bin,2010,18,ongoing,seinen,src/data/coreDB.js,63
+high,ログホライズン,2,log_horizon_x,ログ・ホライズン,Log Horizon,橙乃ままれ,2010,12,ongoing,seinen,src/data/coreDB_extra.js,54
+high,ログホライズン,2,log_horizon,ログ・ホライズン,Log Horizon,橙乃ままれ,2010,12,ongoing,seinen,src/data/coreDB.js,68
+high,狼と香辛料,2,spice_wolf_x,狼と香辛料,Spice and Wolf,支倉凍砂/小梅けいと,2008,16,ongoing,seinen,src/data/coreDB_extra.js,53
+high,狼と香辛料,2,spice_wolf,狼と香辛料,Spice and Wolf,支倉凍砂/小梅けいと,2008,16,ongoing,seinen,src/data/coreDB.js,69
+high,trigun,2,trigun_x,TRIGUN,Trigun,内藤泰弘,1995,3,completed,seinen,src/data/coreDB_extra.js,62
+high,trigun,2,trigun,TRIGUN,Trigun,内藤泰弘,1995,3,completed,seinen,src/data/coreDB.js,70
+high,吸血鬼ハンタd,2,vampire_hunter_d_x,吸血鬼ハンターD,Vampire Hunter D,菊地秀行/天野喜孝,1988,25,ongoing,seinen,src/data/coreDB_extra.js,63
+high,吸血鬼ハンタd,2,vampire_hunter_d,吸血鬼ハンターD,Vampire Hunter D,菊地秀行/天野喜孝,1988,25,ongoing,seinen,src/data/coreDB.js,71
+high,暁のヨナ,2,yona_x,暁のヨナ,Yona of the Dawn,草凪みずほ,2009,42,ongoing,shojo,src/data/coreDB_extra.js,64
+high,暁のヨナ,2,yona,暁のヨナ,Yona of the Dawn,草凪みずほ,2009,42,ongoing,shojo,src/data/coreDB.js,72
+high,ドリフタズ,2,drifters_x,ドリフターズ,Drifters,平野耕太,2009,7,ongoing,seinen,src/data/coreDB_extra.js,65
+high,ドリフタズ,2,drifters,ドリフターズ,Drifters,平野耕太,2009,7,ongoing,seinen,src/data/coreDB.js,74
+high,赤髪の白雪姫,2,akagami_x,赤髪の白雪姫,Snow White with the Red Hair,あきづき空太,2006,27,ongoing,shojo,src/data/coreDB_extra.js,163
+high,赤髪の白雪姫,2,snow_white_red_hair,赤髪の白雪姫,Snow White with the Red Hair,あきづき空太,2006,27,ongoing,shojo,src/data/coreDB.js,75
+high,akira,2,akira_x,AKIRA,AKIRA,大友克洋,1982,6,completed,seinen,src/data/coreDB_extra.js,193
+high,akira,2,akira,AKIRA,AKIRA,大友克洋,1982,6,completed,seinen,src/data/coreDB.js,77
+high,寄生獣,2,parasyte_x,寄生獣,Parasyte,岩明均,1988,10,completed,seinen,src/data/coreDB_extra.js,192
+high,寄生獣,2,parasyte,寄生獣,Parasyte,岩明均,1988,10,completed,seinen,src/data/coreDB.js,79
+high,20世紀少年,2,twentieth,20世紀少年,20th Century Boys,浦沢直樹,1999,22,completed,seinen,src/data/coreDB_extra.js,188
+high,20世紀少年,2,20century,20世紀少年,20th Century Boys,浦沢直樹,1999,22,completed,seinen,src/data/coreDB.js,80
+high,ヨコハマ買い出し紀行,2,yokohama_kaidashi_x,ヨコハマ買い出し紀行,Yokohama Kaidashi Kikou,芦奈野ひとし,1994,14,completed,seinen,src/data/coreDB_extra.js,74
+high,ヨコハマ買い出し紀行,2,yokohama_kaidashi,ヨコハマ買い出し紀行,Yokohama Kaidashi Kikou,芦奈野ひとし,1994,14,completed,seinen,src/data/coreDB.js,81
+high,aiの遺電子,2,ai_no_idenshi,AIの遺電子,AI Electronic Genes,山田胡瓜,2015,8,completed,seinen,src/data/coreDB_extra.js,75
+high,aiの遺電子,2,knights_sidonia2,AIの遺電子,AI Electronic Genes,山田胡瓜,2015,8,completed,seinen,src/data/coreDB.js,86
+high,allyouneediskill,2,all_you_need,All You Need Is Kill,All You Need Is Kill,桜坂洋/竹内良輔/小畑健,2014,2,completed,shonen,src/data/coreDB_extra.js,68
+high,allyouneediskill,2,all_you_need_kill,All You Need Is Kill,All You Need Is Kill,桜坂洋/竹内良輔/小畑健,2014,2,completed,shonen,src/data/coreDB.js,87
+high,バガボンド,2,vagabond_x,バガボンド,Vagabond,井上雄彦,1998,37,hiatus,seinen,src/data/coreDB_extra.js,156
+high,バガボンド,2,vagabond,バガボンド,Vagabond,井上雄彦,1998,37,hiatus,seinen,src/data/coreDB.js,93
+high,風雲児たち,2,kazenotani,風雲児たち,Fuuunji-tachi,みなもと太郎,1979,31,ongoing,seinen,src/data/coreDB_extra.js,86
+high,風雲児たち,2,kazenaki,風雲児たち,Fuuunji-tachi,みなもと太郎,1979,31,ongoing,seinen,src/data/coreDB.js,96
+high,イノサン,2,kingdom2,イノサン,Innocent,坂本眞一,2013,9,completed,seinen,src/data/coreDB.js,99
+high,イノサン,2,innocent,イノサン,Innocent (Sakamoto),坂本眞一,2013,9,completed,seinen,src/data/coreDB.js,200
+high,リアル,2,real_x,リアル,REAL,井上雄彦,1999,16,ongoing,seinen,src/data/coreDB_extra.js,157
+high,リアル,2,real,リアル,REAL,井上雄彦,1999,16,ongoing,seinen,src/data/coreDB.js,111
+high,ピンポン,2,ping_pong_x,ピンポン,Ping Pong,松本大洋,1996,5,completed,seinen,src/data/coreDB_extra.js,158
+high,ピンポン,2,ping_pong,ピンポン,Ping Pong,松本大洋,1996,5,completed,seinen,src/data/coreDB.js,112
+high,よつばと,2,yotsuba_x,よつばと!,Yotsuba&!,あずまきよひこ,2003,15,ongoing,seinen,src/data/coreDB_extra.js,170
+high,よつばと,2,yotsuba,よつばと!,Yotsuba&!,あずまきよひこ,2003,15,ongoing,seinen,src/data/coreDB.js,115
+high,spy×family,2,spy_family_x,SPY×FAMILY,SPY×FAMILY,遠藤達哉,2019,14,ongoing,shonen,src/data/coreDB_extra.js,169
+high,spy×family,2,spy_family,SPY×FAMILY,SPY×FAMILY,遠藤達哉,2019,14,ongoing,shonen,src/data/coreDB.js,116
+high,のんのんびより,2,non_non_biyori_extra,のんのんびより,Non Non Biyori,あっと,2009,16,completed,seinen,src/data/coreDB_extra.js,105
+high,のんのんびより,2,non_non_biyori,のんのんびより,Non Non Biyori,あっと,2009,16,completed,seinen,src/data/coreDB.js,117
+high,ばらかもん,2,barakamon_extra,ばらかもん,Barakamon,ヨシノサツキ,2008,18,completed,shonen,src/data/coreDB_extra.js,103
+high,ばらかもん,2,barakamon,ばらかもん,Barakamon,ヨシノサツキ,2008,18,completed,shonen,src/data/coreDB.js,118
+high,甘々と稲妻,2,amaama_inazuma_extra,甘々と稲妻,Sweetness and Lightning,雨隠ギド,2013,12,completed,seinen,src/data/coreDB_extra.js,102
+high,甘々と稲妻,2,amaama_inazuma,甘々と稲妻,Sweetness and Lightning,雨隠ギド,2013,12,completed,seinen,src/data/coreDB.js,119
+high,夏目友人帳,2,natsume_yujincho_extra,夏目友人帳,Natsume's Book of Friends,緑川ゆき,2003,33,ongoing,shojo,src/data/coreDB_extra.js,104
+high,夏目友人帳,2,natsume_yujincho,夏目友人帳,Natsume's Book of Friends,緑川ゆき,2003,33,ongoing,shojo,src/data/coreDB.js,120
+high,3月のライオン,2,march_lion_x,3月のライオン,March Comes in Like a Lion,羽海野チカ,2007,17,ongoing,seinen,src/data/coreDB_extra.js,160
+high,3月のライオン,2,march_comes_lion,3月のライオン,March Comes in Like a Lion,羽海野チカ,2007,17,ongoing,seinen,src/data/coreDB.js,121
+high,放浪息子,2,wandering_son_extra,放浪息子,Wandering Son,志村貴子,2002,15,completed,seinen,src/data/coreDB_extra.js,159
+high,放浪息子,2,wandering_son,放浪息子,Wandering Son,志村貴子,2002,15,completed,seinen,src/data/coreDB.js,123
+high,らんま1/2,2,ranma_x,らんま1/2,Ranma 1/2,高橋留美子,1987,38,completed,shonen,src/data/coreDB_extra.js,173
+high,らんま1/2,2,ranma_half,らんま1/2,Ranma 1/2,高橋留美子,1987,38,completed,shonen,src/data/coreDB.js,124
+high,あずまんが大王,2,azumanga_x,あずまんが大王,Azumanga Daioh,あずまきよひこ,1999,4,completed,seinen,src/data/coreDB_extra.js,171
+high,あずまんが大王,2,azumanga,あずまんが大王,Azumanga Daioh,あずまきよひこ,1999,4,completed,seinen,src/data/coreDB.js,125
+high,ゆるキャン△,2,yuru_camp_extra,ゆるキャン△,Laid-Back Camp,あfろ,2015,17,ongoing,seinen,src/data/coreDB_extra.js,107
+high,ゆるキャン△,2,yuru_camp,ゆるキャン△,Laid-Back Camp,あfろ,2015,17,ongoing,seinen,src/data/coreDB.js,126
+high,けいおん,2,k_on_x,けいおん!,K-On!,かきふらい,2007,4,completed,seinen,src/data/coreDB_extra.js,172
+high,けいおん,2,k_on,けいおん!,K-On!,かきふらい,2007,4,completed,seinen,src/data/coreDB.js,128
+high,ふらいんぐうぃっち,2,flying_witch_extra,ふらいんぐうぃっち,Flying Witch,石塚千尋,2012,12,ongoing,seinen,src/data/coreDB_extra.js,106
+high,ふらいんぐうぃっち,2,flying_witch,ふらいんぐうぃっち,Flying Witch,石塚千尋,2012,12,ongoing,seinen,src/data/coreDB.js,129
+high,かぐや様は告らせたい,2,kaguya_x,かぐや様は告らせたい,Kaguya-sama: Love is War,赤坂アカ,2015,28,completed,seinen,src/data/coreDB_extra.js,168
+high,かぐや様は告らせたい,2,kaguya,かぐや様は告らせたい,Kaguya-sama: Love is War,赤坂アカ,2015,28,completed,seinen,src/data/coreDB.js,130
+high,ホリミヤ,2,horimiya_x,ホリミヤ,Horimiya,HERO/萩原ダイスケ,2011,16,completed,shonen,src/data/coreDB_extra.js,167
+high,ホリミヤ,2,horimiya,ホリミヤ,Horimiya,HERO/萩原ダイスケ,2011,16,completed,shonen,src/data/coreDB.js,131
+high,nana,2,nana_x,NANA,NANA,矢沢あい,2000,21,hiatus,josei,src/data/coreDB_extra.js,166
+high,nana,2,nana,NANA,NANA,矢沢あい,2000,21,hiatus,josei,src/data/coreDB.js,132
+high,君に届け,2,kimi_ni_todoke_x,君に届け,Kimi ni Todoke,椎名軽穂,2005,30,completed,shojo,src/data/coreDB_extra.js,113
+high,君に届け,2,kiminitodoke,君に届け,Kimi ni Todoke,椎名軽穂,2005,30,completed,shojo,src/data/coreDB.js,133
+high,桜蘭高校ホスト部,2,ouran_x,桜蘭高校ホスト部,Ouran High School Host Club,葉鳥ビスコ,2002,18,completed,shojo,src/data/coreDB_extra.js,165
+high,桜蘭高校ホスト部,2,ouran,桜蘭高校ホスト部,Ouran High School Host Club,葉鳥ビスコ,2002,18,completed,shojo,src/data/coreDB.js,134
+high,フルツバスケット,2,fruits_basket_x,フルーツバスケット,Fruits Basket,高屋奈月,1998,23,completed,shojo,src/data/coreDB_extra.js,114
+high,フルツバスケット,2,fruits_basket,フルーツバスケット,Fruits Basket,高屋奈月,1998,23,completed,shojo,src/data/coreDB.js,135
+high,ラブ★コン,2,lovely_complex_x,ラブ★コン,Lovely Complex,中原アヤ,2001,17,completed,shojo,src/data/coreDB_extra.js,115
+high,ラブ★コン,2,lovely_complex,ラブ★コン,Lovely Complex,中原アヤ,2001,17,completed,shojo,src/data/coreDB.js,136
+high,ママレドボイ,2,marmalade_boy_x,ママレード・ボーイ,Marmalade Boy,吉住渉,1992,8,completed,shojo,src/data/coreDB_extra.js,116
+high,ママレドボイ,2,marmalade_boy,ママレード・ボーイ,Marmalade Boy,吉住渉,1992,8,completed,shojo,src/data/coreDB.js,137
+high,となりの怪物くん,2,tonari_kaibutsu,となりの怪物くん,My Little Monster,ろびこ,2008,13,completed,shojo,src/data/coreDB_extra.js,117
+high,となりの怪物くん,2,tonari_no_kaibutsu,となりの怪物くん,My Little Monster,ろびこ,2008,13,completed,shojo,src/data/coreDB.js,138
+high,アオハライド,2,ao_haru_ride_extra,アオハライド,Ao Haru Ride,咲坂伊緒,2011,13,completed,shojo,src/data/coreDB_extra.js,118
+high,アオハライド,2,ao_haru_ride,アオハライド,Ao Haru Ride,咲坂伊緒,2011,13,completed,shojo,src/data/coreDB.js,139
+high,パフェクトワルド,2,perfect_world_extra,パーフェクトワールド,Perfect World,有賀リエ,2014,12,completed,josei,src/data/coreDB_extra.js,119
+high,パフェクトワルド,2,perfect_world,パーフェクトワールド,Perfect World,有賀リエ,2014,12,completed,josei,src/data/coreDB.js,140
+high,東京タラレバ娘,2,tokyo_tarareba,東京タラレバ娘,Tokyo Tarareba Girls,東村アキコ,2014,9,completed,josei,src/data/coreDB_extra.js,120
+high,東京タラレバ娘,2,tokyo_tarareba_girls,東京タラレバ娘,Tokyo Tarareba Girls,東村アキコ,2014,9,completed,josei,src/data/coreDB.js,141
+high,スキップビト,2,skip_beat_x,スキップ・ビート!,Skip Beat!,仲村佳樹,2002,49,ongoing,shojo,src/data/coreDB_extra.js,164
+high,スキップビト,2,skip_beat,スキップ・ビート!,Skip Beat!,仲村佳樹,2002,49,ongoing,shojo,src/data/coreDB.js,143
+high,金田一少年の事件簿,2,kindaichi_extra,金田一少年の事件簿,Kindaichi Case Files,天樹征丸/さとうふみや,1992,78,ongoing,shonen,src/data/coreDB_extra.js,122
+high,金田一少年の事件簿,2,kindaichi,金田一少年の事件簿,Kindaichi Case Files,天樹征丸/さとうふみや,1992,78,ongoing,shonen,src/data/coreDB.js,145
+high,名探偵コナン,2,conan_extra,名探偵コナン,Case Closed,青山剛昌,1994,106,ongoing,shonen,src/data/coreDB_extra.js,123
+high,名探偵コナン,2,conan,名探偵コナン,Case Closed,青山剛昌,1994,106,ongoing,shonen,src/data/coreDB.js,146
+high,憂国のモリアティ,2,moriarty_extra,憂国のモリアーティ,Moriarty the Patriot,竹内良輔/三好輝,2016,21,completed,shonen,src/data/coreDB_extra.js,124
+high,憂国のモリアティ,2,moriarty,憂国のモリアーティ,Moriarty the Patriot,竹内良輔/三好輝,2016,21,completed,shonen,src/data/coreDB.js,147
+high,qed,2,qed,Q.E.D.,Q.E.D.,加藤元浩,1997,50,completed,shonen,src/data/coreDB_extra.js,125
+high,qed,2,yotsuba_2,Q.E.D.,Q.E.D.,加藤元浩,1997,50,completed,shonen,src/data/coreDB.js,148
+high,ルパン三世,2,lupin_extra,ルパン三世,Lupin III,モンキー・パンチ,1967,14,completed,seinen,src/data/coreDB_extra.js,126
+high,ルパン三世,2,lupin,ルパン三世,Lupin III,モンキー・パンチ,1967,14,completed,seinen,src/data/coreDB.js,150
+high,シティハンタ,2,city_hunter_extra,シティーハンター,City Hunter,北条司,1985,35,completed,shonen,src/data/coreDB_extra.js,127
+high,シティハンタ,2,city_hunter,シティーハンター,City Hunter,北条司,1985,35,completed,shonen,src/data/coreDB.js,151
+high,うらみちお兄さん,2,uramichi,うらみちお兄さん,Life Lessons with Uramichi-Oniisan,久世岳,2017,9,ongoing,seinen,src/data/coreDB_extra.js,139
+high,うらみちお兄さん,2,kyou_kara_ore,うらみちお兄さん,Life Lessons with Uramichi-Oniisan,久世岳,2017,9,ongoing,seinen,src/data/coreDB.js,154
+high,billybat,2,billy_bat_extra,BILLY BAT,Billy Bat,浦沢直樹/長崎尚志,2008,20,completed,seinen,src/data/coreDB_extra.js,128
+high,billybat,2,billy_bat,BILLY BAT,Billy Bat,浦沢直樹/長崎尚志,2008,20,completed,seinen,src/data/coreDB.js,156
+high,深夜食堂,2,shinya_shokudo_extra,深夜食堂,Midnight Diner,安倍夜郎,2006,28,ongoing,seinen,src/data/coreDB_extra.js,130
+high,深夜食堂,2,shinya_shokudo,深夜食堂,Midnight Diner,安倍夜郎,2006,28,ongoing,seinen,src/data/coreDB.js,158
+high,ワカコ酒,2,wakakozake_extra,ワカコ酒,Wakakozake,新久千映,2011,19,ongoing,seinen,src/data/coreDB_extra.js,131
+high,ワカコ酒,2,wakakozake,ワカコ酒,Wakakozake,新久千映,2011,19,ongoing,seinen,src/data/coreDB.js,159
+high,美味しんぼ,2,oishinbo_extra,美味しんぼ,Oishinbo,雁屋哲/花咲アキラ,1983,111,ongoing,seinen,src/data/coreDB_extra.js,132
+high,美味しんぼ,2,oishinbo,美味しんぼ,Oishinbo,雁屋哲/花咲アキラ,1983,111,ongoing,seinen,src/data/coreDB.js,160
+high,きのう何食べた,2,kinou_tabeta,きのう何食べた?,What Did You Eat Yesterday?,よしながふみ,2007,22,ongoing,seinen,src/data/coreDB_extra.js,133
+high,きのう何食べた,2,kinou_nani_tabeta,きのう何食べた?,What Did You Eat Yesterday?,よしながふみ,2007,22,ongoing,seinen,src/data/coreDB.js,161
+high,バテンダ,2,bartender_extra,バーテンダー,Bartender,城アラキ/長友健篩,2004,21,completed,seinen,src/data/coreDB_extra.js,134
+high,バテンダ,2,bartender,バーテンダー,Bartender,城アラキ/長友健篩,2004,21,completed,seinen,src/data/coreDB.js,162
+high,もやしもん,2,moyashimon_extra,もやしもん,Moyashimon,石川雅之,2004,13,completed,seinen,src/data/coreDB_extra.js,135
+high,もやしもん,2,moyashimon,もやしもん,Moyashimon,石川雅之,2004,13,completed,seinen,src/data/coreDB.js,163
+high,ブラックジャック,2,blackjack,ブラック・ジャック,Black Jack,手塚治虫,1973,17,completed,shonen,src/data/coreDB_extra.js,136
+high,ブラックジャック,2,doctor_k,ブラック・ジャック,Black Jack,手塚治虫,1973,17,completed,shonen,src/data/coreDB.js,165
+high,医龍,2,team_medical,医龍,Iryuu - Team Medical Dragon,永井明/乃木坂太郎,2002,25,completed,seinen,src/data/coreDB_extra.js,137
+high,医龍,2,team_medical_dragon,医龍,Iryuu - Team Medical Dragon,永井明/乃木坂太郎,2002,25,completed,seinen,src/data/coreDB.js,166
+high,bluegiant,2,blue_giant,BLUE GIANT,BLUE GIANT,石塚真一,2013,10,completed,seinen,src/data/coreDB_extra.js,97
+high,bluegiant,2,march_lion_2,BLUE GIANT,BLUE GIANT,石塚真一,2013,10,completed,seinen,src/data/coreDB.js,168
+high,坂道のアポロン,2,kids_on_slope_extra,坂道のアポロン,Kids on the Slope,小玉ユキ,2007,9,completed,josei,src/data/coreDB_extra.js,112
+high,坂道のアポロン,2,kids_on_slope,坂道のアポロン,Kids on the Slope,小玉ユキ,2007,9,completed,josei,src/data/coreDB.js,169
+high,ハチミツとクロバ,2,honey_clover_x,ハチミツとクローバー,Honey and Clover,羽海野チカ,2000,10,completed,josei,src/data/coreDB_extra.js,111
+high,ハチミツとクロバ,2,honey_clover,ハチミツとクローバー,Honey and Clover,羽海野チカ,2000,10,completed,josei,src/data/coreDB.js,172
+high,土星マンション,2,saturn_apartments_x,土星マンション,Saturn Apartments,岩岡ヒサエ,2006,7,completed,seinen,src/data/coreDB_extra.js,73
+high,土星マンション,2,saturn_apartments,土星マンション,Saturn Apartments,岩岡ヒサエ,2006,7,completed,seinen,src/data/coreDB.js,178
+high,火の鳥,2,phoenix_extra,火の鳥,Phoenix,手塚治虫,1954,16,completed,seinen,src/data/coreDB_extra.js,140
+high,火の鳥,2,phoenix,火の鳥,Phoenix,手塚治虫,1954,16,completed,seinen,src/data/coreDB.js,179
+high,ブッダ,2,buddha_extra,ブッダ,Buddha,手塚治虫,1972,14,completed,seinen,src/data/coreDB_extra.js,141
+high,ブッダ,2,buddha,ブッダ,Buddha,手塚治虫,1972,14,completed,seinen,src/data/coreDB.js,180
+high,ベルサイユのばら,2,rose_versailles_extra,ベルサイユのばら,The Rose of Versailles,池田理代子,1972,10,completed,shojo,src/data/coreDB_extra.js,142
+high,ベルサイユのばら,2,rose_versailles,ベルサイユのばら,The Rose of Versailles,池田理代子,1972,10,completed,shojo,src/data/coreDB.js,181
+high,あしたのジョ,2,ashita_joe,あしたのジョー,Tomorrow's Joe,高森朝雄/ちばてつや,1968,20,completed,shonen,src/data/coreDB_extra.js,143
+high,あしたのジョ,2,ashita_no_joe,あしたのジョー,Tomorrow's Joe,高森朝雄/ちばてつや,1968,20,completed,shonen,src/data/coreDB.js,182
+high,ドラえもん,2,doraemon_extra,ドラえもん,Doraemon,藤子・F・不二雄,1969,45,completed,shonen,src/data/coreDB_extra.js,144
+high,ドラえもん,2,doraemon,ドラえもん,Doraemon,藤子・F・不二雄,1969,45,completed,shonen,src/data/coreDB.js,183
+high,鉄腕アトム,2,atom,鉄腕アトム,Astro Boy,手塚治虫,1952,21,completed,shonen,src/data/coreDB_extra.js,145
+high,鉄腕アトム,2,tetsujin,鉄腕アトム,Astro Boy,手塚治虫,1952,21,completed,shonen,src/data/coreDB.js,184
+high,俺だけレベルアップな件,2,solo_leveling_extra,俺だけレベルアップな件,Solo Leveling,Chugong/REDICE Studio,2018,14,completed,web,src/data/coreDB_extra.js,146
+high,俺だけレベルアップな件,2,solo_leveling,俺だけレベルアップな件,Solo Leveling,Chugong/REDICE Studio,2018,14,completed,web,src/data/coreDB.js,187
+high,神之塔,2,tower_god_extra,神之塔,Tower of God,SIU,2010,0,ongoing,web,src/data/coreDB_extra.js,147
+high,神之塔,2,tower_god,神之塔,Tower of God,SIU,2010,0,ongoing,web,src/data/coreDB.js,188
+high,ノブレス,2,noblesse_extra,ノブレス,Noblesse,Son Jeho/Lee Kwangsu,2007,0,completed,web,src/data/coreDB_extra.js,153
+high,ノブレス,2,noblesse,ノブレス,Noblesse,Son Jeho/Lee Kwangsu,2007,0,completed,web,src/data/coreDB.js,189
+high,スイトホム,2,sweet_home_extra,スイートホーム,Sweet Home,Kim Carnby/Hwang Young-chan,2017,0,completed,web,src/data/coreDB_extra.js,152
+high,スイトホム,2,sweet_home,スイートホーム,Sweet Home,Kim Carnby/Hwang Young-chan,2017,0,completed,web,src/data/coreDB.js,192
+high,女神降臨,2,true_beauty_extra,女神降臨,True Beauty,Yaongyi,2018,0,ongoing,web,src/data/coreDB_extra.js,148
+high,女神降臨,2,true_beauty,女神降臨,True Beauty,Yaongyi,2018,0,ongoing,web,src/data/coreDB.js,195
+high,アサダラ,2,asadora_extra,アサダラ!,ASADORA!,浦沢直樹,2018,9,ongoing,seinen,src/data/coreDB_extra.js,129
+high,アサダラ,2,asadora,アサダラ!,ASADORA!,浦沢直樹,2018,9,ongoing,seinen,src/data/coreDB.js,197
+high,天地明察,2,tenchi_meisatsu,天地明察,Tenchi Meisatsu,冲方丁/槙えびし,2010,9,completed,seinen,src/data/coreDB_extra.js,85
+high,天地明察,2,tenchi_yureru,天地明察,Tenchi Meisatsu,冲方丁/槙えびし,2010,9,completed,seinen,src/data/coreDB.js,203
+high,ウマ娘プリティダビスタブロッサム,2,uma_musume_pretty_derby_star_blossom,ウマ娘 プリティーダービー スターブロッサム,Uma Musume: Pretty Derby - Star Blossom,"Hotani, Shin",2023,0,ongoing,seinen,src/data/coreDB_extra2.js,374
+high,ウマ娘プリティダビスタブロッサム,2,uma_musume_pretty_derby_star_blossom_x,ウマ娘 プリティーダービー スターブロッサム,Uma Musume: Pretty Derby - Star Blossom,"Hotani, Shin",2023,0,ongoing,seinen,src/data/coreDB_extra2.js,375
+high,ラブバレット,2,love_bullet,ラブ・バレット,Love Bullet,inee,2023,0,ongoing,seinen,src/data/coreDB_extra2.js,514
+high,ラブバレット,2,love_bullet_x,ラブ・バレット,Love Bullet,inee,2023,0,ongoing,seinen,src/data/coreDB_extra2.js,515
+high,킬러가사랑에빠졌을때,2,killer_crush,킬러가 사랑에 빠졌을 때,Killer Crush,Eresemo,2021,5,completed,web,src/data/coreDB_extra2.js,535
+high,킬러가사랑에빠졌을때,2,killer_crush_x,킬러가 사랑에 빠졌을 때,Killer Crush,Eresemo,2021,5,completed,web,src/data/coreDB_extra2.js,536
+high,엔딩후서브남을주웠다,2,happily_ever_afterwards,엔딩 후 서브남을 주웠다,Happily Ever Afterwards,"Jeongseo/Hwang, Dotol",2020,0,completed,web,src/data/coreDB_extra3.js,217
+high,엔딩후서브남을주웠다,2,happily_ever_afterwards_x,엔딩 후 서브남을 주웠다,Happily Ever Afterwards,"Jeongseo/Hwang, Dotol",2020,0,completed,web,src/data/coreDB_extra3.js,218
+medium,外見至上主義,3,lookism_extra,外見至上主義,Lookism,Park Tae-joon,2014,0,ongoing,web,src/data/coreDB_extra.js,150
+medium,外見至上主義,3,lookism,外見至上主義,Lookism,Park Tae-joon,2014,0,ongoing,web,src/data/coreDB.js,191
+medium,外見至上主義,3,questism,外見至上主義,Quest Supremacy,박성덕,2020,0,ongoing,web,src/data/coreDB.js,194

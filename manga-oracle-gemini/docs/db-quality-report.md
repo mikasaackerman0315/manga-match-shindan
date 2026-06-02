@@ -32,6 +32,12 @@
 
 ## コマンド
 
+監査レポート生成:
+
+```bash
+npm run audit:db
+```
+
 概要:
 
 ```bash
@@ -53,3 +59,9 @@ npm run check:db:strict
 ## 注意
 
 DBは診断結果の品質に直接影響するため、機械的な一括修正よりも、重複IDや人気作品など影響の大きい部分から少しずつ見直す方が安全です。
+
+`audit:db` は以下のファイルを生成します。
+
+- `docs/db-audit-summary.md`
+- `docs/db-audit-duplicate-titles.csv`
+- `docs/db-audit-unknown-volumes.csv`
