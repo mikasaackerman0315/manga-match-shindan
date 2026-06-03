@@ -16,7 +16,40 @@ import { CORE_DB_EXTRA3 } from "@/data/coreDB_extra3";
 import { CORE_DB_EXTRA4 } from "@/data/coreDB_extra4";
 
 // 既存207作品 + 追加193作品 + 追加600作品 + 追加500作品 + 追加300作品 = 計1800作品
-const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3, ...CORE_DB_EXTRA4];
+const CORE_DB_RAW = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3, ...CORE_DB_EXTRA4];
+
+function normalizeMangaTitle(title) {
+  return `${title || ""}`
+    .toLowerCase()
+    .replace(/[!！?？:：・.\s　\-ー〜~]/g, "")
+    .trim();
+}
+
+function normalizeVolumes(volumes) {
+  return Number.isInteger(volumes) && volumes > 0 && volumes <= 250 ? volumes : null;
+}
+
+function normalizeMangaEntry(manga) {
+  return {
+    ...manga,
+    volumes: normalizeVolumes(manga.volumes),
+  };
+}
+
+function dedupeMangaDatabase(entries) {
+  const seenTitles = new Set();
+  return entries.filter((manga) => {
+    const key = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
+    if (!key) return true;
+    if (seenTitles.has(key)) return false;
+    seenTitles.add(key);
+    return true;
+  });
+}
+
+const CORE_DB = CORE_DB_RAW.map(normalizeMangaEntry);
+const CORE_DB_UNIQUE = dedupeMangaDatabase(CORE_DB);
+const CORE_DB_BY_ID = new Map(CORE_DB.map((manga) => [manga.id, manga]));
 
 // Gemini APIのエンドポイント（v1beta / generateContent）
 const GEMINI_MODEL = "gemini-2.5-flash";
@@ -163,7 +196,7 @@ function buildPrompt(answers, questions, freeText, language) {
   }).join("\n");
 
   const dbJson = JSON.stringify(
-    CORE_DB.map((m) => ({
+    CORE_DB_UNIQUE.map((m) => ({
       id: m.id, title_ja: m.title_ja, title_en: m.title_en, author: m.author,
       year: m.year, volumes: m.volumes, status: m.status, demographic: m.demographic,
       anime: m.anime, tags: m.tags, desc: language === "ja" ? m.desc_ja : m.desc_en,
@@ -182,8 +215,8 @@ function buildPrompt(answers, questions, freeText, language) {
 
 Recommend only from this source:
 
-## Curated Database (1800 hand-picked titles)
-These are pre-vetted works spanning all genres & eras. Use them as RELIABLE quality picks.
+## Curated Database (${CORE_DB_UNIQUE.length} unique candidates from the 1800-title database)
+These are pre-vetted works spanning all genres & eras. Duplicate title variants have already been removed for this recommendation request.
 
 \`\`\`json
 ${dbJson}
@@ -195,7 +228,7 @@ ${freeTextSection}
 ## Your Task
 
 1. Analyze the user's preference profile.
-2. Review the curated DB carefully — with 1800 titles, there are likely many strong matches.
+2. Review the curated DB carefully — with many unique titles, there are likely many strong matches.
 3. Choose ONE ranked list of 20 manga from the curated database.
 4. Mark each recommendation's source as "db".
 
@@ -258,13 +291,6 @@ function validateResponse(payload) {
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function normalizeMangaTitle(title) {
-  return `${title || ""}`
-    .toLowerCase()
-    .replace(/[!！?？:：・.\s　\-ー〜~]/g, "")
-    .trim();
 }
 
 function getAnswerTags(value) {
@@ -399,11 +425,16 @@ function enrichRecommendations(payload) {
   return {
     ...payload,
     recommendations: payload.recommendations.map((rec) => {
-      const dbEntry = CORE_DB.find((m) => m.id === rec.id);
+      const dbEntry = CORE_DB_BY_ID.get(rec.id);
       if (!dbEntry) return rec;
 
       return {
         ...rec,
+        author: rec.author || dbEntry.author,
+        year: rec.year || dbEntry.year,
+        volumes: dbEntry.volumes,
+        status: rec.status || dbEntry.status,
+        anime: typeof rec.anime === "boolean" ? rec.anime : dbEntry.anime,
         tags: dbEntry.tags,
         demographic: rec.demographic || dbEntry.demographic,
       };
@@ -482,7 +513,7 @@ function buildFallbackResponse(answers, questions, freeText, language) {
 
 function buildPreviewResponse(answers, questions = [], freeText = "", language = "ja") {
   const signals = buildPreferenceSignals(answers, questions, freeText, language);
-  const scored = CORE_DB.map((m) => {
+  const scored = CORE_DB_UNIQUE.map((m) => {
     const result = scoreManga(m, signals);
     return { manga: m, score: result.score, matchedTags: result.matchedTags };
   }).sort((a, b) => {

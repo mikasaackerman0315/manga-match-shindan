@@ -144,6 +144,24 @@ function ReadingActionHint({ compact = false }) {
   );
 }
 
+function formatVolumeLabel(volumes, suffix) {
+  const volumeNumber = Number(volumes);
+  return Number.isInteger(volumeNumber) && volumeNumber > 0 && volumeNumber <= 250 ? `${volumeNumber}${suffix}` : "";
+}
+
+function MangaMetaLine({ rec, t, includeYear = false, includeStatus = true, includeAnime = false, className = "", style = {} }) {
+  const parts = [
+    rec.author,
+    includeYear && rec.year,
+    formatVolumeLabel(rec.volumes, t.volumes),
+    includeStatus && rec.status && t["status_" + rec.status],
+    includeAnime && rec.anime && `${t.anime} ✓`,
+  ].filter(Boolean);
+
+  if (parts.length === 0) return null;
+  return <div className={className} style={style}>{parts.join(" · ")}</div>;
+}
+
 function getDiagnosisErrorType(error) {
   const message = error?.message?.toLowerCase?.() || "";
   if (message.includes("parse") || message.includes("json")) return "json_parse_error";
@@ -635,9 +653,7 @@ export default function App() {
                           <h4 className="text-2xl md:text-3xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
                           {rec.source && (<span className="text-[10px] tracking-widest px-2 py-1" style={{ fontFamily: "'JetBrains Mono', monospace", backgroundColor: rec.source === "db" ? "#0a0a0a" : "#c0392b", color: "#f5f3ee" }}>{rec.source === "db" ? t.sourceDB : t.sourceWeb}</span>)}
                         </div>
-                        <div className="text-sm mb-4 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }}>
-                          {rec.author && <>{rec.author} · </>}{rec.year && <>{rec.year} · </>}{rec.volumes && <>{rec.volumes}{t.volumes} · </>}{rec.status && t["status_" + rec.status]}{rec.anime && <> · {t.anime} ✓</>}
-                        </div>
+                        <MangaMetaLine rec={rec} t={t} includeYear includeAnime className="text-sm mb-4 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
                         {rec.description && (<p className="text-base leading-relaxed mb-4" style={{ color: "#333" }}>{rec.description}</p>)}
                         <div className="pl-4 border-l-2" style={{ borderColor: "#c0392b" }}>
                           <div className="text-xs tracking-[0.2em] mb-2" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>▌WHY YOU'LL LOVE IT</div>
@@ -673,9 +689,7 @@ export default function App() {
                           <h4 className="text-lg md:text-xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
                           {rec.source && (<span className="text-[9px] tracking-widest px-1.5 py-0.5" style={{ fontFamily: "'JetBrains Mono', monospace", backgroundColor: rec.source === "db" ? "rgba(10,10,10,0.7)" : "rgba(192,57,43,0.85)", color: "#f5f3ee" }}>{rec.source === "db" ? t.sourceDB : t.sourceWeb}</span>)}
                         </div>
-                        <div className="text-xs mb-2 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }}>
-                          {rec.author && <>{rec.author} · </>}{rec.volumes && <>{rec.volumes}{t.volumes} · </>}{rec.status && t["status_" + rec.status]}
-                        </div>
+                        <MangaMetaLine rec={rec} t={t} className="text-xs mb-2 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
                         <p className="text-sm leading-relaxed italic" style={{ color: "#444", fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{rec.reason}</p>
                         <ReadingActionHint compact />
                         <PurchaseLinks rec={rec} t={t} compact />
@@ -709,7 +723,7 @@ export default function App() {
                           <div className="text-base font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</div>
                           {rec.source === "web" && (<span className="text-[8px] tracking-widest px-1 py-0.5" style={{ fontFamily: "'JetBrains Mono', monospace", backgroundColor: "rgba(192,57,43,0.85)", color: "#f5f3ee" }}>{t.sourceWeb}</span>)}
                         </div>
-                        <div className="text-xs" style={{ color: "#888" }}>{rec.author}{rec.volumes && ` · ${rec.volumes}${t.volumes}`}</div>
+                        <MangaMetaLine rec={rec} t={t} includeStatus={false} className="text-xs" style={{ color: "#888" }} />
                         <ReadingActionHint compact />
                         <PurchaseLinks rec={rec} t={t} compact />
                       </div>
