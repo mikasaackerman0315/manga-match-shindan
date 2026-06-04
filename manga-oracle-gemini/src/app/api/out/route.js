@@ -22,6 +22,12 @@ const STORES = {
     affiliateParam: null,
     affiliateEnv: null,
   },
+  booklive: {
+    base: "https://booklive.jp/search/keyword",
+    queryParam: "keyword",
+    affiliateParam: null,
+    affiliateEnv: null,
+  },
 };
 
 function getSearchSuffix(intent) {
@@ -60,6 +66,12 @@ export function GET(req) {
     const affiliateDestination = new URL(process.env.RAKUTEN_AFFILIATE_BASE || DEFAULT_RAKUTEN_AFFILIATE_BASE);
     affiliateDestination.searchParams.set("pc", destination.toString());
     affiliateDestination.searchParams.set("link_type", "hybrid_url");
+    return NextResponse.redirect(affiliateDestination);
+  }
+
+  if (store === "booklive" && process.env.BOOKLIVE_AFFILIATE_BASE) {
+    const affiliateDestination = new URL(process.env.BOOKLIVE_AFFILIATE_BASE);
+    affiliateDestination.searchParams.set("vc_url", destination.toString());
     return NextResponse.redirect(affiliateDestination);
   }
 

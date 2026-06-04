@@ -10,6 +10,7 @@ function makeLinks(title) {
     amazonPaper: `/api/out?store=amazon&intent=paper&title=${query}`,
     rakutenSet: `/api/out?store=rakuten&intent=set&title=${query}`,
     rakutenBooks: `/api/out?store=rakuten&intent=books&title=${query}`,
+    booklivePreview: `/api/out?store=booklive&intent=preview&title=${query}`,
   };
 }
 
@@ -29,6 +30,15 @@ function trackAffiliateClick({ title, store, intent, pageType }) {
       link_type: intent === "set" ? "set" : intent === "books" ? "books" : "other",
       page_type: pageType || "other",
     });
+    return;
+  }
+
+  if (store === "booklive") {
+    trackEvent("affiliate_click_booklive", {
+      title: title || "",
+      link_type: intent === "preview" ? "preview" : "other",
+      page_type: pageType || "other",
+    });
   }
 }
 
@@ -40,6 +50,7 @@ export default function StoreLinks({ title, compact = false, pageType = "diagnos
     comic: "\u30b3\u30df\u30c3\u30af",
     fullSet: "\u5168\u5dfb",
     rakutenBooks: "\u697d\u5929\u30d6\u30c3\u30af\u30b9",
+    preview: "\u8a66\u3057\u8aad\u307f",
   };
 
   const wrapClass = compact ? "mt-2 w-full" : "mt-4 w-full";
@@ -90,6 +101,12 @@ export default function StoreLinks({ title, compact = false, pageType = "diagnos
             {labels.rakutenBooks}
           </a>
         </div>
+      </div>
+
+      <div className="mt-2">
+        <a href={links.booklivePreview} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("booklive-preview")} {...pressHandlers("booklive-preview")} {...clickHandlers("booklive", "preview")}>
+          {labels.preview}
+        </a>
       </div>
     </div>
   );
