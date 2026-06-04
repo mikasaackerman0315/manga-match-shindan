@@ -49,14 +49,14 @@ export default function StoreLinks({ title, compact = false, pageType = "diagnos
   const labels = {
     comic: "\u30b3\u30df\u30c3\u30af",
     fullSet: "\u5168\u5dfb",
-    rakutenBooks: "\u697d\u5929\u30d6\u30c3\u30af\u30b9",
+    rakutenBooks: compact ? "\u697d\u5929" : "\u697d\u5929\u30d6\u30c3\u30af\u30b9",
     preview: "\u8a66\u3057\u8aad\u307f",
   };
 
   const wrapClass = compact ? "mt-2 w-full" : "mt-4 w-full";
-  const gridClass = "grid grid-cols-2 gap-1.5";
+  const gridClass = compact ? "grid grid-cols-5 gap-1" : "grid grid-cols-2 gap-1.5";
   const buttonClass = compact
-    ? "min-h-[32px] px-2 py-1.5 text-[10px] leading-snug text-center transition-all hover:translate-y-[-1px] active:scale-[0.98]"
+    ? "min-h-[26px] px-1 py-1 text-[9px] leading-none text-center transition-all hover:translate-y-[-1px] active:scale-[0.98]"
     : "min-h-[36px] px-3 py-2 text-[11px] leading-snug text-center tracking-[0.04em] transition-all hover:translate-y-[-1px] active:scale-[0.98]";
   const buttonStyle = (key, accent = false) => ({
     display: "flex",
@@ -76,6 +76,30 @@ export default function StoreLinks({ title, compact = false, pageType = "diagnos
   const clickHandlers = (store, intent) => ({
     onClick: () => trackAffiliateClick({ title, store, intent, pageType }),
   });
+
+  if (compact) {
+    return (
+      <div className={wrapClass}>
+        <div className={gridClass}>
+          <a href={links.amazonKindle} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("amazon-kindle", true)} {...pressHandlers("amazon-kindle")} {...clickHandlers("amazon", "kindle")}>
+            Kindle
+          </a>
+          <a href={links.amazonPaper} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("amazon-paper")} {...pressHandlers("amazon-paper")} {...clickHandlers("amazon", "paper")}>
+            {labels.comic}
+          </a>
+          <a href={links.rakutenSet} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("rakuten-set", true)} {...pressHandlers("rakuten-set")} {...clickHandlers("rakuten", "set")}>
+            {labels.fullSet}
+          </a>
+          <a href={links.rakutenBooks} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("rakuten-books")} {...pressHandlers("rakuten-books")} {...clickHandlers("rakuten", "books")}>
+            {labels.rakutenBooks}
+          </a>
+          <a href={links.booklivePreview} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("booklive-preview")} {...pressHandlers("booklive-preview")} {...clickHandlers("booklive", "preview")}>
+            {labels.preview}
+          </a>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={wrapClass}>

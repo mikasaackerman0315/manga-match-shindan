@@ -5,11 +5,11 @@ const siteUrl = "https://www.mangamatchquiz.com";
 
 export const metadata = {
   title: "今話題の漫画おすすめランキング | マンガマッチ診断",
-  description: "ジャンプ＋、マガポケ、マンガワン、SNS、アニメ化、新刊で話題になりやすい注目漫画を紹介します。",
+  description: "ジャンプ＋、マガポケ、マンガワン、SNS、アニメ化、新刊で読まれやすい注目漫画を紹介します。",
   alternates: { canonical: "/trending-manga" },
   openGraph: {
     title: "今話題の漫画おすすめランキング | マンガマッチ診断",
-    description: "漫画アプリ、SNS、アニメ化、新刊で話題になりやすい注目漫画をまとめました。",
+    description: "漫画アプリ、SNS、アニメ化、新刊で読まれやすい注目漫画をまとめました。",
     url: `${siteUrl}/trending-manga`,
     siteName: "マンガマッチ診断",
     locale: "ja_JP",
@@ -20,18 +20,18 @@ export const metadata = {
 const sections = [
   {
     id: "jump-plus",
-    heading: "ジャンプ＋・Web連載で話題の漫画",
-    lead: "更新日のSNS反応、アニメ化、新刊発売、無料公開キャンペーンなどで話題が広がりやすい作品です。",
+    heading: "ジャンプ＋・Web連載で読みたい漫画",
+    lead: "更新日の反応、アニメ化、単行本発売で読み始める人が増えやすい作品を中心に選びました。",
     items: [
       {
         title: "ダンダダン",
         author: "龍幸伸",
         medium: "少年ジャンプ＋",
-        genre: "オカルト・バトル・ラブコメ",
+        genre: "オカルトバトル・ラブコメ",
         status: "連載中",
-        buzz: "アニメ化以降も原作のアクション、怪異、青春ノリへの注目が強く、ジャンプ＋の入口として読まれやすい作品です。",
-        fit: "テンポの速いバトル、濃いキャラ、少し変な青春感をまとめて楽しみたい人に。",
-        caution: "怪異表現や下ネタ寄りの勢いがあるため、完全に穏やかな漫画を求める人は注意。",
+        synopsis: "霊を信じる女子高生と宇宙人を信じる少年が、怪異と宇宙人に巻き込まれていく高速バトル漫画。勢いのあるアクションと青春の距離感が魅力です。",
+        fit: "テンポの速いバトル、変な設定、恋愛未満の空気をまとめて楽しみたい人に。",
+        caution: "下ネタ寄りのギャグや怪異表現があります。",
       },
       {
         title: "ルリドラゴン",
@@ -39,29 +39,9 @@ const sections = [
         medium: "週刊少年ジャンプ・少年ジャンプ＋",
         genre: "日常・青春・少し不思議",
         status: "連載中",
-        buzz: "連載再開や掲載形態の変化で話題になり、ゆるい会話と絵柄の魅力でSNSでも見つかりやすい作品です。",
-        fit: "バトルよりも空気感、キャラの自然な会話、少しだけ非日常な日常漫画を読みたい人に。",
-        caution: "大事件が続く作品ではなく、日常のテンポを楽しむ漫画です。",
-      },
-      {
-        title: "マリッジトキシン",
-        author: "静脈・依田瑞稀",
-        medium: "少年ジャンプ＋",
-        genre: "殺し屋・バトル・婚活コメディ",
-        status: "連載中",
-        buzz: "アクションの見せ方と婚活設定の変化球が強く、ジャンプ＋内でもおすすめされやすい中堅人気作です。",
-        fit: "強い主人公、テンポのいいバトル、コメディ混じりの関係性を読みたい人に。",
-        caution: "恋愛漫画というより、アクションとコメディの比重が高めです。",
-      },
-      {
-        title: "幼稚園WARS",
-        author: "千葉侑生",
-        medium: "少年ジャンプ＋",
-        genre: "アクション・ギャグ・ラブコメ",
-        status: "連載中",
-        buzz: "危険すぎる幼稚園という一発で伝わる設定が強く、短い紹介から読み始めやすいWeb発の人気作です。",
-        fit: "変な設定を全力で走らせる漫画、ギャグとバトルの両方が欲しい人に。",
-        caution: "リアリティよりも勢いとキャラの濃さを楽しむ作品です。",
+        synopsis: "ある朝、頭に角が生えた女子高生ルリの日常を描く作品。大きな事件よりも、会話や教室の空気で読ませるやさしい漫画です。",
+        fit: "バトルより空気感、自然な会話、少しだけ非日常な日常漫画を読みたい人に。",
+        caution: "派手な展開を求めると物足りないかもしれません。",
       },
       {
         title: "ケントゥリア",
@@ -69,36 +49,66 @@ const sections = [
         medium: "少年ジャンプ＋",
         genre: "ダークファンタジー・冒険",
         status: "連載中",
-        buzz: "新しめのジャンプ＋作品として、重い世界観と先が読めない展開が漫画好きの間で話題になっています。",
-        fit: "王道だけでは物足りない、少し暗くて骨太なファンタジーを追いたい人に。",
-        caution: "暴力表現や不穏な展開があるため、明るい冒険だけを求める人には重めです。",
+        synopsis: "過酷な運命を背負った青年が、異形の力と人間の欲望が渦巻く世界を進むファンタジー。重い空気と先の読めなさが強い作品です。",
+        fit: "王道だけでは物足りない、少し暗く骨太なファンタジーを追いたい人に。",
+        caution: "暴力表現や重い展開があります。",
+      },
+      {
+        title: "魔男のイチ",
+        author: "西修・宇佐崎しろ",
+        medium: "週刊少年ジャンプ",
+        genre: "魔法・バトル・ファンタジー",
+        status: "連載中",
+        synopsis: "魔法をめぐる世界で、少年イチが常識外れの存在として成長していく冒険譚。読みやすい設定とキャラクターの強さで入りやすい新世代バトルです。",
+        fit: "ジャンプらしい成長、魔法バトル、見やすい絵の新作を読みたい人に。",
+        caution: "序盤は世界観の説明を追いながら読む作品です。",
+      },
+      {
+        title: "カグラバチ",
+        author: "外薗健",
+        medium: "週刊少年ジャンプ",
+        genre: "剣戟・復讐・バトル",
+        status: "連載中",
+        synopsis: "刀匠の父を持つ少年が、妖刀をめぐる因縁に踏み込んでいくバトル漫画。静かな怒りとスタイリッシュな戦闘が軸になっています。",
+        fit: "剣、復讐、クールな主人公、切れ味のあるアクションが好きな人に。",
+        caution: "復讐劇なので空気はやや重めです。",
+      },
+      {
+        title: "ドラマクイン",
+        author: "市川苦楽",
+        medium: "少年ジャンプ＋",
+        genre: "SF・群像劇",
+        status: "連載中",
+        synopsis: "現代社会の歪みと異物感を、鋭い会話と独特の視点で描く作品。読みながら居心地の悪さと引っかかりが残ります。",
+        fit: "きれいにまとまりすぎない、少し毒のある新作を探している人に。",
+        caution: "万人向けの爽快感より、ざらついた読後感が強い作品です。",
       },
     ],
   },
   {
-    id: "magapoke-mangaone",
+    id: "app-serial",
     heading: "マガポケ・マンガワン周辺で注目の漫画",
-    lead: "アニメ化、連載の盛り上がり、アプリ内ランキングで見つけやすい作品を中心に選びました。",
+    lead: "アプリ連載や週刊誌連載から、今まとめて追いやすい人気作を選びました。",
     items: [
+      {
+        title: "薫る花は凛と咲く",
+        author: "三香見サカ",
+        medium: "マガジンポケット",
+        genre: "青春・恋愛・学園",
+        status: "連載中",
+        synopsis: "底辺男子校の少年とお嬢様学校の少女が出会い、互いの世界を少しずつ知っていく青春漫画。やさしい会話と誠実な関係性が魅力です。",
+        fit: "刺激よりも、まっすぐな青春と読後感のよさを求める人に。",
+        caution: "派手な事件よりも関係性の積み重ねを楽しむ作品です。",
+      },
       {
         title: "ブルーロック",
         author: "金城宗幸・ノ村優介",
         medium: "週刊少年マガジン・マガポケ",
         genre: "サッカー・デスゲーム的競争",
         status: "連載中",
-        buzz: "アニメ、映画、代表戦シーズンの話題と相性がよく、スポーツ漫画の中でも検索されやすい作品です。",
-        fit: "友情より競争、才能のぶつかり合い、強い言葉で盛り上がる漫画が好きな人に。",
-        caution: "リアルな部活スポーツより、エンタメ性の強いサッカー漫画です。",
-      },
-      {
-        title: "薫る花は凛と咲く",
-        author: "三香見サカ",
-        medium: "マガジンポケット",
-        genre: "青春・恋愛・学校",
-        status: "連載中",
-        buzz: "アニメ化でさらに入口が広がり、丁寧な恋愛と人間関係で幅広い読者に届いています。",
-        fit: "刺激よりも誠実さ、まっすぐな青春、読後感のよさを求める人に。",
-        caution: "派手な事件より、関係性の積み重ねを楽しむ作品です。",
+        synopsis: "日本代表を変えるため、 striker たちが過酷な選抜施設で競い合うサッカー漫画。友情よりもエゴと才能のぶつかり合いで読ませます。",
+        fit: "熱い台詞、ライバル関係、勝負の高揚感が好きな人に。",
+        caution: "リアルな部活スポーツより、エンタメ性の強い競争漫画です。",
       },
       {
         title: "ガチアクタ",
@@ -106,8 +116,8 @@ const sections = [
         medium: "週刊少年マガジン・マガポケ",
         genre: "バトル・ダークファンタジー",
         status: "連載中",
-        buzz: "アニメ化情報や独特なグラフィティ調の絵で注目され、バトル漫画好きの入口になりやすい作品です。",
-        fit: "絵の個性、荒い熱量、下層から這い上がる物語が好きな人に。",
+        synopsis: "不当な罪で奈落へ落とされた少年が、廃棄物と異能が支配する世界で戦う物語。荒々しい絵と怒りのある世界観が印象に残ります。",
+        fit: "絵の個性、下層から這い上がる物語、重めのバトルが好きな人に。",
         caution: "世界観は暗めで、暴力表現もあります。",
       },
       {
@@ -116,9 +126,9 @@ const sections = [
         medium: "マンガワン・裏サンデー",
         genre: "ホラー・怪異・サスペンス",
         status: "連載中",
-        buzz: "一話ごとの引きが強く、アプリで読み進めやすいホラーとして口コミで広がりやすい作品です。",
-        fit: "短編感覚で怖い話を読みたい人、怪異系の不穏さが好きな人に。",
-        caution: "怖さや不快感のある回もあるので、癒し目的には向きません。",
+        synopsis: "高額報酬の怪しい仕事に挑む二人が、不可解な現場で危険な目に遭うホラー漫画。短い話の中で不穏さが一気に膨らみます。",
+        fit: "1話ごとの引きが強いホラー、怪異系の嫌な空気が好きな人に。",
+        caution: "怖さや不快感のある回があります。",
       },
       {
         title: "ケンガンオメガ",
@@ -126,56 +136,36 @@ const sections = [
         medium: "マンガワン・裏サンデー",
         genre: "格闘・バトル",
         status: "連載中",
-        buzz: "シリーズ人気と配信アニメの流れで、格闘漫画として継続的に読まれています。",
-        fit: "肉体派バトル、トーナメント、濃い格闘家同士のぶつかり合いが好きな人に。",
+        synopsis: "企業同士の利権を賭けた格闘試合を軸に、強者たちの戦いを描くシリーズ続編。肉体派のぶつかり合いと駆け引きが魅力です。",
+        fit: "格闘漫画、トーナメント、強い男たちの戦いが好きな人に。",
         caution: "前作から読むとより入りやすい作品です。",
+      },
+      {
+        title: "レッドブルー",
+        author: "波切敦",
+        medium: "週刊少年サンデー",
+        genre: "格闘・MMA・青春",
+        status: "連載中",
+        synopsis: "冴えない少年が総合格闘技に出会い、自分の弱さと向き合いながら強くなっていくスポーツ漫画。地味な努力と試合の緊張感が光ります。",
+        fit: "才能より努力、泥臭い成長、格闘技のリアル寄りな熱さが好きな人に。",
+        caution: "爽快な無双より、少しずつ積み上げるタイプです。",
       },
     ],
   },
   {
-    id: "sns-hit",
-    heading: "SNSや口コミで広がりやすい漫画",
-    lead: "タイトルの強さ、設定の分かりやすさ、感想を言いたくなる展開で話題になりやすい作品です。",
+    id: "sns-reader",
+    heading: "SNSや口コミで見つけやすい漫画",
+    lead: "感想を言いたくなる設定、読みやすい短さ、キャラクターの強さで広がりやすい作品です。",
     items: [
       {
-        title: "少年のアビス",
-        author: "峰浪りょう",
-        medium: "週刊ヤングジャンプ",
-        genre: "心理ドラマ・サスペンス",
-        status: "完結",
-        buzz: "地方の閉塞感と人間関係の重さが強く、感想や考察がSNSで広がりやすい作品です。",
-        fit: "明るい漫画より、重い心理劇や人間関係の沼を読みたい人に。",
-        caution: "かなり重い展開があるため、気分が落ちている時は注意。",
-      },
-      {
-        title: "十字架のろくにん",
-        author: "中武士竜",
-        medium: "マガジンポケット",
-        genre: "復讐・サスペンス",
+        title: "ふつうの軽音部",
+        author: "クワハリ・出内テツオ",
+        medium: "少年ジャンプ＋",
+        genre: "部活・青春・音楽",
         status: "連載中",
-        buzz: "強い復讐テーマと衝撃展開で、アプリ漫画として見つかりやすく話題にもなりやすい作品です。",
-        fit: "刺激の強いサスペンス、復讐劇、続きが気になる展開を求める人に。",
-        caution: "暴力表現や精神的に重い描写があります。",
-      },
-      {
-        title: "フードコートで、また明日。",
-        author: "成家慎一郎",
-        medium: "コミックNewtype",
-        genre: "日常・会話劇",
-        status: "連載中",
-        buzz: "会話だけで読ませる心地よさが口コミで広がり、短い紹介でも魅力が伝わりやすい作品です。",
-        fit: "派手な事件より、二人の空気感と会話のテンポを楽しみたい人に。",
-        caution: "物語の起伏は控えめで、日常の余白を味わう作品です。",
-      },
-      {
-        title: "極楽街",
-        author: "佐乃夕斗",
-        medium: "ジャンプSQ.",
-        genre: "怪異・バトル・アクション",
-        status: "連載中",
-        buzz: "絵の華やかさとキャラ人気でSNS上の見栄えが強く、単行本入口でも選ばれやすい作品です。",
-        fit: "スタイリッシュな絵、怪異バトル、キャラの掛け合いが好きな人に。",
-        caution: "物語の深掘りより、まず雰囲気とアクションを楽しむ入口です。",
+        synopsis: "軽音部に入った高校生たちの温度差や承認欲求、音楽への憧れを描く青春漫画。派手ではない会話の積み重ねが妙に刺さります。",
+        fit: "部活もの、等身大の人間関係、音楽への憧れが好きな人に。",
+        caution: "熱血よりも観察眼と空気感で読ませる作品です。",
       },
       {
         title: "光が死んだ夏",
@@ -183,36 +173,86 @@ const sections = [
         medium: "ヤングエースUP",
         genre: "青春・ホラー",
         status: "連載中",
-        buzz: "田舎の夏と違和感のある親友という強いフックで、感想や考察が広がりやすい作品です。",
-        fit: "静かな怖さ、青春の切なさ、不穏な空気を楽しみたい人に。",
-        caution: "明るい青春漫画ではなく、ホラーと喪失感が中心です。",
+        synopsis: "親友の姿をした何かと過ごす少年の夏を描くホラー漫画。田舎の湿度、喪失感、近すぎる関係性が静かに怖さを生みます。",
+        fit: "静かな怖さ、青春の痛み、不穏な空気を楽しみたい人に。",
+        caution: "明るい青春漫画ではなく、喪失感とホラーが中心です。",
+      },
+      {
+        title: "スーパーの裏でヤニ吸うふたり",
+        author: "地主",
+        medium: "ビッグガンガン",
+        genre: "日常・会話劇・恋愛未満",
+        status: "連載中",
+        synopsis: "仕事帰りの会社員とスーパー店員が、店の裏で煙草を吸いながら少しずつ距離を縮める物語。短い会話の余韻で読ませます。",
+        fit: "大人の距離感、静かな会話、派手すぎないラブコメが好きな人に。",
+        caution: "煙草描写が多い作品です。",
+      },
+      {
+        title: "正反対な君と僕",
+        author: "阿賀沢紅茶",
+        medium: "少年ジャンプ＋",
+        genre: "青春・恋愛・学園",
+        status: "完結",
+        synopsis: "明るく周囲に合わせがちな女子と、まじめで自分の軸を持つ男子の関係を描く青春ラブコメ。会話の自然さと友人たちの描写も魅力です。",
+        fit: "重すぎない恋愛、クラスの空気、友人関係まで含めて読みたい人に。",
+        caution: "刺激的な展開より、細やかな心の変化が中心です。",
+      },
+      {
+        title: "十字架のろくにん",
+        author: "中武士竜",
+        medium: "マガジンポケット",
+        genre: "復讐・サスペンス",
+        status: "連載中",
+        synopsis: "壮絶ないじめで家族を奪われた少年が、復讐のために自分を鍛え、加害者たちへ近づいていくサスペンス。強烈な怒りと緊張感で読ませます。",
+        fit: "刺激の強い復讐劇、先が気になるサスペンスを読みたい人に。",
+        caution: "暴力表現と精神的に重い描写がかなり強めです。",
+      },
+      {
+        title: "ドッグスレッド",
+        author: "野田サトル",
+        medium: "週刊ヤングジャンプ",
+        genre: "アイスホッケー・青春・スポーツ",
+        status: "連載中",
+        synopsis: "問題児の少年が氷上競技の世界へ飛び込み、仲間やライバルとぶつかりながら成長していくスポーツ漫画。勢いのある人物描写が魅力です。",
+        fit: "スポーツ漫画、荒い才能、チームで熱くなる展開が好きな人に。",
+        caution: "序盤からキャラクターの癖が強めです。",
       },
     ],
   },
   {
     id: "anime-media",
-    heading: "アニメ化・映像化で話題の漫画",
-    lead: "アニメや映像化をきっかけに、原作をまとめて読み始める人が増えやすい作品です。",
+    heading: "アニメ化・映像化で入りやすい漫画",
+    lead: "アニメや映画をきっかけに原作を読み始めやすい作品です。",
     items: [
       {
-        title: "シャングリラ・フロンティア",
-        author: "硬梨菜・不二涼介",
-        medium: "週刊少年マガジン",
-        genre: "ゲーム・ファンタジー・バトル",
-        status: "連載中",
-        buzz: "アニメ化でゲーム攻略ものとしての入口が広がり、原作の作画とバトルにも注目が集まっています。",
-        fit: "ゲーム、強敵攻略、主人公の成長を爽快に読みたい人に。",
-        caution: "現実ドラマより、ゲーム内の冒険とバトルが中心です。",
+        title: "怪獣8号",
+        author: "松本直也",
+        medium: "少年ジャンプ＋",
+        genre: "怪獣・防衛隊・バトル",
+        status: "完結",
+        synopsis: "怪獣清掃業で働く男が、思わぬ変化をきっかけに防衛隊を目指すバトル漫画。社会人主人公の再挑戦と仲間との共闘が読みやすい作品です。",
+        fit: "大人主人公、怪獣バトル、テンポの良い少年漫画を読みたい人に。",
+        caution: "怪獣との戦闘や身体変化の描写があります。",
       },
       {
-        title: "桃源暗鬼",
-        author: "漆原侑来",
-        medium: "週刊少年チャンピオン",
-        genre: "異能・バトル",
+        title: "SAKAMOTO DAYS",
+        author: "鈴木祐斗",
+        medium: "週刊少年ジャンプ",
+        genre: "殺し屋・アクション・コメディ",
         status: "連載中",
-        buzz: "アニメ化で原作を探す人が増え、王道の異能バトルとして読み始めやすい作品です。",
-        fit: "少年漫画らしい勢い、能力バトル、チーム感が好きな人に。",
-        caution: "設定は王道寄りなので、変化球より熱さを求める人向けです。",
+        synopsis: "元最強の殺し屋が、家族との平穏を守るために再び危険な世界と向き合うアクション漫画。日常コメディと迫力ある戦闘の落差が楽しい作品です。",
+        fit: "キレのあるアクション、強い主人公、軽い笑いを一緒に楽しみたい人に。",
+        caution: "殺し屋ものなので戦闘描写は多めです。",
+      },
+      {
+        title: "WIND BREAKER",
+        author: "にいさとる",
+        medium: "マガジンポケット",
+        genre: "不良・青春・バトル",
+        status: "連載中",
+        synopsis: "街を守る不良高校に入った少年が、仲間との出会いを通じて変わっていく青春バトル漫画。喧嘩の熱さと仲間関係のまっすぐさが魅力です。",
+        fit: "不良漫画、友情、キャラクター人気の強い作品を読みたい人に。",
+        caution: "喧嘩描写が中心ですが、空気は比較的読みやすいです。",
       },
       {
         title: "ウィッチウォッチ",
@@ -220,19 +260,19 @@ const sections = [
         medium: "週刊少年ジャンプ",
         genre: "魔女・コメディ・学園",
         status: "連載中",
-        buzz: "アニメ化で再注目され、ギャグと恋愛とファンタジーの軽さが広い層に届きやすい作品です。",
-        fit: "笑えて読みやすい、学園ファンタジー寄りの漫画を探している人に。",
+        synopsis: "魔女の少女と幼なじみの少年が同居し、魔法にまつわる騒動を巻き起こす学園コメディ。ギャグ、恋愛、バトルが軽やかに混ざります。",
+        fit: "笑えて読みやすい、明るいファンタジー寄りの漫画を探している人に。",
         caution: "シリアスな魔法バトルより、コメディの比重が高めです。",
       },
       {
-        title: "怪獣8号",
-        author: "松本直也",
-        medium: "少年ジャンプ＋",
-        genre: "怪獣・防衛隊バトル",
-        status: "完結",
-        buzz: "アニメ展開と完結後のまとめ読み需要で、今から一気に読みたい作品として見つかりやすいです。",
-        fit: "社会人主人公、王道バトル、仲間との成長を読みやすいテンポで楽しみたい人に。",
-        caution: "怪獣との戦闘や身体変化の描写があります。",
+        title: "メダリスト",
+        author: "つるまいかだ",
+        medium: "月刊アフタヌーン",
+        genre: "フィギュアスケート・スポーツ",
+        status: "連載中",
+        synopsis: "フィギュアスケートに憧れる少女と、夢に挫折した青年コーチが頂点を目指すスポーツ漫画。努力の痛みと成長の瞬間が濃く描かれます。",
+        fit: "本気のスポーツ漫画、師弟関係、才能と努力の物語が好きな人に。",
+        caution: "競技の厳しさや挫折も丁寧に描かれます。",
       },
       {
         title: "ラーメン赤猫",
@@ -240,9 +280,29 @@ const sections = [
         medium: "少年ジャンプ＋",
         genre: "仕事・癒し・コメディ",
         status: "連載中",
-        buzz: "アニメ化後も配信やグッズ展開で見つけやすく、猫と仕事漫画の組み合わせで読者層が広がっています。",
-        fit: "バトルよりも癒し、仕事の空気感、やさしいユーモアを読みたい人に。",
-        caution: "大きな事件よりも日常と接客の積み重ねを楽しむ作品です。",
+        synopsis: "猫たちが働くラーメン屋で、人間のスタッフが接客や店の仕事を学んでいくお仕事漫画。ゆるい空気と働く人へのやさしさがあります。",
+        fit: "バトルより癒し、仕事の空気、やさしいユーモアを読みたい人に。",
+        caution: "大きな事件より日常と接客の積み重ねを楽しむ作品です。",
+      },
+      {
+        title: "シャングリラ・フロンティア",
+        author: "硬梨菜・不二涼介",
+        medium: "週刊少年マガジン",
+        genre: "ゲーム・ファンタジー・バトル",
+        status: "連載中",
+        synopsis: "クソゲー好きのプレイヤーが、神ゲーと呼ばれるVRゲームへ挑む冒険漫画。ゲーム攻略の楽しさと強敵との戦いがテンポよく進みます。",
+        fit: "ゲーム、攻略、強敵バトル、明るい冒険が好きな人に。",
+        caution: "現実ドラマよりゲーム内の展開が中心です。",
+      },
+      {
+        title: "戦隊大失格",
+        author: "春場ねぎ",
+        medium: "週刊少年マガジン",
+        genre: "戦隊・ダークヒーロー・バトル",
+        status: "連載中",
+        synopsis: "正義の戦隊と怪人の関係を裏側から描くバトル漫画。ヒーローものの定番をひっくり返す視点で、組織の歪みと反抗を描きます。",
+        fit: "ヒーローものを少し斜めから見たい人、皮肉のあるバトルが好きな人に。",
+        caution: "明快な正義の物語ではなく、黒い部分も多い作品です。",
       },
     ],
   },
@@ -274,7 +334,7 @@ export default function TrendingMangaPage() {
       "@type": "ListItem",
       position: index + 1,
       name: item.title,
-      description: item.buzz,
+      description: item.synopsis,
       url: `${siteUrl}/trending-manga#rank-${index + 1}`,
     })),
   };
@@ -300,14 +360,14 @@ export default function TrendingMangaPage() {
           <div className="text-xs tracking-[0.28em] uppercase mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>Trending Manga</div>
           <h1 className="text-4xl md:text-6xl leading-tight font-semibold mb-6" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>今話題の漫画おすすめランキング</h1>
           <p className="text-base md:text-lg leading-9 max-w-3xl" style={{ color: "#444" }}>
-            ジャンプ＋、マガポケ、マンガワン、SNS、アニメ化・新刊情報などを参考に、今読まれている注目漫画を紹介します。昔からの名作だけではなく、アプリやSNSで見つけやすい新しめの作品も入れています。
+            ジャンプ＋、マガポケ、マンガワン、SNS、アニメ化、新刊情報などを入口に、今読み始めやすい漫画をまとめました。昔からの名作だけではなく、アプリや口コミで見つけやすい新しめの作品も入れています。
           </p>
         </header>
 
         <section className="mb-12 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.6)" }}>
-          <h2 className="text-2xl font-semibold mb-3">今本当に読まれているトレンド漫画とは？</h2>
+          <h2 className="text-2xl font-semibold mb-3">トレンド漫画を選ぶポイント</h2>
           <p className="leading-8" style={{ color: "#444" }}>
-            トレンド漫画は、単に昔から有名な作品ではなく、アプリ更新日、SNSの感想、アニメ化、映像化、新刊発売、無料公開などで読み始める人が増えている作品です。ここでは「なぜ今話題なのか」が分かるように、媒体やおすすめ対象も一緒に整理しています。
+            話題性だけで選ぶと好みに合わないこともあるので、あらすじ、ジャンル、重さ、読みやすさを一緒に見るのがおすすめです。このページでは、作品ごとの入口が分かるように媒体や注意点も整理しています。
           </p>
         </section>
 
@@ -336,11 +396,11 @@ export default function TrendingMangaPage() {
                         <MetaPill>{item.status}</MetaPill>
                       </div>
                       <div className="space-y-3 leading-8" style={{ color: "#333" }}>
-                        <p><strong>なぜ今話題？</strong> {item.buzz}</p>
+                        <p><strong>あらすじ</strong> {item.synopsis}</p>
                         <p><strong>おすすめの人</strong> {item.fit}</p>
-                        <p><strong>読む前の注意点</strong> {item.caution}</p>
+                        <p><strong>読む前に</strong> {item.caution}</p>
                       </div>
-                      <StoreLinks title={item.title} compact showPreview={false} pageType="seo_article" labels={{ amazonKindle: "Kindleで今すぐ読む", amazonPaper: "Amazonで紙の本を探す", amazonSearch: "Amazonで関連商品を探す", rakutenSet: "楽天で全巻・ポイント還元を見る", rakutenBooks: "楽天ブックスで探す" }} />
+                      <StoreLinks title={item.title} compact pageType="seo_article" />
                     </div>
                   </article>
                 );
@@ -352,25 +412,25 @@ export default function TrendingMangaPage() {
         <section className="mb-14 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.6)" }}>
           <h2 className="text-2xl font-semibold mb-3">迷ったら漫画診断で選ぶ</h2>
           <p className="text-sm leading-7 mb-5" style={{ color: "#555" }}>
-            トレンド漫画は数が多く、話題性だけで選ぶと好みに合わないこともあります。苦手な展開や読みたい気分がある場合は、診断で条件を入れて候補を絞り込めます。
+            トレンド漫画は数が多く、重さやジャンルもかなり違います。苦手な展開や読みたい気分がある場合は、診断で条件を入れて候補を絞り込めます。
           </p>
           <a href="/?start=1" className="inline-block px-7 py-3 text-xs tracking-[0.22em] uppercase transition-all hover:scale-105" style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>診断を始める</a>
         </section>
 
         <section className="mb-14 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.45)" }}>
-          <h2 className="text-2xl font-semibold mb-5">ほかの切り口でも探す</h2>
+          <h2 className="text-2xl font-semibold mb-5">ほかの切り口で探す</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <TrackedArticleLink href="/themes" label="テーマ別おすすめ漫画" sourcePath="/trending-manga" className="block p-4 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.72)" }}>
-              <h3 className="text-base font-semibold mb-2">テーマ別おすすめ漫画</h3>
-              <p className="text-sm leading-7" style={{ color: "#555" }}>異世界、恋愛、ホラー、日常など、読みたい気分から探せます。</p>
-            </TrackedArticleLink>
-            <TrackedArticleLink href="/working-adult-manga" label="社会人におすすめ漫画" sourcePath="/trending-manga" className="block p-4 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.72)" }}>
-              <h3 className="text-base font-semibold mb-2">社会人におすすめ漫画</h3>
-              <p className="text-sm leading-7" style={{ color: "#555" }}>仕事終わりや休日に読みやすい、大人向けの作品を探せます。</p>
+            <TrackedArticleLink href="/completed-manga" label="完結済み漫画" sourcePath="/trending-manga" className="block p-4 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.72)" }}>
+              <h3 className="text-base font-semibold mb-2">完結済み漫画</h3>
+              <p className="text-sm leading-7" style={{ color: "#555" }}>最後まで一気に読める作品を探せます。</p>
             </TrackedArticleLink>
             <TrackedArticleLink href="/beginner-manga" label="初心者向け漫画" sourcePath="/trending-manga" className="block p-4 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.72)" }}>
               <h3 className="text-base font-semibold mb-2">初心者向け漫画</h3>
               <p className="text-sm leading-7" style={{ color: "#555" }}>久しぶりに漫画を読む人でも入りやすい作品をまとめています。</p>
+            </TrackedArticleLink>
+            <TrackedArticleLink href="/themes" label="テーマ別おすすめ漫画" sourcePath="/trending-manga" className="block p-4 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.72)" }}>
+              <h3 className="text-base font-semibold mb-2">テーマ別おすすめ漫画</h3>
+              <p className="text-sm leading-7" style={{ color: "#555" }}>異世界、恋愛、ホラー、スポーツなど気分から探せます。</p>
             </TrackedArticleLink>
           </div>
         </section>
@@ -384,7 +444,7 @@ export default function TrendingMangaPage() {
             </div>
             <div>
               <h3 className="font-semibold mb-2">話題作だけで選んでも大丈夫ですか？</h3>
-              <p className="text-sm leading-7" style={{ color: "#555" }}>話題性は入口として便利ですが、重さ、ジャンル、巻数が合わない場合もあります。迷う場合は診断と併用すると外しにくくなります。</p>
+              <p className="text-sm leading-7" style={{ color: "#555" }}>入口としては便利ですが、重さやジャンルが合わない場合もあります。迷う場合は診断と併用すると外しにくくなります。</p>
             </div>
           </div>
         </section>
