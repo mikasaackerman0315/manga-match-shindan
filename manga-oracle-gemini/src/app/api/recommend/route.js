@@ -54,11 +54,11 @@ const CORE_DB_BY_ID = new Map(CORE_DB.map((manga) => [manga.id, manga]));
 // Gemini APIのエンドポイント（v1beta / generateContent）
 const GEMINI_MODEL = "gemini-2.5-flash";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
-const GEMINI_MAX_ATTEMPTS = 2;
-const GEMINI_TIMEOUT_MS = 28000;
-const GEMINI_CANDIDATE_LIMIT = 220;
-const FALLBACK_RESULT_LIMIT = 20;
-const WEB_DISCOVERY_LIMIT = 4;
+const GEMINI_MAX_ATTEMPTS = 1;
+const GEMINI_TIMEOUT_MS = 19000;
+const GEMINI_CANDIDATE_LIMIT = 140;
+const FALLBACK_RESULT_LIMIT = 15;
+const WEB_DISCOVERY_LIMIT = 2;
 
 // ------------------------------------------------------------
 // シンプルなメモリ内レート制限（本番ではRedis等を推奨）
@@ -240,7 +240,7 @@ ${freeTextSection}
 1. Analyze the user's preference profile.
 2. Review the curated DB carefully — with many unique titles, there are likely many strong matches.
 3. Use Google Search grounding when it can improve freshness, app/web manga coverage, or niche fit.
-4. Choose ONE ranked list of up to 20 manga.
+4. Choose ONE ranked list of up to 15 manga.
 5. Mark curated database recommendations as "db" and grounded discoveries as "web".
 
 ## Output Format
@@ -268,7 +268,7 @@ Return ONLY a valid JSON object (no markdown fences, no preamble):
 - Rank by best fit (rank 1 = strongest).
 - Prefer high matchScore works when they also make editorial sense, but do not simply sort by score.
 - Do NOT recommend the same manga title twice, even if duplicate or variant entries exist in the database or search results.
-- Top 3: enthusiastic, detailed reasons. Items 4-10: concise. Items 11-20: brief.
+- Keep "description" useful and readable. Keep "reason" to one short sentence because the UI prioritizes manga titles and summaries.
 - ALWAYS reference the user's specific answers in your reasons.
 - If the user provided a free-text request, treat it as top priority: respect dislikes (exclude matching works) and lean into stated likes.
 - If exact year, volumes, anime, or demographic are uncertain for a web discovery, use your best grounded estimate and keep the reason focused on fit, not unverifiable trivia.
@@ -532,7 +532,7 @@ async function requestGeminiRecommendation(prompt, apiKey, useGoogleSearch = tru
           ...(useGoogleSearch ? { tools: [{ google_search: {} }] } : {}),
           generationConfig: {
             temperature: attempt === 0 ? 0.7 : 0.35,
-            maxOutputTokens: 16000,
+            maxOutputTokens: 9000,
             responseMimeType: "application/json",
           },
         }),
@@ -655,14 +655,8 @@ export async function POST(req) {
       const parsed = await requestGeminiRecommendation(prompt, apiKey, true);
       return NextResponse.json(parsed);
     } catch (groundedErr) {
-      console.error("Grounded Gemini recommendation failed. Retrying without Google Search:", groundedErr);
-      try {
-        const parsed = await requestGeminiRecommendation(prompt, apiKey, false);
-        return NextResponse.json(parsed);
-      } catch (aiErr) {
-        console.error("Gemini failed after retries. Returning fallback recommendations:", aiErr);
-        return NextResponse.json(buildFallbackResponse(answers, questions, freeText, requestLanguage, candidatePool));
-      }
+      console.error("Grounded Gemini recommendation failed. Returning fallback recommendations:", groundedErr);
+      return NextResponse.json(buildFallbackResponse(answers, questions, freeText, requestLanguage, candidatePool));
     }
   } catch (err) {
     console.error("Recommend route error:", err);

@@ -131,19 +131,6 @@ function PurchaseLinks({ rec, t, compact = false }) {
   return <StoreLinks title={title} labels={t} compact={compact} showHeading={!compact} pageType="diagnosis_result" />;
 }
 
-function ReadingActionHint({ compact = false }) {
-  const items = ["電子書籍ならすぐ読めます", "紙の本や全巻セットも探せます", "価格や在庫はリンク先で確認してください"];
-  return (
-    <div className={compact ? "mt-3 flex flex-wrap gap-1.5" : "mt-4 flex flex-wrap gap-2"}>
-      {items.map((item) => (
-        <span key={item} className={compact ? "px-2 py-1 text-[10px]" : "px-3 py-1.5 text-[11px]"} style={{ border: "1px solid rgba(10,10,10,0.12)", color: "#666", backgroundColor: "rgba(245,243,238,0.55)" }}>
-          {item}
-        </span>
-      ))}
-    </div>
-  );
-}
-
 function formatVolumeLabel(volumes, suffix) {
   const volumeNumber = Number(volumes);
   return Number.isInteger(volumeNumber) && volumeNumber > 0 && volumeNumber <= 250 ? `${volumeNumber}${suffix}` : "";
@@ -431,25 +418,15 @@ export default function App() {
             </h1>
             <div className="w-24 h-px bg-black mx-auto my-8" />
             <p className="text-xl md:text-2xl mb-6 leading-relaxed italic font-light">{t.appSubtitle}</p>
-            <p className="text-sm md:text-base leading-7 max-w-xl mx-auto mb-4" style={{ color: "#555" }}>
-              {language === "ja" ? "恋愛、異世界、ホラー、スポーツ、完結済みまで。好みを選ぶだけで、次に読む漫画を絞り込みます。" : "From romance and fantasy to horror, sports, and completed series, narrow down your next read in a few clicks."}
-            </p>
             <div className="h-10 md:h-12 mb-10 pointer-events-none" aria-hidden="true" />
             <button onClick={() => setScreen("mode")} className="px-12 py-4 text-sm tracking-[0.3em] uppercase transition-all hover:scale-105"
               style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>
               {t.startQuiz} →
             </button>
-            <div className="mt-10">
-              <div className="text-[10px] tracking-[0.28em] uppercase mb-3" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>THEME GUIDES</div>
-              <a href="/themes" className="text-sm underline underline-offset-4 hover:text-[#c0392b] transition-colors">テーマ別おすすめを見る</a>
-            </div>
             <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs" style={{ color: "#555" }}>
-              <a href="/completed-manga" className="hover:text-[#c0392b] transition-colors">完結済み</a>
-              <a href="/beginner-manga" className="hover:text-[#c0392b] transition-colors">初心者向け</a>
-              <a href="/trending-manga" className="hover:text-[#c0392b] transition-colors">トレンド漫画</a>
-              <a href="/new-manga-2020s" className="hover:text-[#c0392b] transition-colors">2020年代</a>
-              <a href="/battle-manga" className="hover:text-[#c0392b] transition-colors">バトル漫画</a>
-              <a href="/healing-manga" className="hover:text-[#c0392b] transition-colors">癒し漫画</a>
+              <a href="/completed-manga" className="hover:text-[#c0392b] transition-colors">????</a>
+              <a href="/beginner-manga" className="hover:text-[#c0392b] transition-colors">?????</a>
+              <a href="/trending-manga" className="hover:text-[#c0392b] transition-colors">??????</a>
             </div>
             <nav className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] tracking-[0.18em] uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#777" }}>
               <a href="/about" className="hover:text-[#c0392b] transition-colors">About</a>
@@ -618,18 +595,6 @@ export default function App() {
       {screen === "results" && results && (
         <div className="min-h-screen px-4 md:px-8 py-16">
           <div className="max-w-4xl mx-auto">
-            <div className="mb-16 text-center">
-              <div className="text-xs tracking-[0.4em] mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>▌YOUR PROFILE</div>
-              <h2 className="text-3xl md:text-5xl font-medium mb-6 italic leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.yourProfile}</h2>
-              <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed italic" style={{ color: "#0a0a0a", borderLeft: "2px solid #c0392b", paddingLeft: "1.5rem", textAlign: "left" }}>{results.userProfile}</p>
-              <div className="mt-8 flex flex-col items-center gap-3">
-                <p className="text-xs leading-6" style={{ color: "#666" }}>{t.shareLead}</p>
-                <button onClick={shareResults} className="px-6 py-3 text-xs tracking-[0.22em] uppercase transition-all hover:scale-105" style={{ backgroundColor: "transparent", color: "#0a0a0a", border: "1px solid rgba(10,10,10,0.25)", fontFamily: "'JetBrains Mono', monospace" }}>
-                  {t.shareResult}
-                </button>
-              </div>
-            </div>
-
             {/* 広告枠 1: プロフィール直後（最も目立つ位置） */}
             <AdSlot slot="results-top" />
 
@@ -651,15 +616,9 @@ export default function App() {
                         <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-3 mb-2 flex-wrap">
                           <h4 className="text-2xl md:text-3xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
-                          {rec.source && (<span className="text-[10px] tracking-widest px-2 py-1" style={{ fontFamily: "'JetBrains Mono', monospace", backgroundColor: rec.source === "db" ? "#0a0a0a" : "#c0392b", color: "#f5f3ee" }}>{rec.source === "db" ? t.sourceDB : t.sourceWeb}</span>)}
                         </div>
                         <MangaMetaLine rec={rec} t={t} includeYear includeAnime className="text-sm mb-4 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
                         {rec.description && (<p className="text-base leading-relaxed mb-4" style={{ color: "#333" }}>{rec.description}</p>)}
-                        <div className="pl-4 border-l-2" style={{ borderColor: "#c0392b" }}>
-                          <div className="text-xs tracking-[0.2em] mb-2" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>▌WHY YOU'LL LOVE IT</div>
-                          <p className="text-sm md:text-base italic leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{rec.reason}</p>
-                        </div>
-                        <ReadingActionHint />
                         <PurchaseLinks rec={rec} t={t} />
                         </div>
                       </div>
@@ -687,11 +646,9 @@ export default function App() {
                         <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
                           <h4 className="text-lg md:text-xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
-                          {rec.source && (<span className="text-[9px] tracking-widest px-1.5 py-0.5" style={{ fontFamily: "'JetBrains Mono', monospace", backgroundColor: rec.source === "db" ? "rgba(10,10,10,0.7)" : "rgba(192,57,43,0.85)", color: "#f5f3ee" }}>{rec.source === "db" ? t.sourceDB : t.sourceWeb}</span>)}
                         </div>
                         <MangaMetaLine rec={rec} t={t} className="text-xs mb-2 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
-                        <p className="text-sm leading-relaxed italic" style={{ color: "#444", fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{rec.reason}</p>
-                        <ReadingActionHint compact />
+                        {rec.description && (<p className="text-sm leading-relaxed" style={{ color: "#444" }}>{rec.description}</p>)}
                         <PurchaseLinks rec={rec} t={t} compact />
                         </div>
                       </div>
@@ -721,10 +678,8 @@ export default function App() {
                       <div className="flex-grow">
                         <div className="flex items-center gap-2 flex-wrap">
                           <div className="text-base font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</div>
-                          {rec.source === "web" && (<span className="text-[8px] tracking-widest px-1 py-0.5" style={{ fontFamily: "'JetBrains Mono', monospace", backgroundColor: "rgba(192,57,43,0.85)", color: "#f5f3ee" }}>{t.sourceWeb}</span>)}
                         </div>
                         <MangaMetaLine rec={rec} t={t} includeStatus={false} className="text-xs" style={{ color: "#888" }} />
-                        <ReadingActionHint compact />
                         <PurchaseLinks rec={rec} t={t} compact />
                       </div>
                     </div>
