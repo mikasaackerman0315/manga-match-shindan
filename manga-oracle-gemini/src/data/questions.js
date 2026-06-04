@@ -109,7 +109,7 @@ export const QUESTIONS_DETAILED = [
     { v: "brutal", ja: "過激・残酷", en: "Brutal / harsh" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
-  { id: "scale", type: "single", text_ja: "物語の広がりはどれくらいがいい？", text_en: "How wide should the story feel?", options: [
+  { id: "scale", type: "single", text_ja: "作品の規模感は？", text_en: "Scale of the story?", options: [
     { v: "world", ja: "世界・宇宙規模", en: "World / cosmic scale" },
     { v: "nation", ja: "国家・組織レベル", en: "Nation / organization" },
     { v: "city", ja: "街・コミュニティが舞台", en: "City / community" },
@@ -161,7 +161,7 @@ export const QUESTIONS_DETAILED = [
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]}
 ,
-  { id: "structure", type: "single", text_ja: "どんな展開の漫画が読みたい？", text_en: "What kind of story flow do you want?", options: [
+  { id: "structure", type: "single", text_ja: "ストーリー構造は？", text_en: "Story structure?", options: [
     { v: "long_arc", ja: "一本軸の長編冒険", en: "Long single arc" },
     { v: "episodic", ja: "エピソード完結型の連作", en: "Episodic / self-contained" },
     { v: "slice_of_life", ja: "スライス・オブ・ライフ（日常切り取り）", en: "Slice of life" },
@@ -229,7 +229,7 @@ export const QUESTIONS_DETAILED = [
     { v: "realism", ja: "リアリティ・細部の説得力", en: "Realism / authenticity" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
-  { id: "art", type: "multi", max: 2, text_ja: "絵の雰囲気はどんな感じが好き？（最大2つ）", text_en: "What kind of art mood do you like? (max 2)", options: [
+  { id: "art", type: "multi", max: 2, text_ja: "画風の好みは？（最大2つ）", text_en: "Art style preferences? (max 2)", options: [
     { v: "detailed", ja: "美麗・繊細な描き込み系", en: "Detailed / refined" },
     { v: "unique", ja: "個性的・癖の強い作家性", en: "Distinctive / auteur" },
     { v: "shonen_classic", ja: "王道の少年漫画タッチ", en: "Classic shonen style" },
@@ -246,7 +246,7 @@ export const QUESTIONS_DETAILED = [
     { v: "sketchy", ja: "荒々しい・ラフな線", en: "Rough / sketchy lines" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
-  { id: "demographic", type: "multi", max: 2, text_ja: "どの漫画カテゴリから探したい？（最大2つ）", text_en: "Which manga categories should we search? (max 2)", options: [
+  { id: "demographic", type: "multi", max: 2, text_ja: "雑誌系統・読者層は？（最大2つ）", text_en: "Demographic? (max 2)", options: [
     { v: "shonen", ja: "少年漫画（ジャンプ・サンデー系）", en: "Shonen (boys')" },
     { v: "shojo", ja: "少女漫画（恋愛・感情系）", en: "Shojo (girls')" },
     { v: "seinen", ja: "青年漫画（複雑・大人向け）", en: "Seinen (young men)" },
@@ -280,7 +280,7 @@ export const QUESTIONS_DETAILED = [
     { v: "monthly", ja: "月刊・じっくり連載", en: "Monthly / slow serialization" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
-  { id: "media", type: "multi", max: 2, text_ja: "話題性や知名度はどれくらい重視する？（最大2つ）", text_en: "How much do buzz and recognition matter? (max 2)", options: [
+  { id: "media", type: "multi", max: 2, text_ja: "メディアミックス・話題性の好み（最大2つ）", text_en: "Media / popularity? (max 2)", options: [
     { v: "anime_yes", ja: "アニメ化されている作品", en: "Has anime" },
     { v: "anime_no", ja: "アニメ化されていない隠れた名作", en: "No anime / hidden gem" },
     { v: "live_action", ja: "実写映画・ドラマ化されている", en: "Has live action" },
@@ -297,7 +297,7 @@ export const QUESTIONS_DETAILED = [
     { v: "trending_now", ja: "今まさに旬の作品", en: "Trending right now" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
-  { id: "ending", type: "single", text_ja: "読み終わったあと、どんな気持ちになりたい？", text_en: "How do you want to feel after reading?", options: [
+  { id: "ending", type: "single", text_ja: "結末・読後感の好みは？", text_en: "Ending / aftertaste preference?", options: [
     { v: "happy", ja: "ハッピーエンド", en: "Happy ending" },
     { v: "bittersweet", ja: "ほろ苦い・切ない", en: "Bittersweet" },
     { v: "rewarding", ja: "報われる・スッキリ", en: "Rewarding / satisfying" },
