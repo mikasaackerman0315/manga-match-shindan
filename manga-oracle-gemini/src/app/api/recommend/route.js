@@ -255,7 +255,9 @@ ${freeTextSection}
 
 - Treat the user's selected world/setting as a hard editorial constraint. A famous manga is not a good pick if its core world does not match the selected setting.
 - Do not recommend broad prestige classics just because they are famous.
+- Match the selected setting literally: school means school life, space means space or planets, workplace means a specific job or industry, nature means rural/frontier/natural environments, historical means a period setting, and urban fantasy means modern life mixed with supernatural or fantasy elements.
 - If the user selected "Virtual / game worlds", prioritize manga centered on VR, MMORPGs, game mechanics, level systems, dungeons, online worlds, or being trapped in a game-like world. Do NOT use general fantasy or dark fantasy as a substitute.
+- If the setting-specific shortlist is small, use Google Search for better fitting manga instead of padding with unrelated famous works.
 
 ## Your Task
 
@@ -359,24 +361,38 @@ function getMangaText(manga) {
     manga.title_ja,
     manga.title_en,
     manga.author,
+    manga.description,
+    manga.reason,
     manga.desc_ja,
     manga.desc_en,
     ...(manga.tags || []),
   ].join(" ").toLowerCase();
 }
 
+function hasAnyTag(tags, values) {
+  return values.some((value) => tags.has(value));
+}
+
 function matchesPreferenceValue(manga, value) {
   const tags = new Set(manga.tags || []);
   const text = getMangaText(manga);
 
+  if (value === "modern") return tags.has("modern") || (hasAnyTag(tags, ["school", "workplace", "city", "slice_of_life"]) && !hasAnyTag(tags, ["fantasy", "sci_fi", "historical", "post_apocalypse", "space"]));
+  if (value === "fantasy") return tags.has("fantasy") || hasAnyTag(tags, ["mythology", "urban_fantasy", "worldbuilding"]) || /magic|mage|demon lord|dragon|kingdom|another world|otherworld|isekai/.test(text);
+  if (value === "sci_fi") return tags.has("sci_fi") || hasAnyTag(tags, ["space", "virtual", "post_apocalypse"]) || /science fiction|sci-fi|cyber|future|robot|android|ai|technology|near-future/.test(text);
+  if (value === "historical") return tags.has("historical") && !/western|europe|viking|roman|rome|france|french|britain|medieval europe|renaissance/.test(text);
+  if (value === "historical_west") return tags.has("historical") && (hasAnyTag(tags, ["war", "politics"]) || /western|europe|viking|roman|rome|france|french|britain|medieval europe|renaissance/.test(text));
+  if (value === "horror") return tags.has("horror") || (tags.has("supernatural") && hasAnyTag(tags, ["dark", "mystery", "survival", "psychological"])) || /horror|occult|ghost|curse|monster|terror|nightmare/.test(text);
+  if (value === "post_apocalypse") return tags.has("post_apocalypse") || (tags.has("survival") && hasAnyTag(tags, ["dark", "world", "sci_fi"])) || /post-apocalyptic|apocalypse|dystopia|ruined world|collapsed world|zombie|wasteland/.test(text);
+  if (value === "virtual") return tags.has("virtual") || /virtual|vrmmo|mmorpg|online game|game world|game mechanics|trapped in (a )?game|leveling system|vr game|mmo game|game-like world/.test(text);
+  if (value === "school") return tags.has("school") || /school|classroom|classmate|club activity|student council|high school|middle school|academy|campus/.test(text);
+  if (value === "nature") return tags.has("nature") || hasAnyTag(tags, ["small_town", "journey", "healing"]) || /nature|rural|countryside|village|island|mountain|forest|farm|frontier|wilderness/.test(text);
+  if (value === "urban_fantasy") return tags.has("urban_fantasy") || (tags.has("modern") && (tags.has("fantasy") || tags.has("supernatural"))) || /urban fantasy|modern fantasy|city and supernatural|contemporary supernatural/.test(text);
+  if (value === "space") return tags.has("space") || (tags.has("sci_fi") && /space|galaxy|planet|spaceship|space opera|astronaut|interstellar/.test(text));
+  if (value === "mythology") return tags.has("mythology") || (tags.has("supernatural") && hasAnyTag(tags, ["fantasy", "historical"])) || /myth|mythology|folklore|legend|god|deity|divine|yokai/.test(text);
+  if (value === "workplace") return tags.has("workplace") || tags.has("workplace_pro") || (tags.has("specialty") && hasAnyTag(tags, ["adult", "human_drama", "educational"])) || /workplace|profession|industry|office|company|job|career|chef|doctor|lawyer|editor|creator/.test(text);
   if (tags.has(value) || manga.demographic === value || manga.status === value) return true;
-  if (value === "historical_west") return tags.has("historical") && (tags.has("war") || tags.has("politics") || /western|europe|西洋|欧州|ヨーロッパ/.test(text));
   if (value === "mystery_supernatural") return tags.has("mystery") && tags.has("supernatural");
-  if (value === "urban_fantasy") return tags.has("urban_fantasy") || (tags.has("modern") && (tags.has("fantasy") || tags.has("supernatural")));
-  if (value === "virtual") return tags.has("virtual") || /virtual|vrmmo|mmorpg|online game|game world|game mechanics|trapped in (a )?game|leveling system|vr game|mmo game|game-like world|ゲーム世界|ゲーム内|ゲームに閉じ込め|ゲーム知識|オンラインゲーム|vrゲーム|クソゲー|神ゲー|ゲーマ|仮想|バーチャル|レベルアップ/.test(text);
-  if (value === "space") return tags.has("space") || /space|宇宙|銀河|惑星/.test(text);
-  if (value === "workplace") return tags.has("workplace") || tags.has("workplace_pro") || /仕事|職場|業界|会社|profession|workplace/.test(text);
-  if (value === "nature") return tags.has("nature") || tags.has("small_town") || /自然|田舎|山|森|島|rural|nature/.test(text);
   return false;
 }
 
