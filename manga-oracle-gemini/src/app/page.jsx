@@ -424,9 +424,9 @@ export default function App() {
               {t.startQuiz} →
             </button>
             <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs" style={{ color: "#555" }}>
-              <a href="/completed-manga" className="hover:text-[#c0392b] transition-colors">????</a>
-              <a href="/beginner-manga" className="hover:text-[#c0392b] transition-colors">?????</a>
-              <a href="/trending-manga" className="hover:text-[#c0392b] transition-colors">??????</a>
+              <a href="/completed-manga" className="hover:text-[#c0392b] transition-colors">{"\u5b8c\u7d50\u6e08\u307f"}</a>
+              <a href="/beginner-manga" className="hover:text-[#c0392b] transition-colors">{"\u521d\u5fc3\u8005\u5411\u3051"}</a>
+              <a href="/trending-manga" className="hover:text-[#c0392b] transition-colors">{"\u30c8\u30ec\u30f3\u30c9\u6f2b\u753b"}</a>
             </div>
             <nav className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] tracking-[0.18em] uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#777" }}>
               <a href="/about" className="hover:text-[#c0392b] transition-colors">About</a>

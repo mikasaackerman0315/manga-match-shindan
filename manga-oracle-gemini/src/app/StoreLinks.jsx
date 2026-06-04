@@ -6,10 +6,8 @@ import { trackEvent } from "./analytics";
 function makeLinks(title) {
   const query = encodeURIComponent(title || "");
   return {
-    preview: `/api/out?store=ebookjapan&intent=preview&title=${query}`,
     amazonKindle: `/api/out?store=amazon&intent=kindle&title=${query}`,
     amazonPaper: `/api/out?store=amazon&intent=paper&title=${query}`,
-    amazonSearch: `/api/out?store=amazon&intent=search&title=${query}`,
     rakutenSet: `/api/out?store=rakuten&intent=set&title=${query}`,
     rakutenBooks: `/api/out?store=rakuten&intent=books&title=${query}`,
   };
@@ -19,7 +17,7 @@ function trackAffiliateClick({ title, store, intent, pageType }) {
   if (store === "amazon") {
     trackEvent("affiliate_click_amazon", {
       title: title || "",
-      link_type: intent === "paper" ? "paper" : intent === "kindle" ? "kindle" : intent === "search" ? "search" : "other",
+      link_type: intent === "paper" ? "paper" : intent === "kindle" ? "kindle" : "other",
       page_type: pageType || "other",
     });
     return;
@@ -28,24 +26,27 @@ function trackAffiliateClick({ title, store, intent, pageType }) {
   if (store === "rakuten") {
     trackEvent("affiliate_click_rakuten", {
       title: title || "",
-      link_type: intent === "set" ? "set" : intent === "books" ? "books" : intent === "search" ? "search" : "other",
+      link_type: intent === "set" ? "set" : intent === "books" ? "books" : "other",
       page_type: pageType || "other",
     });
   }
 }
 
-export default function StoreLinks({ title, compact = false, showPreview = true, pageType = "diagnosis_result" }) {
+export default function StoreLinks({ title, compact = false, pageType = "diagnosis_result" }) {
   const [pressed, setPressed] = useState("");
   const links = makeLinks(title);
   const rel = "nofollow sponsored noopener noreferrer";
+  const labels = {
+    comic: "\u30b3\u30df\u30c3\u30af",
+    fullSet: "\u5168\u5dfb",
+    rakutenBooks: "\u697d\u5929\u30d6\u30c3\u30af\u30b9",
+  };
 
-  const wrapClass = compact ? "mt-3 w-full" : "mt-5 w-full";
-  const gridClass = compact
-    ? "grid grid-cols-1 sm:grid-cols-2 gap-2"
-    : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2";
+  const wrapClass = compact ? "mt-2 w-full" : "mt-4 w-full";
+  const gridClass = "grid grid-cols-2 gap-1.5";
   const buttonClass = compact
-    ? "min-h-[42px] px-3 py-2 text-[11px] leading-snug text-center transition-all hover:translate-y-[-1px] active:scale-[0.98]"
-    : "min-h-[46px] px-4 py-3 text-[12px] leading-snug text-center tracking-[0.08em] transition-all hover:translate-y-[-1px] active:scale-[0.98]";
+    ? "min-h-[32px] px-2 py-1.5 text-[10px] leading-snug text-center transition-all hover:translate-y-[-1px] active:scale-[0.98]"
+    : "min-h-[36px] px-3 py-2 text-[11px] leading-snug text-center tracking-[0.04em] transition-all hover:translate-y-[-1px] active:scale-[0.98]";
   const buttonStyle = (key, accent = false) => ({
     display: "flex",
     alignItems: "center",
@@ -67,38 +68,29 @@ export default function StoreLinks({ title, compact = false, showPreview = true,
 
   return (
     <div className={wrapClass}>
-      <div className="mb-3">
-        <div className="text-[10px] tracking-[0.2em] uppercase mb-2" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>Amazon</div>
+      <div className="mb-2">
+        <div className="text-[10px] tracking-[0.2em] uppercase mb-1.5" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>Amazon</div>
         <div className={gridClass}>
           <a href={links.amazonKindle} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("amazon-kindle", true)} {...pressHandlers("amazon-kindle")} {...clickHandlers("amazon", "kindle")}>
-            Kindleで今すぐ読む
+            Kindle
           </a>
           <a href={links.amazonPaper} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("amazon-paper")} {...pressHandlers("amazon-paper")} {...clickHandlers("amazon", "paper")}>
-            Amazonで紙の本を探す
-          </a>
-          <a href={links.amazonSearch} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("amazon-search")} {...pressHandlers("amazon-search")} {...clickHandlers("amazon", "search")}>
-            Amazonで関連商品を探す
+            {labels.comic}
           </a>
         </div>
       </div>
 
       <div>
-        <div className="text-[10px] tracking-[0.2em] uppercase mb-2" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>Rakuten</div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <div className="text-[10px] tracking-[0.2em] uppercase mb-1.5" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>Rakuten</div>
+        <div className={gridClass}>
           <a href={links.rakutenSet} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("rakuten-set", true)} {...pressHandlers("rakuten-set")} {...clickHandlers("rakuten", "set")}>
-            楽天で全巻・ポイント還元を見る
+            {labels.fullSet}
           </a>
           <a href={links.rakutenBooks} target="_blank" rel={rel} className={buttonClass} style={buttonStyle("rakuten-books")} {...pressHandlers("rakuten-books")} {...clickHandlers("rakuten", "books")}>
-            楽天ブックスで探す
+            {labels.rakutenBooks}
           </a>
         </div>
       </div>
-
-      {showPreview && (
-        <a href={links.preview} target="_blank" rel={rel} className={`${buttonClass} mt-3 w-full`} style={buttonStyle("preview")} {...pressHandlers("preview")}>
-          試し読みを探す
-        </a>
-      )}
     </div>
   );
 }
