@@ -377,20 +377,20 @@ function matchesPreferenceValue(manga, value) {
   const tags = new Set(manga.tags || []);
   const text = getMangaText(manga);
 
-  if (value === "modern") return tags.has("modern") || (hasAnyTag(tags, ["school", "workplace", "city", "slice_of_life"]) && !hasAnyTag(tags, ["fantasy", "sci_fi", "historical", "post_apocalypse", "space"]));
-  if (value === "fantasy") return tags.has("fantasy") || hasAnyTag(tags, ["mythology", "urban_fantasy", "worldbuilding"]) || /magic|mage|demon lord|dragon|kingdom|another world|otherworld|isekai/.test(text);
-  if (value === "sci_fi") return tags.has("sci_fi") || hasAnyTag(tags, ["space", "virtual", "post_apocalypse"]) || /science fiction|sci-fi|cyber|future|robot|android|ai|technology|near-future/.test(text);
-  if (value === "historical") return tags.has("historical") && !/western|europe|viking|roman|rome|france|french|britain|medieval europe|renaissance/.test(text);
-  if (value === "historical_west") return tags.has("historical") && (hasAnyTag(tags, ["war", "politics"]) || /western|europe|viking|roman|rome|france|french|britain|medieval europe|renaissance/.test(text));
-  if (value === "horror") return tags.has("horror") || (tags.has("supernatural") && hasAnyTag(tags, ["dark", "mystery", "survival", "psychological"])) || /horror|occult|ghost|curse|monster|terror|nightmare/.test(text);
-  if (value === "post_apocalypse") return tags.has("post_apocalypse") || (tags.has("survival") && hasAnyTag(tags, ["dark", "world", "sci_fi"])) || /post-apocalyptic|apocalypse|dystopia|ruined world|collapsed world|zombie|wasteland/.test(text);
-  if (value === "virtual") return tags.has("virtual") || /virtual|vrmmo|mmorpg|online game|game world|game mechanics|trapped in (a )?game|leveling system|vr game|mmo game|game-like world/.test(text);
-  if (value === "school") return tags.has("school") || /school|classroom|classmate|club activity|student council|high school|middle school|academy|campus/.test(text);
-  if (value === "nature") return tags.has("nature") || hasAnyTag(tags, ["small_town", "journey", "healing"]) || /nature|rural|countryside|village|island|mountain|forest|farm|frontier|wilderness/.test(text);
-  if (value === "urban_fantasy") return tags.has("urban_fantasy") || (tags.has("modern") && (tags.has("fantasy") || tags.has("supernatural"))) || /urban fantasy|modern fantasy|city and supernatural|contemporary supernatural/.test(text);
-  if (value === "space") return tags.has("space") || (tags.has("sci_fi") && /space|galaxy|planet|spaceship|space opera|astronaut|interstellar/.test(text));
-  if (value === "mythology") return tags.has("mythology") || (tags.has("supernatural") && hasAnyTag(tags, ["fantasy", "historical"])) || /myth|mythology|folklore|legend|god|deity|divine|yokai/.test(text);
-  if (value === "workplace") return tags.has("workplace") || tags.has("workplace_pro") || (tags.has("specialty") && hasAnyTag(tags, ["adult", "human_drama", "educational"])) || /workplace|profession|industry|office|company|job|career|chef|doctor|lawyer|editor|creator/.test(text);
+  if (value === "modern") return tags.has("modern") || (hasAnyTag(tags, ["school", "workplace", "city", "slice_of_life"]) && !hasAnyTag(tags, ["fantasy", "sci_fi", "historical", "post_apocalypse", "space"])) || /modern|daily life|contemporary|city life|現代|日常|街|都会/.test(text);
+  if (value === "fantasy") return tags.has("fantasy") || hasAnyTag(tags, ["mythology", "urban_fantasy", "worldbuilding"]) || /magic|mage|demon lord|dragon|kingdom|another world|otherworld|isekai|ファンタジー|異世界|魔法|魔王|竜|ドラゴン|王国/.test(text);
+  if (value === "sci_fi") return tags.has("sci_fi") || hasAnyTag(tags, ["space", "virtual", "post_apocalypse"]) || /science fiction|sci-fi|cyber|future|robot|android|ai|technology|near-future|sf|近未来|サイバー|ロボット|アンドロイド|人工知能|科学/.test(text);
+  if (value === "historical") return (tags.has("historical") && !/western|europe|viking|roman|rome|france|french|britain|medieval europe|renaissance|西洋|欧州|ヨーロッパ|ローマ|フランス|英国|ヴァイキング/.test(text)) || /戦国|江戸|幕末|明治|大正|時代劇|侍|武士|忍者|日本史/.test(text);
+  if (value === "historical_west") return tags.has("historical") && (hasAnyTag(tags, ["war", "politics"]) || /western|europe|viking|roman|rome|france|french|britain|medieval europe|renaissance|西洋|欧州|ヨーロッパ|ローマ|フランス|英国|ヴァイキング|中世/.test(text));
+  if (value === "horror") return tags.has("horror") || (tags.has("supernatural") && hasAnyTag(tags, ["dark", "mystery", "survival", "psychological"])) || /horror|occult|ghost|curse|monster|terror|nightmare|ホラー|怪談|怪異|呪い|幽霊|怪物|オカルト|恐怖/.test(text);
+  if (value === "post_apocalypse") return tags.has("post_apocalypse") || (tags.has("survival") && hasAnyTag(tags, ["dark", "world", "sci_fi"])) || /post-apocalyptic|apocalypse|dystopia|ruined world|collapsed world|zombie|wasteland|終末|荒廃|退廃|ディストピア|ゾンビ|崩壊/.test(text);
+  if (value === "virtual") return tags.has("virtual") || /virtual|vrmmo|mmorpg|online game|game world|game mechanics|trapped in (a )?game|leveling system|vr game|mmo game|game-like world|ゲーム世界|ゲーム内|ゲームに閉じ込め|オンラインゲーム|vrゲーム|レベルアップ|仮想|バーチャル/.test(text);
+  if (value === "school") return tags.has("school") || /school|classroom|classmate|club activity|student council|high school|middle school|academy|campus|学校|学園|高校|中学|部活|生徒会|同級生|クラス/.test(text);
+  if (value === "nature") return tags.has("nature") || hasAnyTag(tags, ["small_town", "journey", "healing"]) || /nature|rural|countryside|village|island|mountain|forest|farm|frontier|wilderness|自然|田舎|村|島|山|森|農|辺境/.test(text);
+  if (value === "urban_fantasy") return tags.has("urban_fantasy") || (tags.has("modern") && (tags.has("fantasy") || tags.has("supernatural"))) || /urban fantasy|modern fantasy|city and supernatural|contemporary supernatural|現代ファンタジー|都市伝説|都会.*怪異|現代.*超常|現代.*異能/.test(text);
+  if (value === "space") return tags.has("space") || (tags.has("sci_fi") && /space|galaxy|planet|spaceship|space opera|astronaut|interstellar|宇宙|銀河|惑星|宇宙船|星間|スペースオペラ/.test(text));
+  if (value === "mythology") return tags.has("mythology") || (tags.has("supernatural") && hasAnyTag(tags, ["fantasy", "historical"])) || /myth|mythology|folklore|legend|god|deity|divine|yokai|神話|民話|伝承|神|神々|妖怪|伝説/.test(text);
+  if (value === "workplace") return tags.has("workplace") || tags.has("workplace_pro") || (tags.has("specialty") && hasAnyTag(tags, ["adult", "human_drama", "educational"])) || /workplace|profession|industry|office|company|job|career|chef|doctor|lawyer|editor|creator|仕事|職場|業界|会社|職業|料理人|医者|弁護士|編集者|作家/.test(text);
   if (tags.has(value) || manga.demographic === value || manga.status === value) return true;
   if (value === "mystery_supernatural") return tags.has("mystery") && tags.has("supernatural");
   return false;
@@ -521,12 +521,9 @@ function selectCandidatePool(signals, limit = GEMINI_CANDIDATE_LIMIT) {
   if (!signals.settingPrefs || signals.settingPrefs.size === 0) return scored.slice(0, limit);
 
   const settingMatched = scored.filter(({ manga }) => matchesAnySetting(manga, signals));
-  if (signals.settingPrefs.has("virtual")) {
-    return settingMatched.slice(0, limit);
-  }
+  if (settingMatched.length > 0) return settingMatched.slice(0, limit);
 
-  const others = scored.filter(({ manga }) => !matchesAnySetting(manga, signals));
-  return [...settingMatched, ...others].slice(0, limit);
+  return scored.slice(0, limit);
 }
 
 function createWebDiscoveryId(rec) {
