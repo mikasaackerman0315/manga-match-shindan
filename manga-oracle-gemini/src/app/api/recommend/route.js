@@ -54,11 +54,11 @@ const CORE_DB_BY_ID = new Map(CORE_DB.map((manga) => [manga.id, manga]));
 // Gemini APIのエンドポイント（v1beta / generateContent）
 const GEMINI_MODEL = "gemini-2.5-flash";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
-const GEMINI_MAX_ATTEMPTS = 1;
-const GEMINI_TIMEOUT_MS = 19000;
-const GEMINI_CANDIDATE_LIMIT = 140;
+const GEMINI_MAX_ATTEMPTS = 2;
+const GEMINI_TIMEOUT_MS = 55000;
+const GEMINI_CANDIDATE_LIMIT = 220;
 const FALLBACK_RESULT_LIMIT = 15;
-const WEB_DISCOVERY_LIMIT = 2;
+const WEB_DISCOVERY_LIMIT = 3;
 
 // ------------------------------------------------------------
 // シンプルなメモリ内レート制限（本番ではRedis等を推奨）
@@ -146,6 +146,22 @@ const ANSWER_TAG_ALIASES = {
 };
 
 const DEMOGRAPHIC_VALUES = new Set(["shonen", "shojo", "seinen", "josei", "web", "kodomo"]);
+const SETTING_VALUES = new Set([
+  "modern",
+  "fantasy",
+  "sci_fi",
+  "historical",
+  "historical_west",
+  "horror",
+  "post_apocalypse",
+  "virtual",
+  "school",
+  "nature",
+  "urban_fantasy",
+  "space",
+  "mythology",
+  "workplace",
+]);
 
 const TAG_LABELS_JA = {
   fantasy: "ファンタジー",
@@ -235,6 +251,12 @@ Before finalizing, use Google Search to check whether recent manga, manga-app se
 ## User's Quiz Answers
 ${profileSummary}
 ${freeTextSection}
+## Hard Fit Requirements
+
+- Treat the user's selected world/setting as a hard editorial constraint. A famous manga is not a good pick if its core world does not match the selected setting.
+- Do not recommend broad prestige classics just because they are famous.
+- If the user selected "Virtual / game worlds", prioritize manga centered on VR, MMORPGs, game mechanics, level systems, dungeons, online worlds, or being trapped in a game-like world. Do NOT use general fantasy or dark fantasy as a substitute.
+
 ## Your Task
 
 1. Analyze the user's preference profile.
@@ -332,10 +354,42 @@ function getOptionLabel(entry, language) {
   return language === "en" ? option.en || entry.value : option.ja || entry.value;
 }
 
+function getMangaText(manga) {
+  return [
+    manga.title_ja,
+    manga.title_en,
+    manga.author,
+    manga.desc_ja,
+    manga.desc_en,
+    ...(manga.tags || []),
+  ].join(" ").toLowerCase();
+}
+
+function matchesPreferenceValue(manga, value) {
+  const tags = new Set(manga.tags || []);
+  const text = getMangaText(manga);
+
+  if (tags.has(value) || manga.demographic === value || manga.status === value) return true;
+  if (value === "historical_west") return tags.has("historical") && (tags.has("war") || tags.has("politics") || /western|europe|西洋|欧州|ヨーロッパ/.test(text));
+  if (value === "mystery_supernatural") return tags.has("mystery") && tags.has("supernatural");
+  if (value === "urban_fantasy") return tags.has("urban_fantasy") || (tags.has("modern") && (tags.has("fantasy") || tags.has("supernatural")));
+  if (value === "virtual") return tags.has("virtual") || /virtual|vrmmo|mmorpg|online game|game world|game mechanics|trapped in (a )?game|leveling system|vr game|mmo game|game-like world|ゲーム世界|ゲーム内|ゲームに閉じ込め|ゲーム知識|オンラインゲーム|vrゲーム|クソゲー|神ゲー|ゲーマ|仮想|バーチャル|レベルアップ/.test(text);
+  if (value === "space") return tags.has("space") || /space|宇宙|銀河|惑星/.test(text);
+  if (value === "workplace") return tags.has("workplace") || tags.has("workplace_pro") || /仕事|職場|業界|会社|profession|workplace/.test(text);
+  if (value === "nature") return tags.has("nature") || tags.has("small_town") || /自然|田舎|山|森|島|rural|nature/.test(text);
+  return false;
+}
+
+function matchesAnySetting(manga, signals) {
+  if (!signals.settingPrefs || signals.settingPrefs.size === 0) return true;
+  return Array.from(signals.settingPrefs).some((value) => matchesPreferenceValue(manga, value));
+}
+
 function buildPreferenceSignals(answers, questions, freeText = "", language = "ja") {
   const entries = getSelectedEntries(answers, questions);
   const tagWeights = new Map();
   const selectedLabels = [];
+  const settingPrefs = new Set();
   const demographics = new Set();
   const statusPrefs = new Set();
   const mediaPrefs = new Set();
@@ -349,6 +403,9 @@ function buildPreferenceSignals(answers, questions, freeText = "", language = "j
 
     if (entry.questionId === "demographic" && DEMOGRAPHIC_VALUES.has(entry.value)) {
       demographics.add(entry.value);
+    }
+    if (entry.questionId === "setting" && SETTING_VALUES.has(entry.value)) {
+      settingPrefs.add(entry.value);
     }
     if (entry.questionId === "status") statusPrefs.add(entry.value);
     if (entry.questionId === "media") mediaPrefs.add(entry.value);
@@ -377,7 +434,7 @@ function buildPreferenceSignals(answers, questions, freeText = "", language = "j
   boostTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) + 4));
   avoidTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) - 6));
 
-  return { tagWeights, demographics, statusPrefs, mediaPrefs, selectedLabels };
+  return { tagWeights, settingPrefs, demographics, statusPrefs, mediaPrefs, selectedLabels };
 }
 
 function scoreManga(manga, signals) {
@@ -392,6 +449,20 @@ function scoreManga(manga, signals) {
       if (weight > 0) matchedTags.push(tag);
     }
   });
+
+  if (signals.settingPrefs?.size > 0) {
+    const settingMatched = matchesAnySetting(manga, signals);
+    if (settingMatched) {
+      score += 16;
+      matchedTags.push(...Array.from(signals.settingPrefs).filter((value) => matchesPreferenceValue(manga, value)));
+    } else {
+      score -= 24;
+    }
+
+    if (signals.settingPrefs.has("virtual") && !matchesPreferenceValue(manga, "virtual")) {
+      score -= 35;
+    }
+  }
 
   if (signals.demographics.size > 0) {
     score += signals.demographics.has(manga.demographic) ? 8 : -2;
@@ -430,7 +501,16 @@ function scoreCandidatePool(signals) {
 }
 
 function selectCandidatePool(signals, limit = GEMINI_CANDIDATE_LIMIT) {
-  return scoreCandidatePool(signals).slice(0, limit);
+  const scored = scoreCandidatePool(signals);
+  if (!signals.settingPrefs || signals.settingPrefs.size === 0) return scored.slice(0, limit);
+
+  const settingMatched = scored.filter(({ manga }) => matchesAnySetting(manga, signals));
+  if (signals.settingPrefs.has("virtual")) {
+    return settingMatched.slice(0, limit);
+  }
+
+  const others = scored.filter(({ manga }) => !matchesAnySetting(manga, signals));
+  return [...settingMatched, ...others].slice(0, limit);
 }
 
 function createWebDiscoveryId(rec) {
@@ -464,10 +544,9 @@ function buildFallbackReason(manga, matchedTags, language) {
     .map((tag) => TAG_LABELS_JA[tag] || tag)
     .join("・");
   return labels
-    ? `${labels}の好みに合いやすいため、厳選DBから選びました。${manga.title_ja}は読み味とテーマの相性がよく、次に読む候補として外しにくい作品です。`
+    ? `${labels}の好みに合いやすいため、厳選DBから選びました。${manga.title_ja}は次に読む候補として相性の良い作品です。`
     : "診断の回答と作品情報のバランスを見て、厳選DBから選びました。迷った時の候補として読み始めやすい作品です。";
 }
-
 function enrichRecommendations(payload) {
   if (!payload?.recommendations) return payload;
   const seenTitles = new Set();
@@ -513,7 +592,55 @@ function enrichRecommendations(payload) {
   };
 }
 
-async function requestGeminiRecommendation(prompt, apiKey, useGoogleSearch = true) {
+function recommendationMatchesSignals(rec, signals) {
+  if (!signals?.settingPrefs || signals.settingPrefs.size === 0) return true;
+  const dbEntry = rec.source === "db" || CORE_DB_BY_ID.has(rec.id) ? CORE_DB_BY_ID.get(rec.id) : null;
+  return matchesAnySetting(dbEntry || rec, signals);
+}
+
+function createFallbackRecommendation(manga, matchedTags, rank, language) {
+  return {
+    rank,
+    source: "db",
+    id: manga.id,
+    title_ja: manga.title_ja,
+    title_en: manga.title_en,
+    author: manga.author,
+    year: manga.year,
+    volumes: manga.volumes,
+    status: manga.status,
+    demographic: manga.demographic,
+    anime: manga.anime,
+    tags: manga.tags,
+    description: language === "en" ? manga.desc_en : manga.desc_ja,
+    reason: buildFallbackReason(manga, matchedTags, language),
+  };
+}
+
+function enforceRecommendationFit(payload, signals, language) {
+  if (!payload?.recommendations || !signals?.settingPrefs || signals.settingPrefs.size === 0) return payload;
+
+  const filtered = payload.recommendations.filter((rec) => recommendationMatchesSignals(rec, signals));
+  const seen = new Set(filtered.map((rec) => normalizeMangaTitle(rec.title_ja || rec.title_en || rec.id)));
+
+  if (filtered.length < FALLBACK_RESULT_LIMIT) {
+    for (const { manga, matchedTags } of scoreCandidatePool(signals)) {
+      if (!matchesAnySetting(manga, signals)) continue;
+      const key = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      filtered.push(createFallbackRecommendation(manga, matchedTags, filtered.length + 1, language));
+      if (filtered.length >= FALLBACK_RESULT_LIMIT) break;
+    }
+  }
+
+  return {
+    ...payload,
+    recommendations: filtered.slice(0, FALLBACK_RESULT_LIMIT).map((rec, index) => ({ ...rec, rank: index + 1 })),
+  };
+}
+
+async function requestGeminiRecommendation(prompt, apiKey, signals, language, useGoogleSearch = true) {
   let lastError;
 
   for (let attempt = 0; attempt < GEMINI_MAX_ATTEMPTS; attempt += 1) {
@@ -549,7 +676,7 @@ async function requestGeminiRecommendation(prompt, apiKey, useGoogleSearch = tru
         const fullText = extractText(data);
         const parsed = extractJSON(fullText);
         if (!validateResponse(parsed)) throw new Error("Gemini response did not match expected shape.");
-        return enrichRecommendations(parsed);
+        return enforceRecommendationFit(enrichRecommendations(parsed), signals, language);
       }
     } catch (err) {
       lastError = err;
@@ -567,7 +694,8 @@ async function requestGeminiRecommendation(prompt, apiKey, useGoogleSearch = tru
 }
 
 function buildFallbackResponse(answers, questions, freeText, language, candidatePool = null) {
-  const fallback = buildPreviewResponse(answers, questions, freeText, language, candidatePool);
+  const signals = buildPreferenceSignals(answers, questions, freeText, language);
+  const fallback = enforceRecommendationFit(buildPreviewResponse(answers, questions, freeText, language, candidatePool), signals, language);
   return {
     fallback: true,
     userProfile: language === "en"
@@ -584,25 +712,11 @@ function buildPreviewResponse(answers, questions = [], freeText = "", language =
   const seenTitles = new Set();
   const picked = [];
   for (const { manga, matchedTags } of scored) {
+    if (signals.settingPrefs?.size > 0 && !matchesAnySetting(manga, signals)) continue;
     const titleKey = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
     if (titleKey && seenTitles.has(titleKey)) continue;
     if (titleKey) seenTitles.add(titleKey);
-    picked.push({
-      rank: picked.length + 1,
-      source: "db",
-      id: manga.id,
-      title_ja: manga.title_ja,
-      title_en: manga.title_en,
-      author: manga.author,
-      year: manga.year,
-      volumes: manga.volumes,
-      status: manga.status,
-      demographic: manga.demographic,
-      anime: manga.anime,
-      tags: manga.tags,
-      description: language === "en" ? manga.desc_en : manga.desc_ja,
-      reason: buildFallbackReason(manga, matchedTags, language),
-    });
+    picked.push(createFallbackRecommendation(manga, matchedTags, picked.length + 1, language));
     if (picked.length >= FALLBACK_RESULT_LIMIT) break;
   }
 
@@ -652,7 +766,7 @@ export async function POST(req) {
     const prompt = buildPrompt(answers, questions, freeText, requestLanguage, candidatePool);
     // Gemini 2.5 Flash 呼び出し（JSONレスポンス優先）
     try {
-      const parsed = await requestGeminiRecommendation(prompt, apiKey, true);
+      const parsed = await requestGeminiRecommendation(prompt, apiKey, signals, requestLanguage, true);
       return NextResponse.json(parsed);
     } catch (groundedErr) {
       console.error("Grounded Gemini recommendation failed. Returning fallback recommendations:", groundedErr);
