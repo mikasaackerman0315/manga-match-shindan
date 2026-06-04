@@ -85,6 +85,24 @@ const QUESTION_WEIGHTS = {
   ending: 2,
 };
 
+const STAGED_FILTER_STEPS = [
+  { questionId: "setting", min: 8 },
+  { questionId: "elements", min: 12 },
+  { questionId: "tone", min: 10 },
+  { questionId: "demographic", min: 10 },
+  { questionId: "status", min: 8 },
+  { questionId: "relationship", min: 8 },
+  { questionId: "depth", min: 8 },
+  { questionId: "structure", min: 8 },
+  { questionId: "pacing", min: 8 },
+  { questionId: "protagonist", min: 8 },
+  { questionId: "scale", min: 8 },
+  { questionId: "presentation", min: 8 },
+  { questionId: "art", min: 6 },
+  { questionId: "media", min: 6 },
+  { questionId: "ending", min: 6 },
+];
+
 const ANSWER_TAG_ALIASES = {
   healing_story: ["healing", "warm", "comfort", "wholesome"],
   historical_west: ["historical", "war", "politics"],
@@ -239,7 +257,7 @@ function buildPrompt(answers, questions, freeText, language, candidatePool = [])
 You are building a hybrid recommendation list: the curated DB is the factual backbone, and Google Search may be used to discover recent, app-native, niche, or underrepresented manga when the DB shortlist is not enough.
 
 ## Curated Database Shortlist (${candidates.length} candidates selected from ${CORE_DB_UNIQUE.length} unique works)
-These candidates were pre-scored from the full curated database using the user's answers. "matchScore" and "matchedTags" are guidance signals, not final rankings.
+These candidates were narrowed step by step from the full curated database using the user's answers, then pre-scored. Treat this shortlist as the user's strongest fit zone. "matchScore" and "matchedTags" are guidance signals, not final rankings.
 
 \`\`\`json
 ${dbJson}
@@ -401,6 +419,38 @@ function matchesAnySetting(manga, signals) {
   return Array.from(signals.settingPrefs).some((value) => matchesPreferenceValue(manga, value));
 }
 
+function matchesEntry(manga, entry) {
+  const tags = new Set(manga.tags || []);
+  const value = entry.value;
+
+  if (!value || value === "any") return true;
+  if (entry.questionId === "setting") return matchesPreferenceValue(manga, value);
+  if (entry.questionId === "demographic") return manga.demographic === value;
+  if (entry.questionId === "status") {
+    if (value === "completed_only") return manga.status === "completed";
+    if (value === "ongoing_only") return manga.status === "ongoing";
+    if (value === "short") return manga.volumes && manga.volumes <= 10;
+    if (value === "medium") return manga.volumes && manga.volumes > 10 && manga.volumes <= 30;
+    if (value === "long" || value === "epic" || value === "long_running") return manga.volumes && manga.volumes >= 30;
+    return manga.status === value || tags.has(value);
+  }
+  if (entry.questionId === "media") {
+    if (value === "anime_yes") return manga.anime === true;
+    if (value === "anime_no") return manga.anime === false;
+  }
+
+  return getAnswerTags(value).some((tag) => {
+    if (tags.has(tag) || manga.demographic === tag || manga.status === tag) return true;
+    if (tag === "anime_yes") return manga.anime === true;
+    if (tag === "anime_no") return manga.anime === false;
+    return matchesPreferenceValue(manga, tag);
+  });
+}
+
+function matchesQuestionEntries(manga, entries) {
+  return entries.some((entry) => matchesEntry(manga, entry));
+}
+
 function buildPreferenceSignals(answers, questions, freeText = "", language = "ja") {
   const entries = getSelectedEntries(answers, questions);
   const tagWeights = new Map();
@@ -450,7 +500,7 @@ function buildPreferenceSignals(answers, questions, freeText = "", language = "j
   boostTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) + 4));
   avoidTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) - 6));
 
-  return { tagWeights, settingPrefs, demographics, statusPrefs, mediaPrefs, selectedLabels };
+  return { tagWeights, settingPrefs, demographics, statusPrefs, mediaPrefs, selectedLabels, entries, appliedFilterQuestionIds: [] };
 }
 
 function scoreManga(manga, signals) {
@@ -516,14 +566,38 @@ function scoreCandidatePool(signals) {
   });
 }
 
+function groupEntriesByQuestion(entries = []) {
+  return entries.reduce((groups, entry) => {
+    if (!groups.has(entry.questionId)) groups.set(entry.questionId, []);
+    groups.get(entry.questionId).push(entry);
+    return groups;
+  }, new Map());
+}
+
+function applyStagedFilters(scored, signals) {
+  const entriesByQuestion = groupEntriesByQuestion(signals.entries);
+  let narrowed = scored;
+  const applied = [];
+
+  STAGED_FILTER_STEPS.forEach(({ questionId, min }) => {
+    const entries = entriesByQuestion.get(questionId);
+    if (!entries || entries.length === 0) return;
+
+    const filtered = narrowed.filter(({ manga }) => matchesQuestionEntries(manga, entries));
+    if (filtered.length >= min) {
+      narrowed = filtered;
+      applied.push(questionId);
+    }
+  });
+
+  signals.appliedFilterQuestionIds = applied;
+  return narrowed;
+}
+
 function selectCandidatePool(signals, limit = GEMINI_CANDIDATE_LIMIT) {
   const scored = scoreCandidatePool(signals);
-  if (!signals.settingPrefs || signals.settingPrefs.size === 0) return scored.slice(0, limit);
-
-  const settingMatched = scored.filter(({ manga }) => matchesAnySetting(manga, signals));
-  if (settingMatched.length > 0) return settingMatched.slice(0, limit);
-
-  return scored.slice(0, limit);
+  const narrowed = applyStagedFilters(scored, signals);
+  return narrowed.slice(0, limit);
 }
 
 function createWebDiscoveryId(rec) {
@@ -606,9 +680,15 @@ function enrichRecommendations(payload) {
 }
 
 function recommendationMatchesSignals(rec, signals) {
-  if (!signals?.settingPrefs || signals.settingPrefs.size === 0) return true;
+  if (!signals?.appliedFilterQuestionIds || signals.appliedFilterQuestionIds.length === 0) return true;
   const dbEntry = rec.source === "db" || CORE_DB_BY_ID.has(rec.id) ? CORE_DB_BY_ID.get(rec.id) : null;
-  return matchesAnySetting(dbEntry || rec, signals);
+  const manga = dbEntry || rec;
+  const entriesByQuestion = groupEntriesByQuestion(signals.entries);
+
+  return signals.appliedFilterQuestionIds.every((questionId) => {
+    const entries = entriesByQuestion.get(questionId);
+    return !entries || entries.length === 0 || matchesQuestionEntries(manga, entries);
+  });
 }
 
 function createFallbackRecommendation(manga, matchedTags, rank, language) {
@@ -631,14 +711,14 @@ function createFallbackRecommendation(manga, matchedTags, rank, language) {
 }
 
 function enforceRecommendationFit(payload, signals, language) {
-  if (!payload?.recommendations || !signals?.settingPrefs || signals.settingPrefs.size === 0) return payload;
+  if (!payload?.recommendations || !signals?.appliedFilterQuestionIds || signals.appliedFilterQuestionIds.length === 0) return payload;
 
   const filtered = payload.recommendations.filter((rec) => recommendationMatchesSignals(rec, signals));
   const seen = new Set(filtered.map((rec) => normalizeMangaTitle(rec.title_ja || rec.title_en || rec.id)));
 
   if (filtered.length < FALLBACK_RESULT_LIMIT) {
     for (const { manga, matchedTags } of scoreCandidatePool(signals)) {
-      if (!matchesAnySetting(manga, signals)) continue;
+      if (!recommendationMatchesSignals(manga, signals)) continue;
       const key = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
       if (seen.has(key)) continue;
       seen.add(key);
