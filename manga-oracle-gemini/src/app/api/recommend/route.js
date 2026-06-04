@@ -58,6 +58,7 @@ const GEMINI_MAX_ATTEMPTS = 2;
 const GEMINI_TIMEOUT_MS = 28000;
 const GEMINI_CANDIDATE_LIMIT = 220;
 const FALLBACK_RESULT_LIMIT = 20;
+const WEB_DISCOVERY_LIMIT = 4;
 
 // ------------------------------------------------------------
 // シンプルなメモリ内レート制限（本番ではRedis等を推奨）
@@ -219,7 +220,7 @@ function buildPrompt(answers, questions, freeText, language, candidatePool = [])
 
   return `You are a world-class manga recommendation expert.
 
-Recommend only from this source:
+You are building a hybrid recommendation list: the curated DB is the factual backbone, and Google Search may be used to discover recent, app-native, niche, or underrepresented manga when the DB shortlist is not enough.
 
 ## Curated Database Shortlist (${candidates.length} candidates selected from ${CORE_DB_UNIQUE.length} unique works)
 These candidates were pre-scored from the full curated database using the user's answers. "matchScore" and "matchedTags" are guidance signals, not final rankings.
@@ -228,6 +229,9 @@ These candidates were pre-scored from the full curated database using the user's
 ${dbJson}
 \`\`\`
 
+## Google Search Discovery Guidance
+Before finalizing, use Google Search to check whether recent manga, manga-app serializations, SNS buzz titles, anime-adaptation titles, or newly popular niche works match this user's profile better than some DB candidates. Web discoveries should improve the list, not pad it.
+
 ## User's Quiz Answers
 ${profileSummary}
 ${freeTextSection}
@@ -235,8 +239,9 @@ ${freeTextSection}
 
 1. Analyze the user's preference profile.
 2. Review the curated DB carefully — with many unique titles, there are likely many strong matches.
-3. Choose ONE ranked list of 20 manga from the curated database.
-4. Mark each recommendation's source as "db".
+3. Use Google Search grounding when it can improve freshness, app/web manga coverage, or niche fit.
+4. Choose ONE ranked list of up to 20 manga.
+5. Mark curated database recommendations as "db" and grounded discoveries as "web".
 
 ## Output Format
 
@@ -247,20 +252,26 @@ Return ONLY a valid JSON object (no markdown fences, no preamble):
 {
   "userProfile": "1-2 sentence vivid description in second person",
   "recommendations": [
-    { "rank": 1, "source": "db", "id": "one_piece", "title_ja": "...", "title_en": "...", "author": "...", "year": 1997, "volumes": 108, "status": "ongoing", "demographic": "shonen", "anime": true, "description": "1-2 sentence summary", "reason": "2-3 sentences why THIS fits THIS reader" }
+    { "rank": 1, "source": "db", "id": "one_piece", "title_ja": "...", "title_en": "...", "author": "...", "year": 1997, "volumes": 108, "status": "ongoing", "demographic": "shonen", "anime": true, "description": "1-2 sentence summary", "reason": "2-3 sentences why THIS fits THIS reader" },
+    { "rank": 2, "source": "web", "id": "web_unique_title", "title_ja": "...", "title_en": "...", "author": "...", "year": 2024, "volumes": null, "status": "ongoing", "demographic": "web", "anime": false, "description": "1-2 sentence summary", "reason": "2-3 sentences why THIS fits THIS reader" }
   ]
 }
 
 ## Rules
 
 - ${langInstruction}
-- "source" must be "db" and include the id from DB.
+- For DB picks, "source" must be "db" and "id" must exactly match the curated DB id.
+- For Google Search discoveries, "source" must be "web" and "id" must start with "web_".
+- Use DB picks for the majority of the list. Include at most ${WEB_DISCOVERY_LIMIT} web discoveries.
+- Only include a web discovery if you are confident it is a real manga and it clearly fits better than another DB candidate.
+- Do not include adult-only, TL, or BL-only recommendations.
 - Rank by best fit (rank 1 = strongest).
 - Prefer high matchScore works when they also make editorial sense, but do not simply sort by score.
-- Do NOT recommend the same manga title twice, even if duplicate or variant entries exist in the database.
+- Do NOT recommend the same manga title twice, even if duplicate or variant entries exist in the database or search results.
 - Top 3: enthusiastic, detailed reasons. Items 4-10: concise. Items 11-20: brief.
 - ALWAYS reference the user's specific answers in your reasons.
 - If the user provided a free-text request, treat it as top priority: respect dislikes (exclude matching works) and lean into stated likes.
+- If exact year, volumes, anime, or demographic are uncertain for a web discovery, use your best grounded estimate and keep the reason focused on fit, not unverifiable trivia.
 - "status": "completed" | "ongoing" | "hiatus"
 - "demographic": "shonen" | "shojo" | "seinen" | "josei" | "kodomo" | "web"
 - Output ONLY the JSON. No fences, no commentary.`;
@@ -422,6 +433,24 @@ function selectCandidatePool(signals, limit = GEMINI_CANDIDATE_LIMIT) {
   return scoreCandidatePool(signals).slice(0, limit);
 }
 
+function createWebDiscoveryId(rec) {
+  const source = `${rec.title_en || rec.title_ja || rec.id || "discovery"}`;
+  const asciiSlug = source
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .slice(0, 48);
+
+  if (asciiSlug) return `web_${asciiSlug}`;
+
+  const codeSlug = Array.from(source)
+    .slice(0, 10)
+    .map((char) => char.codePointAt(0).toString(36))
+    .join("_");
+  return `web_${codeSlug || "discovery"}`;
+}
+
 function buildFallbackReason(manga, matchedTags, language) {
   if (language === "en") {
     const labels = matchedTags.slice(0, 3).join(", ");
@@ -442,15 +471,26 @@ function buildFallbackReason(manga, matchedTags, language) {
 function enrichRecommendations(payload) {
   if (!payload?.recommendations) return payload;
   const seenTitles = new Set();
+  let webCount = 0;
 
   return {
     ...payload,
     recommendations: payload.recommendations.map((rec) => {
       const dbEntry = CORE_DB_BY_ID.get(rec.id);
-      if (!dbEntry) return rec;
+      if (!dbEntry) {
+        return {
+          ...rec,
+          source: "web",
+          id: rec.id && `${rec.id}`.startsWith("web_") ? rec.id : createWebDiscoveryId(rec),
+          demographic: rec.demographic || "web",
+          status: rec.status || "ongoing",
+          anime: typeof rec.anime === "boolean" ? rec.anime : false,
+        };
+      }
 
       return {
         ...rec,
+        source: "db",
         author: rec.author || dbEntry.author,
         year: rec.year || dbEntry.year,
         volumes: dbEntry.volumes,
@@ -464,12 +504,16 @@ function enrichRecommendations(payload) {
       if (!key) return true;
       if (seenTitles.has(key)) return false;
       seenTitles.add(key);
+      if (rec.source === "web") {
+        webCount += 1;
+        if (webCount > WEB_DISCOVERY_LIMIT) return false;
+      }
       return true;
     }).map((rec, index) => ({ ...rec, rank: index + 1 })),
   };
 }
 
-async function requestGeminiRecommendation(prompt, apiKey) {
+async function requestGeminiRecommendation(prompt, apiKey, useGoogleSearch = true) {
   let lastError;
 
   for (let attempt = 0; attempt < GEMINI_MAX_ATTEMPTS; attempt += 1) {
@@ -485,6 +529,7 @@ async function requestGeminiRecommendation(prompt, apiKey) {
         signal: controller.signal,
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
+          ...(useGoogleSearch ? { tools: [{ google_search: {} }] } : {}),
           generationConfig: {
             temperature: attempt === 0 ? 0.7 : 0.35,
             maxOutputTokens: 16000,
@@ -607,11 +652,17 @@ export async function POST(req) {
     const prompt = buildPrompt(answers, questions, freeText, requestLanguage, candidatePool);
     // Gemini 2.5 Flash 呼び出し（JSONレスポンス優先）
     try {
-      const parsed = await requestGeminiRecommendation(prompt, apiKey);
+      const parsed = await requestGeminiRecommendation(prompt, apiKey, true);
       return NextResponse.json(parsed);
-    } catch (aiErr) {
-      console.error("Gemini failed after retries. Returning fallback recommendations:", aiErr);
-      return NextResponse.json(buildFallbackResponse(answers, questions, freeText, requestLanguage, candidatePool));
+    } catch (groundedErr) {
+      console.error("Grounded Gemini recommendation failed. Retrying without Google Search:", groundedErr);
+      try {
+        const parsed = await requestGeminiRecommendation(prompt, apiKey, false);
+        return NextResponse.json(parsed);
+      } catch (aiErr) {
+        console.error("Gemini failed after retries. Returning fallback recommendations:", aiErr);
+        return NextResponse.json(buildFallbackResponse(answers, questions, freeText, requestLanguage, candidatePool));
+      }
     }
   } catch (err) {
     console.error("Recommend route error:", err);
