@@ -1,14 +1,14 @@
-# 漫画DB 監査サマリー
+# 漫画DB品質監査サマリー
 
-最終生成日: 2026-06-03
+生成日: 2026-06-04
 
 ## 全体
-
-- 合計作品数: 1800
+- 生DB件数: 1800
 - ユニークID数: 1800
-- 重複IDグループ: 0
-- タイトル重複候補グループ: 106
-- 巻数未確認作品: 540
+- タイトル正規化後の候補数: 1692
+- ID重複グループ: 0
+- タイトル重複グループ: 106
+- 巻数未確認または異常値: 540
 
 ## ファイル別件数
 
@@ -33,8 +33,7 @@
 - completed: 1188
 - hiatus: 25
 
-## タイトル重複候補
-
+## タイトル重複の優先度
 - high: 105
 - medium: 1
 - low: 0
@@ -68,7 +67,7 @@
 19. [high] biomega (2件): BIOMEGA / biomega_x / src/data/coreDB_extra.js#77; BIOMEGA / biomega / src/data/coreDB.js#52
 20. [high] シドニアの騎士 (2件): シドニアの騎士 / sgz / src/data/coreDB.js#54; シドニアの騎士 / knights_sidonia_main / src/data/coreDB.js#90
 
-## 巻数未確認
+## 巻数未確認または異常値
 
 ファイル別:
 
@@ -86,13 +85,52 @@
 - shonen: 121
 - shojo: 20
 
+## 記事掲載作品とDBの一致
+
+- exact_match: 233
+- missing_or_variant: 52
+
+### 記事側で確認したい作品 上位30件
+
+1. 重版出来! (seo_article_card, src/app/adult-manga/page.jsx)
+2. 働きマン (seo_article_card, src/app/adult-manga/page.jsx)
+3. 東京喰種トーキョーグール (seo_article_card, src/app/binge-read-manga/page.jsx)
+4. 七つの大罪 (seo_article_card, src/app/fantasy-manga/page.jsx)
+5. うめともものふつうの暮らし (seo_article_card, src/app/healing-manga/page.jsx)
+6. フードコートで、また明日。 (seo_article_card, src/app/healing-manga/page.jsx)
+7. ラーメン赤猫 (seo_article_card, src/app/healing-manga/page.jsx)
+8. 銀の匙 (seo_article_card, src/app/high-school-manga/page.jsx)
+9. ガンニバル (seo_article_card, src/app/horror-manga/page.jsx)
+10. ミスミソウ (seo_article_card, src/app/horror-manga/page.jsx)
+11. 東京喰種トーキョーグール (seo_article_card, src/app/horror-manga/page.jsx)
+12. しろくまカフェ (seo_article_card, src/app/lighthearted-manga/page.jsx)
+13. 銀の匙 (seo_article_card, src/app/lighthearted-manga/page.jsx)
+14. 銀の匙 (seo_article_card, src/app/middle-school-manga/page.jsx)
+15. 聖母の断罪 (seo_article_card, src/app/mystery-manga/page.jsx)
+16. 裏バイト:逃亡禁止 (seo_article_card, src/app/mystery-manga/page.jsx)
+17. フードコートで、また明日。 (seo_article_card, src/app/new-manga-2020s/page.jsx)
+18. classic (theme_article_card, src/app/page.jsx)
+19. romance (theme_article_card, src/app/page.jsx)
+20. sports (theme_article_card, src/app/page.jsx)
+21. workplace (theme_article_card, src/app/page.jsx)
+22. 恋は雨上がりのように (seo_article_card, src/app/romance-manga/page.jsx)
+23. あさひなぐ (theme_article_card, src/app/themeData.js)
+24. うめともものふつうの暮らし (theme_article_card, src/app/themeData.js)
+25. ガンニバル (theme_article_card, src/app/themeData.js)
+26. ハコヅメ (theme_article_card, src/app/themeData.js)
+27. フードコートで、また明日。 (theme_article_card, src/app/themeData.js)
+28. ミスミソウ (theme_article_card, src/app/themeData.js)
+29. ラーメン赤猫 (theme_article_card, src/app/themeData.js)
+30. 異世界黙示録マイノグーラ (theme_article_card, src/app/themeData.js)
+
 ## 出力ファイル
 
 - `docs/db-audit-duplicate-titles.csv`
 - `docs/db-audit-unknown-volumes.csv`
+- `docs/db-audit-article-coverage.csv`
 
 ## 次にやると効果が大きいこと
 
-1. high のタイトル重複候補を確認し、完全重複なら片方を別作品に差し替える。
-2. 人気作、SEO記事掲載作、テーマ記事掲載作の巻数未確認を優先して埋める。
-3. Webtoonや連載中で巻数が固定しづらい作品は、巻数0を許容する運用対象として残す。
+1. high のタイトル重複を確認し、完全重複ならDBから除外する。
+2. 記事掲載作品の missing_or_variant を見て、DB未登録なのか表記ゆれなのか確認する。
+3. 巻数が0または250超の作品は、UIでは「巻数未確認」として扱いながら、人気記事掲載作品から順に補正する。

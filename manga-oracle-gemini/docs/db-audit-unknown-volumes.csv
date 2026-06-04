@@ -1,541 +1,541 @@
-title_key,id,title_ja,title_en,author,year,status,demographic,source_file,source_index
-神之塔,tower_god_extra,神之塔,Tower of God,SIU,2010,ongoing,web,src/data/coreDB_extra.js,147
-女神降臨,true_beauty_extra,女神降臨,True Beauty,Yaongyi,2018,ongoing,web,src/data/coreDB_extra.js,148
-全知的な読者の視点から,omniscient_reader,全知的な読者の視点から,Omniscient Reader's Viewpoint,Sing N Song/UMI,2020,ongoing,web,src/data/coreDB_extra.js,149
-外見至上主義,lookism_extra,外見至上主義,Lookism,Park Tae-joon,2014,ongoing,web,src/data/coreDB_extra.js,150
-喧嘩独学,viral_hit,喧嘩独学,How to Fight,Park Tae-joon/Kim Jung-hyun,2019,ongoing,web,src/data/coreDB_extra.js,151
-スイトホム,sweet_home_extra,スイートホーム,Sweet Home,Kim Carnby/Hwang Young-chan,2017,completed,web,src/data/coreDB_extra.js,152
-ノブレス,noblesse_extra,ノブレス,Noblesse,Son Jeho/Lee Kwangsu,2007,completed,web,src/data/coreDB_extra.js,153
-勉強グルプ,study_group,勉強グループ,Study Group,Shin Hyung-wook/Yoo Su-ngul,2018,ongoing,web,src/data/coreDB_extra.js,155
-火鳳燎原,the_ravages_of_time,火鳳燎原,The Ravages of Time,"Chan, Mou",2001,ongoing,web,src/data/coreDB_extra2.js,3
-金色のガッシュ2,konjiki_no_gash_two,金色のガッシュ!! 2,Konjiki no Gash!! 2,"Raiku, Makoto",2022,ongoing,seinen,src/data/coreDB_extra2.js,8
-나노마신,nano_machine,나노마신,Nano Machine,Hanjung Wolya/Geumgang Bulgoe,2020,ongoing,web,src/data/coreDB_extra2.js,13
-게임속바바리안으로살아남기,surviving_the_game_as_a_barbarian,게임 속 바바리안으로 살아남기,Surviving the Game as a Barbarian,"Jeong, Yungang/Nep",2023,ongoing,web,src/data/coreDB_extra2.js,14
-魔女と傭兵,the_witch_and_the_mercenary,魔女と傭兵,The Witch and the Mercenary,"Miyagi, Makoto/Chouhoukiteki, Kaeru",2024,ongoing,seinen,src/data/coreDB_extra2.js,17
-最遊記reloadblast,saiyuuki_reload_blast,最遊記RELOAD BLAST,Saiyuuki Reload Blast,"Minekura, Kazuya",2009,ongoing,josei,src/data/coreDB_extra2.js,19
-쿠베라,kubera,쿠베라,Kubera,Currygom,2010,ongoing,web,src/data/coreDB_extra2.js,21
-ゴブリンスレイヤ外伝イヤワン,goblin_slayer_side_story_year_one,ゴブリンスレイヤー外伝：イヤーワン,Goblin Slayer Side Story: Year One,"Kagyuu, Kumo/Sakaeda, Kento",2017,ongoing,seinen,src/data/coreDB_extra2.js,22
-エクソシストを堕とせない,make_the_exorcist_fall_in_love,エクソシストを堕とせない,Make the Exorcist Fall in Love,"Fukayama, Masuku/Arima, Aruma",2021,ongoing,shonen,src/data/coreDB_extra2.js,23
-ロゼンガテンサガ,rosen_garten_saga,ローゼンガーテン・サーガ,Rosen Garten Saga,"Fuji, Sakimori/Tonooka, Bakotsu",2020,ongoing,seinen,src/data/coreDB_extra2.js,24
-終末のワルキュレ,record_of_ragnarok,終末のワルキューレ,Record of Ragnarok,"Fukui, Takumi/Umemura, Shinya",2017,ongoing,seinen,src/data/coreDB_extra2.js,26
-戦国小町苦労譚農耕戯画,sengoku_komachi_kuroutan_noukou_giga,戦国小町苦労譚 農耕戯画,Sengoku Komachi Kuroutan: Noukou Giga,"Sawada, Hajime/Kyouchikutou",2017,ongoing,seinen,src/data/coreDB_extra2.js,28
-철혈검가사냥개의회귀,revenge_of_the_baskerville_bloodhound,철혈검가 사냥개의 회귀,Revenge of the Baskerville Bloodhound,"Lego Babasseo/Seol, Arang",2023,ongoing,web,src/data/coreDB_extra2.js,29
-회귀수선전,a_regressor_s_tale_of_cultivation,회귀수선전,A Regressor's Tale of Cultivation,"Kim, Muhyeon/Eomcheongnan",2025,ongoing,web,src/data/coreDB_extra2.js,31
-로그인무림,log_in_murim,로그인 무림,Log-in Murim,"Zero-BIG/Jang, Cheolbyeok",2020,ongoing,web,src/data/coreDB_extra2.js,32
-斗破苍穹,battle_through_the_heavens,斗破苍穹,Battle Through the Heavens,"Tian Can Tudou/Ren, Xiang",2012,ongoing,web,src/data/coreDB_extra2.js,34
-디펜스게임의폭군이되었다,tyrant_of_the_tower_defense_game,디펜스 게임의 폭군이 되었다,Tyrant of the Tower Defense Game,"Ryueun, Garam/Gyong",2022,ongoing,web,src/data/coreDB_extra2.js,37
-王様ランキング,ranking_of_kings,王様ランキング,Ranking of Kings,"Tooka, Sousuke",2019,ongoing,seinen,src/data/coreDB_extra2.js,42
-杖と剣のウィストリア,wistoria_wand_and_sword,杖と剣のウィストリア,Wistoria: Wand and Sword,"Omori, Fujino/Aoi, Toshi",2020,ongoing,shonen,src/data/coreDB_extra2.js,46
-とある魔術の禁書目録,a_certain_magical_index,とある魔術の禁書目録,A Certain Magical Index,"Kamachi, Kazuma/Kogino, Chuuya",2007,ongoing,shonen,src/data/coreDB_extra2.js,48
-一勝千金,st_r_strike_it_rich,一勝千金,ST✰R: Strike It Rich,"Sandrovich, Yabako/MAAM",2023,ongoing,seinen,src/data/coreDB_extra2.js,53
-4컷용사,four_cut_hero,4컷용사,4 Cut Hero,Gojira-kun,2014,completed,web,src/data/coreDB_extra2.js,54
-열혈강호,the_ruler_of_the_land,열혈강호,The Ruler of the Land,"Yang, Jae Hyun/Jeon, Geuk-jin",1995,ongoing,web,src/data/coreDB_extra2.js,55
-ゴルゴ13,golgo_one_three,ゴルゴ13,Golgo 13,"Saitou, Takao/Koike, Kazuo",1968,ongoing,seinen,src/data/coreDB_extra2.js,59
-고수,gosu,고수,Gosu,"Mun, Jung-Hoo/Ryu, Ki Woon",2015,completed,web,src/data/coreDB_extra2.js,62
-裏世界ピクニック,otherside_picnic,裏世界ピクニック,Otherside Picnic,"Mizuno, Eita/Miyazawa, Iori",2018,ongoing,shonen,src/data/coreDB_extra2.js,63
-싸움독학,viral_hit_x,싸움독학,Viral Hit,"Kim, Jung-Hyun/Park, Tae-Jun",2019,completed,web,src/data/coreDB_extra2.js,66
-던전견문록,dungeon_odyssey,던전 견문록,Dungeon Odyssey,"Glump/Son, Minwoo",2022,ongoing,web,src/data/coreDB_extra2.js,68
-바바리안퀘스트,barbarian_quest,바바리안 퀘스트,Barbarian Quest,Baeksu Gwijok/Morando,2022,completed,web,src/data/coreDB_extra2.js,69
-광마회귀,return_of_the_mad_demon,광마회귀,Return of the Mad Demon,"Yu, Jinsung/Ihy",2021,ongoing,web,src/data/coreDB_extra2.js,70
-투신전생기,doom_breaker,투신전생기,Doom Breaker,Cheongdam,2021,ongoing,web,src/data/coreDB_extra2.js,71
-災厄は僕を好きすぎる,saiyaku_wa_boku_wo_suki_sugiru,災厄は僕を好きすぎる,Saiyaku wa Boku wo Suki Sugiru,"Kannagi, Satoru/Ninomiya, Etsumi",2009,ongoing,seinen,src/data/coreDB_extra2.js,73
-異剣戦記ヴェルンディオ,v_lundio_divergent_sword_saga,異剣戦記ヴェルンディオ,Völundio: Divergent Sword Saga,"Nanao, Nanaki",2020,ongoing,seinen,src/data/coreDB_extra2.js,80
-薫る花は凛と咲く,the_fragrant_flower_blooms_with_dignity,薫る花は凛と咲く,The Fragrant Flower Blooms with Dignity,"Mikami, Saka",2021,ongoing,seinen,src/data/coreDB_extra2.js,81
-真夜中ハトチュン,tune_in_to_the_midnight_heart,真夜中ハートチューン,Tune In to the Midnight Heart,"Igarashi, Masakuni",2023,ongoing,shonen,src/data/coreDB_extra2.js,85
-ゆびさきと恋々,a_sign_of_affection,ゆびさきと恋々,A Sign of Affection,"Morishita, Suu",2019,ongoing,shojo,src/data/coreDB_extra2.js,88
-放課後帰宅びより,houkago_kitaku_biyori,放課後帰宅びより,Houkago Kitaku Biyori,"Matsuda, Mai",2023,ongoing,seinen,src/data/coreDB_extra2.js,89
-痴漢男,chikan_otoko,痴漢男,Chikan Otoko,"Yokota, Takuma",2004,completed,seinen,src/data/coreDB_extra2.js,90
-月刊少女野崎くん,monthly_girls_nozaki_kun,月刊少女野崎くん,Monthly Girls' Nozaki-kun,"Tsubaki, Izumi",2011,ongoing,seinen,src/data/coreDB_extra2.js,92
-僕の心のヤバイやつ,the_dangers_in_my_heart,僕の心のヤバイやつ,The Dangers in My Heart,"Sakurai, Norio",2018,ongoing,shonen,src/data/coreDB_extra2.js,109
-별이삼샵,star_ginseng_store,별이삼샵,Star Ginseng Store,Hyeono,2019,ongoing,web,src/data/coreDB_extra2.js,114
-今朝も揺られてます,they_are_still_being_shaken_this_morning,今朝も揺られてます,They Are Still Being Shaken This Morning,"Masuda, Eiji",2024,ongoing,shonen,src/data/coreDB_extra2.js,124
-お隣の天使様にいつの間にか駄目人間にされていた件aftertherain,the_angel_next_door_spoils_me_rotten_after_the_rain,お隣の天使様にいつの間にか駄目人間にされていた件 after the rain,The Angel Next Door Spoils Me Rotten: After the Rain,Puyo/Saeki-san,2023,ongoing,seinen,src/data/coreDB_extra2.js,127
-多聞くん今どっち,tamon_s_b_side,多聞くん今どっち!?,Tamon's B-Side,"Shiwasu, Yuki",2021,ongoing,shojo,src/data/coreDB_extra2.js,129
-スパの裏でヤニ吸うふたり,smoking_behind_the_supermarket_with_you,スーパーの裏でヤニ吸うふたり,Smoking Behind the Supermarket with You,Jinushi,2022,ongoing,seinen,src/data/coreDB_extra2.js,131
-トニカクカワイイ,fly_me_to_the_moon,トニカクカワイイ,Fly Me to the Moon,"Hata, Kenjirou",2018,ongoing,shonen,src/data/coreDB_extra2.js,135
-후궁스캔들,the_crown_princess_scandal,후궁 스캔들,The Crown Princess Scandal,Jeonghyeon/Kitrow,2021,completed,web,src/data/coreDB_extra2.js,140
-お隣の天使様にいつの間にか駄目人間にされていた件,the_angel_next_door_spoils_me_rotten,お隣の天使様にいつの間にか駄目人間にされていた件,The Angel Next Door Spoils Me Rotten,"Saeki-san/Shibata, Wan",2022,ongoing,seinen,src/data/coreDB_extra2.js,145
-合コンに行ったら女がいなかった話,how_i_attended_an_all_guy_s_mixer,合コンに行ったら女がいなかった話,How I Attended an All-Guy's Mixer,"Aokawa, Nana",2021,ongoing,seinen,src/data/coreDB_extra2.js,148
-ひかえめに言っても、これは愛,love_that_s_an_understatement,ひかえめに言っても、これは愛,"Love, That's an Understatement","Fuji, Momo",2021,ongoing,shojo,src/data/coreDB_extra2.js,156
-クラスで２番目に可愛い女の子と友だちになった,i_made_friends_with_the_second_prettiest_girl_in_my_class,クラスで２番目に可愛い女の子と友だちになった,I Made Friends with the Second Prettiest Girl in My Class,"Takata/Ono, Rin",2022,ongoing,seinen,src/data/coreDB_extra2.js,157
-남편을내편으로만드는방법,how_to_win_my_husband_over,남편을 내 편으로 만드는 방법,How to Win My Husband Over,Nyangi-wa Hyangsinnyo/Siru,2021,ongoing,web,src/data/coreDB_extra2.js,174
-올가미,trapped,올가미,Trapped,Haemuri,2019,completed,web,src/data/coreDB_extra2.js,184
-北北西に曇と往け,go_with_the_clouds_north_by_northwest,北北西に曇と往け,"Go with the Clouds, North-by-Northwest","Irie, Aki",2016,ongoing,seinen,src/data/coreDB_extra2.js,186
-록사나여주인공의오빠를지키는방법,roxana,록사나 : 여주인공의 오빠를 지키는 방법,Roxana,Kin/Yeoreumbit,2021,hiatus,web,src/data/coreDB_extra2.js,194
-똑닮은딸,like_mother_like_daughter,똑 닮은 딸,"Like Mother, Like Daughter",Yidahm,2021,ongoing,web,src/data/coreDB_extra2.js,201
-俺と悪魔のブルズ,me_and_the_devil_blues_the_unreal_life_of_robert_johnson,俺と悪魔のブルーズ,Me and the Devil Blues: The Unreal Life of Robert Johnson,"Hiramoto, Akira",2003,ongoing,seinen,src/data/coreDB_extra2.js,203
-カグラバチ,kagurabachi,カグラバチ,Kagurabachi,"Hokazono, Takeru",2023,ongoing,shonen,src/data/coreDB_extra2.js,204
-アイリスzero,iris_zero,アイリスzero,Iris Zero,"Hotaru, Takana/Piro, Shiki",2009,ongoing,seinen,src/data/coreDB_extra2.js,216
-とんがり帽子のアトリエ,witch_hat_atelier,とんがり帽子のアトリエ,Witch Hat Atelier,"Shirahama, Kamome",2016,ongoing,seinen,src/data/coreDB_extra2.js,221
-圕の大魔術師,magus_of_the_library,圕の大魔術師,Magus of the Library,"Izumi, Mitsu",2017,ongoing,seinen,src/data/coreDB_extra2.js,222
-追放されるたびにスキルを手に入れた俺が、100の異世界で2周目無双,tsuihou_sareru_tabi_ni_skill_wo_te_ni_ireta_ore_ga_one_zero_zero_no_isekai_de_two_shuume_musou,追放されるたびにスキルを手に入れた俺が、100の異世界で2周目無双,"Tsuihou sareru Tabi ni Skill wo Te ni Ireta Ore ga, 100 no Isekai de 2-shuume Musou","Hinoura, Takumi/Nimori, Shimatsukasa",2022,ongoing,seinen,src/data/coreDB_extra2.js,224
-魔入りました入間くんifepisodeof魔フィア,welcome_to_demon_school_iruma_kun_irumafia_edition,魔入りました!入間くん if Episode of 魔フィア,Welcome to Demon School! Iruma-kun: IruMafia Edition,hiroja,2023,ongoing,shonen,src/data/coreDB_extra2.js,225
-魔入りました入間くん,welcome_to_demon_school_iruma_kun,魔入りました!入間くん,Welcome to Demon School! Iruma-kun,"Nishi, Osamu",2017,ongoing,shonen,src/data/coreDB_extra2.js,226
-転生したらスライムだった件,that_time_i_got_reincarnated_as_a_slime,転生したらスライムだった件,That Time I Got Reincarnated as a Slime,"Kawakami, Taiki/Fuse",2015,ongoing,shonen,src/data/coreDB_extra2.js,227
-きみが死ぬまで恋をしたい,i_want_to_love_you_till_your_dying_day,きみが死ぬまで恋をしたい,I Want to Love You Till Your Dying Day,"Aono, Nachi",2018,ongoing,seinen,src/data/coreDB_extra2.js,229
-fate/kaleidlinerプリズマ☆イリヤドライ,fate_kaleid_liner_prisma_illya_three_rei,Fate/kaleid liner プリズマ☆イリヤ ドライ!!,Fate/kaleid liner Prisma☆Illya 3rei!!,"Hiroyama, Hiroshi",2012,ongoing,seinen,src/data/coreDB_extra2.js,233
-dgrayman,d_gray_man,D.Gray-man,D.Gray-man,"Hoshino, Katsura",2004,ongoing,shonen,src/data/coreDB_extra2.js,236
-夜明けの唄,lullaby_of_the_dawn,夜明けの唄,Lullaby of the Dawn,"Yuno, Ichika",2020,ongoing,seinen,src/data/coreDB_extra2.js,238
-별을품은소드마스터,the_stellar_swordmaster,별을 품은 소드마스터,The Stellar Swordmaster,Q10/Juno,2023,ongoing,web,src/data/coreDB_extra2.js,240
-タワダンジョン,tower_dungeon,タワーダンジョン,Tower Dungeon,"Nihei, Tsutomu",2023,ongoing,shonen,src/data/coreDB_extra2.js,245
-ガチアクタ,gachiakuta,ガチアクタ,Gachiakuta,"Urana, Kei",2022,ongoing,shonen,src/data/coreDB_extra2.js,248
-스미르나앤카프리,smyrna_and_capri,스미르나 앤 카프리,Smyrna and Capri,Brothers Without a Tomorrow,2022,completed,web,src/data/coreDB_extra2.js,249
-イグナトの花嫁,bride_of_ignat,イグナートの花嫁,Bride of Ignat,"Mori, Moyori",2023,ongoing,seinen,src/data/coreDB_extra2.js,252
-헌터는조용히살고싶다,the_hunter_s_gonna_lay_low,헌터는 조용히 살고 싶다,The Hunter's Gonna Lay Low,Ligong/Baeksam,2024,ongoing,web,src/data/coreDB_extra2.js,254
-封神記,feng_shen_ji,封神記,Feng Shen Ji,"Deng, Zhi Hui/Zheng, Jian He",2010,completed,web,src/data/coreDB_extra2.js,255
-fate/staynight[heaven'sfeel],fate_stay_night_heaven_s_feel,Fate/stay night [Heaven's Feel],Fate/stay night: Heaven's Feel,"Type-Moon/Ohna, Task",2015,ongoing,seinen,src/data/coreDB_extra2.js,256
-회귀한용병은다계획이있다,the_regressed_mercenary_has_a_plan,회귀한 용병은 다 계획이 있다,The Regressed Mercenary Has a Plan,"Park, Jinseok/Gold Haeng",2024,ongoing,web,src/data/coreDB_extra2.js,262
-ボクラノキセキ,bokura_no_kiseki,ボクラノキセキ,Bokura no Kiseki,"Kumeta, Natsuo",2007,ongoing,josei,src/data/coreDB_extra2.js,266
-하루만네가되고싶어,your_throne,하루만 네가 되고 싶어,Your Throne,SAM,2020,ongoing,web,src/data/coreDB_extra2.js,267
-던전속사정,what_happens_inside_the_dungeon,던전 속 사정,What Happens Inside the Dungeon,Reva,2019,completed,web,src/data/coreDB_extra2.js,268
-귀야곡,the_ghost_s_nocturne,귀야곡,The Ghost's Nocturne,Ananas/C.R Jade,2022,ongoing,web,src/data/coreDB_extra2.js,269
-わたしの幸せな結婚,my_happy_marriage,わたしの幸せな結婚,My Happy Marriage,"Kousaka, Rito/Agitogi, Akumi",2018,ongoing,seinen,src/data/coreDB_extra2.js,271
-fate/strangefake,fate_strange_fake,Fate/strange Fake,Fate/strange Fake,"Narita, Ryohgo/Morii, Shizuki",2015,ongoing,seinen,src/data/coreDB_extra2.js,273
-영원한너의거짓말,your_eternal_lies,영원한 너의 거짓말,Your Eternal Lies,"Kkomak/Jeon, Hoochi",2021,completed,web,src/data/coreDB_extra2.js,275
-절대회귀,absolute_regression,절대회귀,Absolute Regression,"Park, Jin-Hwan/Jang, Yeonghun",2024,ongoing,web,src/data/coreDB_extra2.js,276
-魔王城でおやすみ,sleepy_princess_in_the_demon_castle,魔王城でおやすみ,Sleepy Princess in the Demon Castle,"Kumanomata, Kagiji",2016,ongoing,shonen,src/data/coreDB_extra2.js,277
-濁る瞳で何を願うハイセルク戦記,record_of_highserk_war,濁る瞳で何を願う ハイセルク戦記,Record of Highserk War,"Torutonen/Saitou, Yanomi",2022,ongoing,shonen,src/data/coreDB_extra2.js,279
-이결혼은어차피망하게되어있다,the_broken_ring_this_marriage_will_fail_anyway,이 결혼은 어차피 망하게 되어있다,The Broken Ring: This Marriage Will Fail Anyway,"Kim, Chacha/Cheong-gwa",2022,ongoing,web,src/data/coreDB_extra2.js,280
-宇宙兄弟,space_brothers,宇宙兄弟,Space Brothers,"Koyama, Chuuya",2007,ongoing,seinen,src/data/coreDB_extra2.js,281
-수요웹툰의나강림,webtoon_character_na_kang_lim,수요웹툰의 나강림,Webtoon Character Na Kang Lim,"Lee, Kyeongmin/Song, Junhyeok",2021,completed,web,src/data/coreDB_extra2.js,283
-오늘만사는기사,the_knight_only_lives_today,오늘만 사는 기사,The Knight Only Lives Today,Soulpung/Ian,2024,ongoing,web,src/data/coreDB_extra2.js,284
-小蘑菇,little_mushroom,小蘑菇,Little Mushroom,Yishisi Zhou/Maomao Tou,2023,ongoing,web,src/data/coreDB_extra2.js,285
-픽미업,pick_me_up,픽 미 업!,Pick Me Up,Wasakbasak/Hermod,2022,ongoing,web,src/data/coreDB_extra2.js,288
-이번생은가주가되겠습니다,i_shall_master_this_family,이번 생은 가주가 되겠습니다,I Shall Master This Family,"Kim, Roah/Mon",2021,ongoing,web,src/data/coreDB_extra2.js,297
-sss급죽어야사는헌터,sss_class_revival_hunter,SSS급 죽어야 사는 헌터,SSS-Class Revival Hunter,Bill K/Sinnoa,2020,ongoing,web,src/data/coreDB_extra2.js,298
-reゼロから始める異世界生活第四章聖域と強欲の魔女,re_zero_starting_life_in_another_world_chapter_four_the_sanctuary_and_the_witch_of_greed,Re:ゼロから始める異世界生活 第四章 聖域と強欲の魔女,"Re:ZERO -Starting Life in Another World-, Chapter 4: The Sanctuary and the Witch of Greed","Atori, Haruno/Nagatsuki, Tappei",2019,ongoing,seinen,src/data/coreDB_extra2.js,299
-이웃집길드원,virtual_strangers,이웃집 길드원,Virtual Strangers,Honeytrap/Bijak,2023,ongoing,web,src/data/coreDB_extra2.js,302
-어떤계모님의메르헨,a_stepmother_s_m_rchen,어떤 계모님의 메르헨,A Stepmother's Märchen,Nyangi-wa Hyangsinnyo/ORKA,2019,ongoing,web,src/data/coreDB_extra2.js,304
-天国大魔境,heavenly_delusion,天国大魔境,Heavenly Delusion,"Ishiguro, Masakazu",2018,ongoing,seinen,src/data/coreDB_extra2.js,308
-ウスズミの果て,the_color_of_the_end_mission_in_the_apocalypse,ウスズミの果て,The Color of the End: Mission in the Apocalypse,"Iwamune, Haruo",2022,ongoing,seinen,src/data/coreDB_extra2.js,310
-데뷔못하면죽는병걸림,debut_or_die,데뷔 못 하면 죽는 병 걸림,Debut or Die!,"Baek, Deoksoo/Soheun",2022,ongoing,web,src/data/coreDB_extra2.js,314
-山田くんとlv999の恋をする,my_love_story_with_yamada_kun_at_lv_nine_nine_nine,山田くんとLv999の恋をする,My Love Story with Yamada-kun at Lv999,Mashiro,2019,ongoing,seinen,src/data/coreDB_extra2.js,315
-veil,veil,Veil,Veil,"Fukuda, Ikumi",2019,ongoing,seinen,src/data/coreDB_extra2.js,321
-天官赐福,heaven_official_s_blessing,天官赐福,Heaven Official's Blessing,Mo Xiang Tong Xiu/STARember,2019,ongoing,web,src/data/coreDB_extra2.js,322
-薬屋のひとりごと,the_apothecary_diaries,薬屋のひとりごと,The Apothecary Diaries,"Hyuuga, Natsu/Nekokurage",2017,ongoing,seinen,src/data/coreDB_extra2.js,323
-魔道祖师,grandmaster_of_demonic_cultivation_mo_dao_zu_shi,魔道祖师,Grandmaster of Demonic Cultivation: Mo Dao Zu Shi,Mo Xiang Tong Xiu/Luo Di Cheng Qiu,2017,completed,web,src/data/coreDB_extra2.js,324
-戦奏教室,the_bugle_call_song_of_war,戦奏教室,The Bugle Call: Song of War,"Toumori, Higoro/Sora, Mozuku",2022,ongoing,shonen,src/data/coreDB_extra2.js,325
-ヴァニタスの手記〈カルテ〉,the_case_study_of_vanitas,ヴァニタスの手記〈カルテ〉,The Case Study of Vanitas,"Mochizuki, Jun",2015,ongoing,shonen,src/data/coreDB_extra2.js,328
-帝都聖杯奇譚fate/typeredline,teito_seihai_kitan_fate_type_redline,帝都聖杯奇譚 Fate/type Redline,Teito Seihai Kitan: Fate/type Redline,"Keikenchi/Hirano, Ryouji",2019,ongoing,seinen,src/data/coreDB_extra2.js,330
-黒執事,black_butler,黒執事,Black Butler,"Toboso, Yana",2006,ongoing,shonen,src/data/coreDB_extra2.js,332
-長歌行,song_of_the_long_march,長歌行,Song of the Long March,"Xia, Da",2011,ongoing,web,src/data/coreDB_extra2.js,334
-ブラックラグン,black_lagoon,ブラックラグーン,Black Lagoon,"Hiroe, Rei",2002,ongoing,seinen,src/data/coreDB_extra2.js,337
-封神紀ⅱ,feng_shen_ji_ii,封神紀Ⅱ,Feng Shen Ji II,"Deng, Zhi Hui/Zheng, Jian He",2011,completed,web,src/data/coreDB_extra2.js,349
-封神纪iii,feng_shen_ji_iii,封神纪III,Feng Shen Ji III,"Deng, Zhi Hui/Zheng, Jian He",2012,completed,web,src/data/coreDB_extra2.js,350
-はじめの一歩,hajime_no_ippo_fighting_spirit,はじめの一歩,Hajime no Ippo: Fighting Spirit!,"Morikawa, George",1989,ongoing,shonen,src/data/coreDB_extra2.js,353
-ボルルムへようこそ,welcome_to_the_ballroom,ボールルームへようこそ,Welcome to the Ballroom,"Takeuchi, Tomo",2011,ongoing,shonen,src/data/coreDB_extra2.js,361
-ウマ娘プリティダビスタブロッサム,uma_musume_pretty_derby_star_blossom,ウマ娘 プリティーダービー スターブロッサム,Uma Musume: Pretty Derby - Star Blossom,"Hotani, Shin",2023,ongoing,seinen,src/data/coreDB_extra2.js,374
-ウマ娘プリティダビスタブロッサム,uma_musume_pretty_derby_star_blossom_x,ウマ娘 プリティーダービー スターブロッサム,Uma Musume: Pretty Derby - Star Blossom,"Hotani, Shin",2023,ongoing,seinen,src/data/coreDB_extra2.js,375
-キン肉マン,kinnikuman,キン肉マン,Kinnikuman,Yudetamago,1979,ongoing,shonen,src/data/coreDB_extra2.js,376
-ワンダンス,wandance,ワンダンス,Wandance,Coffee,2019,ongoing,seinen,src/data/coreDB_extra2.js,377
-バトルスタディズ,battle_studies,バトルスタディーズ,Battle Studies,Nakibokuro,2015,ongoing,seinen,src/data/coreDB_extra2.js,390
-ぐらんぶる,grand_blue_dreaming,ぐらんぶる,Grand Blue Dreaming,"Inoue, Kenji/Yoshioka, Kimitake",2014,ongoing,seinen,src/data/coreDB_extra2.js,391
-ワンパンマン,one_punch_man,ワンパンマン,One-Punch Man,"Murata, Yusuke/ONE",2012,ongoing,seinen,src/data/coreDB_extra2.js,394
-ひらやすみ,hirayasumi,ひらやすみ,Hirayasumi,"Shinzou, Keigo",2021,ongoing,seinen,src/data/coreDB_extra2.js,396
-佐々木と宮野,sasaki_and_miyano,佐々木と宮野,Sasaki and Miyano,"Harusono, Shou",2016,ongoing,seinen,src/data/coreDB_extra2.js,398
-雨夜の月,the_moon_on_a_rainy_night,雨夜の月,The Moon on a Rainy Night,Kuzushiro,2021,ongoing,seinen,src/data/coreDB_extra2.js,399
-地縛少年花子くん,toilet_bound_hanako_kun,地縛少年花子くん,Toilet-Bound Hanako-kun,"Aida, Iro",2014,ongoing,shonen,src/data/coreDB_extra2.js,400
-ほんと野獣,like_the_beast,ほんと野獣,Like the Beast,"Yamamoto, Kotetsuko",2008,ongoing,seinen,src/data/coreDB_extra2.js,401
-平野と鍵浦,hirano_and_kagiura,平野と鍵浦,Hirano and Kagiura,"Harusono, Shou",2019,ongoing,josei,src/data/coreDB_extra2.js,402
-日常,nichijou,日常,Nichijou,"Arawi, Keiichi",2006,ongoing,shonen,src/data/coreDB_extra2.js,406
-学園ベビシッタズ,gakuen_babysitters,学園ベビーシッターズ,Gakuen Babysitters,"Tokeino, Hari",2009,ongoing,shojo,src/data/coreDB_extra2.js,410
-世界一初恋～小野寺律の場合～,the_world_s_greatest_first_love_the_case_of_ritsu_onodera,世界一初恋 ～小野寺律の場合～,The World's Greatest First Love: The Case of Ritsu Onodera,"Nakamura, Shungiku",2006,ongoing,seinen,src/data/coreDB_extra2.js,411
-おじさまと猫,a_man_and_his_cat,おじさまと猫,A Man & His Cat,"Sakurai, Umi",2017,ongoing,seinen,src/data/coreDB_extra2.js,412
-文豪ストレイドッグスわん,bungo_stray_dogs_wan,文豪ストレイドッグス わん!,Bungo Stray Dogs: Wan!,"Kanai, Neco",2015,ongoing,seinen,src/data/coreDB_extra2.js,414
-春風のエトランゼ,seaside_stranger_harukaze_no_etranger,春風のエトランゼ,Seaside Stranger: Harukaze no Etranger,"Kii, Kanna",2014,ongoing,seinen,src/data/coreDB_extra2.js,415
-ファントムバスタズ,phantom_busters,ファントムバスターズ,Phantom Busters,shoco,2023,ongoing,shonen,src/data/coreDB_extra2.js,419
-作りたい女と食べたい女,she_loves_to_cook_and_she_loves_to_eat,作りたい女と食べたい女,"She Loves to Cook, and She Loves to Eat","Yuzaki, Sakaomi",2021,ongoing,josei,src/data/coreDB_extra2.js,421
-canisシリズ,canis,CANISシリーズ,Canis,"Ishie, Hachi",2012,ongoing,seinen,src/data/coreDB_extra2.js,422
-こいものがたり,koimonogatari_love_stories,こいものがたり,Koimonogatari: Love Stories,"Tagura, Tohru",2013,ongoing,seinen,src/data/coreDB_extra2.js,424
-ゆるゆり,yuru_yuri,ゆるゆり,Yuru Yuri,Namori,2008,ongoing,seinen,src/data/coreDB_extra2.js,431
-메리마블링,merry_marbling,메리 마블링,Merry Marbling,Pengki,2022,completed,web,src/data/coreDB_extra2.js,433
-ブルスカイコンプレックス,blue_sky_complex,ブルースカイコンプレックス,Blue Sky Complex,"Ichikawa, Kei",2013,ongoing,seinen,src/data/coreDB_extra2.js,434
-ただいま、おかえり,tadaima_okaeri,ただいま、おかえり,"Tadaima, Okaeri","Ichikawa, Ichi",2015,ongoing,seinen,src/data/coreDB_extra2.js,436
-飴色パラドックス,candy_color_paradox,飴色パラドックス,Candy Color Paradox,"Natsume, Isaku",2009,ongoing,seinen,src/data/coreDB_extra2.js,439
-君と宇宙を歩くために,spacewalking_with_you,君と宇宙を歩くために,Spacewalking with You,"Doronoda, Inuhiko",2023,ongoing,josei,src/data/coreDB_extra2.js,442
-ささやくように恋を唄う,whisper_me_a_love_song,ささやくように恋を唄う,Whisper Me a Love Song,"Takeshima, Eku",2019,ongoing,seinen,src/data/coreDB_extra2.js,443
-文豪ストレイドッグス,bungo_stray_dogs,文豪ストレイドッグス,Bungo Stray Dogs,"Asagiri, Kafka/Harukawa35",2012,ongoing,seinen,src/data/coreDB_extra2.js,458
-光が死んだ夏,the_summer_hikaru_died,光が死んだ夏,The Summer Hikaru Died,Mokumokuren,2021,ongoing,seinen,src/data/coreDB_extra2.js,460
-ミステリと言う勿れ,don_t_call_it_mystery,ミステリと言う勿れ,Don't Call It Mystery,"Tamura, Yumi",2017,ongoing,josei,src/data/coreDB_extra2.js,467
-xxxholic戻,xxxholic_rei,xxxHOLiC・戻,xxxHOLiC Rei,CLAMP,2013,ongoing,seinen,src/data/coreDB_extra2.js,473
-氷菓,hyouka,氷菓,Hyouka,"Yonezawa, Honobu/Ohna, Task",2012,ongoing,shonen,src/data/coreDB_extra2.js,480
-この音とまれ,kono_oto_tomare,この音とまれ！,Kono Oto Tomare!,"Sakura, Amyuu",2012,ongoing,shonen,src/data/coreDB_extra2.js,481
-shioriexperience～ジミなわたしとヘンなおじさん～,shiori_experience_jimi_na_watashi_to_hen_na_ojisan,SHIORI EXPERIENCE ～ジミなわたしとヘンなおじさん～,Shiori Experience: Jimi na Watashi to Hen na Ojisan,"Osada, Yu-Ko/Machida, Kazuya",2013,ongoing,seinen,src/data/coreDB_extra2.js,487
-気になってる人が男じゃなかった,the_guy_she_was_interested_in_wasn_t_a_guy_at_all,気になってる人が男じゃなかった,The Guy She Was Interested in Wasn't a Guy at All,"Arai, Sumiko",2023,ongoing,seinen,src/data/coreDB_extra2.js,493
-ご注文はうさぎですか,is_the_order_a_rabbit,ご注文はうさぎですか?,Is the Order a Rabbit?,Koi,2011,ongoing,seinen,src/data/coreDB_extra2.js,496
-ぼっちざろっく,bocchi_the_rock,ぼっち・ざ・ろっく!,Bocchi the Rock!,"Hamaji, Aki",2017,ongoing,seinen,src/data/coreDB_extra2.js,498
-あかね噺,akane_banashi,あかね噺,Akane-banashi,"Moue, Takamasa/Suenaga, Yuuki",2022,ongoing,shonen,src/data/coreDB_extra2.js,503
-30歳まで童貞だと魔法使いになれるらしい,cherry_magic_thirty_years_of_virginity_can_make_you_a_wizard,30歳まで童貞だと魔法使いになれるらしい,Cherry Magic! Thirty Years of Virginity Can Make You a Wizard?!,"Toyota, Yuu",2018,ongoing,seinen,src/data/coreDB_extra2.js,505
-カメレオンはてのひらに恋をする。,love_in_the_palm_of_his_hand,カメレオンはてのひらに恋をする。,Love in the Palm of His Hand,"Rin, Teku",2023,ongoing,seinen,src/data/coreDB_extra2.js,507
-ラブバレット,love_bullet,ラブ・バレット,Love Bullet,inee,2023,ongoing,seinen,src/data/coreDB_extra2.js,514
-ラブバレット,love_bullet_x,ラブ・バレット,Love Bullet,inee,2023,ongoing,seinen,src/data/coreDB_extra2.js,515
-囀る鳥は羽ばたかない,twittering_birds_never_fly,囀る鳥は羽ばたかない,Twittering Birds Never Fly,"Yoneda, Kou",2011,ongoing,seinen,src/data/coreDB_extra2.js,518
-ファインダシリズ,finder_series,ファインダーシリーズ,Finder Series,"Yamane, Ayano",2001,ongoing,seinen,src/data/coreDB_extra2.js,527
-フルナイト,fool_night,フールナイト,Fool Night,"Yasuda, Kasumi",2020,ongoing,seinen,src/data/coreDB_extra2.js,532
-뮤즈온유명,muse_on_fame,뮤즈 온 유명,Muse on Fame,Sujin,2022,completed,web,src/data/coreDB_extra2.js,537
-神様のウロコ,the_dragon_s_betrothed,神様のウロコ,The Dragon's Betrothed,"Hinohara, Meguru",2016,ongoing,seinen,src/data/coreDB_extra2.js,540
-純情ロマンチカ,junjo_romantica,純情ロマンチカ,Junjo Romantica,"Nakamura, Shungiku",2002,ongoing,seinen,src/data/coreDB_extra2.js,542
-angelbeatsthelastoperation,angel_beats_the_last_operation,Angel Beats! -The Last Operation-,Angel Beats!: The Last Operation,"Maeda, Jun/Asami, Yuriko",2017,ongoing,seinen,src/data/coreDB_extra2.js,543
-極主夫道,the_way_of_the_househusband,極主夫道,The Way of the Househusband,"Oono, Kousuke",2018,ongoing,seinen,src/data/coreDB_extra2.js,545
-녹색전상,under_the_greenlight,녹색전상,Under the Greenlight,Jaxx,2021,completed,web,src/data/coreDB_extra2.js,547
-ファイブスタ物語,the_five_star_stories,ファイブスター物語,The Five Star Stories,"Nagano, Mamoru",1986,ongoing,seinen,src/data/coreDB_extra2.js,559
-역대급영지설계사,the_greatest_estate_developer,역대급 영지 설계사,The Greatest Estate Developer,"Moon, Back-kyung/Kim, Hyunsoo",2021,completed,web,src/data/coreDB_extra2.js,571
-엄마를만나러가는길,on_the_way_to_meet_mom,엄마를 만나러 가는 길,On the Way to Meet Mom,Gomyang,2024,ongoing,web,src/data/coreDB_extra2.js,572
-집이없어,no_home,집이 없어,No Home,Wanan,2018,completed,web,src/data/coreDB_extra2.js,573
-내최애는막차를탄다,my_bias_gets_on_the_last_train,내 최애는 막차를 탄다,My Bias Gets on the Last Train,Jixksee,2024,ongoing,web,src/data/coreDB_extra2.js,574
-해뜨는집,our_sunny_days,해 뜨는 집,Our Sunny Days,"Jung, Seokchan",2023,ongoing,web,src/data/coreDB_extra2.js,576
-북검전기,the_legend_of_the_northern_blade,북검전기,The Legend of the Northern Blade,"Woogack/Hae, Min",2019,completed,web,src/data/coreDB_extra2.js,578
-南号尚风,nan_hao_shang_feng,南号尚风,Nan Hao Shang Feng,Brownie,2021,ongoing,web,src/data/coreDB_extra2.js,579
-19天,one_nine_tian,19天,19 Tian,Old Xian,2018,ongoing,web,src/data/coreDB_extra2.js,580
-원룸조교님,one_room_ta,원룸 조교님,One-Room TA,Jibung,2022,ongoing,web,src/data/coreDB_extra2.js,581
-세기말풋사과보습학원,after_school_lessons_for_unripe_apples,세기말 풋사과 보습학원,After School Lessons for Unripe Apples,Soonkki,2020,ongoing,web,src/data/coreDB_extra2.js,582
-일렉시드,eleceed,일렉시드,Eleceed,"Kim, Hye-Jin/Son, Jae-Ho",2018,ongoing,web,src/data/coreDB_extra2.js,583
-악역의엔딩은죽음뿐,villains_are_destined_to_die,악역의 엔딩은 죽음뿐,Villains Are Destined to Die,"Gwon, Gyeoeul/SUOL",2020,ongoing,web,src/data/coreDB_extra2.js,584
-어느날공주가되어버렸다,who_made_me_a_princess,어느 날 공주가 되어버렸다,Who Made Me a Princess,Plutus/Spoon,2017,completed,web,src/data/coreDB_extra2.js,585
-hereuare,here_u_are,Here U Are,Here U Are,D Jun,2017,completed,web,src/data/coreDB_extra2.js,586
-클라우드,lost_in_the_cloud,클라우드,Lost in the Cloud,"Kim, Pas",2020,completed,web,src/data/coreDB_extra2.js,587
-화산귀환,return_of_the_blossoming_blade,화산귀환,Return of the Blossoming Blade,LICO/Biga,2021,ongoing,web,src/data/coreDB_extra2.js,588
-해후,reunion,해후,Reunion,Lee Coin/Deulsum,2022,completed,web,src/data/coreDB_extra2.js,593
-낮에뜨는별,daytime_star,낮에 뜨는 별,Daytime Star,Chae-eun/Godago,2021,completed,web,src/data/coreDB_extra2.js,594
-괴력난신,myst_might_mayhem,괴력 난신,"Myst, Might, Mayhem","Kim, Tae-Hyung/Hanjung Wolya",2024,ongoing,web,src/data/coreDB_extra2.js,595
-"저무는해,시린눈",the_spark_in_your_eyes,"저무는 해, 시린 눈",The Spark in Your Eyes,Muro,2020,completed,web,src/data/coreDB_extra2.js,597
-아카데미에서살아남기,the_extra_s_academy_survival_guide,아카데미에서 살아남기,The Extra's Academy Survival Guide,Green Kyrin/Korita,2023,ongoing,web,src/data/coreDB_extra2.js,599
-디파인더릴레이션십,define_the_relationship,디파인 더 릴레이션십,Define the Relationship,Flona/Chada,2021,completed,web,src/data/coreDB_extra2.js,600
-오단군,legend_of_dangun,오!단군,Legend of Dangun,"Noh, Miyoung/Lee, Gyuntak",2024,ongoing,web,src/data/coreDB_extra3.js,1
-무한의마법사,the_infinite_mage,무한의 마법사,The Infinite Mage,"Themis/Kim, Chiwoo",2022,ongoing,web,src/data/coreDB_extra3.js,9
-트레이스,trace,트레이스,Trace,"Go, Yeong-Hun",2007,completed,web,src/data/coreDB_extra3.js,10
-アフタゴッド,after_god,アフターゴッド,After God,"Eno, Sumi",2021,ongoing,seinen,src/data/coreDB_extra3.js,12
-蜘蛛ですが、なにか,so_i_m_a_spider_so_what,蜘蛛ですが、なにか？,"So I'm a Spider, So What?","Kakashi, Asahiro/Baba, Okina",2015,ongoing,seinen,src/data/coreDB_extra3.js,17
-아비무쌍,father_unrivaled,아비무쌍,"Father, Unrivaled","Lee, Hyunseok/No, Kyoungchan",2017,completed,web,src/data/coreDB_extra3.js,19
-이계검왕생존기,latna_saga_survival_of_a_sword_king,이계 검왕 생존기,Latna Saga: Survival of a Sword King,"Yim, Kyung-bae/Kwon, Soonkyu",2019,ongoing,web,src/data/coreDB_extra3.js,20
-ダンジョンに出会いを求めるのは間違っているだろうか外伝ソドオラトリア,is_it_wrong_to_try_to_pick_up_girls_in_a_dungeon_sword_oratoria,ダンジョンに出会いを求めるのは間違っているだろうか外伝 ソード・オラトリア,Is It Wrong to Try to Pick Up Girls in a Dungeon? Sword Oratoria,"Omori, Fujino/Yagi, Takashi",2014,ongoing,shonen,src/data/coreDB_extra3.js,21
-パンプキンシザズ,pumpkin_scissors,パンプキン シザーズ,Pumpkin Scissors,"Iwanaga, Ryoutarou",2002,ongoing,shonen,src/data/coreDB_extra3.js,22
-엔딩메이커,ending_maker,엔딩메이커,Ending Maker,Chwiryong/Does,2022,ongoing,web,src/data/coreDB_extra3.js,23
-검술명가막내아들,the_swordmaster_s_son,검술명가 막내아들,The Swordmaster's Son,"Hwangje Penguin/Lee, Jewon",2022,ongoing,web,src/data/coreDB_extra3.js,24
-잔불의기사,the_ember_knight,잔불의 기사,The Ember Knight,Hwandaeng,2021,ongoing,web,src/data/coreDB_extra3.js,25
-つぐもも,tsugumomo,つぐもも,Tsugumomo,"Hamada, Yoshikadu",2007,ongoing,seinen,src/data/coreDB_extra3.js,29
-斗罗大陆ii绝世唐门,douluo_dalu_ii_jueshi_tangmen,斗罗大陆 II: 绝世唐门,Douluo Dalu II: Jueshi Tangmen,Tang Jia San Shao,2012,ongoing,web,src/data/coreDB_extra3.js,33
-テンカイチ日本最強武芸者決定戦,tenkaichi_the_greatest_warrior_under_the_rising_sun,テンカイチ 日本最強武芸者決定戦,Tenkaichi: The Greatest Warrior Under the Rising Sun,"Nakamaru, Yousuke/Azuma, Kyoutarou",2021,ongoing,seinen,src/data/coreDB_extra3.js,35
-クレバテス魔獣の王と赤子と屍の勇者,clevatess_the_king_of_dark_beasts_the_baby_and_the_undead_hero,クレバテス-魔獣の王と赤子と屍の勇者-,"Clevatess: The King of Dark Beasts, the Baby, and the Undead Hero","Iwahara, Yuji",2020,ongoing,seinen,src/data/coreDB_extra3.js,43
-빌어먹을환생,my_blasted_reincarnated_life,빌어먹을 환생,My Blasted Reincarnated Life,"Park, Jeongyeol/Mongma",2022,ongoing,web,src/data/coreDB_extra3.js,44
-시간이머문집,the_house_without_time,시간이 머문 집,The House Without Time,Hego,2020,ongoing,web,src/data/coreDB_extra3.js,48
-무림서부,martial_wild_west,무림서부,Martial Wild West,"Cup Ramyeon./Jeong, Hangil",2022,ongoing,web,src/data/coreDB_extra3.js,49
-終わりのセラフ,seraph_of_the_end_vampire_reign,終わりのセラフ,Seraph of the End: Vampire Reign,"Yamamoto, Yamato/Kagami, Takaya",2012,ongoing,shonen,src/data/coreDB_extra3.js,52
-ソドアトオンラインreaincrad,sword_art_online_re_aincrad,ソードアート・オンライン Re:Aincrad,Sword Art Online Re:Aincrad,"Kawahara, Reki/Kimi",2021,ongoing,seinen,src/data/coreDB_extra3.js,54
-黄泉のツガイ,daemons_of_the_shadow_realm,黄泉のツガイ,Daemons of the Shadow Realm,"Arakawa, Hiromu",2021,ongoing,shonen,src/data/coreDB_extra3.js,56
-만렙플레이어의100번째회귀,the_one_zero_zero_th_regression_of_the_max_level_player,만렙 플레이어의 100번째 회귀,The 100th Regression of the Max-Level Player,King Soda/Duckf,2023,ongoing,web,src/data/coreDB_extra3.js,57
-レイン,rain,レイン,Rain,"Yoshino, Takumi/Sumikawa, Megumi",2008,ongoing,shonen,src/data/coreDB_extra3.js,59
-ゴブリンスレイヤ,goblin_slayer,ゴブリンスレイヤー,Goblin Slayer,"Kurose, Kousuke/Kagyuu, Kumo",2016,ongoing,seinen,src/data/coreDB_extra3.js,60
-鉄拳チンミlegends,tekken_chinmi_legends,鉄拳チンミLegends,Tekken Chinmi Legends,"Maekawa, Takeshi",2007,ongoing,shonen,src/data/coreDB_extra3.js,61
-위치헌터,witch_buster,위치헌터,Witch Buster,"Jung-man, CHO",2006,ongoing,web,src/data/coreDB_extra3.js,62
-運命の人に出会う話,how_i_met_my_soulmate,運命の人に出会う話,How I Met My Soulmate,Anashin,2021,ongoing,shojo,src/data/coreDB_extra3.js,68
-うるわしの宵の月,in_the_clear_moonlit_dusk,うるわしの宵の月,In the Clear Moonlit Dusk,"Yamamori, Mika",2020,ongoing,shojo,src/data/coreDB_extra3.js,69
-むせるくらいの愛をあげる,choking_on_love,むせるくらいの愛をあげる,Choking on Love,"Iwashita, Keiko",2022,ongoing,shojo,src/data/coreDB_extra3.js,72
-とらドラ,toradora,とらドラ!,Toradora!,"Takemiya, Yuyuko/Zekkyou",2007,ongoing,seinen,src/data/coreDB_extra3.js,74
-刻どキ,tokidoki,刻どキ,Tokidoki,"Komi, Naoshi",2016,completed,shonen,src/data/coreDB_extra3.js,99
-君のことが大大大大大好きな100人の彼女,the_one_zero_zero_girlfriends_who_really_really_really_really_really_love_you,君のことが大大大大大好きな100人の彼女,"The 100 Girlfriends Who Really, Really, Really, Really, Really Love You","Nozawa, Yukiko/Nakamura, Rikito",2019,ongoing,seinen,src/data/coreDB_extra3.js,110
-となりの猫と恋知らず,learning_to_love_my_cat_like_classmate,となりの猫と恋知らず,Learning to Love My Cat-like Classmate,Akinoko,2024,ongoing,seinen,src/data/coreDB_extra3.js,116
-夫婦以上、恋人未満。,more_than_a_married_couple_but_not_lovers,夫婦以上、恋人未満。,"More Than a Married Couple, but Not Lovers","Kanamaru, Yuuki",2018,ongoing,seinen,src/data/coreDB_extra3.js,128
-체크메이트,checkmate,체크 메이트,Checkmate,Tan,2020,completed,web,src/data/coreDB_extra3.js,134
-양일우와나,yang_ilwoo_and_me,양일우와 나,Yang Ilwoo and Me,"Park, Nodeok",2025,ongoing,web,src/data/coreDB_extra3.js,136
-ぜんぶ壊して地獄で愛して,if_that_s_love_break_it,ぜんぶ壊して地獄で愛して,"If That's Love, Break It.","Kuwabara, Tamotsu",2023,ongoing,seinen,src/data/coreDB_extra3.js,137
-귀전구담,ghost_teller,귀전구담,Ghost Teller,QTT,2017,completed,web,src/data/coreDB_extra3.js,138
-見える子ちゃん,mieruko_chan,見える子ちゃん,Mieruko-chan,"Izumi, Tomoki",2018,ongoing,seinen,src/data/coreDB_extra3.js,140
-그레이스길들이기,getting_to_know_grace,그레이스 길들이기,Getting to Know Grace,Mockma/Seorim,2019,completed,web,src/data/coreDB_extra3.js,145
-大ダク,dai_dark,大ダーク,Dai Dark,"Hayashida, Q",2019,ongoing,shonen,src/data/coreDB_extra3.js,146
-mad,mad,MAD,MAD,"Ootori, Yuusuke",2024,ongoing,shonen,src/data/coreDB_extra3.js,157
-ケントゥリア,centuria,ケントゥリア,Centuria,"Kuramori, Tooru",2024,ongoing,shonen,src/data/coreDB_extra3.js,164
-놀이감,plaything,놀이감,Plaything,Q Boi,2024,ongoing,web,src/data/coreDB_extra3.js,168
-空の境界thegardenofsinners,kara_no_kyoukai_the_garden_of_sinners,空の境界 the Garden of sinners,Kara no Kyoukai: The Garden of Sinners,"Nasu, Kinoko/Tenkuu, Sphere",2010,ongoing,seinen,src/data/coreDB_extra3.js,169
-きみは四葉のクロバ,you_are_a_four_leaf_clover,きみは四葉のクローバー,You Are a Four Leaf Clover,Koushi,2024,ongoing,shonen,src/data/coreDB_extra3.js,174
-転生してハイエルフになりましたが、スロライフは120年で飽きました,high_elf_with_a_long_life,転生してハイエルフになりましたが、スローライフは120年で飽きました,High Elf with a Long Life,"Narita, Koh/Rarutori",2021,ongoing,seinen,src/data/coreDB_extra3.js,177
-ノラガミ拾遺集,noragami_stray_stories,ノラガミ 拾遺集,Noragami: Stray Stories,Adachitoka,2011,completed,shonen,src/data/coreDB_extra3.js,179
-魔男のイチ,ichi_the_witch,魔男のイチ,Ichi the Witch,"Nishi, Osamu/Usazaki, Shiro",2024,ongoing,shonen,src/data/coreDB_extra3.js,181
-異世界の沙汰は社畜次第,the_other_world_s_books_depend_on_the_bean_counter,異世界の沙汰は社畜次第,The Other World's Books Depend on the Bean Counter,"Irodori, Kazuki/Yatsuki, Wakatsu",2020,ongoing,seinen,src/data/coreDB_extra3.js,182
-私の推しは悪役令嬢。,i_m_in_love_with_the_villainess,私の推しは悪役令嬢。,I'm in Love with the Villainess,"Aono, Sumio/Inori.",2020,ongoing,seinen,src/data/coreDB_extra3.js,185
-후궁공략,concubine_walkthrough,후궁공략,Concubine Walkthrough,Bongbong,2020,completed,web,src/data/coreDB_extra3.js,187
-악녀라서편하고좋은데요,the_perks_of_being_a_villainess,악녀라서 편하고 좋은데요?,The Perks of Being a Villainess,"Mang, Gokim/Yoteh",2022,ongoing,web,src/data/coreDB_extra3.js,188
-異世界おじさん,uncle_from_another_world,異世界おじさん,Uncle from Another World,Hotondo Shindeiru,2018,ongoing,seinen,src/data/coreDB_extra3.js,189
-묘령의황자,mystic_prince,묘령의 황자,Mystic Prince,Aheuredal,2021,completed,web,src/data/coreDB_extra3.js,192
-빙의자를위한특혜,the_perks_of_being_an_s_class_heroine,빙의자를 위한 특혜,The Perks of Being an S-Class Heroine,Irinbi/Grrr,2022,ongoing,web,src/data/coreDB_extra3.js,193
-無職転生～異世界行ったら本気だす～失意の魔術師編,mushoku_tensei_isekai_ittara_honki_dasu_shitsui_no_majutsushi_hen,無職転生 ～異世界行ったら本気だす～ 失意の魔術師編,Mushoku Tensei: Isekai Ittara Honki Dasu - Shitsui no Majutsushi-hen,"Yoneda, Kazusa/Rifujin na Magonote",2021,ongoing,seinen,src/data/coreDB_extra3.js,194
-本好きの下剋上～司書になるためには手段を選んでいられません～第三部領地に本を広げよう,ascendance_of_a_bookworm_i_ll_do_anything_to_become_a_librarian_part_three_let_s_spread_books_through_the_duchy,本好きの下剋上～司書になるためには手段を選んでいられません～第三部 領地に本を広げよう!,Ascendance of a Bookworm: I'll Do Anything to Become a Librarian! Part 3 - Let's Spread Books Through the Duchy!,"Kazuki, Miya/Namino, Ryou",2018,ongoing,seinen,src/data/coreDB_extra3.js,195
-サイレントウィッチ沈黙の魔女の隠しごと,secrets_of_the_silent_witch,サイレント・ウィッチ 沈黙の魔女の隠しごと,Secrets of the Silent Witch,"Isora, Matsuri/Tana, Tobi",2021,ongoing,shojo,src/data/coreDB_extra3.js,198
-星降る王国のニナ,nina_the_starry_bride,星降る王国のニナ,Nina the Starry Bride,Rikachi,2019,ongoing,josei,src/data/coreDB_extra3.js,200
-勇者ご一行の帰り道,yuusha_goikkou_no_kaerimichi,勇者ご一行の帰り道,Yuusha Goikkou no Kaerimichi,"Hirano, Ryouji",2018,completed,shonen,src/data/coreDB_extra3.js,201
-파도의포말,foam_of_the_sea,파도의 포말,Foam of the Sea,Ratte,2023,completed,web,src/data/coreDB_extra3.js,202
-東方酔蝶華～ロタスイタ達の酔醒,the_lotus_eaters_drunk_and_sober,東方酔蝶華 ～ ロータスイーター達の酔醒,"The Lotus Eaters, Drunk and Sober",ZUN/Mizutaki,2019,ongoing,seinen,src/data/coreDB_extra3.js,203
-妖怪学校の先生はじめました,a_terrified_teacher_at_ghoul_school,妖怪学校の先生はじめました!,A Terrified Teacher at Ghoul School!,"Tanaka, Mai",2014,ongoing,seinen,src/data/coreDB_extra3.js,204
-尾守つみきと奇日常。,tsumiki_ogami_s_not_so_ordinary_life,尾守つみきと奇日常。,Tsumiki Ogami's Not-So-Ordinary Life,"Morishita, Miyu",2023,ongoing,shonen,src/data/coreDB_extra3.js,208
-장르를바꿔보도록하겠습니다,the_villainess_flips_the_script,장르를 바꿔보도록 하겠습니다,The Villainess Flips the Script!,Ken/Garine,2021,completed,web,src/data/coreDB_extra3.js,209
-アルスラン戦記,the_heroic_legend_of_arslan,アルスラーン戦記,The Heroic Legend of Arslan,"Arakawa, Hiromu/Tanaka, Yoshiki",2013,ongoing,shonen,src/data/coreDB_extra3.js,211
-小林さんちのメイドラゴン,miss_kobayashi_s_dragon_maid,小林さんちのメイドラゴン,Miss Kobayashi's Dragon Maid,Cool-kyou Shinja,2013,ongoing,seinen,src/data/coreDB_extra3.js,212
-fate/staynight［unlimitedbladeworks］,fate_stay_night_unlimited_blade_works,Fate/stay night［Unlimited Blade Works］,Fate/stay night: Unlimited Blade Works,"Moriyama, Daisuke/Type-Moon",2021,ongoing,seinen,src/data/coreDB_extra3.js,213
-별정직공무원,special_civil_servant,별정직 공무원,Special Civil Servant,"Kwon, Sora/Seo, Jaewon",2024,ongoing,web,src/data/coreDB_extra3.js,214
-borutoボルトtwobluevortex,boruto_two_blue_vortex,BORUTO-ボルト- -TWO BLUE VORTEX-,Boruto: Two Blue Vortex,"Kishimoto, Masashi/Ikemoto, Mikio",2023,ongoing,shonen,src/data/coreDB_extra3.js,215
-高度に発達した医学は魔法と区別がつかない,the_isekai_doctor_any_sufficiently_advanced_medical_science_is_indistinguishable_from_magic,高度に発達した医学は魔法と区別がつかない,The Isekai Doctor: Any Sufficiently Advanced Medical Science Is Indistinguishable from Magic.,"Tsuda, Houkou/Takishita, Nobuhide",2021,ongoing,seinen,src/data/coreDB_extra3.js,216
-엔딩후서브남을주웠다,happily_ever_afterwards,엔딩 후 서브남을 주웠다,Happily Ever Afterwards,"Jeongseo/Hwang, Dotol",2020,completed,web,src/data/coreDB_extra3.js,217
-엔딩후서브남을주웠다,happily_ever_afterwards_x,엔딩 후 서브남을 주웠다,Happily Ever Afterwards,"Jeongseo/Hwang, Dotol",2020,completed,web,src/data/coreDB_extra3.js,218
-월야화원,moonlight_garden,월야화원,Moonlight Garden,Kang Unnie/MissPM,2017,completed,web,src/data/coreDB_extra3.js,219
-재혼황후,the_remarried_empress,재혼 황후,The Remarried Empress,Alphatart/Sumpul,2019,ongoing,web,src/data/coreDB_extra3.js,221
-플레이어,player,플레이어,Player,"Park, Jongseok/Oh, Hyeonjun",2020,ongoing,web,src/data/coreDB_extra3.js,223
-엄마가계약결혼했다,mother_s_contract_marriage,엄마가 계약결혼 했다,Mother's Contract Marriage,"Choo, Hae-Yun/Siya",2022,ongoing,web,src/data/coreDB_extra3.js,228
-死に戻りの魔法学校生活を、元恋人とプロログから（※ただし好感度はゼロ）,re_living_my_life_with_a_boyfriend_who_doesn_t_remember_me,死に戻りの魔法学校生活を、元恋人とプロローグから（※ただし好感度はゼロ）,Re-Living My Life with a Boyfriend Who Doesn't Remember Me,"Shirakawa, Gin/Mutsuhana, Eiko",2022,ongoing,seinen,src/data/coreDB_extra3.js,230
-결혼장사,marriage_of_convenience,결혼 장사,Marriage of Convenience,Ant Studio/Ken,2022,completed,web,src/data/coreDB_extra3.js,236
-시월드가내게집착한다,my_in_laws_are_obsessed_with_me,시월드가 내게 집착한다,My In-Laws Are Obsessed with Me,"Han, Yoonseol/Seungu",2021,ongoing,web,src/data/coreDB_extra3.js,237
-ルプ7回目の悪役令嬢は、元敵国で自由気ままな花嫁生活を満喫する,seven_th_time_loop_the_villainess_enjoys_a_carefree_life_married_to_her_worst_enemy,ループ7回目の悪役令嬢は、元敵国で自由気ままな花嫁生活を満喫する,7th Time Loop: The Villainess Enjoys a Carefree Life Married to Her Worst Enemy!,"Kino, Hinoki/Amekawa, Touko",2020,ongoing,seinen,src/data/coreDB_extra3.js,243
-배우로서살겠다,to_be_an_actor,배우로서 살겠다,To Be an Actor,Gogwang/Dusi,2022,completed,web,src/data/coreDB_extra3.js,244
-상남자,a_man_s_man,상남자,A Man's Man,"Dogado/Kim, Taegung",2020,ongoing,web,src/data/coreDB_extra3.js,245
-リビルドワルド,rebuild_world,リビルドワールド,Rebuild World,"Ayamura, Kirihito/Nahuse",2019,ongoing,seinen,src/data/coreDB_extra3.js,249
-버닝이펙트,burning_effect,버닝 이펙트,Burning Effect,"Park, Taehyun",2017,completed,web,src/data/coreDB_extra3.js,251
-인생존망,my_life_as_a_loser,인생존망,My Life as a Loser,"Park, Tae-Jun/Jeon, Seonwook",2019,completed,web,src/data/coreDB_extra3.js,256
-ホタルの嫁入り,firefly_wedding,ホタルの嫁入り,Firefly Wedding,"Tachibana, Oreco",2023,completed,seinen,src/data/coreDB_extra3.js,264
-アルテ,arte,アルテ,Arte,"Ookubo, Kei",2013,ongoing,seinen,src/data/coreDB_extra3.js,265
-薬屋のひとりごと猫猫の後宮謎解き手帳,kusuriya_no_hitorigoto_maomao_no_koukyuu_nazotoki_techou,薬屋のひとりごと 猫猫の後宮謎解き手帳,Kusuriya no Hitorigoto: Maomao no Koukyuu Nazotoki Techou,"Hyuuga, Natsu/Kurata, Minoji",2017,ongoing,seinen,src/data/coreDB_extra3.js,266
-艶漢,adekan,艶漢,Adekan,"Nao, Tsukiji",2007,ongoing,shojo,src/data/coreDB_extra3.js,267
-눈에범이서리다,taming_the_tiger,눈에 범이 서리다,Taming the Tiger,Brothers Without a Tomorrow,2021,completed,web,src/data/coreDB_extra3.js,273
-온어리시,on_a_leash,온 어 리시,On a Leash,Aji,2017,completed,web,src/data/coreDB_extra3.js,276
-百鬼夜行抄,beyond_twilight,百鬼夜行抄,Beyond Twilight,"Ima, Ichiko",1995,ongoing,shojo,src/data/coreDB_extra3.js,277
-봉촌각시,bongchon_bride,봉촌각시,Bongchon Bride,"Sohn, Gaepi",2019,completed,web,src/data/coreDB_extra3.js,278
-百日の薔薇,maiden_rose,百日の薔薇,Maiden Rose,"Inariya, Fusanosuke",2004,ongoing,seinen,src/data/coreDB_extra3.js,279
-峠鬼,touge_oni_primal_gods_in_ancient_times,峠鬼,Touge Oni: Primal Gods in Ancient Times,"Tsurubuchi, Kenji",2018,ongoing,seinen,src/data/coreDB_extra3.js,284
-ハイキュ特別番外編祭り再び,haikyu_special_one_shot_a_party_reignited,ハイキュー!! 特別番外編 祭り再び,Haikyu!! Special One-shot: A Party Reignited,"Furudate, Haruichi",2022,completed,shonen,src/data/coreDB_extra3.js,292
-セラピゲムリスタト,therapy_game_restart,セラピーゲーム リスタート,Therapy Game Restart,"Hinohara, Meguru",2019,ongoing,seinen,src/data/coreDB_extra3.js,295
-今泉ん家はどうやらギャルの溜まり場になってるらしい,imaizumi_brings_all_the_gyarus_to_his_house,今泉ん家はどうやらギャルの溜まり場になってるらしい,Imaizumi Brings All the Gyarus to His House,"Nori, Gorou",2019,ongoing,seinen,src/data/coreDB_extra3.js,298
-リコリスリコイル,lycoris_recoil,リコリス・リコイル,Lycoris Recoil,"Bizen, Yasunori",2022,ongoing,seinen,src/data/coreDB_extra3.js,301
-시맨틱에러,semantic_error,시맨틱 에러,Semantic Error,J. Soori/Angy,2020,ongoing,web,src/data/coreDB_extra3.js,302
-ぬこづけ,nukozuke,ぬこづけ！,Nukozuke!,"Yugi, Iro",2012,ongoing,shojo,src/data/coreDB_extra3.js,304
-恋する暴君,the_tyrant_falls_in_love,恋する暴君,The Tyrant Falls In Love,"Takanaga, Hinako",2004,ongoing,seinen,src/data/coreDB_extra3.js,307
-こっちむいてみい子,kocchi_muite_miiko,こっちむいて!みい子,Kocchi Muite! Miiko,"Ono, Eriko",1995,ongoing,shojo,src/data/coreDB_extra3.js,313
-放課後少年花子くん,after_school_hanako_kun,放課後少年花子くん,After-School Hanako-kun,"Aida, Iro",2018,ongoing,seinen,src/data/coreDB_extra3.js,330
-ディふらぐ,d_frag,ディーふらぐ！,D-Frag!,"Haruno, Tomoya",2008,ongoing,seinen,src/data/coreDB_extra3.js,331
-明日ちゃんのセラ服,akebi_s_sailor_uniform,明日ちゃんのセーラー服,Akebi's Sailor Uniform,Hiro,2016,ongoing,seinen,src/data/coreDB_extra3.js,336
-ぼくのパパとパパの話,all_about_my_two_dads,ぼくのパパとパパの話,All About My Two Dads,Roji,2022,ongoing,seinen,src/data/coreDB_extra3.js,338
-彩純ちゃんはレズ風俗に興味があります,asumi_chan_is_interested_in_lesbian_brothels,彩純ちゃんはレズ風俗に興味があります!,Asumi-chan Is Interested in Lesbian Brothels!,"Itsuki, Kuro",2020,ongoing,seinen,src/data/coreDB_extra3.js,339
-酷くしないで,don_t_be_cruel,酷くしないで,Don't Be Cruel,"Nekota, Yonezou",2007,ongoing,seinen,src/data/coreDB_extra3.js,341
-同居人はひざ、時々、頭のうえ。,doukyonin_wa_hiza_tokidoki_atama_no_ue,同居人はひざ、時々、頭のうえ。,"Doukyonin wa Hiza, Tokidoki, Atama no Ue.","Minatuki, Tunami/Futatsuya, As",2015,ongoing,seinen,src/data/coreDB_extra3.js,347
-ちいかわなんか小さくてかわいいやつ,chiikawa_nanka_chiisakute_kawaii_yatsu,ちいかわ なんか小さくてかわいいやつ,Chiikawa: Nanka Chiisakute Kawaii Yatsu,Nagano,2021,ongoing,seinen,src/data/coreDB_extra3.js,348
-たまらないのは恋なのか,a_love_too_captivating,たまらないのは恋なのか,A Love Too Captivating,"Sorahana, Mia",2023,ongoing,shojo,src/data/coreDB_extra3.js,349
-city,city,CITY,City,"Arawi, Keiichi",2016,ongoing,seinen,src/data/coreDB_extra3.js,350
-君には届かない。,i_cannot_reach_you,君には届かない。,I Cannot Reach You,Mika,2018,ongoing,seinen,src/data/coreDB_extra3.js,352
-魔法少女にあこがれて,gushing_over_magical_girls,魔法少女にあこがれて,Gushing over Magical Girls,"Ononaka, Akihiro",2019,ongoing,seinen,src/data/coreDB_extra3.js,353
-煙たい話,kemutai_hanashi,煙たい話,Kemutai Hanashi,"Hayashi, Fumiya",2021,ongoing,seinen,src/data/coreDB_extra3.js,355
-女の園の星,onna_no_sono_no_hoshi,女の園の星,Onna no Sono no Hoshi,"Wayama, Yama",2020,ongoing,josei,src/data/coreDB_extra3.js,358
-安達としまむら,adachi_and_shimamura,安達としまむら,Adachi and Shimamura,"Iruma, Hitoma/Yuzuhara, Moke",2019,ongoing,seinen,src/data/coreDB_extra3.js,359
-デキる猫は今日も憂鬱,the_masterful_cat_is_depressed_again_today,デキる猫は今日も憂鬱,The Masterful Cat Is Depressed Again Today,"Yamada, Hitsuji",2018,ongoing,seinen,src/data/coreDB_extra3.js,364
-ひだまりが聴こえる－春夏秋冬－,i_hear_the_sunspot_four_seasons,ひだまりが聴こえる－春夏秋冬－,I Hear the Sunspot: Four Seasons,"Fumino, Yuki",2020,ongoing,seinen,src/data/coreDB_extra3.js,369
-虚構推理,in_spectre,虚構推理,In/Spectre,"Shirodaira, Kyou/Katase, Chashiba",2015,ongoing,shonen,src/data/coreDB_extra3.js,373
-유령의노래,phantom_whispers,유령의 노래,Phantom Whispers,"Kim, Moonkyoung",2024,ongoing,web,src/data/coreDB_extra3.js,377
-文豪ストレイドッグス外伝綾辻行人vs京極夏彦,bungo_stray_dogs_another_story_yukito_ayatsuji_vs_natsuhiko_kyougoku,文豪ストレイドッグス外伝 綾辻行人 VS. 京極夏彦,Bungo Stray Dogs: Another Story - Yukito Ayatsuji vs. Natsuhiko Kyougoku,"Asagiri, Kafka/Oyoyo",2017,ongoing,seinen,src/data/coreDB_extra3.js,387
-岸辺露伴は動かない,thus_spoke_rohan_kishibe,岸辺露伴は動かない,Thus Spoke Rohan Kishibe,"Araki, Hirohiko",1997,ongoing,shonen,src/data/coreDB_extra3.js,391
-ピンクハトジャムbeat,pink_heart_jam_beat,ピンクハートジャム beat,Pink Heart Jam beat,Shikke,2023,ongoing,seinen,src/data/coreDB_extra3.js,397
-ひだまりスケッチ,sunshine_sketch,ひだまりスケッチ,Sunshine Sketch,"Aoki, Ume",2004,ongoing,seinen,src/data/coreDB_extra3.js,400
-ぼっちざろっく外伝廣井きくりの深酒日記,bocchi_the_rock_side_story_kikuri_hiroi_s_heavy_drinking_diary,ぼっち・ざ・ろっく!外伝 廣井きくりの深酒日記,Bocchi the Rock! Side Story: Kikuri Hiroi's Heavy-Drinking Diary,Kumichou,2023,ongoing,seinen,src/data/coreDB_extra3.js,407
-10dance,one_zero_dance,10DANCE,10 Dance,"Inoue, Satou",2011,ongoing,seinen,src/data/coreDB_extra3.js,409
-咲saki,saki,咲-Saki-,Saki,"Kobayashi, Ritz",2006,ongoing,seinen,src/data/coreDB_extra3.js,417
-賭博堕天録カイジ24億脱出編,tobaku_datenroku_kaiji_two_four_oku_dasshutsu_hen,賭博堕天録カイジ 24億脱出編,Tobaku Datenroku Kaiji: 24-oku Dasshutsu-hen,"Fukumoto, Nobuyuki",2017,ongoing,seinen,src/data/coreDB_extra3.js,418
-マグメル深海水族館,deep_sea_aquarium_magmell,マグメル深海水族館,Deep-Sea Aquarium Magmell,"Sugishita, Kiyomi",2017,ongoing,seinen,src/data/coreDB_extra3.js,420
-gangsta,gangsta,GANGSTA.,Gangsta.,Kohske,2011,ongoing,seinen,src/data/coreDB_extra3.js,421
-嫌いでいさせて,hate_me_but_let_me_stay,嫌いでいさせて,"Hate Me, but Let Me Stay",Hijiki,2018,ongoing,seinen,src/data/coreDB_extra3.js,427
-acidtown,acid_town,ACID TOWN,Acid Town,Kyuugou,2008,ongoing,seinen,src/data/coreDB_extra3.js,429
-물가의밤,low_tide_in_twilight,물가의 밤,Low Tide in Twilight,Euja,2021,completed,web,src/data/coreDB_extra3.js,435
-superlovers,super_lovers,SUPER LOVERS,Super Lovers,"Abe, Miyuki",2009,ongoing,seinen,src/data/coreDB_extra3.js,438
-ナンバカ,nanbaka,ナンバカ,Nanbaka,"Futamata, Shou",2013,completed,seinen,src/data/coreDB_extra3.js,445
-絢爛たるグランドセヌ,la_magnifique_grande_sc_ne,絢爛たるグランドセーヌ,La Magnifique Grande Scène,Cuvie,2013,ongoing,seinen,src/data/coreDB_extra3.js,455
-まじっく快斗,magic_kaito,まじっく快斗,Magic Kaito,"Aoyama, Goushou",1987,ongoing,shonen,src/data/coreDB_extra3.js,459
-パタリロ,patalliro,パタリロ!,Patalliro!,"Maya, Mineo",1979,ongoing,shojo,src/data/coreDB_extra3.js,469
-愛してるゲムを終わらせたい,i_want_to_end_this_love_game,愛してるゲームを終わらせたい,I Want to End This Love Game,"Doumoto, Yuuki",2021,ongoing,web,src/data/coreDB_extra3.js,472
-청춘러브썸,seasons_of_lovesome,청춘 러브썸,Seasons of Lovesome,Hongduck/NEMONE,2024,ongoing,web,src/data/coreDB_extra3.js,474
-꿈자리가이상한데요,it_s_just_a_dream_right,꿈자리가 이상한데요?!,It's Just a Dream... Right?!,Huingwi,2021,completed,web,src/data/coreDB_extra3.js,475
-수화,sign,수화,Sign,Ker,2017,completed,web,src/data/coreDB_extra3.js,476
-이직로그,ctrl_alt_resign,이직로그,Ctrl+Alt+Resign,"Woo, Si-mok/Lee, Ha-an",2025,ongoing,web,src/data/coreDB_extra3.js,479
-남주의입양딸이되었습니다,the_male_lead_s_little_lion_daughter,남주의 입양딸이 되었습니다,The Male Lead's Little Lion Daughter,Latine/Ttona,2021,ongoing,web,src/data/coreDB_extra3.js,480
-시크릿레이디,secret_lady,시크릿 레이디,Secret Lady,Banana/Anngato,2021,ongoing,web,src/data/coreDB_extra3.js,481
-이기적연애론,selfish_romance,이기적 연애론,Selfish Romance,Gyogyo Park,2024,ongoing,web,src/data/coreDB_extra3.js,482
-페이백,payback,페이백,Payback,Fujoking/samk,2021,completed,web,src/data/coreDB_extra3.js,483
-미성년,our_youth,미성년,Our Youth,Hinoon,2020,completed,web,src/data/coreDB_extra3.js,484
-나혼자탑에서농사,the_top_dungeon_farmer,나 혼자 탑에서 농사,The Top Dungeon Farmer,"sdcknight/Lee, Hakyung",2023,ongoing,web,src/data/coreDB_extra3.js,485
-经久,salad_days,经久,Salad Days,Jingshuibian/Tangliuzang,2019,completed,web,src/data/coreDB_extra3.js,487
-"풍작이에요,마왕님",what_a_bountiful_harvest_demon_lord,"풍작이에요, 마왕님!","What a Bountiful Harvest, Demon Lord!","Moon, Back-kyung/Yeo, Kanghyun",2025,ongoing,web,src/data/coreDB_extra3.js,490
-어쩌다보니천생연분,maybe_meant_to_be,어쩌다보니 천생연분,Maybe Meant to Be,Kkultarae/Damcho,2022,completed,web,src/data/coreDB_extra3.js,491
-돼지우리,pigpen,돼지우리,Pigpen,"Kim, Carnby/Cheon, Beom Sick",2019,completed,web,src/data/coreDB_extra3.js,492
-초인의시대,the_superhuman_era,초인의 시대,The Superhuman Era,Seop-I,2019,ongoing,web,src/data/coreDB_extra3.js,495
-소녀의세계,odd_girl_out,소녀의 세계,Odd Girl Out,Morangji,2015,ongoing,web,src/data/coreDB_extra3.js,498
-닥터프로스트,dr_frost,닥터 프로스트,Dr. Frost,"Lee, Jong-bum",2011,completed,web,src/data/coreDB_extra3.js,500
-超人x,choujin_x,超人X,Choujin X,"Ishida, Sui",2021,ongoing,shonen,src/data/coreDB_extra4.js,3
-極楽街,gokurakugai,極楽街,Gokurakugai,"Sano, Yuuto",2022,ongoing,shonen,src/data/coreDB_extra4.js,4
-ジョジョの奇妙な冒険part9thejojolands,jojo_no_kimyou_na_bouken_part_9_the_jojolands,ジョジョの奇妙な冒険 Part9 The JOJOLands,JoJo no Kimyou na Bouken Part 9: The JoJoLands,"Araki, Hirohiko",2023,ongoing,shonen,src/data/coreDB_extra4.js,5
-ルリドラゴン,ruri_dragon,ルリドラゴン,Ruri Dragon,"Shindou, Masaoki",2022,ongoing,shonen,src/data/coreDB_extra4.js,6
-カッコウの許嫁,kakkou_no_iinazuke,カッコウの許嫁,Kakkou no Iinazuke,"Yoshikawa, Miki",2020,ongoing,shonen,src/data/coreDB_extra4.js,7
-黒岩メダカに私の可愛いが通じない,kuroiwa_medaka_ni_watashi_no_kawaii_ga_tsuujinai,黒岩メダカに私の可愛いが通じない,Kuroiwa Medaka ni Watashi no Kawaii ga Tsuujinai,"Kuze, Ran",2021,ongoing,shonen,src/data/coreDB_extra4.js,8
-時々ボソッとロシア語でデレる隣のアリャさん,tokidoki_bosotto_russia_go_de_dereru_tonari_no_alya_san,時々ボソッとロシア語でデレる隣のアーリャさん,Tokidoki Bosotto Russia-go de Dereru Tonari no Alya-san,"Tanamachi, Saho / Sun Sun, Sun",2022,ongoing,shonen,src/data/coreDB_extra4.js,13
-シャングリラフロンティア～クソゲハンタ、神ゲに挑まんとす～,shangri_la_frontier_kusoge_hunter_kamige_ni_idoman_to_su,シャングリラ・フロンティア～クソゲーハンター、神ゲーに挑まんとす～,"Shangri-La Frontier: Kusoge Hunter, Kamige ni Idoman to su","Fuji, Ryousuke / Katarina",2020,ongoing,shonen,src/data/coreDB_extra4.js,15
-桃源暗鬼,tougen_anki,桃源暗鬼,Tougen Anki,"Urushibara, Yura",2020,ongoing,shonen,src/data/coreDB_extra4.js,16
-戦隊大失格,sentai_daishikkaku,戦隊大失格,Sentai Daishikkaku,"Haruba, Negi",2021,ongoing,shonen,src/data/coreDB_extra4.js,18
-マリッジトキシン,marriagetoxin,マリッジトキシン,Marriagetoxin,"Yoda, Mizuki / Joumyaku",2022,ongoing,shonen,src/data/coreDB_extra4.js,21
-ウィッチウォッチ,witch_watch,ウィッチウォッチ,Witch Watch,"Shinohara, Kenta",2021,ongoing,shonen,src/data/coreDB_extra4.js,23
-焼いてるふたり,yaiteru_futari,焼いてるふたり,Yaiteru Futari,"Hanatsuka, Shiori",2020,ongoing,seinen,src/data/coreDB_extra4.js,24
-幼稚園wars,youchien_wars,幼稚園WARS,Youchien Wars,"Chiba, You",2022,ongoing,shonen,src/data/coreDB_extra4.js,25
-転生したら第七王子だったので、気ままに魔術を極めます,tensei_shitara_dainana_ouji_datta_node_kimama_ni_majutsu_wo_kiwamemasu,転生したら第七王子だったので、気ままに魔術を極めます,"Tensei shitara Dainana Ouji Datta node, Kimama ni Majutsu wo Kiwamemasu","Kokuzawa, Yousuke / Kenkyo na Circle",2020,ongoing,shonen,src/data/coreDB_extra4.js,31
-クソ女に幸あれ,kuso_onna_ni_sachi_are,クソ女に幸あれ,Kuso Onna ni Sachi Are,"Kishikawa, Mizuki",2023,ongoing,shonen,src/data/coreDB_extra4.js,33
-ニワトリファイタ,niwatori_fighter,ニワトリ・ファイター,Niwatori Fighter,"Sakuratani, Shuu",2020,ongoing,seinen,src/data/coreDB_extra4.js,34
-カナン様はあくまでチョロい,kanan_sama_wa_akumade_choroi,カナン様はあくまでチョロい,Kanan-sama wa Akumade Choroi,nonco,2022,ongoing,shonen,src/data/coreDB_extra4.js,35
-異世界黙示録マイノグラ～破滅の文明で始める世界征服～,isekai_mokushiroku_mynoghra_hametsu_no_bunmei_de_hajimeru_sekai_seifuku,異世界黙示録マイノグーラ ～破滅の文明で始める世界征服～,Isekai Mokushiroku Mynoghra: Hametsu no Bunmei de Hajimeru Sekai Seifuku,"Kazuno, Fefu / Midorihana, Yasaiko",2020,ongoing,seinen,src/data/coreDB_extra4.js,36
-聖母〈マリア〉の断罪,maria_no_danzai,聖母〈マリア〉の断罪,Maria no Danzai,"Kazuki / Kamejima, Junto",2023,ongoing,shonen,src/data/coreDB_extra4.js,37
-帝乃三姉妹は案外、チョロい。,mikadono_sanshimai_wa_angai_choroi,帝乃三姉妹は案外、チョロい。,"Mikadono Sanshimai wa Angai, Choroi.","Hirakawa, Aya",2021,ongoing,shonen,src/data/coreDB_extra4.js,38
-百瀬アキラの初恋破綻中。,momose_akira_no_hatsukoi_hatanchuu,百瀬アキラの初恋破綻中。,Momose Akira no Hatsukoi Hatanchuu.,"Harekawa, Shinta",2024,ongoing,shonen,src/data/coreDB_extra4.js,39
-悪役令嬢レベル99～私は裏ボスですが魔王ではありません～,akuyaku_reijou_level_99_watashi_wa_ura_boss_desu_ga_maou_dewa_arimasen,悪役令嬢レベル99 ～私は裏ボスですが魔王ではありません～,Akuyaku Reijou Level 99: Watashi wa Ura-Boss desu ga Maou dewa Arimasen,"Tanabata, Satori / Nokomi",2020,ongoing,shojo,src/data/coreDB_extra4.js,40
-クラスの大嫌いな女子と結婚することになった。,class_no_daikirai_na_joshi_to_kekkon_suru_koto_ni_natta,クラスの大嫌いな女子と結婚することになった。,Class no Daikirai na Joshi to Kekkon suru Koto ni Natta.,"Amano, Seiju / Mosskonbu",2021,ongoing,shonen,src/data/coreDB_extra4.js,41
-メガネ、時々、ヤンキくん,megane_tokidoki_yankee_kun,メガネ、時々、ヤンキーくん,"Megane, Tokidoki, Yankee-kun",Naruki,2021,ongoing,shojo,src/data/coreDB_extra4.js,42
-転生貴族、鑑定スキルで成り上がる～弱小領地を受け継いだので、優秀な人材を増やしていたら、最強領地になってた～,tensei_kizoku_kantei_skill_de_nariagaru_jakushou_ryouchi_wo_uketsuida_node_yuushuu_na_jinzai_wo_fuyashiteitara_saikyou_ryouchi_ni_natteta,転生貴族、鑑定スキルで成り上がる～弱小領地を受け継いだので、優秀な人材を増やしていたら、最強領地になってた～,"Tensei Kizoku, Kantei Skill de Nariagaru: Jakushou Ryouchi wo Uketsuida node, Yuushuu na Jinzai wo Fuyashiteitara, Saikyou Ryouchi ni Natteta","Inoue, Natsumi / Miraijin A",2020,ongoing,shonen,src/data/coreDB_extra4.js,47
-信じていた仲間達にダンジョン奥地で殺されかけたがギフト『無限ガチャ』でレベル9999の仲間達を手に入れて元パティメンバと世界に復讐＆『ざまぁ』します,shinjiteita_nakama_tachi_ni_dungeon_okuchi_de_korosarekaketa_ga_gift_mugen_gacha_de_level_9999_no_nakama_tachi_wo_te_ni_irete_moto_party_member_to_sekai_ni_fukushuu_zamaa_shimasu,信じていた仲間達にダンジョン奥地で殺されかけたがギフト『無限ガチャ』でレベル9999の仲間達を手に入れて元パーティーメンバーと世界に復讐＆『ざまぁ!』します!,"Shinjiteita Nakama-tachi ni Dungeon Okuchi de Korosarekaketa ga Gift ""Mugen Gacha"" de Level 9999 no Nakama-tachi wo Te ni Irete Moto Party Member to Sekai ni Fukushuu & ""Zamaa!"" Shimasu!","Meikyou, Shisui / Oomae, Takafumi",2021,ongoing,shonen,src/data/coreDB_extra4.js,48
-姉のともだち,ane_no_tomodachi,姉のともだち,Ane no Tomodachi,"Takase, Waka",2022,ongoing,shonen,src/data/coreDB_extra4.js,49
-ダメドルと世界に1人だけのファン,damedol_to_sekai_ni_hitori_dake_no_fan,ダメドルと世界に1人だけのファン,Damedol to Sekai ni Hitori dake no Fan,Kishirimo,2023,ongoing,seinen,src/data/coreDB_extra4.js,51
-黙示録の四騎士,mokushiroku_no_yonkishi,黙示録の四騎士,Mokushiroku no Yonkishi,"Suzuki, Nakaba",2021,ongoing,shonen,src/data/coreDB_extra4.js,52
-バツイチで泣き虫なおとなりさん,batsuichi_de_nakimushi_na_otonarisan,バツイチで泣き虫なおとなりさん,Batsuichi de Nakimushi na Otonarisan,Zyugoya,2022,ongoing,seinen,src/data/coreDB_extra4.js,53
-バサス,versus,バーサス,Versus,"ONE / Azuma, Kyoutarou",2022,ongoing,shonen,src/data/coreDB_extra4.js,55
-一途ビッチちゃん,ichizu_bitch_chan,一途ビッチちゃん,Ichizu Bitch-chan,Ironon,2020,ongoing,seinen,src/data/coreDB_extra4.js,57
-灰宮先輩は怖くてかわいい,haimiya_senpai_wa_kowakute_kawaii,灰宮先輩は怖くてかわいい,Haimiya-senpai wa Kowakute Kawaii,"Kamiyama, Sumu",2025,ongoing,seinen,src/data/coreDB_extra4.js,61
-ひまてん,himaten,ひまてん!,Himaten!,"Ono, Genki",2024,ongoing,shonen,src/data/coreDB_extra4.js,62
-八月九日僕は君に喰われる。,hachigatsu_kokonoka_boku_wa_kimi_ni_kuwareru,八月九日 僕は君に喰われる。,Hachigatsu Kokonoka Boku wa Kimi ni Kuwareru.,tomomi,2020,ongoing,seinen,src/data/coreDB_extra4.js,64
-#drclmidnightchildren,drcl_midnight_children,#DRCL midnight children,#DRCL Midnight Children,"Sakamoto, Shinichi",2020,ongoing,shonen,src/data/coreDB_extra4.js,65
-おそらくカノジョは俺の兄貴を狙ってる,osoraku_kanojo_wa_ore_no_aniki_wo_neratteru,おそらくカノジョは俺の兄貴を狙ってる,Osoraku Kanojo wa Ore no Aniki wo Neratteru,"Ise, Maruno",2025,ongoing,seinen,src/data/coreDB_extra4.js,68
-処刑された賢者はリッチに転生して侵略戦争を始める,shokei_sareta_kenja_wa_lich_ni_tensei_shite_shinryaku_sensou_wo_hajimeru,処刑された賢者はリッチに転生して侵略戦争を始める,Shokei sareta Kenja wa Lich ni Tensei shite Shinryaku Sensou wo Hajimeru,"Yuuki, Karaku / Kunitomo, Shoutarou",2020,ongoing,seinen,src/data/coreDB_extra4.js,69
-楠木さんは高校デビュに失敗している,kusunoki_san_wa_koukou_debut_ni_shippaishiteiru,楠木さんは高校デビューに失敗している,Kusunoki-san wa Koukou Debut ni Shippaishiteiru,"Mii, Mitsuki",2022,ongoing,seinen,src/data/coreDB_extra4.js,71
-塩対応の佐藤さんが俺にだけ甘い＠comic,shiotaiou_no_satou_san_ga_ore_ni_dake_amai_comic,塩対応の佐藤さんが俺にだけ甘い＠comic,Shiotaiou no Satou-san ga Ore ni dake Amai @comic,"Sawatari, Kazami / Tetsuyama, Kaya",2020,ongoing,seinen,src/data/coreDB_extra4.js,72
-ダンジョンに潜むヤンデレな彼女に俺は何度も殺される,dungeon_ni_hisomu_yandere_na_kanojo_ni_ore_wa_nando_mo_korosareru,ダンジョンに潜むヤンデレな彼女に俺は何度も殺される,Dungeon ni Hisomu Yandere na Kanojo ni Ore wa Nando mo Korosareru,"Nomura, Eiji / Kitagawa, Nikita",2023,ongoing,seinen,src/data/coreDB_extra4.js,73
-紫雲寺家の子供たち,shiunji_ke_no_kodomotachi,紫雲寺家の子供たち,Shiunji-ke no Kodomotachi,"Miyajima, Reiji",2022,ongoing,seinen,src/data/coreDB_extra4.js,76
-劣等人の魔剣使いスキルボドを駆使して最強に至る,rettoujin_no_makentsukai_skill_board_wo_kushi_shite_saikyou_ni_itaru,劣等人の魔剣使い　スキルボードを駆使して最強に至る,Rettoujin no Makentsukai: Skill Board wo Kushi shite Saikyou ni Itaru,"Hagiu, Aki / Kanou, Hiroto",2020,ongoing,shonen,src/data/coreDB_extra4.js,77
-ご主人様とゆく異世界サバイバルthecomic,goshujinsama_to_yuku_isekai_survival_the_comic,ご主人様とゆく異世界サバイバル! THE COMIC,Goshujinsama to Yuku Isekai Survival! The Comic,SASAYUKi / Ryuto,2020,ongoing,seinen,src/data/coreDB_extra4.js,79
-両親の借金を肩代わりしてもらう条件は日本一可愛い女子高生と一緒に暮らすことでした。,ryoushin_no_shakkin_wo_katagawari_shite_morau_jouken_wa_nihonichi_kawaii_joshikousei_to_issho_ni_kurasu_koto_deshita,両親の借金を肩代わりしてもらう条件は日本一可愛い女子高生と一緒に暮らすことでした。,Ryoushin no Shakkin wo Katagawari shite Morau Jouken wa Nihonichi Kawaii Joshikousei to Issho ni Kurasu Koto deshita.,"Mitsuki, Meia / Amane, Megumi",2022,ongoing,seinen,src/data/coreDB_extra4.js,81
-幼馴染彼女のモラハラがひどいんで絶縁宣言してやった自分らしく生きることにしたら、なぜか隣の席の隠れ美少女から告白された,osananajimi_kanojo_no_morahara_ga_hidoin_de_zetsuen_sengen_shite_yatta_jibunrashiku_ikiru_koto_ni_shitara_nazeka_tonari_no_seki_no_kakure_bishoujo_kara_kokuhaku_sareta,幼馴染彼女のモラハラがひどいんで絶縁宣言してやった ~自分らしく生きることにしたら、なぜか隣の席の隠れ美少女から告白された~,"Osananajimi Kanojo no Morahara ga Hidoin de Zetsuen Sengen shite Yatta: Jibunrashiku Ikiru Koto ni Shitara, Nazeka Tonari no Seki no Kakure Bishoujo kara Kokuhaku sareta","Hige / Ononata, Manimani",2022,ongoing,seinen,src/data/coreDB_extra4.js,84
-片田舎のおっさん、剣聖になる～ただの田舎の剣術師範だったのに、大成した弟子たちが俺を放ってくれない件～,katainaka_no_ossan_kensei_ni_naru_tada_no_inaka_no_kenjutsu_shihan_datta_noni_taisei_shita_deshi_tachi_ga_ore_wo_houttekurenai_ken,片田舎のおっさん、剣聖になる ～ただの田舎の剣術師範だったのに、大成した弟子たちが俺を放ってくれない件～,"Katainaka no Ossan, Kensei ni Naru: Tada no Inaka no Kenjutsu Shihan Datta noni, Taisei shita Deshi-tachi ga Ore wo Houttekurenai Ken","Satou, Kazuki / Sagazaki, Shigeru",2021,ongoing,shonen,src/data/coreDB_extra4.js,85
-義妹生活,gimai_seikatsu,義妹生活,Gimai Seikatsu,"Mikawa, Ghost / Kanade, Yumika",2021,ongoing,shonen,src/data/coreDB_extra4.js,89
-うちの会社の小さい先輩の話,uchi_no_kaisha_no_chiisai_senpai_no_hanashi,うちの会社の小さい先輩の話,Uchi no Kaisha no Chiisai Senpai no Hanashi,Saisou,2020,ongoing,seinen,src/data/coreDB_extra4.js,90
-ドラマクイン,drama_queen,ドラマクイン,Drama Queen,"Ichikawa, Kuraku",2024,ongoing,shonen,src/data/coreDB_extra4.js,91
-ギャル嫁の秘密,gal_yome_no_himitsu,ギャル嫁の秘密,Gal Yome no Himitsu,Kudou,2023,ongoing,seinen,src/data/coreDB_extra4.js,92
-最凶の支援職【話術士】である俺は世界最強クランを従える,saikyou_no_shienshoku_wajutsushi_de_aru_ore_wa_sekai_saikyou_clan_wo_shitagaeru,最凶の支援職【話術士】である俺は世界最強クランを従える,"Saikyou no Shienshoku ""Wajutsushi"" de Aru Ore wa Sekai Saikyou Clan wo Shitagaeru",Yamorichan / Jaki,2020,ongoing,seinen,src/data/coreDB_extra4.js,93
-陰キャの僕に罰ゲムで告白してきたはずのギャルが、どう見ても僕にベタ惚れです,inkya_no_boku_ni_batsu_game_de_kokuhaku_shitekita_hazu_no_gal_ga_dou_mitemo_boku_ni_betabore_desu,陰キャの僕に罰ゲームで告白してきたはずのギャルが、どう見ても僕にベタ惚れです,"Inkya no Boku ni Batsu Game de Kokuhaku shitekita Hazu no Gal ga, Dou Mitemo Boku ni Betabore desu","Kanna, Nagomi / Yuishi",2022,ongoing,shonen,src/data/coreDB_extra4.js,95
-願いを叶えてもらおうと悪魔を召喚したけど、可愛かったので結婚しました～悪魔の新妻～,negai_wo_kanaete_moraou_to_akuma_wo_shoukan_shita_kedo_kawaikatta_node_kekkon_shimashita_akuma_no_niizuma,願いを叶えてもらおうと悪魔を召喚したけど、可愛かったので結婚しました～悪魔の新妻～,"Negai wo Kanaete Moraou to Akuma wo Shoukan shita kedo, Kawaikatta node Kekkon shimashita: Akuma no Niizuma",Shiryu / Tonarikeru,2020,ongoing,seinen,src/data/coreDB_extra4.js,97
-めっちゃ召喚された件thecomic,meccha_shoukan_sareta_ken_the_comic,めっちゃ召喚された件 THE COMIC,Meccha Shoukan sareta Ken the Comic,"Mukojima, Kamome / Saitousa",2020,ongoing,seinen,src/data/coreDB_extra4.js,98
-鍛冶屋ではじめる異世界スロライフ,kajiya_de_hajimeru_isekai_slow_life,鍛冶屋ではじめる異世界スローライフ,Kajiya de Hajimeru Isekai Slow Life,"Himori, Yoshino / Tamamaru",2020,ongoing,seinen,src/data/coreDB_extra4.js,99
-東京エイリアンズ,tokyo_aliens,東京エイリアンズ,Tokyo Aliens,NAOE,2020,ongoing,shonen,src/data/coreDB_extra4.js,100
-地元のいじめっ子達に仕返ししようとしたら、別の戦いが始まった。,jimoto_no_ijimekko_tachi_ni_shikaeshi_shiyou_to_shitara_betsu_no_tatakai_ga_hajimatta,地元のいじめっ子達に仕返ししようとしたら、別の戦いが始まった。,"Jimoto no Ijimekko-tachi ni Shikaeshi Shiyou to Shitara, Betsu no Tatakai ga Hajimatta.","Matsumoto, Kengo",2023,ongoing,seinen,src/data/coreDB_extra4.js,101
-「おかえり、パパ」,okaeri_papa,「おかえり、パパ」,"""Okaeri, Papa""",Semimaru,2022,ongoing,seinen,src/data/coreDB_extra4.js,102
-俺の死亡フラグが留まるところを知らない,ore_no_shibou_flag_ga_todomaru_tokoro_wo_shiranai,俺の死亡フラグが留まるところを知らない,Ore no Shibou Flag ga Todomaru Tokoro wo Shiranai,"Izumi / Otosu, Mitsuya",2020,ongoing,seinen,src/data/coreDB_extra4.js,103
-経験済みなキミと、経験ゼロなオレが、お付き合いする話。,keikenzumi_na_kimi_to_keiken_zero_na_ore_ga_otsukiai_suru_hanashi,経験済みなキミと、経験ゼロなオレが、お付き合いする話。,"Keikenzumi na Kimi to, Keiken Zero na Ore ga, Otsukiai suru Hanashi.","Nagaoka, Makiko / Carpaccio, Noyama",2022,ongoing,shonen,src/data/coreDB_extra4.js,104
-ヘルモド～やり込み好きのゲマは廃設定の異世界で無双する～はじまりの召喚士,hell_mode_yarikomizuki_no_gamer_wa_hai_settei_no_isekai_de_musou_suru_hajimari_no_shoukanshi,ヘルモード ～やり込み好きのゲーマーは廃設定の異世界で無双する～ はじまりの召喚士,Hell Mode: Yarikomizuki no Gamer wa Hai Settei no Isekai de Musou suru - Hajimari no Shoukanshi,"Tetta, Enji / Hamuo",2020,ongoing,seinen,src/data/coreDB_extra4.js,105
-生徒会にも穴はある,seitokai_ni_mo_ana_wa_aru,生徒会にも穴はある！,Seitokai ni mo Ana wa Aru!,"Muchi, Maro",2022,ongoing,shonen,src/data/coreDB_extra4.js,107
-mujinaintothedeep,mujina_into_the_deep,MUJINA INTO THE DEEP,Mujina into the Deep,"Asano, Inio",2023,ongoing,seinen,src/data/coreDB_extra4.js,108
-バグエゴ,bug_ego,バグエゴ,Bug Ego,"ONE / Shitara, Kiyoto",2023,ongoing,shonen,src/data/coreDB_extra4.js,111
-彼女、人見知ります,kanojo_hitomishirimasu,彼女、人見知ります,"Kanojo, Hitomishirimasu","Miyajima, Reiji",2020,ongoing,shonen,src/data/coreDB_extra4.js,112
-勇者パティにかわいい子がいたので、告白してみた。,yuusha_party_ni_kawaii_ko_ga_ita_node_kokuhaku_shitemita,勇者パーティーにかわいい子がいたので、告白してみた。,"Yuusha Party ni Kawaii Ko ga Ita node, Kokuhaku shitemita.",Suisei / Kairi,2021,ongoing,seinen,src/data/coreDB_extra4.js,114
-配達先のお姉さんが怖すぎる,haitatsusaki_no_oneesan_ga_kowasugiru,配達先のお姉さんが怖すぎる,Haitatsusaki no Oneesan ga Kowasugiru,"Yorima, Riyo",2024,ongoing,seinen,src/data/coreDB_extra4.js,115
-のあ先輩はともだち。,noa_senpai_wa_tomodachi,のあ先輩はともだち。,Noa-senpai wa Tomodachi.,"Akiyama, Enma",2023,ongoing,shonen,src/data/coreDB_extra4.js,116
-茜部先生は照れ知らず,akanabe_sensei_wa_tereshirazu,茜部先生は照れ知らず,Akanabe-sensei wa Tereshirazu,"Tajimi, Naoya",2023,ongoing,shonen,src/data/coreDB_extra4.js,117
-町人aは悪役令嬢をどうしても救いたい～どぶと空と氷の姫君～,chounin_a_wa_akuyaku_reijou_wo_doushitemo_sukuitai_dobu_to_sora_to_koori_no_himegimi,町人Aは悪役令嬢をどうしても救いたい ～どぶと空と氷の姫君～,Chounin A wa Akuyaku Reijou wo Doushitemo Sukuitai: Dobu to Sora to Koori no Himegimi,"Meguro, Sankichi / Isshiki, Koutarou",2021,ongoing,seinen,src/data/coreDB_extra4.js,119
-sランク冒険者である俺の娘たちは重度のファザコンでした,s_rank_boukensha_de_aru_ore_no_musume_tachi_wa_juudo_no_fathercon_deshita,Sランク冒険者である俺の娘たちは重度のファザコンでした,S-Rank Boukensha de Aru Ore no Musume-tachi wa Juudo no Fathercon deshita,"Nozomi, Tsubame / Tomobashi, Kametsu",2020,ongoing,seinen,src/data/coreDB_extra4.js,121
-幼馴染とはラブコメにならない,osananajimi_to_wa_love_comedy_ni_naranai,幼馴染とはラブコメにならない,Osananajimi to wa Love Comedy ni Naranai,"Misu, Shinya",2022,ongoing,shonen,src/data/coreDB_extra4.js,124
-今年の三石さんはどこかおかしい,kotoshi_no_mitsuishi_san_wa_dokoka_okashii,今年の三石さんはどこかおかしい,Kotoshi no Mitsuishi-san wa Dokoka Okashii,Shirosawa,2021,ongoing,seinen,src/data/coreDB_extra4.js,125
-サキュバス&ヒットマン,succubus_hitman,サキュバス&ヒットマン,Succubus & Hitman,"Fukami, Makoto / Tokiya, Seigo",2020,ongoing,shonen,src/data/coreDB_extra4.js,127
-アンタと幼なじみってだけでもイヤなのに～絶交から始まるs級美少女との学園成り上がり生活～,anta_to_osananajimi_tte_dake_demo_iya_nanoni_zekkou_kara_hajimaru_s_kyuu_bishoujo_to_no_gakuen_nariagari_seikatsu,アンタと幼なじみってだけでもイヤなのに! ～絶交から始まるS級美少女との学園成り上がり生活～,Anta to Osananajimi tte dake demo Iya nanoni! Zekkou kara Hajimaru S-kyuu Bishoujo to no Gakuen Nariagari Seikatsu,"Yuuji, Yuuji / Touno, Kiri",2025,ongoing,shonen,src/data/coreDB_extra4.js,129
-ニュノマル,new_normal,ニューノーマル,New Normal,"Aihara, Akito",2020,ongoing,seinen,src/data/coreDB_extra4.js,130
-カワイイなんて聞いてない,kawaii_nante_kiitenai,カワイイなんて聞いてない!!,Kawaii nante Kiitenai!!,"Harufuji, Nakaba",2020,ongoing,shojo,src/data/coreDB_extra4.js,135
-虚の記憶,kara_no_kioku,虚の記憶,Kara no Kioku,Eve / Newo,2020,ongoing,josei,src/data/coreDB_extra4.js,136
-ギャルゲマに褒められたい,gal_gamer_ni_homeraretai,ギャルゲーマーに褒められたい,Gal Gamer ni Homeraretai,Geshumaro,2022,ongoing,seinen,src/data/coreDB_extra4.js,137
-恋せよまやかし天使ども,koiseyo_mayakashi_tenshi_domo,恋せよまやかし天使ども,Koiseyo Mayakashi Tenshi-domo,"Uzuki, Coco",2023,ongoing,shojo,src/data/coreDB_extra4.js,138
-追放された転生重騎士はゲム知識で無双する,tsuihou_sareta_tensei_juukishi_wa_game_chishiki_de_musou_suru,追放された転生重騎士はゲーム知識で無双する,Tsuihou sareta Tensei Juukishi wa Game Chishiki de Musou suru,"Necoco / Brocco, Lee",2022,ongoing,shonen,src/data/coreDB_extra4.js,140
-俺は星間国家の悪徳領主,ore_wa_seikan_kokka_no_akutoku_ryoushu,俺は星間国家の悪徳領主!,Ore wa Seikan Kokka no Akutoku Ryoushu!,"Mishima, Yomu / Nadajima, Kai",2021,ongoing,seinen,src/data/coreDB_extra4.js,143
-gantze,gantz_e,GANTZ:E,Gantz:E,"Oku, Hiroya / Kagetsu, Jin",2020,ongoing,shonen,src/data/coreDB_extra4.js,146
-会社と私生活－オンとオフ－,kaisha_to_shiseikatsu_on_to_off,会社と私生活－オンとオフ－,Kaisha to Shiseikatsu: On to Off,"Kanazawa, Shinnosuke",2023,ongoing,seinen,src/data/coreDB_extra4.js,147
-俺の股間は美少女だったのか,ore_no_kokan_wa_bishoujo_datta_no_ka,俺の股間は美少女だったのか,Ore no Kokan wa Bishoujo Datta no ka,Unichiri,2022,ongoing,seinen,src/data/coreDB_extra4.js,148
-ラブコメ漫画に入ってしまったので、推しの負けヒロインを全力で幸せにする,love_comedy_manga_ni_haitteshimatta_node_oshi_no_make_heroine_wo_zenryoku_de_shiawase_ni_suru,ラブコメ漫画に入ってしまったので、推しの負けヒロインを全力で幸せにする,"Love Comedy Manga ni Haitteshimatta node, Oshi no Make Heroine wo Zenryoku de Shiawase ni Suru",Shiryu / Shiharu,2022,ongoing,seinen,src/data/coreDB_extra4.js,151
-ぼくの好きな人が好きな人,boku_no_suki_na_hito_ga_suki_na_hito,ぼくの好きな人が好きな人,Boku no Suki na Hito ga Suki na Hito,"Aoi, Sekina / Tsuzura, Ryou",2022,ongoing,seinen,src/data/coreDB_extra4.js,153
-カノジョに浮気されていた俺が、小悪魔な後輩に懐かれています,kanojo_ni_uwaki_sareteita_ore_ga_koakuma_na_kouhai_ni_natsukareteimasu,カノジョに浮気されていた俺が、小悪魔な後輩に懐かれています,"Kanojo ni Uwaki Sareteita Ore ga, Koakuma na Kouhai ni Natsukareteimasu","Kazawa, Youhei / Omiya, Yuu",2021,ongoing,shonen,src/data/coreDB_extra4.js,155
-真の実力はギリギリまで隠していようと思う,shin_no_jitsuryoku_wa_girigiri_made_kakushiteiyou_to_omou,真の実力はギリギリまで隠していようと思う,Shin no Jitsuryoku wa Girigiri made Kakushiteiyou to Omou,"Kamegoya, Sato / Nekoyasha",2020,ongoing,seinen,src/data/coreDB_extra4.js,160
-経験値貯蓄でのんびり傷心旅行～勇者と恋人に追放された戦士の無自覚ざまぁ～,keikenchi_chochiku_de_nonbiri_shoushin_ryokou_yuusha_to_koibito_ni_tsuihou_sareta_senshi_no_mujikaku_zamaa,経験値貯蓄でのんびり傷心旅行 ～勇者と恋人に追放された戦士の無自覚ざまぁ～,Keikenchi Chochiku de Nonbiri Shoushin Ryokou: Yuusha to Koibito ni Tsuihou sareta Senshi no Mujikaku Zamaa,"Tokugawa, Lemon / Kanata, Yoshiki",2021,ongoing,seinen,src/data/coreDB_extra4.js,162
-ネトゲの嫁が人気アイドルだった～クル系の彼女は現実でも嫁のつもりでいる～,netoge_no_yome_ga_ninki_idol_datta_cool_kei_no_kanojo_wa_genjitsu_demo_yome_no_tsumori_de_iru,ネトゲの嫁が人気アイドルだった　～クール系の彼女は現実でも嫁のつもりでいる～,Netoge no Yome ga Ninki Idol datta: Cool-kei no Kanojo wa Genjitsu demo Yome no Tsumori de Iru,Abone / Mottso,2022,ongoing,seinen,src/data/coreDB_extra4.js,164
-galaxias,galaxias,GALAXIAS,Galaxias,"Hatezaka, Ao",2024,ongoing,shonen,src/data/coreDB_extra4.js,165
-才女のお世話高嶺の花だらけな名門校で、学院一のお嬢様（生活能力皆無）を陰ながらお世話することになりました,saijo_no_osewa_takane_no_hanadarake_na_meimonkou_de_gakuin_ichi_no_ojousama_seikatsu_nouryoku_kaimu_wo_kagenagara_osewa_suru_koto_ni_narimashita,才女のお世話 高嶺の花だらけな名門校で、学院一のお嬢様（生活能力皆無）を陰ながらお世話することになりました,"Saijo no Osewa: Takane no Hanadarake na Meimonkou de, Gakuin Ichi no Ojousama (Seikatsu Nouryoku Kaimu) wo Kagenagara Osewa suru Koto ni Narimashita","Mizushima, Sorahiko / Sakaishi, Yuusaku",2021,ongoing,seinen,src/data/coreDB_extra4.js,167
-となりの黒川さん,tonari_no_kurokawa_san,となりの黒川さん,Tonari no Kurokawa-san,"Itou, Kyousuke",2024,ongoing,shonen,src/data/coreDB_extra4.js,168
-異世界で配信活動をしたら大量のヤンデレ信者を生み出してしまった件,isekai_de_haishin_katsudou_wo_shitara_tairyou_no_yandere_shinja_wo_umidashiteshimatta_ken,異世界で配信活動をしたら大量のヤンデレ信者を生み出してしまった件,Isekai de Haishin Katsudou wo Shitara Tairyou no Yandere Shinja wo Umidashiteshimatta Ken,"Myon / Iyomine, Tsuku",2023,ongoing,seinen,src/data/coreDB_extra4.js,169
-aランクパティを離脱した俺は、元教え子たちと迷宮深部を目指す。,a_rank_party_wo_ridatsu_shita_ore_wa_moto_oshiego_tachi_to_meikyuu_shinbu_wo_mezasu,Aランクパーティを離脱した俺は、元教え子たちと迷宮深部を目指す。,"A-Rank Party wo Ridatsu shita Ore wa, Moto Oshiego-tachi to Meikyuu Shinbu wo Mezasu.","Yuuri / Unagi, Kousuke",2021,ongoing,shonen,src/data/coreDB_extra4.js,171
-時森さんが無防備です,tokimori_san_ga_muboubi_desu,時森さんが無防備です!!,Tokimori-san ga Muboubi desu!!,Tazawa,2022,ongoing,seinen,src/data/coreDB_extra4.js,173
-放課後のアイドルには秘密がある,houkago_no_idol_ni_wa_himitsu_ga_aru,放課後のアイドルには秘密がある,Houkago no Idol ni wa Himitsu ga Aru,"Amane, Kashiko",2022,ongoing,seinen,src/data/coreDB_extra4.js,174
-雨と君と,ame_to_kimi_to,雨と君と,Ame to Kimi to,"Nikaidou, Kou",2020,ongoing,shonen,src/data/coreDB_extra4.js,178
-負けヒロインが多すぎる@comic,make_heroine_ga_oosugiru_comic,負けヒロインが多すぎる!@comic,Make Heroine ga Oosugiru! @comic,"Itachi / Amamori, Takibi",2022,ongoing,seinen,src/data/coreDB_extra4.js,179
-うしろの席のぎゃるに好かれてしまった。もう俺はダメかもしれない。,ushiro_no_seki_no_gal_ni_sukarete_shimatta_mou_ore_wa_dame_kamoshirenai,うしろの席のぎゃるに好かれてしまった。もう俺はダメかもしれない。,Ushiro no Seki no Gal ni Sukarete Shimatta. Mou Ore wa Dame Kamoshirenai.,"Michinoku, Koharu / Suya, Maromi",2023,ongoing,shonen,src/data/coreDB_extra4.js,180
-クプルムの花嫁,cuprum_no_hanayome,クプルムの花嫁,Cuprum no Hanayome,namo,2020,ongoing,seinen,src/data/coreDB_extra4.js,181
-怠惰な悪辱貴族に転生した俺、シナリオをぶっ壊したら規格外の魔力で最凶になった,taida_na_akujoku_kizoku_ni_tensei_shita_ore_scenario_wo_bukkowashitara_kikakugai_no_maryoku_de_saikyou_ni_natta,怠惰な悪辱貴族に転生した俺、シナリオをぶっ壊したら規格外の魔力で最凶になった,"Taida na Akujoku Kizoku ni Tensei shita Ore, Scenario wo Bukkowashitara Kikakugai no Maryoku de Saikyou ni Natta","Kikuchi, Kaisei / Oda, Douma",2024,ongoing,seinen,src/data/coreDB_extra4.js,185
-竜と歩む成り上がり冒険者道～用済みとしてsランクパティから追放された回復魔術師、捨てられた先で最強の神竜を復活させてしまう～,ryuu_to_ayumu_nariagari_boukensha_dou_youzumi_toshite_s_rank_party_kara_tsuihou_sareta_kaifuku_majutsushi_suterareta_saki_de_saikyou_no_shinryuu_wo_fukkatsu_sasete_shimau,竜と歩む成り上がり冒険者道～用済みとしてSランクパーティから追放された回復魔術師、捨てられた先で最強の神竜を復活させてしまう～,"Ryuu to Ayumu Nariagari Boukensha-dou: Youzumi toshite S-Rank Party kara Tsuihou sareta Kaifuku Majutsushi, Suterareta Saki de Saikyou no Shinryuu wo Fukkatsu sasete Shimau","Kishimoto, Kazuha / @Karikari Ume",2021,ongoing,seinen,src/data/coreDB_extra4.js,186
-勇者パティを追い出された器用貧乏～パティ事情で付与術士をやっていた剣士、万能へと至る～,yuusha_party_wo_oidasareta_kiyoubinbou_party_jijou_de_fuyo_jutsushi_wo_yatteita_kenshi_bannou_e_to_itaru,勇者パーティを追い出された器用貧乏　～パーティ事情で付与術士をやっていた剣士、万能へと至る～,"Yuusha Party wo Oidasareta Kiyoubinbou: Party Jijou de Fuyo Jutsushi wo Yatteita Kenshi, Bannou e to Itaru","Yonezou / Togami, Itsuki",2021,ongoing,seinen,src/data/coreDB_extra4.js,187
-センシティブボイ,sensitive_boy,センシティブ・ボーイ,Sensitive Boy,46,2022,ongoing,seinen,src/data/coreDB_extra4.js,188
-透明男と人間女～そのうち夫婦になるふたり～,toumei_otoko_to_ningen_onna_sonouchi_fuufu_ni_naru_futari,透明男と人間女～そのうち夫婦になるふたり～,Toumei Otoko to Ningen Onna: Sonouchi Fuufu ni Naru Futari,Iwatobineko,2021,ongoing,seinen,src/data/coreDB_extra4.js,190
-異世界ウォキング,isekai_walking,異世界ウォーキング,Isekai Walking,"Arukuhito / Ogawa, Kei",2022,ongoing,shonen,src/data/coreDB_extra4.js,191
-田んぼで拾った女騎士、田舎で俺の嫁だと思われている,tanbo_de_hirotta_onna_kishi_inaka_de_ore_no_yome_dato_omowareteiru,田んぼで拾った女騎士、田舎で俺の嫁だと思われている,"Tanbo de Hirotta Onna Kishi, Inaka de Ore no Yome dato Omowareteiru","Renkinou / Otoha, Saori",2023,ongoing,shonen,src/data/coreDB_extra4.js,192
-お気楽領主の楽しい領地防衛,okiraku_ryoushu_no_tanoshii_ryouchi_bouei,お気楽領主の楽しい領地防衛,Okiraku Ryoushu no Tanoshii Ryouchi Bouei,"Inoue, Mitsuru / Aoiro, Maro",2021,ongoing,seinen,src/data/coreDB_extra4.js,193
-ドロイング最強漫画家はお絵描きスキルで異世界無双する,drawing_saikyou_mangaka_wa_oekaki_skill_de_isekai_musou_suru,ドローイング　最強漫画家はお絵描きスキルで異世界無双する!,Drawing: Saikyou Mangaka wa Oekaki Skill de Isekai Musou suru!,"Im, Dal Young / Kim, Kwang Hyun",2021,ongoing,seinen,src/data/coreDB_extra4.js,195
-税金で買った本,zeikin_de_katta_hon,税金で買った本,Zeikin de Katta Hon,"Keiyama, Kei / Zuino",2021,ongoing,shonen,src/data/coreDB_extra4.js,196
-ウルフちゃんは澄ましたい,wolf_chan_wa_sumashitai,ウルフちゃんは澄ましたい,Wolf-chan wa Sumashitai,"Honno, Shiori",2023,ongoing,seinen,src/data/coreDB_extra4.js,198
-最強陰陽師の異世界転生記～下僕の妖怪どもに比べてモンスタが弱すぎるんだが～,saikyou_onmyouji_no_isekai_tenseiki_geboku_no_youkai_domo_ni_kurabete_monster_ga_yowasugirun_da_ga,最強陰陽師の異世界転生記 ～下僕の妖怪どもに比べてモンスターが弱すぎるんだが～,Saikyou Onmyouji no Isekai Tenseiki: Geboku no Youkai-domo ni Kurabete Monster ga Yowasugirun da ga,"Okazaki, Toshinori / Kosuzu, Kiichi",2020,ongoing,seinen,src/data/coreDB_extra4.js,199
-失業賢者の成り上がり～嫌われた才能は世界最強でした～,shitsugyou_kenja_no_nariagari_kirawareta_sainou_wa_sekai_saikyou_deshita,失業賢者の成り上がり～嫌われた才能は世界最強でした～,Shitsugyou Kenja no Nariagari: Kirawareta Sainou wa Sekai Saikyou deshita,"Mikawa, Ghost / Oomine",2020,ongoing,seinen,src/data/coreDB_extra4.js,202
-異世界転移したのでチトを生かして魔法剣士やることにする,isekai_teni_shita_node_cheat_wo_ikashite_mahou_kenshi_yaru_koto_ni_suru,異世界転移したのでチートを生かして魔法剣士やることにする,Isekai Teni shita node Cheat wo Ikashite Mahou Kenshi Yaru Koto ni Suru,"Shinkou, Shotou / Nanora",2020,ongoing,seinen,src/data/coreDB_extra4.js,203
-どうか俺を放っておいてくれなぜかぼっちの終わった高校生活を彼女が変えようとしてくる,douka_ore_wo_houtteoite_kure_nazeka_bocchi_no_owatta_koukou_seikatsu_wo_kanojo_ga_kaeyou_to_shitekuru,どうか俺を放っておいてくれ なぜかぼっちの終わった高校生活を彼女が変えようとしてくる,Douka Ore wo Houtteoite Kure: Nazeka Bocchi no Owatta Koukou Seikatsu wo Kanojo ga Kaeyou to Shitekuru,"Aizaki, Kabegiwa / Shiki, Mutsuko",2022,ongoing,seinen,src/data/coreDB_extra4.js,204
-sランクパティから解雇された【呪具師】～『呪いのアイテム』しか作れませんが、その性能はアティファクト級なり……～,s_rank_party_kara_kaiko_sareta_jugushi_noroi_no_item_shika_tsukuremasen_ga_sono_seinou_wa_artifact_kyuu_nari,Sランクパーティから解雇された【呪具師】～『呪いのアイテム』しか作れませんが、その性能はアーティファクト級なり……！～,"S-Rank Party kara Kaiko sareta ""Jugushi"": ""Noroi no Item"" shika Tsukuremasen ga, Sono Seinou wa Artifact-kyuu nari......!","LAgun / Ogawa, Nishiki",2021,ongoing,shonen,src/data/coreDB_extra4.js,205
-英雄と賢者の転生婚～かつての好敵手と婚約して最強夫婦になりました～,eiyuu_to_kenja_no_tenseikon_katsute_no_koutekishu_to_konyaku_shite_saikyou_fuufu_ni_narimashita,英雄と賢者の転生婚～かつての好敵手と婚約して最強夫婦になりました～,Eiyuu to Kenja no Tenseikon: Katsute no Koutekishu to Konyaku shite Saikyou Fuufu ni Narimashita,"Fujiki, Washiro / Nishi, Riku",2023,ongoing,shonen,src/data/coreDB_extra4.js,208
-僕の彼女はデッカワイイ,boku_no_kanojo_wa_dekkawaii,僕の彼女はデッカワイイ,Boku no Kanojo wa Dekkawaii,sanorin,2024,ongoing,seinen,src/data/coreDB_extra4.js,209
-歴史に残る悪女になるぞ悪役令嬢になるほど王子の溺愛は加速するようです,rekishi_ni_nokoru_akujo_ni_naru_zo_akuyaku_reijou_ni_naru_hodo_ouji_no_dekiai_wa_kasoku_suru_you_desu,歴史に残る悪女になるぞ 悪役令嬢になるほど王子の溺愛は加速するようです！,Rekishi ni Nokoru Akujo ni Naru zo: Akuyaku Reijou ni Naru hodo Ouji no Dekiai wa Kasoku suru you desu!,"Hoshi, Akari / Ookido, Izumi",2020,ongoing,shojo,src/data/coreDB_extra4.js,210
-物語の黒幕に転生して,monogatari_no_kuromaku_ni_tensei_shite,物語の黒幕に転生して,Monogatari no Kuromaku ni Tensei shite,"Segawa, Hajime / Yuuki, Ryou",2022,ongoing,shonen,src/data/coreDB_extra4.js,211
-人生逆転浮気され、えん罪を着せられた俺が、学園一の美少女に懐かれる,jinsei_gyakuten_uwaki_sare_enzai_wo_kiserareta_ore_ga_gakuen_ichi_no_bishoujo_ni_natsukareru,人生逆転 浮気され、えん罪を着せられた俺が、学園一の美少女に懐かれる,"Jinsei Gyakuten: Uwaki sare, Enzai wo Kiserareta Ore ga, Gakuen Ichi no Bishoujo ni Natsukareru","Igakuchi, Ei / D",2025,ongoing,seinen,src/data/coreDB_extra4.js,212
-姫騎士は蛮族〈バルバロイ〉の嫁,himekishi_wa_barbaroi_no_yome,姫騎士は蛮族〈バルバロイ〉の嫁,Himekishi wa Barbaroi no Yome,"Kotoba, Noriaki",2021,ongoing,shonen,src/data/coreDB_extra4.js,215
-育成スキルはもういらないと勇者パティを解雇されたので、退職金がわりにもらった【領地】を強くしてみる,ikusei_skill_wa_mou_iranai_to_yuusha_party_wo_kaikosareta_node_taishoku_kingawari_ni_moratta_ryouchi_wo_tsuyoku_shitemiru,育成スキルはもういらないと勇者パーティを解雇されたので、退職金がわりにもらった【領地】を強くしてみる,"Ikusei Skill wa Mou Iranai to Yuusha Party wo Kaikosareta node, Taishoku Kingawari ni Moratta ""Ryouchi"" wo Tsuyoku shitemiru","Takahashi, Yoshiyuki / Kurooji",2020,ongoing,seinen,src/data/coreDB_extra4.js,216
-最弱テイマはゴミ拾いの旅を始めました。＠comic,saijaku_tamer_wa_gomi_hiroi_no_tabi_wo_hajimemashita_comic,最弱テイマーはゴミ拾いの旅を始めました。＠COMIC,Saijaku Tamer wa Gomi Hiroi no Tabi wo Hajimemashita. @comic,"Fukino, Tou / Honobonoru500",2020,ongoing,shonen,src/data/coreDB_extra4.js,217
-ギャルに優しいオタク君,gal_ni_yasashii_otaku_kun,ギャルに優しいオタク君,Gal ni Yasashii Otaku-kun,Souchuu / 138 Neko,2022,ongoing,shonen,src/data/coreDB_extra4.js,218
-ダンジョンの幼なじみ,dungeon_no_osananajimi,ダンジョンの幼なじみ,Dungeon no Osananajimi,Kuma,2022,ongoing,seinen,src/data/coreDB_extra4.js,219
-ボイッシュ彼女が可愛すぎる,boyish_kanojo_ga_kawaisugiru,ボーイッシュ彼女が可愛すぎる,Boyish Kanojo ga Kawaisugiru,"Gyuunyuu, Mugigohan",2025,ongoing,seinen,src/data/coreDB_extra4.js,224
-unnamedmemory,unnamed_memory,Unnamed Memory,Unnamed Memory,"Etsumi, Naoki / Furumiya, Kuji",2020,ongoing,seinen,src/data/coreDB_extra4.js,225
-龍とカメレオン,ryuu_to_chameleon,龍とカメレオン,Ryuu to Chameleon,"Ishiyama, Ryou",2022,ongoing,shonen,src/data/coreDB_extra4.js,226
-高校時代に傲慢だった女王様との同棲生活は意外と居心地が悪くない,koukou_jidai_ni_gouman_datta_joou_sama_to_no_dousei_seikatsu_wa_igai_to_igokochi_ga_warukunai,高校時代に傲慢だった女王様との同棲生活は意外と居心地が悪くない,Koukou Jidai ni Gouman datta Joou-sama to no Dousei Seikatsu wa Igai to Igokochi ga Warukunai,"Togawa, Ritsu / Dozaemon, Misoneta",2024,ongoing,seinen,src/data/coreDB_extra4.js,229
-鵺の陰陽師,nue_no_onmyouji,鵺の陰陽師,Nue no Onmyouji,"Kawae, Kouta",2023,ongoing,shonen,src/data/coreDB_extra4.js,230
-辺境ぐらしの魔王、転生して最強の魔術師になる,henkyougurashi_no_maou_tensei_shite_saikyou_no_majutsushi_ni_naru,辺境ぐらしの魔王、転生して最強の魔術師になる,"Henkyougurashi no Maou, Tensei shite Saikyou no Majutsushi ni Naru","Sengetsu, Sakaki / Muraichi",2020,ongoing,seinen,src/data/coreDB_extra4.js,231
-難攻不落の魔王城へようこそ～デバフは不要と勇者パティを追い出された黒魔導士、魔王軍の最高幹部に迎えられる～,nankoufuraku_no_maoujou_e_youkoso_debuff_wa_fuyou_to_yuusha_party_wo_oidasareta_kuro_madoushi_maougun_no_saikou_kanbu_ni_mukaerareru,難攻不落の魔王城へようこそ～デバフは不要と勇者パーティーを追い出された黒魔導士、魔王軍の最高幹部に迎えられる～,"Nankoufuraku no Maoujou e Youkoso: Debuff wa Fuyou to Yuusha Party wo Oidasareta Kuro Madoushi, Maougun no Saikou Kanbu ni Mukaerareru","Mitaka, Hozumi / Kaidouj1",2020,ongoing,seinen,src/data/coreDB_extra4.js,234
-魔女大戦32人の異才の魔女は殺し合う,majo_taisen_32_nin_no_isai_no_majo_wa_koroshiau,魔女大戦 32人の異才の魔女は殺し合う,Majo Taisen: 32-nin no Isai no Majo wa Koroshiau,"Shiozuka, Makoto / Kawamoto, Homura",2020,ongoing,seinen,src/data/coreDB_extra4.js,235
-異世界サムライ,isekai_samurai,異世界サムライ,Isekai Samurai,"Saitou, Keigo",2023,ongoing,seinen,src/data/coreDB_extra4.js,239
-しのびごと,shinobigoto,しのびごと,Shinobigoto,"Takegushi, Ippon / Mitarashi, Santa",2024,ongoing,shonen,src/data/coreDB_extra4.js,240
-悪祓士〈エクソシスト〉のキヨシくん,exorcist_no_kiyoshi_kun,悪祓士〈エクソシスト〉のキヨシくん,Exorcist no Kiyoshi-kun,"Usui, Shouichi",2024,ongoing,shonen,src/data/coreDB_extra4.js,244
-婚約破棄された令嬢を拾った俺が、イケナイことを教え込む～美味しいものを食べさせておしゃれをさせて、世界一幸せな少女にプロデュス～,konyaku_haki_sareta_reijou_wo_hirotta_ore_ga_ikenai_koto_wo_oshiekomu_oishii_mono_wo_tabesasete_oshare_wo_sasete_sekaiichi_shiawase_na_shoujo_ni_produce,婚約破棄された令嬢を拾った俺が、イケナイことを教え込む ～美味しいものを食べさせておしゃれをさせて、世界一幸せな少女にプロデュース!～,"Konyaku Haki sareta Reijou wo Hirotta Ore ga, Ikenai Koto wo Oshiekomu: Oishii Mono wo Tabesasete Oshare wo Sasete, Sekaiichi Shiawase na Shoujo ni Produce!","Katsura, Ichiho / Fukada, Sametarou",2020,ongoing,josei,src/data/coreDB_extra4.js,245
-後藤さんは振り向かせたい,gotou_san_wa_furimukasetai,後藤さんは振り向かせたい！,Gotou-san wa Furimukasetai!,Mikipon,2021,ongoing,seinen,src/data/coreDB_extra4.js,247
-救世主〈メシア〉～異世界を救った元勇者が魔物のあふれる現実世界を無双する～,messiah_isekai_wo_sukutta_motoyuusha_ga_mamono_no_afureru_genjitsu_sekai_wo_musou_suru,救世主〈メシア〉～異世界を救った元勇者が魔物のあふれる現実世界を無双する～,Messiah: Isekai wo Sukutta Motoyuusha ga Mamono no Afureru Genjitsu Sekai wo Musou suru,"Heisei, Owari / Harada, Eri",2022,ongoing,seinen,src/data/coreDB_extra4.js,248
-eldenring黄金樹への道,elden_ring_ougonju_e_no_michi,ELDEN RING 黄金樹への道,Elden Ring: Ougonju e no Michi,"Tobita, Nikiichi",2022,ongoing,seinen,src/data/coreDB_extra4.js,249
-迷子になっていた幼女を助けたら、お隣に住む美少女留学生が家に遊びに来るようになった件について,maigo_ni_natteita_youjo_wo_tasuketara_otonari_ni_sumu_bishoujo_ryuugakusei_ga_ie_ni_asobi_ni_kuru_you_ni_natta_ken_ni_tsuite,迷子になっていた幼女を助けたら、お隣に住む美少女留学生が家に遊びに来るようになった件について,"Maigo ni Natteita Youjo wo Tasuketara, Otonari ni Sumu Bishoujo Ryuugakusei ga Ie ni Asobi ni Kuru you ni Natta Ken ni Tsuite",Pentagon / Nekokuro,2024,ongoing,seinen,src/data/coreDB_extra4.js,254
-まんきつしたい常連さん,mankitsu_shitai_jouren_san,まんきつしたい常連さん,Mankitsu shitai Jouren-san,Shinmirin,2023,ongoing,seinen,src/data/coreDB_extra4.js,256
-かわいい彼女ちゃん,kawaii_kanojo_chan,かわいい彼女ちゃん,Kawaii Kanojo-chan,Semimaru,2023,ongoing,seinen,src/data/coreDB_extra4.js,257
-今日から始める幼なじみ,kyou_kara_hajimeru_osananajimi,今日から始める幼なじみ,Kyou kara Hajimeru Osananajimi,"Obiya, Midori",2021,ongoing,seinen,src/data/coreDB_extra4.js,263
-俺にトラウマを与えた女子達がチラチラ見てくるけど、残念ですが手遅れです,ore_ni_trauma_wo_ataeta_joshi_tachi_ga_chirachira_mitekuru_kedo_zannen_desu_ga_teokure_desu,俺にトラウマを与えた女子達がチラチラ見てくるけど、残念ですが手遅れです,"Ore ni Trauma wo Ataeta Joshi-tachi ga Chirachira Mitekuru kedo, Zannen desu ga Teokure desu","Ichitaka / Midou, Yuragi",2023,ongoing,seinen,src/data/coreDB_extra4.js,264
-満州アヘンスクワッド,manshuu_ahen_squad,満州アヘンスクワッド,Manshuu Ahen Squad,"Monma, Tsukasa / Shikako",2020,ongoing,shonen,src/data/coreDB_extra4.js,265
-僕のいけずな婚約者,boku_no_ikezu_na_konyakusha,僕のいけずな婚約者,Boku no Ikezu na Konyakusha,"Fuyutani, Riku",2024,ongoing,seinen,src/data/coreDB_extra4.js,268
-隣のステラ,tonari_no_stella,隣のステラ,Tonari no Stella,Ammitsu,2022,ongoing,shojo,src/data/coreDB_extra4.js,269
-北海道の現役ハンタが異世界に放り込まれてみた～エルフ嫁と巡る異世界狩猟ライフ～,hokkaido_no_geneki_hunter_ga_isekai_ni_hourikomaretemita_elf_yome_to_meguru_isekai_shuryou_life,北海道の現役ハンターが異世界に放り込まれてみた～エルフ嫁と巡る異世界狩猟ライフ～,Hokkaido no Geneki Hunter ga Isekai ni Hourikomaretemita: Elf Yome to Meguru Isekai Shuryou Life,Jupiter Studio / Kaltoma,2020,ongoing,seinen,src/data/coreDB_extra4.js,274
-シリアルキラ異世界に降り立つ,serial_killer_isekai_ni_oritatsu,シリアルキラー異世界に降り立つ,Serial Killer Isekai ni Oritatsu,"Kawamoto, Homura / Hiro",2022,ongoing,seinen,src/data/coreDB_extra4.js,276
-悪人面したb級冒険者主人公とその幼馴染たちのパパになる,akuninzura_shita_b_kyuu_boukensha_shujinkou_to_sono_osananajimi_tachi_no_papa_ni_naru,悪人面したB級冒険者 主人公とその幼馴染たちのパパになる,Akuninzura shita B-kyuu Boukensha: Shujinkou to Sono Osananajimi-tachi no Papa ni Naru,Kogeme / Enji,2023,ongoing,seinen,src/data/coreDB_extra4.js,277
-ダウィン事変,darwin_jihen,ダーウィン事変,Darwin Jihen,"Umezawa, Shun",2020,ongoing,seinen,src/data/coreDB_extra4.js,279
-悪役令嬢転生おじさん,akuyaku_reijou_tensei_ojisan,悪役令嬢転生おじさん,Akuyaku Reijou Tensei Ojisan,"Ueyama, Michirou",2020,ongoing,seinen,src/data/coreDB_extra4.js,280
-降り積もれ孤独な死よ,furitsumore_kodoku_na_shi_yo,降り積もれ孤独な死よ,Furitsumore Kodoku na Shi yo,"Inoryuu, Hajime / Itou, Shouta",2021,ongoing,shonen,src/data/coreDB_extra4.js,281
-隣の席のヤンキ清水さんが髪を黒く染めてきた,tonari_no_seki_no_yankee_shimizu_san_ga_kami_wo_kuroku_sometekita,隣の席のヤンキー清水さんが髪を黒く染めてきた,Tonari no Seki no Yankee Shimizu-san ga Kami wo Kuroku Sometekita,"Teika / Sanada, Waka",2024,ongoing,shonen,src/data/coreDB_extra4.js,282
-最凶の魔王に鍛えられた勇者、異世界帰還者たちの学園で無双する,saikyou_no_maou_ni_kitaerareta_yuusha_isekai_kikansha_tachi_no_gakuen_de_musou_suru,最凶の魔王に鍛えられた勇者、異世界帰還者たちの学園で無双する,"Saikyou no Maou ni Kitaerareta Yuusha, Isekai Kikansha-tachi no Gakuen de Musou suru","Iwaba / Konno, Chiaki",2022,ongoing,shonen,src/data/coreDB_extra4.js,283
-アサシン＆シンデレラ,assassin_cinderella,アサシン＆シンデレラ,Assassin & Cinderella,"Natsuno, Yuzo",2022,ongoing,shonen,src/data/coreDB_extra4.js,285
-黒猫と魔女の教室,kuroneko_to_majo_no_kyoushitsu,黒猫と魔女の教室,Kuroneko to Majo no Kyoushitsu,"Kaneda, Yousuke",2022,ongoing,shonen,src/data/coreDB_extra4.js,286
-ぼっちの僕に強制彼女がやってきた,bocchi_no_boku_ni_kyousei_kanojo_ga_yattekita,ぼっちの僕に強制彼女がやってきた,Bocchi no Boku ni Kyousei Kanojo ga Yattekita,"Kuri, Nonoka",2021,ongoing,seinen,src/data/coreDB_extra4.js,288
-俺だけ不遇スキルの異世界召喚叛逆記～最弱スキル【吸収】が全てを飲み込むまで～,ore_dake_fuguu_skill_no_isekai_shoukan_hangyakuki_saijaku_skill_kyuushuu_ga_subete_wo_nomikomu_made,俺だけ不遇スキルの異世界召喚叛逆記～最弱スキル【吸収】が全てを飲み込むまで～,"Ore dake Fuguu Skill no Isekai Shoukan Hangyakuki: Saijaku Skill ""Kyuushuu"" ga Subete wo Nomikomu made","SkyFarm / Takahata, Ryuusei",2022,ongoing,seinen,src/data/coreDB_extra4.js,290
-witchriv,witchriv,WITCHRIV,WITCHRIV,Hakuri,2025,ongoing,shonen,src/data/coreDB_extra4.js,291
-じつは義妹でした。～最近できた義理の弟の距離感がやたら近いわけ～,jitsu_wa_imouto_deshita_saikin_dekita_giri_no_otouto_no_kyorikan_ga_yatara_chikai_wake,じつは義妹でした。～最近できた義理の弟の距離感がやたら近いわけ～,Jitsu wa Imouto deshita.: Saikin Dekita Giri no Otouto no Kyorikan ga Yatara Chikai Wake,"Shirai, Muku / Sakai, Shoukichi",2022,ongoing,seinen,src/data/coreDB_extra4.js,296
-ドッグスレッド,dogsred,ドッグスレッド,Dogsred,"Noda, Satoru",2023,ongoing,shonen,src/data/coreDB_extra4.js,297
-若葉ちゃんはわからせたい,wakaba_chan_wa_wakarasetai,若葉ちゃんはわからせたい!,Wakaba-chan wa Wakarasetai!,Konkichi,2023,ongoing,seinen,src/data/coreDB_extra4.js,298
-神之塔,tower_god,神之塔,Tower of God,SIU,2010,ongoing,web,src/data/coreDB.js,188
-ノブレス,noblesse,ノブレス,Noblesse,Son Jeho/Lee Kwangsu,2007,completed,web,src/data/coreDB.js,189
-ゴッドオブハイスクル,god_high_school,ゴッド・オブ・ハイスクール,The God of High School,Park Yongje,2011,completed,web,src/data/coreDB.js,190
-外見至上主義,lookism,外見至上主義,Lookism,Park Tae-joon,2014,ongoing,web,src/data/coreDB.js,191
-スイトホム,sweet_home,スイートホーム,Sweet Home,Kim Carnby/Hwang Young-chan,2017,completed,web,src/data/coreDB.js,192
-bastard,boys_next_door,Bastard,Bastard,Kim Carnby/Hwang Young-chan,2014,completed,web,src/data/coreDB.js,193
-外見至上主義,questism,外見至上主義,Quest Supremacy,박성덕,2020,ongoing,web,src/data/coreDB.js,194
-女神降臨,true_beauty,女神降臨,True Beauty,Yaongyi,2018,ongoing,web,src/data/coreDB.js,195
+volume_issue,title_key,id,title_ja,title_en,author,year,volumes,status,demographic,source_file,source_index
+unknown_or_zero_volume,神之塔,tower_god_extra,神之塔,Tower of God,SIU,2010,0,ongoing,web,src/data/coreDB_extra.js,147
+unknown_or_zero_volume,女神降臨,true_beauty_extra,女神降臨,True Beauty,Yaongyi,2018,0,ongoing,web,src/data/coreDB_extra.js,148
+unknown_or_zero_volume,全知的な読者の視点から,omniscient_reader,全知的な読者の視点から,Omniscient Reader's Viewpoint,Sing N Song/UMI,2020,0,ongoing,web,src/data/coreDB_extra.js,149
+unknown_or_zero_volume,外見至上主義,lookism_extra,外見至上主義,Lookism,Park Tae-joon,2014,0,ongoing,web,src/data/coreDB_extra.js,150
+unknown_or_zero_volume,喧嘩独学,viral_hit,喧嘩独学,How to Fight,Park Tae-joon/Kim Jung-hyun,2019,0,ongoing,web,src/data/coreDB_extra.js,151
+unknown_or_zero_volume,スイトホム,sweet_home_extra,スイートホーム,Sweet Home,Kim Carnby/Hwang Young-chan,2017,0,completed,web,src/data/coreDB_extra.js,152
+unknown_or_zero_volume,ノブレス,noblesse_extra,ノブレス,Noblesse,Son Jeho/Lee Kwangsu,2007,0,completed,web,src/data/coreDB_extra.js,153
+unknown_or_zero_volume,勉強グルプ,study_group,勉強グループ,Study Group,Shin Hyung-wook/Yoo Su-ngul,2018,0,ongoing,web,src/data/coreDB_extra.js,155
+unknown_or_zero_volume,火鳳燎原,the_ravages_of_time,火鳳燎原,The Ravages of Time,"Chan, Mou",2001,0,ongoing,web,src/data/coreDB_extra2.js,3
+unknown_or_zero_volume,金色のガッシュ2,konjiki_no_gash_two,金色のガッシュ!! 2,Konjiki no Gash!! 2,"Raiku, Makoto",2022,0,ongoing,seinen,src/data/coreDB_extra2.js,8
+unknown_or_zero_volume,나노마신,nano_machine,나노마신,Nano Machine,Hanjung Wolya/Geumgang Bulgoe,2020,0,ongoing,web,src/data/coreDB_extra2.js,13
+unknown_or_zero_volume,게임속바바리안으로살아남기,surviving_the_game_as_a_barbarian,게임 속 바바리안으로 살아남기,Surviving the Game as a Barbarian,"Jeong, Yungang/Nep",2023,0,ongoing,web,src/data/coreDB_extra2.js,14
+unknown_or_zero_volume,魔女と傭兵,the_witch_and_the_mercenary,魔女と傭兵,The Witch and the Mercenary,"Miyagi, Makoto/Chouhoukiteki, Kaeru",2024,0,ongoing,seinen,src/data/coreDB_extra2.js,17
+unknown_or_zero_volume,最遊記reloadblast,saiyuuki_reload_blast,最遊記RELOAD BLAST,Saiyuuki Reload Blast,"Minekura, Kazuya",2009,0,ongoing,josei,src/data/coreDB_extra2.js,19
+unknown_or_zero_volume,쿠베라,kubera,쿠베라,Kubera,Currygom,2010,0,ongoing,web,src/data/coreDB_extra2.js,21
+unknown_or_zero_volume,ゴブリンスレイヤ外伝イヤワン,goblin_slayer_side_story_year_one,ゴブリンスレイヤー外伝：イヤーワン,Goblin Slayer Side Story: Year One,"Kagyuu, Kumo/Sakaeda, Kento",2017,0,ongoing,seinen,src/data/coreDB_extra2.js,22
+unknown_or_zero_volume,エクソシストを堕とせない,make_the_exorcist_fall_in_love,エクソシストを堕とせない,Make the Exorcist Fall in Love,"Fukayama, Masuku/Arima, Aruma",2021,0,ongoing,shonen,src/data/coreDB_extra2.js,23
+unknown_or_zero_volume,ロゼンガテンサガ,rosen_garten_saga,ローゼンガーテン・サーガ,Rosen Garten Saga,"Fuji, Sakimori/Tonooka, Bakotsu",2020,0,ongoing,seinen,src/data/coreDB_extra2.js,24
+unknown_or_zero_volume,終末のワルキュレ,record_of_ragnarok,終末のワルキューレ,Record of Ragnarok,"Fukui, Takumi/Umemura, Shinya",2017,0,ongoing,seinen,src/data/coreDB_extra2.js,26
+unknown_or_zero_volume,戦国小町苦労譚農耕戯画,sengoku_komachi_kuroutan_noukou_giga,戦国小町苦労譚 農耕戯画,Sengoku Komachi Kuroutan: Noukou Giga,"Sawada, Hajime/Kyouchikutou",2017,0,ongoing,seinen,src/data/coreDB_extra2.js,28
+unknown_or_zero_volume,철혈검가사냥개의회귀,revenge_of_the_baskerville_bloodhound,철혈검가 사냥개의 회귀,Revenge of the Baskerville Bloodhound,"Lego Babasseo/Seol, Arang",2023,0,ongoing,web,src/data/coreDB_extra2.js,29
+unknown_or_zero_volume,회귀수선전,a_regressor_s_tale_of_cultivation,회귀수선전,A Regressor's Tale of Cultivation,"Kim, Muhyeon/Eomcheongnan",2025,0,ongoing,web,src/data/coreDB_extra2.js,31
+unknown_or_zero_volume,로그인무림,log_in_murim,로그인 무림,Log-in Murim,"Zero-BIG/Jang, Cheolbyeok",2020,0,ongoing,web,src/data/coreDB_extra2.js,32
+unknown_or_zero_volume,斗破苍穹,battle_through_the_heavens,斗破苍穹,Battle Through the Heavens,"Tian Can Tudou/Ren, Xiang",2012,0,ongoing,web,src/data/coreDB_extra2.js,34
+unknown_or_zero_volume,디펜스게임의폭군이되었다,tyrant_of_the_tower_defense_game,디펜스 게임의 폭군이 되었다,Tyrant of the Tower Defense Game,"Ryueun, Garam/Gyong",2022,0,ongoing,web,src/data/coreDB_extra2.js,37
+unknown_or_zero_volume,王様ランキング,ranking_of_kings,王様ランキング,Ranking of Kings,"Tooka, Sousuke",2019,0,ongoing,seinen,src/data/coreDB_extra2.js,42
+unknown_or_zero_volume,杖と剣のウィストリア,wistoria_wand_and_sword,杖と剣のウィストリア,Wistoria: Wand and Sword,"Omori, Fujino/Aoi, Toshi",2020,0,ongoing,shonen,src/data/coreDB_extra2.js,46
+unknown_or_zero_volume,とある魔術の禁書目録,a_certain_magical_index,とある魔術の禁書目録,A Certain Magical Index,"Kamachi, Kazuma/Kogino, Chuuya",2007,0,ongoing,shonen,src/data/coreDB_extra2.js,48
+unknown_or_zero_volume,一勝千金,st_r_strike_it_rich,一勝千金,ST✰R: Strike It Rich,"Sandrovich, Yabako/MAAM",2023,0,ongoing,seinen,src/data/coreDB_extra2.js,53
+unknown_or_zero_volume,4컷용사,four_cut_hero,4컷용사,4 Cut Hero,Gojira-kun,2014,0,completed,web,src/data/coreDB_extra2.js,54
+unknown_or_zero_volume,열혈강호,the_ruler_of_the_land,열혈강호,The Ruler of the Land,"Yang, Jae Hyun/Jeon, Geuk-jin",1995,0,ongoing,web,src/data/coreDB_extra2.js,55
+unknown_or_zero_volume,ゴルゴ13,golgo_one_three,ゴルゴ13,Golgo 13,"Saitou, Takao/Koike, Kazuo",1968,0,ongoing,seinen,src/data/coreDB_extra2.js,59
+unknown_or_zero_volume,고수,gosu,고수,Gosu,"Mun, Jung-Hoo/Ryu, Ki Woon",2015,0,completed,web,src/data/coreDB_extra2.js,62
+unknown_or_zero_volume,裏世界ピクニック,otherside_picnic,裏世界ピクニック,Otherside Picnic,"Mizuno, Eita/Miyazawa, Iori",2018,0,ongoing,shonen,src/data/coreDB_extra2.js,63
+unknown_or_zero_volume,싸움독학,viral_hit_x,싸움독학,Viral Hit,"Kim, Jung-Hyun/Park, Tae-Jun",2019,0,completed,web,src/data/coreDB_extra2.js,66
+unknown_or_zero_volume,던전견문록,dungeon_odyssey,던전 견문록,Dungeon Odyssey,"Glump/Son, Minwoo",2022,0,ongoing,web,src/data/coreDB_extra2.js,68
+unknown_or_zero_volume,바바리안퀘스트,barbarian_quest,바바리안 퀘스트,Barbarian Quest,Baeksu Gwijok/Morando,2022,0,completed,web,src/data/coreDB_extra2.js,69
+unknown_or_zero_volume,광마회귀,return_of_the_mad_demon,광마회귀,Return of the Mad Demon,"Yu, Jinsung/Ihy",2021,0,ongoing,web,src/data/coreDB_extra2.js,70
+unknown_or_zero_volume,투신전생기,doom_breaker,투신전생기,Doom Breaker,Cheongdam,2021,0,ongoing,web,src/data/coreDB_extra2.js,71
+unknown_or_zero_volume,災厄は僕を好きすぎる,saiyaku_wa_boku_wo_suki_sugiru,災厄は僕を好きすぎる,Saiyaku wa Boku wo Suki Sugiru,"Kannagi, Satoru/Ninomiya, Etsumi",2009,0,ongoing,seinen,src/data/coreDB_extra2.js,73
+unknown_or_zero_volume,異剣戦記ヴェルンディオ,v_lundio_divergent_sword_saga,異剣戦記ヴェルンディオ,Völundio: Divergent Sword Saga,"Nanao, Nanaki",2020,0,ongoing,seinen,src/data/coreDB_extra2.js,80
+unknown_or_zero_volume,薫る花は凛と咲く,the_fragrant_flower_blooms_with_dignity,薫る花は凛と咲く,The Fragrant Flower Blooms with Dignity,"Mikami, Saka",2021,0,ongoing,seinen,src/data/coreDB_extra2.js,81
+unknown_or_zero_volume,真夜中ハトチュン,tune_in_to_the_midnight_heart,真夜中ハートチューン,Tune In to the Midnight Heart,"Igarashi, Masakuni",2023,0,ongoing,shonen,src/data/coreDB_extra2.js,85
+unknown_or_zero_volume,ゆびさきと恋々,a_sign_of_affection,ゆびさきと恋々,A Sign of Affection,"Morishita, Suu",2019,0,ongoing,shojo,src/data/coreDB_extra2.js,88
+unknown_or_zero_volume,放課後帰宅びより,houkago_kitaku_biyori,放課後帰宅びより,Houkago Kitaku Biyori,"Matsuda, Mai",2023,0,ongoing,seinen,src/data/coreDB_extra2.js,89
+unknown_or_zero_volume,痴漢男,chikan_otoko,痴漢男,Chikan Otoko,"Yokota, Takuma",2004,0,completed,seinen,src/data/coreDB_extra2.js,90
+unknown_or_zero_volume,月刊少女野崎くん,monthly_girls_nozaki_kun,月刊少女野崎くん,Monthly Girls' Nozaki-kun,"Tsubaki, Izumi",2011,0,ongoing,seinen,src/data/coreDB_extra2.js,92
+unknown_or_zero_volume,僕の心のヤバイやつ,the_dangers_in_my_heart,僕の心のヤバイやつ,The Dangers in My Heart,"Sakurai, Norio",2018,0,ongoing,shonen,src/data/coreDB_extra2.js,109
+unknown_or_zero_volume,별이삼샵,star_ginseng_store,별이삼샵,Star Ginseng Store,Hyeono,2019,0,ongoing,web,src/data/coreDB_extra2.js,114
+unknown_or_zero_volume,今朝も揺られてます,they_are_still_being_shaken_this_morning,今朝も揺られてます,They Are Still Being Shaken This Morning,"Masuda, Eiji",2024,0,ongoing,shonen,src/data/coreDB_extra2.js,124
+unknown_or_zero_volume,お隣の天使様にいつの間にか駄目人間にされていた件aftertherain,the_angel_next_door_spoils_me_rotten_after_the_rain,お隣の天使様にいつの間にか駄目人間にされていた件 after the rain,The Angel Next Door Spoils Me Rotten: After the Rain,Puyo/Saeki-san,2023,0,ongoing,seinen,src/data/coreDB_extra2.js,127
+unknown_or_zero_volume,多聞くん今どっち,tamon_s_b_side,多聞くん今どっち!?,Tamon's B-Side,"Shiwasu, Yuki",2021,0,ongoing,shojo,src/data/coreDB_extra2.js,129
+unknown_or_zero_volume,スパの裏でヤニ吸うふたり,smoking_behind_the_supermarket_with_you,スーパーの裏でヤニ吸うふたり,Smoking Behind the Supermarket with You,Jinushi,2022,0,ongoing,seinen,src/data/coreDB_extra2.js,131
+unknown_or_zero_volume,トニカクカワイイ,fly_me_to_the_moon,トニカクカワイイ,Fly Me to the Moon,"Hata, Kenjirou",2018,0,ongoing,shonen,src/data/coreDB_extra2.js,135
+unknown_or_zero_volume,후궁스캔들,the_crown_princess_scandal,후궁 스캔들,The Crown Princess Scandal,Jeonghyeon/Kitrow,2021,0,completed,web,src/data/coreDB_extra2.js,140
+unknown_or_zero_volume,お隣の天使様にいつの間にか駄目人間にされていた件,the_angel_next_door_spoils_me_rotten,お隣の天使様にいつの間にか駄目人間にされていた件,The Angel Next Door Spoils Me Rotten,"Saeki-san/Shibata, Wan",2022,0,ongoing,seinen,src/data/coreDB_extra2.js,145
+unknown_or_zero_volume,合コンに行ったら女がいなかった話,how_i_attended_an_all_guy_s_mixer,合コンに行ったら女がいなかった話,How I Attended an All-Guy's Mixer,"Aokawa, Nana",2021,0,ongoing,seinen,src/data/coreDB_extra2.js,148
+unknown_or_zero_volume,ひかえめに言っても、これは愛,love_that_s_an_understatement,ひかえめに言っても、これは愛,"Love, That's an Understatement","Fuji, Momo",2021,0,ongoing,shojo,src/data/coreDB_extra2.js,156
+unknown_or_zero_volume,クラスで2番目に可愛い女の子と友だちになった,i_made_friends_with_the_second_prettiest_girl_in_my_class,クラスで２番目に可愛い女の子と友だちになった,I Made Friends with the Second Prettiest Girl in My Class,"Takata/Ono, Rin",2022,0,ongoing,seinen,src/data/coreDB_extra2.js,157
+unknown_or_zero_volume,남편을내편으로만드는방법,how_to_win_my_husband_over,남편을 내 편으로 만드는 방법,How to Win My Husband Over,Nyangi-wa Hyangsinnyo/Siru,2021,0,ongoing,web,src/data/coreDB_extra2.js,174
+unknown_or_zero_volume,올가미,trapped,올가미,Trapped,Haemuri,2019,0,completed,web,src/data/coreDB_extra2.js,184
+unknown_or_zero_volume,北北西に曇と往け,go_with_the_clouds_north_by_northwest,北北西に曇と往け,"Go with the Clouds, North-by-Northwest","Irie, Aki",2016,0,ongoing,seinen,src/data/coreDB_extra2.js,186
+unknown_or_zero_volume,록사나여주인공의오빠를지키는방법,roxana,록사나 : 여주인공의 오빠를 지키는 방법,Roxana,Kin/Yeoreumbit,2021,0,hiatus,web,src/data/coreDB_extra2.js,194
+unknown_or_zero_volume,똑닮은딸,like_mother_like_daughter,똑 닮은 딸,"Like Mother, Like Daughter",Yidahm,2021,0,ongoing,web,src/data/coreDB_extra2.js,201
+unknown_or_zero_volume,俺と悪魔のブルズ,me_and_the_devil_blues_the_unreal_life_of_robert_johnson,俺と悪魔のブルーズ,Me and the Devil Blues: The Unreal Life of Robert Johnson,"Hiramoto, Akira",2003,0,ongoing,seinen,src/data/coreDB_extra2.js,203
+unknown_or_zero_volume,カグラバチ,kagurabachi,カグラバチ,Kagurabachi,"Hokazono, Takeru",2023,0,ongoing,shonen,src/data/coreDB_extra2.js,204
+unknown_or_zero_volume,アイリスzero,iris_zero,アイリスzero,Iris Zero,"Hotaru, Takana/Piro, Shiki",2009,0,ongoing,seinen,src/data/coreDB_extra2.js,216
+unknown_or_zero_volume,とんがり帽子のアトリエ,witch_hat_atelier,とんがり帽子のアトリエ,Witch Hat Atelier,"Shirahama, Kamome",2016,0,ongoing,seinen,src/data/coreDB_extra2.js,221
+unknown_or_zero_volume,圕の大魔術師,magus_of_the_library,圕の大魔術師,Magus of the Library,"Izumi, Mitsu",2017,0,ongoing,seinen,src/data/coreDB_extra2.js,222
+unknown_or_zero_volume,追放されるたびにスキルを手に入れた俺が、100の異世界で2周目無双,tsuihou_sareru_tabi_ni_skill_wo_te_ni_ireta_ore_ga_one_zero_zero_no_isekai_de_two_shuume_musou,追放されるたびにスキルを手に入れた俺が、100の異世界で2周目無双,"Tsuihou sareru Tabi ni Skill wo Te ni Ireta Ore ga, 100 no Isekai de 2-shuume Musou","Hinoura, Takumi/Nimori, Shimatsukasa",2022,0,ongoing,seinen,src/data/coreDB_extra2.js,224
+unknown_or_zero_volume,魔入りました入間くんifepisodeof魔フィア,welcome_to_demon_school_iruma_kun_irumafia_edition,魔入りました!入間くん if Episode of 魔フィア,Welcome to Demon School! Iruma-kun: IruMafia Edition,hiroja,2023,0,ongoing,shonen,src/data/coreDB_extra2.js,225
+unknown_or_zero_volume,魔入りました入間くん,welcome_to_demon_school_iruma_kun,魔入りました!入間くん,Welcome to Demon School! Iruma-kun,"Nishi, Osamu",2017,0,ongoing,shonen,src/data/coreDB_extra2.js,226
+unknown_or_zero_volume,転生したらスライムだった件,that_time_i_got_reincarnated_as_a_slime,転生したらスライムだった件,That Time I Got Reincarnated as a Slime,"Kawakami, Taiki/Fuse",2015,0,ongoing,shonen,src/data/coreDB_extra2.js,227
+unknown_or_zero_volume,きみが死ぬまで恋をしたい,i_want_to_love_you_till_your_dying_day,きみが死ぬまで恋をしたい,I Want to Love You Till Your Dying Day,"Aono, Nachi",2018,0,ongoing,seinen,src/data/coreDB_extra2.js,229
+unknown_or_zero_volume,fate/kaleidlinerプリズマ☆イリヤドライ,fate_kaleid_liner_prisma_illya_three_rei,Fate/kaleid liner プリズマ☆イリヤ ドライ!!,Fate/kaleid liner Prisma☆Illya 3rei!!,"Hiroyama, Hiroshi",2012,0,ongoing,seinen,src/data/coreDB_extra2.js,233
+unknown_or_zero_volume,dgrayman,d_gray_man,D.Gray-man,D.Gray-man,"Hoshino, Katsura",2004,0,ongoing,shonen,src/data/coreDB_extra2.js,236
+unknown_or_zero_volume,夜明けの唄,lullaby_of_the_dawn,夜明けの唄,Lullaby of the Dawn,"Yuno, Ichika",2020,0,ongoing,seinen,src/data/coreDB_extra2.js,238
+unknown_or_zero_volume,별을품은소드마스터,the_stellar_swordmaster,별을 품은 소드마스터,The Stellar Swordmaster,Q10/Juno,2023,0,ongoing,web,src/data/coreDB_extra2.js,240
+unknown_or_zero_volume,タワダンジョン,tower_dungeon,タワーダンジョン,Tower Dungeon,"Nihei, Tsutomu",2023,0,ongoing,shonen,src/data/coreDB_extra2.js,245
+unknown_or_zero_volume,ガチアクタ,gachiakuta,ガチアクタ,Gachiakuta,"Urana, Kei",2022,0,ongoing,shonen,src/data/coreDB_extra2.js,248
+unknown_or_zero_volume,스미르나앤카프리,smyrna_and_capri,스미르나 앤 카프리,Smyrna and Capri,Brothers Without a Tomorrow,2022,0,completed,web,src/data/coreDB_extra2.js,249
+unknown_or_zero_volume,イグナトの花嫁,bride_of_ignat,イグナートの花嫁,Bride of Ignat,"Mori, Moyori",2023,0,ongoing,seinen,src/data/coreDB_extra2.js,252
+unknown_or_zero_volume,헌터는조용히살고싶다,the_hunter_s_gonna_lay_low,헌터는 조용히 살고 싶다,The Hunter's Gonna Lay Low,Ligong/Baeksam,2024,0,ongoing,web,src/data/coreDB_extra2.js,254
+unknown_or_zero_volume,封神記,feng_shen_ji,封神記,Feng Shen Ji,"Deng, Zhi Hui/Zheng, Jian He",2010,0,completed,web,src/data/coreDB_extra2.js,255
+unknown_or_zero_volume,fate/staynightheaven'sfeel,fate_stay_night_heaven_s_feel,Fate/stay night [Heaven's Feel],Fate/stay night: Heaven's Feel,"Type-Moon/Ohna, Task",2015,0,ongoing,seinen,src/data/coreDB_extra2.js,256
+unknown_or_zero_volume,회귀한용병은다계획이있다,the_regressed_mercenary_has_a_plan,회귀한 용병은 다 계획이 있다,The Regressed Mercenary Has a Plan,"Park, Jinseok/Gold Haeng",2024,0,ongoing,web,src/data/coreDB_extra2.js,262
+unknown_or_zero_volume,ボクラノキセキ,bokura_no_kiseki,ボクラノキセキ,Bokura no Kiseki,"Kumeta, Natsuo",2007,0,ongoing,josei,src/data/coreDB_extra2.js,266
+unknown_or_zero_volume,하루만네가되고싶어,your_throne,하루만 네가 되고 싶어,Your Throne,SAM,2020,0,ongoing,web,src/data/coreDB_extra2.js,267
+unknown_or_zero_volume,던전속사정,what_happens_inside_the_dungeon,던전 속 사정,What Happens Inside the Dungeon,Reva,2019,0,completed,web,src/data/coreDB_extra2.js,268
+unknown_or_zero_volume,귀야곡,the_ghost_s_nocturne,귀야곡,The Ghost's Nocturne,Ananas/C.R Jade,2022,0,ongoing,web,src/data/coreDB_extra2.js,269
+unknown_or_zero_volume,わたしの幸せな結婚,my_happy_marriage,わたしの幸せな結婚,My Happy Marriage,"Kousaka, Rito/Agitogi, Akumi",2018,0,ongoing,seinen,src/data/coreDB_extra2.js,271
+unknown_or_zero_volume,fate/strangefake,fate_strange_fake,Fate/strange Fake,Fate/strange Fake,"Narita, Ryohgo/Morii, Shizuki",2015,0,ongoing,seinen,src/data/coreDB_extra2.js,273
+unknown_or_zero_volume,영원한너의거짓말,your_eternal_lies,영원한 너의 거짓말,Your Eternal Lies,"Kkomak/Jeon, Hoochi",2021,0,completed,web,src/data/coreDB_extra2.js,275
+unknown_or_zero_volume,절대회귀,absolute_regression,절대회귀,Absolute Regression,"Park, Jin-Hwan/Jang, Yeonghun",2024,0,ongoing,web,src/data/coreDB_extra2.js,276
+unknown_or_zero_volume,魔王城でおやすみ,sleepy_princess_in_the_demon_castle,魔王城でおやすみ,Sleepy Princess in the Demon Castle,"Kumanomata, Kagiji",2016,0,ongoing,shonen,src/data/coreDB_extra2.js,277
+unknown_or_zero_volume,濁る瞳で何を願うハイセルク戦記,record_of_highserk_war,濁る瞳で何を願う ハイセルク戦記,Record of Highserk War,"Torutonen/Saitou, Yanomi",2022,0,ongoing,shonen,src/data/coreDB_extra2.js,279
+unknown_or_zero_volume,이결혼은어차피망하게되어있다,the_broken_ring_this_marriage_will_fail_anyway,이 결혼은 어차피 망하게 되어있다,The Broken Ring: This Marriage Will Fail Anyway,"Kim, Chacha/Cheong-gwa",2022,0,ongoing,web,src/data/coreDB_extra2.js,280
+unknown_or_zero_volume,宇宙兄弟,space_brothers,宇宙兄弟,Space Brothers,"Koyama, Chuuya",2007,0,ongoing,seinen,src/data/coreDB_extra2.js,281
+unknown_or_zero_volume,수요웹툰의나강림,webtoon_character_na_kang_lim,수요웹툰의 나강림,Webtoon Character Na Kang Lim,"Lee, Kyeongmin/Song, Junhyeok",2021,0,completed,web,src/data/coreDB_extra2.js,283
+unknown_or_zero_volume,오늘만사는기사,the_knight_only_lives_today,오늘만 사는 기사,The Knight Only Lives Today,Soulpung/Ian,2024,0,ongoing,web,src/data/coreDB_extra2.js,284
+unknown_or_zero_volume,小蘑菇,little_mushroom,小蘑菇,Little Mushroom,Yishisi Zhou/Maomao Tou,2023,0,ongoing,web,src/data/coreDB_extra2.js,285
+unknown_or_zero_volume,픽미업,pick_me_up,픽 미 업!,Pick Me Up,Wasakbasak/Hermod,2022,0,ongoing,web,src/data/coreDB_extra2.js,288
+unknown_or_zero_volume,이번생은가주가되겠습니다,i_shall_master_this_family,이번 생은 가주가 되겠습니다,I Shall Master This Family,"Kim, Roah/Mon",2021,0,ongoing,web,src/data/coreDB_extra2.js,297
+unknown_or_zero_volume,sss급죽어야사는헌터,sss_class_revival_hunter,SSS급 죽어야 사는 헌터,SSS-Class Revival Hunter,Bill K/Sinnoa,2020,0,ongoing,web,src/data/coreDB_extra2.js,298
+unknown_or_zero_volume,reゼロから始める異世界生活第四章聖域と強欲の魔女,re_zero_starting_life_in_another_world_chapter_four_the_sanctuary_and_the_witch_of_greed,Re:ゼロから始める異世界生活 第四章 聖域と強欲の魔女,"Re:ZERO -Starting Life in Another World-, Chapter 4: The Sanctuary and the Witch of Greed","Atori, Haruno/Nagatsuki, Tappei",2019,0,ongoing,seinen,src/data/coreDB_extra2.js,299
+unknown_or_zero_volume,이웃집길드원,virtual_strangers,이웃집 길드원,Virtual Strangers,Honeytrap/Bijak,2023,0,ongoing,web,src/data/coreDB_extra2.js,302
+unknown_or_zero_volume,어떤계모님의메르헨,a_stepmother_s_m_rchen,어떤 계모님의 메르헨,A Stepmother's Märchen,Nyangi-wa Hyangsinnyo/ORKA,2019,0,ongoing,web,src/data/coreDB_extra2.js,304
+unknown_or_zero_volume,天国大魔境,heavenly_delusion,天国大魔境,Heavenly Delusion,"Ishiguro, Masakazu",2018,0,ongoing,seinen,src/data/coreDB_extra2.js,308
+unknown_or_zero_volume,ウスズミの果て,the_color_of_the_end_mission_in_the_apocalypse,ウスズミの果て,The Color of the End: Mission in the Apocalypse,"Iwamune, Haruo",2022,0,ongoing,seinen,src/data/coreDB_extra2.js,310
+unknown_or_zero_volume,데뷔못하면죽는병걸림,debut_or_die,데뷔 못 하면 죽는 병 걸림,Debut or Die!,"Baek, Deoksoo/Soheun",2022,0,ongoing,web,src/data/coreDB_extra2.js,314
+unknown_or_zero_volume,山田くんとlv999の恋をする,my_love_story_with_yamada_kun_at_lv_nine_nine_nine,山田くんとLv999の恋をする,My Love Story with Yamada-kun at Lv999,Mashiro,2019,0,ongoing,seinen,src/data/coreDB_extra2.js,315
+unknown_or_zero_volume,veil,veil,Veil,Veil,"Fukuda, Ikumi",2019,0,ongoing,seinen,src/data/coreDB_extra2.js,321
+unknown_or_zero_volume,天官赐福,heaven_official_s_blessing,天官赐福,Heaven Official's Blessing,Mo Xiang Tong Xiu/STARember,2019,0,ongoing,web,src/data/coreDB_extra2.js,322
+unknown_or_zero_volume,薬屋のひとりごと,the_apothecary_diaries,薬屋のひとりごと,The Apothecary Diaries,"Hyuuga, Natsu/Nekokurage",2017,0,ongoing,seinen,src/data/coreDB_extra2.js,323
+unknown_or_zero_volume,魔道祖师,grandmaster_of_demonic_cultivation_mo_dao_zu_shi,魔道祖师,Grandmaster of Demonic Cultivation: Mo Dao Zu Shi,Mo Xiang Tong Xiu/Luo Di Cheng Qiu,2017,0,completed,web,src/data/coreDB_extra2.js,324
+unknown_or_zero_volume,戦奏教室,the_bugle_call_song_of_war,戦奏教室,The Bugle Call: Song of War,"Toumori, Higoro/Sora, Mozuku",2022,0,ongoing,shonen,src/data/coreDB_extra2.js,325
+unknown_or_zero_volume,ヴァニタスの手記〈カルテ〉,the_case_study_of_vanitas,ヴァニタスの手記〈カルテ〉,The Case Study of Vanitas,"Mochizuki, Jun",2015,0,ongoing,shonen,src/data/coreDB_extra2.js,328
+unknown_or_zero_volume,帝都聖杯奇譚fate/typeredline,teito_seihai_kitan_fate_type_redline,帝都聖杯奇譚 Fate/type Redline,Teito Seihai Kitan: Fate/type Redline,"Keikenchi/Hirano, Ryouji",2019,0,ongoing,seinen,src/data/coreDB_extra2.js,330
+unknown_or_zero_volume,黒執事,black_butler,黒執事,Black Butler,"Toboso, Yana",2006,0,ongoing,shonen,src/data/coreDB_extra2.js,332
+unknown_or_zero_volume,長歌行,song_of_the_long_march,長歌行,Song of the Long March,"Xia, Da",2011,0,ongoing,web,src/data/coreDB_extra2.js,334
+unknown_or_zero_volume,ブラックラグン,black_lagoon,ブラックラグーン,Black Lagoon,"Hiroe, Rei",2002,0,ongoing,seinen,src/data/coreDB_extra2.js,337
+unknown_or_zero_volume,封神紀ii,feng_shen_ji_ii,封神紀Ⅱ,Feng Shen Ji II,"Deng, Zhi Hui/Zheng, Jian He",2011,0,completed,web,src/data/coreDB_extra2.js,349
+unknown_or_zero_volume,封神纪iii,feng_shen_ji_iii,封神纪III,Feng Shen Ji III,"Deng, Zhi Hui/Zheng, Jian He",2012,0,completed,web,src/data/coreDB_extra2.js,350
+unknown_or_zero_volume,はじめの一歩,hajime_no_ippo_fighting_spirit,はじめの一歩,Hajime no Ippo: Fighting Spirit!,"Morikawa, George",1989,0,ongoing,shonen,src/data/coreDB_extra2.js,353
+unknown_or_zero_volume,ボルルムへようこそ,welcome_to_the_ballroom,ボールルームへようこそ,Welcome to the Ballroom,"Takeuchi, Tomo",2011,0,ongoing,shonen,src/data/coreDB_extra2.js,361
+unknown_or_zero_volume,ウマ娘プリティダビスタブロッサム,uma_musume_pretty_derby_star_blossom,ウマ娘 プリティーダービー スターブロッサム,Uma Musume: Pretty Derby - Star Blossom,"Hotani, Shin",2023,0,ongoing,seinen,src/data/coreDB_extra2.js,374
+unknown_or_zero_volume,ウマ娘プリティダビスタブロッサム,uma_musume_pretty_derby_star_blossom_x,ウマ娘 プリティーダービー スターブロッサム,Uma Musume: Pretty Derby - Star Blossom,"Hotani, Shin",2023,0,ongoing,seinen,src/data/coreDB_extra2.js,375
+unknown_or_zero_volume,キン肉マン,kinnikuman,キン肉マン,Kinnikuman,Yudetamago,1979,0,ongoing,shonen,src/data/coreDB_extra2.js,376
+unknown_or_zero_volume,ワンダンス,wandance,ワンダンス,Wandance,Coffee,2019,0,ongoing,seinen,src/data/coreDB_extra2.js,377
+unknown_or_zero_volume,バトルスタディズ,battle_studies,バトルスタディーズ,Battle Studies,Nakibokuro,2015,0,ongoing,seinen,src/data/coreDB_extra2.js,390
+unknown_or_zero_volume,ぐらんぶる,grand_blue_dreaming,ぐらんぶる,Grand Blue Dreaming,"Inoue, Kenji/Yoshioka, Kimitake",2014,0,ongoing,seinen,src/data/coreDB_extra2.js,391
+unknown_or_zero_volume,ワンパンマン,one_punch_man,ワンパンマン,One-Punch Man,"Murata, Yusuke/ONE",2012,0,ongoing,seinen,src/data/coreDB_extra2.js,394
+unknown_or_zero_volume,ひらやすみ,hirayasumi,ひらやすみ,Hirayasumi,"Shinzou, Keigo",2021,0,ongoing,seinen,src/data/coreDB_extra2.js,396
+unknown_or_zero_volume,佐々木と宮野,sasaki_and_miyano,佐々木と宮野,Sasaki and Miyano,"Harusono, Shou",2016,0,ongoing,seinen,src/data/coreDB_extra2.js,398
+unknown_or_zero_volume,雨夜の月,the_moon_on_a_rainy_night,雨夜の月,The Moon on a Rainy Night,Kuzushiro,2021,0,ongoing,seinen,src/data/coreDB_extra2.js,399
+unknown_or_zero_volume,地縛少年花子くん,toilet_bound_hanako_kun,地縛少年花子くん,Toilet-Bound Hanako-kun,"Aida, Iro",2014,0,ongoing,shonen,src/data/coreDB_extra2.js,400
+unknown_or_zero_volume,ほんと野獣,like_the_beast,ほんと野獣,Like the Beast,"Yamamoto, Kotetsuko",2008,0,ongoing,seinen,src/data/coreDB_extra2.js,401
+unknown_or_zero_volume,平野と鍵浦,hirano_and_kagiura,平野と鍵浦,Hirano and Kagiura,"Harusono, Shou",2019,0,ongoing,josei,src/data/coreDB_extra2.js,402
+unknown_or_zero_volume,日常,nichijou,日常,Nichijou,"Arawi, Keiichi",2006,0,ongoing,shonen,src/data/coreDB_extra2.js,406
+unknown_or_zero_volume,学園ベビシッタズ,gakuen_babysitters,学園ベビーシッターズ,Gakuen Babysitters,"Tokeino, Hari",2009,0,ongoing,shojo,src/data/coreDB_extra2.js,410
+unknown_or_zero_volume,世界一初恋小野寺律の場合,the_world_s_greatest_first_love_the_case_of_ritsu_onodera,世界一初恋 ～小野寺律の場合～,The World's Greatest First Love: The Case of Ritsu Onodera,"Nakamura, Shungiku",2006,0,ongoing,seinen,src/data/coreDB_extra2.js,411
+unknown_or_zero_volume,おじさまと猫,a_man_and_his_cat,おじさまと猫,A Man & His Cat,"Sakurai, Umi",2017,0,ongoing,seinen,src/data/coreDB_extra2.js,412
+unknown_or_zero_volume,文豪ストレイドッグスわん,bungo_stray_dogs_wan,文豪ストレイドッグス わん!,Bungo Stray Dogs: Wan!,"Kanai, Neco",2015,0,ongoing,seinen,src/data/coreDB_extra2.js,414
+unknown_or_zero_volume,春風のエトランゼ,seaside_stranger_harukaze_no_etranger,春風のエトランゼ,Seaside Stranger: Harukaze no Etranger,"Kii, Kanna",2014,0,ongoing,seinen,src/data/coreDB_extra2.js,415
+unknown_or_zero_volume,ファントムバスタズ,phantom_busters,ファントムバスターズ,Phantom Busters,shoco,2023,0,ongoing,shonen,src/data/coreDB_extra2.js,419
+unknown_or_zero_volume,作りたい女と食べたい女,she_loves_to_cook_and_she_loves_to_eat,作りたい女と食べたい女,"She Loves to Cook, and She Loves to Eat","Yuzaki, Sakaomi",2021,0,ongoing,josei,src/data/coreDB_extra2.js,421
+unknown_or_zero_volume,canisシリズ,canis,CANISシリーズ,Canis,"Ishie, Hachi",2012,0,ongoing,seinen,src/data/coreDB_extra2.js,422
+unknown_or_zero_volume,こいものがたり,koimonogatari_love_stories,こいものがたり,Koimonogatari: Love Stories,"Tagura, Tohru",2013,0,ongoing,seinen,src/data/coreDB_extra2.js,424
+unknown_or_zero_volume,ゆるゆり,yuru_yuri,ゆるゆり,Yuru Yuri,Namori,2008,0,ongoing,seinen,src/data/coreDB_extra2.js,431
+unknown_or_zero_volume,메리마블링,merry_marbling,메리 마블링,Merry Marbling,Pengki,2022,0,completed,web,src/data/coreDB_extra2.js,433
+unknown_or_zero_volume,ブルスカイコンプレックス,blue_sky_complex,ブルースカイコンプレックス,Blue Sky Complex,"Ichikawa, Kei",2013,0,ongoing,seinen,src/data/coreDB_extra2.js,434
+unknown_or_zero_volume,ただいま、おかえり,tadaima_okaeri,ただいま、おかえり,"Tadaima, Okaeri","Ichikawa, Ichi",2015,0,ongoing,seinen,src/data/coreDB_extra2.js,436
+unknown_or_zero_volume,飴色パラドックス,candy_color_paradox,飴色パラドックス,Candy Color Paradox,"Natsume, Isaku",2009,0,ongoing,seinen,src/data/coreDB_extra2.js,439
+unknown_or_zero_volume,君と宇宙を歩くために,spacewalking_with_you,君と宇宙を歩くために,Spacewalking with You,"Doronoda, Inuhiko",2023,0,ongoing,josei,src/data/coreDB_extra2.js,442
+unknown_or_zero_volume,ささやくように恋を唄う,whisper_me_a_love_song,ささやくように恋を唄う,Whisper Me a Love Song,"Takeshima, Eku",2019,0,ongoing,seinen,src/data/coreDB_extra2.js,443
+unknown_or_zero_volume,文豪ストレイドッグス,bungo_stray_dogs,文豪ストレイドッグス,Bungo Stray Dogs,"Asagiri, Kafka/Harukawa35",2012,0,ongoing,seinen,src/data/coreDB_extra2.js,458
+unknown_or_zero_volume,光が死んだ夏,the_summer_hikaru_died,光が死んだ夏,The Summer Hikaru Died,Mokumokuren,2021,0,ongoing,seinen,src/data/coreDB_extra2.js,460
+unknown_or_zero_volume,ミステリと言う勿れ,don_t_call_it_mystery,ミステリと言う勿れ,Don't Call It Mystery,"Tamura, Yumi",2017,0,ongoing,josei,src/data/coreDB_extra2.js,467
+unknown_or_zero_volume,xxxholic戻,xxxholic_rei,xxxHOLiC・戻,xxxHOLiC Rei,CLAMP,2013,0,ongoing,seinen,src/data/coreDB_extra2.js,473
+unknown_or_zero_volume,氷菓,hyouka,氷菓,Hyouka,"Yonezawa, Honobu/Ohna, Task",2012,0,ongoing,shonen,src/data/coreDB_extra2.js,480
+unknown_or_zero_volume,この音とまれ,kono_oto_tomare,この音とまれ！,Kono Oto Tomare!,"Sakura, Amyuu",2012,0,ongoing,shonen,src/data/coreDB_extra2.js,481
+unknown_or_zero_volume,shioriexperienceジミなわたしとヘンなおじさん,shiori_experience_jimi_na_watashi_to_hen_na_ojisan,SHIORI EXPERIENCE ～ジミなわたしとヘンなおじさん～,Shiori Experience: Jimi na Watashi to Hen na Ojisan,"Osada, Yu-Ko/Machida, Kazuya",2013,0,ongoing,seinen,src/data/coreDB_extra2.js,487
+unknown_or_zero_volume,気になってる人が男じゃなかった,the_guy_she_was_interested_in_wasn_t_a_guy_at_all,気になってる人が男じゃなかった,The Guy She Was Interested in Wasn't a Guy at All,"Arai, Sumiko",2023,0,ongoing,seinen,src/data/coreDB_extra2.js,493
+unknown_or_zero_volume,ご注文はうさぎですか,is_the_order_a_rabbit,ご注文はうさぎですか?,Is the Order a Rabbit?,Koi,2011,0,ongoing,seinen,src/data/coreDB_extra2.js,496
+unknown_or_zero_volume,ぼっちざろっく,bocchi_the_rock,ぼっち・ざ・ろっく!,Bocchi the Rock!,"Hamaji, Aki",2017,0,ongoing,seinen,src/data/coreDB_extra2.js,498
+unknown_or_zero_volume,あかね噺,akane_banashi,あかね噺,Akane-banashi,"Moue, Takamasa/Suenaga, Yuuki",2022,0,ongoing,shonen,src/data/coreDB_extra2.js,503
+unknown_or_zero_volume,30歳まで童貞だと魔法使いになれるらしい,cherry_magic_thirty_years_of_virginity_can_make_you_a_wizard,30歳まで童貞だと魔法使いになれるらしい,Cherry Magic! Thirty Years of Virginity Can Make You a Wizard?!,"Toyota, Yuu",2018,0,ongoing,seinen,src/data/coreDB_extra2.js,505
+unknown_or_zero_volume,カメレオンはてのひらに恋をする,love_in_the_palm_of_his_hand,カメレオンはてのひらに恋をする。,Love in the Palm of His Hand,"Rin, Teku",2023,0,ongoing,seinen,src/data/coreDB_extra2.js,507
+unknown_or_zero_volume,ラブバレット,love_bullet,ラブ・バレット,Love Bullet,inee,2023,0,ongoing,seinen,src/data/coreDB_extra2.js,514
+unknown_or_zero_volume,ラブバレット,love_bullet_x,ラブ・バレット,Love Bullet,inee,2023,0,ongoing,seinen,src/data/coreDB_extra2.js,515
+unknown_or_zero_volume,囀る鳥は羽ばたかない,twittering_birds_never_fly,囀る鳥は羽ばたかない,Twittering Birds Never Fly,"Yoneda, Kou",2011,0,ongoing,seinen,src/data/coreDB_extra2.js,518
+unknown_or_zero_volume,ファインダシリズ,finder_series,ファインダーシリーズ,Finder Series,"Yamane, Ayano",2001,0,ongoing,seinen,src/data/coreDB_extra2.js,527
+unknown_or_zero_volume,フルナイト,fool_night,フールナイト,Fool Night,"Yasuda, Kasumi",2020,0,ongoing,seinen,src/data/coreDB_extra2.js,532
+unknown_or_zero_volume,뮤즈온유명,muse_on_fame,뮤즈 온 유명,Muse on Fame,Sujin,2022,0,completed,web,src/data/coreDB_extra2.js,537
+unknown_or_zero_volume,神様のウロコ,the_dragon_s_betrothed,神様のウロコ,The Dragon's Betrothed,"Hinohara, Meguru",2016,0,ongoing,seinen,src/data/coreDB_extra2.js,540
+unknown_or_zero_volume,純情ロマンチカ,junjo_romantica,純情ロマンチカ,Junjo Romantica,"Nakamura, Shungiku",2002,0,ongoing,seinen,src/data/coreDB_extra2.js,542
+unknown_or_zero_volume,angelbeatsthelastoperation,angel_beats_the_last_operation,Angel Beats! -The Last Operation-,Angel Beats!: The Last Operation,"Maeda, Jun/Asami, Yuriko",2017,0,ongoing,seinen,src/data/coreDB_extra2.js,543
+unknown_or_zero_volume,極主夫道,the_way_of_the_househusband,極主夫道,The Way of the Househusband,"Oono, Kousuke",2018,0,ongoing,seinen,src/data/coreDB_extra2.js,545
+unknown_or_zero_volume,녹색전상,under_the_greenlight,녹색전상,Under the Greenlight,Jaxx,2021,0,completed,web,src/data/coreDB_extra2.js,547
+unknown_or_zero_volume,ファイブスタ物語,the_five_star_stories,ファイブスター物語,The Five Star Stories,"Nagano, Mamoru",1986,0,ongoing,seinen,src/data/coreDB_extra2.js,559
+unknown_or_zero_volume,역대급영지설계사,the_greatest_estate_developer,역대급 영지 설계사,The Greatest Estate Developer,"Moon, Back-kyung/Kim, Hyunsoo",2021,0,completed,web,src/data/coreDB_extra2.js,571
+unknown_or_zero_volume,엄마를만나러가는길,on_the_way_to_meet_mom,엄마를 만나러 가는 길,On the Way to Meet Mom,Gomyang,2024,0,ongoing,web,src/data/coreDB_extra2.js,572
+unknown_or_zero_volume,집이없어,no_home,집이 없어,No Home,Wanan,2018,0,completed,web,src/data/coreDB_extra2.js,573
+unknown_or_zero_volume,내최애는막차를탄다,my_bias_gets_on_the_last_train,내 최애는 막차를 탄다,My Bias Gets on the Last Train,Jixksee,2024,0,ongoing,web,src/data/coreDB_extra2.js,574
+unknown_or_zero_volume,해뜨는집,our_sunny_days,해 뜨는 집,Our Sunny Days,"Jung, Seokchan",2023,0,ongoing,web,src/data/coreDB_extra2.js,576
+unknown_or_zero_volume,북검전기,the_legend_of_the_northern_blade,북검전기,The Legend of the Northern Blade,"Woogack/Hae, Min",2019,0,completed,web,src/data/coreDB_extra2.js,578
+unknown_or_zero_volume,南号尚风,nan_hao_shang_feng,南号尚风,Nan Hao Shang Feng,Brownie,2021,0,ongoing,web,src/data/coreDB_extra2.js,579
+unknown_or_zero_volume,19天,one_nine_tian,19天,19 Tian,Old Xian,2018,0,ongoing,web,src/data/coreDB_extra2.js,580
+unknown_or_zero_volume,원룸조교님,one_room_ta,원룸 조교님,One-Room TA,Jibung,2022,0,ongoing,web,src/data/coreDB_extra2.js,581
+unknown_or_zero_volume,세기말풋사과보습학원,after_school_lessons_for_unripe_apples,세기말 풋사과 보습학원,After School Lessons for Unripe Apples,Soonkki,2020,0,ongoing,web,src/data/coreDB_extra2.js,582
+unknown_or_zero_volume,일렉시드,eleceed,일렉시드,Eleceed,"Kim, Hye-Jin/Son, Jae-Ho",2018,0,ongoing,web,src/data/coreDB_extra2.js,583
+unknown_or_zero_volume,악역의엔딩은죽음뿐,villains_are_destined_to_die,악역의 엔딩은 죽음뿐,Villains Are Destined to Die,"Gwon, Gyeoeul/SUOL",2020,0,ongoing,web,src/data/coreDB_extra2.js,584
+unknown_or_zero_volume,어느날공주가되어버렸다,who_made_me_a_princess,어느 날 공주가 되어버렸다,Who Made Me a Princess,Plutus/Spoon,2017,0,completed,web,src/data/coreDB_extra2.js,585
+unknown_or_zero_volume,hereuare,here_u_are,Here U Are,Here U Are,D Jun,2017,0,completed,web,src/data/coreDB_extra2.js,586
+unknown_or_zero_volume,클라우드,lost_in_the_cloud,클라우드,Lost in the Cloud,"Kim, Pas",2020,0,completed,web,src/data/coreDB_extra2.js,587
+unknown_or_zero_volume,화산귀환,return_of_the_blossoming_blade,화산귀환,Return of the Blossoming Blade,LICO/Biga,2021,0,ongoing,web,src/data/coreDB_extra2.js,588
+unknown_or_zero_volume,해후,reunion,해후,Reunion,Lee Coin/Deulsum,2022,0,completed,web,src/data/coreDB_extra2.js,593
+unknown_or_zero_volume,낮에뜨는별,daytime_star,낮에 뜨는 별,Daytime Star,Chae-eun/Godago,2021,0,completed,web,src/data/coreDB_extra2.js,594
+unknown_or_zero_volume,괴력난신,myst_might_mayhem,괴력 난신,"Myst, Might, Mayhem","Kim, Tae-Hyung/Hanjung Wolya",2024,0,ongoing,web,src/data/coreDB_extra2.js,595
+unknown_or_zero_volume,저무는해시린눈,the_spark_in_your_eyes,"저무는 해, 시린 눈",The Spark in Your Eyes,Muro,2020,0,completed,web,src/data/coreDB_extra2.js,597
+unknown_or_zero_volume,아카데미에서살아남기,the_extra_s_academy_survival_guide,아카데미에서 살아남기,The Extra's Academy Survival Guide,Green Kyrin/Korita,2023,0,ongoing,web,src/data/coreDB_extra2.js,599
+unknown_or_zero_volume,디파인더릴레이션십,define_the_relationship,디파인 더 릴레이션십,Define the Relationship,Flona/Chada,2021,0,completed,web,src/data/coreDB_extra2.js,600
+unknown_or_zero_volume,오단군,legend_of_dangun,오!단군,Legend of Dangun,"Noh, Miyoung/Lee, Gyuntak",2024,0,ongoing,web,src/data/coreDB_extra3.js,1
+unknown_or_zero_volume,무한의마법사,the_infinite_mage,무한의 마법사,The Infinite Mage,"Themis/Kim, Chiwoo",2022,0,ongoing,web,src/data/coreDB_extra3.js,9
+unknown_or_zero_volume,트레이스,trace,트레이스,Trace,"Go, Yeong-Hun",2007,0,completed,web,src/data/coreDB_extra3.js,10
+unknown_or_zero_volume,アフタゴッド,after_god,アフターゴッド,After God,"Eno, Sumi",2021,0,ongoing,seinen,src/data/coreDB_extra3.js,12
+unknown_or_zero_volume,蜘蛛ですが、なにか,so_i_m_a_spider_so_what,蜘蛛ですが、なにか？,"So I'm a Spider, So What?","Kakashi, Asahiro/Baba, Okina",2015,0,ongoing,seinen,src/data/coreDB_extra3.js,17
+unknown_or_zero_volume,아비무쌍,father_unrivaled,아비무쌍,"Father, Unrivaled","Lee, Hyunseok/No, Kyoungchan",2017,0,completed,web,src/data/coreDB_extra3.js,19
+unknown_or_zero_volume,이계검왕생존기,latna_saga_survival_of_a_sword_king,이계 검왕 생존기,Latna Saga: Survival of a Sword King,"Yim, Kyung-bae/Kwon, Soonkyu",2019,0,ongoing,web,src/data/coreDB_extra3.js,20
+unknown_or_zero_volume,ダンジョンに出会いを求めるのは間違っているだろうか外伝ソドオラトリア,is_it_wrong_to_try_to_pick_up_girls_in_a_dungeon_sword_oratoria,ダンジョンに出会いを求めるのは間違っているだろうか外伝 ソード・オラトリア,Is It Wrong to Try to Pick Up Girls in a Dungeon? Sword Oratoria,"Omori, Fujino/Yagi, Takashi",2014,0,ongoing,shonen,src/data/coreDB_extra3.js,21
+unknown_or_zero_volume,パンプキンシザズ,pumpkin_scissors,パンプキン シザーズ,Pumpkin Scissors,"Iwanaga, Ryoutarou",2002,0,ongoing,shonen,src/data/coreDB_extra3.js,22
+unknown_or_zero_volume,엔딩메이커,ending_maker,엔딩메이커,Ending Maker,Chwiryong/Does,2022,0,ongoing,web,src/data/coreDB_extra3.js,23
+unknown_or_zero_volume,검술명가막내아들,the_swordmaster_s_son,검술명가 막내아들,The Swordmaster's Son,"Hwangje Penguin/Lee, Jewon",2022,0,ongoing,web,src/data/coreDB_extra3.js,24
+unknown_or_zero_volume,잔불의기사,the_ember_knight,잔불의 기사,The Ember Knight,Hwandaeng,2021,0,ongoing,web,src/data/coreDB_extra3.js,25
+unknown_or_zero_volume,つぐもも,tsugumomo,つぐもも,Tsugumomo,"Hamada, Yoshikadu",2007,0,ongoing,seinen,src/data/coreDB_extra3.js,29
+unknown_or_zero_volume,斗罗大陆ii绝世唐门,douluo_dalu_ii_jueshi_tangmen,斗罗大陆 II: 绝世唐门,Douluo Dalu II: Jueshi Tangmen,Tang Jia San Shao,2012,0,ongoing,web,src/data/coreDB_extra3.js,33
+unknown_or_zero_volume,テンカイチ日本最強武芸者決定戦,tenkaichi_the_greatest_warrior_under_the_rising_sun,テンカイチ 日本最強武芸者決定戦,Tenkaichi: The Greatest Warrior Under the Rising Sun,"Nakamaru, Yousuke/Azuma, Kyoutarou",2021,0,ongoing,seinen,src/data/coreDB_extra3.js,35
+unknown_or_zero_volume,クレバテス魔獣の王と赤子と屍の勇者,clevatess_the_king_of_dark_beasts_the_baby_and_the_undead_hero,クレバテス-魔獣の王と赤子と屍の勇者-,"Clevatess: The King of Dark Beasts, the Baby, and the Undead Hero","Iwahara, Yuji",2020,0,ongoing,seinen,src/data/coreDB_extra3.js,43
+unknown_or_zero_volume,빌어먹을환생,my_blasted_reincarnated_life,빌어먹을 환생,My Blasted Reincarnated Life,"Park, Jeongyeol/Mongma",2022,0,ongoing,web,src/data/coreDB_extra3.js,44
+unknown_or_zero_volume,시간이머문집,the_house_without_time,시간이 머문 집,The House Without Time,Hego,2020,0,ongoing,web,src/data/coreDB_extra3.js,48
+unknown_or_zero_volume,무림서부,martial_wild_west,무림서부,Martial Wild West,"Cup Ramyeon./Jeong, Hangil",2022,0,ongoing,web,src/data/coreDB_extra3.js,49
+unknown_or_zero_volume,終わりのセラフ,seraph_of_the_end_vampire_reign,終わりのセラフ,Seraph of the End: Vampire Reign,"Yamamoto, Yamato/Kagami, Takaya",2012,0,ongoing,shonen,src/data/coreDB_extra3.js,52
+unknown_or_zero_volume,ソドアトオンラインreaincrad,sword_art_online_re_aincrad,ソードアート・オンライン Re:Aincrad,Sword Art Online Re:Aincrad,"Kawahara, Reki/Kimi",2021,0,ongoing,seinen,src/data/coreDB_extra3.js,54
+unknown_or_zero_volume,黄泉のツガイ,daemons_of_the_shadow_realm,黄泉のツガイ,Daemons of the Shadow Realm,"Arakawa, Hiromu",2021,0,ongoing,shonen,src/data/coreDB_extra3.js,56
+unknown_or_zero_volume,만렙플레이어의100번째회귀,the_one_zero_zero_th_regression_of_the_max_level_player,만렙 플레이어의 100번째 회귀,The 100th Regression of the Max-Level Player,King Soda/Duckf,2023,0,ongoing,web,src/data/coreDB_extra3.js,57
+unknown_or_zero_volume,レイン,rain,レイン,Rain,"Yoshino, Takumi/Sumikawa, Megumi",2008,0,ongoing,shonen,src/data/coreDB_extra3.js,59
+unknown_or_zero_volume,ゴブリンスレイヤ,goblin_slayer,ゴブリンスレイヤー,Goblin Slayer,"Kurose, Kousuke/Kagyuu, Kumo",2016,0,ongoing,seinen,src/data/coreDB_extra3.js,60
+unknown_or_zero_volume,鉄拳チンミlegends,tekken_chinmi_legends,鉄拳チンミLegends,Tekken Chinmi Legends,"Maekawa, Takeshi",2007,0,ongoing,shonen,src/data/coreDB_extra3.js,61
+unknown_or_zero_volume,위치헌터,witch_buster,위치헌터,Witch Buster,"Jung-man, CHO",2006,0,ongoing,web,src/data/coreDB_extra3.js,62
+unknown_or_zero_volume,運命の人に出会う話,how_i_met_my_soulmate,運命の人に出会う話,How I Met My Soulmate,Anashin,2021,0,ongoing,shojo,src/data/coreDB_extra3.js,68
+unknown_or_zero_volume,うるわしの宵の月,in_the_clear_moonlit_dusk,うるわしの宵の月,In the Clear Moonlit Dusk,"Yamamori, Mika",2020,0,ongoing,shojo,src/data/coreDB_extra3.js,69
+unknown_or_zero_volume,むせるくらいの愛をあげる,choking_on_love,むせるくらいの愛をあげる,Choking on Love,"Iwashita, Keiko",2022,0,ongoing,shojo,src/data/coreDB_extra3.js,72
+unknown_or_zero_volume,とらドラ,toradora,とらドラ!,Toradora!,"Takemiya, Yuyuko/Zekkyou",2007,0,ongoing,seinen,src/data/coreDB_extra3.js,74
+unknown_or_zero_volume,刻どキ,tokidoki,刻どキ,Tokidoki,"Komi, Naoshi",2016,0,completed,shonen,src/data/coreDB_extra3.js,99
+unknown_or_zero_volume,君のことが大大大大大好きな100人の彼女,the_one_zero_zero_girlfriends_who_really_really_really_really_really_love_you,君のことが大大大大大好きな100人の彼女,"The 100 Girlfriends Who Really, Really, Really, Really, Really Love You","Nozawa, Yukiko/Nakamura, Rikito",2019,0,ongoing,seinen,src/data/coreDB_extra3.js,110
+unknown_or_zero_volume,となりの猫と恋知らず,learning_to_love_my_cat_like_classmate,となりの猫と恋知らず,Learning to Love My Cat-like Classmate,Akinoko,2024,0,ongoing,seinen,src/data/coreDB_extra3.js,116
+unknown_or_zero_volume,夫婦以上、恋人未満,more_than_a_married_couple_but_not_lovers,夫婦以上、恋人未満。,"More Than a Married Couple, but Not Lovers","Kanamaru, Yuuki",2018,0,ongoing,seinen,src/data/coreDB_extra3.js,128
+unknown_or_zero_volume,체크메이트,checkmate,체크 메이트,Checkmate,Tan,2020,0,completed,web,src/data/coreDB_extra3.js,134
+unknown_or_zero_volume,양일우와나,yang_ilwoo_and_me,양일우와 나,Yang Ilwoo and Me,"Park, Nodeok",2025,0,ongoing,web,src/data/coreDB_extra3.js,136
+unknown_or_zero_volume,ぜんぶ壊して地獄で愛して,if_that_s_love_break_it,ぜんぶ壊して地獄で愛して,"If That's Love, Break It.","Kuwabara, Tamotsu",2023,0,ongoing,seinen,src/data/coreDB_extra3.js,137
+unknown_or_zero_volume,귀전구담,ghost_teller,귀전구담,Ghost Teller,QTT,2017,0,completed,web,src/data/coreDB_extra3.js,138
+unknown_or_zero_volume,見える子ちゃん,mieruko_chan,見える子ちゃん,Mieruko-chan,"Izumi, Tomoki",2018,0,ongoing,seinen,src/data/coreDB_extra3.js,140
+unknown_or_zero_volume,그레이스길들이기,getting_to_know_grace,그레이스 길들이기,Getting to Know Grace,Mockma/Seorim,2019,0,completed,web,src/data/coreDB_extra3.js,145
+unknown_or_zero_volume,大ダク,dai_dark,大ダーク,Dai Dark,"Hayashida, Q",2019,0,ongoing,shonen,src/data/coreDB_extra3.js,146
+unknown_or_zero_volume,mad,mad,MAD,MAD,"Ootori, Yuusuke",2024,0,ongoing,shonen,src/data/coreDB_extra3.js,157
+unknown_or_zero_volume,ケントゥリア,centuria,ケントゥリア,Centuria,"Kuramori, Tooru",2024,0,ongoing,shonen,src/data/coreDB_extra3.js,164
+unknown_or_zero_volume,놀이감,plaything,놀이감,Plaything,Q Boi,2024,0,ongoing,web,src/data/coreDB_extra3.js,168
+unknown_or_zero_volume,空の境界thegardenofsinners,kara_no_kyoukai_the_garden_of_sinners,空の境界 the Garden of sinners,Kara no Kyoukai: The Garden of Sinners,"Nasu, Kinoko/Tenkuu, Sphere",2010,0,ongoing,seinen,src/data/coreDB_extra3.js,169
+unknown_or_zero_volume,きみは四葉のクロバ,you_are_a_four_leaf_clover,きみは四葉のクローバー,You Are a Four Leaf Clover,Koushi,2024,0,ongoing,shonen,src/data/coreDB_extra3.js,174
+unknown_or_zero_volume,転生してハイエルフになりましたが、スロライフは120年で飽きました,high_elf_with_a_long_life,転生してハイエルフになりましたが、スローライフは120年で飽きました,High Elf with a Long Life,"Narita, Koh/Rarutori",2021,0,ongoing,seinen,src/data/coreDB_extra3.js,177
+unknown_or_zero_volume,ノラガミ拾遺集,noragami_stray_stories,ノラガミ 拾遺集,Noragami: Stray Stories,Adachitoka,2011,0,completed,shonen,src/data/coreDB_extra3.js,179
+unknown_or_zero_volume,魔男のイチ,ichi_the_witch,魔男のイチ,Ichi the Witch,"Nishi, Osamu/Usazaki, Shiro",2024,0,ongoing,shonen,src/data/coreDB_extra3.js,181
+unknown_or_zero_volume,異世界の沙汰は社畜次第,the_other_world_s_books_depend_on_the_bean_counter,異世界の沙汰は社畜次第,The Other World's Books Depend on the Bean Counter,"Irodori, Kazuki/Yatsuki, Wakatsu",2020,0,ongoing,seinen,src/data/coreDB_extra3.js,182
+unknown_or_zero_volume,私の推しは悪役令嬢,i_m_in_love_with_the_villainess,私の推しは悪役令嬢。,I'm in Love with the Villainess,"Aono, Sumio/Inori.",2020,0,ongoing,seinen,src/data/coreDB_extra3.js,185
+unknown_or_zero_volume,후궁공략,concubine_walkthrough,후궁공략,Concubine Walkthrough,Bongbong,2020,0,completed,web,src/data/coreDB_extra3.js,187
+unknown_or_zero_volume,악녀라서편하고좋은데요,the_perks_of_being_a_villainess,악녀라서 편하고 좋은데요?,The Perks of Being a Villainess,"Mang, Gokim/Yoteh",2022,0,ongoing,web,src/data/coreDB_extra3.js,188
+unknown_or_zero_volume,異世界おじさん,uncle_from_another_world,異世界おじさん,Uncle from Another World,Hotondo Shindeiru,2018,0,ongoing,seinen,src/data/coreDB_extra3.js,189
+unknown_or_zero_volume,묘령의황자,mystic_prince,묘령의 황자,Mystic Prince,Aheuredal,2021,0,completed,web,src/data/coreDB_extra3.js,192
+unknown_or_zero_volume,빙의자를위한특혜,the_perks_of_being_an_s_class_heroine,빙의자를 위한 특혜,The Perks of Being an S-Class Heroine,Irinbi/Grrr,2022,0,ongoing,web,src/data/coreDB_extra3.js,193
+unknown_or_zero_volume,無職転生異世界行ったら本気だす失意の魔術師編,mushoku_tensei_isekai_ittara_honki_dasu_shitsui_no_majutsushi_hen,無職転生 ～異世界行ったら本気だす～ 失意の魔術師編,Mushoku Tensei: Isekai Ittara Honki Dasu - Shitsui no Majutsushi-hen,"Yoneda, Kazusa/Rifujin na Magonote",2021,0,ongoing,seinen,src/data/coreDB_extra3.js,194
+unknown_or_zero_volume,本好きの下剋上司書になるためには手段を選んでいられません第三部領地に本を広げよう,ascendance_of_a_bookworm_i_ll_do_anything_to_become_a_librarian_part_three_let_s_spread_books_through_the_duchy,本好きの下剋上～司書になるためには手段を選んでいられません～第三部 領地に本を広げよう!,Ascendance of a Bookworm: I'll Do Anything to Become a Librarian! Part 3 - Let's Spread Books Through the Duchy!,"Kazuki, Miya/Namino, Ryou",2018,0,ongoing,seinen,src/data/coreDB_extra3.js,195
+unknown_or_zero_volume,サイレントウィッチ沈黙の魔女の隠しごと,secrets_of_the_silent_witch,サイレント・ウィッチ 沈黙の魔女の隠しごと,Secrets of the Silent Witch,"Isora, Matsuri/Tana, Tobi",2021,0,ongoing,shojo,src/data/coreDB_extra3.js,198
+unknown_or_zero_volume,星降る王国のニナ,nina_the_starry_bride,星降る王国のニナ,Nina the Starry Bride,Rikachi,2019,0,ongoing,josei,src/data/coreDB_extra3.js,200
+unknown_or_zero_volume,勇者ご一行の帰り道,yuusha_goikkou_no_kaerimichi,勇者ご一行の帰り道,Yuusha Goikkou no Kaerimichi,"Hirano, Ryouji",2018,0,completed,shonen,src/data/coreDB_extra3.js,201
+unknown_or_zero_volume,파도의포말,foam_of_the_sea,파도의 포말,Foam of the Sea,Ratte,2023,0,completed,web,src/data/coreDB_extra3.js,202
+unknown_or_zero_volume,東方酔蝶華ロタスイタ達の酔醒,the_lotus_eaters_drunk_and_sober,東方酔蝶華 ～ ロータスイーター達の酔醒,"The Lotus Eaters, Drunk and Sober",ZUN/Mizutaki,2019,0,ongoing,seinen,src/data/coreDB_extra3.js,203
+unknown_or_zero_volume,妖怪学校の先生はじめました,a_terrified_teacher_at_ghoul_school,妖怪学校の先生はじめました!,A Terrified Teacher at Ghoul School!,"Tanaka, Mai",2014,0,ongoing,seinen,src/data/coreDB_extra3.js,204
+unknown_or_zero_volume,尾守つみきと奇日常,tsumiki_ogami_s_not_so_ordinary_life,尾守つみきと奇日常。,Tsumiki Ogami's Not-So-Ordinary Life,"Morishita, Miyu",2023,0,ongoing,shonen,src/data/coreDB_extra3.js,208
+unknown_or_zero_volume,장르를바꿔보도록하겠습니다,the_villainess_flips_the_script,장르를 바꿔보도록 하겠습니다,The Villainess Flips the Script!,Ken/Garine,2021,0,completed,web,src/data/coreDB_extra3.js,209
+unknown_or_zero_volume,アルスラン戦記,the_heroic_legend_of_arslan,アルスラーン戦記,The Heroic Legend of Arslan,"Arakawa, Hiromu/Tanaka, Yoshiki",2013,0,ongoing,shonen,src/data/coreDB_extra3.js,211
+unknown_or_zero_volume,小林さんちのメイドラゴン,miss_kobayashi_s_dragon_maid,小林さんちのメイドラゴン,Miss Kobayashi's Dragon Maid,Cool-kyou Shinja,2013,0,ongoing,seinen,src/data/coreDB_extra3.js,212
+unknown_or_zero_volume,fate/staynightunlimitedbladeworks,fate_stay_night_unlimited_blade_works,Fate/stay night［Unlimited Blade Works］,Fate/stay night: Unlimited Blade Works,"Moriyama, Daisuke/Type-Moon",2021,0,ongoing,seinen,src/data/coreDB_extra3.js,213
+unknown_or_zero_volume,별정직공무원,special_civil_servant,별정직 공무원,Special Civil Servant,"Kwon, Sora/Seo, Jaewon",2024,0,ongoing,web,src/data/coreDB_extra3.js,214
+unknown_or_zero_volume,borutoボルトtwobluevortex,boruto_two_blue_vortex,BORUTO-ボルト- -TWO BLUE VORTEX-,Boruto: Two Blue Vortex,"Kishimoto, Masashi/Ikemoto, Mikio",2023,0,ongoing,shonen,src/data/coreDB_extra3.js,215
+unknown_or_zero_volume,高度に発達した医学は魔法と区別がつかない,the_isekai_doctor_any_sufficiently_advanced_medical_science_is_indistinguishable_from_magic,高度に発達した医学は魔法と区別がつかない,The Isekai Doctor: Any Sufficiently Advanced Medical Science Is Indistinguishable from Magic.,"Tsuda, Houkou/Takishita, Nobuhide",2021,0,ongoing,seinen,src/data/coreDB_extra3.js,216
+unknown_or_zero_volume,엔딩후서브남을주웠다,happily_ever_afterwards,엔딩 후 서브남을 주웠다,Happily Ever Afterwards,"Jeongseo/Hwang, Dotol",2020,0,completed,web,src/data/coreDB_extra3.js,217
+unknown_or_zero_volume,엔딩후서브남을주웠다,happily_ever_afterwards_x,엔딩 후 서브남을 주웠다,Happily Ever Afterwards,"Jeongseo/Hwang, Dotol",2020,0,completed,web,src/data/coreDB_extra3.js,218
+unknown_or_zero_volume,월야화원,moonlight_garden,월야화원,Moonlight Garden,Kang Unnie/MissPM,2017,0,completed,web,src/data/coreDB_extra3.js,219
+unknown_or_zero_volume,재혼황후,the_remarried_empress,재혼 황후,The Remarried Empress,Alphatart/Sumpul,2019,0,ongoing,web,src/data/coreDB_extra3.js,221
+unknown_or_zero_volume,플레이어,player,플레이어,Player,"Park, Jongseok/Oh, Hyeonjun",2020,0,ongoing,web,src/data/coreDB_extra3.js,223
+unknown_or_zero_volume,엄마가계약결혼했다,mother_s_contract_marriage,엄마가 계약결혼 했다,Mother's Contract Marriage,"Choo, Hae-Yun/Siya",2022,0,ongoing,web,src/data/coreDB_extra3.js,228
+unknown_or_zero_volume,死に戻りの魔法学校生活を、元恋人とプロログから※ただし好感度はゼロ,re_living_my_life_with_a_boyfriend_who_doesn_t_remember_me,死に戻りの魔法学校生活を、元恋人とプロローグから（※ただし好感度はゼロ）,Re-Living My Life with a Boyfriend Who Doesn't Remember Me,"Shirakawa, Gin/Mutsuhana, Eiko",2022,0,ongoing,seinen,src/data/coreDB_extra3.js,230
+unknown_or_zero_volume,결혼장사,marriage_of_convenience,결혼 장사,Marriage of Convenience,Ant Studio/Ken,2022,0,completed,web,src/data/coreDB_extra3.js,236
+unknown_or_zero_volume,시월드가내게집착한다,my_in_laws_are_obsessed_with_me,시월드가 내게 집착한다,My In-Laws Are Obsessed with Me,"Han, Yoonseol/Seungu",2021,0,ongoing,web,src/data/coreDB_extra3.js,237
+unknown_or_zero_volume,ルプ7回目の悪役令嬢は、元敵国で自由気ままな花嫁生活を満喫する,seven_th_time_loop_the_villainess_enjoys_a_carefree_life_married_to_her_worst_enemy,ループ7回目の悪役令嬢は、元敵国で自由気ままな花嫁生活を満喫する,7th Time Loop: The Villainess Enjoys a Carefree Life Married to Her Worst Enemy!,"Kino, Hinoki/Amekawa, Touko",2020,0,ongoing,seinen,src/data/coreDB_extra3.js,243
+unknown_or_zero_volume,배우로서살겠다,to_be_an_actor,배우로서 살겠다,To Be an Actor,Gogwang/Dusi,2022,0,completed,web,src/data/coreDB_extra3.js,244
+unknown_or_zero_volume,상남자,a_man_s_man,상남자,A Man's Man,"Dogado/Kim, Taegung",2020,0,ongoing,web,src/data/coreDB_extra3.js,245
+unknown_or_zero_volume,リビルドワルド,rebuild_world,リビルドワールド,Rebuild World,"Ayamura, Kirihito/Nahuse",2019,0,ongoing,seinen,src/data/coreDB_extra3.js,249
+unknown_or_zero_volume,버닝이펙트,burning_effect,버닝 이펙트,Burning Effect,"Park, Taehyun",2017,0,completed,web,src/data/coreDB_extra3.js,251
+unknown_or_zero_volume,인생존망,my_life_as_a_loser,인생존망,My Life as a Loser,"Park, Tae-Jun/Jeon, Seonwook",2019,0,completed,web,src/data/coreDB_extra3.js,256
+unknown_or_zero_volume,ホタルの嫁入り,firefly_wedding,ホタルの嫁入り,Firefly Wedding,"Tachibana, Oreco",2023,0,completed,seinen,src/data/coreDB_extra3.js,264
+unknown_or_zero_volume,アルテ,arte,アルテ,Arte,"Ookubo, Kei",2013,0,ongoing,seinen,src/data/coreDB_extra3.js,265
+unknown_or_zero_volume,薬屋のひとりごと猫猫の後宮謎解き手帳,kusuriya_no_hitorigoto_maomao_no_koukyuu_nazotoki_techou,薬屋のひとりごと 猫猫の後宮謎解き手帳,Kusuriya no Hitorigoto: Maomao no Koukyuu Nazotoki Techou,"Hyuuga, Natsu/Kurata, Minoji",2017,0,ongoing,seinen,src/data/coreDB_extra3.js,266
+unknown_or_zero_volume,艶漢,adekan,艶漢,Adekan,"Nao, Tsukiji",2007,0,ongoing,shojo,src/data/coreDB_extra3.js,267
+unknown_or_zero_volume,눈에범이서리다,taming_the_tiger,눈에 범이 서리다,Taming the Tiger,Brothers Without a Tomorrow,2021,0,completed,web,src/data/coreDB_extra3.js,273
+unknown_or_zero_volume,온어리시,on_a_leash,온 어 리시,On a Leash,Aji,2017,0,completed,web,src/data/coreDB_extra3.js,276
+unknown_or_zero_volume,百鬼夜行抄,beyond_twilight,百鬼夜行抄,Beyond Twilight,"Ima, Ichiko",1995,0,ongoing,shojo,src/data/coreDB_extra3.js,277
+unknown_or_zero_volume,봉촌각시,bongchon_bride,봉촌각시,Bongchon Bride,"Sohn, Gaepi",2019,0,completed,web,src/data/coreDB_extra3.js,278
+unknown_or_zero_volume,百日の薔薇,maiden_rose,百日の薔薇,Maiden Rose,"Inariya, Fusanosuke",2004,0,ongoing,seinen,src/data/coreDB_extra3.js,279
+unknown_or_zero_volume,峠鬼,touge_oni_primal_gods_in_ancient_times,峠鬼,Touge Oni: Primal Gods in Ancient Times,"Tsurubuchi, Kenji",2018,0,ongoing,seinen,src/data/coreDB_extra3.js,284
+unknown_or_zero_volume,ハイキュ特別番外編祭り再び,haikyu_special_one_shot_a_party_reignited,ハイキュー!! 特別番外編 祭り再び,Haikyu!! Special One-shot: A Party Reignited,"Furudate, Haruichi",2022,0,completed,shonen,src/data/coreDB_extra3.js,292
+unknown_or_zero_volume,セラピゲムリスタト,therapy_game_restart,セラピーゲーム リスタート,Therapy Game Restart,"Hinohara, Meguru",2019,0,ongoing,seinen,src/data/coreDB_extra3.js,295
+unknown_or_zero_volume,今泉ん家はどうやらギャルの溜まり場になってるらしい,imaizumi_brings_all_the_gyarus_to_his_house,今泉ん家はどうやらギャルの溜まり場になってるらしい,Imaizumi Brings All the Gyarus to His House,"Nori, Gorou",2019,0,ongoing,seinen,src/data/coreDB_extra3.js,298
+unknown_or_zero_volume,リコリスリコイル,lycoris_recoil,リコリス・リコイル,Lycoris Recoil,"Bizen, Yasunori",2022,0,ongoing,seinen,src/data/coreDB_extra3.js,301
+unknown_or_zero_volume,시맨틱에러,semantic_error,시맨틱 에러,Semantic Error,J. Soori/Angy,2020,0,ongoing,web,src/data/coreDB_extra3.js,302
+unknown_or_zero_volume,ぬこづけ,nukozuke,ぬこづけ！,Nukozuke!,"Yugi, Iro",2012,0,ongoing,shojo,src/data/coreDB_extra3.js,304
+unknown_or_zero_volume,恋する暴君,the_tyrant_falls_in_love,恋する暴君,The Tyrant Falls In Love,"Takanaga, Hinako",2004,0,ongoing,seinen,src/data/coreDB_extra3.js,307
+unknown_or_zero_volume,こっちむいてみい子,kocchi_muite_miiko,こっちむいて!みい子,Kocchi Muite! Miiko,"Ono, Eriko",1995,0,ongoing,shojo,src/data/coreDB_extra3.js,313
+unknown_or_zero_volume,放課後少年花子くん,after_school_hanako_kun,放課後少年花子くん,After-School Hanako-kun,"Aida, Iro",2018,0,ongoing,seinen,src/data/coreDB_extra3.js,330
+unknown_or_zero_volume,ディふらぐ,d_frag,ディーふらぐ！,D-Frag!,"Haruno, Tomoya",2008,0,ongoing,seinen,src/data/coreDB_extra3.js,331
+unknown_or_zero_volume,明日ちゃんのセラ服,akebi_s_sailor_uniform,明日ちゃんのセーラー服,Akebi's Sailor Uniform,Hiro,2016,0,ongoing,seinen,src/data/coreDB_extra3.js,336
+unknown_or_zero_volume,ぼくのパパとパパの話,all_about_my_two_dads,ぼくのパパとパパの話,All About My Two Dads,Roji,2022,0,ongoing,seinen,src/data/coreDB_extra3.js,338
+unknown_or_zero_volume,彩純ちゃんはレズ風俗に興味があります,asumi_chan_is_interested_in_lesbian_brothels,彩純ちゃんはレズ風俗に興味があります!,Asumi-chan Is Interested in Lesbian Brothels!,"Itsuki, Kuro",2020,0,ongoing,seinen,src/data/coreDB_extra3.js,339
+unknown_or_zero_volume,酷くしないで,don_t_be_cruel,酷くしないで,Don't Be Cruel,"Nekota, Yonezou",2007,0,ongoing,seinen,src/data/coreDB_extra3.js,341
+unknown_or_zero_volume,同居人はひざ、時々、頭のうえ,doukyonin_wa_hiza_tokidoki_atama_no_ue,同居人はひざ、時々、頭のうえ。,"Doukyonin wa Hiza, Tokidoki, Atama no Ue.","Minatuki, Tunami/Futatsuya, As",2015,0,ongoing,seinen,src/data/coreDB_extra3.js,347
+unknown_or_zero_volume,ちいかわなんか小さくてかわいいやつ,chiikawa_nanka_chiisakute_kawaii_yatsu,ちいかわ なんか小さくてかわいいやつ,Chiikawa: Nanka Chiisakute Kawaii Yatsu,Nagano,2021,0,ongoing,seinen,src/data/coreDB_extra3.js,348
+unknown_or_zero_volume,たまらないのは恋なのか,a_love_too_captivating,たまらないのは恋なのか,A Love Too Captivating,"Sorahana, Mia",2023,0,ongoing,shojo,src/data/coreDB_extra3.js,349
+unknown_or_zero_volume,city,city,CITY,City,"Arawi, Keiichi",2016,0,ongoing,seinen,src/data/coreDB_extra3.js,350
+unknown_or_zero_volume,君には届かない,i_cannot_reach_you,君には届かない。,I Cannot Reach You,Mika,2018,0,ongoing,seinen,src/data/coreDB_extra3.js,352
+unknown_or_zero_volume,魔法少女にあこがれて,gushing_over_magical_girls,魔法少女にあこがれて,Gushing over Magical Girls,"Ononaka, Akihiro",2019,0,ongoing,seinen,src/data/coreDB_extra3.js,353
+unknown_or_zero_volume,煙たい話,kemutai_hanashi,煙たい話,Kemutai Hanashi,"Hayashi, Fumiya",2021,0,ongoing,seinen,src/data/coreDB_extra3.js,355
+unknown_or_zero_volume,女の園の星,onna_no_sono_no_hoshi,女の園の星,Onna no Sono no Hoshi,"Wayama, Yama",2020,0,ongoing,josei,src/data/coreDB_extra3.js,358
+unknown_or_zero_volume,安達としまむら,adachi_and_shimamura,安達としまむら,Adachi and Shimamura,"Iruma, Hitoma/Yuzuhara, Moke",2019,0,ongoing,seinen,src/data/coreDB_extra3.js,359
+unknown_or_zero_volume,デキる猫は今日も憂鬱,the_masterful_cat_is_depressed_again_today,デキる猫は今日も憂鬱,The Masterful Cat Is Depressed Again Today,"Yamada, Hitsuji",2018,0,ongoing,seinen,src/data/coreDB_extra3.js,364
+unknown_or_zero_volume,ひだまりが聴こえる春夏秋冬,i_hear_the_sunspot_four_seasons,ひだまりが聴こえる－春夏秋冬－,I Hear the Sunspot: Four Seasons,"Fumino, Yuki",2020,0,ongoing,seinen,src/data/coreDB_extra3.js,369
+unknown_or_zero_volume,虚構推理,in_spectre,虚構推理,In/Spectre,"Shirodaira, Kyou/Katase, Chashiba",2015,0,ongoing,shonen,src/data/coreDB_extra3.js,373
+unknown_or_zero_volume,유령의노래,phantom_whispers,유령의 노래,Phantom Whispers,"Kim, Moonkyoung",2024,0,ongoing,web,src/data/coreDB_extra3.js,377
+unknown_or_zero_volume,文豪ストレイドッグス外伝綾辻行人vs京極夏彦,bungo_stray_dogs_another_story_yukito_ayatsuji_vs_natsuhiko_kyougoku,文豪ストレイドッグス外伝 綾辻行人 VS. 京極夏彦,Bungo Stray Dogs: Another Story - Yukito Ayatsuji vs. Natsuhiko Kyougoku,"Asagiri, Kafka/Oyoyo",2017,0,ongoing,seinen,src/data/coreDB_extra3.js,387
+unknown_or_zero_volume,岸辺露伴は動かない,thus_spoke_rohan_kishibe,岸辺露伴は動かない,Thus Spoke Rohan Kishibe,"Araki, Hirohiko",1997,0,ongoing,shonen,src/data/coreDB_extra3.js,391
+unknown_or_zero_volume,ピンクハトジャムbeat,pink_heart_jam_beat,ピンクハートジャム beat,Pink Heart Jam beat,Shikke,2023,0,ongoing,seinen,src/data/coreDB_extra3.js,397
+unknown_or_zero_volume,ひだまりスケッチ,sunshine_sketch,ひだまりスケッチ,Sunshine Sketch,"Aoki, Ume",2004,0,ongoing,seinen,src/data/coreDB_extra3.js,400
+unknown_or_zero_volume,ぼっちざろっく外伝廣井きくりの深酒日記,bocchi_the_rock_side_story_kikuri_hiroi_s_heavy_drinking_diary,ぼっち・ざ・ろっく!外伝 廣井きくりの深酒日記,Bocchi the Rock! Side Story: Kikuri Hiroi's Heavy-Drinking Diary,Kumichou,2023,0,ongoing,seinen,src/data/coreDB_extra3.js,407
+unknown_or_zero_volume,10dance,one_zero_dance,10DANCE,10 Dance,"Inoue, Satou",2011,0,ongoing,seinen,src/data/coreDB_extra3.js,409
+unknown_or_zero_volume,咲saki,saki,咲-Saki-,Saki,"Kobayashi, Ritz",2006,0,ongoing,seinen,src/data/coreDB_extra3.js,417
+unknown_or_zero_volume,賭博堕天録カイジ24億脱出編,tobaku_datenroku_kaiji_two_four_oku_dasshutsu_hen,賭博堕天録カイジ 24億脱出編,Tobaku Datenroku Kaiji: 24-oku Dasshutsu-hen,"Fukumoto, Nobuyuki",2017,0,ongoing,seinen,src/data/coreDB_extra3.js,418
+unknown_or_zero_volume,マグメル深海水族館,deep_sea_aquarium_magmell,マグメル深海水族館,Deep-Sea Aquarium Magmell,"Sugishita, Kiyomi",2017,0,ongoing,seinen,src/data/coreDB_extra3.js,420
+unknown_or_zero_volume,gangsta,gangsta,GANGSTA.,Gangsta.,Kohske,2011,0,ongoing,seinen,src/data/coreDB_extra3.js,421
+unknown_or_zero_volume,嫌いでいさせて,hate_me_but_let_me_stay,嫌いでいさせて,"Hate Me, but Let Me Stay",Hijiki,2018,0,ongoing,seinen,src/data/coreDB_extra3.js,427
+unknown_or_zero_volume,acidtown,acid_town,ACID TOWN,Acid Town,Kyuugou,2008,0,ongoing,seinen,src/data/coreDB_extra3.js,429
+unknown_or_zero_volume,물가의밤,low_tide_in_twilight,물가의 밤,Low Tide in Twilight,Euja,2021,0,completed,web,src/data/coreDB_extra3.js,435
+unknown_or_zero_volume,superlovers,super_lovers,SUPER LOVERS,Super Lovers,"Abe, Miyuki",2009,0,ongoing,seinen,src/data/coreDB_extra3.js,438
+unknown_or_zero_volume,ナンバカ,nanbaka,ナンバカ,Nanbaka,"Futamata, Shou",2013,0,completed,seinen,src/data/coreDB_extra3.js,445
+unknown_or_zero_volume,絢爛たるグランドセヌ,la_magnifique_grande_sc_ne,絢爛たるグランドセーヌ,La Magnifique Grande Scène,Cuvie,2013,0,ongoing,seinen,src/data/coreDB_extra3.js,455
+unknown_or_zero_volume,まじっく快斗,magic_kaito,まじっく快斗,Magic Kaito,"Aoyama, Goushou",1987,0,ongoing,shonen,src/data/coreDB_extra3.js,459
+unknown_or_zero_volume,パタリロ,patalliro,パタリロ!,Patalliro!,"Maya, Mineo",1979,0,ongoing,shojo,src/data/coreDB_extra3.js,469
+unknown_or_zero_volume,愛してるゲムを終わらせたい,i_want_to_end_this_love_game,愛してるゲームを終わらせたい,I Want to End This Love Game,"Doumoto, Yuuki",2021,0,ongoing,web,src/data/coreDB_extra3.js,472
+unknown_or_zero_volume,청춘러브썸,seasons_of_lovesome,청춘 러브썸,Seasons of Lovesome,Hongduck/NEMONE,2024,0,ongoing,web,src/data/coreDB_extra3.js,474
+unknown_or_zero_volume,꿈자리가이상한데요,it_s_just_a_dream_right,꿈자리가 이상한데요?!,It's Just a Dream... Right?!,Huingwi,2021,0,completed,web,src/data/coreDB_extra3.js,475
+unknown_or_zero_volume,수화,sign,수화,Sign,Ker,2017,0,completed,web,src/data/coreDB_extra3.js,476
+unknown_or_zero_volume,이직로그,ctrl_alt_resign,이직로그,Ctrl+Alt+Resign,"Woo, Si-mok/Lee, Ha-an",2025,0,ongoing,web,src/data/coreDB_extra3.js,479
+unknown_or_zero_volume,남주의입양딸이되었습니다,the_male_lead_s_little_lion_daughter,남주의 입양딸이 되었습니다,The Male Lead's Little Lion Daughter,Latine/Ttona,2021,0,ongoing,web,src/data/coreDB_extra3.js,480
+unknown_or_zero_volume,시크릿레이디,secret_lady,시크릿 레이디,Secret Lady,Banana/Anngato,2021,0,ongoing,web,src/data/coreDB_extra3.js,481
+unknown_or_zero_volume,이기적연애론,selfish_romance,이기적 연애론,Selfish Romance,Gyogyo Park,2024,0,ongoing,web,src/data/coreDB_extra3.js,482
+unknown_or_zero_volume,페이백,payback,페이백,Payback,Fujoking/samk,2021,0,completed,web,src/data/coreDB_extra3.js,483
+unknown_or_zero_volume,미성년,our_youth,미성년,Our Youth,Hinoon,2020,0,completed,web,src/data/coreDB_extra3.js,484
+unknown_or_zero_volume,나혼자탑에서농사,the_top_dungeon_farmer,나 혼자 탑에서 농사,The Top Dungeon Farmer,"sdcknight/Lee, Hakyung",2023,0,ongoing,web,src/data/coreDB_extra3.js,485
+unknown_or_zero_volume,经久,salad_days,经久,Salad Days,Jingshuibian/Tangliuzang,2019,0,completed,web,src/data/coreDB_extra3.js,487
+unknown_or_zero_volume,풍작이에요마왕님,what_a_bountiful_harvest_demon_lord,"풍작이에요, 마왕님!","What a Bountiful Harvest, Demon Lord!","Moon, Back-kyung/Yeo, Kanghyun",2025,0,ongoing,web,src/data/coreDB_extra3.js,490
+unknown_or_zero_volume,어쩌다보니천생연분,maybe_meant_to_be,어쩌다보니 천생연분,Maybe Meant to Be,Kkultarae/Damcho,2022,0,completed,web,src/data/coreDB_extra3.js,491
+unknown_or_zero_volume,돼지우리,pigpen,돼지우리,Pigpen,"Kim, Carnby/Cheon, Beom Sick",2019,0,completed,web,src/data/coreDB_extra3.js,492
+unknown_or_zero_volume,초인의시대,the_superhuman_era,초인의 시대,The Superhuman Era,Seop-I,2019,0,ongoing,web,src/data/coreDB_extra3.js,495
+unknown_or_zero_volume,소녀의세계,odd_girl_out,소녀의 세계,Odd Girl Out,Morangji,2015,0,ongoing,web,src/data/coreDB_extra3.js,498
+unknown_or_zero_volume,닥터프로스트,dr_frost,닥터 프로스트,Dr. Frost,"Lee, Jong-bum",2011,0,completed,web,src/data/coreDB_extra3.js,500
+unknown_or_zero_volume,超人x,choujin_x,超人X,Choujin X,"Ishida, Sui",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,3
+unknown_or_zero_volume,極楽街,gokurakugai,極楽街,Gokurakugai,"Sano, Yuuto",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,4
+unknown_or_zero_volume,ジョジョの奇妙な冒険part9thejojolands,jojo_no_kimyou_na_bouken_part_9_the_jojolands,ジョジョの奇妙な冒険 Part9 The JOJOLands,JoJo no Kimyou na Bouken Part 9: The JoJoLands,"Araki, Hirohiko",2023,0,ongoing,shonen,src/data/coreDB_extra4.js,5
+unknown_or_zero_volume,ルリドラゴン,ruri_dragon,ルリドラゴン,Ruri Dragon,"Shindou, Masaoki",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,6
+unknown_or_zero_volume,カッコウの許嫁,kakkou_no_iinazuke,カッコウの許嫁,Kakkou no Iinazuke,"Yoshikawa, Miki",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,7
+unknown_or_zero_volume,黒岩メダカに私の可愛いが通じない,kuroiwa_medaka_ni_watashi_no_kawaii_ga_tsuujinai,黒岩メダカに私の可愛いが通じない,Kuroiwa Medaka ni Watashi no Kawaii ga Tsuujinai,"Kuze, Ran",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,8
+unknown_or_zero_volume,時々ボソッとロシア語でデレる隣のアリャさん,tokidoki_bosotto_russia_go_de_dereru_tonari_no_alya_san,時々ボソッとロシア語でデレる隣のアーリャさん,Tokidoki Bosotto Russia-go de Dereru Tonari no Alya-san,"Tanamachi, Saho / Sun Sun, Sun",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,13
+unknown_or_zero_volume,シャングリラフロンティアクソゲハンタ、神ゲに挑まんとす,shangri_la_frontier_kusoge_hunter_kamige_ni_idoman_to_su,シャングリラ・フロンティア～クソゲーハンター、神ゲーに挑まんとす～,"Shangri-La Frontier: Kusoge Hunter, Kamige ni Idoman to su","Fuji, Ryousuke / Katarina",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,15
+unknown_or_zero_volume,桃源暗鬼,tougen_anki,桃源暗鬼,Tougen Anki,"Urushibara, Yura",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,16
+unknown_or_zero_volume,戦隊大失格,sentai_daishikkaku,戦隊大失格,Sentai Daishikkaku,"Haruba, Negi",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,18
+unknown_or_zero_volume,マリッジトキシン,marriagetoxin,マリッジトキシン,Marriagetoxin,"Yoda, Mizuki / Joumyaku",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,21
+unknown_or_zero_volume,ウィッチウォッチ,witch_watch,ウィッチウォッチ,Witch Watch,"Shinohara, Kenta",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,23
+unknown_or_zero_volume,焼いてるふたり,yaiteru_futari,焼いてるふたり,Yaiteru Futari,"Hanatsuka, Shiori",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,24
+unknown_or_zero_volume,幼稚園wars,youchien_wars,幼稚園WARS,Youchien Wars,"Chiba, You",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,25
+unknown_or_zero_volume,転生したら第七王子だったので、気ままに魔術を極めます,tensei_shitara_dainana_ouji_datta_node_kimama_ni_majutsu_wo_kiwamemasu,転生したら第七王子だったので、気ままに魔術を極めます,"Tensei shitara Dainana Ouji Datta node, Kimama ni Majutsu wo Kiwamemasu","Kokuzawa, Yousuke / Kenkyo na Circle",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,31
+unknown_or_zero_volume,クソ女に幸あれ,kuso_onna_ni_sachi_are,クソ女に幸あれ,Kuso Onna ni Sachi Are,"Kishikawa, Mizuki",2023,0,ongoing,shonen,src/data/coreDB_extra4.js,33
+unknown_or_zero_volume,ニワトリファイタ,niwatori_fighter,ニワトリ・ファイター,Niwatori Fighter,"Sakuratani, Shuu",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,34
+unknown_or_zero_volume,カナン様はあくまでチョロい,kanan_sama_wa_akumade_choroi,カナン様はあくまでチョロい,Kanan-sama wa Akumade Choroi,nonco,2022,0,ongoing,shonen,src/data/coreDB_extra4.js,35
+unknown_or_zero_volume,異世界黙示録マイノグラ破滅の文明で始める世界征服,isekai_mokushiroku_mynoghra_hametsu_no_bunmei_de_hajimeru_sekai_seifuku,異世界黙示録マイノグーラ ～破滅の文明で始める世界征服～,Isekai Mokushiroku Mynoghra: Hametsu no Bunmei de Hajimeru Sekai Seifuku,"Kazuno, Fefu / Midorihana, Yasaiko",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,36
+unknown_or_zero_volume,聖母〈マリア〉の断罪,maria_no_danzai,聖母〈マリア〉の断罪,Maria no Danzai,"Kazuki / Kamejima, Junto",2023,0,ongoing,shonen,src/data/coreDB_extra4.js,37
+unknown_or_zero_volume,帝乃三姉妹は案外、チョロい,mikadono_sanshimai_wa_angai_choroi,帝乃三姉妹は案外、チョロい。,"Mikadono Sanshimai wa Angai, Choroi.","Hirakawa, Aya",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,38
+unknown_or_zero_volume,百瀬アキラの初恋破綻中,momose_akira_no_hatsukoi_hatanchuu,百瀬アキラの初恋破綻中。,Momose Akira no Hatsukoi Hatanchuu.,"Harekawa, Shinta",2024,0,ongoing,shonen,src/data/coreDB_extra4.js,39
+unknown_or_zero_volume,悪役令嬢レベル99私は裏ボスですが魔王ではありません,akuyaku_reijou_level_99_watashi_wa_ura_boss_desu_ga_maou_dewa_arimasen,悪役令嬢レベル99 ～私は裏ボスですが魔王ではありません～,Akuyaku Reijou Level 99: Watashi wa Ura-Boss desu ga Maou dewa Arimasen,"Tanabata, Satori / Nokomi",2020,0,ongoing,shojo,src/data/coreDB_extra4.js,40
+unknown_or_zero_volume,クラスの大嫌いな女子と結婚することになった,class_no_daikirai_na_joshi_to_kekkon_suru_koto_ni_natta,クラスの大嫌いな女子と結婚することになった。,Class no Daikirai na Joshi to Kekkon suru Koto ni Natta.,"Amano, Seiju / Mosskonbu",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,41
+unknown_or_zero_volume,メガネ、時々、ヤンキくん,megane_tokidoki_yankee_kun,メガネ、時々、ヤンキーくん,"Megane, Tokidoki, Yankee-kun",Naruki,2021,0,ongoing,shojo,src/data/coreDB_extra4.js,42
+unknown_or_zero_volume,転生貴族、鑑定スキルで成り上がる弱小領地を受け継いだので、優秀な人材を増やしていたら、最強領地になってた,tensei_kizoku_kantei_skill_de_nariagaru_jakushou_ryouchi_wo_uketsuida_node_yuushuu_na_jinzai_wo_fuyashiteitara_saikyou_ryouchi_ni_natteta,転生貴族、鑑定スキルで成り上がる～弱小領地を受け継いだので、優秀な人材を増やしていたら、最強領地になってた～,"Tensei Kizoku, Kantei Skill de Nariagaru: Jakushou Ryouchi wo Uketsuida node, Yuushuu na Jinzai wo Fuyashiteitara, Saikyou Ryouchi ni Natteta","Inoue, Natsumi / Miraijin A",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,47
+unknown_or_zero_volume,信じていた仲間達にダンジョン奥地で殺されかけたがギフト無限ガチャでレベル9999の仲間達を手に入れて元パティメンバと世界に復讐&ざまぁします,shinjiteita_nakama_tachi_ni_dungeon_okuchi_de_korosarekaketa_ga_gift_mugen_gacha_de_level_9999_no_nakama_tachi_wo_te_ni_irete_moto_party_member_to_sekai_ni_fukushuu_zamaa_shimasu,信じていた仲間達にダンジョン奥地で殺されかけたがギフト『無限ガチャ』でレベル9999の仲間達を手に入れて元パーティーメンバーと世界に復讐＆『ざまぁ!』します!,"Shinjiteita Nakama-tachi ni Dungeon Okuchi de Korosarekaketa ga Gift ""Mugen Gacha"" de Level 9999 no Nakama-tachi wo Te ni Irete Moto Party Member to Sekai ni Fukushuu & ""Zamaa!"" Shimasu!","Meikyou, Shisui / Oomae, Takafumi",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,48
+unknown_or_zero_volume,姉のともだち,ane_no_tomodachi,姉のともだち,Ane no Tomodachi,"Takase, Waka",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,49
+unknown_or_zero_volume,ダメドルと世界に1人だけのファン,damedol_to_sekai_ni_hitori_dake_no_fan,ダメドルと世界に1人だけのファン,Damedol to Sekai ni Hitori dake no Fan,Kishirimo,2023,0,ongoing,seinen,src/data/coreDB_extra4.js,51
+unknown_or_zero_volume,黙示録の四騎士,mokushiroku_no_yonkishi,黙示録の四騎士,Mokushiroku no Yonkishi,"Suzuki, Nakaba",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,52
+unknown_or_zero_volume,バツイチで泣き虫なおとなりさん,batsuichi_de_nakimushi_na_otonarisan,バツイチで泣き虫なおとなりさん,Batsuichi de Nakimushi na Otonarisan,Zyugoya,2022,0,ongoing,seinen,src/data/coreDB_extra4.js,53
+unknown_or_zero_volume,バサス,versus,バーサス,Versus,"ONE / Azuma, Kyoutarou",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,55
+unknown_or_zero_volume,一途ビッチちゃん,ichizu_bitch_chan,一途ビッチちゃん,Ichizu Bitch-chan,Ironon,2020,0,ongoing,seinen,src/data/coreDB_extra4.js,57
+unknown_or_zero_volume,灰宮先輩は怖くてかわいい,haimiya_senpai_wa_kowakute_kawaii,灰宮先輩は怖くてかわいい,Haimiya-senpai wa Kowakute Kawaii,"Kamiyama, Sumu",2025,0,ongoing,seinen,src/data/coreDB_extra4.js,61
+unknown_or_zero_volume,ひまてん,himaten,ひまてん!,Himaten!,"Ono, Genki",2024,0,ongoing,shonen,src/data/coreDB_extra4.js,62
+unknown_or_zero_volume,八月九日僕は君に喰われる,hachigatsu_kokonoka_boku_wa_kimi_ni_kuwareru,八月九日 僕は君に喰われる。,Hachigatsu Kokonoka Boku wa Kimi ni Kuwareru.,tomomi,2020,0,ongoing,seinen,src/data/coreDB_extra4.js,64
+unknown_or_zero_volume,#drclmidnightchildren,drcl_midnight_children,#DRCL midnight children,#DRCL Midnight Children,"Sakamoto, Shinichi",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,65
+unknown_or_zero_volume,おそらくカノジョは俺の兄貴を狙ってる,osoraku_kanojo_wa_ore_no_aniki_wo_neratteru,おそらくカノジョは俺の兄貴を狙ってる,Osoraku Kanojo wa Ore no Aniki wo Neratteru,"Ise, Maruno",2025,0,ongoing,seinen,src/data/coreDB_extra4.js,68
+unknown_or_zero_volume,処刑された賢者はリッチに転生して侵略戦争を始める,shokei_sareta_kenja_wa_lich_ni_tensei_shite_shinryaku_sensou_wo_hajimeru,処刑された賢者はリッチに転生して侵略戦争を始める,Shokei sareta Kenja wa Lich ni Tensei shite Shinryaku Sensou wo Hajimeru,"Yuuki, Karaku / Kunitomo, Shoutarou",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,69
+unknown_or_zero_volume,楠木さんは高校デビュに失敗している,kusunoki_san_wa_koukou_debut_ni_shippaishiteiru,楠木さんは高校デビューに失敗している,Kusunoki-san wa Koukou Debut ni Shippaishiteiru,"Mii, Mitsuki",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,71
+unknown_or_zero_volume,塩対応の佐藤さんが俺にだけ甘い@comic,shiotaiou_no_satou_san_ga_ore_ni_dake_amai_comic,塩対応の佐藤さんが俺にだけ甘い＠comic,Shiotaiou no Satou-san ga Ore ni dake Amai @comic,"Sawatari, Kazami / Tetsuyama, Kaya",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,72
+unknown_or_zero_volume,ダンジョンに潜むヤンデレな彼女に俺は何度も殺される,dungeon_ni_hisomu_yandere_na_kanojo_ni_ore_wa_nando_mo_korosareru,ダンジョンに潜むヤンデレな彼女に俺は何度も殺される,Dungeon ni Hisomu Yandere na Kanojo ni Ore wa Nando mo Korosareru,"Nomura, Eiji / Kitagawa, Nikita",2023,0,ongoing,seinen,src/data/coreDB_extra4.js,73
+unknown_or_zero_volume,紫雲寺家の子供たち,shiunji_ke_no_kodomotachi,紫雲寺家の子供たち,Shiunji-ke no Kodomotachi,"Miyajima, Reiji",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,76
+unknown_or_zero_volume,劣等人の魔剣使いスキルボドを駆使して最強に至る,rettoujin_no_makentsukai_skill_board_wo_kushi_shite_saikyou_ni_itaru,劣等人の魔剣使い　スキルボードを駆使して最強に至る,Rettoujin no Makentsukai: Skill Board wo Kushi shite Saikyou ni Itaru,"Hagiu, Aki / Kanou, Hiroto",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,77
+unknown_or_zero_volume,ご主人様とゆく異世界サバイバルthecomic,goshujinsama_to_yuku_isekai_survival_the_comic,ご主人様とゆく異世界サバイバル! THE COMIC,Goshujinsama to Yuku Isekai Survival! The Comic,SASAYUKi / Ryuto,2020,0,ongoing,seinen,src/data/coreDB_extra4.js,79
+unknown_or_zero_volume,両親の借金を肩代わりしてもらう条件は日本一可愛い女子高生と一緒に暮らすことでした,ryoushin_no_shakkin_wo_katagawari_shite_morau_jouken_wa_nihonichi_kawaii_joshikousei_to_issho_ni_kurasu_koto_deshita,両親の借金を肩代わりしてもらう条件は日本一可愛い女子高生と一緒に暮らすことでした。,Ryoushin no Shakkin wo Katagawari shite Morau Jouken wa Nihonichi Kawaii Joshikousei to Issho ni Kurasu Koto deshita.,"Mitsuki, Meia / Amane, Megumi",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,81
+unknown_or_zero_volume,幼馴染彼女のモラハラがひどいんで絶縁宣言してやった自分らしく生きることにしたら、なぜか隣の席の隠れ美少女から告白された,osananajimi_kanojo_no_morahara_ga_hidoin_de_zetsuen_sengen_shite_yatta_jibunrashiku_ikiru_koto_ni_shitara_nazeka_tonari_no_seki_no_kakure_bishoujo_kara_kokuhaku_sareta,幼馴染彼女のモラハラがひどいんで絶縁宣言してやった ~自分らしく生きることにしたら、なぜか隣の席の隠れ美少女から告白された~,"Osananajimi Kanojo no Morahara ga Hidoin de Zetsuen Sengen shite Yatta: Jibunrashiku Ikiru Koto ni Shitara, Nazeka Tonari no Seki no Kakure Bishoujo kara Kokuhaku sareta","Hige / Ononata, Manimani",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,84
+unknown_or_zero_volume,片田舎のおっさん、剣聖になるただの田舎の剣術師範だったのに、大成した弟子たちが俺を放ってくれない件,katainaka_no_ossan_kensei_ni_naru_tada_no_inaka_no_kenjutsu_shihan_datta_noni_taisei_shita_deshi_tachi_ga_ore_wo_houttekurenai_ken,片田舎のおっさん、剣聖になる ～ただの田舎の剣術師範だったのに、大成した弟子たちが俺を放ってくれない件～,"Katainaka no Ossan, Kensei ni Naru: Tada no Inaka no Kenjutsu Shihan Datta noni, Taisei shita Deshi-tachi ga Ore wo Houttekurenai Ken","Satou, Kazuki / Sagazaki, Shigeru",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,85
+unknown_or_zero_volume,義妹生活,gimai_seikatsu,義妹生活,Gimai Seikatsu,"Mikawa, Ghost / Kanade, Yumika",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,89
+unknown_or_zero_volume,うちの会社の小さい先輩の話,uchi_no_kaisha_no_chiisai_senpai_no_hanashi,うちの会社の小さい先輩の話,Uchi no Kaisha no Chiisai Senpai no Hanashi,Saisou,2020,0,ongoing,seinen,src/data/coreDB_extra4.js,90
+unknown_or_zero_volume,ドラマクイン,drama_queen,ドラマクイン,Drama Queen,"Ichikawa, Kuraku",2024,0,ongoing,shonen,src/data/coreDB_extra4.js,91
+unknown_or_zero_volume,ギャル嫁の秘密,gal_yome_no_himitsu,ギャル嫁の秘密,Gal Yome no Himitsu,Kudou,2023,0,ongoing,seinen,src/data/coreDB_extra4.js,92
+unknown_or_zero_volume,最凶の支援職【話術士】である俺は世界最強クランを従える,saikyou_no_shienshoku_wajutsushi_de_aru_ore_wa_sekai_saikyou_clan_wo_shitagaeru,最凶の支援職【話術士】である俺は世界最強クランを従える,"Saikyou no Shienshoku ""Wajutsushi"" de Aru Ore wa Sekai Saikyou Clan wo Shitagaeru",Yamorichan / Jaki,2020,0,ongoing,seinen,src/data/coreDB_extra4.js,93
+unknown_or_zero_volume,陰キャの僕に罰ゲムで告白してきたはずのギャルが、どう見ても僕にベタ惚れです,inkya_no_boku_ni_batsu_game_de_kokuhaku_shitekita_hazu_no_gal_ga_dou_mitemo_boku_ni_betabore_desu,陰キャの僕に罰ゲームで告白してきたはずのギャルが、どう見ても僕にベタ惚れです,"Inkya no Boku ni Batsu Game de Kokuhaku shitekita Hazu no Gal ga, Dou Mitemo Boku ni Betabore desu","Kanna, Nagomi / Yuishi",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,95
+unknown_or_zero_volume,願いを叶えてもらおうと悪魔を召喚したけど、可愛かったので結婚しました悪魔の新妻,negai_wo_kanaete_moraou_to_akuma_wo_shoukan_shita_kedo_kawaikatta_node_kekkon_shimashita_akuma_no_niizuma,願いを叶えてもらおうと悪魔を召喚したけど、可愛かったので結婚しました～悪魔の新妻～,"Negai wo Kanaete Moraou to Akuma wo Shoukan shita kedo, Kawaikatta node Kekkon shimashita: Akuma no Niizuma",Shiryu / Tonarikeru,2020,0,ongoing,seinen,src/data/coreDB_extra4.js,97
+unknown_or_zero_volume,めっちゃ召喚された件thecomic,meccha_shoukan_sareta_ken_the_comic,めっちゃ召喚された件 THE COMIC,Meccha Shoukan sareta Ken the Comic,"Mukojima, Kamome / Saitousa",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,98
+unknown_or_zero_volume,鍛冶屋ではじめる異世界スロライフ,kajiya_de_hajimeru_isekai_slow_life,鍛冶屋ではじめる異世界スローライフ,Kajiya de Hajimeru Isekai Slow Life,"Himori, Yoshino / Tamamaru",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,99
+unknown_or_zero_volume,東京エイリアンズ,tokyo_aliens,東京エイリアンズ,Tokyo Aliens,NAOE,2020,0,ongoing,shonen,src/data/coreDB_extra4.js,100
+unknown_or_zero_volume,地元のいじめっ子達に仕返ししようとしたら、別の戦いが始まった,jimoto_no_ijimekko_tachi_ni_shikaeshi_shiyou_to_shitara_betsu_no_tatakai_ga_hajimatta,地元のいじめっ子達に仕返ししようとしたら、別の戦いが始まった。,"Jimoto no Ijimekko-tachi ni Shikaeshi Shiyou to Shitara, Betsu no Tatakai ga Hajimatta.","Matsumoto, Kengo",2023,0,ongoing,seinen,src/data/coreDB_extra4.js,101
+unknown_or_zero_volume,おかえり、パパ,okaeri_papa,「おかえり、パパ」,"""Okaeri, Papa""",Semimaru,2022,0,ongoing,seinen,src/data/coreDB_extra4.js,102
+unknown_or_zero_volume,俺の死亡フラグが留まるところを知らない,ore_no_shibou_flag_ga_todomaru_tokoro_wo_shiranai,俺の死亡フラグが留まるところを知らない,Ore no Shibou Flag ga Todomaru Tokoro wo Shiranai,"Izumi / Otosu, Mitsuya",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,103
+unknown_or_zero_volume,経験済みなキミと、経験ゼロなオレが、お付き合いする話,keikenzumi_na_kimi_to_keiken_zero_na_ore_ga_otsukiai_suru_hanashi,経験済みなキミと、経験ゼロなオレが、お付き合いする話。,"Keikenzumi na Kimi to, Keiken Zero na Ore ga, Otsukiai suru Hanashi.","Nagaoka, Makiko / Carpaccio, Noyama",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,104
+unknown_or_zero_volume,ヘルモドやり込み好きのゲマは廃設定の異世界で無双するはじまりの召喚士,hell_mode_yarikomizuki_no_gamer_wa_hai_settei_no_isekai_de_musou_suru_hajimari_no_shoukanshi,ヘルモード ～やり込み好きのゲーマーは廃設定の異世界で無双する～ はじまりの召喚士,Hell Mode: Yarikomizuki no Gamer wa Hai Settei no Isekai de Musou suru - Hajimari no Shoukanshi,"Tetta, Enji / Hamuo",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,105
+unknown_or_zero_volume,生徒会にも穴はある,seitokai_ni_mo_ana_wa_aru,生徒会にも穴はある！,Seitokai ni mo Ana wa Aru!,"Muchi, Maro",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,107
+unknown_or_zero_volume,mujinaintothedeep,mujina_into_the_deep,MUJINA INTO THE DEEP,Mujina into the Deep,"Asano, Inio",2023,0,ongoing,seinen,src/data/coreDB_extra4.js,108
+unknown_or_zero_volume,バグエゴ,bug_ego,バグエゴ,Bug Ego,"ONE / Shitara, Kiyoto",2023,0,ongoing,shonen,src/data/coreDB_extra4.js,111
+unknown_or_zero_volume,彼女、人見知ります,kanojo_hitomishirimasu,彼女、人見知ります,"Kanojo, Hitomishirimasu","Miyajima, Reiji",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,112
+unknown_or_zero_volume,勇者パティにかわいい子がいたので、告白してみた,yuusha_party_ni_kawaii_ko_ga_ita_node_kokuhaku_shitemita,勇者パーティーにかわいい子がいたので、告白してみた。,"Yuusha Party ni Kawaii Ko ga Ita node, Kokuhaku shitemita.",Suisei / Kairi,2021,0,ongoing,seinen,src/data/coreDB_extra4.js,114
+unknown_or_zero_volume,配達先のお姉さんが怖すぎる,haitatsusaki_no_oneesan_ga_kowasugiru,配達先のお姉さんが怖すぎる,Haitatsusaki no Oneesan ga Kowasugiru,"Yorima, Riyo",2024,0,ongoing,seinen,src/data/coreDB_extra4.js,115
+unknown_or_zero_volume,のあ先輩はともだち,noa_senpai_wa_tomodachi,のあ先輩はともだち。,Noa-senpai wa Tomodachi.,"Akiyama, Enma",2023,0,ongoing,shonen,src/data/coreDB_extra4.js,116
+unknown_or_zero_volume,茜部先生は照れ知らず,akanabe_sensei_wa_tereshirazu,茜部先生は照れ知らず,Akanabe-sensei wa Tereshirazu,"Tajimi, Naoya",2023,0,ongoing,shonen,src/data/coreDB_extra4.js,117
+unknown_or_zero_volume,町人aは悪役令嬢をどうしても救いたいどぶと空と氷の姫君,chounin_a_wa_akuyaku_reijou_wo_doushitemo_sukuitai_dobu_to_sora_to_koori_no_himegimi,町人Aは悪役令嬢をどうしても救いたい ～どぶと空と氷の姫君～,Chounin A wa Akuyaku Reijou wo Doushitemo Sukuitai: Dobu to Sora to Koori no Himegimi,"Meguro, Sankichi / Isshiki, Koutarou",2021,0,ongoing,seinen,src/data/coreDB_extra4.js,119
+unknown_or_zero_volume,sランク冒険者である俺の娘たちは重度のファザコンでした,s_rank_boukensha_de_aru_ore_no_musume_tachi_wa_juudo_no_fathercon_deshita,Sランク冒険者である俺の娘たちは重度のファザコンでした,S-Rank Boukensha de Aru Ore no Musume-tachi wa Juudo no Fathercon deshita,"Nozomi, Tsubame / Tomobashi, Kametsu",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,121
+unknown_or_zero_volume,幼馴染とはラブコメにならない,osananajimi_to_wa_love_comedy_ni_naranai,幼馴染とはラブコメにならない,Osananajimi to wa Love Comedy ni Naranai,"Misu, Shinya",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,124
+unknown_or_zero_volume,今年の三石さんはどこかおかしい,kotoshi_no_mitsuishi_san_wa_dokoka_okashii,今年の三石さんはどこかおかしい,Kotoshi no Mitsuishi-san wa Dokoka Okashii,Shirosawa,2021,0,ongoing,seinen,src/data/coreDB_extra4.js,125
+unknown_or_zero_volume,サキュバス&ヒットマン,succubus_hitman,サキュバス&ヒットマン,Succubus & Hitman,"Fukami, Makoto / Tokiya, Seigo",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,127
+unknown_or_zero_volume,アンタと幼なじみってだけでもイヤなのに絶交から始まるs級美少女との学園成り上がり生活,anta_to_osananajimi_tte_dake_demo_iya_nanoni_zekkou_kara_hajimaru_s_kyuu_bishoujo_to_no_gakuen_nariagari_seikatsu,アンタと幼なじみってだけでもイヤなのに! ～絶交から始まるS級美少女との学園成り上がり生活～,Anta to Osananajimi tte dake demo Iya nanoni! Zekkou kara Hajimaru S-kyuu Bishoujo to no Gakuen Nariagari Seikatsu,"Yuuji, Yuuji / Touno, Kiri",2025,0,ongoing,shonen,src/data/coreDB_extra4.js,129
+unknown_or_zero_volume,ニュノマル,new_normal,ニューノーマル,New Normal,"Aihara, Akito",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,130
+unknown_or_zero_volume,カワイイなんて聞いてない,kawaii_nante_kiitenai,カワイイなんて聞いてない!!,Kawaii nante Kiitenai!!,"Harufuji, Nakaba",2020,0,ongoing,shojo,src/data/coreDB_extra4.js,135
+unknown_or_zero_volume,虚の記憶,kara_no_kioku,虚の記憶,Kara no Kioku,Eve / Newo,2020,0,ongoing,josei,src/data/coreDB_extra4.js,136
+unknown_or_zero_volume,ギャルゲマに褒められたい,gal_gamer_ni_homeraretai,ギャルゲーマーに褒められたい,Gal Gamer ni Homeraretai,Geshumaro,2022,0,ongoing,seinen,src/data/coreDB_extra4.js,137
+unknown_or_zero_volume,恋せよまやかし天使ども,koiseyo_mayakashi_tenshi_domo,恋せよまやかし天使ども,Koiseyo Mayakashi Tenshi-domo,"Uzuki, Coco",2023,0,ongoing,shojo,src/data/coreDB_extra4.js,138
+unknown_or_zero_volume,追放された転生重騎士はゲム知識で無双する,tsuihou_sareta_tensei_juukishi_wa_game_chishiki_de_musou_suru,追放された転生重騎士はゲーム知識で無双する,Tsuihou sareta Tensei Juukishi wa Game Chishiki de Musou suru,"Necoco / Brocco, Lee",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,140
+unknown_or_zero_volume,俺は星間国家の悪徳領主,ore_wa_seikan_kokka_no_akutoku_ryoushu,俺は星間国家の悪徳領主!,Ore wa Seikan Kokka no Akutoku Ryoushu!,"Mishima, Yomu / Nadajima, Kai",2021,0,ongoing,seinen,src/data/coreDB_extra4.js,143
+unknown_or_zero_volume,gantze,gantz_e,GANTZ:E,Gantz:E,"Oku, Hiroya / Kagetsu, Jin",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,146
+unknown_or_zero_volume,会社と私生活オンとオフ,kaisha_to_shiseikatsu_on_to_off,会社と私生活－オンとオフ－,Kaisha to Shiseikatsu: On to Off,"Kanazawa, Shinnosuke",2023,0,ongoing,seinen,src/data/coreDB_extra4.js,147
+unknown_or_zero_volume,俺の股間は美少女だったのか,ore_no_kokan_wa_bishoujo_datta_no_ka,俺の股間は美少女だったのか,Ore no Kokan wa Bishoujo Datta no ka,Unichiri,2022,0,ongoing,seinen,src/data/coreDB_extra4.js,148
+unknown_or_zero_volume,ラブコメ漫画に入ってしまったので、推しの負けヒロインを全力で幸せにする,love_comedy_manga_ni_haitteshimatta_node_oshi_no_make_heroine_wo_zenryoku_de_shiawase_ni_suru,ラブコメ漫画に入ってしまったので、推しの負けヒロインを全力で幸せにする,"Love Comedy Manga ni Haitteshimatta node, Oshi no Make Heroine wo Zenryoku de Shiawase ni Suru",Shiryu / Shiharu,2022,0,ongoing,seinen,src/data/coreDB_extra4.js,151
+unknown_or_zero_volume,ぼくの好きな人が好きな人,boku_no_suki_na_hito_ga_suki_na_hito,ぼくの好きな人が好きな人,Boku no Suki na Hito ga Suki na Hito,"Aoi, Sekina / Tsuzura, Ryou",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,153
+unknown_or_zero_volume,カノジョに浮気されていた俺が、小悪魔な後輩に懐かれています,kanojo_ni_uwaki_sareteita_ore_ga_koakuma_na_kouhai_ni_natsukareteimasu,カノジョに浮気されていた俺が、小悪魔な後輩に懐かれています,"Kanojo ni Uwaki Sareteita Ore ga, Koakuma na Kouhai ni Natsukareteimasu","Kazawa, Youhei / Omiya, Yuu",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,155
+unknown_or_zero_volume,真の実力はギリギリまで隠していようと思う,shin_no_jitsuryoku_wa_girigiri_made_kakushiteiyou_to_omou,真の実力はギリギリまで隠していようと思う,Shin no Jitsuryoku wa Girigiri made Kakushiteiyou to Omou,"Kamegoya, Sato / Nekoyasha",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,160
+unknown_or_zero_volume,経験値貯蓄でのんびり傷心旅行勇者と恋人に追放された戦士の無自覚ざまぁ,keikenchi_chochiku_de_nonbiri_shoushin_ryokou_yuusha_to_koibito_ni_tsuihou_sareta_senshi_no_mujikaku_zamaa,経験値貯蓄でのんびり傷心旅行 ～勇者と恋人に追放された戦士の無自覚ざまぁ～,Keikenchi Chochiku de Nonbiri Shoushin Ryokou: Yuusha to Koibito ni Tsuihou sareta Senshi no Mujikaku Zamaa,"Tokugawa, Lemon / Kanata, Yoshiki",2021,0,ongoing,seinen,src/data/coreDB_extra4.js,162
+unknown_or_zero_volume,ネトゲの嫁が人気アイドルだったクル系の彼女は現実でも嫁のつもりでいる,netoge_no_yome_ga_ninki_idol_datta_cool_kei_no_kanojo_wa_genjitsu_demo_yome_no_tsumori_de_iru,ネトゲの嫁が人気アイドルだった　～クール系の彼女は現実でも嫁のつもりでいる～,Netoge no Yome ga Ninki Idol datta: Cool-kei no Kanojo wa Genjitsu demo Yome no Tsumori de Iru,Abone / Mottso,2022,0,ongoing,seinen,src/data/coreDB_extra4.js,164
+unknown_or_zero_volume,galaxias,galaxias,GALAXIAS,Galaxias,"Hatezaka, Ao",2024,0,ongoing,shonen,src/data/coreDB_extra4.js,165
+unknown_or_zero_volume,才女のお世話高嶺の花だらけな名門校で、学院一のお嬢様生活能力皆無を陰ながらお世話することになりました,saijo_no_osewa_takane_no_hanadarake_na_meimonkou_de_gakuin_ichi_no_ojousama_seikatsu_nouryoku_kaimu_wo_kagenagara_osewa_suru_koto_ni_narimashita,才女のお世話 高嶺の花だらけな名門校で、学院一のお嬢様（生活能力皆無）を陰ながらお世話することになりました,"Saijo no Osewa: Takane no Hanadarake na Meimonkou de, Gakuin Ichi no Ojousama (Seikatsu Nouryoku Kaimu) wo Kagenagara Osewa suru Koto ni Narimashita","Mizushima, Sorahiko / Sakaishi, Yuusaku",2021,0,ongoing,seinen,src/data/coreDB_extra4.js,167
+unknown_or_zero_volume,となりの黒川さん,tonari_no_kurokawa_san,となりの黒川さん,Tonari no Kurokawa-san,"Itou, Kyousuke",2024,0,ongoing,shonen,src/data/coreDB_extra4.js,168
+unknown_or_zero_volume,異世界で配信活動をしたら大量のヤンデレ信者を生み出してしまった件,isekai_de_haishin_katsudou_wo_shitara_tairyou_no_yandere_shinja_wo_umidashiteshimatta_ken,異世界で配信活動をしたら大量のヤンデレ信者を生み出してしまった件,Isekai de Haishin Katsudou wo Shitara Tairyou no Yandere Shinja wo Umidashiteshimatta Ken,"Myon / Iyomine, Tsuku",2023,0,ongoing,seinen,src/data/coreDB_extra4.js,169
+unknown_or_zero_volume,aランクパティを離脱した俺は、元教え子たちと迷宮深部を目指す,a_rank_party_wo_ridatsu_shita_ore_wa_moto_oshiego_tachi_to_meikyuu_shinbu_wo_mezasu,Aランクパーティを離脱した俺は、元教え子たちと迷宮深部を目指す。,"A-Rank Party wo Ridatsu shita Ore wa, Moto Oshiego-tachi to Meikyuu Shinbu wo Mezasu.","Yuuri / Unagi, Kousuke",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,171
+unknown_or_zero_volume,時森さんが無防備です,tokimori_san_ga_muboubi_desu,時森さんが無防備です!!,Tokimori-san ga Muboubi desu!!,Tazawa,2022,0,ongoing,seinen,src/data/coreDB_extra4.js,173
+unknown_or_zero_volume,放課後のアイドルには秘密がある,houkago_no_idol_ni_wa_himitsu_ga_aru,放課後のアイドルには秘密がある,Houkago no Idol ni wa Himitsu ga Aru,"Amane, Kashiko",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,174
+unknown_or_zero_volume,雨と君と,ame_to_kimi_to,雨と君と,Ame to Kimi to,"Nikaidou, Kou",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,178
+unknown_or_zero_volume,負けヒロインが多すぎる@comic,make_heroine_ga_oosugiru_comic,負けヒロインが多すぎる!@comic,Make Heroine ga Oosugiru! @comic,"Itachi / Amamori, Takibi",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,179
+unknown_or_zero_volume,うしろの席のぎゃるに好かれてしまったもう俺はダメかもしれない,ushiro_no_seki_no_gal_ni_sukarete_shimatta_mou_ore_wa_dame_kamoshirenai,うしろの席のぎゃるに好かれてしまった。もう俺はダメかもしれない。,Ushiro no Seki no Gal ni Sukarete Shimatta. Mou Ore wa Dame Kamoshirenai.,"Michinoku, Koharu / Suya, Maromi",2023,0,ongoing,shonen,src/data/coreDB_extra4.js,180
+unknown_or_zero_volume,クプルムの花嫁,cuprum_no_hanayome,クプルムの花嫁,Cuprum no Hanayome,namo,2020,0,ongoing,seinen,src/data/coreDB_extra4.js,181
+unknown_or_zero_volume,怠惰な悪辱貴族に転生した俺、シナリオをぶっ壊したら規格外の魔力で最凶になった,taida_na_akujoku_kizoku_ni_tensei_shita_ore_scenario_wo_bukkowashitara_kikakugai_no_maryoku_de_saikyou_ni_natta,怠惰な悪辱貴族に転生した俺、シナリオをぶっ壊したら規格外の魔力で最凶になった,"Taida na Akujoku Kizoku ni Tensei shita Ore, Scenario wo Bukkowashitara Kikakugai no Maryoku de Saikyou ni Natta","Kikuchi, Kaisei / Oda, Douma",2024,0,ongoing,seinen,src/data/coreDB_extra4.js,185
+unknown_or_zero_volume,竜と歩む成り上がり冒険者道用済みとしてsランクパティから追放された回復魔術師、捨てられた先で最強の神竜を復活させてしまう,ryuu_to_ayumu_nariagari_boukensha_dou_youzumi_toshite_s_rank_party_kara_tsuihou_sareta_kaifuku_majutsushi_suterareta_saki_de_saikyou_no_shinryuu_wo_fukkatsu_sasete_shimau,竜と歩む成り上がり冒険者道～用済みとしてSランクパーティから追放された回復魔術師、捨てられた先で最強の神竜を復活させてしまう～,"Ryuu to Ayumu Nariagari Boukensha-dou: Youzumi toshite S-Rank Party kara Tsuihou sareta Kaifuku Majutsushi, Suterareta Saki de Saikyou no Shinryuu wo Fukkatsu sasete Shimau","Kishimoto, Kazuha / @Karikari Ume",2021,0,ongoing,seinen,src/data/coreDB_extra4.js,186
+unknown_or_zero_volume,勇者パティを追い出された器用貧乏パティ事情で付与術士をやっていた剣士、万能へと至る,yuusha_party_wo_oidasareta_kiyoubinbou_party_jijou_de_fuyo_jutsushi_wo_yatteita_kenshi_bannou_e_to_itaru,勇者パーティを追い出された器用貧乏　～パーティ事情で付与術士をやっていた剣士、万能へと至る～,"Yuusha Party wo Oidasareta Kiyoubinbou: Party Jijou de Fuyo Jutsushi wo Yatteita Kenshi, Bannou e to Itaru","Yonezou / Togami, Itsuki",2021,0,ongoing,seinen,src/data/coreDB_extra4.js,187
+unknown_or_zero_volume,センシティブボイ,sensitive_boy,センシティブ・ボーイ,Sensitive Boy,46,2022,0,ongoing,seinen,src/data/coreDB_extra4.js,188
+unknown_or_zero_volume,透明男と人間女そのうち夫婦になるふたり,toumei_otoko_to_ningen_onna_sonouchi_fuufu_ni_naru_futari,透明男と人間女～そのうち夫婦になるふたり～,Toumei Otoko to Ningen Onna: Sonouchi Fuufu ni Naru Futari,Iwatobineko,2021,0,ongoing,seinen,src/data/coreDB_extra4.js,190
+unknown_or_zero_volume,異世界ウォキング,isekai_walking,異世界ウォーキング,Isekai Walking,"Arukuhito / Ogawa, Kei",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,191
+unknown_or_zero_volume,田んぼで拾った女騎士、田舎で俺の嫁だと思われている,tanbo_de_hirotta_onna_kishi_inaka_de_ore_no_yome_dato_omowareteiru,田んぼで拾った女騎士、田舎で俺の嫁だと思われている,"Tanbo de Hirotta Onna Kishi, Inaka de Ore no Yome dato Omowareteiru","Renkinou / Otoha, Saori",2023,0,ongoing,shonen,src/data/coreDB_extra4.js,192
+unknown_or_zero_volume,お気楽領主の楽しい領地防衛,okiraku_ryoushu_no_tanoshii_ryouchi_bouei,お気楽領主の楽しい領地防衛,Okiraku Ryoushu no Tanoshii Ryouchi Bouei,"Inoue, Mitsuru / Aoiro, Maro",2021,0,ongoing,seinen,src/data/coreDB_extra4.js,193
+unknown_or_zero_volume,ドロイング最強漫画家はお絵描きスキルで異世界無双する,drawing_saikyou_mangaka_wa_oekaki_skill_de_isekai_musou_suru,ドローイング　最強漫画家はお絵描きスキルで異世界無双する!,Drawing: Saikyou Mangaka wa Oekaki Skill de Isekai Musou suru!,"Im, Dal Young / Kim, Kwang Hyun",2021,0,ongoing,seinen,src/data/coreDB_extra4.js,195
+unknown_or_zero_volume,税金で買った本,zeikin_de_katta_hon,税金で買った本,Zeikin de Katta Hon,"Keiyama, Kei / Zuino",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,196
+unknown_or_zero_volume,ウルフちゃんは澄ましたい,wolf_chan_wa_sumashitai,ウルフちゃんは澄ましたい,Wolf-chan wa Sumashitai,"Honno, Shiori",2023,0,ongoing,seinen,src/data/coreDB_extra4.js,198
+unknown_or_zero_volume,最強陰陽師の異世界転生記下僕の妖怪どもに比べてモンスタが弱すぎるんだが,saikyou_onmyouji_no_isekai_tenseiki_geboku_no_youkai_domo_ni_kurabete_monster_ga_yowasugirun_da_ga,最強陰陽師の異世界転生記 ～下僕の妖怪どもに比べてモンスターが弱すぎるんだが～,Saikyou Onmyouji no Isekai Tenseiki: Geboku no Youkai-domo ni Kurabete Monster ga Yowasugirun da ga,"Okazaki, Toshinori / Kosuzu, Kiichi",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,199
+unknown_or_zero_volume,失業賢者の成り上がり嫌われた才能は世界最強でした,shitsugyou_kenja_no_nariagari_kirawareta_sainou_wa_sekai_saikyou_deshita,失業賢者の成り上がり～嫌われた才能は世界最強でした～,Shitsugyou Kenja no Nariagari: Kirawareta Sainou wa Sekai Saikyou deshita,"Mikawa, Ghost / Oomine",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,202
+unknown_or_zero_volume,異世界転移したのでチトを生かして魔法剣士やることにする,isekai_teni_shita_node_cheat_wo_ikashite_mahou_kenshi_yaru_koto_ni_suru,異世界転移したのでチートを生かして魔法剣士やることにする,Isekai Teni shita node Cheat wo Ikashite Mahou Kenshi Yaru Koto ni Suru,"Shinkou, Shotou / Nanora",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,203
+unknown_or_zero_volume,どうか俺を放っておいてくれなぜかぼっちの終わった高校生活を彼女が変えようとしてくる,douka_ore_wo_houtteoite_kure_nazeka_bocchi_no_owatta_koukou_seikatsu_wo_kanojo_ga_kaeyou_to_shitekuru,どうか俺を放っておいてくれ なぜかぼっちの終わった高校生活を彼女が変えようとしてくる,Douka Ore wo Houtteoite Kure: Nazeka Bocchi no Owatta Koukou Seikatsu wo Kanojo ga Kaeyou to Shitekuru,"Aizaki, Kabegiwa / Shiki, Mutsuko",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,204
+unknown_or_zero_volume,sランクパティから解雇された【呪具師】呪いのアイテムしか作れませんが、その性能はアティファクト級なり,s_rank_party_kara_kaiko_sareta_jugushi_noroi_no_item_shika_tsukuremasen_ga_sono_seinou_wa_artifact_kyuu_nari,Sランクパーティから解雇された【呪具師】～『呪いのアイテム』しか作れませんが、その性能はアーティファクト級なり……！～,"S-Rank Party kara Kaiko sareta ""Jugushi"": ""Noroi no Item"" shika Tsukuremasen ga, Sono Seinou wa Artifact-kyuu nari......!","LAgun / Ogawa, Nishiki",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,205
+unknown_or_zero_volume,英雄と賢者の転生婚かつての好敵手と婚約して最強夫婦になりました,eiyuu_to_kenja_no_tenseikon_katsute_no_koutekishu_to_konyaku_shite_saikyou_fuufu_ni_narimashita,英雄と賢者の転生婚～かつての好敵手と婚約して最強夫婦になりました～,Eiyuu to Kenja no Tenseikon: Katsute no Koutekishu to Konyaku shite Saikyou Fuufu ni Narimashita,"Fujiki, Washiro / Nishi, Riku",2023,0,ongoing,shonen,src/data/coreDB_extra4.js,208
+unknown_or_zero_volume,僕の彼女はデッカワイイ,boku_no_kanojo_wa_dekkawaii,僕の彼女はデッカワイイ,Boku no Kanojo wa Dekkawaii,sanorin,2024,0,ongoing,seinen,src/data/coreDB_extra4.js,209
+unknown_or_zero_volume,歴史に残る悪女になるぞ悪役令嬢になるほど王子の溺愛は加速するようです,rekishi_ni_nokoru_akujo_ni_naru_zo_akuyaku_reijou_ni_naru_hodo_ouji_no_dekiai_wa_kasoku_suru_you_desu,歴史に残る悪女になるぞ 悪役令嬢になるほど王子の溺愛は加速するようです！,Rekishi ni Nokoru Akujo ni Naru zo: Akuyaku Reijou ni Naru hodo Ouji no Dekiai wa Kasoku suru you desu!,"Hoshi, Akari / Ookido, Izumi",2020,0,ongoing,shojo,src/data/coreDB_extra4.js,210
+unknown_or_zero_volume,物語の黒幕に転生して,monogatari_no_kuromaku_ni_tensei_shite,物語の黒幕に転生して,Monogatari no Kuromaku ni Tensei shite,"Segawa, Hajime / Yuuki, Ryou",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,211
+unknown_or_zero_volume,人生逆転浮気され、えん罪を着せられた俺が、学園一の美少女に懐かれる,jinsei_gyakuten_uwaki_sare_enzai_wo_kiserareta_ore_ga_gakuen_ichi_no_bishoujo_ni_natsukareru,人生逆転 浮気され、えん罪を着せられた俺が、学園一の美少女に懐かれる,"Jinsei Gyakuten: Uwaki sare, Enzai wo Kiserareta Ore ga, Gakuen Ichi no Bishoujo ni Natsukareru","Igakuchi, Ei / D",2025,0,ongoing,seinen,src/data/coreDB_extra4.js,212
+unknown_or_zero_volume,姫騎士は蛮族〈バルバロイ〉の嫁,himekishi_wa_barbaroi_no_yome,姫騎士は蛮族〈バルバロイ〉の嫁,Himekishi wa Barbaroi no Yome,"Kotoba, Noriaki",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,215
+unknown_or_zero_volume,育成スキルはもういらないと勇者パティを解雇されたので、退職金がわりにもらった【領地】を強くしてみる,ikusei_skill_wa_mou_iranai_to_yuusha_party_wo_kaikosareta_node_taishoku_kingawari_ni_moratta_ryouchi_wo_tsuyoku_shitemiru,育成スキルはもういらないと勇者パーティを解雇されたので、退職金がわりにもらった【領地】を強くしてみる,"Ikusei Skill wa Mou Iranai to Yuusha Party wo Kaikosareta node, Taishoku Kingawari ni Moratta ""Ryouchi"" wo Tsuyoku shitemiru","Takahashi, Yoshiyuki / Kurooji",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,216
+unknown_or_zero_volume,最弱テイマはゴミ拾いの旅を始めました@comic,saijaku_tamer_wa_gomi_hiroi_no_tabi_wo_hajimemashita_comic,最弱テイマーはゴミ拾いの旅を始めました。＠COMIC,Saijaku Tamer wa Gomi Hiroi no Tabi wo Hajimemashita. @comic,"Fukino, Tou / Honobonoru500",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,217
+unknown_or_zero_volume,ギャルに優しいオタク君,gal_ni_yasashii_otaku_kun,ギャルに優しいオタク君,Gal ni Yasashii Otaku-kun,Souchuu / 138 Neko,2022,0,ongoing,shonen,src/data/coreDB_extra4.js,218
+unknown_or_zero_volume,ダンジョンの幼なじみ,dungeon_no_osananajimi,ダンジョンの幼なじみ,Dungeon no Osananajimi,Kuma,2022,0,ongoing,seinen,src/data/coreDB_extra4.js,219
+unknown_or_zero_volume,ボイッシュ彼女が可愛すぎる,boyish_kanojo_ga_kawaisugiru,ボーイッシュ彼女が可愛すぎる,Boyish Kanojo ga Kawaisugiru,"Gyuunyuu, Mugigohan",2025,0,ongoing,seinen,src/data/coreDB_extra4.js,224
+unknown_or_zero_volume,unnamedmemory,unnamed_memory,Unnamed Memory,Unnamed Memory,"Etsumi, Naoki / Furumiya, Kuji",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,225
+unknown_or_zero_volume,龍とカメレオン,ryuu_to_chameleon,龍とカメレオン,Ryuu to Chameleon,"Ishiyama, Ryou",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,226
+unknown_or_zero_volume,高校時代に傲慢だった女王様との同棲生活は意外と居心地が悪くない,koukou_jidai_ni_gouman_datta_joou_sama_to_no_dousei_seikatsu_wa_igai_to_igokochi_ga_warukunai,高校時代に傲慢だった女王様との同棲生活は意外と居心地が悪くない,Koukou Jidai ni Gouman datta Joou-sama to no Dousei Seikatsu wa Igai to Igokochi ga Warukunai,"Togawa, Ritsu / Dozaemon, Misoneta",2024,0,ongoing,seinen,src/data/coreDB_extra4.js,229
+unknown_or_zero_volume,鵺の陰陽師,nue_no_onmyouji,鵺の陰陽師,Nue no Onmyouji,"Kawae, Kouta",2023,0,ongoing,shonen,src/data/coreDB_extra4.js,230
+unknown_or_zero_volume,辺境ぐらしの魔王、転生して最強の魔術師になる,henkyougurashi_no_maou_tensei_shite_saikyou_no_majutsushi_ni_naru,辺境ぐらしの魔王、転生して最強の魔術師になる,"Henkyougurashi no Maou, Tensei shite Saikyou no Majutsushi ni Naru","Sengetsu, Sakaki / Muraichi",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,231
+unknown_or_zero_volume,難攻不落の魔王城へようこそデバフは不要と勇者パティを追い出された黒魔導士、魔王軍の最高幹部に迎えられる,nankoufuraku_no_maoujou_e_youkoso_debuff_wa_fuyou_to_yuusha_party_wo_oidasareta_kuro_madoushi_maougun_no_saikou_kanbu_ni_mukaerareru,難攻不落の魔王城へようこそ～デバフは不要と勇者パーティーを追い出された黒魔導士、魔王軍の最高幹部に迎えられる～,"Nankoufuraku no Maoujou e Youkoso: Debuff wa Fuyou to Yuusha Party wo Oidasareta Kuro Madoushi, Maougun no Saikou Kanbu ni Mukaerareru","Mitaka, Hozumi / Kaidouj1",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,234
+unknown_or_zero_volume,魔女大戦32人の異才の魔女は殺し合う,majo_taisen_32_nin_no_isai_no_majo_wa_koroshiau,魔女大戦 32人の異才の魔女は殺し合う,Majo Taisen: 32-nin no Isai no Majo wa Koroshiau,"Shiozuka, Makoto / Kawamoto, Homura",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,235
+unknown_or_zero_volume,異世界サムライ,isekai_samurai,異世界サムライ,Isekai Samurai,"Saitou, Keigo",2023,0,ongoing,seinen,src/data/coreDB_extra4.js,239
+unknown_or_zero_volume,しのびごと,shinobigoto,しのびごと,Shinobigoto,"Takegushi, Ippon / Mitarashi, Santa",2024,0,ongoing,shonen,src/data/coreDB_extra4.js,240
+unknown_or_zero_volume,悪祓士〈エクソシスト〉のキヨシくん,exorcist_no_kiyoshi_kun,悪祓士〈エクソシスト〉のキヨシくん,Exorcist no Kiyoshi-kun,"Usui, Shouichi",2024,0,ongoing,shonen,src/data/coreDB_extra4.js,244
+unknown_or_zero_volume,婚約破棄された令嬢を拾った俺が、イケナイことを教え込む美味しいものを食べさせておしゃれをさせて、世界一幸せな少女にプロデュス,konyaku_haki_sareta_reijou_wo_hirotta_ore_ga_ikenai_koto_wo_oshiekomu_oishii_mono_wo_tabesasete_oshare_wo_sasete_sekaiichi_shiawase_na_shoujo_ni_produce,婚約破棄された令嬢を拾った俺が、イケナイことを教え込む ～美味しいものを食べさせておしゃれをさせて、世界一幸せな少女にプロデュース!～,"Konyaku Haki sareta Reijou wo Hirotta Ore ga, Ikenai Koto wo Oshiekomu: Oishii Mono wo Tabesasete Oshare wo Sasete, Sekaiichi Shiawase na Shoujo ni Produce!","Katsura, Ichiho / Fukada, Sametarou",2020,0,ongoing,josei,src/data/coreDB_extra4.js,245
+unknown_or_zero_volume,後藤さんは振り向かせたい,gotou_san_wa_furimukasetai,後藤さんは振り向かせたい！,Gotou-san wa Furimukasetai!,Mikipon,2021,0,ongoing,seinen,src/data/coreDB_extra4.js,247
+unknown_or_zero_volume,救世主〈メシア〉異世界を救った元勇者が魔物のあふれる現実世界を無双する,messiah_isekai_wo_sukutta_motoyuusha_ga_mamono_no_afureru_genjitsu_sekai_wo_musou_suru,救世主〈メシア〉～異世界を救った元勇者が魔物のあふれる現実世界を無双する～,Messiah: Isekai wo Sukutta Motoyuusha ga Mamono no Afureru Genjitsu Sekai wo Musou suru,"Heisei, Owari / Harada, Eri",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,248
+unknown_or_zero_volume,eldenring黄金樹への道,elden_ring_ougonju_e_no_michi,ELDEN RING 黄金樹への道,Elden Ring: Ougonju e no Michi,"Tobita, Nikiichi",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,249
+unknown_or_zero_volume,迷子になっていた幼女を助けたら、お隣に住む美少女留学生が家に遊びに来るようになった件について,maigo_ni_natteita_youjo_wo_tasuketara_otonari_ni_sumu_bishoujo_ryuugakusei_ga_ie_ni_asobi_ni_kuru_you_ni_natta_ken_ni_tsuite,迷子になっていた幼女を助けたら、お隣に住む美少女留学生が家に遊びに来るようになった件について,"Maigo ni Natteita Youjo wo Tasuketara, Otonari ni Sumu Bishoujo Ryuugakusei ga Ie ni Asobi ni Kuru you ni Natta Ken ni Tsuite",Pentagon / Nekokuro,2024,0,ongoing,seinen,src/data/coreDB_extra4.js,254
+unknown_or_zero_volume,まんきつしたい常連さん,mankitsu_shitai_jouren_san,まんきつしたい常連さん,Mankitsu shitai Jouren-san,Shinmirin,2023,0,ongoing,seinen,src/data/coreDB_extra4.js,256
+unknown_or_zero_volume,かわいい彼女ちゃん,kawaii_kanojo_chan,かわいい彼女ちゃん,Kawaii Kanojo-chan,Semimaru,2023,0,ongoing,seinen,src/data/coreDB_extra4.js,257
+unknown_or_zero_volume,今日から始める幼なじみ,kyou_kara_hajimeru_osananajimi,今日から始める幼なじみ,Kyou kara Hajimeru Osananajimi,"Obiya, Midori",2021,0,ongoing,seinen,src/data/coreDB_extra4.js,263
+unknown_or_zero_volume,俺にトラウマを与えた女子達がチラチラ見てくるけど、残念ですが手遅れです,ore_ni_trauma_wo_ataeta_joshi_tachi_ga_chirachira_mitekuru_kedo_zannen_desu_ga_teokure_desu,俺にトラウマを与えた女子達がチラチラ見てくるけど、残念ですが手遅れです,"Ore ni Trauma wo Ataeta Joshi-tachi ga Chirachira Mitekuru kedo, Zannen desu ga Teokure desu","Ichitaka / Midou, Yuragi",2023,0,ongoing,seinen,src/data/coreDB_extra4.js,264
+unknown_or_zero_volume,満州アヘンスクワッド,manshuu_ahen_squad,満州アヘンスクワッド,Manshuu Ahen Squad,"Monma, Tsukasa / Shikako",2020,0,ongoing,shonen,src/data/coreDB_extra4.js,265
+unknown_or_zero_volume,僕のいけずな婚約者,boku_no_ikezu_na_konyakusha,僕のいけずな婚約者,Boku no Ikezu na Konyakusha,"Fuyutani, Riku",2024,0,ongoing,seinen,src/data/coreDB_extra4.js,268
+unknown_or_zero_volume,隣のステラ,tonari_no_stella,隣のステラ,Tonari no Stella,Ammitsu,2022,0,ongoing,shojo,src/data/coreDB_extra4.js,269
+unknown_or_zero_volume,北海道の現役ハンタが異世界に放り込まれてみたエルフ嫁と巡る異世界狩猟ライフ,hokkaido_no_geneki_hunter_ga_isekai_ni_hourikomaretemita_elf_yome_to_meguru_isekai_shuryou_life,北海道の現役ハンターが異世界に放り込まれてみた～エルフ嫁と巡る異世界狩猟ライフ～,Hokkaido no Geneki Hunter ga Isekai ni Hourikomaretemita: Elf Yome to Meguru Isekai Shuryou Life,Jupiter Studio / Kaltoma,2020,0,ongoing,seinen,src/data/coreDB_extra4.js,274
+unknown_or_zero_volume,シリアルキラ異世界に降り立つ,serial_killer_isekai_ni_oritatsu,シリアルキラー異世界に降り立つ,Serial Killer Isekai ni Oritatsu,"Kawamoto, Homura / Hiro",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,276
+unknown_or_zero_volume,悪人面したb級冒険者主人公とその幼馴染たちのパパになる,akuninzura_shita_b_kyuu_boukensha_shujinkou_to_sono_osananajimi_tachi_no_papa_ni_naru,悪人面したB級冒険者 主人公とその幼馴染たちのパパになる,Akuninzura shita B-kyuu Boukensha: Shujinkou to Sono Osananajimi-tachi no Papa ni Naru,Kogeme / Enji,2023,0,ongoing,seinen,src/data/coreDB_extra4.js,277
+unknown_or_zero_volume,ダウィン事変,darwin_jihen,ダーウィン事変,Darwin Jihen,"Umezawa, Shun",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,279
+unknown_or_zero_volume,悪役令嬢転生おじさん,akuyaku_reijou_tensei_ojisan,悪役令嬢転生おじさん,Akuyaku Reijou Tensei Ojisan,"Ueyama, Michirou",2020,0,ongoing,seinen,src/data/coreDB_extra4.js,280
+unknown_or_zero_volume,降り積もれ孤独な死よ,furitsumore_kodoku_na_shi_yo,降り積もれ孤独な死よ,Furitsumore Kodoku na Shi yo,"Inoryuu, Hajime / Itou, Shouta",2021,0,ongoing,shonen,src/data/coreDB_extra4.js,281
+unknown_or_zero_volume,隣の席のヤンキ清水さんが髪を黒く染めてきた,tonari_no_seki_no_yankee_shimizu_san_ga_kami_wo_kuroku_sometekita,隣の席のヤンキー清水さんが髪を黒く染めてきた,Tonari no Seki no Yankee Shimizu-san ga Kami wo Kuroku Sometekita,"Teika / Sanada, Waka",2024,0,ongoing,shonen,src/data/coreDB_extra4.js,282
+unknown_or_zero_volume,最凶の魔王に鍛えられた勇者、異世界帰還者たちの学園で無双する,saikyou_no_maou_ni_kitaerareta_yuusha_isekai_kikansha_tachi_no_gakuen_de_musou_suru,最凶の魔王に鍛えられた勇者、異世界帰還者たちの学園で無双する,"Saikyou no Maou ni Kitaerareta Yuusha, Isekai Kikansha-tachi no Gakuen de Musou suru","Iwaba / Konno, Chiaki",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,283
+unknown_or_zero_volume,アサシン&シンデレラ,assassin_cinderella,アサシン＆シンデレラ,Assassin & Cinderella,"Natsuno, Yuzo",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,285
+unknown_or_zero_volume,黒猫と魔女の教室,kuroneko_to_majo_no_kyoushitsu,黒猫と魔女の教室,Kuroneko to Majo no Kyoushitsu,"Kaneda, Yousuke",2022,0,ongoing,shonen,src/data/coreDB_extra4.js,286
+unknown_or_zero_volume,ぼっちの僕に強制彼女がやってきた,bocchi_no_boku_ni_kyousei_kanojo_ga_yattekita,ぼっちの僕に強制彼女がやってきた,Bocchi no Boku ni Kyousei Kanojo ga Yattekita,"Kuri, Nonoka",2021,0,ongoing,seinen,src/data/coreDB_extra4.js,288
+unknown_or_zero_volume,俺だけ不遇スキルの異世界召喚叛逆記最弱スキル【吸収】が全てを飲み込むまで,ore_dake_fuguu_skill_no_isekai_shoukan_hangyakuki_saijaku_skill_kyuushuu_ga_subete_wo_nomikomu_made,俺だけ不遇スキルの異世界召喚叛逆記～最弱スキル【吸収】が全てを飲み込むまで～,"Ore dake Fuguu Skill no Isekai Shoukan Hangyakuki: Saijaku Skill ""Kyuushuu"" ga Subete wo Nomikomu made","SkyFarm / Takahata, Ryuusei",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,290
+unknown_or_zero_volume,witchriv,witchriv,WITCHRIV,WITCHRIV,Hakuri,2025,0,ongoing,shonen,src/data/coreDB_extra4.js,291
+unknown_or_zero_volume,じつは義妹でした最近できた義理の弟の距離感がやたら近いわけ,jitsu_wa_imouto_deshita_saikin_dekita_giri_no_otouto_no_kyorikan_ga_yatara_chikai_wake,じつは義妹でした。～最近できた義理の弟の距離感がやたら近いわけ～,Jitsu wa Imouto deshita.: Saikin Dekita Giri no Otouto no Kyorikan ga Yatara Chikai Wake,"Shirai, Muku / Sakai, Shoukichi",2022,0,ongoing,seinen,src/data/coreDB_extra4.js,296
+unknown_or_zero_volume,ドッグスレッド,dogsred,ドッグスレッド,Dogsred,"Noda, Satoru",2023,0,ongoing,shonen,src/data/coreDB_extra4.js,297
+unknown_or_zero_volume,若葉ちゃんはわからせたい,wakaba_chan_wa_wakarasetai,若葉ちゃんはわからせたい!,Wakaba-chan wa Wakarasetai!,Konkichi,2023,0,ongoing,seinen,src/data/coreDB_extra4.js,298
+unknown_or_zero_volume,神之塔,tower_god,神之塔,Tower of God,SIU,2010,0,ongoing,web,src/data/coreDB.js,188
+unknown_or_zero_volume,ノブレス,noblesse,ノブレス,Noblesse,Son Jeho/Lee Kwangsu,2007,0,completed,web,src/data/coreDB.js,189
+unknown_or_zero_volume,ゴッドオブハイスクル,god_high_school,ゴッド・オブ・ハイスクール,The God of High School,Park Yongje,2011,0,completed,web,src/data/coreDB.js,190
+unknown_or_zero_volume,外見至上主義,lookism,外見至上主義,Lookism,Park Tae-joon,2014,0,ongoing,web,src/data/coreDB.js,191
+unknown_or_zero_volume,スイトホム,sweet_home,スイートホーム,Sweet Home,Kim Carnby/Hwang Young-chan,2017,0,completed,web,src/data/coreDB.js,192
+unknown_or_zero_volume,bastard,boys_next_door,Bastard,Bastard,Kim Carnby/Hwang Young-chan,2014,0,completed,web,src/data/coreDB.js,193
+unknown_or_zero_volume,外見至上主義,questism,外見至上主義,Quest Supremacy,박성덕,2020,0,ongoing,web,src/data/coreDB.js,194
+unknown_or_zero_volume,女神降臨,true_beauty,女神降臨,True Beauty,Yaongyi,2018,0,ongoing,web,src/data/coreDB.js,195

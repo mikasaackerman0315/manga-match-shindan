@@ -12,16 +12,17 @@ export function generateMetadata({ params }) {
   const theme = findTheme(params.slug);
   if (!theme) return {};
   const cleanTitle = theme.title.replace(/漫画おすすめ$/, "");
-  const description = `${theme.lead} ${theme.items.slice(0, 3).map((item) => item.title).join("、")}など10作品をランキング形式で紹介します。`;
+  const description = `${theme.lead} ${theme.items.slice(0, 3).map((item) => item.title).join("、")}などを、検索キーワードではなく気分や読み味から選べるテーマ別ガイドとして紹介します。`;
+  const pageTitle = `${cleanTitle}気分別漫画ガイド | マンガマッチ診断`;
 
   return {
-    title: `${cleanTitle}テーマ別おすすめ10選 | マンガマッチ診断`,
+    title: pageTitle,
     description,
     alternates: {
       canonical: `/themes/${theme.slug}`,
     },
     openGraph: {
-      title: `${cleanTitle}テーマ別おすすめ10選 | マンガマッチ診断`,
+      title: pageTitle,
       description,
       url: `${siteUrl}/themes/${theme.slug}`,
       siteName: "マンガマッチ診断",
@@ -30,7 +31,7 @@ export function generateMetadata({ params }) {
     },
     twitter: {
       card: "summary",
-      title: `${cleanTitle}テーマ別おすすめ10選 | マンガマッチ診断`,
+      title: pageTitle,
       description,
     },
   };

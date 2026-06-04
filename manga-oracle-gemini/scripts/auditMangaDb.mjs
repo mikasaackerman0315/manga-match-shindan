@@ -14,6 +14,7 @@ const outDir = path.join(rootDir, "docs");
 const summaryPath = path.join(outDir, "db-audit-summary.md");
 const duplicateCsvPath = path.join(outDir, "db-audit-duplicate-titles.csv");
 const unknownVolumesCsvPath = path.join(outDir, "db-audit-unknown-volumes.csv");
+const articleCoverageCsvPath = path.join(outDir, "db-audit-article-coverage.csv");
 
 function readDbArray(filePath) {
   const source = fs.readFileSync(filePath, "utf8");
@@ -31,7 +32,8 @@ function readDbArray(filePath) {
 function normalizeTitle(title) {
   return `${title || ""}`
     .toLowerCase()
-    .replace(/[!！?？:：・.\s　\-ー〜~]/g, "")
+    .normalize("NFKC")
+    .replace(/[!！?？:：;；,，.。・･\s\-ー―–—~〜「」『』（）()［\][]/g, "")
     .trim();
 }
 
@@ -83,6 +85,49 @@ function duplicatePriority(matches) {
   return "low";
 }
 
+function isUnknownVolume(entry) {
+  return !Number.isInteger(entry.volumes) || entry.volumes <= 0 || entry.volumes > 250;
+}
+
+function walkFiles(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) return walkFiles(fullPath);
+    return [fullPath];
+  });
+}
+
+function extractArticleTitles() {
+  const appDir = path.join(rootDir, "src", "app");
+  const files = walkFiles(appDir).filter((file) => file.endsWith("page.jsx") || file.endsWith("themeData.js"));
+  const rows = [];
+
+  files.forEach((file) => {
+    const source = fs.readFileSync(file, "utf8");
+    const relativeFile = path.relative(rootDir, file).replaceAll("\\", "/");
+
+    for (const match of source.matchAll(/\{\s*title:\s*"([^"]+)"\s*,\s*meta:\s*"/g)) {
+      rows.push({ title: match[1], sourceFile: relativeFile, sourceType: "seo_article_card" });
+    }
+
+    for (const match of source.matchAll(/\["([^"]+)",\s*"[^"]+",\s*"[^"]+",\s*"[^"]+"\]/g)) {
+      rows.push({ title: match[1], sourceFile: relativeFile, sourceType: "theme_article_card" });
+    }
+  });
+
+  const seen = new Set();
+  return rows.filter((row) => {
+    const key = `${row.sourceFile}:${normalizeTitle(row.title)}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return normalizeTitle(row.title);
+  }).sort((a, b) => {
+    if (a.sourceFile !== b.sourceFile) return a.sourceFile.localeCompare(b.sourceFile);
+    return a.title.localeCompare(b.title, "ja");
+  });
+}
+
 const entries = [];
 
 dbFiles.forEach((relativePath) => {
@@ -102,6 +147,14 @@ entries.forEach((entry) => {
   if (titleKey) byTitle.set(titleKey, [...(byTitle.get(titleKey) || []), entry]);
 });
 
+const dbTitleKeys = new Set();
+entries.forEach((entry) => {
+  [entry.title_ja, entry.title_en].forEach((title) => {
+    const titleKey = normalizeTitle(title);
+    if (titleKey) dbTitleKeys.add(titleKey);
+  });
+});
+
 const duplicateIdGroups = [...byId.entries()].filter(([, matches]) => matches.length > 1);
 const duplicateTitleGroups = [...byTitle.entries()]
   .filter(([, matches]) => matches.length > 1)
@@ -118,7 +171,7 @@ const duplicateTitleGroups = [...byTitle.entries()]
     return b.matches.length - a.matches.length;
   });
 
-const unknownVolumes = sortEntries(entries.filter((entry) => entry.volumes === 0));
+const unknownVolumes = sortEntries(entries.filter(isUnknownVolume));
 const duplicateRows = duplicateTitleGroups.flatMap((group) => group.matches.map((entry) => ({
   priority: group.priority,
   titleKey: group.titleKey,
@@ -129,7 +182,19 @@ const duplicateRows = duplicateTitleGroups.flatMap((group) => group.matches.map(
 const unknownVolumeRows = unknownVolumes.map((entry) => ({
   ...entry,
   titleKey: normalizeTitle(entry.title_ja || entry.title_en),
+  volumeIssue: entry.volumes > 250 ? "suspicious_large_volume" : "unknown_or_zero_volume",
 }));
+
+const articleCoverageRows = extractArticleTitles().map((row) => {
+  const titleKey = normalizeTitle(row.title);
+  const matched = dbTitleKeys.has(titleKey);
+  return {
+    ...row,
+    titleKey,
+    coverageStatus: matched ? "exact_match" : "missing_or_variant",
+    suggestedAction: matched ? "" : "DB未登録か表記ゆれの可能性を確認",
+  };
+});
 
 const demographicCounts = countBy(entries, (entry) => entry.demographic);
 const statusCounts = countBy(entries, (entry) => entry.status);
@@ -137,6 +202,8 @@ const fileCounts = countBy(entries, (entry) => entry.sourceFile);
 const unknownVolumesByFile = countBy(unknownVolumes, (entry) => entry.sourceFile);
 const unknownVolumesByDemographic = countBy(unknownVolumes, (entry) => entry.demographic);
 const duplicatePriorities = countBy(duplicateTitleGroups, (group) => group.priority);
+const articleCoverageCounts = countBy(articleCoverageRows, (row) => row.coverageStatus);
+const uniqueTitleCount = byTitle.size;
 
 const topDuplicateGroups = duplicateTitleGroups.slice(0, 20).map((group, index) => {
   const titles = group.matches
@@ -145,17 +212,22 @@ const topDuplicateGroups = duplicateTitleGroups.slice(0, 20).map((group, index) 
   return `${index + 1}. [${group.priority}] ${group.titleKey} (${group.matches.length}件): ${titles}`;
 });
 
-const summary = `# 漫画DB 監査サマリー
+const topArticleGaps = articleCoverageRows
+  .filter((row) => row.coverageStatus === "missing_or_variant")
+  .slice(0, 30)
+  .map((row, index) => `${index + 1}. ${row.title} (${row.sourceType}, ${row.sourceFile})`);
 
-最終生成日: ${formatTokyoDate(new Date())}
+const summary = `# 漫画DB品質監査サマリー
+
+生成日: ${formatTokyoDate(new Date())}
 
 ## 全体
-
-- 合計作品数: ${entries.length}
+- 生DB件数: ${entries.length}
 - ユニークID数: ${byId.size}
-- 重複IDグループ: ${duplicateIdGroups.length}
-- タイトル重複候補グループ: ${duplicateTitleGroups.length}
-- 巻数未確認作品: ${unknownVolumes.length}
+- タイトル正規化後の候補数: ${uniqueTitleCount}
+- ID重複グループ: ${duplicateIdGroups.length}
+- タイトル重複グループ: ${duplicateTitleGroups.length}
+- 巻数未確認または異常値: ${unknownVolumes.length}
 
 ## ファイル別件数
 
@@ -169,8 +241,7 @@ ${Object.entries(demographicCounts).map(([key, value]) => `- ${key}: ${value}`).
 
 ${Object.entries(statusCounts).map(([key, value]) => `- ${key}: ${value}`).join("\n")}
 
-## タイトル重複候補
-
+## タイトル重複の優先度
 - high: ${duplicatePriorities.high || 0}
 - medium: ${duplicatePriorities.medium || 0}
 - low: ${duplicatePriorities.low || 0}
@@ -185,7 +256,7 @@ ${Object.entries(statusCounts).map(([key, value]) => `- ${key}: ${value}`).join(
 
 ${topDuplicateGroups.join("\n")}
 
-## 巻数未確認
+## 巻数未確認または異常値
 
 ファイル別:
 
@@ -195,16 +266,26 @@ ${Object.entries(unknownVolumesByFile).map(([key, value]) => `- ${key}: ${value}
 
 ${Object.entries(unknownVolumesByDemographic).map(([key, value]) => `- ${key}: ${value}`).join("\n")}
 
+## 記事掲載作品とDBの一致
+
+- exact_match: ${articleCoverageCounts.exact_match || 0}
+- missing_or_variant: ${articleCoverageCounts.missing_or_variant || 0}
+
+### 記事側で確認したい作品 上位30件
+
+${topArticleGaps.length ? topArticleGaps.join("\n") : "該当なし"}
+
 ## 出力ファイル
 
 - \`docs/db-audit-duplicate-titles.csv\`
 - \`docs/db-audit-unknown-volumes.csv\`
+- \`docs/db-audit-article-coverage.csv\`
 
 ## 次にやると効果が大きいこと
 
-1. high のタイトル重複候補を確認し、完全重複なら片方を別作品に差し替える。
-2. 人気作、SEO記事掲載作、テーマ記事掲載作の巻数未確認を優先して埋める。
-3. Webtoonや連載中で巻数が固定しづらい作品は、巻数0を許容する運用対象として残す。
+1. high のタイトル重複を確認し、完全重複ならDBから除外する。
+2. 記事掲載作品の missing_or_variant を見て、DB未登録なのか表記ゆれなのか確認する。
+3. 巻数が0または250超の作品は、UIでは「巻数未確認」として扱いながら、人気記事掲載作品から順に補正する。
 `;
 
 fs.mkdirSync(outDir, { recursive: true });
@@ -225,27 +306,40 @@ fs.writeFileSync(duplicateCsvPath, toCsv(duplicateRows, [
   { label: "source_index", value: (row) => row.sourceIndex },
 ]), "utf8");
 fs.writeFileSync(unknownVolumesCsvPath, toCsv(unknownVolumeRows, [
+  { label: "volume_issue", value: (row) => row.volumeIssue },
   { label: "title_key", value: (row) => row.titleKey },
   { label: "id", value: (row) => row.id },
   { label: "title_ja", value: (row) => row.title_ja },
   { label: "title_en", value: (row) => row.title_en },
   { label: "author", value: (row) => row.author },
   { label: "year", value: (row) => row.year },
+  { label: "volumes", value: (row) => row.volumes },
   { label: "status", value: (row) => row.status },
   { label: "demographic", value: (row) => row.demographic },
   { label: "source_file", value: (row) => row.sourceFile },
   { label: "source_index", value: (row) => row.sourceIndex },
 ]), "utf8");
+fs.writeFileSync(articleCoverageCsvPath, toCsv(articleCoverageRows, [
+  { label: "coverage_status", value: (row) => row.coverageStatus },
+  { label: "title", value: (row) => row.title },
+  { label: "title_key", value: (row) => row.titleKey },
+  { label: "source_type", value: (row) => row.sourceType },
+  { label: "source_file", value: (row) => row.sourceFile },
+  { label: "suggested_action", value: (row) => row.suggestedAction },
+]), "utf8");
 
 console.log(JSON.stringify({
   total: entries.length,
   uniqueIds: byId.size,
+  uniqueTitles: uniqueTitleCount,
   duplicateIdGroups: duplicateIdGroups.length,
   duplicateTitleGroups: duplicateTitleGroups.length,
   unknownVolumes: unknownVolumes.length,
+  articleCoverage: articleCoverageCounts,
   outputs: [
     path.relative(rootDir, summaryPath),
     path.relative(rootDir, duplicateCsvPath),
     path.relative(rootDir, unknownVolumesCsvPath),
+    path.relative(rootDir, articleCoverageCsvPath),
   ],
 }, null, 2));

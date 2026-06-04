@@ -84,6 +84,7 @@ export default function ThemesPage() {
 
         <div className="mt-16">
           <div className="text-xs tracking-[0.35em] uppercase mb-5" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>Keyword Guides</div>
+          <p className="text-sm leading-7 mb-5 max-w-2xl" style={{ color: "#555" }}>検索語に近い記事はこちら。テーマ別ページは気分や世界観から選ぶ入口、キーワード記事は「完結済み」「初心者向け」「トレンド」など目的が決まっている人向けです。</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {keywordArticles.map((article) => (
               <TrackedArticleLink key={article.href} href={article.href} label={article.label} sourcePath="/themes" className="group p-5 transition-all hover:translate-x-1" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.45)" }}>

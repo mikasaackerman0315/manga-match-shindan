@@ -56,6 +56,8 @@ const GEMINI_MODEL = "gemini-2.5-flash";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 const GEMINI_MAX_ATTEMPTS = 2;
 const GEMINI_TIMEOUT_MS = 28000;
+const GEMINI_CANDIDATE_LIMIT = 220;
+const FALLBACK_RESULT_LIMIT = 20;
 
 // ------------------------------------------------------------
 // シンプルなメモリ内レート制限（本番ではRedis等を推奨）
@@ -184,7 +186,7 @@ function checkRateLimit(ip) {
 // ------------------------------------------------------------
 // プロンプト構築
 // ------------------------------------------------------------
-function buildPrompt(answers, questions, freeText, language) {
+function buildPrompt(answers, questions, freeText, language, candidatePool = []) {
   const profileSummary = questions.map((q) => {
     const selectedValues = answers[q.id] || [];
     const labels = selectedValues.map((v) => {
@@ -195,11 +197,15 @@ function buildPrompt(answers, questions, freeText, language) {
     return `- ${questionText}\n  → ${labels.join(", ")}`;
   }).join("\n");
 
+  const candidates = candidatePool.length
+    ? candidatePool
+    : CORE_DB_UNIQUE.map((manga) => ({ manga, score: 0, matchedTags: [] }));
   const dbJson = JSON.stringify(
-    CORE_DB_UNIQUE.map((m) => ({
-      id: m.id, title_ja: m.title_ja, title_en: m.title_en, author: m.author,
-      year: m.year, volumes: m.volumes, status: m.status, demographic: m.demographic,
-      anime: m.anime, tags: m.tags, desc: language === "ja" ? m.desc_ja : m.desc_en,
+    candidates.map(({ manga, score, matchedTags }) => ({
+      id: manga.id, title_ja: manga.title_ja, title_en: manga.title_en, author: manga.author,
+      year: manga.year, volumes: manga.volumes, status: manga.status, demographic: manga.demographic,
+      anime: manga.anime, tags: manga.tags, matchScore: Number(score.toFixed(2)),
+      matchedTags: matchedTags.slice(0, 6), desc: language === "ja" ? manga.desc_ja : manga.desc_en,
     }))
   );
 
@@ -215,8 +221,8 @@ function buildPrompt(answers, questions, freeText, language) {
 
 Recommend only from this source:
 
-## Curated Database (${CORE_DB_UNIQUE.length} unique candidates from the 1800-title database)
-These are pre-vetted works spanning all genres & eras. Duplicate title variants have already been removed for this recommendation request.
+## Curated Database Shortlist (${candidates.length} candidates selected from ${CORE_DB_UNIQUE.length} unique works)
+These candidates were pre-scored from the full curated database using the user's answers. "matchScore" and "matchedTags" are guidance signals, not final rankings.
 
 \`\`\`json
 ${dbJson}
@@ -250,6 +256,7 @@ Return ONLY a valid JSON object (no markdown fences, no preamble):
 - ${langInstruction}
 - "source" must be "db" and include the id from DB.
 - Rank by best fit (rank 1 = strongest).
+- Prefer high matchScore works when they also make editorial sense, but do not simply sort by score.
 - Do NOT recommend the same manga title twice, even if duplicate or variant entries exist in the database.
 - Top 3: enthusiastic, detailed reasons. Items 4-10: concise. Items 11-20: brief.
 - ALWAYS reference the user's specific answers in your reasons.
@@ -401,6 +408,20 @@ function scoreManga(manga, signals) {
   return { score, matchedTags };
 }
 
+function scoreCandidatePool(signals) {
+  return CORE_DB_UNIQUE.map((manga) => {
+    const result = scoreManga(manga, signals);
+    return { manga, score: result.score, matchedTags: result.matchedTags };
+  }).sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return (b.manga.anime === true) - (a.manga.anime === true);
+  });
+}
+
+function selectCandidatePool(signals, limit = GEMINI_CANDIDATE_LIMIT) {
+  return scoreCandidatePool(signals).slice(0, limit);
+}
+
 function buildFallbackReason(manga, matchedTags, language) {
   if (language === "en") {
     const labels = matchedTags.slice(0, 3).join(", ");
@@ -500,8 +521,8 @@ async function requestGeminiRecommendation(prompt, apiKey) {
   throw lastError || new Error("Gemini recommendation failed.");
 }
 
-function buildFallbackResponse(answers, questions, freeText, language) {
-  const fallback = buildPreviewResponse(answers, questions, freeText, language);
+function buildFallbackResponse(answers, questions, freeText, language, candidatePool = null) {
+  const fallback = buildPreviewResponse(answers, questions, freeText, language, candidatePool);
   return {
     fallback: true,
     userProfile: language === "en"
@@ -511,15 +532,9 @@ function buildFallbackResponse(answers, questions, freeText, language) {
   };
 }
 
-function buildPreviewResponse(answers, questions = [], freeText = "", language = "ja") {
+function buildPreviewResponse(answers, questions = [], freeText = "", language = "ja", candidatePool = null) {
   const signals = buildPreferenceSignals(answers, questions, freeText, language);
-  const scored = CORE_DB_UNIQUE.map((m) => {
-    const result = scoreManga(m, signals);
-    return { manga: m, score: result.score, matchedTags: result.matchedTags };
-  }).sort((a, b) => {
-    if (b.score !== a.score) return b.score - a.score;
-    return (b.manga.anime === true) - (a.manga.anime === true);
-  });
+  const scored = candidatePool || scoreCandidatePool(signals);
 
   const seenTitles = new Set();
   const picked = [];
@@ -543,7 +558,7 @@ function buildPreviewResponse(answers, questions = [], freeText = "", language =
       description: language === "en" ? manga.desc_en : manga.desc_ja,
       reason: buildFallbackReason(manga, matchedTags, language),
     });
-    if (picked.length >= 20) break;
+    if (picked.length >= FALLBACK_RESULT_LIMIT) break;
   }
 
   return {
@@ -577,22 +592,26 @@ export async function POST(req) {
       return NextResponse.json({ error: "Missing answers or questions." }, { status: 400 });
     }
 
+    const requestLanguage = language || "ja";
+    const signals = buildPreferenceSignals(answers, questions, freeText, requestLanguage);
+    const candidatePool = selectCandidatePool(signals);
+
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       if (process.env.NODE_ENV !== "production") {
-        return NextResponse.json(buildPreviewResponse(answers, questions, freeText, language || "ja"));
+        return NextResponse.json(buildPreviewResponse(answers, questions, freeText, requestLanguage, candidatePool));
       }
       return NextResponse.json({ error: "Server misconfiguration: missing API key." }, { status: 500 });
     }
 
-    const prompt = buildPrompt(answers, questions, freeText, language || "ja");
+    const prompt = buildPrompt(answers, questions, freeText, requestLanguage, candidatePool);
     // Gemini 2.5 Flash 呼び出し（JSONレスポンス優先）
     try {
       const parsed = await requestGeminiRecommendation(prompt, apiKey);
       return NextResponse.json(parsed);
     } catch (aiErr) {
       console.error("Gemini failed after retries. Returning fallback recommendations:", aiErr);
-      return NextResponse.json(buildFallbackResponse(answers, questions, freeText, language || "ja"));
+      return NextResponse.json(buildFallbackResponse(answers, questions, freeText, requestLanguage, candidatePool));
     }
   } catch (err) {
     console.error("Recommend route error:", err);
