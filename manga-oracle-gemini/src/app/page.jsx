@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { QUESTIONS_SIMPLE, QUESTIONS_DETAILED } from "@/data/questions";
 import MangaCover from "./MangaCover";
 import StoreLinks from "./StoreLinks";
@@ -113,47 +113,42 @@ const T = {
 };
 
 const LOADING_STEP_COUNT = 4;
-const LOADING_MANGA_RECOMMENDATIONS = [
-  { title_ja: "ダンダダン", title_en: "Dandadan", lead_ja: "勢いと怪異とラブコメの混ざり方が強い。", lead_en: "Wild momentum, occult energy, and romantic comedy." },
-  { title_ja: "葬送のフリーレン", title_en: "Frieren", lead_ja: "静かな旅と余韻で、長く残るタイプ。", lead_en: "A quiet journey with a lingering emotional pull." },
-  { title_ja: "ブルーロック", title_en: "Blue Lock", lead_ja: "勝負の熱さとエゴの強さで一気に読ませる。", lead_en: "A sharp, addictive sports battle of ego and skill." },
-  { title_ja: "メダリスト", title_en: "Medalist", lead_ja: "努力と才能の火がじわじわ燃える。", lead_en: "A fierce story of talent, effort, and ambition." },
-  { title_ja: "光が死んだ夏", title_en: "The Summer Hikaru Died", lead_ja: "不穏な空気と青春の痛みが刺さる。", lead_en: "Uneasy horror threaded through tender adolescence." },
-  { title_ja: "スキップとローファー", title_en: "Skip and Loafer", lead_ja: "やさしい青春と人間関係の温度が心地いい。", lead_en: "Warm school life with beautifully observed relationships." },
-  { title_ja: "チ。-地球の運動について-", title_en: "Orb", lead_ja: "知への執念と緊張感で読ませる歴史ドラマ。", lead_en: "A tense historical drama about conviction and knowledge." },
-  { title_ja: "九龍ジェネリックロマンス", title_en: "Kowloon Generic Romance", lead_ja: "街の空気と謎めいた恋愛がじわっと来る。", lead_en: "Atmospheric romance with a strange, nostalgic mystery." },
-  { title_ja: "正反対な君と僕", title_en: "You and I Are Polar Opposites", lead_ja: "軽く読めて、ちゃんと恋がかわいい。", lead_en: "Easy to read, bright, and genuinely charming." },
-  { title_ja: "ガチアクタ", title_en: "Gachiakuta", lead_ja: "粗さと熱量のあるバトルを読みたい時に。", lead_en: "Rough-edged, high-energy action with attitude." },
-  { title_ja: "これ描いて死ね", title_en: "Draw This, Then Die", lead_ja: "漫画を描く楽しさと青春の眩しさがある。", lead_en: "A bright story about making manga and finding your spark." },
-  { title_ja: "ラーメン赤猫", title_en: "Red Cat Ramen", lead_ja: "ゆるさと仕事ものの気持ちよさが同居している。", lead_en: "A cozy workplace manga with a wonderfully gentle rhythm." },
+const LOADING_SIDE_DISCOVERIES = [
+  { title_ja: "ひらやすみ", title_en: "Hirayasumi", lead_ja: "何も起きない日の良さを、じんわり思い出す。", lead_en: "A gentle reminder of ordinary days done well.", avoid: ["battle", "horror", "virtual"] },
+  { title_ja: "海が走るエンドロール", title_en: "The End Credits Are Rolling", lead_ja: "遅く始まる夢の眩しさがある。", lead_en: "A late-blooming dream with a quiet shine.", avoid: ["battle", "virtual"] },
+  { title_ja: "税金で買った本", title_en: "Books Bought With Taxes", lead_ja: "図書館の裏側が少し好きになる仕事もの。", lead_en: "A workplace manga that makes libraries feel alive.", avoid: ["battle", "horror", "romance"] },
+  { title_ja: "北北西に曇と往け", title_en: "Go with the Clouds, North-by-Northwest", lead_ja: "旅と空気感で読ませる、静かな異国の物語。", lead_en: "A quiet travel mystery with a strong sense of place.", avoid: ["school", "sports"] },
+  { title_ja: "煙と蜜", title_en: "Smoke and Honey", lead_ja: "時代の空気と距離感をゆっくり味わう。", lead_en: "A slow, elegant period piece with delicate distance.", avoid: ["battle", "virtual"] },
+  { title_ja: "波よ聞いてくれ", title_en: "Wave, Listen to Me!", lead_ja: "会話の勢いと仕事の変さで引っ張る。", lead_en: "Fast talk, strange work, and messy adult energy.", avoid: ["fantasy", "virtual"] },
+  { title_ja: "映像研には手を出すな！", title_en: "Keep Your Hands Off Eizouken!", lead_ja: "創作のワクワクだけを濃く吸える。", lead_en: "Pure creative excitement in manga form.", avoid: ["horror", "romance"] },
+  { title_ja: "違国日記", title_en: "Diary of Different Countries", lead_ja: "言葉にならない距離を丁寧に描く。", lead_en: "A careful look at distance, grief, and living together.", avoid: ["battle", "virtual"] },
+  { title_ja: "ダーウィン事変", title_en: "The Darwin Incident", lead_ja: "社会派とサスペンスの間を鋭く走る。", lead_en: "A sharp line between social drama and suspense.", avoid: ["healing", "romance"] },
+  { title_ja: "望郷太郎", title_en: "Bokyo Taro", lead_ja: "文明のあとを歩く、骨太な再出発の物語。", lead_en: "A rugged story of rebuilding after civilization.", avoid: ["romance", "school"] },
+  { title_ja: "図書館の大魔術師", title_en: "Magus of the Library", lead_ja: "本と世界の広がりをじっくり味わえる。", lead_en: "A rich fantasy about books, knowledge, and the wider world.", avoid: ["horror", "sports"] },
+  { title_ja: "ふつうの軽音部", title_en: "Girl Meets Rock!", lead_ja: "青春の小さな熱が、変にリアルでいい。", lead_en: "Small, awkward sparks of youth and music.", avoid: ["battle", "horror", "fantasy"] },
+  { title_ja: "しなのんちのいくる", title_en: "Shina's Ikuru", lead_ja: "短い日常の中に、妙な懐かしさがある。", lead_en: "Short everyday moments with odd nostalgia.", avoid: ["battle", "dark", "horror"] },
+  { title_ja: "クジャクのダンス、誰が見た？", title_en: "Who Saw the Peacock Dance in the Jungle?", lead_ja: "静かな疑念がじわじわ広がるミステリー。", lead_en: "A mystery where quiet doubt keeps widening.", avoid: ["healing", "sports"] },
+  { title_ja: "リバーエンド・カフェ", title_en: "River End Cafe", lead_ja: "土地と人の傷を、ゆっくり見つめる。", lead_en: "A slow look at place, wounds, and recovery.", avoid: ["battle", "virtual"] },
+  { title_ja: "あかね噺", title_en: "Akane-banashi", lead_ja: "芸の世界の勝負を、熱すぎず熱く読ませる。", lead_en: "A performance manga with clean, controlled heat.", avoid: ["horror", "romance"] },
 ];
 
-function getLoadingRecommendations(answers = {}, language = "ja") {
+function seededShuffle(items, seed) {
+  const shuffled = [...items];
+  let state = Math.max(1, Math.floor(seed) % 2147483647);
+
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    state = (state * 48271) % 2147483647;
+    const j = state % (i + 1);
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
+function getLoadingRecommendations(answers = {}, language = "ja", seed = 1) {
   const values = Object.values(answers).flat();
-  const preferred = [];
-
-  if (values.includes("virtual") || values.includes("battle") || values.includes("burning")) {
-    preferred.push("ダンダダン", "ブルーロック", "ガチアクタ");
-  }
-  if (values.includes("fantasy") || values.includes("journey") || values.includes("emotional")) {
-    preferred.push("葬送のフリーレン", "チ。-地球の運動について-", "メダリスト");
-  }
-  if (values.includes("school") || values.includes("romance") || values.includes("warm")) {
-    preferred.push("スキップとローファー", "正反対な君と僕", "九龍ジェネリックロマンス");
-  }
-  if (values.includes("horror") || values.includes("mystery") || values.includes("dark")) {
-    preferred.push("光が死んだ夏", "九龍ジェネリックロマンス", "チ。-地球の運動について-");
-  }
-  if (values.includes("workplace") || values.includes("specialty") || values.includes("healing")) {
-    preferred.push("ラーメン赤猫", "これ描いて死ね", "スキップとローファー");
-  }
-
-  const orderedTitles = [...new Set(preferred)];
-  const picked = orderedTitles
-    .map((title) => LOADING_MANGA_RECOMMENDATIONS.find((rec) => rec.title_ja === title))
-    .filter(Boolean);
-  const rest = LOADING_MANGA_RECOMMENDATIONS.filter((rec) => !orderedTitles.includes(rec.title_ja));
-  const recommendations = [...picked, ...rest];
+  const sideShelf = LOADING_SIDE_DISCOVERIES.filter((rec) => !(rec.avoid || []).some((value) => values.includes(value)));
+  const recommendations = seededShuffle(sideShelf.length >= 8 ? sideShelf : LOADING_SIDE_DISCOVERIES, seed);
 
   return recommendations.map((rec) => ({
     title: language === "ja" ? rec.title_ja : rec.title_en,
@@ -273,12 +268,13 @@ export default function App() {
   const [error, setError] = useState(null);
   const [loadingStep, setLoadingStep] = useState(0);
   const [loadingMangaIndex, setLoadingMangaIndex] = useState(0);
+  const [loadingMangaSeed, setLoadingMangaSeed] = useState(1);
   const prefetchRef = useRef({ key: "", promise: null });
 
   const t = T[language];
   const QUESTIONS = mode === "simple" ? QUESTIONS_SIMPLE : QUESTIONS_DETAILED;
   const diagnosisType = getDiagnosisType(mode);
-  const loadingRecommendations = getLoadingRecommendations(answers, language);
+  const loadingRecommendations = useMemo(() => getLoadingRecommendations(answers, language, loadingMangaSeed), [answers, language, loadingMangaSeed]);
 
   useEffect(() => {
     if (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("start") === "1") {
@@ -393,6 +389,7 @@ export default function App() {
     setScreen("loading");
     setLoadingStep(0);
     setLoadingMangaIndex(0);
+    setLoadingMangaSeed(Date.now());
     setError(null);
     try {
       const body = buildRecommendBody(answers, freeText);
@@ -672,7 +669,7 @@ export default function App() {
             </div>
             <div className="w-full">
               <div className="text-[10px] tracking-[0.28em] uppercase mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
-                {language === "ja" ? "待っている間の一冊" : "While You Wait"}
+                {language === "ja" ? "こんな漫画もあります" : "Side Discoveries"}
               </div>
               <div className="space-y-3 min-h-[280px]">
                 {Array.from({ length: 4 }).map((_, offset) => {
