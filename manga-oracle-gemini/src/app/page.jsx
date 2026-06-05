@@ -51,6 +51,8 @@ const T = {
     intro: "AIが厳選1800作品DBを分析し、あなたの好みに合った漫画を最大20作品ランキング形式で推薦します。",
     next: "次へ", back: "戻る", submit: "AIに判定させる", progress: "問",
     loading: "AIが分析中…",
+    loadingComplete: "診断が完了しました",
+    viewResults: "結果を見る",
     yourProfile: "あなたの読書プロファイル",
     top3: "絶対読んでほしい", next7: "これも合うはず", last10: "気が向いたら",
     retake: "もう一度診断する", error: "エラーが発生しました。もう一度お試しください。",
@@ -85,6 +87,8 @@ const T = {
     intro: "AI analyzes a curated 1800-title database to find up to 20 manga matched to your tastes.",
     next: "Next", back: "Back", submit: "Let AI Decide", progress: "of",
     loading: "AI is analyzing…",
+    loadingComplete: "Analysis complete",
+    viewResults: "View Results",
     yourProfile: "Your Reading Profile",
     top3: "Must Reads", next7: "Highly Recommended", last10: "Worth Exploring",
     retake: "Take Quiz Again", error: "Something went wrong. Please try again.",
@@ -391,6 +395,7 @@ export default function App() {
     setLoadingMangaIndex(0);
     setLoadingMangaSeed(Date.now());
     setError(null);
+    setResults(null);
     try {
       const body = buildRecommendBody(answers, freeText);
       const key = JSON.stringify(body);
@@ -410,7 +415,6 @@ export default function App() {
         preview_mode: Boolean(data.preview),
         duration_ms: Date.now() - diagnosisStartedAt,
       });
-      setScreen("results");
     } catch (err) {
       console.error("Error:", err);
       trackEvent("diagnosis_error", {
@@ -658,14 +662,31 @@ export default function App() {
               <div className="mb-8 flex justify-center">
                 <div className="relative w-20 h-20">
                   <div className="absolute inset-0 border-2 border-black opacity-10" />
-                  <div className="absolute inset-0 border-t-2 border-r-2 border-black animate-spin" />
-                  <div className="absolute inset-2 border-b-2 border-l-2 animate-spin" style={{ borderColor: "#c0392b", animationDuration: "2s", animationDirection: "reverse" }} />
+                  {results ? (
+                    <div className="absolute inset-0 flex items-center justify-center text-4xl" style={{ color: "#c0392b" }}>✓</div>
+                  ) : (
+                    <>
+                      <div className="absolute inset-0 border-t-2 border-r-2 border-black animate-spin" />
+                      <div className="absolute inset-2 border-b-2 border-l-2 animate-spin" style={{ borderColor: "#c0392b", animationDuration: "2s", animationDirection: "reverse" }} />
+                    </>
+                  )}
                 </div>
               </div>
-              <h2 className="text-2xl md:text-3xl font-medium mb-8 italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.loading}</h2>
-              <div className="flex justify-center gap-2">
-                {Array.from({ length: LOADING_STEP_COUNT }).map((_, idx) => (<div key={idx} className="h-1 w-8 transition-all" style={{ backgroundColor: idx <= loadingStep ? "#c0392b" : "rgba(10,10,10,0.15)" }} />))}
+              <h2 className="text-2xl md:text-3xl font-medium mb-8 italic" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>
+                {results ? t.loadingComplete : t.loading}
+              </h2>
+              <div className="flex justify-center gap-2 mb-8">
+                {Array.from({ length: LOADING_STEP_COUNT }).map((_, idx) => (<div key={idx} className="h-1 w-8 transition-all" style={{ backgroundColor: idx <= (results ? LOADING_STEP_COUNT - 1 : loadingStep) ? "#c0392b" : "rgba(10,10,10,0.15)" }} />))}
               </div>
+              {results && (
+                <button
+                  onClick={() => setScreen("results")}
+                  className="px-10 py-3 text-sm tracking-[0.24em] uppercase transition-all hover:scale-105"
+                  style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}
+                >
+                  {t.viewResults} →
+                </button>
+              )}
             </div>
             <div className="w-full">
               <div className="text-[10px] tracking-[0.28em] uppercase mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
