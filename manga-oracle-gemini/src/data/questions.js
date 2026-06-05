@@ -116,6 +116,14 @@ export const QUESTIONS_DETAILED = [
     { v: "immersion_journey", ja: "旅や冒険を一緒に味わいたい", en: "A journey or adventure" },
     { v: "immersion_workplace", ja: "職業や業界の裏側を覗きたい", en: "A profession or industry from the inside" },
     { v: "immersion_internal", ja: "主人公の内面に深く潜りたい", en: "A deep dive into the protagonist's inner life" },
+    { v: "immersion_city", ja: "街や社会の空気に入りたい", en: "City life and social texture" },
+    { v: "immersion_battlefield", ja: "戦場や極限状況に入りたい", en: "Battlefields and extreme situations" },
+    { v: "immersion_underworld", ja: "裏社会や危ない場所を覗きたい", en: "The underworld and dangerous places" },
+    { v: "immersion_family", ja: "家族や生活の距離感を味わいたい", en: "Family life and close everyday bonds" },
+    { v: "immersion_small_town", ja: "小さな町や共同体に浸りたい", en: "Small towns and close communities" },
+    { v: "immersion_global", ja: "国や世界をまたぐスケールがいい", en: "A national or global scale" },
+    { v: "immersion_political", ja: "権力や組織の中に入りたい", en: "Power, systems, and organizations" },
+    { v: "immersion_survival", ja: "生き残る緊張感を味わいたい", en: "Survival pressure and danger" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
   { id: "protagonist", type: "single", text_ja: "主人公の型は？", text_en: "Protagonist type?", options: [
@@ -160,6 +168,14 @@ export const QUESTIONS_DETAILED = [
     { v: "reading_episodic", ja: "1話ごとに区切りよく読みたい", en: "Episodic stories that are easy to enter" },
     { v: "reading_growth", ja: "成長や勝ち上がりを追いたい", en: "Growth, rivalry, and progression" },
     { v: "reading_mystery_box", ja: "謎が少しずつ深まる話が好き", en: "Mysteries that deepen piece by piece" },
+    { v: "reading_long_arc", ja: "長い章で大きく盛り上がってほしい", en: "Long arcs with big payoffs" },
+    { v: "reading_parallel", ja: "複数視点が絡む構成が好き", en: "Parallel viewpoints that interlock" },
+    { v: "reading_tournament", ja: "対決や勝ち抜きの熱さがほしい", en: "Tournament-like escalation" },
+    { v: "reading_anthology", ja: "短編や連作で味わいたい", en: "Short stories or linked episodes" },
+    { v: "reading_flashback", ja: "過去が少しずつ見える話が好き", en: "Past events revealed over time" },
+    { v: "reading_daily_buildup", ja: "日常の積み重ねで深まってほしい", en: "Everyday buildup that gains meaning" },
+    { v: "reading_strategy", ja: "駆け引きや作戦で読ませてほしい", en: "Strategy and mind games" },
+    { v: "reading_journey", ja: "目的地へ進むロードムービー感が好き", en: "A journey toward a clear destination" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
   { id: "pacing", type: "single", text_ja: "読むテンポの好みは？", text_en: "Reading pace preference?", options: [
@@ -222,6 +238,12 @@ export const QUESTIONS_DETAILED = [
     { v: "art_cute", ja: "かわいさ・柔らかさ", en: "Cuteness and softness" },
     { v: "art_dark", ja: "暗さ・陰影・不穏さ", en: "Darkness, shadows, and unease" },
     { v: "art_soft", ja: "優しい空気感", en: "A gentle visual atmosphere" },
+    { v: "art_detailed", ja: "描き込みの細かさ", en: "Dense detail" },
+    { v: "art_refined", ja: "洗練された画面", en: "Refined composition" },
+    { v: "art_retro", ja: "古さやレトロ感", en: "Retro flavor" },
+    { v: "art_loose", ja: "ラフで抜け感のある絵", en: "Loose and relaxed art" },
+    { v: "art_dynamic", ja: "動きのある構図", en: "Dynamic paneling" },
+    { v: "art_webtoon", ja: "カラーや縦読みの見やすさ", en: "Color or webtoon readability" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
   { id: "demographic", type: "multi", max: 2, text_ja: "寄せたい漫画のタイプは？（最大2つ）", text_en: "What manga type should this lean toward? (max 2)", options: [
@@ -232,6 +254,13 @@ export const QUESTIONS_DETAILED = [
     { v: "type_classic", ja: "定番・古典名作寄り", en: "Classic and established works" },
     { v: "type_niche", ja: "ニッチ・隠れた名作寄り", en: "Niche or hidden gems" },
     { v: "type_literary", ja: "文学的・考察向きの作品", en: "Literary or analytical works" },
+    { v: "type_josei", ja: "女性向け・生活感のある作品", en: "Josei or life-focused works" },
+    { v: "type_seinen_real", ja: "リアル寄りの青年漫画", en: "Grounded seinen works" },
+    { v: "type_family", ja: "家族でも入りやすい作品", en: "Family-friendly works" },
+    { v: "type_sports", ja: "スポーツ・部活漫画寄り", en: "Sports or club manga" },
+    { v: "type_horror", ja: "ホラー・サスペンス寄り", en: "Horror or suspense leaning" },
+    { v: "type_specialty", ja: "仕事・料理・専門もの寄り", en: "Work, food, or specialist manga" },
+    { v: "type_app_trend", ja: "アプリで読まれやすい今どき作品", en: "Modern app-friendly hits" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
   { id: "status", type: "multi", max: 2, text_ja: "連載・完結ステータスの好み（最大2つ）", text_en: "Completion status? (max 2)", options: [
@@ -259,6 +288,13 @@ export const QUESTIONS_DETAILED = [
     { v: "fame_undiscovered", ja: "まだあまり掘られていない作品", en: "Less-explored works" },
     { v: "fame_acclaimed", ja: "評価や受賞歴がある作品", en: "Acclaimed or award-recognized works" },
     { v: "fame_cult", ja: "刺さる人には深く刺さる作品", en: "Cult favorites for the right reader" },
+    { v: "fame_bestseller", ja: "売れている作品を優先したい", en: "Bestsellers first" },
+    { v: "fame_global", ja: "海外でも読まれている作品", en: "Globally popular works" },
+    { v: "fame_viral", ja: "SNSで話題になりやすい作品", en: "Social-media buzz" },
+    { v: "fame_newcomer", ja: "新しめの注目作を知りたい", en: "Newer rising works" },
+    { v: "fame_long_running", ja: "長く愛されている作品", en: "Long-running favorites" },
+    { v: "fame_critic", ja: "批評家評価の高い作品", en: "Critically respected works" },
+    { v: "fame_media_mix", ja: "映像化・メディア展開がある作品", en: "Media-mix friendly works" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
   { id: "ending", type: "single", text_ja: "読み終わったあと何が残ってほしい？", text_en: "What should stay with you after reading?", options: [
@@ -269,6 +305,13 @@ export const QUESTIONS_DETAILED = [
     { v: "after_lingering", ja: "しばらく残る余韻", en: "A lingering aftertaste" },
     { v: "after_shock", ja: "衝撃や驚き", en: "Shock and surprise" },
     { v: "after_warm", ja: "心が温まる感じ", en: "A warm feeling" },
+    { v: "after_bitter", ja: "苦く切ない余韻", en: "A bittersweet aftertaste" },
+    { v: "after_hope", ja: "希望が残る読後感", en: "A hopeful feeling" },
+    { v: "after_catharsis", ja: "感情が解放される感じ", en: "Cathartic release" },
+    { v: "after_realistic", ja: "現実味のある納得感", en: "Grounded realism" },
+    { v: "after_epic", ja: "大作を読み切った達成感", en: "Epic completion" },
+    { v: "after_comfort", ja: "また戻りたくなる安心感", en: "Comfort worth returning to" },
+    { v: "after_unsettled", ja: "不穏さやざわつき", en: "An unsettling residue" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]}
 ];
