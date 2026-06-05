@@ -732,6 +732,22 @@ function recommendationMatchesSignals(rec, signals) {
   });
 }
 
+function countMatchedFilterQuestions(rec, signals) {
+  if (!signals?.appliedFilterQuestionIds || signals.appliedFilterQuestionIds.length === 0) return 0;
+  const dbEntry = rec.source === "db" || CORE_DB_BY_ID.has(rec.id) ? CORE_DB_BY_ID.get(rec.id) : null;
+  const manga = dbEntry || rec;
+  const entriesByQuestion = groupEntriesByQuestion(signals.entries);
+
+  return signals.appliedFilterQuestionIds.reduce((count, questionId) => {
+    const entries = entriesByQuestion.get(questionId);
+    return entries && entries.length > 0 && matchesQuestionEntries(manga, entries) ? count + 1 : count;
+  }, 0);
+}
+
+function shouldKeepSettingForAlternative(manga, signals) {
+  return !signals?.appliedFilterQuestionIds?.includes("setting") || matchesAnySetting(manga, signals);
+}
+
 function createFallbackRecommendation(manga, matchedTags, rank, language) {
   return {
     rank,
@@ -768,8 +784,53 @@ function enforceRecommendationFit(payload, signals, language) {
     }
   }
 
+  const exactCount = filtered.length;
+  const minimumPartialMatches = Math.max(1, Math.ceil(signals.appliedFilterQuestionIds.length / 2));
+
+  if (filtered.length < FALLBACK_RESULT_LIMIT) {
+    for (const { manga, matchedTags } of scoreCandidatePool(signals)) {
+      if (!shouldKeepSettingForAlternative(manga, signals)) continue;
+      if (countMatchedFilterQuestions(manga, signals) < minimumPartialMatches) continue;
+      const key = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      filtered.push({
+        ...createFallbackRecommendation(manga, matchedTags, filtered.length + 1, language),
+        matchLevel: "alternative",
+      });
+      if (filtered.length >= FALLBACK_RESULT_LIMIT) break;
+    }
+  }
+
+  if (filtered.length < FALLBACK_RESULT_LIMIT) {
+    for (const { manga, matchedTags } of scoreCandidatePool(signals)) {
+      const key = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      filtered.push({
+        ...createFallbackRecommendation(manga, matchedTags, filtered.length + 1, language),
+        matchLevel: "alternative",
+      });
+      if (filtered.length >= FALLBACK_RESULT_LIMIT) break;
+    }
+  }
+
+  const hasAlternatives = exactCount < FALLBACK_RESULT_LIMIT;
+
   return {
     ...payload,
+    matchNotice: hasAlternatives
+      ? {
+          type: exactCount === 0 ? "no_exact_match" : "partial_match",
+          exactCount,
+          message_ja: exactCount === 0
+            ? "ご希望すべてにぴったり合う作品は見つかりませんでした。条件に近い漫画をこちらもおすすめします。"
+            : "ご希望にかなり近い作品を中心に、条件の一部に合う漫画もあわせておすすめします。",
+          message_en: exactCount === 0
+            ? "We could not find manga that matched every preference exactly, so here are close alternatives too."
+            : "These picks focus on close matches and include a few useful alternatives.",
+        }
+      : null,
     recommendations: filtered.slice(0, FALLBACK_RESULT_LIMIT).map((rec, index) => ({ ...rec, rank: index + 1 })),
   };
 }
@@ -829,7 +890,8 @@ async function requestGeminiRecommendation(prompt, apiKey, signals, language, us
 
 function buildFallbackResponse(answers, questions, freeText, language, candidatePool = null) {
   const signals = buildPreferenceSignals(answers, questions, freeText, language);
-  const fallback = enforceRecommendationFit(buildPreviewResponse(answers, questions, freeText, language, candidatePool), signals, language);
+  const fallbackPool = candidatePool || selectCandidatePool(signals);
+  const fallback = enforceRecommendationFit(buildPreviewResponse(answers, questions, freeText, language, fallbackPool), signals, language);
   return {
     fallback: true,
     userProfile: language === "en"
@@ -841,7 +903,7 @@ function buildFallbackResponse(answers, questions, freeText, language, candidate
 
 function buildPreviewResponse(answers, questions = [], freeText = "", language = "ja", candidatePool = null) {
   const signals = buildPreferenceSignals(answers, questions, freeText, language);
-  const scored = candidatePool || scoreCandidatePool(signals);
+  const scored = candidatePool || selectCandidatePool(signals);
 
   const seenTitles = new Set();
   const picked = [];

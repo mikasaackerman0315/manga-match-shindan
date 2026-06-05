@@ -149,6 +149,18 @@ function MangaMetaLine({ rec, t, includeYear = false, includeStatus = true, incl
   return <div className={className} style={style}>{parts.join(" · ")}</div>;
 }
 
+function AlternativeBadge({ rec, language }) {
+  if (rec.matchLevel !== "alternative") return null;
+  return (
+    <span
+      className="text-[10px] tracking-[0.18em] uppercase px-2 py-1 border"
+      style={{ borderColor: "rgba(192,57,43,0.35)", color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}
+    >
+      {language === "ja" ? "こちらもおすすめ" : "Alternative"}
+    </span>
+  );
+}
+
 function getDiagnosisErrorType(error) {
   const message = error?.message?.toLowerCase?.() || "";
   if (message.includes("parse") || message.includes("json")) return "json_parse_error";
@@ -598,6 +610,17 @@ export default function App() {
             {/* 広告枠 1: プロフィール直後（最も目立つ位置） */}
             <AdSlot slot="results-top" />
 
+            {results.matchNotice && (
+              <div className="mb-10 border px-5 py-4" style={{ borderColor: "rgba(192,57,43,0.25)", backgroundColor: "rgba(192,57,43,0.04)" }}>
+                <div className="text-xs tracking-[0.24em] uppercase mb-2" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
+                  {results.matchNotice.type === "no_exact_match" ? "Close Alternatives" : "Also Recommended"}
+                </div>
+                <p className="text-sm leading-relaxed" style={{ color: "#333" }}>
+                  {language === "ja" ? results.matchNotice.message_ja : results.matchNotice.message_en}
+                </p>
+              </div>
+            )}
+
             {results.recommendations && results.recommendations.length > 0 && (
               <div className="mb-20">
                 <div className="flex items-baseline gap-4 mb-10">
@@ -616,6 +639,7 @@ export default function App() {
                         <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-3 mb-2 flex-wrap">
                           <h4 className="text-2xl md:text-3xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
+                          <AlternativeBadge rec={rec} language={language} />
                         </div>
                         <MangaMetaLine rec={rec} t={t} includeYear includeAnime className="text-sm mb-4 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
                         {rec.description && (<p className="text-base leading-relaxed mb-4" style={{ color: "#333" }}>{rec.description}</p>)}
@@ -646,6 +670,7 @@ export default function App() {
                         <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
                           <h4 className="text-lg md:text-xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
+                          <AlternativeBadge rec={rec} language={language} />
                         </div>
                         <MangaMetaLine rec={rec} t={t} className="text-xs mb-2 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
                         {rec.description && (<p className="text-sm leading-relaxed" style={{ color: "#444" }}>{rec.description}</p>)}
@@ -678,6 +703,7 @@ export default function App() {
                       <div className="flex-grow">
                         <div className="flex items-center gap-2 flex-wrap">
                           <div className="text-base font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</div>
+                          <AlternativeBadge rec={rec} language={language} />
                         </div>
                         <MangaMetaLine rec={rec} t={t} includeStatus={false} className="text-xs" style={{ color: "#888" }} />
                         <PurchaseLinks rec={rec} t={t} compact />
