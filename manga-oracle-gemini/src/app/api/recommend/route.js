@@ -335,6 +335,9 @@ function buildPrompt(answers, questions, freeText, language, candidatePool = [])
   const freeTextSection = freeText && freeText.trim()
     ? `\n## User's Free-Text Request (IMPORTANT — honor this carefully)\nThe user added this note in their own words. Treat it as a high-priority signal (e.g. if they say they dislike something, avoid recommending it):\n"${freeText.trim()}"\n`
     : "";
+  const interpretedFreeTextSection = freeText && freeText.trim()
+    ? buildFreeTextInstruction(freeText, language)
+    : "";
 
   return `You are a world-class manga recommendation expert.
 
@@ -353,6 +356,7 @@ Before finalizing, use Google Search to check whether recent manga, manga-app se
 ## User's Quiz Answers
 ${profileSummary}
 ${freeTextSection}
+${interpretedFreeTextSection}
 ## Hard Fit Requirements
 
 - Treat the user's selected world/setting as a hard editorial constraint. A famous manga is not a good pick if its core world does not match the selected setting.
@@ -535,6 +539,181 @@ function matchesQuestionEntries(manga, entries) {
   return entries.some((entry) => matchesEntry(manga, entry));
 }
 
+function addTags(target, tags = []) {
+  tags.forEach((tag) => target.add(tag));
+}
+
+function textHasAny(text, patterns = []) {
+  return patterns.some((pattern) => pattern.test(text));
+}
+
+function extractReferencedTitleKeys(freeText, avoidOnly = false) {
+  const text = `${freeText || ""}`.toLowerCase();
+  if (!text.trim()) return new Set();
+
+  const negativeNearby = /(苦手|嫌い|無理|いらない|なし|無し|避けたい|除外|外して|入れない|見たくない|読みたくない|not|avoid|exclude|dislike|don't want|no )/i;
+  const positiveNearby = /(みたい|っぽい|好き|読みたい|近い|似た|like|similar|want)/i;
+  const keys = new Set();
+
+  CORE_DB_UNIQUE.forEach((manga) => {
+    const candidates = [manga.title_ja, manga.title_en].filter(Boolean);
+    const matchedTitle = candidates.find((title) => {
+      const raw = `${title}`.toLowerCase();
+      const normalized = normalizeMangaTitle(title);
+      return raw.length >= 3 && (text.includes(raw) || (normalized.length >= 3 && normalizeMangaTitle(text).includes(normalized)));
+    });
+    if (!matchedTitle) return;
+
+    const index = text.indexOf(`${matchedTitle}`.toLowerCase());
+    const windowText = index >= 0 ? text.slice(Math.max(0, index - 24), index + `${matchedTitle}`.length + 24) : text;
+    if (avoidOnly ? negativeNearby.test(windowText) : positiveNearby.test(windowText) && !negativeNearby.test(windowText)) {
+      keys.add(normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id));
+    }
+  });
+
+  return keys;
+}
+
+function extractFreeTextSignals(freeText = "") {
+  const text = `${freeText || ""}`.toLowerCase();
+  const avoidTags = new Set();
+  const hardAvoidTags = new Set();
+  const boostTags = new Set();
+  const settingPrefs = new Set();
+  const demographics = new Set();
+  const statusPrefs = new Set();
+  const mediaPrefs = new Set();
+  const blockedTitleKeys = extractReferencedTitleKeys(freeText, true);
+  const likedTitleKeys = extractReferencedTitleKeys(freeText, false);
+
+  const negative = "(苦手|嫌い|無理|いらない|なし|無し|避けたい|除外|外して|入れない|見たくない|読みたくない|not|avoid|exclude|dislike|don't want|no)";
+  const around = (word) => new RegExp(`(${word}).{0,16}${negative}|${negative}.{0,16}(${word})`, "i");
+
+  if (around("鬱|胸糞|救われない|しんどい|暗すぎ|重すぎ|バッドエンド|bad ending").test(text)) {
+    addTags(avoidTags, ["dark", "brutal", "shock", "melancholic", "horror"]);
+    addTags(hardAvoidTags, ["brutal", "shock"]);
+    addTags(boostTags, ["warm", "wholesome", "healing", "emotional_catharsis"]);
+  }
+  if (around("グロ|残酷|怖い|ホラー|怖すぎ|gore|horror").test(text)) {
+    addTags(avoidTags, ["horror", "brutal", "shock"]);
+    addTags(hardAvoidTags, ["horror", "brutal"]);
+  }
+  if (around("恋愛|ラブコメ|ロマンス|romance|love").test(text)) {
+    addTags(avoidTags, ["romance", "shojo_kirakira"]);
+    addTags(hardAvoidTags, ["romance"]);
+  }
+  if (around("スポーツ|部活|sports").test(text)) {
+    addTags(avoidTags, ["sports", "tournament"]);
+  }
+  if (around("バトル|戦闘|アクション|battle|action").test(text)) {
+    addTags(avoidTags, ["battle", "action", "brutal"]);
+  }
+  if (around("長い|長編|巻数多い|long").test(text)) {
+    statusPrefs.add("short");
+  }
+  if (around("連載中|未完|ongoing").test(text)) {
+    statusPrefs.add("completed_only");
+  }
+
+  if (textHasAny(text, [/完結/, /終わって/, /最後まで読/, /completed/])) statusPrefs.add("completed_only");
+  if (textHasAny(text, [/連載中/, /新作/, /追いかけたい/, /ongoing/, /new/])) statusPrefs.add("ongoing_only");
+  if (textHasAny(text, [/短め/, /短い/, /サクッ/, /すぐ読/, /短時間/, /short/])) statusPrefs.add("short");
+  if (textHasAny(text, [/長編/, /じっくり/, /読み応え/, /long/])) addTags(boostTags, ["long_arc", "worldbuilding"]);
+
+  if (textHasAny(text, [/バーチャル/, /ゲーム世界/, /オンラインゲーム/, /vr/, /mmo/, /レベル/, /ダンジョン/])) {
+    settingPrefs.add("virtual");
+    addTags(boostTags, ["virtual", "battle", "adventure"]);
+  }
+  if (textHasAny(text, [/異世界/, /ファンタジー/, /魔法/, /fantasy/, /isekai/])) {
+    settingPrefs.add("fantasy");
+    addTags(boostTags, ["fantasy", "worldbuilding", "adventure"]);
+  }
+  if (textHasAny(text, [/学校/, /学園/, /高校/, /青春/, /school/])) {
+    settingPrefs.add("school");
+    addTags(boostTags, ["school", "coming_of_age"]);
+  }
+  if (textHasAny(text, [/仕事/, /職場/, /社会人/, /業界/, /workplace/, /office/])) {
+    settingPrefs.add("workplace");
+    addTags(boostTags, ["workplace", "adult", "human_drama"]);
+  }
+  if (textHasAny(text, [/sf/, /近未来/, /サイバー/, /宇宙/, /ロボット/, /sci-fi/, /space/])) {
+    settingPrefs.add(textHasAny(text, [/宇宙/, /space/]) ? "space" : "sci_fi");
+    addTags(boostTags, ["sci_fi", "space", "worldbuilding"]);
+  }
+  if (textHasAny(text, [/歴史/, /時代/, /侍/, /戦国/, /江戸/, /historical/])) {
+    settingPrefs.add("historical");
+    addTags(boostTags, ["historical", "human_drama"]);
+  }
+
+  if (textHasAny(text, [/明る/, /笑える/, /楽しい/, /軽い/, /コメディ/, /ギャグ/, /funny/, /comedy/])) {
+    addTags(boostTags, ["light_comedy", "warm", "wholesome", "comedy_gag"]);
+  }
+  if (textHasAny(text, [/恋愛/, /ラブコメ/, /ロマンス/, /きゅん/, /romance/, /love/]) && !around("恋愛|ラブコメ|ロマンス|romance|love").test(text)) {
+    addTags(boostTags, ["romance", "warm", "emotional", "shojo_kirakira"]);
+  }
+  if (textHasAny(text, [/バトル/, /戦闘/, /アクション/, /熱血/, /battle/, /action/]) && !around("バトル|戦闘|アクション|battle|action").test(text)) {
+    addTags(boostTags, ["battle", "action", "burning", "dynamic"]);
+  }
+  if (textHasAny(text, [/スポーツ/, /部活/, /試合/, /sports/]) && !around("スポーツ|部活|sports").test(text)) {
+    addTags(boostTags, ["sports", "school", "burning", "tournament"]);
+  }
+  if (textHasAny(text, [/ホラー/, /怖い/, /怪異/, /不穏/, /horror/]) && !around("グロ|残酷|怖い|ホラー|怖すぎ|gore|horror").test(text)) {
+    addTags(boostTags, ["horror", "dark", "mysterious", "suspense"]);
+  }
+  if (textHasAny(text, [/泣ける/, /感動/, /余韻/, /エモ/, /tear/, /emotional/])) {
+    addTags(boostTags, ["emotional", "human_drama", "emotional_catharsis"]);
+  }
+  if (textHasAny(text, [/癒し/, /ほのぼの/, /優しい/, /安心/, /healing/, /cozy/])) {
+    addTags(boostTags, ["healing", "warm", "comfort", "wholesome"]);
+  }
+  if (textHasAny(text, [/謎/, /考察/, /伏線/, /ミステリ/, /サスペンス/, /mystery/])) {
+    addTags(boostTags, ["mystery", "mystery_box", "suspense", "twist"]);
+  }
+  if (textHasAny(text, [/大人向け/, /青年漫画/, /社会派/, /リアル/, /seinen/, /adult/])) {
+    demographics.add("seinen");
+    addTags(boostTags, ["adult", "realistic", "social", "human_drama"]);
+  }
+  if (textHasAny(text, [/女性向け/, /少女漫画/, /josei/, /shojo/])) {
+    addTags(boostTags, ["romance", "emotional", "shojo_kirakira"]);
+  }
+  if (textHasAny(text, [/アニメ化/, /有名/, /入りやすい/, /anime/])) mediaPrefs.add("anime_yes");
+  if (textHasAny(text, [/隠れた/, /マイナー/, /知られてない/, /穴場/, /hidden/])) {
+    mediaPrefs.add("anime_no");
+    addTags(boostTags, ["cult", "unique", "anime_no"]);
+  }
+
+  likedTitleKeys.forEach((key) => {
+    const liked = CORE_DB_UNIQUE.find((manga) => normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id) === key);
+    if (liked) addTags(boostTags, liked.tags || []);
+  });
+
+  return { avoidTags, hardAvoidTags, boostTags, settingPrefs, demographics, statusPrefs, mediaPrefs, blockedTitleKeys, likedTitleKeys };
+}
+
+function buildFreeTextInstruction(freeText, language) {
+  const signals = extractFreeTextSignals(freeText);
+  const avoid = Array.from(signals.avoidTags);
+  const hardAvoid = Array.from(signals.hardAvoidTags);
+  const boost = Array.from(signals.boostTags).slice(0, 16);
+  const settings = Array.from(signals.settingPrefs);
+  const statuses = Array.from(signals.statusPrefs);
+  const blockedTitles = Array.from(signals.blockedTitleKeys);
+  const likedTitles = Array.from(signals.likedTitleKeys);
+
+  if (!avoid.length && !hardAvoid.length && !boost.length && !settings.length && !statuses.length && !blockedTitles.length && !likedTitles.length) return "";
+
+  const label = language === "ja" ? "## Interpreted Free-Text Constraints" : "## Interpreted Free-Text Constraints";
+  return `\n${label}\n- Strongly avoid tags: ${[...new Set([...hardAvoid, ...avoid])].join(", ") || "none"}\n- Prefer tags: ${boost.join(", ") || "none"}\n- Extra setting preferences: ${settings.join(", ") || "none"}\n- Extra status preferences: ${statuses.join(", ") || "none"}\n- Avoid exact referenced titles: ${blockedTitles.join(", ") || "none"}\n- Similar-to referenced titles: ${likedTitles.join(", ") || "none"}\n`;
+}
+
+function violatesFreeTextAvoidance(manga, signals) {
+  if (!signals) return false;
+  const titleKey = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
+  if (signals.blockedTitleKeys?.has(titleKey)) return true;
+  const tags = new Set(manga.tags || []);
+  return Array.from(signals.hardAvoidTags || []).some((tag) => tags.has(tag));
+}
+
 function buildPreferenceSignals(answers, questions, freeText = "", language = "ja") {
   const entries = getSelectedEntries(answers, questions);
   const tagWeights = new Map();
@@ -543,9 +722,7 @@ function buildPreferenceSignals(answers, questions, freeText = "", language = "j
   const demographics = new Set();
   const statusPrefs = new Set();
   const mediaPrefs = new Set();
-  const freeTextValue = `${freeText || ""}`.toLowerCase();
-  const avoidTags = new Set();
-  const boostTags = new Set();
+  const freeTextSignals = extractFreeTextSignals(freeText);
 
   entries.forEach((entry) => {
     const weight = QUESTION_WEIGHTS[entry.questionId] || 2;
@@ -565,29 +742,34 @@ function buildPreferenceSignals(answers, questions, freeText = "", language = "j
     });
   });
 
-  if (/鬱|胸糞|救われない|しんどい|暗すぎ|重すぎ/.test(freeTextValue)) {
-    ["dark", "brutal", "shock", "melancholic", "horror"].forEach((tag) => avoidTags.add(tag));
-    ["warm", "wholesome", "healing", "emotional_catharsis"].forEach((tag) => boostTags.add(tag));
-  }
-  if (/グロ|残酷|怖い|ホラー/.test(freeTextValue)) {
-    ["horror", "brutal", "shock"].forEach((tag) => avoidTags.add(tag));
-  }
-  if (/完結|終わって/.test(freeTextValue)) statusPrefs.add("completed_only");
-  if (/短め|短い|サクッ|すぐ読/.test(freeTextValue)) statusPrefs.add("short");
-  if (/明る|笑える|楽しい|軽い/.test(freeTextValue)) {
-    ["light_comedy", "warm", "wholesome", "comedy_gag"].forEach((tag) => boostTags.add(tag));
-  }
-  if (/泣ける|感動|余韻/.test(freeTextValue)) {
-    ["emotional", "human_drama", "emotional_catharsis"].forEach((tag) => boostTags.add(tag));
-  }
+  freeTextSignals.settingPrefs.forEach((value) => settingPrefs.add(value));
+  freeTextSignals.demographics.forEach((value) => demographics.add(value));
+  freeTextSignals.statusPrefs.forEach((value) => statusPrefs.add(value));
+  freeTextSignals.mediaPrefs.forEach((value) => mediaPrefs.add(value));
+  freeTextSignals.boostTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) + 5));
+  freeTextSignals.avoidTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) - 10));
 
-  boostTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) + 4));
-  avoidTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) - 6));
-
-  return { tagWeights, settingPrefs, demographics, statusPrefs, mediaPrefs, selectedLabels, entries, appliedFilterQuestionIds: [] };
+  return {
+    tagWeights,
+    settingPrefs,
+    demographics,
+    statusPrefs,
+    mediaPrefs,
+    selectedLabels,
+    entries,
+    appliedFilterQuestionIds: [],
+    avoidTags: freeTextSignals.avoidTags,
+    hardAvoidTags: freeTextSignals.hardAvoidTags,
+    blockedTitleKeys: freeTextSignals.blockedTitleKeys,
+    likedTitleKeys: freeTextSignals.likedTitleKeys,
+  };
 }
 
 function scoreManga(manga, signals) {
+  if (violatesFreeTextAvoidance(manga, signals)) {
+    return { score: -999, matchedTags: [] };
+  }
+
   const tags = new Set(manga.tags || []);
   let score = 0;
   const matchedTags = [];
@@ -633,6 +815,17 @@ function scoreManga(manga, signals) {
     if (signals.mediaPrefs.has(tag) && tags.has(tag)) score += 5;
   });
 
+  if (signals.avoidTags?.size > 0) {
+    signals.avoidTags.forEach((tag) => {
+      if (tags.has(tag)) score -= 8;
+    });
+  }
+
+  if (signals.likedTitleKeys?.size > 0) {
+    const titleKey = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
+    if (signals.likedTitleKeys.has(titleKey)) score += 18;
+  }
+
   if (tags.has("award")) score += 1.2;
   if (tags.has("bestseller") || tags.has("legendary")) score += 1;
   if (manga.anime) score += 0.5;
@@ -641,10 +834,13 @@ function scoreManga(manga, signals) {
 }
 
 function scoreCandidatePool(signals) {
-  return CORE_DB_UNIQUE.map((manga) => {
+  const scored = CORE_DB_UNIQUE.map((manga) => {
     const result = scoreManga(manga, signals);
     return { manga, score: result.score, matchedTags: result.matchedTags };
-  }).sort((a, b) => {
+  });
+  const safeScored = scored.filter(({ score }) => score > -500);
+
+  return (safeScored.length >= FALLBACK_RESULT_LIMIT ? safeScored : scored).sort((a, b) => {
     if (b.score !== a.score) return b.score - a.score;
     return (b.manga.anime === true) - (a.manga.anime === true);
   });
@@ -764,9 +960,10 @@ function enrichRecommendations(payload) {
 }
 
 function recommendationMatchesSignals(rec, signals) {
-  if (!signals?.appliedFilterQuestionIds || signals.appliedFilterQuestionIds.length === 0) return true;
   const dbEntry = rec.source === "db" || CORE_DB_BY_ID.has(rec.id) ? CORE_DB_BY_ID.get(rec.id) : null;
   const manga = dbEntry || rec;
+  if (violatesFreeTextAvoidance(manga, signals)) return false;
+  if (!signals?.appliedFilterQuestionIds || signals.appliedFilterQuestionIds.length === 0) return true;
   const entriesByQuestion = groupEntriesByQuestion(signals.entries);
 
   return signals.appliedFilterQuestionIds.every((questionId) => {
