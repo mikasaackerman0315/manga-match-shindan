@@ -547,6 +547,12 @@ function textHasAny(text, patterns = []) {
   return patterns.some((pattern) => pattern.test(text));
 }
 
+function mangaHasAnyTag(manga, tagSet) {
+  if (!tagSet || tagSet.size === 0) return false;
+  const tags = new Set(manga.tags || []);
+  return Array.from(tagSet).some((tag) => tags.has(tag) || manga.demographic === tag || manga.status === tag);
+}
+
 function extractReferencedTitleKeys(freeText, avoidOnly = false) {
   const text = `${freeText || ""}`.toLowerCase();
   if (!text.trim()) return new Set();
@@ -580,8 +586,10 @@ function extractFreeTextSignals(freeText = "") {
   const hardAvoidTags = new Set();
   const boostTags = new Set();
   const settingPrefs = new Set();
+  const requiredSettingPrefs = new Set();
   const demographics = new Set();
   const statusPrefs = new Set();
+  const requiredStatusPrefs = new Set();
   const mediaPrefs = new Set();
   const blockedTitleKeys = extractReferencedTitleKeys(freeText, true);
   const likedTitleKeys = extractReferencedTitleKeys(freeText, false);
@@ -610,38 +618,59 @@ function extractFreeTextSignals(freeText = "") {
   }
   if (around("長い|長編|巻数多い|long").test(text)) {
     statusPrefs.add("short");
+    requiredStatusPrefs.add("short");
   }
   if (around("連載中|未完|ongoing").test(text)) {
     statusPrefs.add("completed_only");
+    requiredStatusPrefs.add("completed_only");
   }
 
-  if (textHasAny(text, [/完結/, /終わって/, /最後まで読/, /completed/])) statusPrefs.add("completed_only");
-  if (textHasAny(text, [/連載中/, /新作/, /追いかけたい/, /ongoing/, /new/])) statusPrefs.add("ongoing_only");
-  if (textHasAny(text, [/短め/, /短い/, /サクッ/, /すぐ読/, /短時間/, /short/])) statusPrefs.add("short");
+  if (around("完結|終わって|completed").test(text)) {
+    statusPrefs.add("ongoing_only");
+    requiredStatusPrefs.add("ongoing_only");
+  } else if (textHasAny(text, [/完結/, /終わって/, /最後まで読/, /completed/])) {
+    statusPrefs.add("completed_only");
+    requiredStatusPrefs.add("completed_only");
+  }
+  if (!around("連載中|新作|ongoing|new").test(text) && textHasAny(text, [/連載中/, /新作/, /追いかけたい/, /ongoing/, /new/])) {
+    statusPrefs.add("ongoing_only");
+    requiredStatusPrefs.add("ongoing_only");
+  }
+  if (!around("短め|短い|サクッ|すぐ読|short").test(text) && textHasAny(text, [/短め/, /短い/, /サクッ/, /すぐ読/, /短時間/, /short/])) {
+    statusPrefs.add("short");
+    requiredStatusPrefs.add("short");
+  }
   if (textHasAny(text, [/長編/, /じっくり/, /読み応え/, /long/])) addTags(boostTags, ["long_arc", "worldbuilding"]);
 
   if (textHasAny(text, [/バーチャル/, /ゲーム世界/, /オンラインゲーム/, /vr/, /mmo/, /レベル/, /ダンジョン/])) {
     settingPrefs.add("virtual");
+    requiredSettingPrefs.add("virtual");
     addTags(boostTags, ["virtual", "battle", "adventure"]);
   }
   if (textHasAny(text, [/異世界/, /ファンタジー/, /魔法/, /fantasy/, /isekai/])) {
     settingPrefs.add("fantasy");
+    requiredSettingPrefs.add("fantasy");
     addTags(boostTags, ["fantasy", "worldbuilding", "adventure"]);
   }
   if (textHasAny(text, [/学校/, /学園/, /高校/, /青春/, /school/])) {
     settingPrefs.add("school");
+    requiredSettingPrefs.add("school");
     addTags(boostTags, ["school", "coming_of_age"]);
   }
   if (textHasAny(text, [/仕事/, /職場/, /社会人/, /業界/, /workplace/, /office/])) {
     settingPrefs.add("workplace");
+    requiredSettingPrefs.add("workplace");
     addTags(boostTags, ["workplace", "adult", "human_drama"]);
   }
   if (textHasAny(text, [/sf/, /近未来/, /サイバー/, /宇宙/, /ロボット/, /sci-fi/, /space/])) {
-    settingPrefs.add(textHasAny(text, [/宇宙/, /space/]) ? "space" : "sci_fi");
+    const sciFiSetting = textHasAny(text, [/宇宙/, /space/]) ? "space" : "sci_fi";
+    settingPrefs.add(sciFiSetting);
+    requiredSettingPrefs.add(sciFiSetting);
     addTags(boostTags, ["sci_fi", "space", "worldbuilding"]);
   }
   if (textHasAny(text, [/歴史/, /時代/, /侍/, /戦国/, /江戸/, /historical/])) {
     settingPrefs.add("historical");
+    requiredSettingPrefs.add("historical");
     addTags(boostTags, ["historical", "human_drama"]);
   }
 
@@ -687,7 +716,19 @@ function extractFreeTextSignals(freeText = "") {
     if (liked) addTags(boostTags, liked.tags || []);
   });
 
-  return { avoidTags, hardAvoidTags, boostTags, settingPrefs, demographics, statusPrefs, mediaPrefs, blockedTitleKeys, likedTitleKeys };
+  return {
+    avoidTags,
+    hardAvoidTags,
+    boostTags,
+    settingPrefs,
+    requiredSettingPrefs,
+    demographics,
+    statusPrefs,
+    requiredStatusPrefs,
+    mediaPrefs,
+    blockedTitleKeys,
+    likedTitleKeys,
+  };
 }
 
 function buildFreeTextInstruction(freeText, language) {
@@ -696,14 +737,16 @@ function buildFreeTextInstruction(freeText, language) {
   const hardAvoid = Array.from(signals.hardAvoidTags);
   const boost = Array.from(signals.boostTags).slice(0, 16);
   const settings = Array.from(signals.settingPrefs);
+  const requiredSettings = Array.from(signals.requiredSettingPrefs);
   const statuses = Array.from(signals.statusPrefs);
+  const requiredStatuses = Array.from(signals.requiredStatusPrefs);
   const blockedTitles = Array.from(signals.blockedTitleKeys);
   const likedTitles = Array.from(signals.likedTitleKeys);
 
-  if (!avoid.length && !hardAvoid.length && !boost.length && !settings.length && !statuses.length && !blockedTitles.length && !likedTitles.length) return "";
+  if (!avoid.length && !hardAvoid.length && !boost.length && !settings.length && !requiredSettings.length && !statuses.length && !requiredStatuses.length && !blockedTitles.length && !likedTitles.length) return "";
 
   const label = language === "ja" ? "## Interpreted Free-Text Constraints" : "## Interpreted Free-Text Constraints";
-  return `\n${label}\n- Strongly avoid tags: ${[...new Set([...hardAvoid, ...avoid])].join(", ") || "none"}\n- Prefer tags: ${boost.join(", ") || "none"}\n- Extra setting preferences: ${settings.join(", ") || "none"}\n- Extra status preferences: ${statuses.join(", ") || "none"}\n- Avoid exact referenced titles: ${blockedTitles.join(", ") || "none"}\n- Similar-to referenced titles: ${likedTitles.join(", ") || "none"}\n`;
+  return `\n${label}\n- Strongly avoid tags: ${[...new Set([...hardAvoid, ...avoid])].join(", ") || "none"}\n- Prefer tags: ${boost.join(", ") || "none"}\n- Extra setting preferences: ${settings.join(", ") || "none"}\n- Required setting filters when enough candidates exist: ${requiredSettings.join(", ") || "none"}\n- Extra status preferences: ${statuses.join(", ") || "none"}\n- Required status filters when enough candidates exist: ${requiredStatuses.join(", ") || "none"}\n- Avoid exact referenced titles: ${blockedTitles.join(", ") || "none"}\n- Similar-to referenced titles: ${likedTitles.join(", ") || "none"}\n`;
 }
 
 function violatesFreeTextAvoidance(manga, signals) {
@@ -760,9 +803,40 @@ function buildPreferenceSignals(answers, questions, freeText = "", language = "j
     appliedFilterQuestionIds: [],
     avoidTags: freeTextSignals.avoidTags,
     hardAvoidTags: freeTextSignals.hardAvoidTags,
+    requiredSettingPrefs: freeTextSignals.requiredSettingPrefs,
+    requiredStatusPrefs: freeTextSignals.requiredStatusPrefs,
+    appliedFreeTextFilters: [],
     blockedTitleKeys: freeTextSignals.blockedTitleKeys,
     likedTitleKeys: freeTextSignals.likedTitleKeys,
   };
+}
+
+function matchesStatusPreference(manga, value) {
+  if (value === "completed_only") return manga.status === "completed";
+  if (value === "ongoing_only") return manga.status === "ongoing";
+  if (value === "short") return manga.volumes && manga.volumes <= 10;
+  if (value === "medium") return manga.volumes && manga.volumes > 10 && manga.volumes <= 30;
+  if (value === "long" || value === "epic" || value === "long_running") return manga.volumes && manga.volumes >= 30;
+  if (value === "hiatus_ok") return manga.status === "hiatus";
+  return manga.status === value || (manga.tags || []).includes(value);
+}
+
+function matchesRequiredFreeTextSettings(manga, signals) {
+  if (!signals?.requiredSettingPrefs || signals.requiredSettingPrefs.size === 0) return true;
+  return Array.from(signals.requiredSettingPrefs).some((value) => matchesPreferenceValue(manga, value));
+}
+
+function matchesRequiredFreeTextStatuses(manga, signals) {
+  if (!signals?.requiredStatusPrefs || signals.requiredStatusPrefs.size === 0) return true;
+  return Array.from(signals.requiredStatusPrefs).some((value) => matchesStatusPreference(manga, value));
+}
+
+function matchesAppliedFreeTextFilters(manga, signals) {
+  const applied = new Set(signals?.appliedFreeTextFilters || []);
+  if (applied.has("free_text_setting") && !matchesRequiredFreeTextSettings(manga, signals)) return false;
+  if (applied.has("free_text_status") && !matchesRequiredFreeTextStatuses(manga, signals)) return false;
+  if (applied.has("free_text_avoid") && mangaHasAnyTag(manga, signals.avoidTags)) return false;
+  return true;
 }
 
 function scoreManga(manga, signals) {
@@ -800,13 +874,13 @@ function scoreManga(manga, signals) {
     score += signals.demographics.has(manga.demographic) ? 8 : -2;
   }
 
-  if (signals.statusPrefs.has("completed_only")) score += manga.status === "completed" ? 10 : -8;
-  if (signals.statusPrefs.has("ongoing_only")) score += manga.status === "ongoing" ? 8 : -5;
-  if (signals.statusPrefs.has("hiatus_ok") && manga.status === "hiatus") score += 3;
-  if (signals.statusPrefs.has("short")) score += manga.volumes && manga.volumes <= 10 ? 9 : -2;
-  if (signals.statusPrefs.has("medium")) score += manga.volumes && manga.volumes > 10 && manga.volumes <= 30 ? 6 : 0;
+  if (signals.statusPrefs.has("completed_only")) score += matchesStatusPreference(manga, "completed_only") ? 10 : -8;
+  if (signals.statusPrefs.has("ongoing_only")) score += matchesStatusPreference(manga, "ongoing_only") ? 8 : -5;
+  if (signals.statusPrefs.has("hiatus_ok") && matchesStatusPreference(manga, "hiatus_ok")) score += 3;
+  if (signals.statusPrefs.has("short")) score += matchesStatusPreference(manga, "short") ? 9 : -2;
+  if (signals.statusPrefs.has("medium")) score += matchesStatusPreference(manga, "medium") ? 6 : 0;
   if (signals.statusPrefs.has("long") || signals.statusPrefs.has("epic") || signals.statusPrefs.has("long_running")) {
-    score += manga.volumes && manga.volumes >= 30 ? 6 : 0;
+    score += matchesStatusPreference(manga, "long") ? 6 : 0;
   }
 
   if (signals.mediaPrefs.has("anime_yes")) score += manga.anime ? 6 : -2;
@@ -874,9 +948,48 @@ function applyStagedFilters(scored, signals) {
   return narrowed;
 }
 
+function keepFilterIfEnough(current, filtered, min) {
+  return filtered.length >= min ? filtered : current;
+}
+
+function applyFreeTextFilters(scored, signals) {
+  let narrowed = scored;
+  const applied = [];
+
+  if (signals.requiredSettingPrefs?.size > 0) {
+    const filtered = narrowed.filter(({ manga }) => matchesRequiredFreeTextSettings(manga, signals));
+    const next = keepFilterIfEnough(narrowed, filtered, FALLBACK_RESULT_LIMIT);
+    if (next !== narrowed) {
+      narrowed = next;
+      applied.push("free_text_setting");
+    }
+  }
+
+  if (signals.requiredStatusPrefs?.size > 0) {
+    const filtered = narrowed.filter(({ manga }) => matchesRequiredFreeTextStatuses(manga, signals));
+    const next = keepFilterIfEnough(narrowed, filtered, Math.min(10, FALLBACK_RESULT_LIMIT));
+    if (next !== narrowed) {
+      narrowed = next;
+      applied.push("free_text_status");
+    }
+  }
+
+  if (signals.avoidTags?.size > 0) {
+    const filtered = narrowed.filter(({ manga }) => !mangaHasAnyTag(manga, signals.avoidTags));
+    const next = keepFilterIfEnough(narrowed, filtered, Math.min(10, FALLBACK_RESULT_LIMIT));
+    if (next !== narrowed) {
+      narrowed = next;
+      applied.push("free_text_avoid");
+    }
+  }
+
+  signals.appliedFreeTextFilters = applied;
+  return narrowed;
+}
+
 function selectCandidatePool(signals, limit = GEMINI_CANDIDATE_LIMIT) {
   const scored = scoreCandidatePool(signals);
-  const narrowed = applyStagedFilters(scored, signals);
+  const narrowed = applyFreeTextFilters(applyStagedFilters(scored, signals), signals);
   return narrowed.slice(0, limit);
 }
 
@@ -963,6 +1076,7 @@ function recommendationMatchesSignals(rec, signals) {
   const dbEntry = rec.source === "db" || CORE_DB_BY_ID.has(rec.id) ? CORE_DB_BY_ID.get(rec.id) : null;
   const manga = dbEntry || rec;
   if (violatesFreeTextAvoidance(manga, signals)) return false;
+  if (!matchesAppliedFreeTextFilters(manga, signals)) return false;
   if (!signals?.appliedFilterQuestionIds || signals.appliedFilterQuestionIds.length === 0) return true;
   const entriesByQuestion = groupEntriesByQuestion(signals.entries);
 
@@ -1029,6 +1143,7 @@ function enforceRecommendationFit(payload, signals, language) {
 
   if (filtered.length < FALLBACK_RESULT_LIMIT) {
     for (const { manga, matchedTags } of scoreCandidatePool(signals)) {
+      if (violatesFreeTextAvoidance(manga, signals) || !matchesAppliedFreeTextFilters(manga, signals)) continue;
       if (!shouldKeepSettingForAlternative(manga, signals)) continue;
       if (countMatchedFilterQuestions(manga, signals) < minimumPartialMatches) continue;
       const key = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
@@ -1044,6 +1159,7 @@ function enforceRecommendationFit(payload, signals, language) {
 
   if (filtered.length < FALLBACK_RESULT_LIMIT) {
     for (const { manga, matchedTags } of scoreCandidatePool(signals)) {
+      if (violatesFreeTextAvoidance(manga, signals) || !matchesAppliedFreeTextFilters(manga, signals)) continue;
       const key = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
       if (seen.has(key)) continue;
       seen.add(key);
