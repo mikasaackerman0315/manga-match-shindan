@@ -113,6 +113,54 @@ const T = {
 };
 
 const LOADING_STEP_COUNT = 4;
+const LOADING_MANGA_RECOMMENDATIONS = [
+  { title_ja: "ダンダダン", title_en: "Dandadan", lead_ja: "勢いと怪異とラブコメの混ざり方が強い。", lead_en: "Wild momentum, occult energy, and romantic comedy." },
+  { title_ja: "葬送のフリーレン", title_en: "Frieren", lead_ja: "静かな旅と余韻で、長く残るタイプ。", lead_en: "A quiet journey with a lingering emotional pull." },
+  { title_ja: "ブルーロック", title_en: "Blue Lock", lead_ja: "勝負の熱さとエゴの強さで一気に読ませる。", lead_en: "A sharp, addictive sports battle of ego and skill." },
+  { title_ja: "メダリスト", title_en: "Medalist", lead_ja: "努力と才能の火がじわじわ燃える。", lead_en: "A fierce story of talent, effort, and ambition." },
+  { title_ja: "光が死んだ夏", title_en: "The Summer Hikaru Died", lead_ja: "不穏な空気と青春の痛みが刺さる。", lead_en: "Uneasy horror threaded through tender adolescence." },
+  { title_ja: "スキップとローファー", title_en: "Skip and Loafer", lead_ja: "やさしい青春と人間関係の温度が心地いい。", lead_en: "Warm school life with beautifully observed relationships." },
+  { title_ja: "チ。-地球の運動について-", title_en: "Orb", lead_ja: "知への執念と緊張感で読ませる歴史ドラマ。", lead_en: "A tense historical drama about conviction and knowledge." },
+  { title_ja: "九龍ジェネリックロマンス", title_en: "Kowloon Generic Romance", lead_ja: "街の空気と謎めいた恋愛がじわっと来る。", lead_en: "Atmospheric romance with a strange, nostalgic mystery." },
+  { title_ja: "正反対な君と僕", title_en: "You and I Are Polar Opposites", lead_ja: "軽く読めて、ちゃんと恋がかわいい。", lead_en: "Easy to read, bright, and genuinely charming." },
+  { title_ja: "ガチアクタ", title_en: "Gachiakuta", lead_ja: "粗さと熱量のあるバトルを読みたい時に。", lead_en: "Rough-edged, high-energy action with attitude." },
+  { title_ja: "これ描いて死ね", title_en: "Draw This, Then Die", lead_ja: "漫画を描く楽しさと青春の眩しさがある。", lead_en: "A bright story about making manga and finding your spark." },
+  { title_ja: "ラーメン赤猫", title_en: "Red Cat Ramen", lead_ja: "ゆるさと仕事ものの気持ちよさが同居している。", lead_en: "A cozy workplace manga with a wonderfully gentle rhythm." },
+];
+
+function getLoadingRecommendations(answers = {}, language = "ja") {
+  const values = Object.values(answers).flat();
+  const preferred = [];
+
+  if (values.includes("virtual") || values.includes("battle") || values.includes("burning")) {
+    preferred.push("ダンダダン", "ブルーロック", "ガチアクタ");
+  }
+  if (values.includes("fantasy") || values.includes("journey") || values.includes("emotional")) {
+    preferred.push("葬送のフリーレン", "チ。-地球の運動について-", "メダリスト");
+  }
+  if (values.includes("school") || values.includes("romance") || values.includes("warm")) {
+    preferred.push("スキップとローファー", "正反対な君と僕", "九龍ジェネリックロマンス");
+  }
+  if (values.includes("horror") || values.includes("mystery") || values.includes("dark")) {
+    preferred.push("光が死んだ夏", "九龍ジェネリックロマンス", "チ。-地球の運動について-");
+  }
+  if (values.includes("workplace") || values.includes("specialty") || values.includes("healing")) {
+    preferred.push("ラーメン赤猫", "これ描いて死ね", "スキップとローファー");
+  }
+
+  const orderedTitles = [...new Set(preferred)];
+  const picked = orderedTitles
+    .map((title) => LOADING_MANGA_RECOMMENDATIONS.find((rec) => rec.title_ja === title))
+    .filter(Boolean);
+  const rest = LOADING_MANGA_RECOMMENDATIONS.filter((rec) => !orderedTitles.includes(rec.title_ja));
+  const recommendations = [...picked, ...rest];
+
+  return recommendations.map((rec) => ({
+    title: language === "ja" ? rec.title_ja : rec.title_en,
+    lead: language === "ja" ? rec.lead_ja : rec.lead_en,
+  }));
+}
+
 const RELATED_THEMES = [
   { slug: "fantasy", label_ja: "異世界・ファンタジー", label_en: "Fantasy", tags: ["fantasy", "adventure", "worldbuilding", "mythology", "urban_fantasy"] },
   { slug: "modern", label_ja: "現代・日常", label_en: "Modern / Slice of Life", tags: ["modern", "school", "slice_of_life", "daily_buildup", "warm"] },
@@ -224,11 +272,13 @@ export default function App() {
   const [results, setResults] = useState(null);
   const [error, setError] = useState(null);
   const [loadingStep, setLoadingStep] = useState(0);
+  const [loadingMangaIndex, setLoadingMangaIndex] = useState(0);
   const prefetchRef = useRef({ key: "", promise: null });
 
   const t = T[language];
   const QUESTIONS = mode === "simple" ? QUESTIONS_SIMPLE : QUESTIONS_DETAILED;
   const diagnosisType = getDiagnosisType(mode);
+  const loadingRecommendations = getLoadingRecommendations(answers, language);
 
   useEffect(() => {
     if (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("start") === "1") {
@@ -241,6 +291,15 @@ export default function App() {
       const interval = setInterval(() => {
         setLoadingStep((prev) => Math.min(prev + 1, LOADING_STEP_COUNT - 1));
       }, 8000);
+      return () => clearInterval(interval);
+    }
+  }, [screen]);
+
+  useEffect(() => {
+    if (screen === "loading") {
+      const interval = setInterval(() => {
+        setLoadingMangaIndex((prev) => prev + 1);
+      }, 1800);
       return () => clearInterval(interval);
     }
   }, [screen]);
@@ -333,6 +392,7 @@ export default function App() {
     const diagnosisStartedAt = Date.now();
     setScreen("loading");
     setLoadingStep(0);
+    setLoadingMangaIndex(0);
     setError(null);
     try {
       const body = buildRecommendBody(answers, freeText);
@@ -587,18 +647,64 @@ export default function App() {
       )}
 
       {screen === "loading" && (
-        <div className="min-h-screen flex flex-col items-center justify-center px-8">
-          <div className="text-center max-w-md">
-            <div className="mb-8 flex justify-center">
-              <div className="relative w-20 h-20">
-                <div className="absolute inset-0 border-2 border-black opacity-10" />
-                <div className="absolute inset-0 border-t-2 border-r-2 border-black animate-spin" />
-                <div className="absolute inset-2 border-b-2 border-l-2 animate-spin" style={{ borderColor: "#c0392b", animationDuration: "2s", animationDirection: "reverse" }} />
+        <div className="min-h-screen flex items-center justify-center px-5 md:px-8 py-12">
+          <style>{`
+            @keyframes loadingMangaPop {
+              0% { opacity: 0; transform: translateY(14px) scale(0.96); }
+              18% { opacity: 1; transform: translateY(0) scale(1); }
+              78% { opacity: 1; transform: translateY(0) scale(1); }
+              100% { opacity: 0; transform: translateY(-10px) scale(0.98); }
+            }
+          `}</style>
+          <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] gap-10 md:gap-14 items-center">
+            <div className="text-center">
+              <div className="mb-8 flex justify-center">
+                <div className="relative w-20 h-20">
+                  <div className="absolute inset-0 border-2 border-black opacity-10" />
+                  <div className="absolute inset-0 border-t-2 border-r-2 border-black animate-spin" />
+                  <div className="absolute inset-2 border-b-2 border-l-2 animate-spin" style={{ borderColor: "#c0392b", animationDuration: "2s", animationDirection: "reverse" }} />
+                </div>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-medium mb-8 italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.loading}</h2>
+              <div className="flex justify-center gap-2">
+                {Array.from({ length: LOADING_STEP_COUNT }).map((_, idx) => (<div key={idx} className="h-1 w-8 transition-all" style={{ backgroundColor: idx <= loadingStep ? "#c0392b" : "rgba(10,10,10,0.15)" }} />))}
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl font-medium mb-8 italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.loading}</h2>
-            <div className="flex justify-center gap-2">
-              {Array.from({ length: LOADING_STEP_COUNT }).map((_, idx) => (<div key={idx} className="h-1 w-8 transition-all" style={{ backgroundColor: idx <= loadingStep ? "#c0392b" : "rgba(10,10,10,0.15)" }} />))}
+            <div className="w-full">
+              <div className="text-[10px] tracking-[0.28em] uppercase mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
+                {language === "ja" ? "待っている間の一冊" : "While You Wait"}
+              </div>
+              <div className="space-y-3 min-h-[280px]">
+                {Array.from({ length: 4 }).map((_, offset) => {
+                  const rec = loadingRecommendations[(loadingMangaIndex + offset) % loadingRecommendations.length];
+                  return (
+                    <div
+                      key={`${loadingMangaIndex}-${offset}-${rec.title}`}
+                      className="px-4 py-3 border"
+                      style={{
+                        borderColor: offset === 0 ? "rgba(192,57,43,0.35)" : "rgba(10,10,10,0.14)",
+                        backgroundColor: offset === 0 ? "rgba(192,57,43,0.045)" : "rgba(245,243,238,0.62)",
+                        animation: "loadingMangaPop 2100ms ease-in-out both",
+                        animationDelay: `${offset * 120}ms`,
+                      }}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="pt-1 text-xs" style={{ color: offset === 0 ? "#c0392b" : "#999", fontFamily: "'JetBrains Mono', monospace" }}>
+                          {String(((loadingMangaIndex + offset) % loadingRecommendations.length) + 1).padStart(2, "0")}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="text-base md:text-lg leading-tight" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>
+                            {rec.title}
+                          </div>
+                          <p className="text-xs md:text-sm mt-1 leading-relaxed" style={{ color: "#666" }}>
+                            {rec.lead}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
