@@ -1,0 +1,5302 @@
+[
+  {
+    "rank": 1,
+    "id": "blue_lock",
+    "title": "ブルーロック",
+    "author": "金城宗幸/ノ村優介",
+    "status": "ongoing",
+    "startYear": 2018,
+    "volumes": 30,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・アニメ化済み",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ブルーロック 1巻 金城宗幸",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 2,
+    "id": "kaiju_no_8",
+    "title": "怪獣8号",
+    "author": "松本直也",
+    "status": "ongoing",
+    "startYear": 2020,
+    "volumes": 15,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・アニメ化済み",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "popular",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "怪獣8号 1巻 松本直也",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 3,
+    "id": "magic_makeup",
+    "title": "メダリスト",
+    "author": "つるまいかだ",
+    "status": "ongoing",
+    "startYear": 2020,
+    "volumes": 13,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・アニメ化済み",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "popular",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "メダリスト 1巻 つるまいかだ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 4,
+    "id": "juujika_no_rokunin",
+    "title": "十字架のろくにん",
+    "author": "Nakatake, Shiryuu",
+    "status": "completed",
+    "startYear": 2020,
+    "volumes": 24,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "popular",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "十字架のろくにん 1巻 Nakatake, Shiryuu",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 5,
+    "id": "ruri_dragon",
+    "title": "ルリドラゴン",
+    "author": "Shindou, Masaoki",
+    "status": "ongoing",
+    "startYear": 2022,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "popular",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "ルリドラゴン 1巻 Shindou, Masaoki",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 6,
+    "id": "the_fragrant_flower_blooms_with_dignity",
+    "title": "薫る花は凛と咲く",
+    "author": "Mikami, Saka",
+    "status": "ongoing",
+    "startYear": 2021,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "popular",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "薫る花は凛と咲く 1巻 Mikami, Saka",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 7,
+    "id": "dandadan",
+    "title": "ダンダダン",
+    "author": "龍幸伸",
+    "status": "ongoing",
+    "startYear": 2021,
+    "volumes": 17,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・アニメ化済み",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "popular",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ダンダダン 1巻 龍幸伸",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 8,
+    "id": "sakamoto_days",
+    "title": "SAKAMOTO DAYS",
+    "author": "鈴木祐斗",
+    "status": "ongoing",
+    "startYear": 2020,
+    "volumes": 18,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・アニメ化済み",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "popular",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "SAKAMOTO DAYS 1巻 鈴木祐斗",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 9,
+    "id": "wind_breaker",
+    "title": "WIND BREAKER",
+    "author": "にいさとる",
+    "status": "ongoing",
+    "startYear": 2021,
+    "volumes": 17,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・アニメ化済み",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "popular",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "WIND BREAKER 1巻 にいさとる",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 10,
+    "id": "shangri_la",
+    "title": "シャングリラ・フロンティア",
+    "author": "硬梨菜/不二涼介",
+    "status": "ongoing",
+    "startYear": 2020,
+    "volumes": 17,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・アニメ化済み・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "シャングリラ・フロンティア 1巻 硬梨菜",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 11,
+    "id": "centuria",
+    "title": "ケントゥリア",
+    "author": "Kuramori, Tooru",
+    "status": "ongoing",
+    "startYear": 2024,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "popular",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "ケントゥリア 1巻 Kuramori, Tooru",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 12,
+    "id": "ichi_the_witch",
+    "title": "魔男のイチ",
+    "author": "Nishi, Osamu/Usazaki, Shiro",
+    "status": "ongoing",
+    "startYear": 2024,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "popular",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "魔男のイチ 1巻 Nishi, Osamu",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 13,
+    "id": "kagurabachi",
+    "title": "カグラバチ",
+    "author": "Hokazono, Takeru",
+    "status": "ongoing",
+    "startYear": 2023,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "popular",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "カグラバチ 1巻 Hokazono, Takeru",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 14,
+    "id": "gachiakuta",
+    "title": "ガチアクタ",
+    "author": "Urana, Kei",
+    "status": "ongoing",
+    "startYear": 2022,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "popular",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "ガチアクタ 1巻 Urana, Kei",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 15,
+    "id": "the_summer_hikaru_died",
+    "title": "光が死んだ夏",
+    "author": "Mokumokuren",
+    "status": "ongoing",
+    "startYear": 2021,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "光が死んだ夏 1巻 Mokumokuren",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 16,
+    "id": "frieren",
+    "title": "葬送のフリーレン",
+    "author": "山田鐘人/アベツカサ",
+    "status": "ongoing",
+    "startYear": 2020,
+    "volumes": 14,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・近年の話題作",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "葬送のフリーレン 1巻 山田鐘人",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 17,
+    "id": "deathnote",
+    "title": "DEATH NOTE",
+    "author": "大場つぐみ/小畑健",
+    "status": "completed",
+    "startYear": 2003,
+    "volumes": 12,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "DEATH NOTE 1巻 大場つぐみ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 18,
+    "id": "nana",
+    "title": "NANA",
+    "author": "矢沢あい",
+    "status": "hiatus",
+    "startYear": 2000,
+    "volumes": 21,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "NANA 1巻 矢沢あい",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 19,
+    "id": "slamdunk",
+    "title": "SLAM DUNK",
+    "author": "井上雄彦",
+    "status": "completed",
+    "startYear": 1990,
+    "volumes": 31,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "SLAM DUNK 1巻 井上雄彦",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 20,
+    "id": "dungeon_meshi",
+    "title": "ダンジョン飯",
+    "author": "九井諒子",
+    "status": "completed",
+    "startYear": 2014,
+    "volumes": 14,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ダンジョン飯 1巻 九井諒子",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 21,
+    "id": "haikyu",
+    "title": "ハイキュー!!",
+    "author": "古舘春一",
+    "status": "completed",
+    "startYear": 2012,
+    "volumes": 45,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ハイキュー!! 1巻 古舘春一",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 22,
+    "id": "berserk",
+    "title": "ベルセルク",
+    "author": "三浦建太郎",
+    "status": "hiatus",
+    "startYear": 1989,
+    "volumes": 42,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ベルセルク 1巻 三浦建太郎",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 23,
+    "id": "promised_neverland",
+    "title": "約束のネバーランド",
+    "author": "白井カイウ/出水ぽすか",
+    "status": "completed",
+    "startYear": 2016,
+    "volumes": 20,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "約束のネバーランド 1巻 白井カイウ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 24,
+    "id": "chihayafuru",
+    "title": "ちはやふる",
+    "author": "末次由紀",
+    "status": "completed",
+    "startYear": 2007,
+    "volumes": 50,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ちはやふる 1巻 末次由紀",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 25,
+    "id": "yotsuba",
+    "title": "よつばと!",
+    "author": "あずまきよひこ",
+    "status": "ongoing",
+    "startYear": 2003,
+    "volumes": 15,
+    "priorityReason": "記事掲載作品・有名作・診断候補・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "popular",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "よつばと! 1巻 あずまきよひこ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 26,
+    "id": "you_and_i_are_polar_opposites",
+    "title": "正反対な君と僕",
+    "author": "Agasawa, Koucha",
+    "status": "completed",
+    "startYear": 2021,
+    "volumes": 8,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "正反対な君と僕 1巻 Agasawa, Koucha",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 27,
+    "id": "aoashi",
+    "title": "アオアシ",
+    "author": "Kobayashi, Yuugo/Ueno, Naohiko",
+    "status": "completed",
+    "startYear": 2015,
+    "volumes": 40,
+    "priorityReason": "記事掲載作品・有名作・診断候補・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "popular",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アオアシ 1巻 Kobayashi, Yuugo",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 28,
+    "id": "drama_queen",
+    "title": "ドラマクイン",
+    "author": "Ichikawa, Kuraku",
+    "status": "ongoing",
+    "startYear": 2024,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "ドラマクイン 1巻 Ichikawa, Kuraku",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 29,
+    "id": "kaisha_to_shiseikatsu_on_to_off",
+    "title": "会社と私生活－オンとオフ－",
+    "author": "Kanazawa, Shinnosuke",
+    "status": "ongoing",
+    "startYear": 2023,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "会社と私生活－オンとオフ－ 1巻 Kanazawa, Shinnosuke",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 30,
+    "id": "smoking_behind_the_supermarket_with_you",
+    "title": "スーパーの裏でヤニ吸うふたり",
+    "author": "Jinushi",
+    "status": "ongoing",
+    "startYear": 2022,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "スーパーの裏でヤニ吸うふたり 1巻 Jinushi",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 31,
+    "id": "dogsred",
+    "title": "ドッグスレッド",
+    "author": "Noda, Satoru",
+    "status": "ongoing",
+    "startYear": 2023,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "ドッグスレッド 1巻 Noda, Satoru",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 32,
+    "id": "witch_watch",
+    "title": "ウィッチウォッチ",
+    "author": "Shinohara, Kenta",
+    "status": "ongoing",
+    "startYear": 2021,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "ウィッチウォッチ 1巻 Shinohara, Kenta",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 33,
+    "id": "sentai_daishikkaku",
+    "title": "戦隊大失格",
+    "author": "Haruba, Negi",
+    "status": "ongoing",
+    "startYear": 2021,
+    "volumes": 0,
+    "priorityReason": "トレンド漫画ページ掲載・記事掲載作品・近年の話題作",
+    "sourceReasons": [
+      "trend_page",
+      "article_page",
+      "extra_db",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "戦隊大失格 1巻 Haruba, Negi",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 34,
+    "id": "space_brothers",
+    "title": "宇宙兄弟",
+    "author": "Koyama, Chuuya",
+    "status": "ongoing",
+    "startYear": 2007,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品・有名作・診断候補",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "popular"
+    ],
+    "coverSearchKeyword": "宇宙兄弟 1巻 Koyama, Chuuya",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 35,
+    "id": "spy_family",
+    "title": "SPY×FAMILY",
+    "author": "遠藤達哉",
+    "status": "ongoing",
+    "startYear": 2019,
+    "volumes": 14,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "SPY×FAMILY 1巻 遠藤達哉",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 36,
+    "id": "vinland",
+    "title": "ヴィンランド・サガ",
+    "author": "幸村誠",
+    "status": "ongoing",
+    "startYear": 2005,
+    "volumes": 28,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ヴィンランド・サガ 1巻 幸村誠",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 37,
+    "id": "kingdom",
+    "title": "キングダム",
+    "author": "原泰久",
+    "status": "ongoing",
+    "startYear": 2006,
+    "volumes": 72,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "キングダム 1巻 原泰久",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 38,
+    "id": "bleach",
+    "title": "BLEACH",
+    "author": "久保帯人",
+    "status": "completed",
+    "startYear": 2001,
+    "volumes": 74,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "BLEACH 1巻 久保帯人",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 39,
+    "id": "shingeki_kyojin",
+    "title": "Dr.STONE",
+    "author": "稲垣理一郎/Boichi",
+    "status": "completed",
+    "startYear": 2017,
+    "volumes": 26,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "Dr.STONE 1巻 稲垣理一郎",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 40,
+    "id": "naruto",
+    "title": "NARUTO -ナルト-",
+    "author": "岸本斉史",
+    "status": "completed",
+    "startYear": 1999,
+    "volumes": 72,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "NARUTO -ナルト- 1巻 岸本斉史",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 41,
+    "id": "fruits_basket",
+    "title": "フルーツバスケット",
+    "author": "高屋奈月",
+    "status": "completed",
+    "startYear": 1998,
+    "volumes": 23,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "フルーツバスケット 1巻 高屋奈月",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 42,
+    "id": "demon_slayer",
+    "title": "鬼滅の刃",
+    "author": "吾峠呼世晴",
+    "status": "completed",
+    "startYear": 2016,
+    "volumes": 23,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "鬼滅の刃 1巻 吾峠呼世晴",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 43,
+    "id": "fma",
+    "title": "鋼の錬金術師",
+    "author": "荒川弘",
+    "status": "completed",
+    "startYear": 2001,
+    "volumes": 27,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "鋼の錬金術師 1巻 荒川弘",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 44,
+    "id": "mha",
+    "title": "僕のヒーローアカデミア",
+    "author": "堀越耕平",
+    "status": "completed",
+    "startYear": 2014,
+    "volumes": 42,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "僕のヒーローアカデミア 1巻 堀越耕平",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 45,
+    "id": "blue_period",
+    "title": "ブルーピリオド",
+    "author": "山口つばさ",
+    "status": "ongoing",
+    "startYear": 2017,
+    "volumes": 18,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ブルーピリオド 1巻 山口つばさ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 46,
+    "id": "world_trigger",
+    "title": "ワールドトリガー",
+    "author": "葦原大介",
+    "status": "ongoing",
+    "startYear": 2013,
+    "volumes": 28,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ワールドトリガー 1巻 葦原大介",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 47,
+    "id": "the_fable",
+    "title": "ザ・ファブル",
+    "author": "南勝久",
+    "status": "completed",
+    "startYear": 2014,
+    "volumes": 22,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ザ・ファブル 1巻 南勝久",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 48,
+    "id": "kinou_nani_tabeta",
+    "title": "きのう何食べた?",
+    "author": "よしながふみ",
+    "status": "ongoing",
+    "startYear": 2007,
+    "volumes": 22,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "きのう何食べた? 1巻 よしながふみ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 49,
+    "id": "march_lion_2",
+    "title": "BLUE GIANT",
+    "author": "石塚真一",
+    "status": "completed",
+    "startYear": 2013,
+    "volumes": 10,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "BLUE GIANT 1巻 石塚真一",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 50,
+    "id": "ace_no_diamond",
+    "title": "ダイヤのA",
+    "author": "寺嶋裕二",
+    "status": "completed",
+    "startYear": 2006,
+    "volumes": 47,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ダイヤのA 1巻 寺嶋裕二",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 51,
+    "id": "parasyte",
+    "title": "寄生獣",
+    "author": "岩明均",
+    "status": "completed",
+    "startYear": 1988,
+    "volumes": 10,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "寄生獣 1巻 岩明均",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 52,
+    "id": "skip_loafer",
+    "title": "スキップとローファー",
+    "author": "高松美咲",
+    "status": "ongoing",
+    "startYear": 2018,
+    "volumes": 11,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "スキップとローファー 1巻 高松美咲",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 53,
+    "id": "yowamushi_pedal",
+    "title": "弱虫ペダル",
+    "author": "渡辺航",
+    "status": "ongoing",
+    "startYear": 2008,
+    "volumes": 95,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "弱虫ペダル 1巻 渡辺航",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 54,
+    "id": "jojo",
+    "title": "ジョジョの奇妙な冒険",
+    "author": "荒木飛呂彦",
+    "status": "ongoing",
+    "startYear": 1987,
+    "volumes": 130,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ジョジョの奇妙な冒険 1巻 荒木飛呂彦",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 55,
+    "id": "chainsaw",
+    "title": "チェンソーマン",
+    "author": "藤本タツキ",
+    "status": "ongoing",
+    "startYear": 2018,
+    "volumes": 17,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "チェンソーマン 1巻 藤本タツキ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 56,
+    "id": "ds_kny",
+    "title": "ドラゴンボール",
+    "author": "鳥山明",
+    "status": "completed",
+    "startYear": 1984,
+    "volumes": 42,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ドラゴンボール 1巻 鳥山明",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 57,
+    "id": "blood_on_the_tracks",
+    "title": "血の轍",
+    "author": "Oshimi, Shuuzou",
+    "status": "completed",
+    "startYear": 2017,
+    "volumes": 17,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "血の轍 1巻 Oshimi, Shuuzou",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 58,
+    "id": "uchi_no_kaisha_no_chiisai_senpai_no_hanashi",
+    "title": "うちの会社の小さい先輩の話",
+    "author": "Saisou",
+    "status": "ongoing",
+    "startYear": 2020,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品・近年の話題作",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "うちの会社の小さい先輩の話 1巻 Saisou",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 59,
+    "id": "yaiteru_futari",
+    "title": "焼いてるふたり",
+    "author": "Hanatsuka, Shiori",
+    "status": "ongoing",
+    "startYear": 2020,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品・近年の話題作",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "extra_db",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "焼いてるふたり 1巻 Hanatsuka, Shiori",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 60,
+    "id": "don_t_call_it_mystery",
+    "title": "ミステリと言う勿れ",
+    "author": "Tamura, Yumi",
+    "status": "ongoing",
+    "startYear": 2017,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品・有名作・診断候補",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "popular"
+    ],
+    "coverSearchKeyword": "ミステリと言う勿れ 1巻 Tamura, Yumi",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 61,
+    "id": "witch_hat_atelier",
+    "title": "とんがり帽子のアトリエ",
+    "author": "Shirahama, Kamome",
+    "status": "ongoing",
+    "startYear": 2016,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品",
+    "sourceReasons": [
+      "article_page",
+      "theme_page",
+      "extra_db"
+    ],
+    "coverSearchKeyword": "とんがり帽子のアトリエ 1巻 Shirahama, Kamome",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 62,
+    "id": "kakkou_no_iinazuke",
+    "title": "カッコウの許嫁",
+    "author": "Yoshikawa, Miki",
+    "status": "ongoing",
+    "startYear": 2020,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品・有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "popular",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "カッコウの許嫁 1巻 Yoshikawa, Miki",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 63,
+    "id": "marriagetoxin",
+    "title": "マリッジトキシン",
+    "author": "Yoda, Mizuki / Joumyaku",
+    "status": "ongoing",
+    "startYear": 2022,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品・有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "popular",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "マリッジトキシン 1巻 Yoda, Mizuki",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 64,
+    "id": "kuroiwa_medaka_ni_watashi_no_kawaii_ga_tsuujinai",
+    "title": "黒岩メダカに私の可愛いが通じない",
+    "author": "Kuze, Ran",
+    "status": "ongoing",
+    "startYear": 2021,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品・有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "popular",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "黒岩メダカに私の可愛いが通じない 1巻 Kuze, Ran",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 65,
+    "id": "choujin_x",
+    "title": "超人X",
+    "author": "Ishida, Sui",
+    "status": "ongoing",
+    "startYear": 2021,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品・有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "popular",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "超人X 1巻 Ishida, Sui",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 66,
+    "id": "youchien_wars",
+    "title": "幼稚園WARS",
+    "author": "Chiba, You",
+    "status": "ongoing",
+    "startYear": 2022,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品・有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "popular",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "幼稚園WARS 1巻 Chiba, You",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 67,
+    "id": "march_comes_lion",
+    "title": "3月のライオン",
+    "author": "羽海野チカ",
+    "status": "ongoing",
+    "startYear": 2007,
+    "volumes": 17,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "3月のライオン 1巻 羽海野チカ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 68,
+    "id": "re_zero",
+    "title": "Re:ゼロから始める異世界生活",
+    "author": "長月達平",
+    "status": "ongoing",
+    "startYear": 2014,
+    "volumes": 33,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "Re:ゼロから始める異世界生活 1巻 長月達平",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 69,
+    "id": "overlord",
+    "title": "オーバーロード",
+    "author": "丸山くがね/so-bin",
+    "status": "ongoing",
+    "startYear": 2010,
+    "volumes": 18,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "オーバーロード 1巻 丸山くがね",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 70,
+    "id": "konosuba",
+    "title": "この素晴らしい世界に祝福を!",
+    "author": "暁なつめ/渡真仁",
+    "status": "ongoing",
+    "startYear": 2014,
+    "volumes": 12,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "この素晴らしい世界に祝福を! 1巻 暁なつめ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 71,
+    "id": "made_abyss",
+    "title": "メイドインアビス",
+    "author": "つくしあきひと",
+    "status": "ongoing",
+    "startYear": 2012,
+    "volumes": 13,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "メイドインアビス 1巻 つくしあきひと",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 72,
+    "id": "natsume_yujincho",
+    "title": "夏目友人帳",
+    "author": "緑川ゆき",
+    "status": "ongoing",
+    "startYear": 2003,
+    "volumes": 33,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "夏目友人帳 1巻 緑川ゆき",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 73,
+    "id": "tate_no_yuusha",
+    "title": "盾の勇者の成り上がり",
+    "author": "アネコユサギ/藍屋球",
+    "status": "ongoing",
+    "startYear": 2014,
+    "volumes": 22,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "盾の勇者の成り上がり 1巻 アネコユサギ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 74,
+    "id": "magus_bride",
+    "title": "魔法使いの嫁",
+    "author": "ヤマザキコレ",
+    "status": "ongoing",
+    "startYear": 2013,
+    "volumes": 22,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "魔法使いの嫁 1巻 ヤマザキコレ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 75,
+    "id": "fairy_tail",
+    "title": "FAIRY TAIL",
+    "author": "真島ヒロ",
+    "status": "completed",
+    "startYear": 2006,
+    "volumes": 63,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "FAIRY TAIL 1巻 真島ヒロ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 76,
+    "id": "ao_haru_ride",
+    "title": "アオハライド",
+    "author": "咲坂伊緒",
+    "status": "completed",
+    "startYear": 2011,
+    "volumes": 13,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アオハライド 1巻 咲坂伊緒",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 77,
+    "id": "ushio_tora",
+    "title": "うしおととら",
+    "author": "藤田和日郎",
+    "status": "completed",
+    "startYear": 1990,
+    "volumes": 33,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "うしおととら 1巻 藤田和日郎",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 78,
+    "id": "uzumaki",
+    "title": "うずまき",
+    "author": "伊藤潤二",
+    "status": "completed",
+    "startYear": 1998,
+    "volumes": 3,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "うずまき 1巻 伊藤潤二",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 79,
+    "id": "kamuy",
+    "title": "ゴールデンカムイ",
+    "author": "野田サトル",
+    "status": "completed",
+    "startYear": 2014,
+    "volumes": 31,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ゴールデンカムイ 1巻 野田サトル",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 80,
+    "id": "honey_clover",
+    "title": "ハチミツとクローバー",
+    "author": "羽海野チカ",
+    "status": "completed",
+    "startYear": 2000,
+    "volumes": 10,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ハチミツとクローバー 1巻 羽海野チカ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 81,
+    "id": "ping_pong",
+    "title": "ピンポン",
+    "author": "松本大洋",
+    "status": "completed",
+    "startYear": 1996,
+    "volumes": 5,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ピンポン 1巻 松本大洋",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 82,
+    "id": "magi",
+    "title": "マギ",
+    "author": "大高忍",
+    "status": "completed",
+    "startYear": 2009,
+    "volumes": 37,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "マギ 1巻 大高忍",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 83,
+    "id": "junji_ito_collection",
+    "title": "伊藤潤二傑作集",
+    "author": "伊藤潤二",
+    "status": "completed",
+    "startYear": 1998,
+    "volumes": 11,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "伊藤潤二傑作集 1巻 伊藤潤二",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 84,
+    "id": "kiminitodoke",
+    "title": "君に届け",
+    "author": "椎名軽穂",
+    "status": "completed",
+    "startYear": 2005,
+    "volumes": 30,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "君に届け 1巻 椎名軽穂",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 85,
+    "id": "koe_no_katachi",
+    "title": "聲の形",
+    "author": "大今良時",
+    "status": "completed",
+    "startYear": 2013,
+    "volumes": 7,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "聲の形 1巻 大今良時",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 86,
+    "id": "oofuri",
+    "title": "おおきく振りかぶって",
+    "author": "ひぐちアサ",
+    "status": "ongoing",
+    "startYear": 2003,
+    "volumes": 36,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "おおきく振りかぶって 1巻 ひぐちアサ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 87,
+    "id": "honzuki",
+    "title": "本好きの下剋上",
+    "author": "香月美夜/鈴華",
+    "status": "ongoing",
+    "startYear": 2015,
+    "volumes": 12,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "本好きの下剋上 1巻 香月美夜",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 88,
+    "id": "mushoku_tensei",
+    "title": "無職転生",
+    "author": "理不尽な孫の手/フジカワユカ",
+    "status": "ongoing",
+    "startYear": 2014,
+    "volumes": 21,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "無職転生 1巻 理不尽な孫の手",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 89,
+    "id": "tanya_evil",
+    "title": "幼女戦記",
+    "author": "カルロ・ゼン/東條チカ",
+    "status": "ongoing",
+    "startYear": 2016,
+    "volumes": 28,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "幼女戦記 1巻 カルロ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 90,
+    "id": "one_piece",
+    "title": "ONE PIECE",
+    "author": "尾田栄一郎",
+    "status": "ongoing",
+    "startYear": 1997,
+    "volumes": 108,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ONE PIECE 1巻 尾田栄一郎",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 91,
+    "id": "conan",
+    "title": "名探偵コナン",
+    "author": "青山剛昌",
+    "status": "ongoing",
+    "startYear": 1994,
+    "volumes": 106,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "名探偵コナン 1巻 青山剛昌",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 92,
+    "id": "hxh",
+    "title": "HUNTER×HUNTER",
+    "author": "冨樫義博",
+    "status": "hiatus",
+    "startYear": 1998,
+    "volumes": 38,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "HUNTER×HUNTER 1巻 冨樫義博",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 93,
+    "id": "gintama",
+    "title": "銀魂",
+    "author": "空知英秋",
+    "status": "completed",
+    "startYear": 2003,
+    "volumes": 77,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "銀魂 1巻 空知英秋",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 94,
+    "id": "jjk",
+    "title": "呪術廻戦",
+    "author": "芥見下々",
+    "status": "completed",
+    "startYear": 2018,
+    "volumes": 27,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "呪術廻戦 1巻 芥見下々",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 95,
+    "id": "aot",
+    "title": "進撃の巨人",
+    "author": "諫山創",
+    "status": "completed",
+    "startYear": 2009,
+    "volumes": 34,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "進撃の巨人 1巻 諫山創",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 96,
+    "id": "tokyo_ghoul",
+    "title": "東京喰種",
+    "author": "石田スイ",
+    "status": "completed",
+    "startYear": 2011,
+    "volumes": 14,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "東京喰種 1巻 石田スイ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 97,
+    "id": "drifting_classroom",
+    "title": "漂流教室",
+    "author": "楳図かずお",
+    "status": "completed",
+    "startYear": 1972,
+    "volumes": 11,
+    "priorityReason": "記事掲載作品・有名作・診断候補・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "popular",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "漂流教室 1巻 楳図かずお",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 98,
+    "id": "orange",
+    "title": "orange",
+    "author": "高野苺",
+    "status": "completed",
+    "startYear": 2012,
+    "volumes": 7,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "orange 1巻 高野苺",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 99,
+    "id": "doctor_k",
+    "title": "ブラック・ジャック",
+    "author": "手塚治虫",
+    "status": "completed",
+    "startYear": 1973,
+    "volumes": 17,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ブラック・ジャック 1巻 手塚治虫",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 100,
+    "id": "phoenix",
+    "title": "火の鳥",
+    "author": "手塚治虫",
+    "status": "completed",
+    "startYear": 1954,
+    "volumes": 16,
+    "priorityReason": "記事掲載作品・有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "火の鳥 1巻 手塚治虫",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 101,
+    "id": "real",
+    "title": "リアル",
+    "author": "井上雄彦",
+    "status": "ongoing",
+    "startYear": 1999,
+    "volumes": 16,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "リアル 1巻 井上雄彦",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 102,
+    "id": "flying_witch",
+    "title": "ふらいんぐうぃっち",
+    "author": "石塚千尋",
+    "status": "ongoing",
+    "startYear": 2012,
+    "volumes": 12,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ふらいんぐうぃっち 1巻 石塚千尋",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 103,
+    "id": "ao_no_hako",
+    "title": "アオのハコ",
+    "author": "三浦糀",
+    "status": "ongoing",
+    "startYear": 2021,
+    "volumes": 18,
+    "priorityReason": "記事掲載作品・アニメ化済み・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アオのハコ 1巻 三浦糀",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 104,
+    "id": "i_am_a_hero",
+    "title": "アイアムアヒーロー",
+    "author": "花沢健吾",
+    "status": "completed",
+    "startYear": 2009,
+    "volumes": 22,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アイアムアヒーロー 1巻 花沢健吾",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 105,
+    "id": "akira",
+    "title": "AKIRA",
+    "author": "大友克洋",
+    "status": "completed",
+    "startYear": 1982,
+    "volumes": 6,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "AKIRA 1巻 大友克洋",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 106,
+    "id": "soredemo_machi",
+    "title": "それでも町は廻っている",
+    "author": "石黒正数",
+    "status": "completed",
+    "startYear": 2005,
+    "volumes": 16,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "それでも町は廻っている 1巻 石黒正数",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 107,
+    "id": "barakamon",
+    "title": "ばらかもん",
+    "author": "ヨシノサツキ",
+    "status": "completed",
+    "startYear": 2008,
+    "volumes": 18,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ばらかもん 1巻 ヨシノサツキ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 108,
+    "id": "planetes",
+    "title": "プラネテス",
+    "author": "幸村誠",
+    "status": "completed",
+    "startYear": 1999,
+    "volumes": 4,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "プラネテス 1巻 幸村誠",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 109,
+    "id": "ghost_shell",
+    "title": "攻殻機動隊",
+    "author": "士郎正宗",
+    "status": "completed",
+    "startYear": 1989,
+    "volumes": 3,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "攻殻機動隊 1巻 士郎正宗",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 110,
+    "id": "monster",
+    "title": "MONSTER",
+    "author": "浦沢直樹",
+    "status": "completed",
+    "startYear": 1994,
+    "volumes": 18,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "MONSTER 1巻 浦沢直樹",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 111,
+    "id": "my_love_story",
+    "title": "俺物語!!",
+    "author": "Kawahara, Kazune/Aruko",
+    "status": "completed",
+    "startYear": 2011,
+    "volumes": 14,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "俺物語!! 1巻 Kawahara, Kazune",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 112,
+    "id": "zatch_bell",
+    "title": "金色のガッシュ!!",
+    "author": "Raiku, Makoto",
+    "status": "completed",
+    "startYear": 2001,
+    "volumes": 33,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "金色のガッシュ!! 1巻 Raiku, Makoto",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 113,
+    "id": "your_lie_in_april",
+    "title": "四月は君の嘘",
+    "author": "Arakawa, Naoshi",
+    "status": "completed",
+    "startYear": 2011,
+    "volumes": 11,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "四月は君の嘘 1巻 Arakawa, Naoshi",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 114,
+    "id": "descending_stories_showa_genroku_rakugo_shinju",
+    "title": "昭和元禄落語心中",
+    "author": "Kumota, Haruko",
+    "status": "completed",
+    "startYear": 2010,
+    "volumes": 10,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "昭和元禄落語心中 1巻 Kumota, Haruko",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 115,
+    "id": "the_world_of_machida_kun",
+    "title": "町田くんの世界",
+    "author": "Andou, Yuki",
+    "status": "completed",
+    "startYear": 2015,
+    "volumes": 7,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "町田くんの世界 1巻 Andou, Yuki",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 116,
+    "id": "boys_over_flowers",
+    "title": "花より男子",
+    "author": "Kamio, Yoko",
+    "status": "completed",
+    "startYear": 1992,
+    "volumes": 37,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "花より男子 1巻 Kamio, Yoko",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 117,
+    "id": "we_were_there",
+    "title": "僕等がいた",
+    "author": "Obata, Yuuki",
+    "status": "completed",
+    "startYear": 2002,
+    "volumes": 16,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "僕等がいた 1巻 Obata, Yuuki",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 118,
+    "id": "aria_x",
+    "title": "ARIA",
+    "author": "天野こずえ",
+    "status": "completed",
+    "startYear": 2002,
+    "volumes": 12,
+    "priorityReason": "記事掲載作品・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ARIA 1巻 天野こずえ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 119,
+    "id": "ano_hi_mita_hana_no_namae_wo_bokutachi_wa_mada_shiranai",
+    "title": "あの日見た花の名前を僕達はまだ知らない。",
+    "author": "Izumi, Mitsu",
+    "status": "completed",
+    "startYear": 2012,
+    "volumes": 3,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "あの日見た花の名前を僕達はまだ知らない。 1巻 Izumi, Mitsu",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 120,
+    "id": "assassination_classroom",
+    "title": "暗殺教室",
+    "author": "Matsui, Yuusei",
+    "status": "completed",
+    "startYear": 2012,
+    "volumes": 21,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "暗殺教室 1巻 Matsui, Yuusei",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 121,
+    "id": "erased",
+    "title": "僕だけがいない街",
+    "author": "Sanbe, Kei",
+    "status": "completed",
+    "startYear": 2012,
+    "volumes": 9,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "article_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "僕だけがいない街 1巻 Sanbe, Kei",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 122,
+    "id": "that_time_i_got_reincarnated_as_a_slime",
+    "title": "転生したらスライムだった件",
+    "author": "Kawakami, Taiki/Fuse",
+    "status": "ongoing",
+    "startYear": 2015,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品",
+    "sourceReasons": [
+      "article_page",
+      "extra_db"
+    ],
+    "coverSearchKeyword": "転生したらスライムだった件 1巻 Kawakami, Taiki",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 123,
+    "id": "astra_lost_in_space",
+    "title": "彼方のアストラ",
+    "author": "Shinohara, Kenta",
+    "status": "completed",
+    "startYear": 2016,
+    "volumes": 5,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "彼方のアストラ 1巻 Shinohara, Kenta",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 124,
+    "id": "burn_the_witch",
+    "title": "BURN THE WITCH",
+    "author": "Kubo, Tite",
+    "status": "hiatus",
+    "startYear": 2020,
+    "volumes": 1,
+    "priorityReason": "記事掲載作品・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "BURN THE WITCH 1巻 Kubo, Tite",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 125,
+    "id": "okaeri_alice",
+    "title": "おかえりアリス",
+    "author": "Oshimi, Shuuzou",
+    "status": "completed",
+    "startYear": 2020,
+    "volumes": 7,
+    "priorityReason": "記事掲載作品・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "おかえりアリス 1巻 Oshimi, Shuuzou",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 126,
+    "id": "kanojo_mo_kanojo",
+    "title": "カノジョも彼女",
+    "author": "Hiroyuki",
+    "status": "completed",
+    "startYear": 2020,
+    "volumes": 16,
+    "priorityReason": "記事掲載作品・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "カノジョも彼女 1巻 Hiroyuki",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 127,
+    "id": "kimi_ni_koisuru_satsujinki",
+    "title": "きみに恋する殺人鬼",
+    "author": "Akiyama, Enma",
+    "status": "completed",
+    "startYear": 2020,
+    "volumes": 5,
+    "priorityReason": "記事掲載作品・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "きみに恋する殺人鬼 1巻 Akiyama, Enma",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 128,
+    "id": "meika_san_wa_oshikorosenai",
+    "title": "メイカさんは押しころせない",
+    "author": "Satou, Shouki",
+    "status": "completed",
+    "startYear": 2020,
+    "volumes": 12,
+    "priorityReason": "記事掲載作品・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "メイカさんは押しころせない 1巻 Satou, Shouki",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 129,
+    "id": "amagami_san_chi_no_enmusubi",
+    "title": "甘神さんちの縁結び",
+    "author": "Naitou, Marcey",
+    "status": "completed",
+    "startYear": 2021,
+    "volumes": 22,
+    "priorityReason": "記事掲載作品・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "甘神さんちの縁結び 1巻 Naitou, Marcey",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 130,
+    "id": "kuchi_ga_saketemo_kimi_ni_wa",
+    "title": "口が裂けても君には",
+    "author": "Kajimoto, Akari",
+    "status": "completed",
+    "startYear": 2020,
+    "volumes": 11,
+    "priorityReason": "記事掲載作品・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "口が裂けても君には 1巻 Kajimoto, Akari",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 131,
+    "id": "kamibukuro_kun_wa_koishiteru",
+    "title": "紙袋くんは恋してる",
+    "author": "Amaebi, Riko",
+    "status": "completed",
+    "startYear": 2020,
+    "volumes": 2,
+    "priorityReason": "記事掲載作品・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "紙袋くんは恋してる 1巻 Amaebi, Riko",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 132,
+    "id": "shounen_no_abyss",
+    "title": "少年のアビス",
+    "author": "Minenami, Ryou",
+    "status": "completed",
+    "startYear": 2020,
+    "volumes": 18,
+    "priorityReason": "記事掲載作品・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "少年のアビス 1巻 Minenami, Ryou",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 133,
+    "id": "uncle_from_another_world",
+    "title": "異世界おじさん",
+    "author": "Hotondo Shindeiru",
+    "status": "ongoing",
+    "startYear": 2018,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品",
+    "sourceReasons": [
+      "article_page",
+      "extra_db"
+    ],
+    "coverSearchKeyword": "異世界おじさん 1巻 Hotondo Shindeiru",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 134,
+    "id": "gokurakugai",
+    "title": "極楽街",
+    "author": "Sano, Yuuto",
+    "status": "ongoing",
+    "startYear": 2022,
+    "volumes": 0,
+    "priorityReason": "有名作・診断候補・近年の話題作",
+    "sourceReasons": [
+      "extra_db",
+      "popular",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "極楽街 1巻 Sano, Yuuto",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 135,
+    "id": "summertime_rendering",
+    "title": "サマータイムレンダ",
+    "author": "Tanaka, Yasuki",
+    "status": "completed",
+    "startYear": 2017,
+    "volumes": 13,
+    "priorityReason": "記事掲載作品・購入導線が作りやすい",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "サマータイムレンダ 1巻 Tanaka, Yasuki",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 136,
+    "id": "the_apothecary_diaries",
+    "title": "薬屋のひとりごと",
+    "author": "Hyuuga, Natsu/Nekokurage",
+    "status": "ongoing",
+    "startYear": 2017,
+    "volumes": 0,
+    "priorityReason": "有名作・診断候補",
+    "sourceReasons": [
+      "extra_db",
+      "popular"
+    ],
+    "coverSearchKeyword": "薬屋のひとりごと 1巻 Hyuuga, Natsu",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 137,
+    "id": "akuyaku_reijou_level_99_watashi_wa_ura_boss_desu_ga_maou_dewa_arimasen",
+    "title": "悪役令嬢レベル99 ～私は裏ボスですが魔王ではありません～",
+    "author": "Tanabata, Satori / Nokomi",
+    "status": "ongoing",
+    "startYear": 2020,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品・近年の話題作",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "悪役令嬢レベル99 ～私は裏ボスですが魔王ではありません～ 1巻 Tanabata, Satori",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 138,
+    "id": "tensei_shitara_dainana_ouji_datta_node_kimama_ni_majutsu_wo_kiwamemasu",
+    "title": "転生したら第七王子だったので、気ままに魔術を極めます",
+    "author": "Kokuzawa, Yousuke / Kenkyo na Circle",
+    "status": "ongoing",
+    "startYear": 2020,
+    "volumes": 0,
+    "priorityReason": "記事掲載作品・近年の話題作",
+    "sourceReasons": [
+      "theme_page",
+      "extra_db",
+      "recent_trend"
+    ],
+    "coverSearchKeyword": "転生したら第七王子だったので、気ままに魔術を極めます 1巻 Kokuzawa, Yousuke",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 139,
+    "id": "oishinbo",
+    "title": "美味しんぼ",
+    "author": "雁屋哲/花咲アキラ",
+    "status": "ongoing",
+    "startYear": 1983,
+    "volumes": 111,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "美味しんぼ 1巻 雁屋哲",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 140,
+    "id": "ashita_no_joe",
+    "title": "あしたのジョー",
+    "author": "高森朝雄/ちばてつや",
+    "status": "completed",
+    "startYear": 1968,
+    "volumes": 20,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "あしたのジョー 1巻 高森朝雄",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 141,
+    "id": "swan_lake",
+    "title": "ガラスの仮面",
+    "author": "美内すずえ",
+    "status": "hiatus",
+    "startYear": 1976,
+    "volumes": 49,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ガラスの仮面 1巻 美内すずえ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 142,
+    "id": "violence_jack",
+    "title": "デビルマン",
+    "author": "永井豪",
+    "status": "completed",
+    "startYear": 1972,
+    "volumes": 5,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "デビルマン 1巻 永井豪",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 143,
+    "id": "doraemon",
+    "title": "ドラえもん",
+    "author": "藤子・F・不二雄",
+    "status": "completed",
+    "startYear": 1969,
+    "volumes": 45,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ドラえもん 1巻 藤子",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 144,
+    "id": "buddha",
+    "title": "ブッダ",
+    "author": "手塚治虫",
+    "status": "completed",
+    "startYear": 1972,
+    "volumes": 14,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ブッダ 1巻 手塚治虫",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 145,
+    "id": "rose_versailles",
+    "title": "ベルサイユのばら",
+    "author": "池田理代子",
+    "status": "completed",
+    "startYear": 1972,
+    "volumes": 10,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ベルサイユのばら 1巻 池田理代子",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 146,
+    "id": "lupin",
+    "title": "ルパン三世",
+    "author": "モンキー・パンチ",
+    "status": "completed",
+    "startYear": 1967,
+    "volumes": 14,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ルパン三世 1巻 モンキー",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 147,
+    "id": "tetsujin",
+    "title": "鉄腕アトム",
+    "author": "手塚治虫",
+    "status": "completed",
+    "startYear": 1952,
+    "volumes": 21,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "鉄腕アトム 1巻 手塚治虫",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 148,
+    "id": "mister_ajikko",
+    "title": "天才バカボン",
+    "author": "赤塚不二夫",
+    "status": "completed",
+    "startYear": 1967,
+    "volumes": 21,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "天才バカボン 1巻 赤塚不二夫",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 149,
+    "id": "atom_no_kodomo",
+    "title": "アトム ザ・ビギニング",
+    "author": "手塚治虫/カサハラテツロー",
+    "status": "ongoing",
+    "startYear": 2014,
+    "volumes": 21,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アトム ザ・ビギニング 1巻 手塚治虫",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 150,
+    "id": "kyou_kara_ore",
+    "title": "うらみちお兄さん",
+    "author": "久世岳",
+    "status": "ongoing",
+    "startYear": 2017,
+    "volumes": 9,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "うらみちお兄さん 1巻 久世岳",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 151,
+    "id": "blame_2",
+    "title": "シドニアの騎士外伝",
+    "author": "カルロ・ゼン/東條チカ",
+    "status": "ongoing",
+    "startYear": 2016,
+    "volumes": 28,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "シドニアの騎士外伝 1巻 カルロ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 152,
+    "id": "skip_beat",
+    "title": "スキップ・ビート!",
+    "author": "仲村佳樹",
+    "status": "ongoing",
+    "startYear": 2002,
+    "volumes": 49,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "スキップ・ビート! 1巻 仲村佳樹",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 153,
+    "id": "drifters",
+    "title": "ドリフターズ",
+    "author": "平野耕太",
+    "status": "ongoing",
+    "startYear": 2009,
+    "volumes": 7,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ドリフターズ 1巻 平野耕太",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 154,
+    "id": "black_clover",
+    "title": "ブラッククローバー",
+    "author": "田畠裕基",
+    "status": "ongoing",
+    "startYear": 2015,
+    "volumes": 36,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ブラッククローバー 1巻 田畠裕基",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 155,
+    "id": "yuru_camp",
+    "title": "ゆるキャン△",
+    "author": "あfろ",
+    "status": "ongoing",
+    "startYear": 2015,
+    "volumes": 17,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ゆるキャン△ 1巻 あfろ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 156,
+    "id": "log_horizon",
+    "title": "ログ・ホライズン",
+    "author": "橙乃ままれ",
+    "status": "ongoing",
+    "startYear": 2010,
+    "volumes": 12,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ログ・ホライズン 1巻 橙乃ままれ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 157,
+    "id": "wakakozake",
+    "title": "ワカコ酒",
+    "author": "新久千映",
+    "status": "ongoing",
+    "startYear": 2011,
+    "volumes": 19,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ワカコ酒 1巻 新久千映",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 158,
+    "id": "vampire_hunter_d",
+    "title": "吸血鬼ハンターD",
+    "author": "菊地秀行/天野喜孝",
+    "status": "ongoing",
+    "startYear": 1988,
+    "volumes": 25,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "吸血鬼ハンターD 1巻 菊地秀行",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 159,
+    "id": "yona",
+    "title": "暁のヨナ",
+    "author": "草凪みずほ",
+    "status": "ongoing",
+    "startYear": 2009,
+    "volumes": 42,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "暁のヨナ 1巻 草凪みずほ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 160,
+    "id": "kindaichi",
+    "title": "金田一少年の事件簿",
+    "author": "天樹征丸/さとうふみや",
+    "status": "ongoing",
+    "startYear": 1992,
+    "volumes": 78,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "金田一少年の事件簿 1巻 天樹征丸",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 161,
+    "id": "kodoku_gurume",
+    "title": "孤独のグルメ",
+    "author": "久住昌之/谷口ジロー",
+    "status": "ongoing",
+    "startYear": 1994,
+    "volumes": 2,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "孤独のグルメ 1巻 久住昌之",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 162,
+    "id": "shinya_shokudo",
+    "title": "深夜食堂",
+    "author": "安倍夜郎",
+    "status": "ongoing",
+    "startYear": 2006,
+    "volumes": 28,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "深夜食堂 1巻 安倍夜郎",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 163,
+    "id": "saint_young_men",
+    "title": "聖☆おにいさん",
+    "author": "中村光",
+    "status": "ongoing",
+    "startYear": 2006,
+    "volumes": 20,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "聖☆おにいさん 1巻 中村光",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 164,
+    "id": "blue_exorcist",
+    "title": "青の祓魔師",
+    "author": "加藤和恵",
+    "status": "ongoing",
+    "startYear": 2009,
+    "volumes": 31,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "青の祓魔師 1巻 加藤和恵",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 165,
+    "id": "snow_white_red_hair",
+    "title": "赤髪の白雪姫",
+    "author": "あきづき空太",
+    "status": "ongoing",
+    "startYear": 2006,
+    "volumes": 27,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "赤髪の白雪姫 1巻 あきづき空太",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 166,
+    "id": "houseki_no_kuni",
+    "title": "宝石の国",
+    "author": "市川春子",
+    "status": "ongoing",
+    "startYear": 2012,
+    "volumes": 13,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "宝石の国 1巻 市川春子",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 167,
+    "id": "spice_wolf",
+    "title": "狼と香辛料",
+    "author": "支倉凍砂/小梅けいと",
+    "status": "ongoing",
+    "startYear": 2008,
+    "volumes": 16,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "狼と香辛料 1巻 支倉凍砂",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 168,
+    "id": "undead_unluck",
+    "title": "アンデッドアンラック",
+    "author": "戸塚慶文",
+    "status": "ongoing",
+    "startYear": 2020,
+    "volumes": 22,
+    "priorityReason": "アニメ化済み・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アンデッドアンラック 1巻 戸塚慶文",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 169,
+    "id": "magus_bride_college",
+    "title": "魔法使いの嫁 学院編",
+    "author": "ヤマザキコレ",
+    "status": "ongoing",
+    "startYear": 2021,
+    "volumes": 7,
+    "priorityReason": "アニメ化済み・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "魔法使いの嫁 学院編 1巻 ヤマザキコレ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 170,
+    "id": "baki",
+    "title": "刃牙",
+    "author": "板垣恵介",
+    "status": "ongoing",
+    "startYear": 1991,
+    "volumes": 130,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "刃牙 1巻 板垣恵介",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 171,
+    "id": "knights_sidonia2",
+    "title": "AIの遺電子",
+    "author": "山田胡瓜",
+    "status": "completed",
+    "startYear": 2015,
+    "volumes": 8,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "AIの遺電子 1巻 山田胡瓜",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 172,
+    "id": "blame",
+    "title": "BLAME!",
+    "author": "弐瓶勉",
+    "status": "completed",
+    "startYear": 1997,
+    "volumes": 10,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "BLAME! 1巻 弐瓶勉",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 173,
+    "id": "btooom",
+    "title": "BTOOOM!",
+    "author": "井上淳哉",
+    "status": "completed",
+    "startYear": 2009,
+    "volumes": 27,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "BTOOOM! 1巻 井上淳哉",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 174,
+    "id": "psycho_pass",
+    "title": "PSYCHO-PASS",
+    "author": "天野明",
+    "status": "completed",
+    "startYear": 2012,
+    "volumes": 6,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "PSYCHO-PASS 1巻 天野明",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 175,
+    "id": "trigun",
+    "title": "TRIGUN",
+    "author": "内藤泰弘",
+    "status": "completed",
+    "startYear": 1995,
+    "volumes": 3,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "TRIGUN 1巻 内藤泰弘",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 176,
+    "id": "yawara",
+    "title": "YAWARA!",
+    "author": "浦沢直樹",
+    "status": "completed",
+    "startYear": 1986,
+    "volumes": 29,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "YAWARA! 1巻 浦沢直樹",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 177,
+    "id": "azumanga",
+    "title": "あずまんが大王",
+    "author": "あずまきよひこ",
+    "status": "completed",
+    "startYear": 1999,
+    "volumes": 4,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "あずまんが大王 1巻 あずまきよひこ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 178,
+    "id": "ahiru_no_sora",
+    "title": "あひるの空",
+    "author": "日向武史",
+    "status": "completed",
+    "startYear": 2003,
+    "volumes": 51,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "あひるの空 1巻 日向武史",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 179,
+    "id": "kaguya",
+    "title": "かぐや様は告らせたい",
+    "author": "赤坂アカ",
+    "status": "completed",
+    "startYear": 2015,
+    "volumes": 28,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "かぐや様は告らせたい 1巻 赤坂アカ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 180,
+    "id": "captain_tsubasa",
+    "title": "キャプテン翼",
+    "author": "高橋陽一",
+    "status": "completed",
+    "startYear": 1981,
+    "volumes": 37,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "キャプテン翼 1巻 高橋陽一",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 181,
+    "id": "gyo",
+    "title": "ギョ",
+    "author": "伊藤潤二",
+    "status": "completed",
+    "startYear": 2001,
+    "volumes": 2,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ギョ 1巻 伊藤潤二",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 182,
+    "id": "claymore",
+    "title": "クレイモア",
+    "author": "八木教広",
+    "status": "completed",
+    "startYear": 2001,
+    "volumes": 27,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "クレイモア 1巻 八木教広",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 183,
+    "id": "k_on",
+    "title": "けいおん!",
+    "author": "かきふらい",
+    "status": "completed",
+    "startYear": 2007,
+    "volumes": 4,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "けいおん! 1巻 かきふらい",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 184,
+    "id": "psychometrer_eiji",
+    "title": "サイコメトラーEIJI",
+    "author": "安童夕馬/朝基まさし",
+    "status": "completed",
+    "startYear": 1996,
+    "volumes": 25,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "サイコメトラーEIJI 1巻 安童夕馬",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 185,
+    "id": "samurai_x",
+    "title": "シグルイ",
+    "author": "山口貴由/南條範夫",
+    "status": "completed",
+    "startYear": 2003,
+    "volumes": 15,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "シグルイ 1巻 山口貴由",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 186,
+    "id": "city_hunter",
+    "title": "シティーハンター",
+    "author": "北条司",
+    "status": "completed",
+    "startYear": 1985,
+    "volumes": 35,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "シティーハンター 1巻 北条司",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 187,
+    "id": "sgz",
+    "title": "シドニアの騎士",
+    "author": "弐瓶勉",
+    "status": "completed",
+    "startYear": 2009,
+    "volumes": 15,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "シドニアの騎士 1巻 弐瓶勉",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 188,
+    "id": "library_war",
+    "title": "ジョーカー・ゲーム",
+    "author": "柳広司/霜月かよ子",
+    "status": "completed",
+    "startYear": 2011,
+    "volumes": 1,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ジョーカー・ゲーム 1巻 柳広司",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 189,
+    "id": "spiral",
+    "title": "スパイラル ～推理の絆～",
+    "author": "城平京/水野英多",
+    "status": "completed",
+    "startYear": 1999,
+    "volumes": 15,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "スパイラル ～推理の絆～ 1巻 城平京",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 190,
+    "id": "soul_eater",
+    "title": "ソウルイーター",
+    "author": "大久保篤",
+    "status": "completed",
+    "startYear": 2003,
+    "volumes": 25,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ソウルイーター 1巻 大久保篤",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 191,
+    "id": "thermae_romae",
+    "title": "テルマエ・ロマエ",
+    "author": "ヤマザキマリ",
+    "status": "completed",
+    "startYear": 2008,
+    "volumes": 6,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "テルマエ・ロマエ 1巻 ヤマザキマリ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 192,
+    "id": "tonari_no_kaibutsu",
+    "title": "となりの怪物くん",
+    "author": "ろびこ",
+    "status": "completed",
+    "startYear": 2008,
+    "volumes": 13,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "となりの怪物くん 1巻 ろびこ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 193,
+    "id": "toriko",
+    "title": "トリコ",
+    "author": "島袋光年",
+    "status": "completed",
+    "startYear": 2008,
+    "volumes": 43,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "トリコ 1巻 島袋光年",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 194,
+    "id": "dorohedoro",
+    "title": "ドロヘドロ",
+    "author": "林田球",
+    "status": "completed",
+    "startYear": 2000,
+    "volumes": 23,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ドロヘドロ 1巻 林田球",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 195,
+    "id": "non_non_biyori",
+    "title": "のんのんびより",
+    "author": "あっと",
+    "status": "completed",
+    "startYear": 2009,
+    "volumes": 16,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "のんのんびより 1巻 あっと",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 196,
+    "id": "bartender",
+    "title": "バーテンダー",
+    "author": "城アラキ/長友健篩",
+    "status": "completed",
+    "startYear": 2004,
+    "volumes": 21,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "バーテンダー 1巻 城アラキ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 197,
+    "id": "perfect_world",
+    "title": "パーフェクトワールド",
+    "author": "有賀リエ",
+    "status": "completed",
+    "startYear": 2014,
+    "volumes": 12,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "パーフェクトワールド 1巻 有賀リエ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 198,
+    "id": "pluto",
+    "title": "プルートウ",
+    "author": "浦沢直樹/手塚治虫",
+    "status": "completed",
+    "startYear": 2003,
+    "volumes": 8,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "プルートウ 1巻 浦沢直樹",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 199,
+    "id": "hyoge_mono",
+    "title": "へうげもの",
+    "author": "山田芳裕",
+    "status": "completed",
+    "startYear": 2005,
+    "volumes": 25,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "へうげもの 1巻 山田芳裕",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 200,
+    "id": "kimi_ga_shine",
+    "title": "ぼくらの",
+    "author": "鬼頭莫宏",
+    "status": "completed",
+    "startYear": 2003,
+    "volumes": 11,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ぼくらの 1巻 鬼頭莫宏",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 201,
+    "id": "horimiya",
+    "title": "ホリミヤ",
+    "author": "HERO/萩原ダイスケ",
+    "status": "completed",
+    "startYear": 2011,
+    "volumes": 16,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ホリミヤ 1巻 HERO",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 202,
+    "id": "marmalade_boy",
+    "title": "ママレード・ボーイ",
+    "author": "吉住渉",
+    "status": "completed",
+    "startYear": 1992,
+    "volumes": 8,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ママレード・ボーイ 1巻 吉住渉",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 203,
+    "id": "moyashimon",
+    "title": "もやしもん",
+    "author": "石川雅之",
+    "status": "completed",
+    "startYear": 2004,
+    "volumes": 13,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "もやしもん 1巻 石川雅之",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 204,
+    "id": "yokohama_kaidashi",
+    "title": "ヨコハマ買い出し紀行",
+    "author": "芦奈野ひとし",
+    "status": "completed",
+    "startYear": 1994,
+    "volumes": 14,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ヨコハマ買い出し紀行 1巻 芦奈野ひとし",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 205,
+    "id": "lovely_complex",
+    "title": "ラブ★コン",
+    "author": "中原アヤ",
+    "status": "completed",
+    "startYear": 2001,
+    "volumes": 17,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ラブ★コン 1巻 中原アヤ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 206,
+    "id": "ranma_half",
+    "title": "らんま1/2",
+    "author": "高橋留美子",
+    "status": "completed",
+    "startYear": 1987,
+    "volumes": 38,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "らんま1/2 1巻 高橋留美子",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 207,
+    "id": "rurouni_kenshin",
+    "title": "るろうに剣心",
+    "author": "和月伸宏",
+    "status": "completed",
+    "startYear": 1994,
+    "volumes": 28,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "るろうに剣心 1巻 和月伸宏",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 208,
+    "id": "wotaku_koi",
+    "title": "ヲタクに恋は難しい",
+    "author": "ふじた",
+    "status": "completed",
+    "startYear": 2014,
+    "volumes": 11,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ヲタクに恋は難しい 1巻 ふじた",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 209,
+    "id": "ajin",
+    "title": "亜人",
+    "author": "桜井画門",
+    "status": "completed",
+    "startYear": 2012,
+    "volumes": 17,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "亜人 1巻 桜井画門",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 210,
+    "id": "team_medical_dragon",
+    "title": "医龍",
+    "author": "永井明/乃木坂太郎",
+    "status": "completed",
+    "startYear": 2002,
+    "volumes": 25,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "医龍 1巻 永井明",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 211,
+    "id": "ousama_game",
+    "title": "王様ゲーム",
+    "author": "金沢伸明/連打一人",
+    "status": "completed",
+    "startYear": 2011,
+    "volumes": 5,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "王様ゲーム 1巻 金沢伸明",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 212,
+    "id": "amaama_inazuma",
+    "title": "甘々と稲妻",
+    "author": "雨隠ギド",
+    "status": "completed",
+    "startYear": 2013,
+    "volumes": 12,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "甘々と稲妻 1巻 雨隠ギド",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 213,
+    "id": "say_i_love_you",
+    "title": "好きっていいなよ。",
+    "author": "葉月かなえ",
+    "status": "completed",
+    "startYear": 2008,
+    "volumes": 18,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "好きっていいなよ。 1巻 葉月かなえ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 214,
+    "id": "kuroko",
+    "title": "黒子のバスケ",
+    "author": "藤巻忠俊",
+    "status": "completed",
+    "startYear": 2008,
+    "volumes": 30,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "黒子のバスケ 1巻 藤巻忠俊",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 215,
+    "id": "kids_on_slope",
+    "title": "坂道のアポロン",
+    "author": "小玉ユキ",
+    "status": "completed",
+    "startYear": 2007,
+    "volumes": 9,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "坂道のアポロン 1巻 小玉ユキ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 216,
+    "id": "ouran",
+    "title": "桜蘭高校ホスト部",
+    "author": "葉鳥ビスコ",
+    "status": "completed",
+    "startYear": 2002,
+    "volumes": 18,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "桜蘭高校ホスト部 1巻 葉鳥ビスコ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 217,
+    "id": "fune_amu",
+    "title": "舟を編む",
+    "author": "三浦しをん/雲田はるこ",
+    "status": "completed",
+    "startYear": 2016,
+    "volumes": 3,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "舟を編む 1巻 三浦しをん",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 218,
+    "id": "moribito",
+    "title": "獣の奏者",
+    "author": "上橋菜穂子",
+    "status": "completed",
+    "startYear": 2008,
+    "volumes": 11,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "獣の奏者 1巻 上橋菜穂子",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 219,
+    "id": "battle_angel",
+    "title": "銃夢",
+    "author": "木城ゆきと",
+    "status": "completed",
+    "startYear": 1990,
+    "volumes": 9,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "銃夢 1巻 木城ゆきと",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 220,
+    "id": "shokugeki_soma",
+    "title": "食戟のソーマ",
+    "author": "附田祐斗/佐伯俊",
+    "status": "completed",
+    "startYear": 2012,
+    "volumes": 36,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "食戟のソーマ 1巻 附田祐斗",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 221,
+    "id": "yurucam2",
+    "title": "新書太閤記",
+    "author": "志村貴子",
+    "status": "completed",
+    "startYear": 2004,
+    "volumes": 8,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "新書太閤記 1巻 志村貴子",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 222,
+    "id": "saint_seiya",
+    "title": "聖闘士星矢",
+    "author": "車田正美",
+    "status": "completed",
+    "startYear": 1986,
+    "volumes": 28,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "聖闘士星矢 1巻 車田正美",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 223,
+    "id": "ooku",
+    "title": "大奥",
+    "author": "よしながふみ",
+    "status": "completed",
+    "startYear": 2004,
+    "volumes": 19,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "大奥 1巻 よしながふみ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 224,
+    "id": "wandering_son",
+    "title": "放浪息子",
+    "author": "志村貴子",
+    "status": "completed",
+    "startYear": 2002,
+    "volumes": 15,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "放浪息子 1巻 志村貴子",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 225,
+    "id": "fist_north",
+    "title": "北斗の拳",
+    "author": "武論尊/原哲夫",
+    "status": "completed",
+    "startYear": 1983,
+    "volumes": 27,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "北斗の拳 1巻 武論尊",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 226,
+    "id": "freezing",
+    "title": "魔人探偵脳噛ネウロ",
+    "author": "松井優征",
+    "status": "completed",
+    "startYear": 2005,
+    "volumes": 23,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "魔人探偵脳噛ネウロ 1巻 松井優征",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 227,
+    "id": "magic_knight_rayearth",
+    "title": "魔法騎士レイアース",
+    "author": "CLAMP",
+    "status": "completed",
+    "startYear": 1993,
+    "volumes": 6,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "魔法騎士レイアース 1巻 CLAMP",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 228,
+    "id": "akatsuki_no_yona",
+    "title": "魔法陣グルグル",
+    "author": "衛藤ヒロユキ",
+    "status": "completed",
+    "startYear": 1992,
+    "volumes": 16,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "魔法陣グルグル 1巻 衛藤ヒロユキ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 229,
+    "id": "yyh",
+    "title": "幽☆遊☆白書",
+    "author": "冨樫義博",
+    "status": "completed",
+    "startYear": 1990,
+    "volumes": 19,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "幽☆遊☆白書 1巻 冨樫義博",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 230,
+    "id": "moriarty",
+    "title": "憂国のモリアーティ",
+    "author": "竹内良輔/三好輝",
+    "status": "completed",
+    "startYear": 2016,
+    "volumes": 21,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "憂国のモリアーティ 1巻 竹内良輔",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 231,
+    "id": "mushishi",
+    "title": "蟲師",
+    "author": "漆原友紀",
+    "status": "completed",
+    "startYear": 1999,
+    "volumes": 10,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "蟲師 1巻 漆原友紀",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 232,
+    "id": "chi_movements",
+    "title": "チ。",
+    "author": "魚豊",
+    "status": "completed",
+    "startYear": 2020,
+    "volumes": 8,
+    "priorityReason": "アニメ化済み・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "チ。 1巻 魚豊",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 233,
+    "id": "mashle",
+    "title": "マッシュル-MASHLE-",
+    "author": "甲本一",
+    "status": "completed",
+    "startYear": 2020,
+    "volumes": 18,
+    "priorityReason": "アニメ化済み・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "マッシュル-MASHLE- 1巻 甲本一",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 234,
+    "id": "kaguya_x2",
+    "title": "推しの子",
+    "author": "赤坂アカ/横槍メンゴ",
+    "status": "completed",
+    "startYear": 2020,
+    "volumes": 16,
+    "priorityReason": "アニメ化済み・近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "推しの子 1巻 赤坂アカ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 235,
+    "id": "urusei",
+    "title": "うる星やつら",
+    "author": "高橋留美子",
+    "status": "completed",
+    "startYear": 1978,
+    "volumes": 34,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "うる星やつら 1巻 高橋留美子",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 236,
+    "id": "yokai_oyaji",
+    "title": "ゲゲゲの鬼太郎",
+    "author": "水木しげる",
+    "status": "completed",
+    "startYear": 1965,
+    "volumes": 20,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ゲゲゲの鬼太郎 1巻 水木しげる",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 237,
+    "id": "akuma_kun",
+    "title": "悪魔くん",
+    "author": "水木しげる",
+    "status": "completed",
+    "startYear": 1963,
+    "volumes": 12,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "悪魔くん 1巻 水木しげる",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 238,
+    "id": "nausicaa",
+    "title": "風の谷のナウシカ",
+    "author": "宮崎駿",
+    "status": "completed",
+    "startYear": 1982,
+    "volumes": 7,
+    "priorityReason": "有名作・診断候補・アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "popular",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "風の谷のナウシカ 1巻 宮崎駿",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 239,
+    "id": "edens_zero",
+    "title": "EDENS ZERO",
+    "author": "真島ヒロ",
+    "status": "ongoing",
+    "startYear": 2018,
+    "volumes": 30,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "EDENS ZERO 1巻 真島ヒロ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 240,
+    "id": "giant_killing",
+    "title": "GIANT KILLING",
+    "author": "綱本将也/ツジトモ",
+    "status": "ongoing",
+    "startYear": 2007,
+    "volumes": 65,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "GIANT KILLING 1巻 綱本将也",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 241,
+    "id": "under_ninja",
+    "title": "アンダーニンジャ",
+    "author": "花沢健吾",
+    "status": "ongoing",
+    "startYear": 2018,
+    "volumes": 13,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アンダーニンジャ 1巻 花沢健吾",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 242,
+    "id": "shadow_house",
+    "title": "シャドーハウス",
+    "author": "ソウマトウ",
+    "status": "ongoing",
+    "startYear": 2018,
+    "volumes": 20,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "シャドーハウス 1巻 ソウマトウ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 243,
+    "id": "dark_gathering",
+    "title": "ダークギャザリング",
+    "author": "近藤憲一",
+    "status": "ongoing",
+    "startYear": 2019,
+    "volumes": 15,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ダークギャザリング 1巻 近藤憲一",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 244,
+    "id": "tomodachi_game",
+    "title": "トモダチゲーム",
+    "author": "山口ミコト/佐藤友生",
+    "status": "ongoing",
+    "startYear": 2013,
+    "volumes": 25,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "トモダチゲーム 1巻 山口ミコト",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 245,
+    "id": "noragami",
+    "title": "ノラガミ",
+    "author": "あだちとか",
+    "status": "ongoing",
+    "startYear": 2010,
+    "volumes": 27,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ノラガミ 1巻 あだちとか",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 246,
+    "id": "hakumei_mikochi",
+    "title": "ハクメイとミコチ",
+    "author": "樫木祐人",
+    "status": "ongoing",
+    "startYear": 2013,
+    "volumes": 12,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ハクメイとミコチ 1巻 樫木祐人",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 247,
+    "id": "kage_jitsuryokusha",
+    "title": "陰の実力者になりたくて！",
+    "author": "逢沢大介/坂野杏梨",
+    "status": "ongoing",
+    "startYear": 2018,
+    "volumes": 14,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "陰の実力者になりたくて！ 1巻 逢沢大介",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 248,
+    "id": "kemono_jihen",
+    "title": "怪物事変",
+    "author": "藍本松",
+    "status": "ongoing",
+    "startYear": 2016,
+    "volumes": 18,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "怪物事変 1巻 藍本松",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 249,
+    "id": "kuutei_dragons",
+    "title": "空挺ドラゴンズ",
+    "author": "桑原太矩",
+    "status": "ongoing",
+    "startYear": 2016,
+    "volumes": 14,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "空挺ドラゴンズ 1巻 桑原太矩",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 250,
+    "id": "kakushi_dere",
+    "title": "古見さんは、コミュ症です。",
+    "author": "オダトモヒト",
+    "status": "ongoing",
+    "startYear": 2016,
+    "volumes": 33,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "古見さんは、コミュ症です。 1巻 オダトモヒト",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 251,
+    "id": "saihate_no_paladin",
+    "title": "最果てのパラディン",
+    "author": "柳野かなた/奥橋睦",
+    "status": "ongoing",
+    "startYear": 2016,
+    "volumes": 12,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "最果てのパラディン 1巻 柳野かなた",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 252,
+    "id": "tomozaki",
+    "title": "弱キャラ友崎くん",
+    "author": "屋久ユウキ/木満",
+    "status": "ongoing",
+    "startYear": 2018,
+    "volumes": 8,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "弱キャラ友崎くん 1巻 屋久ユウキ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 253,
+    "id": "another",
+    "title": "Another",
+    "author": "綾辻行人/清原紘",
+    "status": "completed",
+    "startYear": 2010,
+    "volumes": 4,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "Another 1巻 綾辻行人",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 254,
+    "id": "hellsing",
+    "title": "HELLSING",
+    "author": "平野耕太",
+    "status": "completed",
+    "startYear": 1997,
+    "volumes": 10,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "HELLSING 1巻 平野耕太",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 255,
+    "id": "eyeshield_21",
+    "title": "アイシールド21",
+    "author": "稲垣理一郎/村田雄介",
+    "status": "completed",
+    "startYear": 2002,
+    "volumes": 37,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アイシールド21 1巻 稲垣理一郎",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 256,
+    "id": "akagi",
+    "title": "アカギ",
+    "author": "福本伸行",
+    "status": "completed",
+    "startYear": 1992,
+    "volumes": 36,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アカギ 1巻 福本伸行",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 257,
+    "id": "appleseed",
+    "title": "アップルシード",
+    "author": "士郎正宗",
+    "status": "hiatus",
+    "startYear": 1985,
+    "volumes": 4,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アップルシード 1巻 士郎正宗",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 258,
+    "id": "uzumaki_2",
+    "title": "うずまき 完全版",
+    "author": "伊藤潤二",
+    "status": "completed",
+    "startYear": 1998,
+    "volumes": 3,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "うずまき 完全版 1巻 伊藤潤二",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 259,
+    "id": "umineko",
+    "title": "うみねこのなく頃に",
+    "author": "竜騎士07",
+    "status": "completed",
+    "startYear": 2008,
+    "volumes": 8,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "うみねこのなく頃に 1巻 竜騎士07",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 260,
+    "id": "elfen_lied",
+    "title": "エルフェンリート",
+    "author": "岡本倫",
+    "status": "completed",
+    "startYear": 2002,
+    "volumes": 12,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "エルフェンリート 1巻 岡本倫",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 261,
+    "id": "kakushigoto_x",
+    "title": "かくしごと",
+    "author": "久米田康治",
+    "status": "completed",
+    "startYear": 2015,
+    "volumes": 12,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "かくしごと 1巻 久米田康治",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 262,
+    "id": "kengan_ashura",
+    "title": "ケンガンアシュラ",
+    "author": "サンドロビッチ・ヤバ子/だろめおん",
+    "status": "completed",
+    "startYear": 2012,
+    "volumes": 27,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ケンガンアシュラ 1巻 サンドロビッチ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 263,
+    "id": "tennis_prince",
+    "title": "テニスの王子様",
+    "author": "許斐剛",
+    "status": "completed",
+    "startYear": 1999,
+    "volumes": 42,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "テニスの王子様 1巻 許斐剛",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 264,
+    "id": "tonari_no_seki",
+    "title": "となりの関くん",
+    "author": "森繁拓真",
+    "status": "completed",
+    "startYear": 2010,
+    "volumes": 11,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "となりの関くん 1巻 森繁拓真",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 265,
+    "id": "happy_sugar_life",
+    "title": "ハッピーシュガーライフ",
+    "author": "鍵空とみやき",
+    "status": "completed",
+    "startYear": 2015,
+    "volumes": 10,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ハッピーシュガーライフ 1巻 鍵空とみやき",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 266,
+    "id": "higurashi",
+    "title": "ひぐらしのなく頃に",
+    "author": "竜騎士07",
+    "status": "completed",
+    "startYear": 2005,
+    "volumes": 25,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ひぐらしのなく頃に 1巻 竜騎士07",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 267,
+    "id": "hinamatsuri",
+    "title": "ヒナまつり",
+    "author": "大武政夫",
+    "status": "completed",
+    "startYear": 2010,
+    "volumes": 19,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ヒナまつり 1巻 大武政夫",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 268,
+    "id": "junji_ito_2",
+    "title": "伊藤潤二の猫日記",
+    "author": "伊藤潤二",
+    "status": "completed",
+    "startYear": 2009,
+    "volumes": 1,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "伊藤潤二の猫日記 1巻 伊藤潤二",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 269,
+    "id": "fire_force",
+    "title": "炎炎ノ消防隊",
+    "author": "大久保篤",
+    "status": "completed",
+    "startYear": 2015,
+    "volumes": 34,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "炎炎ノ消防隊 1巻 大久保篤",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 270,
+    "id": "umi_machi_diary",
+    "title": "海街diary",
+    "author": "吉田秋生",
+    "status": "completed",
+    "startYear": 2006,
+    "volumes": 9,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "海街diary 1巻 吉田秋生",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 271,
+    "id": "kaijuu_no_kodomo",
+    "title": "海獣の子供",
+    "author": "五十嵐大介",
+    "status": "completed",
+    "startYear": 2006,
+    "volumes": 5,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "海獣の子供 1巻 五十嵐大介",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 272,
+    "id": "gundam_origin",
+    "title": "機動戦士ガンダム THE ORIGIN",
+    "author": "安彦良和",
+    "status": "completed",
+    "startYear": 2001,
+    "volumes": 23,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "機動戦士ガンダム THE ORIGIN 1巻 安彦良和",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 273,
+    "id": "inuyasha",
+    "title": "犬夜叉",
+    "author": "高橋留美子",
+    "status": "completed",
+    "startYear": 1996,
+    "volumes": 56,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "犬夜叉 1巻 高橋留美子",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 274,
+    "id": "saikano",
+    "title": "最終兵器彼女",
+    "author": "高橋しん",
+    "status": "completed",
+    "startYear": 2000,
+    "volumes": 7,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "最終兵器彼女 1巻 高橋しん",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 275,
+    "id": "shiki",
+    "title": "屍鬼",
+    "author": "小野不由美/藤崎竜",
+    "status": "completed",
+    "startYear": 2007,
+    "volumes": 11,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "屍鬼 1巻 小野不由美",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 276,
+    "id": "saiki_kusuo",
+    "title": "斉木楠雄のΨ難",
+    "author": "麻生周一",
+    "status": "completed",
+    "startYear": 2012,
+    "volumes": 26,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "斉木楠雄のΨ難 1巻 麻生周一",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 277,
+    "id": "souten_kouro",
+    "title": "蒼天航路",
+    "author": "李學仁/王欣太",
+    "status": "completed",
+    "startYear": 1994,
+    "volumes": 36,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "蒼天航路 1巻 李學仁",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 278,
+    "id": "kakegurui",
+    "title": "賭ケグルイ",
+    "author": "河本ほむら/尚村透",
+    "status": "completed",
+    "startYear": 2014,
+    "volumes": 18,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "賭ケグルイ 1巻 河本ほむら",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 279,
+    "id": "kaiji",
+    "title": "賭博黙示録カイジ",
+    "author": "福本伸行",
+    "status": "completed",
+    "startYear": 1996,
+    "volumes": 13,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "賭博黙示録カイジ 1巻 福本伸行",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 280,
+    "id": "tokyo_revengers",
+    "title": "東京卍リベンジャーズ",
+    "author": "和久井健",
+    "status": "completed",
+    "startYear": 2017,
+    "volumes": 31,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "東京卍リベンジャーズ 1巻 和久井健",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 281,
+    "id": "yyh_extra",
+    "title": "幽☆遊☆白書 完全版",
+    "author": "冨樫義博",
+    "status": "completed",
+    "startYear": 1990,
+    "volumes": 19,
+    "priorityReason": "アニメ化済み・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "anime",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "幽☆遊☆白書 完全版 1巻 冨樫義博",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 282,
+    "id": "lone_wolf",
+    "title": "子連れ狼",
+    "author": "小池一夫/小島剛夕",
+    "status": "completed",
+    "startYear": 1970,
+    "volumes": 28,
+    "priorityReason": "有名作・診断候補・購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "popular",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "子連れ狼 1巻 小池一夫",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 283,
+    "id": "asadora",
+    "title": "アサダラ!",
+    "author": "浦沢直樹",
+    "status": "ongoing",
+    "startYear": 2018,
+    "volumes": 9,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アサダラ! 1巻 浦沢直樹",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 284,
+    "id": "dorohedoro_2",
+    "title": "オクトーバーフェスト",
+    "author": "惣領冬実",
+    "status": "ongoing",
+    "startYear": 2005,
+    "volumes": 12,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "オクトーバーフェスト 1巻 惣領冬実",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 285,
+    "id": "kazenaki",
+    "title": "風雲児たち",
+    "author": "みなもと太郎",
+    "status": "ongoing",
+    "startYear": 1979,
+    "volumes": 31,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "風雲児たち 1巻 みなもと太郎",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 286,
+    "id": "kingdom_2",
+    "title": "キングダム 完結章",
+    "author": "原泰久",
+    "status": "ongoing",
+    "startYear": 2024,
+    "volumes": 1,
+    "priorityReason": "近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "キングダム 完結章 1巻 原泰久",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 287,
+    "id": "kakukaku_world",
+    "title": "片喰と黄金",
+    "author": "北野詠一",
+    "status": "ongoing",
+    "startYear": 2020,
+    "volumes": 11,
+    "priorityReason": "近年の話題作・購入導線が作りやすい",
+    "sourceReasons": [
+      "extra_db",
+      "recent_trend",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "片喰と黄金 1巻 北野詠一",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 288,
+    "id": "20century",
+    "title": "20世紀少年",
+    "author": "浦沢直樹",
+    "status": "completed",
+    "startYear": 1999,
+    "volumes": 22,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "20世紀少年 1巻 浦沢直樹",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 289,
+    "id": "all_you_need_kill",
+    "title": "All You Need Is Kill",
+    "author": "桜坂洋/竹内良輔/小畑健",
+    "status": "completed",
+    "startYear": 2014,
+    "volumes": 2,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "All You Need Is Kill 1巻 桜坂洋",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 290,
+    "id": "billy_bat",
+    "title": "BILLY BAT",
+    "author": "浦沢直樹/長崎尚志",
+    "status": "completed",
+    "startYear": 2008,
+    "volumes": 20,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "BILLY BAT 1巻 浦沢直樹",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 291,
+    "id": "biomega",
+    "title": "BIOMEGA",
+    "author": "弐瓶勉",
+    "status": "completed",
+    "startYear": 2004,
+    "volumes": 6,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "BIOMEGA 1巻 弐瓶勉",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 292,
+    "id": "yotsuba_2",
+    "title": "Q.E.D.",
+    "author": "加藤元浩",
+    "status": "completed",
+    "startYear": 1997,
+    "volumes": 50,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "Q.E.D. 1巻 加藤元浩",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 293,
+    "id": "rookies",
+    "title": "ROOKIES",
+    "author": "森田まさのり",
+    "status": "completed",
+    "startYear": 1998,
+    "volumes": 24,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "ROOKIES 1巻 森田まさのり",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 294,
+    "id": "vagabond_2",
+    "title": "アクタージュ",
+    "author": "マツキタツヤ/宇佐崎しろ",
+    "status": "completed",
+    "startYear": 2018,
+    "volumes": 12,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アクタージュ 1巻 マツキタツヤ",
+    "riskLevel": "medium"
+  },
+  {
+    "rank": 295,
+    "id": "centaur",
+    "title": "アド・アストラ",
+    "author": "カガノミハチ",
+    "status": "completed",
+    "startYear": 2011,
+    "volumes": 13,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "アド・アストラ 1巻 カガノミハチ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 296,
+    "id": "kingdom2",
+    "title": "イノサン",
+    "author": "坂本眞一",
+    "status": "completed",
+    "startYear": 2013,
+    "volumes": 9,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "イノサン 1巻 坂本眞一",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 297,
+    "id": "all_rounder",
+    "title": "オールラウンダー廻",
+    "author": "遠藤浩輝",
+    "status": "completed",
+    "startYear": 2008,
+    "volumes": 19,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "オールラウンダー廻 1巻 遠藤浩輝",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 298,
+    "id": "oyasumi_punpun",
+    "title": "おやすみプンプン",
+    "author": "浅野いにお",
+    "status": "completed",
+    "startYear": 2007,
+    "volumes": 13,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "おやすみプンプン 1巻 浅野いにお",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 299,
+    "id": "kakukaku_shikajika",
+    "title": "かくかくしかじか",
+    "author": "東村アキコ",
+    "status": "completed",
+    "startYear": 2012,
+    "volumes": 5,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "かくかくしかじか 1巻 東村アキコ",
+    "riskLevel": "low"
+  },
+  {
+    "rank": 300,
+    "id": "psyren",
+    "title": "サイレン",
+    "author": "岩代俊明",
+    "status": "completed",
+    "startYear": 2007,
+    "volumes": 16,
+    "priorityReason": "購入導線が作りやすい",
+    "sourceReasons": [
+      "core_db",
+      "affiliate_friendly"
+    ],
+    "coverSearchKeyword": "サイレン 1巻 岩代俊明",
+    "riskLevel": "low"
+  }
+]

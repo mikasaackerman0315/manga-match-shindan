@@ -35,22 +35,28 @@ export const QUESTIONS_SIMPLE = [
     { v: "emotional", ja: "泣ける・感動", en: "Emotional" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
-  { id: "demographic", type: "single", text_ja: "どの層の漫画が好き？", text_en: "Which demographic?", options: [
-    { v: "shonen", ja: "少年漫画（王道・熱血）", en: "Shonen" },
-    { v: "shojo", ja: "少女漫画（恋愛・感情）", en: "Shojo" },
-    { v: "seinen", ja: "青年漫画（大人向け）", en: "Seinen" },
-    { v: "web", ja: "Web漫画・縦読み", en: "Webtoon" },
+  { id: "protagonist", type: "single", text_ja: "どんな主人公に惹かれる？", text_en: "What kind of protagonist do you like?", options: [
+    { v: "underdog_growth", ja: "弱いところから成長する主人公", en: "An underdog who grows" },
+    { v: "prodigy", ja: "最初から才能がある主人公", en: "A talented prodigy" },
+    { v: "ordinary_extraordinary", ja: "普通の人が非日常に巻き込まれる", en: "An ordinary person in extraordinary events" },
+    { v: "anti_hero", ja: "クセがある・危うい主人公", en: "A flawed or unconventional lead" },
+    { v: "group", ja: "チームや仲間で進む群像劇", en: "A team or ensemble cast" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
-  { id: "status", type: "single", text_ja: "完結・連載どっちがいい？", text_en: "Completed or ongoing?", options: [
-    { v: "completed_only", ja: "完結済み（一気読み）", en: "Completed" },
-    { v: "ongoing_only", ja: "連載中（リアタイ）", en: "Ongoing" },
-    { v: "short", ja: "短め（サクッと読める）", en: "Short series" },
+  { id: "relationship", type: "single", text_ja: "どんな人間関係が好き？", text_en: "What relationship dynamics do you like?", options: [
+    { v: "friendship", ja: "仲間や友情が熱い", en: "Strong friendship" },
+    { v: "rivalry", ja: "ライバル関係が燃える", en: "Rivalry" },
+    { v: "romance_sweet", ja: "恋愛のときめきがほしい", en: "Sweet romance" },
+    { v: "family_bond", ja: "家族や絆の話が好き", en: "Family bonds" },
+    { v: "solo", ja: "孤独な主人公を追いたい", en: "Solitary lead" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]},
-  { id: "media", type: "single", text_ja: "アニメ化作品はどうする？", text_en: "Anime adaptation?", options: [
-    { v: "anime_yes", ja: "アニメ化された有名作がいい", en: "Has anime" },
-    { v: "anime_no", ja: "隠れた名作を発掘したい", en: "Hidden gems" },
+  { id: "depth", type: "single", text_ja: "どれくらい深く刺さってほしい？", text_en: "How deeply should it hit?", options: [
+    { v: "entertainment", ja: "まずは楽しく読めればいい", en: "Pure entertainment" },
+    { v: "human_drama", ja: "人間ドラマに浸りたい", en: "Human drama" },
+    { v: "psychological", ja: "心理戦や駆け引きがほしい", en: "Psychological tension" },
+    { v: "social", ja: "社会や現実に刺さる話がいい", en: "Social themes" },
+    { v: "philosophical", ja: "考察したくなる深さがほしい", en: "Philosophical depth" },
     { v: "any", ja: "こだわらない", en: "No preference" }
   ]}
 ];

@@ -7,6 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "fill:covers": "node scripts/fillMangaCovers.js",
     "enrich:covers": "node scripts/enrichCovers.mjs",
     "audit:db": "node scripts/auditMangaDb.mjs",
     "check:db": "node scripts/checkMangaDb.mjs",

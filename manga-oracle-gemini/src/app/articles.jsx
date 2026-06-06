@@ -1,5 +1,7 @@
 import StoreLinks from "./StoreLinks";
 import TrackedArticleLink from "./TrackedArticleLink";
+import MangaCover from "../components/MangaCover";
+import { getMangaCoverForItem } from "../data/mangaCovers";
 
 const siteUrl = "https://www.mangamatchquiz.com";
 const relatedArticleLinks = [
@@ -148,20 +150,29 @@ export function ArticlePage({ eyebrow, title, lead, items, slug, path, guideTitl
         </div>
 
         <section className="space-y-8">
-          {items.map((item, index) => (
-            <div id={`rank-${index + 1}`} key={item.title} className="grid grid-cols-12 gap-4 md:gap-6 pb-8 scroll-mt-8" style={{ borderBottom: "1px solid rgba(10,10,10,0.1)" }}>
-              <div className="col-span-2 md:col-span-1 text-3xl md:text-4xl font-bold leading-none" style={{ color: index === 0 ? "#c0392b" : "#0a0a0a", fontFamily: "'Cormorant Garamond', serif" }}>
-                {String(index + 1).padStart(2, "0")}
+          {items.map((item, index) => {
+            const cover = getMangaCoverForItem(item);
+
+            return (
+              <div id={`rank-${index + 1}`} key={item.title} className="grid grid-cols-12 gap-4 md:gap-6 pb-8 scroll-mt-8" style={{ borderBottom: "1px solid rgba(10,10,10,0.1)" }}>
+                <div className="col-span-2 md:col-span-1 text-3xl md:text-4xl font-bold leading-none" style={{ color: index === 0 ? "#c0392b" : "#0a0a0a", fontFamily: "'Cormorant Garamond', serif" }}>
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                <div className="col-span-10 md:col-span-11">
+                  <div className="flex items-start gap-4 md:gap-5">
+                    <MangaCover title={item.title} coverImageUrl={cover?.coverImageUrl} coverProductUrl={cover?.coverProductUrl} coverImageSource={cover?.coverImageSource} verified={cover?.coverImageVerified} pageType={pageType} />
+                    <div className="min-w-0 flex-1">
+                      <h2 className="text-2xl md:text-3xl font-semibold mb-2" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{item.title}</h2>
+                      <div className="text-xs tracking-[0.12em] mb-4" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>{item.meta}</div>
+                      <p className="leading-8 mb-4" style={{ color: "#333" }}>{item.text}</p>
+                      <p className="text-sm leading-7 mb-4 italic" style={{ color: "#555" }}>{item.fit}</p>
+                      <StoreLinks title={item.title} compact showPreview={false} pageType={pageType} labels={{ amazonKindle: "Kindleで今すぐ読む", amazonPaper: "Amazonで紙の本を探す", amazonSearch: "Amazonで関連商品を探す", rakutenSet: "楽天で全巻・ポイント還元を見る", rakutenBooks: "楽天ブックスで探す" }} />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="col-span-10 md:col-span-11">
-                <h2 className="text-2xl md:text-3xl font-semibold mb-2" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{item.title}</h2>
-                <div className="text-xs tracking-[0.12em] mb-4" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>{item.meta}</div>
-                <p className="leading-8 mb-4" style={{ color: "#333" }}>{item.text}</p>
-                <p className="text-sm leading-7 mb-4 italic" style={{ color: "#555" }}>{item.fit}</p>
-                <StoreLinks title={item.title} compact showPreview={false} pageType={pageType} labels={{ amazonKindle: "Kindleで今すぐ読む", amazonPaper: "Amazonで紙の本を探す", amazonSearch: "Amazonで関連商品を探す", rakutenSet: "楽天で全巻・ポイント還元を見る", rakutenBooks: "楽天ブックスで探す" }} />
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </section>
 
         {relatedLinks.length > 0 && (

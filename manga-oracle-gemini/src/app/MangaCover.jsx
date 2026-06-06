@@ -1,3 +1,25 @@
-export default function MangaCover() {
-  return null;
+"use client";
+
+import SharedMangaCover from "../components/MangaCover";
+import { getMangaCoverForItem } from "../data/mangaCovers";
+
+export default function MangaCover({ title, id, author, size = "medium" }) {
+  const cover = getMangaCoverForItem({
+    id,
+    title,
+    title_ja: title,
+    author,
+  });
+
+  return (
+    <SharedMangaCover
+      title={title}
+      coverImageUrl={cover?.coverImageUrl}
+      coverProductUrl={cover?.coverProductUrl}
+      coverImageSource={cover?.coverImageSource}
+      verified={cover?.coverImageVerified}
+      size={size}
+      pageType="diagnosis_result"
+    />
+  );
 }

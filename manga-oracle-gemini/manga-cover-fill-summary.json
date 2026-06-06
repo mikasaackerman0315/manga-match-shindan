@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-06-06T06:56:48.225Z",
+  "targetCount": 300,
+  "adoptedCount": 0,
+  "rakutenCount": 0,
+  "openbdCount": 0,
+  "reviewNeededCount": 300,
+  "hasRakutenAppId": true,
+  "hasRakutenAccessKey": true,
+  "preflightError": "http_403",
+  "coversFileUpdated": false,
+  "dryRun": false
+}

@@ -1,0 +1,110 @@
+{
+  "generatedAt": "2026-06-06T07:08:01.830Z",
+  "summary": {
+    "totalPriority": 300,
+    "coverEntriesInPriority": 1,
+    "coverEntriesTotal": 1,
+    "withCoverImageUrl": 0,
+    "verified": 0,
+    "unverified": 1,
+    "reviewNeeded": 1,
+    "rakuten": 0,
+    "openbd": 0,
+    "manual": 0,
+    "manualEntries": 1,
+    "coverProductUrl": 0,
+    "isbn13": 0,
+    "reviewNeededFileCount": 300
+  },
+  "suspiciousItems": [
+    {
+      "id": "one_piece",
+      "title": "ONE PIECE",
+      "author": "尾田栄一郎",
+      "reason": "empty_cover_image_url / review_needed_true / not_verified",
+      "currentCoverImageUrl": "",
+      "currentProductUrl": "",
+      "coverImageSource": "manual",
+      "coverImageVerified": false,
+      "reviewNeeded": true
+    }
+  ],
+  "safeItems": [],
+  "reviewNeededSample": [
+    {
+      "id": "blue_lock",
+      "title": "ブルーロック",
+      "author": "金城宗幸/ノ村優介",
+      "reason": "rakuten_api_unavailable:http_403; openBD title search is unavailable without isbn13",
+      "candidates": []
+    },
+    {
+      "id": "kaiju_no_8",
+      "title": "怪獣8号",
+      "author": "松本直也",
+      "reason": "rakuten_api_unavailable:http_403; openBD title search is unavailable without isbn13",
+      "candidates": []
+    },
+    {
+      "id": "magic_makeup",
+      "title": "メダリスト",
+      "author": "つるまいかだ",
+      "reason": "rakuten_api_unavailable:http_403; openBD title search is unavailable without isbn13",
+      "candidates": []
+    },
+    {
+      "id": "juujika_no_rokunin",
+      "title": "十字架のろくにん",
+      "author": "Nakatake, Shiryuu",
+      "reason": "rakuten_api_unavailable:http_403; openBD title search is unavailable without isbn13",
+      "candidates": []
+    },
+    {
+      "id": "ruri_dragon",
+      "title": "ルリドラゴン",
+      "author": "Shindou, Masaoki",
+      "reason": "rakuten_api_unavailable:http_403; openBD title search is unavailable without isbn13",
+      "candidates": []
+    },
+    {
+      "id": "the_fragrant_flower_blooms_with_dignity",
+      "title": "薫る花は凛と咲く",
+      "author": "Mikami, Saka",
+      "reason": "rakuten_api_unavailable:http_403; openBD title search is unavailable without isbn13",
+      "candidates": []
+    },
+    {
+      "id": "dandadan",
+      "title": "ダンダダン",
+      "author": "龍幸伸",
+      "reason": "rakuten_api_unavailable:http_403; openBD title search is unavailable without isbn13",
+      "candidates": []
+    },
+    {
+      "id": "sakamoto_days",
+      "title": "SAKAMOTO DAYS",
+      "author": "鈴木祐斗",
+      "reason": "rakuten_api_unavailable:http_403; openBD title search is unavailable without isbn13",
+      "candidates": []
+    },
+    {
+      "id": "wind_breaker",
+      "title": "WIND BREAKER",
+      "author": "にいさとる",
+      "reason": "rakuten_api_unavailable:http_403; openBD title search is unavailable without isbn13",
+      "candidates": []
+    },
+    {
+      "id": "shangri_la",
+      "title": "シャングリラ・フロンティア",
+      "author": "硬梨菜/不二涼介",
+      "reason": "rakuten_api_unavailable:http_403; openBD title search is unavailable without isbn13",
+      "candidates": []
+    }
+  ],
+  "notes": [
+    "src/data/mangaCovers.ts does not exist; this project currently uses src/data/mangaCovers.js.",
+    "No priority item currently has a non-empty coverImageUrl.",
+    "The one_piece entry is an empty manual placeholder and remains reviewNeeded=true / coverImageVerified=false."
+  ]
+}
