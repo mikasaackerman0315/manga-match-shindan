@@ -53,6 +53,7 @@ const T = {
     loading: "AIが分析中…",
     loadingComplete: "診断が完了しました",
     viewResults: "結果を見る",
+    nextDiscovery: "次の漫画",
     yourProfile: "あなたの読書プロファイル",
     top3: "絶対読んでほしい", next7: "これも合うはず", last10: "気が向いたら",
     retake: "もう一度診断する", error: "エラーが発生しました。もう一度お試しください。",
@@ -89,6 +90,7 @@ const T = {
     loading: "AI is analyzing…",
     loadingComplete: "Analysis complete",
     viewResults: "View Results",
+    nextDiscovery: "Next Manga",
     yourProfile: "Your Reading Profile",
     top3: "Must Reads", next7: "Highly Recommended", last10: "Worth Exploring",
     retake: "Take Quiz Again", error: "Something went wrong. Please try again.",
@@ -291,15 +293,6 @@ export default function App() {
       const interval = setInterval(() => {
         setLoadingStep((prev) => Math.min(prev + 1, LOADING_STEP_COUNT - 1));
       }, 8000);
-      return () => clearInterval(interval);
-    }
-  }, [screen]);
-
-  useEffect(() => {
-    if (screen === "loading") {
-      const interval = setInterval(() => {
-        setLoadingMangaIndex((prev) => prev + 1);
-      }, 1800);
       return () => clearInterval(interval);
     }
   }, [screen]);
@@ -652,9 +645,7 @@ export default function App() {
           <style>{`
             @keyframes loadingMangaPop {
               0% { opacity: 0; transform: translateY(14px) scale(0.96); }
-              18% { opacity: 1; transform: translateY(0) scale(1); }
-              78% { opacity: 1; transform: translateY(0) scale(1); }
-              100% { opacity: 0; transform: translateY(-10px) scale(0.98); }
+              100% { opacity: 1; transform: translateY(0) scale(1); }
             }
           `}</style>
           <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] gap-10 md:gap-14 items-center">
@@ -692,36 +683,39 @@ export default function App() {
               <div className="text-[10px] tracking-[0.28em] uppercase mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
                 {language === "ja" ? "こんな漫画もあります" : "Side Discoveries"}
               </div>
-              <div className="space-y-3 min-h-[280px]">
-                {Array.from({ length: 4 }).map((_, offset) => {
-                  const rec = loadingRecommendations[(loadingMangaIndex + offset) % loadingRecommendations.length];
+              <div className="min-h-[280px] flex flex-col justify-between">
+                {(() => {
+                  const rec = loadingRecommendations[loadingMangaIndex % loadingRecommendations.length];
                   return (
                     <div
-                      key={`${loadingMangaIndex}-${offset}-${rec.title}`}
-                      className="px-4 py-3 border"
+                      key={`${loadingMangaIndex}-${rec.title}`}
+                      className="px-5 py-5 border"
                       style={{
-                        borderColor: offset === 0 ? "rgba(192,57,43,0.35)" : "rgba(10,10,10,0.14)",
-                        backgroundColor: offset === 0 ? "rgba(192,57,43,0.045)" : "rgba(245,243,238,0.62)",
-                        animation: "loadingMangaPop 2100ms ease-in-out both",
-                        animationDelay: `${offset * 120}ms`,
+                        borderColor: "rgba(192,57,43,0.35)",
+                        backgroundColor: "rgba(192,57,43,0.045)",
+                        animation: "loadingMangaPop 520ms ease-out both",
                       }}
                     >
-                      <div className="flex items-start gap-3">
-                        <div className="pt-1 text-xs" style={{ color: offset === 0 ? "#c0392b" : "#999", fontFamily: "'JetBrains Mono', monospace" }}>
-                          {String(((loadingMangaIndex + offset) % loadingRecommendations.length) + 1).padStart(2, "0")}
-                        </div>
-                        <div className="min-w-0">
-                          <div className="text-base md:text-lg leading-tight" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>
-                            {rec.title}
-                          </div>
-                          <p className="text-xs md:text-sm mt-1 leading-relaxed" style={{ color: "#666" }}>
-                            {rec.lead}
-                          </p>
-                        </div>
+                      <div className="text-xs mb-8" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
+                        {String((loadingMangaIndex % loadingRecommendations.length) + 1).padStart(2, "0")} / {String(loadingRecommendations.length).padStart(2, "0")}
                       </div>
+                      <div className="text-3xl md:text-4xl leading-tight mb-5" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>
+                        {rec.title}
+                      </div>
+                      <p className="text-sm md:text-base leading-relaxed" style={{ color: "#555" }}>
+                        {rec.lead}
+                      </p>
                     </div>
                   );
-                })}
+                })()}
+                <button
+                  type="button"
+                  onClick={() => setLoadingMangaIndex((prev) => (prev + 1) % loadingRecommendations.length)}
+                  className="mt-4 px-4 py-3 text-xs tracking-[0.2em] uppercase transition-all hover:translate-x-1"
+                  style={{ border: "1px solid rgba(10,10,10,0.18)", color: "#0a0a0a", fontFamily: "'JetBrains Mono', monospace" }}
+                >
+                  {t.nextDiscovery} →
+                </button>
               </div>
             </div>
           </div>
