@@ -138,6 +138,73 @@ const LOADING_SIDE_DISCOVERIES = [
   { title_ja: "あかね噺", title_en: "Akane-banashi", lead_ja: "芸の世界の勝負を、熱すぎず熱く読ませる。", lead_en: "A performance manga with clean, controlled heat.", avoid: ["horror", "romance"] },
 ];
 
+const LOADING_SIDE_DISCOVERY_DETAILS = {
+  "ひらやすみ": {
+    ja: "定職につかず気ままに暮らす青年と、上京してきた親戚の女の子を中心に、東京の片隅の日々を描く作品。派手な事件ではなく、生活の小さな変化や人との距離感がじわっと残ります。",
+    en: "A quiet slice-of-life manga about a laid-back young man and a younger relative starting a new life in Tokyo. It is less about big events and more about small shifts, gentle days, and the distance between people.",
+  },
+  "海が走るエンドロール": {
+    ja: "夫を亡くした女性が映画作りに出会い、年齢に関係なく新しい表現へ踏み出していく物語。夢を追う話なのに騒がしすぎず、静かな前向きさがあります。",
+    en: "A story about an older woman who discovers filmmaking after loss and steps into a new creative life. It treats dreams with quiet dignity rather than loud inspiration.",
+  },
+  "税金で買った本": {
+    ja: "図書館で働く人たちと利用者のやりとりを通して、本の扱い方や公共の場所の裏側を見せる仕事漫画。ゆるく読めるのに、知らなかった知識も残ります。",
+    en: "A workplace manga about librarians, visitors, and the everyday systems behind public libraries. It is easy to read, but it leaves you with surprisingly useful knowledge.",
+  },
+  "北北西に曇と往け": {
+    ja: "アイスランドを舞台に、探偵めいた青年が人や土地の謎に触れていく物語。旅漫画の空気感とミステリーの静けさが混ざっていて、余白を味わうタイプです。",
+    en: "Set in Iceland, this follows a young man with a detective-like presence as he moves through people, landscapes, and quiet mysteries. It blends travel atmosphere with understated suspense.",
+  },
+  "煙と蜜": {
+    ja: "大正時代を思わせる空気の中、年の離れた許嫁同士の関係を丁寧に描く作品。派手な恋愛というより、距離感、所作、時代の匂いをゆっくり読む漫画です。",
+    en: "A period romance built on careful distance, manners, and atmosphere. Rather than loud romantic drama, it asks you to enjoy gestures, restraint, and the texture of its era.",
+  },
+  "波よ聞いてくれ": {
+    ja: "勢いで喋る女性がラジオの世界に巻き込まれていく、会話劇の強い仕事漫画。テンポの良い台詞と大人のぐちゃっとした生活感が魅力です。",
+    en: "A talk-driven workplace comedy about a woman pulled into radio after one explosive rant. Its charm comes from fast dialogue, messy adulthood, and strange professional momentum.",
+  },
+  "映像研には手を出すな！": {
+    ja: "女子高生たちがアニメ制作にのめり込む創作漫画。設定を考える楽しさ、ものを作る熱、仲間内の役割分担が濃く、創作好きなら刺さりやすい作品です。",
+    en: "A manga about high school girls diving into animation production. It captures the joy of building worlds, making things, and turning imagination into a shared project.",
+  },
+  "違国日記": {
+    ja: "人付き合いが不器用な小説家と、親を亡くした少女が一緒に暮らし始める物語。家族ものですが甘くしすぎず、言葉にできない感情を丁寧に置いていきます。",
+    en: "A restrained human drama about an awkward novelist and an orphaned girl beginning to live together. It is a family story, but it avoids easy sweetness and respects difficult emotions.",
+  },
+  "ダーウィン事変": {
+    ja: "人間とチンパンジーの間に生まれた存在を通して、社会、差別、暴力、思想を描くサスペンス。読みやすいエンタメ性がありつつ、テーマはかなり鋭いです。",
+    en: "A social suspense manga centered on a being born between human and chimpanzee. It has thriller momentum, but its questions about society, violence, and ideology are sharp.",
+  },
+  "望郷太郎": {
+    ja: "文明崩壊後の世界で目覚めた男が、失われた故郷や社会の痕跡を追って歩く物語。サバイバルよりも、文明とは何かを考える骨太さがあります。",
+    en: "A post-civilization journey about a man waking in a changed world and searching for traces of home and society. It is rugged, but more reflective than simple survival fiction.",
+  },
+  "図書館の大魔術師": {
+    ja: "本と知識が大きな意味を持つ世界で、少年が図書館を目指すファンタジー。作り込まれた世界観と、本をめぐる憧れがゆっくり広がっていきます。",
+    en: "A fantasy about a boy drawn toward a grand library in a world where books and knowledge hold deep power. It is rich in worldbuilding and the romance of reading.",
+  },
+  "ふつうの軽音部": {
+    ja: "軽音部に入った高校生たちの、地味だけど妙にリアルな青春漫画。大げさな才能物語ではなく、好きな音楽や人間関係で少しずつ熱が出てくる感じです。",
+    en: "A grounded school music manga about students in a light music club. It avoids grand genius drama and instead finds heat in ordinary taste, awkwardness, and relationships.",
+  },
+  "しなのんちのいくる": {
+    ja: "短いエピソードで家族や日常を描く、少し懐かしい空気の漫画。大きな展開を追うより、ふとした会話や間の抜けた瞬間を楽しむタイプです。",
+    en: "A series of short everyday episodes with a nostalgic family-life mood. It is best enjoyed for tiny conversations, odd pauses, and casual warmth rather than plot.",
+  },
+  "クジャクのダンス、誰が見た？": {
+    ja: "事件の真相を追う中で、信じていたものが揺らいでいくミステリー。派手なトリックより、疑念が少しずつ広がる不安感で読ませます。",
+    en: "A mystery where the search for truth slowly shakes what the characters believe. Its hook is not flashy tricks, but the creeping spread of doubt.",
+  },
+  "リバーエンド・カフェ": {
+    ja: "地方のカフェを中心に、人の傷や再生をゆっくり描く作品。強い刺激ではなく、土地に残る記憶や人の回復を静かに読む漫画です。",
+    en: "A quiet drama centered on a local cafe, wounds, and recovery. It focuses less on strong stimulation and more on memory, place, and slow healing.",
+  },
+  "あかね噺": {
+    ja: "落語の世界で成長していく少女を描く芸道漫画。バトル漫画のような勝負感がありつつ、言葉、間、演技で魅せるところが特徴です。",
+    en: "A performance manga about a girl growing through rakugo. It has the competitive pull of a battle manga, but its weapons are timing, words, and stage presence.",
+  },
+};
+
 function seededShuffle(items, seed) {
   const shuffled = [...items];
   let state = Math.max(1, Math.floor(seed) % 2147483647);
@@ -159,6 +226,7 @@ function getLoadingRecommendations(answers = {}, language = "ja", seed = 1) {
   return recommendations.map((rec) => ({
     title: language === "ja" ? rec.title_ja : rec.title_en,
     lead: language === "ja" ? rec.lead_ja : rec.lead_en,
+    detail: language === "ja" ? LOADING_SIDE_DISCOVERY_DETAILS[rec.title_ja]?.ja : LOADING_SIDE_DISCOVERY_DETAILS[rec.title_ja]?.en,
   }));
 }
 
@@ -683,7 +751,7 @@ export default function App() {
               <div className="text-[10px] tracking-[0.28em] uppercase mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
                 {language === "ja" ? "こんな漫画もあります" : "Side Discoveries"}
               </div>
-              <div className="min-h-[280px] flex flex-col justify-between">
+              <div className="min-h-[360px] flex flex-col justify-between">
                 {(() => {
                   const rec = loadingRecommendations[loadingMangaIndex % loadingRecommendations.length];
                   return (
@@ -705,6 +773,16 @@ export default function App() {
                       <p className="text-sm md:text-base leading-relaxed" style={{ color: "#555" }}>
                         {rec.lead}
                       </p>
+                      {rec.detail && (
+                        <div className="mt-5 pt-5" style={{ borderTop: "1px solid rgba(10,10,10,0.12)" }}>
+                          <div className="text-[10px] tracking-[0.22em] uppercase mb-2" style={{ color: "#999", fontFamily: "'JetBrains Mono', monospace" }}>
+                            {language === "ja" ? "どんな漫画？" : "What Is It?"}
+                          </div>
+                          <p className="text-xs md:text-sm leading-relaxed" style={{ color: "#444" }}>
+                            {rec.detail}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   );
                 })()}
