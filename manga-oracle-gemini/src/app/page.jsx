@@ -802,7 +802,7 @@ export default function App() {
 
       {screen === "results" && results && (
         <div className="min-h-screen px-4 md:px-8 py-16">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             {/* 広告枠 1: プロフィール直後（最も目立つ位置） */}
             <AdSlot slot="results-top" />
 
@@ -824,21 +824,21 @@ export default function App() {
                   <h3 className="text-2xl md:text-3xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.top3}</h3>
                   <div className="flex-grow h-px bg-black opacity-20" />
                 </div>
-                <div className="space-y-12">
+                <div className="space-y-14">
                   {results.recommendations.slice(0, 3).map((rec, idx) => (
-                    <article key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="grid grid-cols-12 gap-6 md:gap-8 pb-12 border-b" style={{ borderColor: "rgba(10,10,10,0.1)" }}>
+                    <article key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="grid grid-cols-12 gap-6 md:gap-10 pb-14 border-b" style={{ borderColor: "rgba(10,10,10,0.1)" }}>
                       <div className="col-span-12 md:col-span-2">
-                        <div className="text-6xl md:text-7xl font-bold leading-none" style={{ fontFamily: "'Cormorant Garamond', serif", color: idx === 0 ? "#c0392b" : "#0a0a0a" }}>{String(rec.rank).padStart(2, "0")}</div>
+                        <div className="text-7xl md:text-8xl font-bold leading-none" style={{ fontFamily: "'Cormorant Garamond', serif", color: idx === 0 ? "#c0392b" : "#0a0a0a" }}>{String(rec.rank).padStart(2, "0")}</div>
                       </div>
-                      <div className="col-span-12 md:col-span-10 flex flex-col sm:flex-row gap-5 md:gap-7">
-                        <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} size="large" />
+                      <div className="col-span-12 md:col-span-10 flex flex-col sm:flex-row gap-6 md:gap-8">
+                        <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} size="hero" />
                         <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-3 mb-2 flex-wrap">
-                          <h4 className="text-2xl md:text-3xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
+                          <h4 className="text-3xl md:text-4xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
                           <AlternativeBadge rec={rec} language={language} />
                         </div>
-                        <MangaMetaLine rec={rec} t={t} includeYear includeAnime className="text-sm mb-4 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
-                        {rec.description && (<p className="text-base leading-relaxed mb-4" style={{ color: "#333" }}>{rec.description}</p>)}
+                        <MangaMetaLine rec={rec} t={t} includeYear includeAnime className="text-sm md:text-base mb-5 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
+                        {rec.description && (<p className="text-base md:text-lg leading-8 mb-5" style={{ color: "#333" }}>{rec.description}</p>)}
                         <PurchaseLinks rec={rec} t={t} />
                         </div>
                       </div>
@@ -855,21 +855,21 @@ export default function App() {
                   <h3 className="text-xl md:text-2xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.next7}</h3>
                   <div className="flex-grow h-px bg-black opacity-10" />
                 </div>
-                <div className="space-y-6">
+                <div className="space-y-8">
                   {results.recommendations.slice(3, 10).map((rec) => (
-                    <article key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="grid grid-cols-12 gap-4 pb-6 border-b" style={{ borderColor: "rgba(10,10,10,0.08)" }}>
+                    <article key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="grid grid-cols-12 gap-5 md:gap-6 pb-8 border-b" style={{ borderColor: "rgba(10,10,10,0.08)" }}>
                       <div className="col-span-2 md:col-span-1">
-                        <div className="text-2xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#888" }}>{String(rec.rank).padStart(2, "0")}</div>
+                        <div className="text-3xl md:text-4xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#888" }}>{String(rec.rank).padStart(2, "0")}</div>
                       </div>
-                      <div className="col-span-10 md:col-span-11 flex flex-col sm:flex-row gap-4">
-                        <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} />
+                      <div className="col-span-10 md:col-span-11 flex flex-col sm:flex-row gap-5">
+                        <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} size="result" />
                         <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
-                          <h4 className="text-lg md:text-xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
+                          <h4 className="text-2xl md:text-3xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
                           <AlternativeBadge rec={rec} language={language} />
                         </div>
-                        <MangaMetaLine rec={rec} t={t} className="text-xs mb-2 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
-                        {rec.description && (<p className="text-sm leading-relaxed" style={{ color: "#444" }}>{rec.description}</p>)}
+                        <MangaMetaLine rec={rec} t={t} className="text-xs md:text-sm mb-3 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
+                        {rec.description && (<p className="text-sm md:text-base leading-7" style={{ color: "#444" }}>{rec.description}</p>)}
                         <PurchaseLinks rec={rec} t={t} compact />
                         </div>
                       </div>
@@ -891,14 +891,14 @@ export default function App() {
                   <h3 className="text-xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.last10}</h3>
                   <div className="flex-grow h-px bg-black opacity-10" />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5">
                   {results.recommendations.slice(10, 20).map((rec) => (
-                    <div key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="flex gap-3 items-start py-2">
+                    <div key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="flex gap-4 items-start py-2">
                       <span className="text-sm" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#c0392b", minWidth: "1.5rem" }}>{String(rec.rank).padStart(2, "0")}</span>
-                      <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} size="small" />
+                      <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} size="medium" />
                       <div className="flex-grow">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <div className="text-base font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</div>
+                          <div className="text-lg md:text-xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</div>
                           <AlternativeBadge rec={rec} language={language} />
                         </div>
                         <MangaMetaLine rec={rec} t={t} includeStatus={false} className="text-xs" style={{ color: "#888" }} />

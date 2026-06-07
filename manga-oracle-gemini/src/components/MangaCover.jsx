@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 
 const sizeClasses = {
-  small: "w-[42px] md:w-[50px]",
-  medium: "w-[74px] md:w-[92px]",
-  large: "w-[96px] md:w-[124px]",
+  small: "w-[56px] md:w-[68px]",
+  medium: "w-[86px] md:w-[108px]",
+  large: "w-[116px] md:w-[148px]",
+  result: "w-[124px] md:w-[160px]",
+  hero: "w-[148px] md:w-[190px]",
 };
 
 function Placeholder({ title }) {
