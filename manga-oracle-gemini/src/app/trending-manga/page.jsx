@@ -623,6 +623,60 @@ const sections = [
   },
 ];
 
+const SYNOPSIS_BY_TITLE = {
+  "ブルーロック": "日本サッカーを変えるため、才能ある高校生たちが異質な育成施設でエゴと技術を競い合う。",
+  "ダンダダン": "霊を信じる少女と宇宙人を信じる少年が、怪異とオカルト事件に巻き込まれていく。",
+  "SAKAMOTO DAYS": "元伝説の殺し屋が家族との日常を守るため、次々現れる刺客と向き合うアクションコメディ。",
+  "怪獣8号": "怪獣処理の仕事をしていた男が、怪獣の力を得て防衛隊を目指す再挑戦バトル漫画。",
+  "葬送のフリーレン": "魔王討伐後の世界で、長命の魔法使いが仲間の記憶と人の心を知る旅を続ける。",
+  "薬屋のひとりごと": "薬の知識を持つ少女が後宮で起こる事件や毒の謎を解き、宮廷の思惑に触れていく。",
+  "【推しの子】": "芸能界を舞台に、アイドルや俳優たちの夢、嘘、復讐が絡み合うサスペンスドラマ。",
+  "メダリスト": "フィギュアスケートに憧れる少女と元選手のコーチが、氷上で夢を追いかける成長物語。",
+  "光が死んだ夏": "親友の姿をした何かと過ごす少年の日常が、静かな違和感と恐怖に侵されていく。",
+  "アオのハコ": "バドミントン部の少年とバスケ部の先輩を中心に、部活と恋が重なる青春を描く。",
+  "チェンソーマン": "悪魔と契約した少年が公安のデビルハンターとなり、欲望と喪失の中で戦う。",
+  "SPY×FAMILY": "スパイ、殺し屋、超能力者が互いの正体を隠しながら仮初めの家族として暮らす。",
+  "ルリドラゴン": "ある朝ドラゴンの角が生えた女子高生が、少し不思議になった日常を受け入れていく。",
+  "カグラバチ": "刀匠の父を奪われた少年が、妖刀をめぐる因縁と復讐の道へ踏み出す。",
+  "魔男のイチ": "魔法が存在する世界で、常識外れの少年が魔法と人々の運命に関わっていく。",
+  "ケントゥリア": "過酷な世界を生きる青年が、異形の力と人間の欲望に巻き込まれるダークファンタジー。",
+  "ドラマクイン": "宇宙人と人間が共存する社会で、違和感を抱える人々の衝突と感情を描く。",
+  "極楽街": "人と異形が交わる街で、問題解決を請け負うコンビが怪事件に立ち向かう。",
+  "超人X": "超人の力が存在する世界で、少年たちが変化した身体と運命に向き合う。",
+  "正反対な君と僕": "明るい女子と静かな男子を中心に、正反対の二人と周囲の青春が丁寧に進んでいく。",
+  "ウィッチウォッチ": "魔女の少女と幼なじみの少年が同居し、魔法と学園生活の騒動に巻き込まれる。",
+  "タコピーの原罪": "地球に来た無邪気な宇宙生物が、少女の苦しみを救おうとして残酷な現実に触れる。",
+  "薫る花は凛と咲く": "対照的な学校に通う少年と少女が出会い、偏見を越えて少しずつ距離を縮めていく。",
+  "ガチアクタ": "奈落へ落とされた少年が、ゴミと差別に満ちた世界で生き抜き真実を追う。",
+  "シャングリラ・フロンティア": "クソゲー好きのゲーマーが、人気VRゲームで規格外の攻略を繰り広げる冒険譚。",
+  "十字架のろくにん": "家族を奪われた少年が、過去の加害者たちへ復讐を進めていくサスペンス。",
+  "WIND BREAKER": "不良校として知られる高校に入った少年が、街を守る仲間たちと喧嘩を通じて成長する。",
+  "裏バイト:逃亡禁止": "高額報酬の怪しいアルバイトに挑む少女たちが、毎回異なる危険と怪異に遭遇する。",
+  "ケンガンオメガ": "企業同士の利権を賭けた格闘試合の世界で、新たな闘技者たちが拳を交える。",
+  "レッドブルー": "いじめられっ子だった少年が総合格闘技に出会い、強さを求めて変わっていく。",
+  "サンキューピッチ": "野球に関わる少年たちの才能と駆け引きを、変化球の視点で描くスポーツ漫画。",
+  "ふつうの軽音部": "軽音部に入った高校生たちが、等身大の会話と音楽を通じて少しずつ変化していく。",
+  "その着せ替え人形は恋をする": "雛人形職人を目指す少年とコスプレ好きの少女が、衣装作りを通じて近づいていく。",
+  "僕の心のヤバイやつ": "内向的な少年と人気者の少女が、教室の日常の中で不器用に距離を縮めていく。",
+  "逃げ上手の若君": "鎌倉幕府滅亡後、逃げる才能を持つ少年が仲間とともに再起を目指す歴史活劇。",
+  "ラーメン赤猫": "猫たちが営むラーメン店で働くことになった女性が、店の日常と接客に触れていく。",
+  "会社と私生活－オンとオフ－": "職場と私生活で違う顔を持つ人々の、オンとオフの距離感を描く日常漫画。",
+  "スーパーの裏でヤニ吸うふたり": "スーパーの常連客と店員が、店の裏で煙草を吸いながら少しずつ言葉を交わす。",
+  "本なら売るほど": "本を扱う人々と客のやり取りを通して、暮らしや読書にまつわる小さなドラマを描く。",
+  "黒岩メダカに私の可愛いが通じない": "自分の可愛さに自信がある少女が、まったく動じない男子を振り向かせようと奮闘する。",
+  "カッコウの許嫁": "取り違え子から始まった高校生たちの同居と婚約関係が、恋と家族を揺らしていく。",
+  "幼稚園WARS": "元殺し屋の保育士たちが、園児を守るために刺客と戦う異色のアクションコメディ。",
+  "少年のアビス": "閉塞した町で暮らす少年が、人間関係と絶望に絡め取られていくダークドラマ。",
+  "九条の大罪": "裏社会や弱者に関わる弁護士が、法と現実の隙間で依頼人と向き合う社会派漫画。",
+  "ザ・ファブル": "天才的な殺し屋が普通の生活を命じられ、静かな日常と危険な過去の間で生きる。",
+  "チ。―地球の運動について―": "地動説が異端とされた時代に、知を追う人々が命がけで真理をつないでいく。",
+  "住みにごり": "実家に戻った男性が、家族の中に沈む違和感と逃げられない空気に向き合う。",
+  "平和の国の島崎へ": "元戦闘員の男が日本で普通の生活を取り戻そうとしながら、過去の影に揺れる。",
+  "マリッジトキシン": "殺し屋の青年が結婚相手を探すため、仲介人と組んで危険な依頼に挑む。",
+  "血の轍": "母と息子の関係を軸に、家族の愛情が歪んでいく心理サスペンス。",
+  "地獄楽": "死罪人の忍が無罪放免を条件に、謎の島で不老不死の仙薬を探す。",
+};
+
 const flatItems = sections.flatMap((section) => section.items);
 
 function JsonLd({ data }) {
@@ -639,6 +693,10 @@ function TrendPill({ children }) {
 
 function getTags(section, item) {
   return Array.from(new Set([...(section.defaultTags || []), ...(item.tags || [])])).slice(0, 6);
+}
+
+function getSynopsis(item) {
+  return SYNOPSIS_BY_TITLE[item.title] || item.synopsis || item.why;
 }
 
 function RelatedCard({ href, label, description }) {
@@ -662,7 +720,7 @@ export default function TrendingMangaPage() {
       "@type": "ListItem",
       position: index + 1,
       name: item.title,
-      description: item.why,
+      description: getSynopsis(item),
       url: `${siteUrl}/trending-manga#rank-${index + 1}`,
     })),
   };
@@ -747,7 +805,7 @@ export default function TrendingMangaPage() {
                     </div>
                     <div className="col-span-10 md:col-span-11">
                       <div className="flex items-start gap-4 md:gap-5">
-                        <MangaCover title={item.title} coverImageUrl={cover?.coverImageUrl} coverProductUrl={cover?.coverProductUrl} coverImageSource={cover?.coverImageSource} verified={cover?.coverImageVerified} pageType="seo_article" />
+                        <MangaCover title={item.title} mangaId={item.id} author={item.author} coverImageUrl={cover?.coverImageUrl} coverProductUrl={cover?.coverProductUrl} coverImageSource={cover?.coverImageSource} verified={cover?.coverImageVerified} pageType="seo_article" />
                         <div className="min-w-0 flex-1">
                           <h3 className="text-2xl md:text-3xl font-semibold mb-2" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{item.title}</h3>
                           <div className="mb-3 text-xs tracking-[0.12em]" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>
@@ -757,7 +815,7 @@ export default function TrendingMangaPage() {
                             {getTags(section, item).map((tag) => <TrendPill key={tag}>{tag}</TrendPill>)}
                           </div>
                           <div className="space-y-3 leading-8" style={{ color: "#333" }}>
-                            <p><strong>なぜ今話題？</strong> {item.why}</p>
+                            <p><strong>あらすじ</strong> {getSynopsis(item)}</p>
                             <p><strong>おすすめの人</strong> {item.fit}</p>
                             <p><strong>読む前に</strong> {item.caution}</p>
                           </div>

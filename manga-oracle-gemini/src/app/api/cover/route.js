@@ -1,12 +1,18 @@
 import { NextResponse } from "next/server";
+import crypto from "node:crypto";
 import { CORE_DB as CORE_DB_BASE } from "@/data/coreDB";
 import { CORE_DB_EXTRA } from "@/data/coreDB_extra";
 import { CORE_DB_EXTRA2 } from "@/data/coreDB_extra2";
 import { CORE_DB_EXTRA3 } from "@/data/coreDB_extra3";
 import { CORE_DB_EXTRA4 } from "@/data/coreDB_extra4";
 import { COVER_OVERRIDES } from "@/data/coverOverrides.generated";
+import { BOOKLIVE_COVER_OVERRIDES } from "@/data/bookliveCoverOverrides";
 
 const RAKUTEN_BOOKS_ENDPOINT = "https://openapi.rakuten.co.jp/services/api/BooksBook/Search/20170404";
+const AMAZON_PAAPI_ENDPOINT = "https://webservices.amazon.co.jp/paapi5/searchitems";
+const AMAZON_PAAPI_HOST = "webservices.amazon.co.jp";
+const AMAZON_PAAPI_REGION = "us-west-2";
+const AMAZON_PAAPI_SERVICE = "ProductAdvertisingAPI";
 const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3, ...CORE_DB_EXTRA4];
 const TITLE_ALIASES = {
   "3月のライオン": ["三月のライオン", "3月のライオン 1"],
@@ -274,6 +280,18 @@ function getCoverOverride(id, title) {
   }) || null;
 }
 
+function getBookliveCoverOverride(id, title) {
+  if (id && BOOKLIVE_COVER_OVERRIDES[id]?.coverUrl) return BOOKLIVE_COVER_OVERRIDES[id];
+
+  const normalizedTitle = normalizeTitleKey(title);
+  if (!normalizedTitle) return null;
+
+  return Object.values(BOOKLIVE_COVER_OVERRIDES).find((entry) => {
+    if (!entry?.coverUrl) return false;
+    return normalizeTitleKey(entry.title_ja) === normalizedTitle || normalizeTitleKey(entry.title_en) === normalizedTitle;
+  }) || null;
+}
+
 function getDatabaseAliases(title, id, author) {
   const normalizedTitle = normalizeTitleKey(title);
   const match = CORE_DB.find((entry) => entry.id === id) || CORE_DB.find((entry) => {
@@ -336,19 +354,119 @@ function scoreVolumeOne(item, title) {
   if (!itemTitle || !getCoverImage(item)) return -1;
 
   const baseTitle = title.replace(/\s+(?:1|１|01|０１|1巻|１巻|漫画)$/u, "");
+  const normalizedBaseTitle = normalizeTitleKey(baseTitle || title);
+  const normalizedItemTitle = normalizeTitleKey(itemTitle);
   let score = 0;
+  if (normalizedBaseTitle && normalizedItemTitle.startsWith(normalizedBaseTitle)) score += 12;
+  else if (normalizedBaseTitle && normalizedItemTitle.includes(normalizedBaseTitle)) score += 7;
   if (itemTitle.includes(title)) score += 3;
   if (baseTitle && itemTitle.includes(baseTitle)) score += 4;
-  if (/(^|[^0-9０-９])(?:1|１|01|０１)(?:巻|集|$|[^0-9０-９])/.test(itemTitle)) score += 8;
-  if (/第(?:1|１)巻/.test(itemTitle)) score += 8;
-  if (/全巻|セット|BOX|ボックス|公式|ファンブック|小説|ノベライズ|映画|劇場版|アニメ|DVD|Blu-ray/i.test(itemTitle)) score -= 8;
+  if (/(^|[^0-9０-９])(?:1|１|01|０１)(?:巻|集|$|[^0-9０-９])/.test(itemTitle)) score += 2;
+  if (/第(?:1|１)巻/.test(itemTitle)) score += 2;
+  if (normalizedBaseTitle && normalizedItemTitle.startsWith(normalizedBaseTitle) && normalizedItemTitle.length > normalizedBaseTitle.length + 8) score -= 5;
+  if (/外伝|スピンオフ|全巻|セット|BOX|ボックス|公式|ガイド|ファンブック|小説|ノベライズ|映画|劇場版|アニメ|DVD|Blu-ray/i.test(itemTitle)) score -= 18;
+  if (/特装版|限定版|画集|設定資料|キャラクターブック/i.test(itemTitle)) score -= 10;
   return score;
+}
+
+function hashHex(value) {
+  return crypto.createHash("sha256").update(value, "utf8").digest("hex");
+}
+
+function hmac(key, value, encoding) {
+  return crypto.createHmac("sha256", key).update(value, "utf8").digest(encoding);
+}
+
+function getAmazonSigningKey(secretKey, dateStamp) {
+  const kDate = hmac(`AWS4${secretKey}`, dateStamp);
+  const kRegion = hmac(kDate, AMAZON_PAAPI_REGION);
+  const kService = hmac(kRegion, AMAZON_PAAPI_SERVICE);
+  return hmac(kService, "aws4_request");
+}
+
+function amazonTimestamp(date = new Date()) {
+  return date.toISOString().replace(/[:-]|\.\d{3}/g, "");
+}
+
+function getAmazonImage(item) {
+  return item?.Images?.Primary?.Large?.URL || item?.Images?.Primary?.Medium?.URL || item?.Images?.Primary?.Small?.URL || null;
+}
+
+function getAmazonTitle(item) {
+  return item?.ItemInfo?.Title?.DisplayValue || "";
+}
+
+function scoreAmazonItem(item, title) {
+  const itemTitle = getAmazonTitle(item);
+  const imageUrl = getAmazonImage(item);
+  if (!itemTitle || !imageUrl) return -1;
+
+  const normalizedTitle = normalizeTitleKey(title);
+  const normalizedItemTitle = normalizeTitleKey(itemTitle);
+  let score = 0;
+  if (normalizedTitle && normalizedItemTitle.includes(normalizedTitle)) score += 8;
+  if (/[（(]\s*(?:0?1|一)\s*[）)]/.test(itemTitle)) score += 8;
+  if (/(?:^|[^0-9])(?:1|１)\s*(?:巻|巻目)?(?:$|[^0-9])/.test(itemTitle)) score += 7;
+  if (/コミック|漫画|ジャンプ|マガジン|サンデー|ヤング|モーニング|KC|ジャンプコミックス/i.test(itemTitle)) score += 2;
+  if (/全巻|セット|BOX|小説|ライトノベル|公式ガイド|ファンブック|画集|特装版|限定版|DVD|Blu-ray|アニメ/i.test(itemTitle)) score -= 10;
+  return score;
+}
+
+async function searchAmazonPaapi({ queryTitle, accessKey, secretKey, partnerTag }) {
+  if (!accessKey || !secretKey || !partnerTag) return [];
+
+  const body = JSON.stringify({
+    Keywords: queryTitle,
+    SearchIndex: "Books",
+    PartnerTag: partnerTag,
+    PartnerType: "Associates",
+    Marketplace: "www.amazon.co.jp",
+    ItemCount: 10,
+    Resources: [
+      "Images.Primary.Small",
+      "Images.Primary.Medium",
+      "Images.Primary.Large",
+      "ItemInfo.Title",
+      "ItemInfo.ByLineInfo",
+    ],
+  });
+
+  const now = amazonTimestamp();
+  const dateStamp = now.slice(0, 8);
+  const target = "com.amazon.paapi5.v1.ProductAdvertisingAPIv1.SearchItems";
+  const headers = {
+    "content-encoding": "amz-1.0",
+    "content-type": "application/json; charset=utf-8",
+    host: AMAZON_PAAPI_HOST,
+    "x-amz-date": now,
+    "x-amz-target": target,
+  };
+  const signedHeaders = "content-encoding;content-type;host;x-amz-date;x-amz-target";
+  const canonicalHeaders = signedHeaders.split(";").map((key) => `${key}:${headers[key]}`).join("\n") + "\n";
+  const canonicalRequest = ["POST", "/paapi5/searchitems", "", canonicalHeaders, signedHeaders, hashHex(body)].join("\n");
+  const credentialScope = `${dateStamp}/${AMAZON_PAAPI_REGION}/${AMAZON_PAAPI_SERVICE}/aws4_request`;
+  const stringToSign = ["AWS4-HMAC-SHA256", now, credentialScope, hashHex(canonicalRequest)].join("\n");
+  const signature = hmac(getAmazonSigningKey(secretKey, dateStamp), stringToSign, "hex");
+  const authorization = `AWS4-HMAC-SHA256 Credential=${accessKey}/${credentialScope}, SignedHeaders=${signedHeaders}, Signature=${signature}`;
+
+  const response = await fetch(AMAZON_PAAPI_ENDPOINT, {
+    method: "POST",
+    headers: {
+      ...headers,
+      Authorization: authorization,
+    },
+    body,
+    next: { revalidate: 86400 },
+  });
+
+  if (!response.ok) return [];
+  const data = await response.json();
+  return data?.SearchResult?.Items || [];
 }
 
 async function searchRakutenBooks({ queryTitle, applicationId, accessKey, affiliateId }) {
   const apiUrl = new URL(RAKUTEN_BOOKS_ENDPOINT);
   apiUrl.searchParams.set("applicationId", applicationId);
-  apiUrl.searchParams.set("accessKey", accessKey);
   if (affiliateId) {
     apiUrl.searchParams.set("affiliateId", affiliateId);
   }
@@ -361,6 +479,7 @@ async function searchRakutenBooks({ queryTitle, applicationId, accessKey, affili
 
   const response = await fetch(apiUrl, {
     headers: {
+      accessKey,
       Origin: (process.env.SITE_URL || "https://www.mangamatchquiz.com/").replace(/\/$/, ""),
       Referer: process.env.SITE_URL || "https://www.mangamatchquiz.com/",
     },
@@ -378,10 +497,28 @@ export async function GET(req) {
   const title = (searchParams.get("title") || "").trim();
   const id = (searchParams.get("id") || "").trim();
   const author = (searchParams.get("author") || "").trim();
-  const applicationId = process.env.RAKUTEN_APP_ID;
-  const accessKey = process.env.RAKUTEN_ACCESS_KEY;
-  const affiliateId = process.env.RAKUTEN_AFFILIATE_ID;
+  const amazonAccessKey = process.env.AMAZON_PAAPI_ACCESS_KEY || process.env.AMAZON_ACCESS_KEY_ID;
+  const amazonSecretKey = process.env.AMAZON_PAAPI_SECRET_KEY || process.env.AMAZON_SECRET_ACCESS_KEY;
+  const amazonPartnerTag = process.env.AMAZON_ASSOCIATE_TAG || "mangamatchquiz-22";
+  const applicationId = process.env.RAKUTEN_APP_ID || process.env.RAKUTEN_APPLICATION_ID || process.env.VITE_RAKUTEN_APP_ID || process.env.NEXT_PUBLIC_RAKUTEN_APP_ID;
+  const accessKey = process.env.RAKUTEN_ACCESS_KEY || process.env.VITE_RAKUTEN_ACCESS_KEY;
+  const affiliateId = process.env.RAKUTEN_AFFILIATE_ID || process.env.VITE_RAKUTEN_AFFILIATE_ID;
+  const bookliveOverride = getBookliveCoverOverride(id, title);
   const override = getCoverOverride(id, title);
+
+  if (bookliveOverride) {
+    return NextResponse.json(
+      {
+        imageUrl: bookliveOverride.coverUrl,
+        itemUrl: bookliveOverride.itemUrl || null,
+        isbn13: bookliveOverride.isbn13 || null,
+        coverSource: bookliveOverride.coverSource || "booklive",
+        coverConfidence: bookliveOverride.coverConfidence || null,
+        reviewNeeded: Boolean(bookliveOverride.reviewNeeded),
+      },
+      { headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800" } }
+    );
+  }
 
   if (override) {
     return NextResponse.json(
@@ -397,18 +534,38 @@ export async function GET(req) {
     );
   }
 
-  if (!title || !applicationId || !accessKey) {
+  if (!title) {
     return NextResponse.json({ imageUrl: null, itemUrl: null });
   }
 
   try {
     const searchTitles = getSearchTitles(title, id, author);
+
+    if (amazonAccessKey && amazonSecretKey && amazonPartnerTag) {
+      for (const queryTitle of searchTitles) {
+        const items = await searchAmazonPaapi({ queryTitle, accessKey: amazonAccessKey, secretKey: amazonSecretKey, partnerTag: amazonPartnerTag });
+        const rankedItems = [...items].sort((a, b) => scoreAmazonItem(b, queryTitle) - scoreAmazonItem(a, queryTitle));
+        const item = rankedItems.find((candidate) => scoreAmazonItem(candidate, queryTitle) > 0) || items.find((candidate) => getAmazonImage(candidate));
+        const imageUrl = getAmazonImage(item);
+        if (imageUrl) {
+          return NextResponse.json(
+            { imageUrl, itemUrl: item?.DetailPageURL || null, coverSource: "amazon_paapi" },
+            { headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800" } }
+          );
+        }
+      }
+    }
+
+    if (!applicationId || !accessKey) {
+      return NextResponse.json({ imageUrl: null, itemUrl: null });
+    }
+
     let item = null;
 
     for (const queryTitle of searchTitles) {
       const items = await searchRakutenBooks({ queryTitle, applicationId, accessKey, affiliateId });
       const rankedItems = [...items].sort((a, b) => scoreVolumeOne(b, queryTitle) - scoreVolumeOne(a, queryTitle));
-      item = rankedItems.find((candidate) => scoreVolumeOne(candidate, queryTitle) > 0) || items.find((candidate) => getCoverImage(candidate));
+      item = rankedItems.find((candidate) => scoreVolumeOne(candidate, queryTitle) >= 7);
       if (item) break;
     }
 
@@ -416,7 +573,7 @@ export async function GET(req) {
     const itemUrl = item?.affiliateUrl || item?.itemUrl || null;
 
     return NextResponse.json(
-      { imageUrl, itemUrl },
+      { imageUrl, itemUrl, coverSource: imageUrl ? "rakuten" : null },
       { headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800" } }
     );
   } catch {

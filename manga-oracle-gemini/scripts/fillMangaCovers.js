@@ -72,6 +72,7 @@ function volumeOneSignal(title = "") {
   if (/(^|[^0-9])0?1([^0-9]|$)/.test(text) && /巻|vol|volume|コミック/i.test(text)) return true;
   if (/第\s*(?:1|一)\s*巻/.test(text)) return true;
   if (/(?:^|[^0-9])1巻/.test(text)) return true;
+  if (/[（(]\s*(?:0?1|一)\s*[）)]/.test(text)) return true;
   return false;
 }
 
@@ -85,16 +86,33 @@ function hasComicSignal(candidate) {
   );
 }
 
-async function getJson(url) {
+async function getJson(url, extraHeaders = {}) {
   try {
     const response = await fetch(url, {
-      headers: { "User-Agent": "MangaMatchCoverFiller/1.0" },
+      headers: { "User-Agent": "MangaMatchCoverFiller/1.0", ...extraHeaders },
     });
     if (!response.ok) return { data: null, error: `http_${response.status}` };
     return { data: await response.json(), error: "" };
   } catch {
     return { data: null, error: "network_error" };
   }
+}
+
+function rakutenHeaders() {
+  const siteUrl = process.env.SITE_URL || "https://www.mangamatchquiz.com/";
+  return {
+    ...(rakutenAccessKey ? { accessKey: rakutenAccessKey } : {}),
+    Origin: siteUrl.replace(/\/$/, ""),
+    Referer: siteUrl,
+  };
+}
+
+function describeRakutenError(error) {
+  if (!error) return "";
+  if (error === "http_400") return "rakuten_api_bad_request: check required parameters and credential format";
+  if (error === "http_403") return "rakuten_api_forbidden: check Rakuten Books API scope, applicationId/accessKey pair, and allowed web site settings";
+  if (error === "network_error") return "rakuten_api_network_error";
+  return error;
 }
 
 function buildRakutenQueries(item) {
@@ -135,7 +153,6 @@ async function searchRakuten(item) {
   for (const query of buildRakutenQueries(item)) {
     const url = new URL(rakutenEndpoint);
     url.searchParams.set("applicationId", rakutenAppId);
-    if (rakutenAccessKey) url.searchParams.set("accessKey", rakutenAccessKey);
     if (rakutenAffiliateId) url.searchParams.set("affiliateId", rakutenAffiliateId);
     url.searchParams.set("format", "json");
     url.searchParams.set("formatVersion", "2");
@@ -146,10 +163,10 @@ async function searchRakuten(item) {
     if (query.author) url.searchParams.set("author", query.author);
     if (query.keyword) url.searchParams.set("keyword", query.keyword);
 
-    const { data, error } = await getJson(url);
+    const { data, error } = await getJson(url, rakutenHeaders());
     await sleep(waitMs);
     if (error) {
-      errors.push(`${query.label}:${error}`);
+      errors.push(`${query.label}:${describeRakutenError(error)}`);
       continue;
     }
     const rows = data?.Items || data?.items || [];
@@ -161,18 +178,18 @@ async function searchRakuten(item) {
 
 async function preflightRakuten() {
   if (!rakutenAppId) return "RAKUTEN_APP_ID is not set";
+  if (!rakutenAccessKey) return "RAKUTEN_ACCESS_KEY is not set";
 
   const url = new URL(rakutenEndpoint);
   url.searchParams.set("applicationId", rakutenAppId);
-  if (rakutenAccessKey) url.searchParams.set("accessKey", rakutenAccessKey);
   url.searchParams.set("format", "json");
   url.searchParams.set("title", "ONE PIECE");
   url.searchParams.set("booksGenreId", "001001");
   url.searchParams.set("hits", "1");
 
-  const { error } = await getJson(url);
+  const { error } = await getJson(url, rakutenHeaders());
   await sleep(waitMs);
-  return error;
+  return describeRakutenError(error);
 }
 
 function openBdCandidate(row) {
@@ -274,10 +291,11 @@ function scoreCandidate(item, candidate) {
 }
 
 function shouldAdopt(scored) {
+  const safeTitleMatch = scored?.notes.includes("exact_title") || (scored?.notes.includes("near_title") && scored?.notes.includes("volume1"));
   return (
     scored &&
     scored.score >= 82 &&
-    scored.notes.includes("exact_title") &&
+    safeTitleMatch &&
     scored.notes.includes("author") &&
     scored.notes.includes("volume1") &&
     scored.notes.includes("comic") &&

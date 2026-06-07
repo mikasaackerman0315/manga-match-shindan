@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 
 const sizeClasses = {
@@ -27,7 +27,7 @@ function Placeholder({ title }) {
         }}
       />
       <div className="line-clamp-3 text-[10px] leading-4 md:text-[11px]" style={{ fontFamily: "'Noto Serif JP', serif" }}>
-        {title || "表紙準備中"}
+        {title || "表紙未掲載"}
       </div>
     </div>
   );
@@ -35,6 +35,8 @@ function Placeholder({ title }) {
 
 export default function MangaCover({
   title,
+  mangaId,
+  author,
   coverImageUrl,
   coverProductUrl,
   coverImageSource,
@@ -44,16 +46,48 @@ export default function MangaCover({
   pageType = "other",
 }) {
   const [imageFailed, setImageFailed] = useState(false);
-  const hasImage = Boolean(coverImageUrl) && !imageFailed;
+  const [fallbackCover, setFallbackCover] = useState(null);
+  const dynamicCoverImageUrl = coverImageUrl || fallbackCover?.imageUrl || "";
+  const dynamicCoverProductUrl = coverProductUrl || fallbackCover?.itemUrl || "";
+  const dynamicCoverSource = coverImageSource || fallbackCover?.source || "unknown";
+  const dynamicVerified = Boolean(verified || fallbackCover?.imageUrl);
+  const hasImage = Boolean(dynamicCoverImageUrl) && !imageFailed;
   const rel = "nofollow sponsored noopener noreferrer";
   const widthClass = sizeClasses[size] || sizeClasses.medium;
+
+  useEffect(() => {
+    setImageFailed(false);
+  }, [dynamicCoverImageUrl]);
+
+  useEffect(() => {
+    if (coverImageUrl || !title) return;
+
+    const controller = new AbortController();
+    const params = new URLSearchParams({ title });
+    if (mangaId) params.set("id", mangaId);
+    if (author) params.set("author", author);
+
+    fetch(`/api/cover?${params.toString()}`, { signal: controller.signal })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (!data?.imageUrl) return;
+        setFallbackCover({
+          imageUrl: data.imageUrl,
+          itemUrl: data.itemUrl || "",
+          source: data.coverSource || "api",
+        });
+      })
+      .catch(() => {});
+
+    return () => controller.abort();
+  }, [author, coverImageUrl, mangaId, title]);
 
   const handleCoverClick = () => {
     trackEvent("cover_click", {
       title: title || "",
-      source: coverImageSource || "unknown",
+      source: dynamicCoverSource,
       page_type: pageType,
-      verified: Boolean(verified),
+      verified: dynamicVerified,
     });
   };
 
@@ -67,7 +101,7 @@ export default function MangaCover({
     >
       {hasImage ? (
         <img
-          src={coverImageUrl}
+          src={dynamicCoverImageUrl}
           alt={`${title || "漫画"} 1巻表紙`}
           className="h-full w-full object-cover"
           loading="lazy"
@@ -77,7 +111,7 @@ export default function MangaCover({
       ) : (
         <Placeholder title={title} />
       )}
-      {verified && hasImage && (
+      {dynamicVerified && hasImage && (
         <span
           className="absolute bottom-1 right-1 px-1.5 py-0.5 text-[9px]"
           style={{ backgroundColor: "rgba(10,10,10,0.72)", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}
@@ -88,10 +122,10 @@ export default function MangaCover({
     </div>
   );
 
-  if (coverProductUrl && hasImage) {
+  if (dynamicCoverProductUrl && hasImage) {
     return (
       <a
-        href={coverProductUrl}
+        href={dynamicCoverProductUrl}
         target="_blank"
         rel={rel}
         aria-label={`${title || "漫画"} 1巻表紙の商品ページを開く`}

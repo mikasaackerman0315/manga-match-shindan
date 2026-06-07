@@ -14,6 +14,8 @@ export default function MangaCover({ title, id, author, size = "medium" }) {
   return (
     <SharedMangaCover
       title={title}
+      mangaId={id}
+      author={author}
       coverImageUrl={cover?.coverImageUrl}
       coverProductUrl={cover?.coverProductUrl}
       coverImageSource={cover?.coverImageSource}
