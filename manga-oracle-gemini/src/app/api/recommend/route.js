@@ -1191,6 +1191,54 @@ function enforceRecommendationFit(payload, signals, language) {
   };
 }
 
+function ensureNonEmptyRecommendations(payload, signals, language) {
+  if (payload?.recommendations?.length > 0) return payload;
+
+  const seen = new Set();
+  const recommendations = [];
+  const scored = scoreCandidatePool(signals);
+
+  for (const { manga, matchedTags } of scored) {
+    if (violatesFreeTextAvoidance(manga, signals)) continue;
+    const key = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
+    if (key && seen.has(key)) continue;
+    if (key) seen.add(key);
+    recommendations.push({
+      ...createFallbackRecommendation(manga, matchedTags, recommendations.length + 1, language),
+      matchLevel: "alternative",
+    });
+    if (recommendations.length >= FALLBACK_RESULT_LIMIT) break;
+  }
+
+  if (recommendations.length < FALLBACK_RESULT_LIMIT) {
+    for (const manga of CORE_DB_UNIQUE) {
+      const key = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
+      if (key && seen.has(key)) continue;
+      if (key) seen.add(key);
+      recommendations.push({
+        ...createFallbackRecommendation(manga, [], recommendations.length + 1, language),
+        matchLevel: "alternative",
+      });
+      if (recommendations.length >= FALLBACK_RESULT_LIMIT) break;
+    }
+  }
+
+  return {
+    ...(payload || {}),
+    fallback: true,
+    userProfile: payload?.userProfile || (language === "en"
+      ? "We could not find an exact match, so these are close alternatives selected from the curated database."
+      : "条件に完全一致する作品が少なかったため、近い作品を厳選DBから選びました。"),
+    matchNotice: {
+      type: "no_exact_match",
+      exactCount: 0,
+      message_ja: "ご希望すべてにぴったり合う作品は見つかりませんでした。条件に近い漫画をこちらもおすすめします。",
+      message_en: "We could not find manga that matched every preference exactly, so here are close alternatives too.",
+    },
+    recommendations: recommendations.map((rec, index) => ({ ...rec, rank: index + 1 })),
+  };
+}
+
 async function requestGeminiRecommendation(prompt, apiKey, signals, language, useGoogleSearch = true) {
   let lastError;
 
@@ -1227,7 +1275,7 @@ async function requestGeminiRecommendation(prompt, apiKey, signals, language, us
         const fullText = extractText(data);
         const parsed = extractJSON(fullText);
         if (!validateResponse(parsed)) throw new Error("Gemini response did not match expected shape.");
-        return enforceRecommendationFit(enrichRecommendations(parsed), signals, language);
+        return ensureNonEmptyRecommendations(enforceRecommendationFit(enrichRecommendations(parsed), signals, language), signals, language);
       }
     } catch (err) {
       lastError = err;
@@ -1247,7 +1295,7 @@ async function requestGeminiRecommendation(prompt, apiKey, signals, language, us
 function buildFallbackResponse(answers, questions, freeText, language, candidatePool = null) {
   const signals = buildPreferenceSignals(answers, questions, freeText, language);
   const fallbackPool = candidatePool || selectCandidatePool(signals);
-  const fallback = enforceRecommendationFit(buildPreviewResponse(answers, questions, freeText, language, fallbackPool), signals, language);
+  const fallback = ensureNonEmptyRecommendations(enforceRecommendationFit(buildPreviewResponse(answers, questions, freeText, language, fallbackPool), signals, language), signals, language);
   return {
     fallback: true,
     userProfile: language === "en"
@@ -1264,7 +1312,6 @@ function buildPreviewResponse(answers, questions = [], freeText = "", language =
   const seenTitles = new Set();
   const picked = [];
   for (const { manga, matchedTags } of scored) {
-    if (signals.settingPrefs?.size > 0 && !matchesAnySetting(manga, signals)) continue;
     const titleKey = normalizeMangaTitle(manga.title_ja || manga.title_en || manga.id);
     if (titleKey && seenTitles.has(titleKey)) continue;
     if (titleKey) seenTitles.add(titleKey);
