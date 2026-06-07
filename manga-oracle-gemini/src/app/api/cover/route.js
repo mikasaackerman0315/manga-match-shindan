@@ -9,6 +9,8 @@ import { COVER_OVERRIDES } from "@/data/coverOverrides.generated";
 import { BOOKLIVE_COVER_OVERRIDES } from "@/data/bookliveCoverOverrides";
 
 const RAKUTEN_BOOKS_ENDPOINT = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404";
+const GOOGLE_BOOKS_ENDPOINT = "https://www.googleapis.com/books/v1/volumes";
+const JIKAN_MANGA_ENDPOINT = "https://api.jikan.moe/v4/manga";
 const AMAZON_PAAPI_ENDPOINT = "https://webservices.amazon.co.jp/paapi5/searchitems";
 const AMAZON_PAAPI_HOST = "webservices.amazon.co.jp";
 const AMAZON_PAAPI_REGION = "us-west-2";
@@ -350,6 +352,48 @@ function getCoverImage(item) {
   return item?.largeImageUrl || item?.mediumImageUrl || item?.smallImageUrl || null;
 }
 
+function getJikanCoverImage(item) {
+  return item?.images?.jpg?.large_image_url || item?.images?.jpg?.image_url || item?.images?.webp?.large_image_url || item?.images?.webp?.image_url || null;
+}
+
+function getJikanTitles(item) {
+  return [
+    item?.title,
+    item?.title_english,
+    item?.title_japanese,
+    ...(item?.titles || []).map((entry) => entry?.title),
+  ].filter(Boolean);
+}
+
+function getGoogleCoverImage(item) {
+  const links = item?.volumeInfo?.imageLinks || {};
+  const imageUrl = links.extraLarge || links.large || links.medium || links.thumbnail || links.smallThumbnail || null;
+  return imageUrl ? imageUrl.replace(/^http:\/\//, "https://") : null;
+}
+
+function getGoogleTitle(item) {
+  return `${item?.volumeInfo?.title || ""} ${item?.volumeInfo?.subtitle || ""}`.trim();
+}
+
+function getJikanSearchTitles(title, id) {
+  const compactTitle = title.replace(/[【】\[\]（）()]/g, "").trim();
+  const normalizedTitle = normalizeTitleKey(title);
+  const match = CORE_DB.find((entry) => entry.id === id) || CORE_DB.find((entry) => {
+    const titleJa = normalizeTitleKey(entry.title_ja);
+    const titleEn = normalizeTitleKey(entry.title_en);
+    return titleJa === normalizedTitle || titleEn === normalizedTitle;
+  });
+
+  return Array.from(new Set([
+    title,
+    compactTitle,
+    match?.title_en,
+    match?.title_ja,
+    ...(TITLE_ALIASES[title] || []).map((alias) => alias.replace(/\s+(?:1|１|01|０１|1巻|１巻)$/u, "")),
+    ...(TITLE_ALIASES[compactTitle] || []).map((alias) => alias.replace(/\s+(?:1|１|01|０１|1巻|１巻)$/u, "")),
+  ].filter(Boolean)));
+}
+
 function normalizeItems(data) {
   return (data?.Items || data?.items || []).map((entry) => entry?.Item || entry?.item || entry).filter(Boolean);
 }
@@ -372,6 +416,45 @@ function scoreVolumeOne(item, title) {
   if (normalizedBaseTitle && normalizedItemTitle.startsWith(normalizedBaseTitle) && normalizedItemTitle.length > normalizedBaseTitle.length + 8) score -= 5;
   if (/外伝|スピンオフ|全巻|セット|BOX|ボックス|公式|ガイド|ファンブック|小説|ノベライズ|映画|劇場版|アニメ|DVD|Blu-ray/i.test(itemTitle)) score -= 18;
   if (/特装版|限定版|画集|設定資料|キャラクターブック/i.test(itemTitle)) score -= 10;
+  return score;
+}
+
+function scoreGoogleBook(item, title) {
+  const itemTitle = getGoogleTitle(item);
+  const imageUrl = getGoogleCoverImage(item);
+  if (!itemTitle || !imageUrl) return -1;
+
+  const baseTitle = title.replace(/\s+(?:1|１|01|０１|1巻|１巻|漫画)$/u, "");
+  const normalizedBaseTitle = normalizeTitleKey(baseTitle || title);
+  const normalizedItemTitle = normalizeTitleKey(itemTitle);
+  let score = 0;
+
+  if (normalizedBaseTitle && normalizedItemTitle.startsWith(normalizedBaseTitle)) score += 14;
+  else if (normalizedBaseTitle && normalizedItemTitle.includes(normalizedBaseTitle)) score += 8;
+  if (/(^|[^0-9０-９])(?:1|１|01|０１)(?:巻|集|$|[^0-9０-９])/.test(itemTitle)) score += 7;
+  if (/第(?:1|１)巻/.test(itemTitle)) score += 7;
+  if (item?.volumeInfo?.industryIdentifiers?.some((id) => id.type === "ISBN_13")) score += 2;
+  if (/comics?|manga|コミック|漫画/i.test(`${item?.volumeInfo?.categories || ""} ${itemTitle}`)) score += 2;
+  if (/(^|[^0-9０-９])(?:[2-9２-９]|1[0-9]|[２-９][０-９])(?:巻|集|$|[^0-9０-９])/.test(itemTitle)) score -= 8;
+  if (/外伝|スピンオフ|全巻|セット|BOX|ボックス|公式|ガイド|ファンブック|小説|ノベライズ|映画|劇場版|アニメ|DVD|Blu-ray|特装版|限定版|画集|設定資料|キャラクターブック/i.test(itemTitle)) score -= 12;
+  return score;
+}
+
+function scoreJikanManga(item, title) {
+  const imageUrl = getJikanCoverImage(item);
+  if (!imageUrl) return -1;
+
+  const normalizedTitle = normalizeTitleKey(title);
+  const normalizedItemTitles = getJikanTitles(item).map(normalizeTitleKey).filter(Boolean);
+  let score = 0;
+
+  if (normalizedItemTitles.some((candidate) => candidate === normalizedTitle)) score += 20;
+  else if (normalizedItemTitles.some((candidate) => candidate.startsWith(normalizedTitle) || normalizedTitle.startsWith(candidate))) score += 12;
+  else if (normalizedItemTitles.some((candidate) => candidate.includes(normalizedTitle) || normalizedTitle.includes(candidate))) score += 8;
+
+  const text = `${getJikanTitles(item).join(" ")} ${item?.type || ""}`;
+  if (/Manga/i.test(item?.type || "")) score += 3;
+  if (/novel|light novel|spin-off|side story|外伝|小説|スピンオフ/i.test(text)) score -= 14;
   return score;
 }
 
@@ -501,6 +584,32 @@ async function searchRakutenBooks({ queryTitle, applicationId, accessKey, affili
   return normalizeItems(data);
 }
 
+async function searchGoogleBooks({ queryTitle }) {
+  const apiUrl = new URL(GOOGLE_BOOKS_ENDPOINT);
+  apiUrl.searchParams.set("q", queryTitle);
+  apiUrl.searchParams.set("country", "JP");
+  apiUrl.searchParams.set("printType", "books");
+  apiUrl.searchParams.set("maxResults", "10");
+
+  const response = await fetch(apiUrl, { next: { revalidate: 86400 } });
+  if (!response.ok) return [];
+
+  const data = await response.json();
+  return data?.items || [];
+}
+
+async function searchJikanManga({ queryTitle }) {
+  const apiUrl = new URL(JIKAN_MANGA_ENDPOINT);
+  apiUrl.searchParams.set("q", queryTitle);
+  apiUrl.searchParams.set("limit", "5");
+
+  const response = await fetch(apiUrl, { next: { revalidate: 86400 } });
+  if (!response.ok) return [];
+
+  const data = await response.json();
+  return data?.data || [];
+}
+
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const title = (searchParams.get("title") || "").trim();
@@ -562,6 +671,32 @@ export async function GET(req) {
             { headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800" } }
           );
         }
+      }
+    }
+
+    for (const queryTitle of getJikanSearchTitles(title, id)) {
+      const items = await searchJikanManga({ queryTitle });
+      const rankedItems = [...items].sort((a, b) => scoreJikanManga(b, queryTitle) - scoreJikanManga(a, queryTitle));
+      const item = rankedItems.find((candidate) => scoreJikanManga(candidate, queryTitle) >= 8);
+      const imageUrl = getJikanCoverImage(item);
+      if (imageUrl) {
+        return NextResponse.json(
+          { imageUrl, itemUrl: item?.url || null, coverSource: "jikan" },
+          { headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800" } }
+        );
+      }
+    }
+
+    for (const queryTitle of searchTitles) {
+      const items = await searchGoogleBooks({ queryTitle });
+      const rankedItems = [...items].sort((a, b) => scoreGoogleBook(b, queryTitle) - scoreGoogleBook(a, queryTitle));
+      const item = rankedItems.find((candidate) => scoreGoogleBook(candidate, queryTitle) >= 5);
+      const imageUrl = getGoogleCoverImage(item);
+      if (imageUrl) {
+        return NextResponse.json(
+          { imageUrl, itemUrl: item?.volumeInfo?.infoLink || null, coverSource: "google_books" },
+          { headers: { "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=604800" } }
+        );
       }
     }
 
