@@ -562,17 +562,6 @@ export default function App() {
               <a href="/beginner-manga" className="hover:text-[#c0392b] transition-colors">{"\u521d\u5fc3\u8005\u5411\u3051"}</a>
               <a href="/trending-manga" className="hover:text-[#c0392b] transition-colors">{"\u30c8\u30ec\u30f3\u30c9\u6f2b\u753b"}</a>
             </div>
-            {language === "ja" && (
-              <section className="mt-8 mx-auto max-w-2xl text-left text-sm leading-8" style={{ color: "#333" }}>
-                <h2 className="text-base font-semibold mb-3" style={{ fontFamily: "'Noto Serif JP', serif" }}>マンガマッチ診断でできること</h2>
-                <p>
-                  マンガマッチ診断は、次に読む漫画を探している人のための漫画おすすめサイトです。質問への回答と自由記述をもとに、好みの世界観、読みたい雰囲気、苦手な展開を考慮して候補を提案します。
-                </p>
-                <p className="mt-3">
-                  診断だけでなく、完結済み、初心者向け、今話題の漫画などの記事からも作品を探せます。気になる作品は、あらすじや注意点を確認しながら、自分に合いそうな一冊を選べます。
-                </p>
-              </section>
-            )}
             <nav className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] tracking-[0.18em] uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#777" }}>
               <a href="/about" className="hover:text-[#c0392b] transition-colors">About</a>
               <a href="/privacy" className="hover:text-[#c0392b] transition-colors">Privacy</a>

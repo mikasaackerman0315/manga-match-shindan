@@ -8,7 +8,7 @@ import { CORE_DB_EXTRA4 } from "@/data/coreDB_extra4";
 import { COVER_OVERRIDES } from "@/data/coverOverrides.generated";
 import { BOOKLIVE_COVER_OVERRIDES } from "@/data/bookliveCoverOverrides";
 
-const RAKUTEN_BOOKS_ENDPOINT = "https://openapi.rakuten.co.jp/services/api/BooksBook/Search/20170404";
+const RAKUTEN_BOOKS_ENDPOINT = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404";
 const AMAZON_PAAPI_ENDPOINT = "https://webservices.amazon.co.jp/paapi5/searchitems";
 const AMAZON_PAAPI_HOST = "webservices.amazon.co.jp";
 const AMAZON_PAAPI_REGION = "us-west-2";
@@ -309,12 +309,13 @@ function getDatabaseAliases(title, id, author) {
   if (!match) return [];
 
   return [
+    match.title_ja && `${match.title_ja} 1巻`,
+    match.title_ja && `${match.title_ja} 1`,
+    match.title_en && `${match.title_en} 1巻`,
+    match.title_en && `${match.title_en} 1`,
     match.title_ja,
     match.title_en,
-    match.title_ja && `${match.title_ja} 1`,
-    match.title_ja && `${match.title_ja} 1巻`,
     match.title_ja && `${match.title_ja} ${match.author}`,
-    match.title_en && `${match.title_en} 1`,
     match.title_en && `${match.title_en} ${match.author}`,
     author && `${match.title_ja} ${author}`,
   ].filter(Boolean);
@@ -322,21 +323,25 @@ function getDatabaseAliases(title, id, author) {
 
 function getSearchTitles(title, id, author) {
   const compactTitle = title.replace(/[【】\[\]（）()]/g, "").trim();
+  const withVolumeOne = (value) => {
+    if (!value) return [];
+    return /(?:^|\s)(?:1|１|01|０１)(?:巻)?$/u.test(value) ? [value] : [`${value} 1巻`, value];
+  };
 
   return Array.from(new Set([
-    title,
-    compactTitle,
-    ...(TITLE_ALIASES[title] || []),
-    ...(TITLE_ALIASES[compactTitle] || []),
+    `${title} 1巻`,
+    `${title} 1`,
+    compactTitle && `${compactTitle} 1巻`,
+    compactTitle && `${compactTitle} 1`,
+    ...(TITLE_ALIASES[title] || []).flatMap(withVolumeOne),
+    ...(TITLE_ALIASES[compactTitle] || []).flatMap(withVolumeOne),
     ...getDatabaseAliases(title, id, author),
     ...getDatabaseAliases(compactTitle, id, author),
+    title,
+    compactTitle,
     author && `${title} ${author}`,
     author && `${compactTitle} ${author}`,
-    `${title} 1`,
-    `${title} 1巻`,
     `${title} 漫画`,
-    `${compactTitle} 1`,
-    `${compactTitle} 1巻`,
     `${compactTitle} 漫画`,
   ].filter(Boolean)));
 }
@@ -361,8 +366,9 @@ function scoreVolumeOne(item, title) {
   else if (normalizedBaseTitle && normalizedItemTitle.includes(normalizedBaseTitle)) score += 7;
   if (itemTitle.includes(title)) score += 3;
   if (baseTitle && itemTitle.includes(baseTitle)) score += 4;
-  if (/(^|[^0-9０-９])(?:1|１|01|０１)(?:巻|集|$|[^0-9０-９])/.test(itemTitle)) score += 2;
-  if (/第(?:1|１)巻/.test(itemTitle)) score += 2;
+  if (/(^|[^0-9０-９])(?:1|１|01|０１)(?:巻|集|$|[^0-9０-９])/.test(itemTitle)) score += 8;
+  if (/第(?:1|１)巻/.test(itemTitle)) score += 8;
+  if (/(^|[^0-9０-９])(?:[2-9２-９]|1[0-9]|[２-９][０-９])(?:巻|集|$|[^0-9０-９])/.test(itemTitle)) score -= 10;
   if (normalizedBaseTitle && normalizedItemTitle.startsWith(normalizedBaseTitle) && normalizedItemTitle.length > normalizedBaseTitle.length + 8) score -= 5;
   if (/外伝|スピンオフ|全巻|セット|BOX|ボックス|公式|ガイド|ファンブック|小説|ノベライズ|映画|劇場版|アニメ|DVD|Blu-ray/i.test(itemTitle)) score -= 18;
   if (/特装版|限定版|画集|設定資料|キャラクターブック/i.test(itemTitle)) score -= 10;
@@ -473,16 +479,19 @@ async function searchRakutenBooks({ queryTitle, applicationId, accessKey, affili
   apiUrl.searchParams.set("format", "json");
   apiUrl.searchParams.set("formatVersion", "2");
   apiUrl.searchParams.set("title", queryTitle);
+  apiUrl.searchParams.set("booksGenreId", "001001");
   apiUrl.searchParams.set("size", "9");
   apiUrl.searchParams.set("hits", "10");
   apiUrl.searchParams.set("sort", "standard");
 
+  const headers = {
+    Origin: (process.env.SITE_URL || "https://www.mangamatchquiz.com/").replace(/\/$/, ""),
+    Referer: process.env.SITE_URL || "https://www.mangamatchquiz.com/",
+  };
+  if (accessKey) headers.accessKey = accessKey;
+
   const response = await fetch(apiUrl, {
-    headers: {
-      accessKey,
-      Origin: (process.env.SITE_URL || "https://www.mangamatchquiz.com/").replace(/\/$/, ""),
-      Referer: process.env.SITE_URL || "https://www.mangamatchquiz.com/",
-    },
+    headers,
     next: { revalidate: 86400 },
   });
 
@@ -556,7 +565,7 @@ export async function GET(req) {
       }
     }
 
-    if (!applicationId || !accessKey) {
+    if (!applicationId) {
       return NextResponse.json({ imageUrl: null, itemUrl: null });
     }
 
@@ -565,7 +574,7 @@ export async function GET(req) {
     for (const queryTitle of searchTitles) {
       const items = await searchRakutenBooks({ queryTitle, applicationId, accessKey, affiliateId });
       const rankedItems = [...items].sort((a, b) => scoreVolumeOne(b, queryTitle) - scoreVolumeOne(a, queryTitle));
-      item = rankedItems.find((candidate) => scoreVolumeOne(candidate, queryTitle) >= 7);
+      item = rankedItems.find((candidate) => scoreVolumeOne(candidate, queryTitle) >= 5);
       if (item) break;
     }
 

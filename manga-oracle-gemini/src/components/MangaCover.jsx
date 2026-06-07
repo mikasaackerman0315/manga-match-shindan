@@ -64,6 +64,7 @@ export default function MangaCover({
 
     const controller = new AbortController();
     const params = new URLSearchParams({ title });
+    params.set("coverSearch", "title_volume_one_v2");
     if (mangaId) params.set("id", mangaId);
     if (author) params.set("author", author);
 
