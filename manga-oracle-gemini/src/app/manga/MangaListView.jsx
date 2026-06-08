@@ -18,6 +18,14 @@ const demographicLabel = {
   kodomo: "児童",
 };
 
+const entryLinks = [
+  { href: "/trending-manga", label: "トレンド漫画", text: "今話題の漫画から探す。" },
+  { href: "/beginner-manga", label: "初心者向け", text: "まず外しにくい作品から探す。" },
+  { href: "/completed-manga", label: "完結済み", text: "最後まで一気に読める作品を探す。" },
+  { href: "/genius-manga", label: "天才・頭脳派", text: "天才キャラや頭脳戦で探す。" },
+  { href: "/manga/genres", label: "ジャンル別", text: "気分やジャンルから探す。" },
+];
+
 function pageHref(basePath, page) {
   if (page <= 1) return basePath;
   return `${basePath}/page/${page}`;
@@ -90,14 +98,26 @@ function GenreMenu({ activeSlug }) {
   );
 }
 
+function EntryMenu() {
+  return (
+    <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      {entryLinks.map((link) => (
+        <a key={link.href} href={link.href} className="group p-4 transition-all hover:translate-y-[-2px]" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.72)" }}>
+          <div className="text-base font-semibold group-hover:text-[#c0392b]" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{link.label}</div>
+          <p className="mt-1 text-xs leading-5" style={{ color: "#666" }}>{link.text}</p>
+        </a>
+      ))}
+    </div>
+  );
+}
+
 function MangaCard({ manga, index, pageType }) {
   const cover = getMangaCoverForItem(manga);
   const title = manga.title_ja || manga.title_en;
   const description = manga.desc_ja || manga.desc_en || "作品データベースに登録されている漫画です。";
-  const visibleTags = (manga.tags || []).slice(0, 4);
 
   return (
-    <article className="grid grid-cols-[auto_1fr] gap-4 p-4 md:p-5" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.7)" }}>
+    <article className="grid grid-cols-1 gap-5 p-5 sm:grid-cols-[auto_minmax(0,1fr)] md:p-6" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.7)" }}>
       <div>
         <div className="mb-2 text-xs" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
           {String(index + 1).padStart(2, "0")}
@@ -110,28 +130,19 @@ function MangaCard({ manga, index, pageType }) {
           coverProductUrl={cover?.coverProductUrl}
           coverImageSource={cover?.coverImageSource}
           verified={cover?.coverImageVerified}
-          size="medium"
+          size="large"
           pageType={pageType}
         />
       </div>
       <div className="min-w-0">
-        <h2 className="text-xl md:text-2xl font-semibold leading-snug" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>
+        <h2 className="text-2xl md:text-3xl font-semibold leading-snug" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>
           {title}
         </h2>
-        <p className="mt-1 text-xs leading-6" style={{ color: "#666" }}>
+        <p className="mt-2 text-sm leading-6" style={{ color: "#666" }}>
           {manga.author} / {manga.year || "年不明"} / {statusLabel[manga.status] || manga.status} / {demographicLabel[manga.demographic] || manga.demographic}
           {manga.volumes ? ` / ${manga.volumes}巻` : ""}
         </p>
-        <p className="mt-3 text-sm leading-7" style={{ color: "#333" }}>{description}</p>
-        {visibleTags.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {visibleTags.map((tag) => (
-              <span key={tag} className="px-2 py-1 text-[10px]" style={{ border: "1px solid rgba(10,10,10,0.12)", color: "#555", fontFamily: "'JetBrains Mono', monospace" }}>
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+        <p className="mt-4 text-base leading-8" style={{ color: "#333" }}>{description}</p>
         <StoreLinks title={title} compact pageType={pageType} />
       </div>
     </article>
@@ -150,8 +161,8 @@ export default function MangaListView({
   pageType = "seo_article",
 }) {
   return (
-    <main className="min-h-screen px-5 py-14 md:px-8 md:py-20" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
-      <section className="mx-auto max-w-6xl">
+    <main className="min-h-screen px-4 py-12 md:px-8 md:py-18" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
+      <section className="mx-auto max-w-[1480px]">
         <a href="/" className="text-xs tracking-[0.25em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
           診断トップへ
         </a>
@@ -165,6 +176,7 @@ export default function MangaListView({
           <p className="mt-5 max-w-3xl text-base md:text-lg leading-8" style={{ color: "#333" }}>
             {lead}
           </p>
+          <EntryMenu />
           <GenreMenu activeSlug={activeGenre} />
         </div>
 
@@ -173,7 +185,7 @@ export default function MangaListView({
           <span>PAGE {currentPage} / {totalPages}</span>
         </div>
 
-        <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
           {items.map((manga, index) => (
             <MangaCard key={`${manga.id}-${index}`} manga={manga} index={(currentPage - 1) * 30 + index} pageType={pageType} />
           ))}

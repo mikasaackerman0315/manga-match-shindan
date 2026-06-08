@@ -557,17 +557,12 @@ export default function App() {
               style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>
               {t.startQuiz} →
             </button>
-            <div className="mt-8 mx-auto max-w-xl text-center">
+            <div className="mt-8 mx-auto text-center">
               <div className="mb-3 text-[10px] tracking-[0.28em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
                 Menu
               </div>
               <div className="flex flex-wrap justify-center gap-2 text-xs" style={{ color: "#0a0a0a" }}>
-                <a href="/trending-manga" className="px-3 py-2 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.14)" }}>{"\u30c8\u30ec\u30f3\u30c9\u6f2b\u753b"}</a>
-                <a href="/beginner-manga" className="px-3 py-2 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.14)" }}>{"\u521d\u5fc3\u8005\u5411\u3051"}</a>
-                <a href="/completed-manga" className="px-3 py-2 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.14)" }}>{"\u5b8c\u7d50\u6e08\u307f"}</a>
-                <a href="/genius-manga" className="px-3 py-2 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.14)" }}>{"\u5929\u624d\u30fb\u982d\u8133\u6d3e"}</a>
-                <a href="/manga" className="px-3 py-2 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.14)" }}>{"\u5168\u4f5c\u54c1\u4e00\u89a7"}</a>
-                <a href="/manga/genres" className="px-3 py-2 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.14)" }}>{"\u30b8\u30e3\u30f3\u30eb\u5225"}</a>
+                <a href="/manga" className="px-4 py-2 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.14)" }}>{"\u5168\u4f5c\u54c1\u4e00\u89a7"}</a>
               </div>
             </div>
             <nav className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] tracking-[0.18em] uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#777" }}>
