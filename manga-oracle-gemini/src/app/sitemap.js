@@ -81,6 +81,12 @@ export default function sitemap() {
       changeFrequency: "monthly",
       priority: page === 1 ? 0.85 : 0.55,
     })),
+    ...ALL_MANGA.map((manga) => ({
+      url: `${siteUrl}/manga/${manga.id}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.45,
+    })),
     {
       url: `${siteUrl}/manga/genres`,
       lastModified: now,

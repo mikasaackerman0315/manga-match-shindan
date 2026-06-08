@@ -69,6 +69,29 @@ export const ALL_MANGA = dedupeMangaDatabase([
   ...CORE_DB_EXTRA4,
 ]);
 
+export const MANGA_BY_ID = new Map(ALL_MANGA.map((manga) => [manga.id, manga]));
+
+export function getMangaById(id) {
+  return MANGA_BY_ID.get(id);
+}
+
+export function getRelatedManga(manga, limit = 6) {
+  if (!manga) return [];
+  const tags = new Set(manga.tags || []);
+  return ALL_MANGA
+    .filter((item) => item.id !== manga.id)
+    .map((item) => ({
+      manga: item,
+      score: (item.tags || []).filter((tag) => tags.has(tag)).length
+        + (item.demographic === manga.demographic ? 1 : 0)
+        + (item.status === manga.status ? 0.5 : 0),
+    }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || (b.manga.year || 0) - (a.manga.year || 0))
+    .slice(0, limit)
+    .map((item) => item.manga);
+}
+
 export function getTotalMangaPages(items = ALL_MANGA) {
   return Math.max(1, Math.ceil(items.length / MANGA_PAGE_SIZE));
 }

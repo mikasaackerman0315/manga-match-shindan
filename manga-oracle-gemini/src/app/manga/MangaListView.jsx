@@ -136,13 +136,16 @@ function MangaCard({ manga, index, pageType }) {
       </div>
       <div className="min-w-0">
         <h2 className="text-2xl md:text-3xl font-semibold leading-snug" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>
-          {title}
+          <a href={`/manga/${manga.id}`} className="transition-colors hover:text-[#c0392b]">{title}</a>
         </h2>
         <p className="mt-2 text-sm leading-6" style={{ color: "#666" }}>
           {manga.author} / {manga.year || "年不明"} / {statusLabel[manga.status] || manga.status} / {demographicLabel[manga.demographic] || manga.demographic}
           {manga.volumes ? ` / ${manga.volumes}巻` : ""}
         </p>
         <p className="mt-4 text-base leading-8" style={{ color: "#333" }}>{description}</p>
+        <a href={`/manga/${manga.id}`} className="mt-4 inline-flex px-3 py-2 text-xs tracking-[0.16em] uppercase transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.16)", color: "#0a0a0a", fontFamily: "'JetBrains Mono', monospace" }}>
+          詳しく見る
+        </a>
         <StoreLinks title={title} compact pageType={pageType} />
       </div>
     </article>
