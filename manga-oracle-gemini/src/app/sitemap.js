@@ -1,4 +1,5 @@
 import { THEME_GUIDES } from "./themeData";
+import { ALL_MANGA, filterMangaByGenre, getGeniusManga, getTotalMangaPages, MANGA_GENRES } from "../data/mangaCatalog";
 
 const siteUrl = "https://www.mangamatchquiz.com";
 const articlePaths = [
@@ -27,6 +28,15 @@ const articlePaths = [
 
 export default function sitemap() {
   const now = new Date();
+  const mangaPages = Array.from({ length: getTotalMangaPages(ALL_MANGA) }, (_, index) => index + 1);
+  const genrePages = MANGA_GENRES.flatMap((genre) => {
+    const totalPages = getTotalMangaPages(filterMangaByGenre(genre));
+    return Array.from({ length: totalPages }, (_, index) => ({
+      genre,
+      page: index + 1,
+    }));
+  });
+  const geniusPages = Array.from({ length: getTotalMangaPages(getGeniusManga()) }, (_, index) => index + 1);
 
   return [
     {
@@ -64,6 +74,30 @@ export default function sitemap() {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
+    })),
+    ...mangaPages.map((page) => ({
+      url: page === 1 ? `${siteUrl}/manga` : `${siteUrl}/manga/page/${page}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: page === 1 ? 0.85 : 0.55,
+    })),
+    {
+      url: `${siteUrl}/manga/genres`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...genrePages.map(({ genre, page }) => ({
+      url: page === 1 ? `${siteUrl}/manga/genre/${genre.slug}` : `${siteUrl}/manga/genre/${genre.slug}/page/${page}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: page === 1 ? 0.75 : 0.5,
+    })),
+    ...geniusPages.map((page) => ({
+      url: page === 1 ? `${siteUrl}/genius-manga` : `${siteUrl}/genius-manga/page/${page}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: page === 1 ? 0.8 : 0.5,
     })),
     {
       url: `${siteUrl}/contact`,
