@@ -117,8 +117,9 @@ function MangaCard({ manga, index, pageType }) {
   const description = manga.desc_ja || manga.desc_en || "作品データベースに登録されている漫画です。";
 
   return (
-    <article className="grid grid-cols-1 gap-5 p-5 sm:grid-cols-[auto_minmax(0,1fr)] md:p-6" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.7)" }}>
-      <div>
+    <article className="group relative grid grid-cols-1 gap-5 p-5 transition-all hover:translate-y-[-2px] sm:grid-cols-[auto_minmax(0,1fr)] md:p-6" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.7)" }}>
+      <a href={`/manga/${manga.id}`} className="absolute inset-0 z-0" aria-label={`${title}の詳細ページを見る`} />
+      <div className="relative z-10 pointer-events-none">
         <div className="mb-2 text-xs" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
           {String(index + 1).padStart(2, "0")}
         </div>
@@ -134,19 +135,21 @@ function MangaCard({ manga, index, pageType }) {
           pageType={pageType}
         />
       </div>
-      <div className="min-w-0">
+      <div className="relative z-10 min-w-0 pointer-events-none">
         <h2 className="text-2xl md:text-3xl font-semibold leading-snug" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>
-          <a href={`/manga/${manga.id}`} className="transition-colors hover:text-[#c0392b]">{title}</a>
+          <span className="transition-colors group-hover:text-[#c0392b]">{title}</span>
         </h2>
         <p className="mt-2 text-sm leading-6" style={{ color: "#666" }}>
           {manga.author} / {manga.year || "年不明"} / {statusLabel[manga.status] || manga.status} / {demographicLabel[manga.demographic] || manga.demographic}
           {manga.volumes ? ` / ${manga.volumes}巻` : ""}
         </p>
         <p className="mt-4 text-base leading-8" style={{ color: "#333" }}>{description}</p>
-        <a href={`/manga/${manga.id}`} className="mt-4 inline-flex px-3 py-2 text-xs tracking-[0.16em] uppercase transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.16)", color: "#0a0a0a", fontFamily: "'JetBrains Mono', monospace" }}>
+        <span className="mt-4 inline-flex px-3 py-2 text-xs tracking-[0.16em] uppercase transition-all group-hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.16)", color: "#0a0a0a", fontFamily: "'JetBrains Mono', monospace" }}>
           詳しく見る
-        </a>
-        <StoreLinks title={title} compact pageType={pageType} />
+        </span>
+        <div className="pointer-events-auto relative z-20">
+          <StoreLinks title={title} compact pageType={pageType} />
+        </div>
       </div>
     </article>
   );
