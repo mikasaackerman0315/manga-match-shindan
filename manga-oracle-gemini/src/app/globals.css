@@ -10,4 +10,44 @@ html,
 body {
   margin: 0;
   padding: 0;
+  cursor: default;
+}
+
+body,
+button,
+a,
+main,
+section,
+article,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+img {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+input,
+textarea,
+select,
+[contenteditable="true"] {
+  cursor: text;
+  -webkit-user-select: text;
+  user-select: text;
 }
