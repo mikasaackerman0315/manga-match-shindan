@@ -85,6 +85,19 @@ const QUESTION_WEIGHTS = {
   ending: 2,
 };
 
+const CORE_FIT_QUESTION_IDS = new Set([
+  "setting",
+  "elements",
+  "tone",
+  "relationship",
+  "structure",
+  "pacing",
+  "depth",
+  "protagonist",
+]);
+
+const STRICT_FIT_QUESTION_IDS = new Set(["setting", "elements", "tone"]);
+
 const STAGED_FILTER_STEPS = [
   { questionId: "setting", min: 8 },
   { questionId: "elements", min: 12 },
@@ -320,10 +333,11 @@ function buildPrompt(answers, questions, freeText, language, candidatePool = [])
     ? candidatePool
     : CORE_DB_UNIQUE.map((manga) => ({ manga, score: 0, matchedTags: [] }));
   const dbJson = JSON.stringify(
-    candidates.map(({ manga, score, matchedTags }) => ({
+    candidates.map(({ manga, score, matchedTags, fitCoverage, strictMisses }) => ({
       id: manga.id, title_ja: manga.title_ja, title_en: manga.title_en, author: manga.author,
       year: manga.year, volumes: manga.volumes, status: manga.status, demographic: manga.demographic,
       anime: manga.anime, tags: manga.tags, matchScore: Number(score.toFixed(2)),
+      fitCoverage: fitCoverage || 0, strictMisses: strictMisses || 0,
       matchedTags: matchedTags.slice(0, 6), desc: language === "ja" ? manga.desc_ja : manga.desc_en,
     }))
   );
@@ -344,7 +358,11 @@ function buildPrompt(answers, questions, freeText, language, candidatePool = [])
 You are building a hybrid recommendation list: the curated DB is the factual backbone, and Google Search may be used to discover recent, app-native, niche, or underrepresented manga when the DB shortlist is not enough.
 
 ## Curated Database Shortlist (${candidates.length} candidates selected from ${CORE_DB_UNIQUE.length} unique works)
-These candidates were narrowed step by step from the full curated database using the user's answers, then pre-scored. Treat this shortlist as the user's strongest fit zone. "matchScore" and "matchedTags" are guidance signals, not final rankings.
+These candidates were narrowed step by step from the full curated database using the user's answers, then pre-scored. Treat this shortlist as the user's strongest fit zone. "matchScore", "fitCoverage", "strictMisses", and "matchedTags" are guidance signals, not final rankings.
+
+- "fitCoverage" means how many important answer groups this manga matched.
+- "strictMisses" means misses in the most important groups: setting, core elements, and tone.
+- A famous manga with strictMisses should usually rank below a less famous manga with stronger fitCoverage.
 
 \`\`\`json
 ${dbJson}
@@ -360,10 +378,13 @@ ${interpretedFreeTextSection}
 ## Hard Fit Requirements
 
 - Treat the user's selected world/setting as a hard editorial constraint. A famous manga is not a good pick if its core world does not match the selected setting.
+- Treat setting, core elements, and tone as the first pass. If a manga misses two of these, do not rank it highly unless the free-text request clearly asks for it.
 - Do not recommend broad prestige classics just because they are famous.
+- Do not use fame, anime status, awards, or bestseller status as a substitute for preference fit.
 - Match the selected setting literally: school means school life, space means space or planets, workplace means a specific job or industry, nature means rural/frontier/natural environments, historical means a period setting, and urban fantasy means modern life mixed with supernatural or fantasy elements.
 - If the user selected "Virtual / game worlds", prioritize manga centered on VR, MMORPGs, game mechanics, level systems, dungeons, online worlds, or being trapped in a game-like world. Do NOT use general fantasy or dark fantasy as a substitute.
 - If the setting-specific shortlist is small, use Google Search for better fitting manga instead of padding with unrelated famous works.
+- If the user's answers point to a niche, app-native, or recent type of manga, search for a better exact fit rather than falling back to old classics.
 
 ## Your Task
 
@@ -397,6 +418,7 @@ Return ONLY a valid JSON object (no markdown fences, no preamble):
 - Do not include adult-only, TL, or BL-only recommendations.
 - Rank by best fit (rank 1 = strongest).
 - Prefer high matchScore works when they also make editorial sense, but do not simply sort by score.
+- Prefer candidates with higher fitCoverage and lower strictMisses. Penalize DB and web picks that only match broad tags.
 - Do NOT recommend the same manga title twice, even if duplicate or variant entries exist in the database or search results.
 - Keep "description" useful and readable. Keep "reason" to one short sentence because the UI prioritizes manga titles and summaries.
 - ALWAYS reference the user's specific answers in your reasons.
@@ -789,8 +811,8 @@ function buildPreferenceSignals(answers, questions, freeText = "", language = "j
   freeTextSignals.demographics.forEach((value) => demographics.add(value));
   freeTextSignals.statusPrefs.forEach((value) => statusPrefs.add(value));
   freeTextSignals.mediaPrefs.forEach((value) => mediaPrefs.add(value));
-  freeTextSignals.boostTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) + 5));
-  freeTextSignals.avoidTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) - 10));
+  freeTextSignals.boostTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) + 8));
+  freeTextSignals.avoidTags.forEach((tag) => tagWeights.set(tag, (tagWeights.get(tag) || 0) - 14));
 
   return {
     tagWeights,
@@ -841,12 +863,16 @@ function matchesAppliedFreeTextFilters(manga, signals) {
 
 function scoreManga(manga, signals) {
   if (violatesFreeTextAvoidance(manga, signals)) {
-    return { score: -999, matchedTags: [] };
+    return { score: -999, matchedTags: [], fitCoverage: 0, strictMisses: 99 };
   }
 
   const tags = new Set(manga.tags || []);
   let score = 0;
   const matchedTags = [];
+  const entriesByQuestion = groupEntriesByQuestion(signals.entries);
+  let fitCoverage = 0;
+  let strictMisses = 0;
+  let coreMisses = 0;
 
   signals.tagWeights.forEach((weight, tag) => {
     const matched = tags.has(tag) || manga.demographic === tag || manga.status === tag || (tag === "anime_yes" && manga.anime);
@@ -856,17 +882,41 @@ function scoreManga(manga, signals) {
     }
   });
 
+  entriesByQuestion.forEach((entries, questionId) => {
+    if (!CORE_FIT_QUESTION_IDS.has(questionId)) return;
+    const meaningfulEntries = entries.filter((entry) => entry.value && entry.value !== "any");
+    if (meaningfulEntries.length === 0) return;
+
+    const matched = matchesQuestionEntries(manga, meaningfulEntries);
+    if (matched) {
+      fitCoverage += 1;
+      score += STRICT_FIT_QUESTION_IDS.has(questionId) ? 7 : 3;
+      return;
+    }
+
+    coreMisses += 1;
+    if (STRICT_FIT_QUESTION_IDS.has(questionId)) {
+      strictMisses += 1;
+      score -= 12;
+    } else {
+      score -= 4;
+    }
+  });
+
+  if (strictMisses >= 2) score -= 22;
+  if (coreMisses >= 4) score -= 12;
+
   if (signals.settingPrefs?.size > 0) {
     const settingMatched = matchesAnySetting(manga, signals);
     if (settingMatched) {
-      score += 16;
+      score += 22;
       matchedTags.push(...Array.from(signals.settingPrefs).filter((value) => matchesPreferenceValue(manga, value)));
     } else {
-      score -= 24;
+      score -= 34;
     }
 
     if (signals.settingPrefs.has("virtual") && !matchesPreferenceValue(manga, "virtual")) {
-      score -= 35;
+      score -= 48;
     }
   }
 
@@ -891,7 +941,7 @@ function scoreManga(manga, signals) {
 
   if (signals.avoidTags?.size > 0) {
     signals.avoidTags.forEach((tag) => {
-      if (tags.has(tag)) score -= 8;
+      if (tags.has(tag)) score -= 12;
     });
   }
 
@@ -900,22 +950,30 @@ function scoreManga(manga, signals) {
     if (signals.likedTitleKeys.has(titleKey)) score += 18;
   }
 
-  if (tags.has("award")) score += 1.2;
-  if (tags.has("bestseller") || tags.has("legendary")) score += 1;
-  if (manga.anime) score += 0.5;
+  if (tags.has("award")) score += 0.7;
+  if (tags.has("bestseller") || tags.has("legendary")) score += 0.4;
+  if (manga.anime) score += 0.2;
 
-  return { score, matchedTags };
+  return { score, matchedTags, fitCoverage, strictMisses };
 }
 
 function scoreCandidatePool(signals) {
   const scored = CORE_DB_UNIQUE.map((manga) => {
     const result = scoreManga(manga, signals);
-    return { manga, score: result.score, matchedTags: result.matchedTags };
+    return {
+      manga,
+      score: result.score,
+      matchedTags: result.matchedTags,
+      fitCoverage: result.fitCoverage,
+      strictMisses: result.strictMisses,
+    };
   });
   const safeScored = scored.filter(({ score }) => score > -500);
 
   return (safeScored.length >= FALLBACK_RESULT_LIMIT ? safeScored : scored).sort((a, b) => {
     if (b.score !== a.score) return b.score - a.score;
+    if ((a.strictMisses || 0) !== (b.strictMisses || 0)) return (a.strictMisses || 0) - (b.strictMisses || 0);
+    if ((b.fitCoverage || 0) !== (a.fitCoverage || 0)) return (b.fitCoverage || 0) - (a.fitCoverage || 0);
     return (b.manga.anime === true) - (a.manga.anime === true);
   });
 }
@@ -990,7 +1048,17 @@ function applyFreeTextFilters(scored, signals) {
 function selectCandidatePool(signals, limit = GEMINI_CANDIDATE_LIMIT) {
   const scored = scoreCandidatePool(signals);
   const narrowed = applyFreeTextFilters(applyStagedFilters(scored, signals), signals);
-  return narrowed.slice(0, limit);
+  const meaningfulCoreQuestions = Array.from(groupEntriesByQuestion(signals.entries).entries())
+    .filter(([questionId, entries]) => CORE_FIT_QUESTION_IDS.has(questionId) && entries.some((entry) => entry.value && entry.value !== "any"))
+    .length;
+  const minimumCoverage = Math.min(3, Math.max(1, Math.ceil(meaningfulCoreQuestions / 2)));
+  const stricter = narrowed.filter(({ fitCoverage = 0, strictMisses = 0 }) => {
+    if (meaningfulCoreQuestions === 0) return true;
+    return strictMisses <= 1 && fitCoverage >= minimumCoverage;
+  });
+
+  const source = stricter.length >= Math.min(limit, FALLBACK_RESULT_LIMIT) ? stricter : narrowed;
+  return source.slice(0, limit);
 }
 
 function createWebDiscoveryId(rec) {
