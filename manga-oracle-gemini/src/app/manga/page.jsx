@@ -1,6 +1,18 @@
 import MangaListView from "./MangaListView";
 import { ALL_MANGA, getMangaPage, getTotalMangaPages } from "../../data/mangaCatalog";
 
+const searchItems = ALL_MANGA.map((manga) => ({
+  id: manga.id,
+  title_ja: manga.title_ja,
+  title_en: manga.title_en,
+  author: manga.author,
+  year: manga.year,
+  volumes: manga.volumes,
+  status: manga.status,
+  desc_ja: manga.desc_ja,
+  desc_en: manga.desc_en,
+}));
+
 export const metadata = {
   title: "漫画データベース一覧 | マンガマッチ診断",
   description: "マンガマッチ診断に登録されている漫画を30作品ずつ一覧で見られるページです。ジャンル別や天才・頭脳派漫画からも探せます。",
@@ -19,6 +31,7 @@ export default function MangaIndexPage() {
       currentPage={1}
       totalPages={getTotalMangaPages(ALL_MANGA)}
       basePath="/manga"
+      searchItems={searchItems}
       pageType="seo_article"
     />
   );

@@ -2,6 +2,7 @@ import StoreLinks from "../StoreLinks";
 import MangaCover from "../../components/MangaCover";
 import { getMangaCoverForItem } from "../../data/mangaCovers";
 import { MANGA_GENRES } from "../../data/mangaCatalog";
+import MangaSearch from "./MangaSearch";
 
 const statusLabel = {
   completed: "完結",
@@ -164,6 +165,7 @@ export default function MangaListView({
   totalPages,
   basePath,
   activeGenre,
+  searchItems,
   pageType = "seo_article",
 }) {
   return (
@@ -182,6 +184,7 @@ export default function MangaListView({
           <p className="mt-5 max-w-3xl text-base md:text-lg leading-8" style={{ color: "#333" }}>
             {lead}
           </p>
+          {searchItems?.length > 0 && <MangaSearch items={searchItems} />}
           <EntryMenu />
           <GenreMenu activeSlug={activeGenre} />
         </div>
