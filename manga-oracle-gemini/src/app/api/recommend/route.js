@@ -822,6 +822,7 @@ function buildPreferenceSignals(answers, questions, freeText = "", language = "j
     mediaPrefs,
     selectedLabels,
     entries,
+    hasFreeText: Boolean(`${freeText || ""}`.trim()),
     appliedFilterQuestionIds: [],
     avoidTags: freeTextSignals.avoidTags,
     hardAvoidTags: freeTextSignals.hardAvoidTags,
@@ -978,6 +979,29 @@ function scoreCandidatePool(signals) {
   });
 }
 
+function shuffleCandidates(items) {
+  const shuffled = [...items];
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+function isOpenPreferenceProfile(signals) {
+  return !signals?.hasFreeText && (!signals?.entries || signals.entries.length === 0);
+}
+
+function createRandomCandidatePool(limit) {
+  return shuffleCandidates(CORE_DB_UNIQUE).slice(0, limit).map((manga) => ({
+    manga,
+    score: 0,
+    matchedTags: [],
+    fitCoverage: 0,
+    strictMisses: 0,
+  }));
+}
+
 function groupEntriesByQuestion(entries = []) {
   return entries.reduce((groups, entry) => {
     if (!groups.has(entry.questionId)) groups.set(entry.questionId, []);
@@ -1046,6 +1070,10 @@ function applyFreeTextFilters(scored, signals) {
 }
 
 function selectCandidatePool(signals, limit = GEMINI_CANDIDATE_LIMIT) {
+  if (isOpenPreferenceProfile(signals)) {
+    return createRandomCandidatePool(limit);
+  }
+
   const scored = scoreCandidatePool(signals);
   const narrowed = applyFreeTextFilters(applyStagedFilters(scored, signals), signals);
   const meaningfulCoreQuestions = Array.from(groupEntriesByQuestion(signals.entries).entries())

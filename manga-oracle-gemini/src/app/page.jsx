@@ -636,12 +636,14 @@ export default function App() {
             <h2 className="text-3xl md:text-4xl font-medium mb-2 leading-snug" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>
               {language === "ja" ? QUESTIONS[currentQ].text_ja : QUESTIONS[currentQ].text_en}
             </h2>
-            {QUESTIONS[currentQ].type === "multi" && (
-              <p className="text-xs tracking-wider mb-8" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>
-                {t.selectMax} {QUESTIONS[currentQ].max} {t.selectMaxSuffix}
-                {answers[QUESTIONS[currentQ].id] && ` (${answers[QUESTIONS[currentQ].id].length}/${QUESTIONS[currentQ].max})`}
-              </p>
-            )}
+            <p className="min-h-[20px] text-xs tracking-wider mb-8" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>
+              {QUESTIONS[currentQ].type === "multi" ? (
+                <>
+                  {t.selectMax} {QUESTIONS[currentQ].max} {t.selectMaxSuffix}
+                  {answers[QUESTIONS[currentQ].id] && ` (${answers[QUESTIONS[currentQ].id].length}/${QUESTIONS[currentQ].max})`}
+                </>
+              ) : "\u00a0"}
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-8 auto-rows-fr">
               {QUESTIONS[currentQ].options.map((opt) => {
                 const isSelected = (answers[QUESTIONS[currentQ].id] || []).includes(opt.v);
