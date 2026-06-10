@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useMemo } from "react";
 import { QUESTIONS_SIMPLE, QUESTIONS_DETAILED } from "@/data/questions";
 import MangaCover from "./MangaCover";
 import StoreLinks from "./StoreLinks";
+import WatchLaterButton from "@/components/WatchLaterButton";
 import { getDiagnosisType, trackEvent } from "./analytics";
 
 // ============================================================
@@ -563,6 +564,7 @@ export default function App() {
               </div>
               <div className="flex flex-wrap justify-center gap-2 text-xs" style={{ color: "#0a0a0a" }}>
                 <a href="/manga" className="px-4 py-2 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.14)" }}>{"\u5168\u4f5c\u54c1\u4e00\u89a7"}</a>
+                <a href="/watchlist" className="px-4 py-2 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.14)" }}>{"\u5f8c\u3067\u898b\u308b"}</a>
               </div>
             </div>
             <nav className="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] tracking-[0.18em] uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#777" }}>
@@ -789,6 +791,9 @@ export default function App() {
                           </p>
                         </div>
                       )}
+                      <div className="mt-5">
+                        <WatchLaterButton item={{ title_ja: rec.title, title_en: rec.title, author: rec.author, description: rec.lead }} sourceContext="診断中のおすすめ" compact />
+                      </div>
                     </div>
                   );
                 })()}
@@ -845,6 +850,9 @@ export default function App() {
                         </div>
                         <MangaMetaLine rec={rec} t={t} includeYear includeAnime className="text-sm md:text-base mb-5 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
                         {rec.description && (<p className="text-base md:text-lg leading-8 mb-5" style={{ color: "#333" }}>{rec.description}</p>)}
+                        <div className="mb-3">
+                          <WatchLaterButton item={rec} sourceContext="診断結果" />
+                        </div>
                         <PurchaseLinks rec={rec} t={t} />
                         </div>
                       </div>
@@ -876,6 +884,9 @@ export default function App() {
                         </div>
                         <MangaMetaLine rec={rec} t={t} className="text-xs md:text-sm mb-3 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
                         {rec.description && (<p className="text-sm md:text-base leading-7" style={{ color: "#444" }}>{rec.description}</p>)}
+                        <div className="mt-3">
+                          <WatchLaterButton item={rec} sourceContext="診断結果" compact />
+                        </div>
                         <PurchaseLinks rec={rec} t={t} compact />
                         </div>
                       </div>
@@ -908,6 +919,9 @@ export default function App() {
                           <AlternativeBadge rec={rec} language={language} />
                         </div>
                         <MangaMetaLine rec={rec} t={t} includeStatus={false} className="text-xs" style={{ color: "#888" }} />
+                        <div className="mt-2">
+                          <WatchLaterButton item={rec} sourceContext="診断結果" compact />
+                        </div>
                         <PurchaseLinks rec={rec} t={t} compact />
                       </div>
                     </div>
