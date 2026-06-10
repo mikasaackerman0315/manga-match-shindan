@@ -754,21 +754,24 @@ export default function App() {
               <div className="text-[10px] tracking-[0.28em] uppercase mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
                 {language === "ja" ? "こんな漫画もあります" : "Side Discoveries"}
               </div>
-              <div className="min-h-[360px] flex flex-col justify-between">
+              <div className="min-h-[520px] flex flex-col justify-between">
                 {(() => {
                   const rec = loadingRecommendations[loadingMangaIndex % loadingRecommendations.length];
                   return (
                     <div
                       key={`${loadingMangaIndex}-${rec.title}`}
-                      className="px-5 py-5 border"
+                      className="px-5 py-6 border"
                       style={{
                         borderColor: "rgba(192,57,43,0.35)",
                         backgroundColor: "rgba(192,57,43,0.045)",
                         animation: "loadingMangaPop 520ms ease-out both",
                       }}
                     >
-                      <div className="text-xs mb-8" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
+                      <div className="text-xs mb-5" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
                         {String((loadingMangaIndex % loadingRecommendations.length) + 1).padStart(2, "0")} / {String(loadingRecommendations.length).padStart(2, "0")}
+                      </div>
+                      <div className="mb-6 flex justify-center">
+                        <MangaCover title={rec.title} id={rec.id} author={rec.author} size="loading" />
                       </div>
                       <div className="text-3xl md:text-4xl leading-tight mb-5" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>
                         {rec.title}

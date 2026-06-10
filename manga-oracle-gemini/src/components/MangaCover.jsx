@@ -9,6 +9,7 @@ const sizeClasses = {
   large: "w-[116px] md:w-[148px]",
   result: "w-[124px] md:w-[160px]",
   hero: "w-[148px] md:w-[190px]",
+  loading: "w-[168px] md:w-[220px]",
 };
 
 function Placeholder({ title }) {
