@@ -502,7 +502,7 @@ function DiagnosisModeScreen({ language, setLanguage, t, onStartMode, onBack }) 
         </div>
       </header>
 
-      <main className="relative mx-auto max-w-[1920px] px-6 pb-8 pt-6 md:px-7 xl:px-8 2xl:px-10">
+      <main className="relative mx-auto max-w-[1920px] px-6 pb-8 pt-4 md:px-7 xl:px-8 2xl:px-10">
         <div className="pointer-events-none absolute left-0 top-28 h-72 w-72 opacity-80" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.16) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
         <div className="pointer-events-none absolute right-0 top-0 h-80 w-[520px] rotate-[-8deg] opacity-[0.055]" style={{ backgroundImage: "linear-gradient(90deg, #0a0a0a 1px, transparent 1px), linear-gradient(#0a0a0a 1px, transparent 1px)", backgroundSize: "92px 132px" }} />
 
@@ -512,8 +512,8 @@ function DiagnosisModeScreen({ language, setLanguage, t, onStartMode, onBack }) 
           <span>{copy.nav[1]}</span>
         </div>
 
-        <section className="relative z-10 mx-auto mt-10 max-w-[1120px] text-center">
-          <div className="mx-auto mb-5 flex items-center justify-center gap-7 text-[#c0392b]">
+        <section className="relative z-10 mx-auto mt-4 max-w-[1120px] text-center">
+          <div className="mx-auto mb-3 flex items-center justify-center gap-7 text-[#c0392b]">
             <span className="h-px w-16 bg-[#c0392b]" />
             <span className="grid h-9 w-9 place-items-center rounded-full border border-[#c0392b]/30 bg-white"><ModeLogoMark className="h-6 w-6" /></span>
             <span className="h-px w-16 bg-[#c0392b]" />
@@ -522,7 +522,7 @@ function DiagnosisModeScreen({ language, setLanguage, t, onStartMode, onBack }) 
           <p className="mt-4 text-sm text-black/65 md:text-base">{copy.subtitle}</p>
         </section>
 
-        <section className="relative z-10 mx-auto mt-10 grid max-w-[980px] gap-7 md:grid-cols-2">
+        <section className="relative z-10 mx-auto mt-8 grid max-w-[980px] gap-7 md:grid-cols-2">
           <DiagnosisModeCard variant="simple" icon="clipboard" title={t.simpleTitle} meta={copy.simpleMeta} desc={copy.simpleDesc} stats={[["clock", copy.time, isJa ? "約1分" : "~1 min"], ["chat", copy.questions, "6問"], ["sparkles", copy.picks, copy.simplePicks]]} button={copy.start} onClick={() => onStartMode("simple")} />
           <DiagnosisModeCard variant="detailed" icon="magnifier" title={t.detailedTitle} meta={copy.detailedMeta} desc={copy.detailedDesc} stats={[["clock", copy.time, isJa ? "約4分" : "~4 min"], ["chat", copy.questions, "15問"], ["sparkles", copy.picks, copy.detailedPicks]]} button={copy.start} onClick={() => onStartMode("detailed")} />
         </section>
@@ -572,16 +572,16 @@ function DiagnosisModeCard({ variant, icon, title, meta, desc, stats, button, on
   const dark = variant === "detailed";
   const accent = dark ? "#d7a447" : "#c0392b";
   return (
-    <button onClick={onClick} className={`group rounded-xl p-7 text-left shadow-[0_20px_60px_rgba(10,10,10,0.08)] transition hover:-translate-y-1 md:p-8 ${dark ? "bg-[#0a0a0a] text-[#f5f3ee]" : "bg-white/86 text-[#0a0a0a]"}`} style={{ border: `1px solid ${dark ? "rgba(215,164,71,0.36)" : "rgba(10,10,10,0.16)"}` }}>
-      <div className="mb-7 flex items-start gap-8">
-        <ModeIcon type={icon} className="h-16 w-16 shrink-0" style={{ color: accent }} />
+    <button onClick={onClick} className={`group rounded-xl p-6 text-left shadow-[0_20px_60px_rgba(10,10,10,0.08)] transition hover:-translate-y-1 md:p-7 ${dark ? "bg-[#0a0a0a] text-[#f5f3ee]" : "bg-white/86 text-[#0a0a0a]"}`} style={{ border: `1px solid ${dark ? "rgba(215,164,71,0.36)" : "rgba(10,10,10,0.16)"}` }}>
+      <div className="mb-6 flex items-start gap-7">
+        <ModeIcon type={icon} className="h-14 w-14 shrink-0" style={{ color: accent }} />
         <div>
           <h3 className="text-2xl font-bold md:text-3xl">{title}</h3>
-          <div className="mt-4 text-lg font-bold" style={{ color: accent }}>{meta}</div>
+          <div className="mt-3 text-lg font-bold" style={{ color: accent }}>{meta}</div>
         </div>
       </div>
-      <p className={`min-h-[56px] text-center text-sm leading-7 ${dark ? "text-white/80" : "text-black/68"}`}>{desc}</p>
-      <div className={`my-7 border-t border-dotted ${dark ? "border-[#d7a447]/45" : "border-black/18"}`} />
+      <p className={`min-h-[48px] text-center text-sm leading-6 ${dark ? "text-white/80" : "text-black/68"}`}>{desc}</p>
+      <div className={`my-6 border-t border-dotted ${dark ? "border-[#d7a447]/45" : "border-black/18"}`} />
       <div className="grid grid-cols-3 gap-3">
         {stats.map(([statIcon, label, value]) => (
           <div key={label} className={`flex items-center justify-center gap-2 border-r text-sm last:border-r-0 ${dark ? "border-white/10" : "border-black/10"}`}>
@@ -590,7 +590,7 @@ function DiagnosisModeCard({ variant, icon, title, meta, desc, stats, button, on
           </div>
         ))}
       </div>
-      <div className={`mt-8 flex items-center justify-center rounded-md px-6 py-4 text-sm font-bold transition group-hover:translate-x-1 ${dark ? "border border-[#d7a447] text-[#d7a447]" : "bg-[#c0392b] text-white"}`}>
+      <div className={`mt-6 flex items-center justify-center rounded-md px-6 py-3.5 text-sm font-bold transition group-hover:translate-x-1 ${dark ? "border border-[#d7a447] text-[#d7a447]" : "bg-[#c0392b] text-white"}`}>
         {button} <span className="ml-5">→</span>
       </div>
     </button>
