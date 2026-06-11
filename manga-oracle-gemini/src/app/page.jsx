@@ -2,10 +2,13 @@
 
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { QUESTIONS_SIMPLE, QUESTIONS_DETAILED } from "@/data/questions";
+import HomePageV2 from "./HomePageV2";
 import MangaCover from "./MangaCover";
 import StoreLinks from "./StoreLinks";
 import WatchLaterButton from "@/components/WatchLaterButton";
 import { getDiagnosisType, trackEvent } from "./analytics";
+
+const USE_NEW_HOME = true;
 
 // ============================================================
 // 広告枠コンポーネント（将来 Google AdSense 等を入れる場所）
@@ -533,14 +536,16 @@ export default function App() {
       fontFamily: "'Noto Serif JP', 'Cormorant Garamond', serif",
       color: "#0a0a0a",
     }}>
-      <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+      {!(screen === "landing" && USE_NEW_HOME) && <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
         <button onClick={() => setLanguage("ja")} className="px-3 py-1 text-xs tracking-wider transition-all"
           style={{ backgroundColor: language === "ja" ? "#0a0a0a" : "transparent", color: language === "ja" ? "#f5f3ee" : "#0a0a0a", border: "1px solid #0a0a0a" }}>JA</button>
         <button onClick={() => setLanguage("en")} className="px-3 py-1 text-xs tracking-wider transition-all"
           style={{ backgroundColor: language === "en" ? "#0a0a0a" : "transparent", color: language === "en" ? "#f5f3ee" : "#0a0a0a", border: "1px solid #0a0a0a" }}>EN</button>
-      </div>
+      </div>}
 
-      {screen === "landing" && (
+      {screen === "landing" && (USE_NEW_HOME ? (
+        <HomePageV2 language={language} setLanguage={setLanguage} onStartQuiz={() => setScreen("mode")} />
+      ) : (
         <div className="min-h-screen flex flex-col items-center justify-center px-8 relative">
           <div className="absolute top-1/4 left-1/4 w-32 h-32 opacity-10" style={{ background: "radial-gradient(ellipse, #c0392b 0%, transparent 70%)" }} />
           <div className="absolute bottom-1/4 right-1/4 w-48 h-48 opacity-10" style={{ background: "radial-gradient(ellipse, #0a0a0a 0%, transparent 70%)" }} />
@@ -578,7 +583,7 @@ export default function App() {
             {t.poweredBy}
           </div>
         </div>
-      )}
+      ))}
 
       {screen === "mode" && (
         <div className="min-h-screen flex flex-col items-center justify-center px-6 md:px-8 relative">
