@@ -17,34 +17,34 @@ const heroManga = [
 
 const featureCards = [
   {
-    icon: "AI",
+    icon: "ai",
     title: "AI検索対応",
     text: "データベースだけでなく、必要に応じてAI検索も使って候補を広げます。",
   },
   {
-    icon: "LIKE",
+    icon: "heart",
     title: "好み分析",
     text: "ジャンル・読み味・苦手要素から、あなたの好みに近い作品を探します。",
   },
   {
-    icon: "%",
+    icon: "target",
     title: "相性スコア",
     text: "作品ごとに、あなたに合いそうな理由をスコアや文章で表示します。",
   },
   {
-    icon: "BOOK",
+    icon: "book",
     title: "試し読みリンク",
     text: "気になった作品をすぐに試し読み・購入ページへ移動できます。",
   },
 ];
 
 const exploreCards = [
-  { href: "/completed-manga", title: "完結済みから探す", text: "最後まで一気に楽しみたい人へ", icon: "01" },
-  { href: "/short-manga", title: "短く読める漫画", text: "短時間でサクッと読みたい人へ", icon: "02" },
-  { href: "/fantasy-manga", title: "ダークファンタジー", text: "重厚な世界観が好きな人へ", icon: "03" },
-  { href: "/romance-manga", title: "恋愛・ラブコメ", text: "胸キュンや甘い関係性が好きな人へ", icon: "04" },
-  { href: "/battle-manga", title: "バトル・アクション", text: "熱い戦いや能力バトルが好きな人へ", icon: "05" },
-  { href: "/trending-manga", title: "アニメ化作品", text: "アニメから入りたい人へ", icon: "06" },
+  { href: "/completed-manga", title: "完結済みから探す", text: "最後まで一気に楽しみたい人へ", icon: "book" },
+  { href: "/short-manga", title: "短く読める漫画", text: "短時間でサクッと読みたい人へ", icon: "clock" },
+  { href: "/fantasy-manga", title: "ダークファンタジー", text: "重厚な世界観が好きな人へ", icon: "cat" },
+  { href: "/romance-manga", title: "恋愛・ラブコメ", text: "胸キュンや甘い関係性が好きな人へ", icon: "heart_filled" },
+  { href: "/battle-manga", title: "バトル・アクション", text: "熱い戦いや能力バトルが好きな人へ", icon: "swords" },
+  { href: "/trending-manga", title: "アニメ化作品", text: "アニメから入りたい人へ", icon: "tv" },
 ];
 
 const themeCards = [
@@ -58,32 +58,139 @@ const themeCards = [
 
 function LogoMark() {
   return (
-    <div className="relative h-10 w-10 shrink-0" aria-hidden="true">
-      <div
-        className="absolute inset-0 rotate-45 rounded-[6px]"
-        style={{ border: "2px solid #0a0a0a" }}
-      />
-      <div
-        className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{ backgroundColor: "#0a0a0a" }}
-      />
-    </div>
+    <svg className="h-12 w-12 shrink-0" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M24 4 41 14v20L24 44 7 34V14L24 4Z" stroke="#0a0a0a" strokeWidth="4" strokeLinejoin="round" />
+      <path d="M14 18.5c4.1 0 7 .9 10 3.3 3-2.4 5.9-3.3 10-3.3v12.7c-4.1 0-7 .9-10 3.3-3-2.4-5.9-3.3-10-3.3V18.5Z" fill="#0a0a0a" />
+      <path d="M24 21.8v12.7" stroke="#f5f3ee" strokeWidth="2" strokeLinecap="round" />
+    </svg>
   );
 }
 
-function HomeBadge({ children, size = "md", inverted = false }) {
-  const sizeClass = size === "lg" ? "h-16 w-16 text-[11px]" : "h-12 w-12 text-[10px]";
+function HomeIcon({ type, className = "h-7 w-7" }) {
+  const common = {
+    className,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": true,
+  };
+
+  if (type === "ai") {
+    return (
+      <svg {...common}>
+        <circle cx="11" cy="11" r="7" />
+        <path d="m16 16 4 4" />
+        <path d="M8.4 14 11 7.5 13.6 14" />
+        <path d="M9.4 11.8h3.2" />
+      </svg>
+    );
+  }
+
+  if (type === "heart" || type === "heart_filled") {
+    return (
+      <svg {...common} fill={type === "heart_filled" ? "currentColor" : "none"} strokeWidth={type === "heart_filled" ? 0 : 2}>
+        <path d="M12 20.2s-7.2-4.4-9.2-8.7C1.4 8.4 3.3 5 6.5 5c1.9 0 3.2 1 3.9 2.2C11.1 6 12.4 5 14.3 5c3.2 0 5.1 3.4 3.7 6.5-2 4.3-9 8.7-9 8.7Z" />
+      </svg>
+    );
+  }
+
+  if (type === "target") {
+    return (
+      <svg {...common}>
+        <circle cx="12" cy="12" r="8" />
+        <circle cx="12" cy="12" r="3" />
+        <path d="M12 2v3" />
+        <path d="M22 12h-3" />
+      </svg>
+    );
+  }
+
+  if (type === "book") {
+    return (
+      <svg {...common}>
+        <path d="M4 5.5c2.4 0 4.2.5 6 2v11c-1.8-1.4-3.6-2-6-2Z" />
+        <path d="M20 5.5c-2.4 0-4.2.5-6 2v11c1.8-1.4 3.6-2 6-2Z" />
+        <path d="M10 7.5v11" />
+        <path d="M14 7.5v11" />
+      </svg>
+    );
+  }
+
+  if (type === "clock") {
+    return (
+      <svg {...common}>
+        <circle cx="12" cy="12" r="8" />
+        <path d="M12 7.5V12l3.2 2" />
+      </svg>
+    );
+  }
+
+  if (type === "cat") {
+    return (
+      <svg {...common}>
+        <path d="M5.5 9 4.5 4.8 8 7" />
+        <path d="m18.5 9 1-4.2L16 7" />
+        <path d="M5.5 9.5c0-2 2.9-3.5 6.5-3.5s6.5 1.5 6.5 3.5v3c0 3.4-2.9 5.5-6.5 5.5s-6.5-2.1-6.5-5.5Z" />
+        <path d="M9.2 12h.1" />
+        <path d="M14.7 12h.1" />
+        <path d="M11 15h2" />
+      </svg>
+    );
+  }
+
+  if (type === "swords") {
+    return (
+      <svg {...common}>
+        <path d="M4 20 20 4" />
+        <path d="M14 4h6v6" />
+        <path d="M20 20 4 4" />
+        <path d="M4 4v6h6" />
+        <path d="m7 17-3 3" />
+        <path d="m17 17 3 3" />
+      </svg>
+    );
+  }
+
+  if (type === "tv") {
+    return (
+      <svg {...common}>
+        <rect x="4" y="7" width="16" height="11" rx="2" />
+        <path d="m9 4 3 3 3-3" />
+        <path d="M9 21h6" />
+      </svg>
+    );
+  }
+
+  if (type === "clipboard") {
+    return (
+      <svg {...common}>
+        <rect x="6" y="5" width="12" height="16" rx="2" />
+        <path d="M9 5.5V4h6v1.5" />
+        <path d="M9.5 11h5" />
+        <path d="M9.5 15h3" />
+        <path d="M16.8 15.2c.7-.7 1.9-.2 1.9.8 0 1.4-2.3 2.7-2.3 2.7S14 17.4 14 16c0-1 .9-1.5 1.7-.8l.5.5Z" />
+      </svg>
+    );
+  }
+
+  return null;
+}
+
+function HomeBadge({ icon, children, size = "md", inverted = false }) {
+  const sizeClass = size === "lg" ? "h-20 w-20" : "h-12 w-12";
   return (
     <div
-      className={`grid ${sizeClass} shrink-0 place-items-center rounded-full border font-extrabold tracking-[0.08em]`}
+      className={`grid ${sizeClass} shrink-0 place-items-center rounded-full border`}
       style={{
         borderColor: inverted ? "rgba(192,57,43,0.26)" : "rgba(192,57,43,0.18)",
         backgroundColor: inverted ? "#fffdf9" : "rgba(192,57,43,0.08)",
         color: "#c0392b",
-        fontFamily: homeSans,
       }}
     >
-      {children}
+      {icon ? <HomeIcon type={icon} className={size === "lg" ? "h-11 w-11" : "h-7 w-7"} /> : children}
     </div>
   );
 }
@@ -150,14 +257,20 @@ function Header({ language, setLanguage, onStartQuiz }) {
             );
           })}
         </nav>
-        <div className="flex shrink-0 items-center gap-2">
-          <a href="/manga" className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-white/60 text-[#0a0a0a] transition-colors hover:border-[#c0392b]/30 hover:text-[#c0392b]" aria-label="検索">
-            <SearchGlyph />
+        <div className="flex shrink-0 items-start gap-3">
+          <a href="/manga" className="group flex flex-col items-center gap-1 text-[#0a0a0a]" aria-label="検索">
+            <span className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-white/60 transition-colors group-hover:border-[#c0392b]/30 group-hover:text-[#c0392b]">
+              <SearchGlyph />
+            </span>
+            <span className="hidden text-[11px] font-semibold md:block">検索</span>
           </a>
-          <a href="/watchlist" className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-white/60 text-[#0a0a0a] transition-colors hover:border-[#c0392b]/30 hover:text-[#c0392b]" aria-label="保存リスト">
-            <UserGlyph />
+          <a href="/watchlist" className="group flex flex-col items-center gap-1 text-[#0a0a0a]" aria-label="マイページ">
+            <span className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-white/60 transition-colors group-hover:border-[#c0392b]/30 group-hover:text-[#c0392b]">
+              <UserGlyph />
+            </span>
+            <span className="hidden text-[11px] font-semibold md:block">マイページ</span>
           </a>
-          <div className="hidden gap-1 md:flex" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          <div className="hidden gap-1 pt-1 md:flex" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             <button
               onClick={() => setLanguage("ja")}
               className="px-2 py-1 text-[10px]"
@@ -182,13 +295,13 @@ function Header({ language, setLanguage, onStartQuiz }) {
 function HeroVisual() {
   return (
     <div
-      className="relative min-h-[330px] overflow-hidden rounded-[10px] border border-black/10 px-5 py-8 shadow-[0_18px_45px_rgba(10,10,10,0.06)] md:min-h-[430px]"
-      style={{ background: "linear-gradient(135deg, rgba(255,253,249,0.86), rgba(245,243,238,0.78))" }}
+      className="relative min-h-[330px] overflow-visible px-2 py-5 md:min-h-[430px] md:px-4 md:py-6"
     >
-      <div className="absolute inset-0 opacity-70" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, rgba(192,57,43,0.12) 1px, transparent 0)", backgroundSize: "18px 18px" }} />
-      <div className="absolute inset-x-8 top-8 h-px bg-[#c0392b]/15" />
-      <div className="absolute inset-x-8 bottom-8 h-px bg-black/10" />
-      <div className="relative grid grid-cols-2 justify-items-center gap-3 sm:grid-cols-3 md:gap-4">
+      <div className="absolute bottom-8 right-0 top-8 w-[92%] rounded-[18px] opacity-80" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, rgba(192,57,43,0.15) 1.2px, transparent 0)", backgroundSize: "17px 17px" }} />
+      <div className="absolute left-[18%] top-[10%] h-[76%] w-[74%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.88)_0%,rgba(255,253,249,0.5)_46%,rgba(245,243,238,0)_72%)]" />
+      <span className="absolute left-8 top-8 h-8 w-8 rotate-[-28deg] border-l-4 border-t-4 border-[#c0392b]/25" />
+      <span className="absolute bottom-12 right-8 h-8 w-8 rotate-[18deg] border-b-4 border-r-4 border-[#c0392b]/25" />
+      <div className="relative grid grid-cols-2 justify-items-center gap-x-1 gap-y-2 sm:grid-cols-3 md:gap-x-3 md:gap-y-1">
         {heroManga.map((manga, index) => (
           <a
             key={manga.id}
@@ -208,7 +321,7 @@ function FeatureCard({ feature }) {
   return (
     <div className="rounded-[8px] border border-black/10 bg-white/65 p-5 shadow-[0_10px_24px_rgba(10,10,10,0.05)]">
       <div className="mb-4 flex items-center gap-3">
-        <HomeBadge>{feature.icon}</HomeBadge>
+        <HomeBadge icon={feature.icon} />
         <h3 className="text-lg font-bold">{feature.title}</h3>
       </div>
       <p className="text-sm leading-7" style={{ color: "#333" }}>{feature.text}</p>
@@ -218,9 +331,12 @@ function FeatureCard({ feature }) {
 
 function ProfileCta({ onStartQuiz }) {
   return (
-    <aside className="rounded-[10px] border border-[#c0392b]/25 bg-[#fff8f6] p-6 shadow-[0_12px_30px_rgba(192,57,43,0.08)] md:p-8">
-      <div className="mb-5">
-        <HomeBadge size="lg" inverted>MATCH</HomeBadge>
+    <aside className="relative overflow-hidden rounded-[10px] border border-[#c0392b]/35 bg-[#fff8f6] p-6 shadow-[0_12px_30px_rgba(192,57,43,0.08)] md:p-8">
+      <div className="relative mb-5 inline-block">
+        <HomeBadge icon="clipboard" size="lg" inverted />
+        <span className="absolute -bottom-1 -right-2 grid h-9 w-9 place-items-center rounded-full bg-[#c0392b] text-white shadow-[0_6px_14px_rgba(192,57,43,0.25)]">
+          <HomeIcon type="heart_filled" className="h-5 w-5" />
+        </span>
       </div>
       <h2 className="mb-3 text-2xl font-bold">もっと細かく探したい方へ</h2>
       <p className="mb-6 text-sm leading-7" style={{ color: "#333" }}>
@@ -293,7 +409,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
                   className="rounded-[8px] border border-black/10 bg-white/55 p-4 shadow-[0_8px_18px_rgba(10,10,10,0.04)] transition-transform hover:-translate-y-1"
                 >
                   <div className="mb-3">
-                    <HomeBadge>{card.icon}</HomeBadge>
+                    <HomeBadge icon={card.icon} />
                   </div>
                   <h3 className="mb-2 text-base font-bold">{card.title}</h3>
                   <p className="text-xs leading-6" style={{ color: "#444" }}>{card.text}</p>
@@ -315,11 +431,12 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
                 className={`relative min-h-[118px] min-w-[230px] overflow-hidden rounded-[8px] bg-gradient-to-br ${theme.tone} p-4 text-white shadow-[0_10px_22px_rgba(10,10,10,0.12)] transition-transform hover:-translate-y-1`}
               >
                 <div className="absolute inset-0 opacity-25" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 0)", backgroundSize: "14px 14px" }} />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.42),transparent_32%),linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.38))]" />
                 <div className="relative flex h-full flex-col justify-end">
-                  <div className="mb-3 inline-flex h-8 w-12 items-center justify-center rounded-full border border-white/45 bg-white/10 text-[10px] font-extrabold tracking-[0.14em]">
-                    PICK
-                  </div>
-                  <h3 className="text-base font-bold leading-7 drop-shadow">{theme.title}</h3>
+                  <h3 className="pr-10 text-base font-bold leading-7 drop-shadow">{theme.title}</h3>
+                  <span className="absolute bottom-0 right-0 grid h-9 w-9 place-items-center rounded-full bg-white text-[#0a0a0a] shadow-[0_6px_16px_rgba(0,0,0,0.18)]">
+                    <span className="text-lg leading-none">→</span>
+                  </span>
                 </div>
               </a>
             ))}
