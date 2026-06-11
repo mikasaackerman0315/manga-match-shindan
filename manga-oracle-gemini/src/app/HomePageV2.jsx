@@ -1,18 +1,37 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import MangaCover from "./MangaCover";
 import { trackEvent } from "./analytics";
 
 const homeSans = "'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 const homeSerif = "'Noto Serif JP', 'Cormorant Garamond', serif";
 
-const heroManga = [
-  { id: "jjk", title: "呪術廻戦", author: "芥見下々", tilt: "-rotate-6", offset: "md:translate-y-2" },
-  { id: "aot", title: "進撃の巨人", author: "諫山創", tilt: "rotate-4", offset: "md:-translate-y-3" },
-  { id: "chainsaw", title: "チェンソーマン", author: "藤本タツキ", tilt: "-rotate-3", offset: "md:translate-y-8" },
-  { id: "blue_lock", title: "ブルーロック", author: "金城宗幸/ノ村優介", tilt: "rotate-3", offset: "md:translate-y-0" },
-  { id: "spy_family", title: "SPY×FAMILY", author: "遠藤達哉", tilt: "-rotate-2", offset: "md:-translate-y-1" },
-  { id: "frieren", title: "葬送のフリーレン", author: "山田鐘人/アベツカサ", tilt: "rotate-6", offset: "md:translate-y-6" },
+const heroMangaSets = [
+  [
+    { id: "jjk", title: "呪術廻戦", author: "芥見下々", tilt: "-rotate-6", offset: "md:translate-y-2" },
+    { id: "aot", title: "進撃の巨人", author: "諫山創", tilt: "rotate-4", offset: "md:-translate-y-3" },
+    { id: "chainsaw", title: "チェンソーマン", author: "藤本タツキ", tilt: "-rotate-3", offset: "md:translate-y-8" },
+    { id: "blue_lock", title: "ブルーロック", author: "金城宗幸/ノ村優介", tilt: "rotate-3", offset: "md:translate-y-0" },
+    { id: "spy_family", title: "SPY×FAMILY", author: "遠藤達哉", tilt: "-rotate-2", offset: "md:-translate-y-1" },
+    { id: "frieren", title: "葬送のフリーレン", author: "山田鐘人/アベツカサ", tilt: "rotate-6", offset: "md:translate-y-6" },
+  ],
+  [
+    { id: "dandadan", title: "ダンダダン", author: "龍幸伸", tilt: "rotate-4", offset: "md:translate-y-3" },
+    { id: "sakamoto_days", title: "SAKAMOTO DAYS", author: "鈴木祐斗", tilt: "-rotate-5", offset: "md:-translate-y-2" },
+    { id: "kaiju_no_8", title: "怪獣8号", author: "松本直也", tilt: "rotate-5", offset: "md:translate-y-8" },
+    { id: "wind_breaker", title: "WIND BREAKER", author: "にいさとる", tilt: "-rotate-3", offset: "md:translate-y-0" },
+    { id: "hxh", title: "HUNTER×HUNTER", author: "冨樫義博", tilt: "rotate-2", offset: "md:-translate-y-1" },
+    { id: "naruto", title: "NARUTO -ナルト-", author: "岸本斉史", tilt: "-rotate-6", offset: "md:translate-y-6" },
+  ],
+  [
+    { id: "bleach", title: "BLEACH", author: "久保帯人", tilt: "-rotate-4", offset: "md:translate-y-2" },
+    { id: "kingdom", title: "キングダム", author: "原泰久", tilt: "rotate-5", offset: "md:-translate-y-3" },
+    { id: "haikyu", title: "ハイキュー!!", author: "古舘春一", tilt: "-rotate-2", offset: "md:translate-y-8" },
+    { id: "demon_slayer", title: "鬼滅の刃", author: "吾峠呼世晴", tilt: "rotate-3", offset: "md:translate-y-0" },
+    { id: "one_piece", title: "ONE PIECE", author: "尾田栄一郎", tilt: "-rotate-3", offset: "md:-translate-y-1" },
+    { id: "the_apothecary_diaries", title: "薬屋のひとりごと", author: "日向夏/ねこクラゲ", tilt: "rotate-6", offset: "md:translate-y-6" },
+  ],
 ];
 
 const featureCards = [
@@ -293,24 +312,41 @@ function Header({ language, setLanguage, onStartQuiz }) {
 }
 
 function HeroVisual() {
+  const [activeSet, setActiveSet] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSet((current) => (current + 1) % heroMangaSets.length);
+    }, 5000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <div
-      className="relative min-h-[330px] overflow-visible px-2 py-5 md:min-h-[430px] md:px-4 md:py-6"
+      className="relative min-h-[390px] overflow-visible px-1 py-4 sm:min-h-[430px] md:min-h-[520px] md:px-2 md:py-6"
     >
-      <div className="absolute bottom-8 right-0 top-8 w-[92%] rounded-[18px] opacity-80" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, rgba(192,57,43,0.15) 1.2px, transparent 0)", backgroundSize: "17px 17px" }} />
-      <div className="absolute left-[18%] top-[10%] h-[76%] w-[74%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.88)_0%,rgba(255,253,249,0.5)_46%,rgba(245,243,238,0)_72%)]" />
-      <span className="absolute left-8 top-8 h-8 w-8 rotate-[-28deg] border-l-4 border-t-4 border-[#c0392b]/25" />
-      <span className="absolute bottom-12 right-8 h-8 w-8 rotate-[18deg] border-b-4 border-r-4 border-[#c0392b]/25" />
-      <div className="relative grid grid-cols-2 justify-items-center gap-x-1 gap-y-2 sm:grid-cols-3 md:gap-x-3 md:gap-y-1">
-        {heroManga.map((manga, index) => (
-          <a
-            key={manga.id}
-            href={`/manga/${manga.id}`}
-            className={`group block transition-transform hover:-translate-y-2 ${manga.tilt} ${manga.offset} ${index > 3 ? "hidden sm:block" : ""}`}
-            aria-label={`${manga.title} の作品ページへ`}
+      <div className="absolute -bottom-1 right-[-2%] top-1 w-[96%] rounded-[20px] opacity-100" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, rgba(192,57,43,0.24) 1.35px, transparent 0)", backgroundSize: "16px 16px" }} />
+      <div className="absolute left-[10%] top-[4%] h-[88%] w-[86%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.98)_0%,rgba(255,253,249,0.66)_44%,rgba(245,243,238,0)_74%)]" />
+      <span className="absolute left-6 top-10 h-10 w-10 rotate-[-28deg] border-l-4 border-t-4 border-[#c0392b]/35" />
+      <span className="absolute bottom-10 right-6 h-10 w-10 rotate-[18deg] border-b-4 border-r-4 border-[#c0392b]/35" />
+      <div className="relative min-h-[360px] sm:min-h-[400px] md:min-h-[500px]">
+        {heroMangaSets.map((set, setIndex) => (
+          <div
+            key={setIndex}
+            className={`absolute inset-0 grid grid-cols-2 justify-items-center gap-x-0 gap-y-1 transition-opacity duration-700 ease-out sm:grid-cols-3 md:gap-x-2 md:gap-y-0 ${activeSet === setIndex ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
           >
-            <MangaCover title={manga.title} id={manga.id} author={manga.author} size="large" />
-          </a>
+            {set.map((manga, index) => (
+              <a
+                key={manga.id}
+                href={`/manga/${manga.id}`}
+                className={`group block transition-transform hover:-translate-y-2 ${manga.tilt} ${manga.offset} ${index > 3 ? "hidden sm:block" : ""}`}
+                aria-label={`${manga.title} の作品ページへ`}
+              >
+                <MangaCover title={manga.title} id={manga.id} author={manga.author} size="hero" />
+              </a>
+            ))}
+          </div>
         ))}
       </div>
     </div>
@@ -362,10 +398,13 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
         <section className="mx-auto grid max-w-[1500px] gap-10 px-5 pb-12 pt-10 md:grid-cols-[0.9fr_1.1fr] md:px-8 md:pb-16 md:pt-16">
           <div className="flex flex-col justify-center">
             <div className="mb-5 text-sm font-extrabold tracking-[0.02em] text-[#c0392b]" style={{ fontFamily: homeSans }}>AIがあなたの好みを分析</div>
-            <h1 className="mb-6 text-4xl font-bold leading-[1.22] tracking-normal sm:text-5xl md:text-6xl lg:text-[4.35rem]" style={{ fontFamily: homeSerif, fontWeight: 700 }}>
-              あなたに<span className="text-[#c0392b]">本当に合う</span>
-              <br />
-              漫画を、見つけよう。
+            <h1 className="mb-6 text-4xl font-bold leading-[1.18] tracking-normal sm:text-5xl md:text-6xl lg:text-[4.35rem]" style={{ fontFamily: homeSerif, fontWeight: 700 }}>
+              <span className="block whitespace-nowrap">
+                あなたに<span className="text-[#c0392b]">本当に合う</span>
+              </span>
+              <span className="block whitespace-nowrap">
+                漫画を、見つけよう。
+              </span>
             </h1>
             <p className="mb-8 max-w-2xl text-base font-medium leading-8 md:text-lg" style={{ color: "#222", fontFamily: homeSans }}>
               いくつかの質問に答えるだけで、あなたの好みに近い漫画をAIが探します。データベースだけでなく、必要に応じてAI検索も使って候補を広げます。
