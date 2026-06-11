@@ -15,6 +15,8 @@ const heroMangaSets = [
     { id: "blue_lock", title: "ブルーロック", author: "金城宗幸/ノ村優介", tilt: "rotate-3", offset: "md:translate-y-0" },
     { id: "spy_family", title: "SPY×FAMILY", author: "遠藤達哉", tilt: "-rotate-2", offset: "md:-translate-y-1" },
     { id: "frieren", title: "葬送のフリーレン", author: "山田鐘人/アベツカサ", tilt: "rotate-6", offset: "md:translate-y-6" },
+    { id: "tokyo_ghoul", title: "東京喰種", author: "石田スイ", tilt: "rotate-2", offset: "md:translate-y-4" },
+    { id: "gachiakuta", title: "ガチアクタ", author: "裏那圭", tilt: "-rotate-4", offset: "md:-translate-y-1" },
   ],
   [
     { id: "dandadan", title: "ダンダダン", author: "龍幸伸", tilt: "rotate-4", offset: "md:translate-y-3" },
@@ -23,6 +25,8 @@ const heroMangaSets = [
     { id: "wind_breaker", title: "WIND BREAKER", author: "にいさとる", tilt: "-rotate-3", offset: "md:translate-y-0" },
     { id: "hxh", title: "HUNTER×HUNTER", author: "冨樫義博", tilt: "rotate-2", offset: "md:-translate-y-1" },
     { id: "naruto", title: "NARUTO -ナルト-", author: "岸本斉史", tilt: "-rotate-6", offset: "md:translate-y-6" },
+    { id: "kingdom", title: "キングダム", author: "原泰久", tilt: "rotate-3", offset: "md:translate-y-4" },
+    { id: "bleach", title: "BLEACH", author: "久保帯人", tilt: "-rotate-2", offset: "md:-translate-y-2" },
   ],
   [
     { id: "bleach", title: "BLEACH", author: "久保帯人", tilt: "-rotate-4", offset: "md:translate-y-2" },
@@ -31,16 +35,20 @@ const heroMangaSets = [
     { id: "demon_slayer", title: "鬼滅の刃", author: "吾峠呼世晴", tilt: "rotate-3", offset: "md:translate-y-0" },
     { id: "one_piece", title: "ONE PIECE", author: "尾田栄一郎", tilt: "-rotate-3", offset: "md:-translate-y-1" },
     { id: "the_apothecary_diaries", title: "薬屋のひとりごと", author: "日向夏/ねこクラゲ", tilt: "rotate-6", offset: "md:translate-y-6" },
+    { id: "dandadan", title: "ダンダダン", author: "龍幸伸", tilt: "-rotate-5", offset: "md:translate-y-5" },
+    { id: "wind_breaker", title: "WIND BREAKER", author: "にいさとる", tilt: "rotate-2", offset: "md:-translate-y-2" },
   ],
 ];
 
 const heroCoverLayouts = [
-  { className: "left-[2%] top-[7%] rotate-[-7deg] z-20", size: "hero" },
-  { className: "left-[31%] top-[0%] rotate-[5deg] z-10", size: "hero" },
-  { className: "right-[5%] top-[9%] rotate-[8deg] z-20", size: "large" },
-  { className: "left-[10%] bottom-[2%] rotate-[6deg] z-30", size: "large" },
-  { className: "left-[43%] bottom-[5%] rotate-[-3deg] z-40", size: "hero" },
-  { className: "right-[-1%] bottom-[9%] rotate-[4deg] z-30", size: "hero" },
+  { className: "left-[4%] top-[8%] rotate-[-8deg] z-20 scale-[1.02]", size: "hero" },
+  { className: "left-[28%] top-[0%] rotate-[5deg] z-30 scale-[1.08]", size: "hero" },
+  { className: "right-[10%] top-[8%] rotate-[8deg] z-20 scale-[1.02]", size: "hero" },
+  { className: "left-[12%] bottom-[6%] rotate-[6deg] z-40 scale-[0.98]", size: "hero" },
+  { className: "left-[42%] bottom-[2%] rotate-[-3deg] z-50 scale-[1.14]", size: "hero" },
+  { className: "right-[0%] bottom-[10%] rotate-[5deg] z-30 scale-[1.08]", size: "hero" },
+  { className: "right-[-6%] top-[34%] rotate-[-6deg] z-10 scale-[0.92]", size: "hero" },
+  { className: "left-[58%] top-[22%] rotate-[2deg] z-40 scale-[0.88]", size: "hero" },
 ];
 
 const featureCards = [
@@ -333,20 +341,20 @@ function HeroVisual() {
 
   return (
     <div
-      className="relative min-h-[390px] overflow-visible px-1 py-4 sm:min-h-[430px] md:h-[560px] md:min-h-[560px] md:px-0 md:py-0"
+      className="relative h-[430px] w-full overflow-visible px-1 py-4 sm:h-[470px] md:h-[560px] md:px-0 md:py-0"
     >
       <div
-        className="absolute bottom-4 left-[2%] right-[-2%] top-6 rounded-[20px] opacity-100 md:bottom-2 md:left-0 md:right-[-4%] md:top-2"
+        className="absolute bottom-4 left-[-4%] right-[-10%] top-5 rounded-[22px] opacity-100 md:bottom-1 md:left-[-2%] md:right-[-10%] md:top-1"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(190,30,30,0.14) 1.15px, transparent 1.25px)",
+          backgroundImage: "radial-gradient(circle, rgba(190,30,30,0.12) 1px, transparent 1px)",
           backgroundPosition: "0 0",
           backgroundSize: "18px 18px",
         }}
       />
-      <div className="pointer-events-none absolute inset-y-0 left-[-2%] w-[20%] bg-gradient-to-r from-[#fffdf9] via-[#fffdf9]/80 to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-[-6%] w-[24%] bg-gradient-to-l from-[#fffdf9]/45 to-transparent" />
-      <div className="pointer-events-none absolute bottom-0 left-[6%] right-[4%] h-28 bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,0.15),transparent_62%)] blur-xl" />
-      <div className="relative min-h-[360px] sm:min-h-[400px] md:h-[560px] md:min-h-[560px]">
+      <div className="pointer-events-none absolute inset-y-0 left-[-5%] w-[22%] bg-gradient-to-r from-[#fffdf9] via-[#fffdf9]/75 to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-[-12%] w-[28%] bg-gradient-to-l from-[#fffdf9]/40 to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-[4%] right-[-2%] h-32 bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,0.17),transparent_64%)] blur-2xl" />
+      <div className="relative h-full w-full overflow-visible">
         {heroMangaSets.map((set, setIndex) => (
           <div
             key={setIndex}
@@ -359,7 +367,7 @@ function HeroVisual() {
                 <a
                   key={manga.id}
                   href={`/manga/${manga.id}`}
-                  className={`absolute block rounded-lg border border-white/70 bg-white p-1 shadow-[0_18px_45px_rgba(0,0,0,0.18)] transition-transform duration-300 hover:-translate-y-2 hover:scale-[1.02] ${layout.className} ${index === 2 ? "hidden sm:block" : ""}`}
+                  className={`absolute block overflow-hidden rounded-xl border border-white/70 bg-white p-1 shadow-[0_24px_60px_rgba(0,0,0,0.22)] transition-transform duration-300 hover:-translate-y-1 ${layout.className} ${index > 5 ? "hidden md:block" : ""}`}
                   aria-label={`${manga.title} の作品ページへ`}
                 >
                   <MangaCover title={manga.title} id={manga.id} author={manga.author} size={layout.size} />
