@@ -327,18 +327,13 @@ function HeroVisual() {
       className="relative min-h-[390px] overflow-visible px-1 py-4 sm:min-h-[430px] md:min-h-[520px] md:px-2 md:py-6"
     >
       <div
-        className="absolute -bottom-4 right-[-4%] top-[-2%] w-[104%] rounded-[24px] opacity-100"
+        className="absolute bottom-0 left-0 right-[-3%] top-2 opacity-100"
         style={{
-          backgroundColor: "rgba(252,238,231,0.58)",
-          backgroundImage: "radial-gradient(circle at 2px 2px, rgba(192,57,43,0.25) 1.45px, transparent 0)",
-          backgroundSize: "15px 15px",
-          maskImage: "linear-gradient(90deg, transparent 0%, black 16%, black 100%)",
-          WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 16%, black 100%)",
+          backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.24) 1.45px, transparent 1.6px)",
+          backgroundPosition: "0 0",
+          backgroundSize: "14px 14px",
         }}
       />
-      <div className="absolute left-[6%] top-[-2%] h-[96%] w-[92%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.98)_0%,rgba(255,250,244,0.74)_42%,rgba(245,243,238,0)_76%)]" />
-      <span className="absolute left-6 top-10 h-10 w-10 rotate-[-28deg] border-l-4 border-t-4 border-[#c0392b]/35" />
-      <span className="absolute bottom-10 right-6 h-10 w-10 rotate-[18deg] border-b-4 border-r-4 border-[#c0392b]/35" />
       <div className="relative min-h-[360px] sm:min-h-[400px] md:min-h-[500px]">
         {heroMangaSets.map((set, setIndex) => (
           <div
