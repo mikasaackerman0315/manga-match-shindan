@@ -41,10 +41,10 @@ const heroMangaSets = [
 ];
 
 const heroCoverLayouts = [
-  { className: "left-[27%] top-[12%] rotate-[-5deg] z-20 scale-[0.86]", size: "hero" },
-  { className: "left-[47%] top-[5%] rotate-[4deg] z-30 scale-[0.88]", size: "hero" },
-  { className: "left-[67%] top-[12%] rotate-[-3deg] z-20 scale-[0.86]", size: "hero" },
-  { className: "right-[5%] top-[6%] rotate-[5deg] z-30 scale-[0.88]", size: "hero" },
+  { className: "left-[22%] top-[14%] rotate-[-4deg] z-20 scale-[0.78]", size: "hero" },
+  { className: "left-[42%] top-[7%] rotate-[3deg] z-30 scale-[0.8]", size: "hero" },
+  { className: "left-[62%] top-[14%] rotate-[-3deg] z-20 scale-[0.78]", size: "hero" },
+  { className: "left-[81%] top-[8%] rotate-[4deg] z-30 scale-[0.8]", size: "hero" },
 ];
 
 const featureCards = [
@@ -371,12 +371,12 @@ function HeroVisual() {
 
 function FeatureCard({ feature }) {
   return (
-    <div className="rounded-[8px] border border-black/10 bg-white/80 p-4 shadow-[0_10px_24px_rgba(10,10,10,0.07)]">
+    <div className="rounded-[8px] border border-black/10 bg-white/80 p-3 shadow-[0_10px_24px_rgba(10,10,10,0.07)]">
       <div className="mb-2 flex items-center gap-3">
         <HomeBadge icon={feature.icon} />
         <h3 className="text-base font-bold">{feature.title}</h3>
       </div>
-      <p className="text-xs leading-6" style={{ color: "#333" }}>{feature.text}</p>
+      <p className="text-[11px] leading-5" style={{ color: "#333" }}>{feature.text}</p>
     </div>
   );
 }
@@ -421,7 +421,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
       <Header language={language} setLanguage={setLanguage} onStartQuiz={onStartQuiz} />
 
       <main className="md:h-[calc(100vh-60px)] md:overflow-hidden">
-        <section className="relative overflow-hidden border-b border-black/10 md:h-[31vh] md:min-h-[270px] md:max-h-[320px]">
+        <section className="relative overflow-hidden border-b border-black/10 md:h-[37vh] md:min-h-[350px] md:max-h-[400px]">
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#fffdf9_0%,#fffdf9_42%,rgba(255,253,249,0.88)_58%,#fffdf9_100%)]" />
           <div
             className="pointer-events-none absolute bottom-0 right-0 top-0 hidden w-[70%] md:block"
@@ -465,7 +465,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-6 py-1 md:-mt-1 md:px-7 xl:px-8 2xl:px-10">
+        <section className="mx-auto max-w-[1920px] px-6 py-1 md:mt-2 md:px-7 xl:px-8 2xl:px-10">
           <h2 className="mb-2 text-lg font-bold">マンガマッチ診断の特徴</h2>
           <div className="grid gap-4 md:grid-cols-4">
             {featureCards.map((feature) => (
@@ -474,7 +474,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-[1920px] gap-4 px-6 py-1 md:grid-cols-[1fr_0.42fr] md:px-7 xl:px-8 2xl:px-10">
+        <section className="mx-auto grid max-w-[1920px] gap-3 px-6 py-1 md:grid-cols-[1fr_0.42fr] md:px-7 xl:px-8 2xl:px-10">
           <div>
             <h2 className="mb-2 text-lg font-bold">人気の探し方</h2>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-6">
@@ -482,13 +482,13 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
                 <a
                   key={card.title}
                   href={card.href}
-                  className="rounded-[8px] border border-black/10 bg-white/55 p-3 shadow-[0_8px_18px_rgba(10,10,10,0.04)] transition-transform hover:-translate-y-1"
+                  className="rounded-[8px] border border-black/10 bg-white/55 p-2.5 shadow-[0_8px_18px_rgba(10,10,10,0.04)] transition-transform hover:-translate-y-1"
                 >
                   <div className="mb-2">
                     <HomeBadge icon={card.icon} />
                   </div>
                   <h3 className="mb-1 text-sm font-bold">{card.title}</h3>
-                  <p className="text-[11px] leading-5" style={{ color: "#444" }}>{card.text}</p>
+                  <p className="text-[10px] leading-4" style={{ color: "#444" }}>{card.text}</p>
                 </a>
               ))}
             </div>
@@ -504,7 +504,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
                 key={theme.title}
                 href={theme.href}
                 onClick={() => trackEvent("theme_article_click", { theme_slug: theme.href.replace("/", ""), theme_title: theme.title })}
-                className={`relative min-h-[88px] min-w-[230px] overflow-hidden rounded-[8px] bg-gradient-to-br ${theme.tone} p-3 text-white shadow-[0_10px_22px_rgba(10,10,10,0.12)] transition-transform hover:-translate-y-1`}
+                className={`relative min-h-[78px] min-w-[230px] overflow-hidden rounded-[8px] bg-gradient-to-br ${theme.tone} p-3 text-white shadow-[0_10px_22px_rgba(10,10,10,0.12)] transition-transform hover:-translate-y-1`}
               >
                 <div className="absolute inset-0 opacity-25" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 0)", backgroundSize: "14px 14px" }} />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.42),transparent_32%),linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.38))]" />
