@@ -41,11 +41,10 @@ const heroMangaSets = [
 ];
 
 const heroCoverLayouts = [
-  { className: "left-[20%] top-[15%] rotate-[-5deg] z-20 scale-[0.84]", size: "hero" },
-  { className: "left-[36%] top-[7%] rotate-[4deg] z-30 scale-[0.86]", size: "hero" },
-  { className: "left-[52%] top-[15%] rotate-[-3deg] z-20 scale-[0.84]", size: "hero" },
-  { className: "left-[68%] top-[8%] rotate-[5deg] z-30 scale-[0.86]", size: "hero" },
-  { className: "right-[7%] top-[15%] rotate-[-4deg] z-20 scale-[0.84]", size: "hero" },
+  { className: "left-[27%] top-[12%] rotate-[-5deg] z-20 scale-[0.86]", size: "hero" },
+  { className: "left-[47%] top-[5%] rotate-[4deg] z-30 scale-[0.88]", size: "hero" },
+  { className: "left-[67%] top-[12%] rotate-[-3deg] z-20 scale-[0.86]", size: "hero" },
+  { className: "right-[5%] top-[6%] rotate-[5deg] z-30 scale-[0.88]", size: "hero" },
 ];
 
 const featureCards = [
@@ -340,16 +339,6 @@ function HeroVisual() {
     <div
       className="relative h-[320px] w-full overflow-visible px-1 py-4 sm:h-[360px] md:ml-10 md:mr-0 md:h-[300px] md:px-0 md:py-0 xl:ml-12 xl:mr-0"
     >
-      <div
-        className="hidden"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(190,30,30,0.16) 1.15px, transparent 1.25px)",
-          backgroundPosition: "0 0",
-          backgroundSize: "18px 18px",
-          WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 14%, black 90%, transparent 100%)",
-          maskImage: "linear-gradient(90deg, transparent 0%, black 14%, black 90%, transparent 100%)",
-        }}
-      />
       <div className="pointer-events-none absolute inset-y-0 left-[-5%] w-[22%] bg-gradient-to-r from-[#fffdf9] via-[#fffdf9]/75 to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-[-12%] w-[28%] bg-gradient-to-l from-[#fffdf9]/40 to-transparent" />
       <div className="pointer-events-none absolute bottom-0 left-[4%] right-[-2%] h-32 bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,0.17),transparent_64%)] blur-2xl" />
