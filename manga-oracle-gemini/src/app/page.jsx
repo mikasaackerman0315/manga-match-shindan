@@ -335,6 +335,233 @@ function RelatedThemeLinks({ recommendations, language }) {
   );
 }
 
+function ModeLogoMark({ className = "h-11 w-11" }) {
+  return (
+    <svg className={`${className} shrink-0`} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M24 4 41 14v20L24 44 7 34V14L24 4Z" stroke="#0a0a0a" strokeWidth="4" strokeLinejoin="round" />
+      <path d="M14 18.5c4.1 0 7 .9 10 3.3 3-2.4 5.9-3.3 10-3.3v12.7c-4.1 0-7 .9-10 3.3-3-2.4-5.9-3.3-10-3.3V18.5Z" fill="#0a0a0a" />
+      <path d="M24 21.8v12.7" stroke="#f5f3ee" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function ModeIcon({ type, className = "h-7 w-7", style = {} }) {
+  const common = {
+    className,
+    style,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": true,
+  };
+
+  if (type === "search") return <svg {...common}><circle cx="11" cy="11" r="7" /><path d="m16 16 4 4" /></svg>;
+  if (type === "user") return <svg {...common}><circle cx="12" cy="7.5" r="3.5" /><path d="M4.5 21c1.3-4 4-6 7.5-6s6.2 2 7.5 6" /></svg>;
+  if (type === "clipboard") return <svg {...common}><rect x="6" y="5" width="12" height="16" rx="2" /><path d="M9 5V3.8h6V5" /><path d="M9.5 11h5" /><path d="M9.5 15h5" /></svg>;
+  if (type === "magnifier") return <svg {...common}><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 4.5 4.5" /><path d="M8 10.5h5" /><path d="M10.5 8v5" /></svg>;
+  if (type === "clock") return <svg {...common}><circle cx="12" cy="12" r="8" /><path d="M12 7.5V12l3.2 2" /></svg>;
+  if (type === "chat") return <svg {...common}><path d="M5 6.5h14v9H9l-4 3v-12Z" /><path d="M8.5 10h7" /><path d="M8.5 13h4" /></svg>;
+  if (type === "sparkles") return <svg {...common}><path d="M12 3 13.5 8.5 19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3Z" /><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z" /></svg>;
+  if (type === "target") return <svg {...common}><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3" /><path d="M12 2v3" /><path d="M22 12h-3" /></svg>;
+  if (type === "heart") return <svg {...common}><path d="M12 20.2s-7.2-4.4-9.2-8.7C1.4 8.4 3.3 5 6.5 5c1.9 0 3.2 1 3.9 2.2C11.1 6 12.4 5 14.3 5c3.2 0 5.1 3.4 3.7 6.5-2 4.3-9 8.7-9 8.7Z" /></svg>;
+  if (type === "chart") return <svg {...common}><path d="M5 19V9" /><path d="M12 19V5" /><path d="M19 19v-7" /><path d="M3 19h18" /></svg>;
+  if (type === "bookmark") return <svg {...common}><path d="M7 4h10v17l-5-3.2L7 21V4Z" /></svg>;
+  if (type === "lightbulb") return <svg {...common}><path d="M8 14.5a6 6 0 1 1 8 0c-.9.8-1.4 1.6-1.6 2.5H9.6c-.2-.9-.7-1.7-1.6-2.5Z" /><path d="M10 21h4" /><path d="M9.5 18.5h5" /></svg>;
+  return null;
+}
+
+function DiagnosisModeScreen({ language, t, onStartMode, onBack }) {
+  const isJa = language === "ja";
+  const copy = isJa ? {
+    nav: ["ホーム", "診断する", "漫画を探す", "テーマから探す", "ランキング", "保存リスト", "好みプロフィール"],
+    subtitle: "あなたの好みに合わせて、最適な診断を選びましょう。",
+    simpleMeta: "6問 / 約1分",
+    detailedMeta: "15問 / 約4分",
+    simpleDesc: "気軽におすすめを知りたい人向け。サクッとあなたに合う漫画を見つけます。",
+    detailedDesc: "キャラ・世界観・読後感まで細かく分析。より精度の高いおすすめが知りたい人向け。",
+    start: "この診断を始める",
+    time: "所要時間",
+    questions: "質問数",
+    picks: "おすすめ数",
+    simplePicks: "5〜10作品",
+    detailedPicks: "10〜20作品",
+    historyTitle: "過去の診断結果を引き継ぎますか？",
+    historyText: "前回の診断をもとに、さらにあなたに合う漫画を提案します。",
+    historyButton: "履歴を引き継ぐ",
+    canDo: "診断することでできること",
+    tipTitle: "迷ったら「こだわり診断」がおすすめ！",
+    tipText: "より深く分析することで、あなたに本当に合う漫画が見つかりやすくなります。",
+    features: [
+      ["target", "あなたの好みを分析", "世界観・キャラ・展開・読後感など、多角的にあなたの好みを分析します。"],
+      ["heart", "相性の高い漫画を提案", "データベースとAI検索を組み合わせ、あなたに合う漫画を厳選して提案します。"],
+      ["chart", "相性スコアでわかりやすい", "なぜ合うのかをスコアや文章で表示。納得しながら選べます。"],
+      ["bookmark", "保存して後で見返せる", "気になる作品は保存可能。いつでも見返すことができます。"],
+    ],
+  } : {
+    nav: ["Home", "Quiz", "Manga", "Themes", "Ranking", "Saved", "Profile"],
+    subtitle: "Choose the diagnosis style that fits how deeply you want to search.",
+    simpleMeta: "6 questions / ~1 min",
+    detailedMeta: "15 questions / ~4 min",
+    simpleDesc: "For a quick recommendation. Find manga that fits you in a short flow.",
+    detailedDesc: "For deeper matching across characters, worlds, tone, and aftertaste.",
+    start: "Start this quiz",
+    time: "Time",
+    questions: "Questions",
+    picks: "Results",
+    simplePicks: "5-10 titles",
+    detailedPicks: "10-20 titles",
+    historyTitle: "Continue from your previous taste?",
+    historyText: "Use a more detailed quiz to refine recommendations from your previous direction.",
+    historyButton: "Continue",
+    canDo: "What the diagnosis can do",
+    tipTitle: "Not sure? Choose Deep Dive.",
+    tipText: "A deeper diagnosis makes it easier to find manga that genuinely fits your taste.",
+    features: [
+      ["target", "Analyze Your Taste", "Looks at worlds, characters, plot style, and reading mood from multiple angles."],
+      ["heart", "Recommend Better Matches", "Combines the manga database and AI search to suggest stronger matches."],
+      ["chart", "Clear Match Scores", "Shows why a title may fit you with scores and short reasoning."],
+      ["bookmark", "Save for Later", "Save interesting manga and revisit them whenever you want."],
+    ],
+  };
+  const navLinks = [
+    { label: copy.nav[0], onClick: onBack },
+    { label: copy.nav[1], active: true },
+    { label: copy.nav[2], href: "/manga" },
+    { label: copy.nav[3], href: "/themes" },
+    { label: copy.nav[4], href: "/trending-manga" },
+    { label: copy.nav[5], href: "/watchlist" },
+    { label: copy.nav[6], onClick: () => onStartMode("detailed") },
+  ];
+
+  return (
+    <div className="min-h-screen overflow-x-hidden bg-[#f8f6f1] text-[#0a0a0a]" style={{ fontFamily: "'Noto Serif JP', 'Cormorant Garamond', serif" }}>
+      <header className="relative z-20 border-b border-black/10 bg-[#fbfaf7]/95 backdrop-blur">
+        <div className="mx-auto flex max-w-[1536px] items-center justify-between gap-8 px-6 py-4 md:px-10 xl:px-12">
+          <button onClick={onBack} className="flex items-center gap-3 text-left">
+            <ModeLogoMark />
+            <span>
+              <span className="block text-xl font-bold leading-none">マンガマッチ診断</span>
+              <span className="mt-1 block text-xs">あなたにぴったりの漫画が見つかる</span>
+            </span>
+          </button>
+          <nav className="hidden items-center gap-8 text-sm font-bold lg:flex">
+            {navLinks.map((item) => item.href ? (
+              <a key={item.label} href={item.href} className={`relative py-3 transition-colors ${item.active ? "text-[#c0392b]" : "hover:text-[#c0392b]"}`}>
+                {item.label}
+                {item.active && <span className="absolute inset-x-0 -bottom-4 h-1 rounded-full bg-[#c0392b]" />}
+              </a>
+            ) : (
+              <button key={item.label} onClick={item.onClick} className={`relative py-3 transition-colors ${item.active ? "text-[#c0392b]" : "hover:text-[#c0392b]"}`}>
+                {item.label}
+                {item.active && <span className="absolute inset-x-0 -bottom-4 h-1 rounded-full bg-[#c0392b]" />}
+              </button>
+            ))}
+          </nav>
+          <div className="flex items-center gap-4 text-xs font-bold">
+            <a href="/manga" className="grid place-items-center gap-1 hover:text-[#c0392b]"><span className="grid h-10 w-10 place-items-center rounded-full border border-black/15 bg-white"><ModeIcon type="search" className="h-5 w-5" /></span>{isJa ? "検索" : "Search"}</a>
+            <a href="/watchlist" className="grid place-items-center gap-1 hover:text-[#c0392b]"><span className="grid h-10 w-10 place-items-center rounded-full border border-black/15 bg-white"><ModeIcon type="user" className="h-5 w-5" /></span>{isJa ? "マイページ" : "My Page"}</a>
+          </div>
+        </div>
+      </header>
+
+      <main className="relative mx-auto max-w-[1536px] px-6 pb-8 pt-7 md:px-10 xl:px-12">
+        <div className="pointer-events-none absolute left-0 top-28 h-72 w-72 opacity-80" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.16) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
+        <div className="pointer-events-none absolute right-0 top-0 h-80 w-[520px] rotate-[-8deg] opacity-[0.055]" style={{ backgroundImage: "linear-gradient(90deg, #0a0a0a 1px, transparent 1px), linear-gradient(#0a0a0a 1px, transparent 1px)", backgroundSize: "92px 132px" }} />
+
+        <div className="relative z-10 text-sm">
+          <button onClick={onBack} className="hover:text-[#c0392b]">{copy.nav[0]}</button>
+          <span className="mx-3 text-[#c0392b]">›</span>
+          <span>{copy.nav[1]}</span>
+        </div>
+
+        <section className="relative z-10 mx-auto mt-10 max-w-[1120px] text-center">
+          <div className="mx-auto mb-5 flex items-center justify-center gap-7 text-[#c0392b]">
+            <span className="h-px w-16 bg-[#c0392b]" />
+            <span className="grid h-9 w-9 place-items-center rounded-full border border-[#c0392b]/30 bg-white"><ModeLogoMark className="h-6 w-6" /></span>
+            <span className="h-px w-16 bg-[#c0392b]" />
+          </div>
+          <h1 className="text-3xl font-bold tracking-[0.08em] md:text-5xl">{t.chooseMode}</h1>
+          <p className="mt-4 text-sm text-black/65 md:text-base">{copy.subtitle}</p>
+        </section>
+
+        <section className="relative z-10 mx-auto mt-10 grid max-w-[980px] gap-7 md:grid-cols-2">
+          <DiagnosisModeCard variant="simple" icon="clipboard" title={t.simpleTitle} meta={copy.simpleMeta} desc={copy.simpleDesc} stats={[["clock", copy.time, isJa ? "約1分" : "~1 min"], ["chat", copy.questions, "6問"], ["sparkles", copy.picks, copy.simplePicks]]} button={copy.start} onClick={() => onStartMode("simple")} />
+          <DiagnosisModeCard variant="detailed" icon="magnifier" title={t.detailedTitle} meta={copy.detailedMeta} desc={copy.detailedDesc} stats={[["clock", copy.time, isJa ? "約4分" : "~4 min"], ["chat", copy.questions, "15問"], ["sparkles", copy.picks, copy.detailedPicks]]} button={copy.start} onClick={() => onStartMode("detailed")} />
+        </section>
+
+        <section className="relative z-10 mx-auto mt-7 flex max-w-[1120px] flex-col gap-5 rounded-lg border border-black/10 bg-white/55 p-5 shadow-[0_18px_50px_rgba(10,10,10,0.06)] md:flex-row md:items-center md:justify-between md:p-6">
+          <div className="flex items-center gap-5">
+            <span className="grid h-16 w-16 place-items-center rounded-full border border-black/10 bg-[#fbfaf7]"><ModeIcon type="user" className="h-8 w-8" /></span>
+            <span className="text-left">
+              <span className="block text-lg font-bold">{copy.historyTitle}</span>
+              <span className="mt-1 block text-sm leading-6 text-black/62">{copy.historyText}</span>
+            </span>
+          </div>
+          <button onClick={() => onStartMode("detailed")} className="rounded-md border border-black/20 bg-white px-10 py-4 text-sm font-bold transition hover:-translate-y-0.5 hover:border-[#c0392b] hover:text-[#c0392b]">
+            {copy.historyButton} →
+          </button>
+        </section>
+
+        <section className="relative z-10 mx-auto mt-8 max-w-[1120px]">
+          <h2 className="text-center text-2xl font-bold tracking-[0.12em]">{copy.canDo}</h2>
+          <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-[#c0392b]" />
+          <div className="mt-8 grid gap-5 md:grid-cols-4">
+            {copy.features.map(([icon, title, text]) => (
+              <div key={title} className="flex gap-4 border-r border-black/10 last:border-r-0 md:pr-5">
+                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white text-[#c0392b]"><ModeIcon type={icon} className="h-8 w-8" /></span>
+                <span className="text-left">
+                  <span className="block font-bold">{title}</span>
+                  <span className="mt-2 block text-xs leading-6 text-black/62">{text}</span>
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="relative z-10 mx-auto mt-8 flex max-w-[1120px] items-center gap-6 rounded-lg border border-[#c0392b]/12 bg-[#fff7f3] px-6 py-5">
+          <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[#f4c7bd] text-white"><ModeIcon type="lightbulb" className="h-9 w-9" /></span>
+          <span>
+            <span className="block font-bold text-[#c0392b]">{copy.tipTitle}</span>
+            <span className="mt-1 block text-sm text-black/65">{copy.tipText}</span>
+          </span>
+        </section>
+      </main>
+    </div>
+  );
+}
+
+function DiagnosisModeCard({ variant, icon, title, meta, desc, stats, button, onClick }) {
+  const dark = variant === "detailed";
+  const accent = dark ? "#d7a447" : "#c0392b";
+  return (
+    <button onClick={onClick} className={`group rounded-xl p-7 text-left shadow-[0_20px_60px_rgba(10,10,10,0.08)] transition hover:-translate-y-1 md:p-8 ${dark ? "bg-[#0a0a0a] text-[#f5f3ee]" : "bg-white/86 text-[#0a0a0a]"}`} style={{ border: `1px solid ${dark ? "rgba(215,164,71,0.36)" : "rgba(10,10,10,0.16)"}` }}>
+      <div className="mb-7 flex items-start gap-8">
+        <ModeIcon type={icon} className="h-16 w-16 shrink-0" style={{ color: accent }} />
+        <div>
+          <h3 className="text-2xl font-bold md:text-3xl">{title}</h3>
+          <div className="mt-4 text-lg font-bold" style={{ color: accent }}>{meta}</div>
+        </div>
+      </div>
+      <p className={`min-h-[56px] text-center text-sm leading-7 ${dark ? "text-white/80" : "text-black/68"}`}>{desc}</p>
+      <div className={`my-7 border-t border-dotted ${dark ? "border-[#d7a447]/45" : "border-black/18"}`} />
+      <div className="grid grid-cols-3 gap-3">
+        {stats.map(([statIcon, label, value]) => (
+          <div key={label} className={`flex items-center justify-center gap-2 border-r text-sm last:border-r-0 ${dark ? "border-white/10" : "border-black/10"}`}>
+            <ModeIcon type={statIcon} className="h-6 w-6" style={{ color: accent }} />
+            <span><span className="block text-xs opacity-70">{label}</span><span className="block font-bold">{value}</span></span>
+          </div>
+        ))}
+      </div>
+      <div className={`mt-8 flex items-center justify-center rounded-md px-6 py-4 text-sm font-bold transition group-hover:translate-x-1 ${dark ? "border border-[#d7a447] text-[#d7a447]" : "bg-[#c0392b] text-white"}`}>
+        {button} <span className="ml-5">→</span>
+      </div>
+    </button>
+  );
+}
+
 export default function App() {
   const [screen, setScreen] = useState("landing");
   const [language, setLanguage] = useState("ja");
@@ -536,7 +763,7 @@ export default function App() {
       fontFamily: "'Noto Serif JP', 'Cormorant Garamond', serif",
       color: "#0a0a0a",
     }}>
-      {!(screen === "landing" && USE_NEW_HOME) && <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+      {!(screen === "landing" && USE_NEW_HOME) && screen !== "mode" && <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
         <button onClick={() => setLanguage("ja")} className="px-3 py-1 text-xs tracking-wider transition-all"
           style={{ backgroundColor: language === "ja" ? "#0a0a0a" : "transparent", color: language === "ja" ? "#f5f3ee" : "#0a0a0a", border: "1px solid #0a0a0a" }}>JA</button>
         <button onClick={() => setLanguage("en")} className="px-3 py-1 text-xs tracking-wider transition-all"
@@ -586,6 +813,10 @@ export default function App() {
       ))}
 
       {screen === "mode" && (
+        <DiagnosisModeScreen language={language} t={t} onStartMode={startMode} onBack={() => setScreen("landing")} />
+      )}
+
+      {false && screen === "mode" && (
         <div className="min-h-screen flex flex-col items-center justify-center px-6 md:px-8 relative">
           <div className="max-w-4xl w-full">
             <div className="text-center mb-12">
