@@ -34,6 +34,15 @@ const heroMangaSets = [
   ],
 ];
 
+const heroCoverLayouts = [
+  { className: "left-[2%] top-[7%] rotate-[-7deg] z-20", size: "hero" },
+  { className: "left-[31%] top-[0%] rotate-[5deg] z-10", size: "hero" },
+  { className: "right-[5%] top-[9%] rotate-[8deg] z-20", size: "large" },
+  { className: "left-[10%] bottom-[2%] rotate-[6deg] z-30", size: "large" },
+  { className: "left-[43%] bottom-[5%] rotate-[-3deg] z-40", size: "hero" },
+  { className: "right-[-1%] bottom-[9%] rotate-[4deg] z-30", size: "hero" },
+];
+
 const featureCards = [
   {
     icon: "ai",
@@ -324,32 +333,39 @@ function HeroVisual() {
 
   return (
     <div
-      className="relative min-h-[390px] overflow-visible px-1 py-4 sm:min-h-[430px] md:min-h-[520px] md:px-2 md:py-6"
+      className="relative min-h-[390px] overflow-visible px-1 py-4 sm:min-h-[430px] md:h-[560px] md:min-h-[560px] md:px-0 md:py-0"
     >
       <div
-        className="absolute bottom-0 left-0 right-[-3%] top-2 opacity-100"
+        className="absolute bottom-4 left-[2%] right-[-2%] top-6 rounded-[20px] opacity-100 md:bottom-2 md:left-0 md:right-[-4%] md:top-2"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.24) 1.45px, transparent 1.6px)",
+          backgroundImage: "radial-gradient(circle, rgba(190,30,30,0.14) 1.15px, transparent 1.25px)",
           backgroundPosition: "0 0",
-          backgroundSize: "14px 14px",
+          backgroundSize: "18px 18px",
         }}
       />
-      <div className="relative min-h-[360px] sm:min-h-[400px] md:min-h-[500px]">
+      <div className="pointer-events-none absolute inset-y-0 left-[-2%] w-[20%] bg-gradient-to-r from-[#fffdf9] via-[#fffdf9]/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-[-6%] w-[24%] bg-gradient-to-l from-[#fffdf9]/45 to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-[6%] right-[4%] h-28 bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,0.15),transparent_62%)] blur-xl" />
+      <div className="relative min-h-[360px] sm:min-h-[400px] md:h-[560px] md:min-h-[560px]">
         {heroMangaSets.map((set, setIndex) => (
           <div
             key={setIndex}
-            className={`absolute inset-0 grid grid-cols-2 justify-items-center gap-x-0 gap-y-1 transition-opacity duration-700 ease-out sm:grid-cols-3 md:gap-x-2 md:gap-y-0 ${activeSet === setIndex ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
+            className={`absolute inset-0 transition-opacity duration-700 ease-out ${activeSet === setIndex ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
           >
-            {set.map((manga, index) => (
-              <a
-                key={manga.id}
-                href={`/manga/${manga.id}`}
-                className={`group block transition-transform hover:-translate-y-2 ${manga.tilt} ${manga.offset} ${index > 3 ? "hidden sm:block" : ""}`}
-                aria-label={`${manga.title} の作品ページへ`}
-              >
-                <MangaCover title={manga.title} id={manga.id} author={manga.author} size="hero" />
-              </a>
-            ))}
+            {set.map((manga, index) => {
+              const layout = heroCoverLayouts[index % heroCoverLayouts.length];
+
+              return (
+                <a
+                  key={manga.id}
+                  href={`/manga/${manga.id}`}
+                  className={`absolute block rounded-lg border border-white/70 bg-white p-1 shadow-[0_18px_45px_rgba(0,0,0,0.18)] transition-transform duration-300 hover:-translate-y-2 hover:scale-[1.02] ${layout.className} ${index === 2 ? "hidden sm:block" : ""}`}
+                  aria-label={`${manga.title} の作品ページへ`}
+                >
+                  <MangaCover title={manga.title} id={manga.id} author={manga.author} size={layout.size} />
+                </a>
+              );
+            })}
           </div>
         ))}
       </div>
@@ -407,12 +423,12 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
       <Header language={language} setLanguage={setLanguage} onStartQuiz={onStartQuiz} />
 
       <main>
-        <section className="relative overflow-hidden border-b border-black/10">
+        <section className="relative overflow-hidden border-b border-black/10 md:min-h-[610px]">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_45%,rgba(192,57,43,0.13),transparent_28%),radial-gradient(circle_at_16%_20%,rgba(255,255,255,0.9),transparent_28%)]" />
-          <div className="relative mx-auto grid max-w-[1680px] gap-6 px-4 pb-12 pt-10 md:grid-cols-[0.84fr_1.16fr] md:px-6 md:pb-14 md:pt-14 xl:px-10">
+          <div className="relative mx-auto grid max-w-[1536px] items-center gap-6 px-6 pb-12 pt-10 md:grid-cols-[0.45fr_0.55fr] md:px-10 md:pb-14 md:pt-14 xl:px-16">
             <div className="flex flex-col justify-center">
               <div className="mb-5 text-sm font-extrabold tracking-[0.02em] text-[#c0392b]" style={{ fontFamily: homeSans }}>AIがあなたの好みを分析</div>
-              <h1 className="mb-6 text-4xl font-bold leading-[1.18] tracking-normal sm:text-5xl md:text-6xl lg:text-[4.35rem]" style={{ fontFamily: homeSerif, fontWeight: 700 }}>
+              <h1 className="mb-6 text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-6xl xl:text-7xl" style={{ fontFamily: homeSerif, fontWeight: 700 }}>
                 <span className="block whitespace-nowrap">
                   あなたに<span className="text-[#c0392b]">本当に合う</span>
                 </span>
@@ -443,7 +459,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1680px] px-4 py-8 md:px-6 xl:px-10">
+        <section className="mx-auto max-w-[1536px] px-6 py-8 md:px-10 xl:px-16">
           <h2 className="mb-5 text-2xl font-bold">マンガマッチ診断の特徴</h2>
           <div className="grid gap-4 md:grid-cols-4">
             {featureCards.map((feature) => (
@@ -452,7 +468,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-[1680px] gap-6 px-4 py-8 md:grid-cols-[1fr_0.42fr] md:px-6 xl:px-10">
+        <section className="mx-auto grid max-w-[1536px] gap-6 px-6 py-8 md:grid-cols-[1fr_0.42fr] md:px-10 xl:px-16">
           <div>
             <h2 className="mb-5 text-2xl font-bold">人気の探し方</h2>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
@@ -474,7 +490,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           <ProfileCta onStartQuiz={onStartQuiz} />
         </section>
 
-        <section className="mx-auto max-w-[1680px] px-4 py-8 md:px-6 xl:px-10">
+        <section className="mx-auto max-w-[1536px] px-6 py-8 md:px-10 xl:px-16">
           <h2 className="mb-5 text-2xl font-bold">おすすめテーマから探す</h2>
           <div className="flex gap-4 overflow-x-auto pb-4">
             {themeCards.map((theme) => (
@@ -497,7 +513,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1480px] px-4 pb-10 pt-4 md:px-6 xl:px-10">
+        <section className="mx-auto max-w-[1536px] px-6 pb-10 pt-4 md:px-10 xl:px-16">
           <div className="rounded-[8px] border border-black/10 bg-white/45 px-5 py-4 text-center text-sm leading-7" style={{ color: "#333" }}>
             あなたの「好き」や「気になる」を大切に、マンガマッチ診断が新しい漫画との出会いをお手伝いします。
           </div>
