@@ -3,6 +3,9 @@
 import MangaCover from "./MangaCover";
 import { trackEvent } from "./analytics";
 
+const homeSans = "'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+const homeSerif = "'Noto Serif JP', 'Cormorant Garamond', serif";
+
 const heroManga = [
   { id: "jjk", title: "呪術廻戦", author: "芥見下々", tilt: "-rotate-6", offset: "md:translate-y-2" },
   { id: "aot", title: "進撃の巨人", author: "諫山創", tilt: "rotate-4", offset: "md:-translate-y-3" },
@@ -88,11 +91,11 @@ function Header({ language, setLanguage, onStartQuiz }) {
         <a href="/" className="flex min-w-0 items-center gap-3">
           <LogoMark />
           <div className="min-w-0">
-            <div className="whitespace-nowrap text-base font-bold md:text-xl">マンガマッチ診断</div>
-            <div className="hidden text-[11px] md:block" style={{ color: "#555" }}>あなたにぴったりの漫画が見つかる</div>
+            <div className="whitespace-nowrap text-base font-extrabold tracking-[0.01em] md:text-xl" style={{ fontFamily: homeSans }}>マンガマッチ診断</div>
+            <div className="hidden text-[11px] font-semibold md:block" style={{ color: "#555", fontFamily: homeSans }}>あなたにぴったりの漫画が見つかる</div>
           </div>
         </a>
-        <nav className="hidden flex-1 items-center justify-center gap-5 text-sm font-semibold lg:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-5 text-sm font-bold lg:flex" style={{ fontFamily: homeSans }}>
           {navItems.map((item) => {
             const className = `relative pb-2 transition-colors hover:text-[#c0392b] ${item.active ? "text-[#c0392b]" : ""}`;
             const underline = item.active ? <span className="absolute bottom-0 left-0 h-[3px] w-full rounded-full bg-[#c0392b]" /> : null;
@@ -194,19 +197,19 @@ function ProfileCta({ onStartQuiz }) {
 
 export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', 'Cormorant Garamond', serif" }}>
+    <div className="min-h-screen antialiased" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: homeSans }}>
       <Header language={language} setLanguage={setLanguage} onStartQuiz={onStartQuiz} />
 
       <main>
         <section className="mx-auto grid max-w-[1500px] gap-10 px-5 pb-12 pt-10 md:grid-cols-[0.9fr_1.1fr] md:px-8 md:pb-16 md:pt-16">
           <div className="flex flex-col justify-center">
-            <div className="mb-5 text-sm font-bold text-[#c0392b]">AIがあなたの好みを分析</div>
-            <h1 className="mb-6 text-4xl font-bold leading-[1.25] tracking-normal sm:text-5xl md:text-6xl">
+            <div className="mb-5 text-sm font-extrabold tracking-[0.02em] text-[#c0392b]" style={{ fontFamily: homeSans }}>AIがあなたの好みを分析</div>
+            <h1 className="mb-6 text-4xl font-bold leading-[1.22] tracking-normal sm:text-5xl md:text-6xl lg:text-[4.35rem]" style={{ fontFamily: homeSerif, fontWeight: 700 }}>
               あなたに<span className="text-[#c0392b]">本当に合う</span>
               <br />
               漫画を、見つけよう。
             </h1>
-            <p className="mb-8 max-w-2xl text-base leading-8 md:text-lg" style={{ color: "#222" }}>
+            <p className="mb-8 max-w-2xl text-base font-medium leading-8 md:text-lg" style={{ color: "#222", fontFamily: homeSans }}>
               いくつかの質問に答えるだけで、あなたの好みに近い漫画をAIが探します。データベースだけでなく、必要に応じてAI検索も使って候補を広げます。
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
