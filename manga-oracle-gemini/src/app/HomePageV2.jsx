@@ -41,12 +41,11 @@ const heroMangaSets = [
 ];
 
 const heroCoverLayouts = [
-  { className: "left-[24%] top-[2%] rotate-[-5deg] z-20 scale-[0.9]", size: "hero" },
-  { className: "left-[49%] top-[1%] rotate-[4deg] z-30 scale-[0.92]", size: "hero" },
-  { className: "right-[1%] top-[3%] rotate-[5deg] z-20 scale-[0.9]", size: "hero" },
-  { className: "left-[28%] bottom-[1%] rotate-[4deg] z-40 scale-[0.9]", size: "hero" },
-  { className: "left-[54%] bottom-[0%] rotate-[-3deg] z-50 scale-[0.92]", size: "hero" },
-  { className: "right-[-2%] bottom-[3%] rotate-[4deg] z-30 scale-[0.9]", size: "hero" },
+  { className: "left-[20%] top-[15%] rotate-[-5deg] z-20 scale-[0.84]", size: "hero" },
+  { className: "left-[36%] top-[7%] rotate-[4deg] z-30 scale-[0.86]", size: "hero" },
+  { className: "left-[52%] top-[15%] rotate-[-3deg] z-20 scale-[0.84]", size: "hero" },
+  { className: "left-[68%] top-[8%] rotate-[5deg] z-30 scale-[0.86]", size: "hero" },
+  { className: "right-[-1%] top-[15%] rotate-[-4deg] z-20 scale-[0.84]", size: "hero" },
 ];
 
 const featureCards = [
@@ -339,7 +338,7 @@ function HeroVisual() {
 
   return (
     <div
-      className="relative h-[390px] w-full overflow-visible px-1 py-4 sm:h-[430px] md:ml-10 md:-mr-28 md:h-[410px] md:px-0 md:py-0 xl:ml-12 xl:-mr-40"
+      className="relative h-[340px] w-full overflow-visible px-1 py-4 sm:h-[380px] md:ml-12 md:-mr-32 md:h-[330px] md:px-0 md:py-0 xl:ml-14 xl:-mr-44"
     >
       <div
         className="absolute bottom-4 left-[-10%] right-[-16%] top-4 rounded-[24px] opacity-100 md:bottom-0 md:left-[-8%] md:right-[-16%] md:top-0"
@@ -430,8 +429,8 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
     >
       <Header language={language} setLanguage={setLanguage} onStartQuiz={onStartQuiz} />
 
-      <main className="md:h-[calc(100vh-68px)] md:overflow-hidden">
-        <section className="relative overflow-hidden border-b border-black/10 md:h-[43vh] md:min-h-[350px] md:max-h-[430px]">
+      <main className="md:h-[calc(100vh-60px)] md:overflow-hidden">
+        <section className="relative overflow-hidden border-b border-black/10 md:h-[36vh] md:min-h-[300px] md:max-h-[360px]">
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#fffdf9_0%,#fffdf9_42%,rgba(255,253,249,0.88)_58%,#fffdf9_100%)]" />
           <div
             className="pointer-events-none absolute bottom-0 right-0 top-0 hidden w-[70%] md:block"
@@ -441,10 +440,10 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
               backgroundSize: "100% 100%, 18px 18px",
             }}
           />
-          <div className="relative mx-auto grid h-full max-w-[1920px] items-center gap-2 px-6 pb-8 pt-8 md:grid-cols-[0.32fr_0.68fr] md:px-7 md:pb-6 md:pt-6 xl:px-8 2xl:px-10">
+          <div className="relative mx-auto grid h-full max-w-[1920px] items-center gap-2 px-6 pb-7 pt-7 md:grid-cols-[0.32fr_0.68fr] md:px-7 md:pb-4 md:pt-4 xl:px-8 2xl:px-10">
             <div className="flex flex-col justify-center">
-              <div className="mb-3 text-sm font-extrabold tracking-[0.02em] text-[#c0392b]" style={{ fontFamily: homeSans }}>AIがあなたの好みを分析</div>
-              <h1 className="mb-4 text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-5xl xl:text-6xl" style={{ fontFamily: homeSerif, fontWeight: 700 }}>
+              <div className="mb-2 text-sm font-extrabold tracking-[0.02em] text-[#c0392b]" style={{ fontFamily: homeSans }}>AIがあなたの好みを分析</div>
+              <h1 className="mb-3 text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-5xl xl:text-[3.55rem]" style={{ fontFamily: homeSerif, fontWeight: 700 }}>
                 <span className="block whitespace-nowrap">
                   あなたに<span className="text-[#c0392b]">本当に合う</span>
                 </span>
@@ -452,20 +451,20 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
                   漫画を、見つけよう。
                 </span>
               </h1>
-              <p className="mb-5 max-w-2xl text-base font-medium leading-7 md:text-[15px] xl:text-base" style={{ color: "#222", fontFamily: homeSans }}>
+              <p className="mb-4 max-w-2xl text-base font-medium leading-7 md:text-[14px] xl:text-[15px]" style={{ color: "#222", fontFamily: homeSans }}>
                 いくつかの質問に答えるだけで、あなたの好みに近い漫画をAIが探します。データベースだけでなく、必要に応じてAI検索も使って候補を広げます。
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <button
                   type="button"
                   onClick={onStartQuiz}
-                  className="rounded-[6px] bg-[#c0392b] px-8 py-3.5 text-center text-sm font-bold text-white shadow-[0_10px_20px_rgba(192,57,43,0.18)] transition-transform hover:-translate-y-0.5"
+                  className="rounded-[6px] bg-[#c0392b] px-8 py-3 text-center text-sm font-bold text-white shadow-[0_10px_20px_rgba(192,57,43,0.18)] transition-transform hover:-translate-y-0.5"
                 >
                   診断を始める →
                 </button>
                 <a
                   href="/manga"
-                  className="rounded-[6px] border border-black/25 bg-white/70 px-8 py-3.5 text-center text-sm font-bold transition-transform hover:-translate-y-0.5"
+                  className="rounded-[6px] border border-black/25 bg-white/70 px-8 py-3 text-center text-sm font-bold transition-transform hover:-translate-y-0.5"
                 >
                   漫画を探す →
                 </a>
@@ -475,8 +474,8 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-6 py-3 md:px-7 xl:px-8 2xl:px-10">
-          <h2 className="mb-3 text-xl font-bold">マンガマッチ診断の特徴</h2>
+        <section className="mx-auto max-w-[1920px] px-6 py-2 md:px-7 xl:px-8 2xl:px-10">
+          <h2 className="mb-2 text-lg font-bold">マンガマッチ診断の特徴</h2>
           <div className="grid gap-4 md:grid-cols-4">
             {featureCards.map((feature) => (
               <FeatureCard key={feature.title} feature={feature} />
@@ -484,9 +483,9 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-[1920px] gap-5 px-6 py-3 md:grid-cols-[1fr_0.42fr] md:px-7 xl:px-8 2xl:px-10">
+        <section className="mx-auto grid max-w-[1920px] gap-4 px-6 py-2 md:grid-cols-[1fr_0.42fr] md:px-7 xl:px-8 2xl:px-10">
           <div>
-            <h2 className="mb-3 text-xl font-bold">人気の探し方</h2>
+            <h2 className="mb-2 text-lg font-bold">人気の探し方</h2>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-6">
               {exploreCards.map((card) => (
                 <a
@@ -506,8 +505,8 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           <ProfileCta onStartQuiz={onStartQuiz} />
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-6 py-3 md:px-7 xl:px-8 2xl:px-10">
-          <h2 className="mb-3 text-xl font-bold">おすすめテーマから探す</h2>
+        <section className="mx-auto max-w-[1920px] px-6 py-2 md:px-7 xl:px-8 2xl:px-10">
+          <h2 className="mb-2 text-lg font-bold">おすすめテーマから探す</h2>
           <div className="flex gap-3 overflow-x-auto pb-2">
             {themeCards.map((theme) => (
               <a
@@ -529,7 +528,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-6 pb-2 pt-1 md:px-7 xl:px-8 2xl:px-10">
+        <section className="mx-auto hidden max-w-[1920px] px-6 pb-2 pt-1 md:px-7 xl:px-8 2xl:px-10">
           <div className="rounded-[8px] border border-black/10 bg-white/45 px-5 py-2 text-center text-xs leading-6" style={{ color: "#333" }}>
             あなたの「好き」や「気になる」を大切に、マンガマッチ診断が新しい漫画との出会いをお手伝いします。
           </div>
