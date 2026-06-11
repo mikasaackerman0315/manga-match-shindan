@@ -41,14 +41,12 @@ const heroMangaSets = [
 ];
 
 const heroCoverLayouts = [
-  { className: "left-[0%] top-[9%] rotate-[-8deg] z-20 scale-[1.02]", size: "hero" },
-  { className: "left-[19%] top-[0%] rotate-[5deg] z-30 scale-[1.08]", size: "hero" },
-  { className: "left-[39%] top-[8%] rotate-[8deg] z-20 scale-[1.02]", size: "hero" },
-  { className: "right-[12%] top-[1%] rotate-[-4deg] z-30 scale-[1.04]", size: "hero" },
-  { className: "left-[7%] bottom-[2%] rotate-[6deg] z-40 scale-[0.98]", size: "hero" },
-  { className: "left-[30%] bottom-[0%] rotate-[-3deg] z-50 scale-[1.08]", size: "hero" },
-  { className: "left-[54%] bottom-[5%] rotate-[5deg] z-30 scale-[1.02]", size: "hero" },
-  { className: "right-[-5%] bottom-[11%] rotate-[-6deg] z-10 scale-[0.98]", size: "hero" },
+  { className: "left-[16%] top-[4%] rotate-[-6deg] z-20 scale-[0.98]", size: "hero" },
+  { className: "left-[40%] top-[0%] rotate-[4deg] z-30 scale-[1.02]", size: "hero" },
+  { className: "right-[8%] top-[5%] rotate-[6deg] z-20 scale-[0.98]", size: "hero" },
+  { className: "left-[21%] bottom-[5%] rotate-[5deg] z-40 scale-[0.96]", size: "hero" },
+  { className: "left-[47%] bottom-[1%] rotate-[-3deg] z-50 scale-[1.02]", size: "hero" },
+  { className: "right-[0%] bottom-[8%] rotate-[4deg] z-30 scale-[0.98]", size: "hero" },
 ];
 
 const featureCards = [
@@ -341,7 +339,7 @@ function HeroVisual() {
 
   return (
     <div
-      className="relative h-[430px] w-full overflow-visible px-1 py-4 sm:h-[470px] md:-ml-6 md:-mr-16 md:h-[590px] md:px-0 md:py-0 xl:-ml-8 xl:-mr-24"
+      className="relative h-[430px] w-full overflow-visible px-1 py-4 sm:h-[470px] md:ml-8 md:-mr-24 md:h-[590px] md:px-0 md:py-0 xl:ml-10 xl:-mr-32"
     >
       <div
         className="absolute bottom-4 left-[-10%] right-[-16%] top-4 rounded-[24px] opacity-100 md:bottom-0 md:left-[-8%] md:right-[-16%] md:top-0"
@@ -362,14 +360,14 @@ function HeroVisual() {
             key={setIndex}
             className={`absolute inset-0 transition-opacity duration-700 ease-out ${activeSet === setIndex ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
           >
-            {set.map((manga, index) => {
+            {set.slice(0, heroCoverLayouts.length).map((manga, index) => {
               const layout = heroCoverLayouts[index % heroCoverLayouts.length];
 
               return (
                 <a
                   key={manga.id}
                   href={`/manga/${manga.id}`}
-                  className={`absolute block overflow-hidden rounded-xl border border-white/70 bg-white p-1 shadow-[0_24px_60px_rgba(0,0,0,0.22)] transition-transform duration-300 hover:-translate-y-1 ${layout.className} ${index > 5 ? "hidden md:block" : ""}`}
+                  className={`absolute block overflow-hidden rounded-xl border border-white/70 bg-white p-1 shadow-[0_24px_60px_rgba(0,0,0,0.22)] transition-transform duration-300 hover:-translate-y-1 ${layout.className}`}
                   aria-label={`${manga.title} の作品ページへ`}
                 >
                   <MangaCover title={manga.title} id={manga.id} author={manga.author} size={layout.size} />
