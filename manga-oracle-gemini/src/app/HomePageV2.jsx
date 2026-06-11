@@ -45,7 +45,7 @@ const heroCoverLayouts = [
   { className: "left-[36%] top-[7%] rotate-[4deg] z-30 scale-[0.86]", size: "hero" },
   { className: "left-[52%] top-[15%] rotate-[-3deg] z-20 scale-[0.84]", size: "hero" },
   { className: "left-[68%] top-[8%] rotate-[5deg] z-30 scale-[0.86]", size: "hero" },
-  { className: "right-[-1%] top-[15%] rotate-[-4deg] z-20 scale-[0.84]", size: "hero" },
+  { className: "right-[7%] top-[15%] rotate-[-4deg] z-20 scale-[0.84]", size: "hero" },
 ];
 
 const featureCards = [
@@ -338,10 +338,10 @@ function HeroVisual() {
 
   return (
     <div
-      className="relative h-[340px] w-full overflow-visible px-1 py-4 sm:h-[380px] md:ml-12 md:-mr-32 md:h-[330px] md:px-0 md:py-0 xl:ml-14 xl:-mr-44"
+      className="relative h-[320px] w-full overflow-visible px-1 py-4 sm:h-[360px] md:ml-10 md:mr-0 md:h-[300px] md:px-0 md:py-0 xl:ml-12 xl:mr-0"
     >
       <div
-        className="absolute bottom-4 left-[-10%] right-[-16%] top-4 rounded-[24px] opacity-100 md:bottom-0 md:left-[-8%] md:right-[-16%] md:top-0"
+        className="hidden"
         style={{
           backgroundImage: "radial-gradient(circle, rgba(190,30,30,0.16) 1.15px, transparent 1.25px)",
           backgroundPosition: "0 0",
@@ -394,24 +394,26 @@ function FeatureCard({ feature }) {
 
 function ProfileCta({ onStartQuiz }) {
   return (
-    <aside className="relative overflow-hidden rounded-[10px] border border-[#c0392b]/45 bg-[#fff6f2] p-5 shadow-[0_12px_30px_rgba(192,57,43,0.1)] md:p-5">
-      <div className="relative mb-3 inline-block">
+    <aside className="relative overflow-hidden rounded-[10px] border border-[#c0392b]/45 bg-[#fff6f2] p-4 shadow-[0_12px_30px_rgba(192,57,43,0.1)] md:flex md:items-center md:gap-4 md:p-3">
+      <div className="relative mb-3 inline-block md:mb-0 md:scale-90">
         <HomeBadge icon="clipboard" size="lg" inverted />
         <span className="absolute -bottom-1 -right-2 grid h-9 w-9 place-items-center rounded-full bg-[#c0392b] text-white shadow-[0_6px_14px_rgba(192,57,43,0.25)]">
           <HomeIcon type="heart_filled" className="h-5 w-5" />
         </span>
       </div>
-      <h2 className="mb-2 text-xl font-bold">もっと細かく探したい方へ</h2>
-      <p className="mb-4 text-sm leading-6" style={{ color: "#333" }}>
-        好みプロフィールを設定すると、漫画一覧をあなたとの相性順で表示できます。
-      </p>
-      <button
-        type="button"
-        onClick={onStartQuiz}
-        className="w-full rounded-[6px] bg-[#c0392b] px-5 py-3 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
-      >
-        好みプロフィールを設定する →
-      </button>
+      <div className="min-w-0 flex-1">
+        <h2 className="mb-1 text-lg font-bold">もっと細かく探したい方へ</h2>
+        <p className="mb-3 hidden text-xs leading-5 xl:block" style={{ color: "#333" }}>
+          好みプロフィールを設定すると、漫画一覧をあなたとの相性順で表示できます。
+        </p>
+        <button
+          type="button"
+          onClick={onStartQuiz}
+          className="w-full rounded-[6px] bg-[#c0392b] px-4 py-2.5 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
+        >
+          好みプロフィールを設定する →
+        </button>
+      </div>
     </aside>
   );
 }
@@ -430,7 +432,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
       <Header language={language} setLanguage={setLanguage} onStartQuiz={onStartQuiz} />
 
       <main className="md:h-[calc(100vh-60px)] md:overflow-hidden">
-        <section className="relative overflow-hidden border-b border-black/10 md:h-[36vh] md:min-h-[300px] md:max-h-[360px]">
+        <section className="relative overflow-hidden border-b border-black/10 md:h-[31vh] md:min-h-[270px] md:max-h-[320px]">
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#fffdf9_0%,#fffdf9_42%,rgba(255,253,249,0.88)_58%,#fffdf9_100%)]" />
           <div
             className="pointer-events-none absolute bottom-0 right-0 top-0 hidden w-[70%] md:block"
@@ -474,7 +476,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-6 py-2 md:px-7 xl:px-8 2xl:px-10">
+        <section className="mx-auto max-w-[1920px] px-6 py-1 md:-mt-1 md:px-7 xl:px-8 2xl:px-10">
           <h2 className="mb-2 text-lg font-bold">マンガマッチ診断の特徴</h2>
           <div className="grid gap-4 md:grid-cols-4">
             {featureCards.map((feature) => (
@@ -483,7 +485,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-[1920px] gap-4 px-6 py-2 md:grid-cols-[1fr_0.42fr] md:px-7 xl:px-8 2xl:px-10">
+        <section className="mx-auto grid max-w-[1920px] gap-4 px-6 py-1 md:grid-cols-[1fr_0.42fr] md:px-7 xl:px-8 2xl:px-10">
           <div>
             <h2 className="mb-2 text-lg font-bold">人気の探し方</h2>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-6">
@@ -505,7 +507,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
           <ProfileCta onStartQuiz={onStartQuiz} />
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-6 py-2 md:px-7 xl:px-8 2xl:px-10">
+        <section className="mx-auto max-w-[1920px] px-6 py-1 md:-mt-1 md:px-7 xl:px-8 2xl:px-10">
           <h2 className="mb-2 text-lg font-bold">おすすめテーマから探す</h2>
           <div className="flex gap-3 overflow-x-auto pb-2">
             {themeCards.map((theme) => (
