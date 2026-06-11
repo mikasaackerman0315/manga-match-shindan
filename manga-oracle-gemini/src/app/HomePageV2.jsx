@@ -22,7 +22,7 @@ const featureCards = [
     text: "データベースだけでなく、必要に応じてAI検索も使って候補を広げます。",
   },
   {
-    icon: "♡",
+    icon: "LIKE",
     title: "好み分析",
     text: "ジャンル・読み味・苦手要素から、あなたの好みに近い作品を探します。",
   },
@@ -32,19 +32,19 @@ const featureCards = [
     text: "作品ごとに、あなたに合いそうな理由をスコアや文章で表示します。",
   },
   {
-    icon: "本",
+    icon: "BOOK",
     title: "試し読みリンク",
     text: "気になった作品をすぐに試し読み・購入ページへ移動できます。",
   },
 ];
 
 const exploreCards = [
-  { href: "/completed-manga", title: "完結済みから探す", text: "最後まで一気に楽しみたい人へ", icon: "✓" },
-  { href: "/short-manga", title: "短く読める漫画", text: "短時間でサクッと読みたい人へ", icon: "◷" },
-  { href: "/fantasy-manga", title: "ダークファンタジー", text: "重厚な世界観が好きな人へ", icon: "◆" },
-  { href: "/romance-manga", title: "恋愛・ラブコメ", text: "胸キュンや甘い関係性が好きな人へ", icon: "♥" },
-  { href: "/battle-manga", title: "バトル・アクション", text: "熱い戦いや能力バトルが好きな人へ", icon: "⚔" },
-  { href: "/trending-manga", title: "アニメ化作品", text: "アニメから入りたい人へ", icon: "▣" },
+  { href: "/completed-manga", title: "完結済みから探す", text: "最後まで一気に楽しみたい人へ", icon: "01" },
+  { href: "/short-manga", title: "短く読める漫画", text: "短時間でサクッと読みたい人へ", icon: "02" },
+  { href: "/fantasy-manga", title: "ダークファンタジー", text: "重厚な世界観が好きな人へ", icon: "03" },
+  { href: "/romance-manga", title: "恋愛・ラブコメ", text: "胸キュンや甘い関係性が好きな人へ", icon: "04" },
+  { href: "/battle-manga", title: "バトル・アクション", text: "熱い戦いや能力バトルが好きな人へ", icon: "05" },
+  { href: "/trending-manga", title: "アニメ化作品", text: "アニメから入りたい人へ", icon: "06" },
 ];
 
 const themeCards = [
@@ -68,6 +68,41 @@ function LogoMark() {
         style={{ backgroundColor: "#0a0a0a" }}
       />
     </div>
+  );
+}
+
+function HomeBadge({ children, size = "md", inverted = false }) {
+  const sizeClass = size === "lg" ? "h-16 w-16 text-[11px]" : "h-12 w-12 text-[10px]";
+  return (
+    <div
+      className={`grid ${sizeClass} shrink-0 place-items-center rounded-full border font-extrabold tracking-[0.08em]`}
+      style={{
+        borderColor: inverted ? "rgba(192,57,43,0.26)" : "rgba(192,57,43,0.18)",
+        backgroundColor: inverted ? "#fffdf9" : "rgba(192,57,43,0.08)",
+        color: "#c0392b",
+        fontFamily: homeSans,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function SearchGlyph() {
+  return (
+    <span className="relative block h-5 w-5" aria-hidden="true">
+      <span className="absolute left-0 top-0 h-4 w-4 rounded-full border-2 border-current" />
+      <span className="absolute bottom-0 right-0 h-2.5 w-0.5 rotate-[-45deg] rounded-full bg-current" />
+    </span>
+  );
+}
+
+function UserGlyph() {
+  return (
+    <span className="relative block h-5 w-5" aria-hidden="true">
+      <span className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 border-current" />
+      <span className="absolute bottom-0 left-1/2 h-2.5 w-4 -translate-x-1/2 rounded-t-full border-2 border-current border-b-0" />
+    </span>
   );
 }
 
@@ -116,11 +151,11 @@ function Header({ language, setLanguage, onStartQuiz }) {
           })}
         </nav>
         <div className="flex shrink-0 items-center gap-2">
-          <a href="/manga" className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-white/50" aria-label="検索">
-            <span className="text-xl leading-none">⌕</span>
+          <a href="/manga" className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-white/60 text-[#0a0a0a] transition-colors hover:border-[#c0392b]/30 hover:text-[#c0392b]" aria-label="検索">
+            <SearchGlyph />
           </a>
-          <a href="/watchlist" className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-white/50" aria-label="マイページ">
-            <span className="text-lg leading-none">♡</span>
+          <a href="/watchlist" className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-white/60 text-[#0a0a0a] transition-colors hover:border-[#c0392b]/30 hover:text-[#c0392b]" aria-label="保存リスト">
+            <UserGlyph />
           </a>
           <div className="hidden gap-1 md:flex" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             <button
@@ -146,8 +181,13 @@ function Header({ language, setLanguage, onStartQuiz }) {
 
 function HeroVisual() {
   return (
-    <div className="relative min-h-[330px] overflow-hidden rounded-[10px] border border-black/10 bg-white/45 px-5 py-8 shadow-[0_18px_45px_rgba(10,10,10,0.06)] md:min-h-[430px]">
-      <div className="absolute inset-0 opacity-70" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, rgba(192,57,43,0.16) 1px, transparent 0)", backgroundSize: "18px 18px" }} />
+    <div
+      className="relative min-h-[330px] overflow-hidden rounded-[10px] border border-black/10 px-5 py-8 shadow-[0_18px_45px_rgba(10,10,10,0.06)] md:min-h-[430px]"
+      style={{ background: "linear-gradient(135deg, rgba(255,253,249,0.86), rgba(245,243,238,0.78))" }}
+    >
+      <div className="absolute inset-0 opacity-70" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, rgba(192,57,43,0.12) 1px, transparent 0)", backgroundSize: "18px 18px" }} />
+      <div className="absolute inset-x-8 top-8 h-px bg-[#c0392b]/15" />
+      <div className="absolute inset-x-8 bottom-8 h-px bg-black/10" />
       <div className="relative grid grid-cols-2 justify-items-center gap-3 sm:grid-cols-3 md:gap-4">
         {heroManga.map((manga, index) => (
           <a
@@ -168,7 +208,7 @@ function FeatureCard({ feature }) {
   return (
     <div className="rounded-[8px] border border-black/10 bg-white/65 p-5 shadow-[0_10px_24px_rgba(10,10,10,0.05)]">
       <div className="mb-4 flex items-center gap-3">
-        <div className="grid h-12 w-12 place-items-center rounded-full bg-[#c0392b]/10 text-sm font-bold text-[#c0392b]">{feature.icon}</div>
+        <HomeBadge>{feature.icon}</HomeBadge>
         <h3 className="text-lg font-bold">{feature.title}</h3>
       </div>
       <p className="text-sm leading-7" style={{ color: "#333" }}>{feature.text}</p>
@@ -179,7 +219,9 @@ function FeatureCard({ feature }) {
 function ProfileCta({ onStartQuiz }) {
   return (
     <aside className="rounded-[10px] border border-[#c0392b]/25 bg-[#fff8f6] p-6 shadow-[0_12px_30px_rgba(192,57,43,0.08)] md:p-8">
-      <div className="mb-5 grid h-16 w-16 place-items-center rounded-[8px] border border-[#c0392b]/20 bg-white text-3xl">♡</div>
+      <div className="mb-5">
+        <HomeBadge size="lg" inverted>MATCH</HomeBadge>
+      </div>
       <h2 className="mb-3 text-2xl font-bold">もっと細かく探したい方へ</h2>
       <p className="mb-6 text-sm leading-7" style={{ color: "#333" }}>
         好みプロフィールを設定すると、漫画一覧をあなたとの相性順で表示できます。
@@ -250,7 +292,9 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
                   href={card.href}
                   className="rounded-[8px] border border-black/10 bg-white/55 p-4 shadow-[0_8px_18px_rgba(10,10,10,0.04)] transition-transform hover:-translate-y-1"
                 >
-                  <div className="mb-3 text-2xl text-[#c0392b]">{card.icon}</div>
+                  <div className="mb-3">
+                    <HomeBadge>{card.icon}</HomeBadge>
+                  </div>
                   <h3 className="mb-2 text-base font-bold">{card.title}</h3>
                   <p className="text-xs leading-6" style={{ color: "#444" }}>{card.text}</p>
                 </a>
@@ -272,7 +316,9 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
               >
                 <div className="absolute inset-0 opacity-25" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 0)", backgroundSize: "14px 14px" }} />
                 <div className="relative flex h-full flex-col justify-end">
-                  <div className="mb-2 h-8 w-8 rounded-full border border-white/50 bg-white/10" />
+                  <div className="mb-3 inline-flex h-8 w-12 items-center justify-center rounded-full border border-white/45 bg-white/10 text-[10px] font-extrabold tracking-[0.14em]">
+                    PICK
+                  </div>
                   <h3 className="text-base font-bold leading-7 drop-shadow">{theme.title}</h3>
                 </div>
               </a>
