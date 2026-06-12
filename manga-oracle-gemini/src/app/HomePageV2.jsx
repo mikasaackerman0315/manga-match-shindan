@@ -245,7 +245,7 @@ function UserGlyph() {
   );
 }
 
-function Header({ language, setLanguage, onStartQuiz }) {
+export function MangaMatchHeader({ language, setLanguage, onStartQuiz, active = "home" }) {
   const navItems = [
     { label: "ホーム", href: "/", active: true },
     { label: "診断する", action: onStartQuiz },
@@ -255,6 +255,11 @@ function Header({ language, setLanguage, onStartQuiz }) {
     { label: "保存リスト", href: "/watchlist" },
     { label: "好みプロフィール", action: onStartQuiz },
   ];
+
+  const resolvedNavItems = navItems.map((item, index) => ({
+    ...item,
+    active: index === 0 ? active === "home" : index === 1 ? active === "diagnosis" : Boolean(item.active),
+  }));
 
   return (
     <header
@@ -270,7 +275,7 @@ function Header({ language, setLanguage, onStartQuiz }) {
           </div>
         </a>
         <nav className="hidden flex-1 items-center justify-center gap-5 text-sm font-bold lg:flex" style={{ fontFamily: homeSans }}>
-          {navItems.map((item) => {
+          {resolvedNavItems.map((item) => {
             const className = `relative pb-2 transition-colors hover:text-[#c0392b] ${item.active ? "text-[#c0392b]" : ""}`;
             const underline = item.active ? <span className="absolute bottom-0 left-0 h-[3px] w-full rounded-full bg-[#c0392b]" /> : null;
             if (item.action) {
@@ -418,7 +423,7 @@ export default function HomePageV2({ language, setLanguage, onStartQuiz }) {
         fontFamily: homeSans,
       }}
     >
-      <Header language={language} setLanguage={setLanguage} onStartQuiz={onStartQuiz} />
+      <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={onStartQuiz} active="home" />
 
       <main className="md:h-[calc(100vh-60px)] md:overflow-hidden">
         <section className="relative overflow-hidden border-b border-black/10 md:h-[37vh] md:min-h-[350px] md:max-h-[400px]">

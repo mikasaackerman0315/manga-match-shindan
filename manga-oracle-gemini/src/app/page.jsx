@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { QUESTIONS_SIMPLE, QUESTIONS_DETAILED } from "@/data/questions";
-import HomePageV2 from "./HomePageV2";
+import HomePageV2, { MangaMatchHeader } from "./HomePageV2";
 import MangaCover from "./MangaCover";
 import StoreLinks from "./StoreLinks";
 import WatchLaterButton from "@/components/WatchLaterButton";
@@ -428,16 +428,6 @@ function DiagnosisModeScreen({ language, setLanguage, t, onStartMode, onBack }) 
       ["bookmark", "Save for Later", "Save interesting manga and revisit them whenever you want."],
     ],
   };
-  const navLinks = [
-    { label: copy.nav[0], onClick: onBack },
-    { label: copy.nav[1], active: true },
-    { label: copy.nav[2], href: "/manga" },
-    { label: copy.nav[3], href: "/themes" },
-    { label: copy.nav[4], href: "/trending-manga" },
-    { label: copy.nav[5], href: "/watchlist" },
-    { label: copy.nav[6], onClick: () => onStartMode("detailed") },
-  ];
-
   return (
     <div
       className="min-h-screen overflow-x-hidden antialiased"
@@ -448,59 +438,7 @@ function DiagnosisModeScreen({ language, setLanguage, t, onStartMode, onBack }) 
         fontFamily: modeSans,
       }}
     >
-      <header
-        className="sticky top-0 z-40 border-b"
-        style={{ borderColor: "rgba(10,10,10,0.1)", backgroundColor: "rgba(245,243,238,0.92)", backdropFilter: "blur(18px)" }}
-      >
-        <div className="mx-auto flex max-w-[1920px] items-center justify-between gap-4 px-4 py-2 md:px-8">
-          <button onClick={onBack} className="flex min-w-0 items-center gap-3 text-left">
-            <ModeLogoMark />
-            <span className="min-w-0">
-              <span className="block whitespace-nowrap text-base font-extrabold leading-none tracking-[0.01em] md:text-xl" style={{ fontFamily: modeSans }}>マンガマッチ診断</span>
-              <span className="mt-1 hidden text-[11px] font-semibold md:block" style={{ color: "#555", fontFamily: modeSans }}>あなたにぴったりの漫画が見つかる</span>
-            </span>
-          </button>
-          <nav className="hidden flex-1 items-center justify-center gap-5 text-sm font-bold lg:flex" style={{ fontFamily: modeSans }}>
-            {navLinks.map((item) => item.href ? (
-              <a key={item.label} href={item.href} className={`relative pb-2 transition-colors hover:text-[#c0392b] ${item.active ? "text-[#c0392b]" : ""}`}>
-                {item.label}
-                {item.active && <span className="absolute bottom-0 left-0 h-[3px] w-full rounded-full bg-[#c0392b]" />}
-              </a>
-            ) : (
-              <button key={item.label} onClick={item.onClick} className={`relative pb-2 transition-colors hover:text-[#c0392b] ${item.active ? "text-[#c0392b]" : ""}`}>
-                {item.label}
-                {item.active && <span className="absolute bottom-0 left-0 h-[3px] w-full rounded-full bg-[#c0392b]" />}
-              </button>
-            ))}
-          </nav>
-          <div className="flex shrink-0 items-center gap-3 text-xs font-bold" style={{ fontFamily: modeSans }}>
-            <a href="/manga" className="grid place-items-center gap-1 transition-colors hover:text-[#c0392b]">
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-white/80"><ModeIcon type="search" className="h-5 w-5" /></span>
-              <span className="hidden text-[11px] font-semibold md:block">{isJa ? "検索" : "Search"}</span>
-            </a>
-            <a href="/watchlist" className="grid place-items-center gap-1 transition-colors hover:text-[#c0392b]">
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-white/80"><ModeIcon type="user" className="h-5 w-5" /></span>
-              <span className="hidden text-[11px] font-semibold md:block">{isJa ? "マイページ" : "My Page"}</span>
-            </a>
-            <div className="hidden gap-1 pt-1 md:flex" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-              <button
-                onClick={() => setLanguage("ja")}
-                className="px-2 py-1 text-[10px]"
-                style={{ border: "1px solid #0a0a0a", backgroundColor: language === "ja" ? "#0a0a0a" : "transparent", color: language === "ja" ? "#f5f3ee" : "#0a0a0a" }}
-              >
-                JA
-              </button>
-              <button
-                onClick={() => setLanguage("en")}
-                className="px-2 py-1 text-[10px]"
-                style={{ border: "1px solid #0a0a0a", backgroundColor: language === "en" ? "#0a0a0a" : "transparent", color: language === "en" ? "#f5f3ee" : "#0a0a0a" }}
-              >
-                EN
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={() => {}} active="diagnosis" />
 
       <main className="relative mx-auto max-w-[1920px] px-6 pb-8 pt-4 md:px-7 xl:px-8 2xl:px-10">
         <div className="pointer-events-none absolute left-0 top-28 h-72 w-72 opacity-80" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.16) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
