@@ -13,6 +13,10 @@ body {
   cursor: default;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body,
 button,
 a,
