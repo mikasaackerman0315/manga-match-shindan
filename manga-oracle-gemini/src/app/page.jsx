@@ -211,6 +211,19 @@ const LOADING_SIDE_DISCOVERY_DETAILS = {
   },
 };
 
+function createLoadingSeed() {
+  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
+    const values = new Uint32Array(1);
+    crypto.getRandomValues(values);
+    return values[0] || Date.now();
+  }
+  return Date.now() + Math.floor(Math.random() * 2147483647);
+}
+
+function getRandomLoadingIndex(length) {
+  return length > 0 ? Math.floor(Math.random() * length) : 0;
+}
+
 function seededShuffle(items, seed) {
   const shuffled = [...items];
   let state = Math.max(1, Math.floor(seed) % 2147483647);
@@ -935,7 +948,7 @@ export default function App() {
   const [error, setError] = useState(null);
   const [loadingStep, setLoadingStep] = useState(0);
   const [loadingMangaIndex, setLoadingMangaIndex] = useState(0);
-  const [loadingMangaSeed, setLoadingMangaSeed] = useState(1);
+  const [loadingMangaSeed, setLoadingMangaSeed] = useState(() => createLoadingSeed());
   const prefetchRef = useRef({ key: "", promise: null });
 
   const t = T[language];
@@ -957,6 +970,19 @@ export default function App() {
       return () => clearInterval(interval);
     }
   }, [screen]);
+
+  useEffect(() => {
+    if (screen !== "loading") return;
+    const interval = setInterval(() => {
+      setLoadingMangaIndex((prev) => {
+        const length = loadingRecommendations.length;
+        if (length <= 1) return prev;
+        const jump = 1 + Math.floor(Math.random() * Math.min(3, length - 1));
+        return (prev + jump) % length;
+      });
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [screen, loadingRecommendations.length]);
 
   const startMode = (selectedMode) => {
     trackEvent("diagnosis_start", { diagnosis_type: getDiagnosisType(selectedMode) });
@@ -1055,10 +1081,12 @@ export default function App() {
 
   const submitQuiz = async () => {
     const diagnosisStartedAt = Date.now();
+    const nextLoadingSeed = createLoadingSeed();
+    const nextLoadingRecommendations = getLoadingRecommendations(answers, language, nextLoadingSeed);
     setScreen("loading");
     setLoadingStep(0);
-    setLoadingMangaIndex(0);
-    setLoadingMangaSeed(Date.now());
+    setLoadingMangaSeed(nextLoadingSeed);
+    setLoadingMangaIndex(getRandomLoadingIndex(nextLoadingRecommendations.length));
     setError(null);
     setResults(null);
     try {
