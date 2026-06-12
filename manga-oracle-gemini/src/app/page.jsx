@@ -759,7 +759,6 @@ function LoadingResultScreen({
   language,
   setLanguage,
   results,
-  loadingStep,
   recommendations,
   loadingMangaIndex,
   onNextDiscovery,
@@ -824,7 +823,7 @@ function LoadingResultScreen({
             </div>
           </div>
 
-          <h1 className="text-3xl font-bold leading-tight md:text-4xl xl:text-[40px]" style={{ fontFamily: modeSerif, fontWeight: 800 }}>
+          <h1 className="whitespace-nowrap text-3xl font-bold leading-tight md:text-4xl xl:text-[38px]" style={{ fontFamily: modeSerif, fontWeight: 800 }}>
             {completed ? (
               <>{language === "ja" ? "診断が" : "Diagnosis "} <span className="text-[#c0392b]">{language === "ja" ? "完了" : "Complete"}</span>{language === "ja" ? "しました！" : ""}</>
             ) : (
@@ -836,15 +835,6 @@ function LoadingResultScreen({
             {leadLines.map((line) => <p key={line}>{line}</p>)}
           </div>
 
-          <div className="mt-8 flex justify-center gap-2 xl:justify-center">
-            {Array.from({ length: LOADING_STEP_COUNT }).map((_, idx) => (
-              <span
-                key={idx}
-                className="h-1.5 w-10 rounded-full transition-all"
-                style={{ backgroundColor: idx <= (completed ? LOADING_STEP_COUNT - 1 : loadingStep) ? "#c0392b" : "rgba(10,10,10,0.14)" }}
-              />
-            ))}
-          </div>
         </section>
 
         <section className="relative z-10">
@@ -884,13 +874,6 @@ function LoadingResultScreen({
                 )}
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   <WatchLaterButton item={{ title_ja: rec.title, title_en: rec.title, author: rec.author, description: rec.lead }} sourceContext="診断中のおすすめ" compact />
-                  <button
-                    type="button"
-                    onClick={onNextDiscovery}
-                    className="rounded-md border border-black/22 bg-white px-5 py-3 text-sm font-bold transition hover:border-[#c0392b] hover:text-[#c0392b]"
-                  >
-                    {t.nextDiscovery} →
-                  </button>
                 </div>
               </div>
             </div>
@@ -1362,7 +1345,6 @@ export default function App() {
           language={language}
           setLanguage={setLanguage}
           results={results}
-          loadingStep={loadingStep}
           recommendations={loadingRecommendations}
           loadingMangaIndex={loadingMangaIndex}
           onNextDiscovery={() => setLoadingMangaIndex((prev) => (prev + 1) % loadingRecommendations.length)}
