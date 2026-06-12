@@ -465,19 +465,6 @@ function DiagnosisModeScreen({ language, setLanguage, t, onStartMode, onBack }) 
           <DiagnosisModeCard variant="detailed" icon="magnifier" title={t.detailedTitle} meta={copy.detailedMeta} desc={copy.detailedDesc} stats={[["clock", copy.time, isJa ? "約4分" : "~4 min"], ["chat", copy.questions, "15問"], ["sparkles", copy.picks, copy.detailedPicks]]} button={copy.start} onClick={() => onStartMode("detailed")} />
         </section>
 
-        <section className="relative z-10 mx-auto mt-7 flex max-w-[1120px] flex-col gap-5 rounded-lg border border-black/10 bg-white/55 p-5 shadow-[0_18px_50px_rgba(10,10,10,0.06)] md:flex-row md:items-center md:justify-between md:p-6">
-          <div className="flex items-center gap-5">
-            <span className="grid h-16 w-16 place-items-center rounded-full border border-black/10 bg-[#fbfaf7]"><ModeIcon type="user" className="h-8 w-8" /></span>
-            <span className="text-left">
-              <span className="block text-lg font-bold">{copy.historyTitle}</span>
-              <span className="mt-1 block text-sm leading-6 text-black/62">{copy.historyText}</span>
-            </span>
-          </div>
-          <button onClick={() => onStartMode("detailed")} className="rounded-md border border-black/20 bg-white px-10 py-4 text-sm font-bold transition hover:-translate-y-0.5 hover:border-[#c0392b] hover:text-[#c0392b]">
-            {copy.historyButton} →
-          </button>
-        </section>
-
         <section className="relative z-10 mx-auto mt-8 max-w-[1120px]">
           <h2 className="text-center text-2xl font-bold tracking-[0.12em]">{copy.canDo}</h2>
           <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-[#c0392b]" />
