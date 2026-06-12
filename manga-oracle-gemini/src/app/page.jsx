@@ -522,6 +522,248 @@ function DiagnosisModeCard({ variant, icon, title, meta, desc, stats, button, on
   );
 }
 
+const QUIZ_OPTION_VISUALS = {
+  battle: { icon: "⚔", color: "#c0392b", hint_ja: "熱い戦いや勝負を重視します。", hint_en: "Prioritize action and conflict." },
+  mystery: { icon: "◆", color: "#8e44ad", hint_ja: "謎解きや先が読めない展開を重視します。", hint_en: "Prioritize mystery and suspense." },
+  romance: { icon: "♥", color: "#d94d65", hint_ja: "恋愛や関係性の揺れを重視します。", hint_en: "Prioritize romance and relationships." },
+  self_discovery: { icon: "✎", color: "#3aa7a3", hint_ja: "成長や心の変化を重視します。", hint_en: "Prioritize growth and self-discovery." },
+  sports: { icon: "○", color: "#2f80ed", hint_ja: "競技や努力の熱さを重視します。", hint_en: "Prioritize competition and effort." },
+  survival: { icon: "△", color: "#d35400", hint_ja: "危機感と生き残る緊張を重視します。", hint_en: "Prioritize survival tension." },
+  friendship: { icon: "◎", color: "#b7950b", hint_ja: "仲間との絆やチーム感を重視します。", hint_en: "Prioritize bonds and teamwork." },
+  fantasy: { icon: "♜", color: "#399267", hint_ja: "魔法や異世界の広がりを重視します。", hint_en: "Prioritize fantasy worlds." },
+  sci_fi: { icon: "◌", color: "#3282b8", hint_ja: "科学・未来・近未来感を重視します。", hint_en: "Prioritize sci-fi ideas." },
+  historical: { icon: "▥", color: "#9a6b3f", hint_ja: "時代性や歴史の空気を重視します。", hint_en: "Prioritize historical atmosphere." },
+  horror: { icon: "◐", color: "#30343f", hint_ja: "怖さや不穏な空気を重視します。", hint_en: "Prioritize horror and unease." },
+  modern: { icon: "□", color: "#59656f", hint_ja: "現代の生活感や身近さを重視します。", hint_en: "Prioritize modern realism." },
+  school: { icon: "◇", color: "#607d8b", hint_ja: "学校や青春の空気を重視します。", hint_en: "Prioritize school life." },
+  virtual: { icon: "⌘", color: "#4a69bd", hint_ja: "ゲーム・仮想世界の面白さを重視します。", hint_en: "Prioritize virtual worlds." },
+  workplace: { icon: "▤", color: "#8d6e63", hint_ja: "仕事や専門分野の面白さを重視します。", hint_en: "Prioritize work and expertise." },
+  serious: { icon: "■", color: "#242424", hint_ja: "重みのある読後感を重視します。", hint_en: "Prioritize serious tone." },
+  light_comedy: { icon: "☻", color: "#f39c12", hint_ja: "楽しく読める軽さを重視します。", hint_en: "Prioritize comedy and lightness." },
+  dark: { icon: "●", color: "#2c2c34", hint_ja: "暗さや刺さる展開を重視します。", hint_en: "Prioritize dark intensity." },
+  healing: { icon: "☼", color: "#e67e22", hint_ja: "やさしさや癒しを重視します。", hint_en: "Prioritize comfort." },
+  emotional: { icon: "涙", color: "#3498db", hint_ja: "感情が動く展開を重視します。", hint_en: "Prioritize emotional impact." },
+  any: { icon: "…", color: "#9b9b9b", hint_ja: "条件を固定せず、広めに探します。", hint_en: "Keep this condition open." },
+};
+
+function getQuizOptionVisual(value) {
+  if (QUIZ_OPTION_VISUALS[value]) return QUIZ_OPTION_VISUALS[value];
+  if (value?.includes("romance")) return QUIZ_OPTION_VISUALS.romance;
+  if (value?.includes("battle")) return QUIZ_OPTION_VISUALS.battle;
+  if (value?.includes("mystery")) return QUIZ_OPTION_VISUALS.mystery;
+  if (value?.includes("horror") || value?.includes("dark")) return QUIZ_OPTION_VISUALS.horror;
+  if (value?.includes("healing") || value?.includes("warm")) return QUIZ_OPTION_VISUALS.healing;
+  if (value?.includes("fame")) return { icon: "★", color: "#c0392b", hint_ja: "知名度や話題性の好みを反映します。", hint_en: "Use popularity preference." };
+  if (value?.includes("type")) return { icon: "▣", color: "#c0392b", hint_ja: "作品タイプの好みを反映します。", hint_en: "Use manga type preference." };
+  if (value?.includes("reading")) return { icon: "↗", color: "#c0392b", hint_ja: "読み進める快感の好みを反映します。", hint_en: "Use reading-flow preference." };
+  if (value?.includes("immersion")) return { icon: "◎", color: "#c0392b", hint_ja: "没入感の好みを反映します。", hint_en: "Use immersion preference." };
+  return { icon: "•", color: "#7b746d", hint_ja: "この条件を候補に反映します。", hint_en: "Use this preference for matching." };
+}
+
+function getQuizText(item, language) {
+  return language === "ja" ? item.ja || item.text_ja || item.en || item.text_en : item.en || item.text_en || item.ja || item.text_ja;
+}
+
+function QuizQuestionScreen({
+  language,
+  setLanguage,
+  mode,
+  questions,
+  currentQ,
+  answers,
+  onAnswer,
+  onClearAnswer,
+  onNext,
+  onBack,
+  onSkip,
+  canProceed,
+}) {
+  const q = questions[currentQ];
+  const selectedValues = answers[q.id] || [];
+  const selectedOptions = q.options.filter((opt) => selectedValues.includes(opt.v));
+  const progress = ((currentQ + 1) / questions.length) * 100;
+  const isMulti = q.type === "multi";
+
+  const copy = language === "ja" ? {
+    quit: "診断をやめる",
+    question: "QUESTION",
+    remain: "残り",
+    questions: "問",
+    selectHint: isMulti ? `特に惹かれるものを最大${q.max}つまで選んでください。` : "直感でいちばん近いものを選んでください。",
+    hintTitle: "選び方のヒント",
+    hintItems: isMulti
+      ? ["直感で「惹かれる！」と思うものを選んでください。", "あとから自由記述で細かく補足できます。", "迷ったら「こだわらない」以外から選んでみましょう。"]
+      : ["正解はありません。今読みたい気分に近いものを選んでください。", "迷ったら、最初に目に入ったものを選ぶのがおすすめです。", "あとから自由記述で補足できます。"],
+    selectedTitle: "選択中の回答",
+    emptySelected: "まだ選択されていません",
+    skipTitle: "スキップできます",
+    skipText: "迷った時だけ次の質問へ",
+    skipButton: "この質問をスキップ",
+    back: "戻る",
+    next: currentQ === questions.length - 1 ? "自由記述へ" : "次の質問へ",
+    selectedCount: "選択中",
+  } : {
+    quit: "Quit quiz",
+    question: "QUESTION",
+    remain: "left",
+    questions: "questions",
+    selectHint: isMulti ? `Choose up to ${q.max}.` : "Choose the closest answer.",
+    hintTitle: "Selection Hint",
+    hintItems: isMulti
+      ? ["Pick what feels immediately attractive.", "You can add nuance in free text later.", "If unsure, choose something other than no preference."]
+      : ["There is no correct answer. Pick what matches your current mood.", "If unsure, trust your first impression.", "You can add nuance in free text later."],
+    selectedTitle: "Selected answers",
+    emptySelected: "Nothing selected yet",
+    skipTitle: "You can skip",
+    skipText: "Move on when you are unsure",
+    skipButton: "Skip this question",
+    back: "Back",
+    next: currentQ === questions.length - 1 ? "Free text" : "Next question",
+    selectedCount: "Selected",
+  };
+
+  return (
+    <div
+      className="min-h-screen overflow-x-hidden antialiased"
+      style={{
+        backgroundColor: "#f6f2ea",
+        backgroundImage: "linear-gradient(180deg, #fffdf9 0%, #f6f2ea 46%, #f5f3ee 100%)",
+        color: "#0a0a0a",
+        fontFamily: modeSans,
+      }}
+    >
+      <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={() => {}} active="diagnosis" />
+
+      <main className="relative mx-auto grid max-w-[1920px] gap-6 px-6 py-5 md:px-7 xl:grid-cols-[280px_minmax(0,1fr)_320px] xl:px-8 2xl:px-10">
+        <div className="pointer-events-none absolute left-0 top-24 h-80 w-80 opacity-70" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.14) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
+        <div className="pointer-events-none absolute right-0 top-0 hidden h-96 w-[560px] rotate-[-8deg] opacity-[0.04] xl:block" style={{ backgroundImage: "linear-gradient(90deg, #0a0a0a 1px, transparent 1px), linear-gradient(#0a0a0a 1px, transparent 1px)", backgroundSize: "96px 132px" }} />
+
+        <aside className="relative z-10 hidden min-h-[calc(100vh-116px)] flex-col border-r border-black/10 pr-6 xl:flex">
+          <button onClick={() => onBack(true)} className="mb-8 flex items-center gap-3 text-sm text-black/65 transition hover:text-[#c0392b]">
+            <span>←</span>
+            <span>{copy.quit}</span>
+          </button>
+          <div className="mb-6">
+            <div className="flex items-end gap-3">
+              <span className="text-5xl font-bold text-[#c0392b]" style={{ fontFamily: modeSerif }}>{String(currentQ + 1).padStart(2, "0")}</span>
+              <span className="mb-2 text-2xl text-black/45" style={{ fontFamily: modeSerif }}>/ {String(questions.length).padStart(2, "0")}</span>
+            </div>
+            <div className="mt-2 text-sm text-black/65">{copy.remain} <span className="font-bold text-[#c0392b]">{questions.length - currentQ - 1}</span> {copy.questions}</div>
+            <div className="mt-5 h-2 rounded-full bg-black/10">
+              <div className="h-2 rounded-full bg-[#c0392b] transition-all duration-500" style={{ width: `${progress}%` }} />
+            </div>
+          </div>
+          <div className="space-y-3 text-sm">
+            {questions.map((item, index) => {
+              const active = index === currentQ;
+              const done = index < currentQ;
+              return (
+                <div key={item.id} className={`flex items-center gap-3 ${active ? "font-bold text-[#0a0a0a]" : done ? "text-black/55" : "text-black/35"}`}>
+                  <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs ${active ? "bg-[#c0392b] text-white" : "bg-black/8 text-black/55"}`}>{String(index + 1).padStart(2, "0")}</span>
+                  <span className="truncate">{language === "ja" ? item.text_ja : item.text_en}</span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="mt-auto rounded-lg border border-[#d7a447]/25 bg-[#fff9ed] p-5 text-center shadow-[0_18px_50px_rgba(10,10,10,0.05)]">
+            <ModeIcon type="lightbulb" className="mx-auto mb-3 h-8 w-8 text-[#c0392b]" />
+            <div className="font-bold">{copy.skipTitle}</div>
+            <p className="mt-2 text-xs text-black/62">{copy.skipText}</p>
+            <button onClick={onSkip} className="mt-4 w-full rounded-md border border-black/20 bg-white px-4 py-3 text-sm font-bold transition hover:border-[#c0392b] hover:text-[#c0392b]">
+              {copy.skipButton}
+            </button>
+          </div>
+        </aside>
+
+        <section className="relative z-10 min-w-0">
+          <div className="mb-6">
+            <div className="mb-5 text-[11px] font-bold tracking-[0.32em] text-[#c0392b]">
+              {copy.question} {String(currentQ + 1).padStart(2, "0")}
+            </div>
+            <h1 className="text-3xl font-bold leading-tight md:text-4xl xl:text-[42px]" style={{ fontFamily: modeSerif, fontWeight: 700 }}>
+              {language === "ja" ? q.text_ja : q.text_en}
+            </h1>
+            <p className="mt-4 min-h-[24px] text-sm text-black/68">{copy.selectHint}</p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {q.options.map((opt) => {
+              const visual = getQuizOptionVisual(opt.v);
+              const selected = selectedValues.includes(opt.v);
+              return (
+                <button
+                  key={opt.v}
+                  onClick={() => onAnswer(q.id, opt.v, q.type, q.max)}
+                  className="group relative min-h-[92px] rounded-lg bg-white/82 p-4 text-left shadow-[0_16px_45px_rgba(10,10,10,0.045)] transition hover:-translate-y-0.5"
+                  style={{ border: `1px solid ${selected ? "#c0392b" : "rgba(10,10,10,0.14)"}` }}
+                >
+                  <span className="absolute right-4 top-4 grid h-6 w-6 place-items-center rounded-full border text-xs" style={{ borderColor: selected ? "#c0392b" : "rgba(10,10,10,0.22)", backgroundColor: selected ? "#c0392b" : "transparent", color: selected ? "#fff" : "transparent" }}>✓</span>
+                  <span className="flex items-start gap-4 pr-7">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center text-2xl font-bold" style={{ color: visual.color }}>{visual.icon}</span>
+                    <span className="min-w-0">
+                      <span className="block text-base font-bold leading-6">{getQuizText(opt, language)}</span>
+                      <span className="mt-2 block text-xs leading-5 text-black/60">{language === "ja" ? visual.hint_ja : visual.hint_en}</span>
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="mt-6 grid items-center gap-4 md:grid-cols-[160px_1fr_220px]">
+            <button onClick={() => onBack(false)} className="rounded-md border border-black/18 bg-white px-5 py-3 text-sm font-bold transition hover:border-[#c0392b] hover:text-[#c0392b]">
+              ← {copy.back}
+            </button>
+            <div className="text-center text-sm text-black/68">
+              {copy.selectedCount}：<span className="font-bold text-[#c0392b]">{selectedValues.length}</span>{isMulti ? ` / ${q.max}` : ""}
+            </div>
+            <button
+              onClick={onNext}
+              disabled={!canProceed()}
+              className="rounded-md bg-[#c0392b] px-6 py-3 text-sm font-bold text-white shadow-[0_16px_38px_rgba(192,57,43,0.22)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0"
+            >
+              {copy.next} →
+            </button>
+          </div>
+        </section>
+
+        <aside className="relative z-10 hidden xl:block">
+          <div className="sticky top-24 space-y-4">
+            <div className="rounded-lg border border-[#d7a447]/20 bg-[#fff9ed]/86 p-6 shadow-[0_20px_60px_rgba(10,10,10,0.05)]">
+              <div className="mb-5 flex items-center gap-3">
+                <ModeIcon type="lightbulb" className="h-7 w-7 text-[#d7a447]" />
+                <h2 className="font-bold">{copy.hintTitle}</h2>
+              </div>
+              <ul className="space-y-3 text-sm leading-7 text-black/70">
+                {copy.hintItems.map((item) => <li key={item}>・{item}</li>)}
+              </ul>
+            </div>
+
+            <div className="rounded-lg border border-black/10 bg-[#fff9ed]/86 p-5 shadow-[0_20px_60px_rgba(10,10,10,0.05)]">
+              <h3 className="mb-4 text-sm font-bold">{copy.selectedTitle}</h3>
+              <div className="space-y-3">
+                {selectedOptions.length === 0 && (
+                  <div className="rounded-md border border-dashed border-black/16 bg-white/70 px-4 py-4 text-sm text-black/45">{copy.emptySelected}</div>
+                )}
+                {selectedOptions.map((opt) => {
+                  const visual = getQuizOptionVisual(opt.v);
+                  return (
+                    <div key={opt.v} className="flex items-center gap-3 rounded-md border border-black/10 bg-white px-3 py-3">
+                      <span className="text-xl font-bold" style={{ color: visual.color }}>{visual.icon}</span>
+                      <span className="min-w-0 flex-1 truncate text-sm font-bold">{getQuizText(opt, language)}</span>
+                      <button onClick={() => onClearAnswer(q.id, opt.v)} className="text-lg leading-none text-black/45 transition hover:text-[#c0392b]" aria-label="remove">×</button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </aside>
+      </main>
+    </div>
+  );
+}
+
 export default function App() {
   const [screen, setScreen] = useState("landing");
   const [language, setLanguage] = useState("ja");
@@ -622,6 +864,13 @@ export default function App() {
     trackEvent("diagnosis_answer", { diagnosis_type: diagnosisType, question_id: qId, question_index: currentQ + 1, answer_value: nextValues.join(",") });
   };
 
+  const clearAnswer = (qId, value) => {
+    const current = answers[qId] || [];
+    const nextValues = current.filter((v) => v !== value);
+    setAnswers({ ...answers, [qId]: nextValues });
+    trackEvent("diagnosis_answer", { diagnosis_type: diagnosisType, question_id: qId, question_index: currentQ + 1, answer_value: nextValues.join(",") });
+  };
+
   const canProceed = () => {
     const q = QUESTIONS[currentQ];
     return answers[q.id] && answers[q.id].length > 0;
@@ -638,6 +887,24 @@ export default function App() {
   const goBack = () => {
     if (currentQ > 0) setCurrentQ(currentQ - 1);
     else setScreen("mode");
+  };
+
+  const quitQuiz = () => {
+    setScreen("mode");
+  };
+
+  const skipQuestion = () => {
+    const q = QUESTIONS[currentQ];
+    const nextAnswers = { ...answers, [q.id]: ["any"] };
+    setAnswers(nextAnswers);
+    trackEvent("diagnosis_answer", { diagnosis_type: diagnosisType, question_id: q.id, question_index: currentQ + 1, answer_value: "any", skipped: true });
+
+    if (currentQ < QUESTIONS.length - 1) {
+      setCurrentQ(currentQ + 1);
+    } else {
+      prefetchRecommendation(nextAnswers);
+      setScreen("freetext");
+    }
   };
 
   const submitQuiz = async () => {
@@ -723,7 +990,7 @@ export default function App() {
       fontFamily: "'Noto Serif JP', 'Cormorant Garamond', serif",
       color: "#0a0a0a",
     }}>
-      {!(screen === "landing" && USE_NEW_HOME) && screen !== "mode" && <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+      {!(screen === "landing" && USE_NEW_HOME) && screen !== "mode" && screen !== "quiz" && <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
         <button onClick={() => setLanguage("ja")} className="px-3 py-1 text-xs tracking-wider transition-all"
           style={{ backgroundColor: language === "ja" ? "#0a0a0a" : "transparent", color: language === "ja" ? "#f5f3ee" : "#0a0a0a", border: "1px solid #0a0a0a" }}>JA</button>
         <button onClick={() => setLanguage("en")} className="px-3 py-1 text-xs tracking-wider transition-all"
@@ -813,6 +1080,23 @@ export default function App() {
       )}
 
       {screen === "quiz" && (
+        <QuizQuestionScreen
+          language={language}
+          setLanguage={setLanguage}
+          mode={mode}
+          questions={QUESTIONS}
+          currentQ={currentQ}
+          answers={answers}
+          onAnswer={handleAnswer}
+          onClearAnswer={clearAnswer}
+          onNext={goNext}
+          onBack={(quit) => quit ? quitQuiz() : goBack()}
+          onSkip={skipQuestion}
+          canProceed={canProceed}
+        />
+      )}
+
+      {false && screen === "quiz" && (
         <div className="min-h-screen flex flex-col px-4 md:px-8 py-12">
           <div className="max-w-3xl mx-auto w-full mb-12">
             <div className="flex justify-between items-center mb-3">
