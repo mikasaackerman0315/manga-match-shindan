@@ -755,6 +755,192 @@ function QuizQuestionScreen({
   );
 }
 
+function LoadingResultScreen({
+  language,
+  setLanguage,
+  results,
+  loadingStep,
+  recommendations,
+  loadingMangaIndex,
+  onNextDiscovery,
+  onSelectDiscovery,
+  onViewResults,
+  t,
+}) {
+  const rec = recommendations[loadingMangaIndex % recommendations.length];
+  const completed = Boolean(results);
+  const copy = language === "ja" ? {
+    completeTitle: "診断が完了しました！",
+    loadingTitle: "AIが分析中です",
+    completeLead: ["あなたの好みを分析した結果、", "ぴったりの漫画を見つけました。", "気になる作品をチェックして、", "新しい出会いを楽しんでください。"],
+    loadingLead: ["回答内容と自由記述を読み取り、", "候補作品を照合しています。", "待っている間に、", "こんな漫画も見てみませんか。"],
+    sideLabel: "こんな漫画もあります",
+    detailLabel: "どんな漫画？",
+    viewResult: "結果を見る",
+  } : {
+    completeTitle: "Your diagnosis is ready",
+    loadingTitle: "AI is analyzing",
+    completeLead: ["We analyzed your preferences", "and found manga that may fit you.", "Check the titles that interest you", "and enjoy a new discovery."],
+    loadingLead: ["Reading your answers and free text,", "then matching them with manga candidates.", "While you wait,", "here is another manga to explore."],
+    sideLabel: "Side discovery",
+    detailLabel: "What is it?",
+    viewResult: "View results",
+  };
+  const leadLines = completed ? copy.completeLead : copy.loadingLead;
+
+  return (
+    <div
+      className="min-h-screen overflow-x-hidden antialiased"
+      style={{
+        backgroundColor: "#f6f2ea",
+        backgroundImage: "linear-gradient(180deg, #fffdf9 0%, #f6f2ea 48%, #f5f3ee 100%)",
+        color: "#0a0a0a",
+        fontFamily: modeSans,
+      }}
+    >
+      <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={() => {}} active="diagnosis" />
+
+      <main className="relative mx-auto grid min-h-[calc(100vh-82px)] max-w-[1536px] items-center gap-10 px-6 py-7 md:px-10 xl:grid-cols-[380px_minmax(0,1fr)] xl:px-14">
+        <div className="pointer-events-none absolute left-16 top-[22%] h-80 w-80 opacity-70" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.14) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
+        <div className="pointer-events-none absolute right-12 top-24 h-[620px] w-[900px] opacity-25" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.12) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
+
+        <section className="relative z-10 text-center xl:text-left">
+          <div className="mb-9 flex justify-center xl:justify-center">
+            <div className="relative grid h-40 w-40 place-items-center">
+              <div className="absolute inset-0 rounded-full border-2 border-dashed border-[#c0392b]/18" />
+              <div className="absolute inset-5 rounded-full border-4 border-[#c0392b]" />
+              {completed ? (
+                <svg className="h-20 w-20 text-[#c0392b]" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                  <path d="M17 33.5 27 43l20-23" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              ) : (
+                <>
+                  <div className="absolute inset-5 rounded-full border-4 border-transparent border-t-[#c0392b] animate-spin" />
+                  <div className="absolute inset-10 rounded-full border-2 border-transparent border-b-[#0a0a0a]/60 animate-spin" style={{ animationDuration: "1.8s", animationDirection: "reverse" }} />
+                </>
+              )}
+              <span className="absolute right-2 top-6 h-2 w-2 rounded-full bg-[#c0392b]" />
+              <span className="absolute right-0 top-16 h-1.5 w-1.5 rounded-full bg-[#c0392b]" />
+            </div>
+          </div>
+
+          <h1 className="text-3xl font-bold leading-tight md:text-4xl xl:text-[40px]" style={{ fontFamily: modeSerif, fontWeight: 800 }}>
+            {completed ? (
+              <>{language === "ja" ? "診断が" : "Diagnosis "} <span className="text-[#c0392b]">{language === "ja" ? "完了" : "Complete"}</span>{language === "ja" ? "しました！" : ""}</>
+            ) : (
+              copy.loadingTitle
+            )}
+          </h1>
+
+          <div className="mt-7 space-y-3 text-base font-medium leading-8 text-black/75 md:text-lg">
+            {leadLines.map((line) => <p key={line}>{line}</p>)}
+          </div>
+
+          <div className="mt-8 flex justify-center gap-2 xl:justify-center">
+            {Array.from({ length: LOADING_STEP_COUNT }).map((_, idx) => (
+              <span
+                key={idx}
+                className="h-1.5 w-10 rounded-full transition-all"
+                style={{ backgroundColor: idx <= (completed ? LOADING_STEP_COUNT - 1 : loadingStep) ? "#c0392b" : "rgba(10,10,10,0.14)" }}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section className="relative z-10">
+          <div className="relative rounded-2xl border border-black/5 bg-white/82 px-6 py-7 shadow-[0_24px_70px_rgba(10,10,10,0.10)] md:px-10 md:py-9">
+            <div className="mb-8 flex items-center justify-between">
+              <div className="text-sm font-bold tracking-[0.08em] text-[#c0392b] md:text-base">{copy.sideLabel}</div>
+              <div className="font-mono text-sm font-bold text-black/60">
+                <span className="text-[#c0392b]">{String((loadingMangaIndex % recommendations.length) + 1).padStart(2, "0")}</span>
+                {" / "}
+                {String(recommendations.length).padStart(2, "0")}
+              </div>
+            </div>
+
+            <div
+              key={`${loadingMangaIndex}-${rec.title}`}
+              className="grid items-center gap-8 md:grid-cols-[340px_minmax(0,1fr)]"
+              style={{ animation: "loadingMangaPop 520ms ease-out both" }}
+            >
+              <div className="flex justify-center">
+                <MangaCover title={rec.title} id={rec.id} author={rec.author} size="loading" />
+              </div>
+              <div className="min-w-0">
+                <h2 className="text-3xl font-medium leading-tight md:text-5xl" style={{ fontFamily: modeSerif }}>
+                  {rec.title}
+                </h2>
+                {rec.author && <p className="mt-4 text-lg text-black/80">{rec.author}</p>}
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <span className="rounded-md border border-[#c0392b]/20 bg-[#fff6f4] px-3 py-1 text-xs font-bold text-[#c0392b]">MANGA</span>
+                  <span className="rounded-md border border-black/10 bg-black/[0.03] px-3 py-1 text-xs font-bold text-black/55">{completed ? "MATCHED" : "DISCOVERY"}</span>
+                </div>
+                <p className="mt-9 text-base leading-8 text-black/76 md:text-lg">{rec.lead}</p>
+                {rec.detail && (
+                  <div className="mt-6 border-t border-black/10 pt-5">
+                    <div className="mb-2 text-[10px] font-bold tracking-[0.22em] text-black/40">{copy.detailLabel}</div>
+                    <p className="text-sm leading-7 text-black/66">{rec.detail}</p>
+                  </div>
+                )}
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <WatchLaterButton item={{ title_ja: rec.title, title_en: rec.title, author: rec.author, description: rec.lead }} sourceContext="診断中のおすすめ" compact />
+                  <button
+                    type="button"
+                    onClick={onNextDiscovery}
+                    className="rounded-md border border-black/22 bg-white px-5 py-3 text-sm font-bold transition hover:border-[#c0392b] hover:text-[#c0392b]"
+                  >
+                    {t.nextDiscovery} →
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={onNextDiscovery}
+              className="absolute right-[-34px] top-1/2 hidden h-20 w-20 -translate-y-1/2 place-items-center rounded-full border border-[#f2c7c2] bg-white text-3xl font-bold text-[#c0392b] shadow-[0_18px_45px_rgba(192,57,43,0.16)] transition hover:-translate-y-[52%] xl:grid"
+              aria-label={t.nextDiscovery}
+            >
+              →
+            </button>
+
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              {recommendations.map((item, idx) => (
+                <button
+                  key={`${item.title}-${idx}`}
+                  type="button"
+                  onClick={() => onSelectDiscovery(idx)}
+                  className="h-3 w-3 rounded-full transition"
+                  style={{ backgroundColor: idx === loadingMangaIndex % recommendations.length ? "#c0392b" : "#eadbd7" }}
+                  aria-label={`${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {completed && (
+            <div className="mt-8 flex justify-center">
+              <button
+                onClick={onViewResults}
+                className="w-full max-w-[420px] rounded-md border border-black/70 bg-white px-10 py-4 text-base font-bold transition hover:border-[#c0392b] hover:text-[#c0392b]"
+              >
+                {copy.viewResult} →
+              </button>
+            </div>
+          )}
+        </section>
+      </main>
+
+      <style>{`
+        @keyframes loadingMangaPop {
+          0% { opacity: 0; transform: translateY(14px) scale(0.96); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 export default function App() {
   const [screen, setScreen] = useState("landing");
   const [language, setLanguage] = useState("ja");
@@ -967,7 +1153,7 @@ export default function App() {
       fontFamily: "'Noto Serif JP', 'Cormorant Garamond', serif",
       color: "#0a0a0a",
     }}>
-      {!(screen === "landing" && USE_NEW_HOME) && screen !== "mode" && screen !== "quiz" && <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+      {!(screen === "landing" && USE_NEW_HOME) && screen !== "mode" && screen !== "quiz" && screen !== "loading" && <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
         <button onClick={() => setLanguage("ja")} className="px-3 py-1 text-xs tracking-wider transition-all"
           style={{ backgroundColor: language === "ja" ? "#0a0a0a" : "transparent", color: language === "ja" ? "#f5f3ee" : "#0a0a0a", border: "1px solid #0a0a0a" }}>JA</button>
         <button onClick={() => setLanguage("en")} className="px-3 py-1 text-xs tracking-wider transition-all"
@@ -1172,6 +1358,21 @@ export default function App() {
       )}
 
       {screen === "loading" && (
+        <LoadingResultScreen
+          language={language}
+          setLanguage={setLanguage}
+          results={results}
+          loadingStep={loadingStep}
+          recommendations={loadingRecommendations}
+          loadingMangaIndex={loadingMangaIndex}
+          onNextDiscovery={() => setLoadingMangaIndex((prev) => (prev + 1) % loadingRecommendations.length)}
+          onSelectDiscovery={(index) => setLoadingMangaIndex(index)}
+          onViewResults={() => setScreen("results")}
+          t={t}
+        />
+      )}
+
+      {false && screen === "loading" && (
         <div className="min-h-screen flex items-center justify-center px-5 md:px-8 py-12">
           <style>{`
             @keyframes loadingMangaPop {
