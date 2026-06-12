@@ -575,7 +575,6 @@ function QuizQuestionScreen({
   onClearAnswer,
   onNext,
   onBack,
-  onSkip,
   canProceed,
 }) {
   const q = questions[currentQ];
@@ -624,7 +623,7 @@ function QuizQuestionScreen({
 
   return (
     <div
-      className="min-h-screen overflow-x-hidden antialiased"
+      className="h-screen overflow-hidden antialiased"
       style={{
         backgroundColor: "#f6f2ea",
         backgroundImage: "linear-gradient(180deg, #fffdf9 0%, #f6f2ea 46%, #f5f3ee 100%)",
@@ -634,16 +633,16 @@ function QuizQuestionScreen({
     >
       <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={() => {}} active="diagnosis" />
 
-      <main className="relative mx-auto grid max-w-[1920px] gap-6 px-6 py-5 md:px-7 xl:grid-cols-[280px_minmax(0,1fr)_320px] xl:px-8 2xl:px-10">
+      <main className="relative mx-auto grid h-[calc(100vh-80px)] max-w-[1920px] gap-5 px-6 py-4 md:px-7 xl:grid-cols-[280px_minmax(0,1fr)_320px] xl:px-8 2xl:px-10">
         <div className="pointer-events-none absolute left-0 top-24 h-80 w-80 opacity-70" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.14) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
         <div className="pointer-events-none absolute right-0 top-0 hidden h-96 w-[560px] rotate-[-8deg] opacity-[0.04] xl:block" style={{ backgroundImage: "linear-gradient(90deg, #0a0a0a 1px, transparent 1px), linear-gradient(#0a0a0a 1px, transparent 1px)", backgroundSize: "96px 132px" }} />
 
-        <aside className="relative z-10 hidden min-h-[calc(100vh-116px)] flex-col border-r border-black/10 pr-6 xl:flex">
-          <button onClick={() => onBack(true)} className="mb-8 flex items-center gap-3 text-sm text-black/65 transition hover:text-[#c0392b]">
+        <aside className="relative z-10 hidden h-full flex-col border-r border-black/10 pr-6 xl:flex">
+          <button onClick={() => onBack(true)} className="mb-6 flex items-center gap-3 text-sm text-black/65 transition hover:text-[#c0392b]">
             <span>←</span>
             <span>{copy.quit}</span>
           </button>
-          <div className="mb-6">
+          <div className="mb-5">
             <div className="flex items-end gap-3">
               <span className="text-5xl font-bold text-[#c0392b]" style={{ fontFamily: modeSerif }}>{String(currentQ + 1).padStart(2, "0")}</span>
               <span className="mb-2 text-2xl text-black/45" style={{ fontFamily: modeSerif }}>/ {String(questions.length).padStart(2, "0")}</span>
@@ -653,7 +652,7 @@ function QuizQuestionScreen({
               <div className="h-2 rounded-full bg-[#c0392b] transition-all duration-500" style={{ width: `${progress}%` }} />
             </div>
           </div>
-          <div className="space-y-3 text-sm">
+          <div className="space-y-2.5 text-sm">
             {questions.map((item, index) => {
               const active = index === currentQ;
               const done = index < currentQ;
@@ -665,28 +664,20 @@ function QuizQuestionScreen({
               );
             })}
           </div>
-          <div className="mt-auto rounded-lg border border-[#d7a447]/25 bg-[#fff9ed] p-5 text-center shadow-[0_18px_50px_rgba(10,10,10,0.05)]">
-            <ModeIcon type="lightbulb" className="mx-auto mb-3 h-8 w-8 text-[#c0392b]" />
-            <div className="font-bold">{copy.skipTitle}</div>
-            <p className="mt-2 text-xs text-black/62">{copy.skipText}</p>
-            <button onClick={onSkip} className="mt-4 w-full rounded-md border border-black/20 bg-white px-4 py-3 text-sm font-bold transition hover:border-[#c0392b] hover:text-[#c0392b]">
-              {copy.skipButton}
-            </button>
-          </div>
         </aside>
 
-        <section className="relative z-10 min-w-0">
-          <div className="mb-6">
-            <div className="mb-5 text-[11px] font-bold tracking-[0.32em] text-[#c0392b]">
+        <section className="relative z-10 flex min-w-0 flex-col">
+          <div className="mb-4">
+            <div className="mb-3 text-[11px] font-bold tracking-[0.32em] text-[#c0392b]">
               {copy.question} {String(currentQ + 1).padStart(2, "0")}
             </div>
             <h1 className="text-3xl font-bold leading-tight md:text-4xl xl:text-[42px]" style={{ fontFamily: modeSerif, fontWeight: 700 }}>
               {language === "ja" ? q.text_ja : q.text_en}
             </h1>
-            <p className="mt-4 min-h-[24px] text-sm text-black/68">{copy.selectHint}</p>
+            <p className="mt-3 min-h-[22px] text-sm text-black/68">{copy.selectHint}</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
             {q.options.map((opt) => {
               const visual = getQuizOptionVisual(opt.v);
               const selected = selectedValues.includes(opt.v);
@@ -694,7 +685,7 @@ function QuizQuestionScreen({
                 <button
                   key={opt.v}
                   onClick={() => onAnswer(q.id, opt.v, q.type, q.max)}
-                  className="group relative min-h-[92px] rounded-lg bg-white/82 p-4 text-left shadow-[0_16px_45px_rgba(10,10,10,0.045)] transition hover:-translate-y-0.5"
+                  className="group relative min-h-[82px] rounded-lg bg-white/82 p-3.5 text-left shadow-[0_16px_45px_rgba(10,10,10,0.045)] transition hover:-translate-y-0.5"
                   style={{ border: `1px solid ${selected ? "#c0392b" : "rgba(10,10,10,0.14)"}` }}
                 >
                   <span className="absolute right-4 top-4 grid h-6 w-6 place-items-center rounded-full border text-xs" style={{ borderColor: selected ? "#c0392b" : "rgba(10,10,10,0.22)", backgroundColor: selected ? "#c0392b" : "transparent", color: selected ? "#fff" : "transparent" }}>✓</span>
@@ -702,7 +693,7 @@ function QuizQuestionScreen({
                     <span className="grid h-10 w-10 shrink-0 place-items-center text-2xl font-bold" style={{ color: visual.color }}>{visual.icon}</span>
                     <span className="min-w-0">
                       <span className="block text-base font-bold leading-6">{getQuizText(opt, language)}</span>
-                      <span className="mt-2 block text-xs leading-5 text-black/60">{language === "ja" ? visual.hint_ja : visual.hint_en}</span>
+                      <span className="mt-1.5 block text-xs leading-5 text-black/60">{language === "ja" ? visual.hint_ja : visual.hint_en}</span>
                     </span>
                   </span>
                 </button>
@@ -710,7 +701,7 @@ function QuizQuestionScreen({
             })}
           </div>
 
-          <div className="mt-6 grid items-center gap-4 md:grid-cols-[160px_1fr_220px]">
+          <div className="mt-4 grid items-center gap-4 md:grid-cols-[160px_1fr_220px]">
             <button onClick={() => onBack(false)} className="rounded-md border border-black/18 bg-white px-5 py-3 text-sm font-bold transition hover:border-[#c0392b] hover:text-[#c0392b]">
               ← {copy.back}
             </button>
@@ -891,20 +882,6 @@ export default function App() {
 
   const quitQuiz = () => {
     setScreen("mode");
-  };
-
-  const skipQuestion = () => {
-    const q = QUESTIONS[currentQ];
-    const nextAnswers = { ...answers, [q.id]: ["any"] };
-    setAnswers(nextAnswers);
-    trackEvent("diagnosis_answer", { diagnosis_type: diagnosisType, question_id: q.id, question_index: currentQ + 1, answer_value: "any", skipped: true });
-
-    if (currentQ < QUESTIONS.length - 1) {
-      setCurrentQ(currentQ + 1);
-    } else {
-      prefetchRecommendation(nextAnswers);
-      setScreen("freetext");
-    }
   };
 
   const submitQuiz = async () => {
@@ -1091,7 +1068,6 @@ export default function App() {
           onClearAnswer={clearAnswer}
           onNext={goNext}
           onBack={(quit) => quit ? quitQuiz() : goBack()}
-          onSkip={skipQuestion}
           canProceed={canProceed}
         />
       )}
