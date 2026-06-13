@@ -46,7 +46,7 @@ export default function WatchLaterButton({ item, sourceContext = "", compact = f
     <button
       type="button"
       onClick={handleClick}
-      className={`inline-flex items-center gap-1.5 rounded-md ${compact ? "min-h-[34px] px-2.5 py-1.5 text-[11px]" : "min-h-[38px] px-4 py-2 text-xs"} font-bold tracking-[0.08em] transition-all hover:translate-y-[-1px] active:scale-[0.98] ${className}`}
+      className={`inline-flex items-center gap-1.5 rounded-md ${compact ? "min-h-[34px] px-2.5 py-1.5 text-[11px]" : "min-h-[38px] px-4 py-2 text-xs"} font-bold tracking-[0.08em] transition-colors hover:!border-[#c0392b] hover:!bg-[#fff4f1] hover:!text-[#c0392b] active:scale-[0.98] ${className}`}
       style={{
         border: saved ? "1px solid rgba(192,57,43,0.55)" : "1px solid rgba(10,10,10,0.18)",
         color: saved ? "#c0392b" : "#0a0a0a",
