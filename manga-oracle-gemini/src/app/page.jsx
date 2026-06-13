@@ -215,7 +215,8 @@ function createLoadingSeed() {
   if (typeof crypto !== "undefined" && crypto.getRandomValues) {
     const values = new Uint32Array(1);
     crypto.getRandomValues(values);
-    return values[0] || Date.now();
+    const mixed = (values[0] ^ Date.now() ^ Math.floor(Math.random() * 2147483647)) >>> 0;
+    return mixed || Date.now();
   }
   return Date.now() + Math.floor(Math.random() * 2147483647);
 }
@@ -774,6 +775,7 @@ function LoadingResultScreen({
   results,
   recommendations,
   loadingMangaIndex,
+  onPrevDiscovery,
   onNextDiscovery,
   onSelectDiscovery,
   onViewResults,
@@ -893,8 +895,17 @@ function LoadingResultScreen({
 
             <button
               type="button"
+              onClick={onPrevDiscovery}
+              className="absolute left-[-24px] top-1/2 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-[#f2c7c2] bg-white text-2xl font-bold text-[#c0392b] shadow-[0_14px_34px_rgba(192,57,43,0.16)] transition hover:-translate-y-[52%] xl:grid"
+              aria-label={language === "ja" ? "前の漫画" : "Previous manga"}
+            >
+              ←
+            </button>
+
+            <button
+              type="button"
               onClick={onNextDiscovery}
-              className="absolute right-[-34px] top-1/2 hidden h-20 w-20 -translate-y-1/2 place-items-center rounded-full border border-[#f2c7c2] bg-white text-3xl font-bold text-[#c0392b] shadow-[0_18px_45px_rgba(192,57,43,0.16)] transition hover:-translate-y-[52%] xl:grid"
+              className="absolute right-[-24px] top-1/2 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-[#f2c7c2] bg-white text-2xl font-bold text-[#c0392b] shadow-[0_14px_34px_rgba(192,57,43,0.16)] transition hover:-translate-y-[52%] xl:grid"
               aria-label={t.nextDiscovery}
             >
               →
@@ -943,7 +954,6 @@ function FreeTextScreen({
   freeText,
   setFreeText,
   onBack,
-  onSkip,
   onSubmit,
   error,
 }) {
@@ -965,7 +975,6 @@ function FreeTextScreen({
       { icon: "▤", label: "完結済みがいい" },
     ],
     back: "戻る",
-    skip: "スキップ",
     submit: "AIに診断してもらう",
     privacy: "入力内容はAI診断のみに使用されます",
   } : {
@@ -986,7 +995,6 @@ function FreeTextScreen({
       { icon: "▤", label: "Completed series" },
     ],
     back: "Back",
-    skip: "Skip",
     submit: "Ask AI",
     privacy: "Your note is used only for this AI diagnosis",
   };
@@ -1004,7 +1012,7 @@ function FreeTextScreen({
 
   return (
     <div
-      className="min-h-screen overflow-x-hidden antialiased"
+      className="h-screen overflow-hidden antialiased"
       style={{
         backgroundColor: "#f6f2ea",
         backgroundImage: "linear-gradient(180deg, #fffdf9 0%, #f7f2ea 48%, #f5f3ee 100%)",
@@ -1014,25 +1022,25 @@ function FreeTextScreen({
     >
       <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={() => {}} active="diagnosis" />
 
-      <main className="relative mx-auto flex min-h-[calc(100vh-82px)] max-w-[1536px] items-center justify-center px-6 py-10 md:px-10 xl:px-14">
+      <main className="relative mx-auto flex h-[calc(100vh-82px)] max-w-[1536px] items-center justify-center overflow-hidden px-6 py-5 md:px-10 md:py-6 xl:px-14">
         <div className="pointer-events-none absolute left-[6%] top-[27%] h-[520px] w-[360px] opacity-65" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.14) 1.25px, transparent 1.25px)", backgroundSize: "18px 18px" }} />
         <div className="pointer-events-none absolute right-[7%] top-[25%] h-[520px] w-[360px] opacity-65" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.14) 1.25px, transparent 1.25px)", backgroundSize: "18px 18px" }} />
         <div className="pointer-events-none absolute bottom-[14%] left-[5%] hidden h-48 w-56 rounded-[28px] border-2 border-[#e9afa8]/45 opacity-55 rotate-[-22deg] md:block" />
         <div className="pointer-events-none absolute bottom-[12%] right-[5%] hidden h-44 w-64 border-2 border-[#e9afa8]/45 opacity-55 rotate-[11deg] md:block" />
 
-        <section className="relative z-10 w-full max-w-[1040px] rounded-[18px] border border-black/10 bg-[#fffdf9]/90 shadow-[0_28px_90px_rgba(10,10,10,0.13)]">
-          <div className="px-7 pb-7 pt-8 md:px-16 md:pb-9 md:pt-10">
+        <section className="relative z-10 w-full max-w-[1030px] rounded-[18px] border border-black/10 bg-[#fffdf9]/90 shadow-[0_28px_90px_rgba(10,10,10,0.13)]">
+          <div className="px-7 pb-5 pt-7 md:px-16 md:pb-6 md:pt-8">
             <div className="flex items-start justify-between gap-8">
               <div className="min-w-0 flex-1">
                 <span className="inline-flex rounded-md border border-[#e0554a] px-4 py-2 text-sm font-bold text-[#c0392b]">
                   {copy.badge}
                 </span>
-                <h1 className="mt-7 text-4xl font-medium leading-tight md:text-[46px]" style={{ fontFamily: modeSerif }}>
+                <h1 className="mt-5 whitespace-nowrap text-[30px] font-medium leading-tight sm:text-4xl md:text-[42px] xl:text-[46px]" style={{ fontFamily: modeSerif }}>
                   {copy.titleBefore}
                   <span className="text-[#c0392b]">{copy.titleAccent}</span>
                   {copy.titleAfter}
                 </h1>
-                <p className="mt-6 text-base leading-7 text-black/70">{copy.desc}</p>
+                <p className="mt-4 text-base leading-7 text-black/70">{copy.desc}</p>
                 <p className="mt-2 text-base leading-7 text-black/70">{copy.subDesc}</p>
               </div>
 
@@ -1052,7 +1060,7 @@ function FreeTextScreen({
                 onChange={(e) => setFreeText(e.target.value)}
                 placeholder={copy.placeholder}
                 maxLength={200}
-                className="min-h-[178px] w-full resize-none rounded-lg border border-[#ef9c94] bg-transparent px-5 py-5 text-base leading-8 outline-none transition focus:border-[#c0392b] focus:bg-white/65"
+                className="min-h-[138px] w-full resize-none rounded-lg border border-[#ef9c94] bg-transparent px-5 py-4 text-base leading-8 outline-none transition focus:border-[#c0392b] focus:bg-white/65 md:min-h-[154px]"
                 style={{ color: "#0a0a0a", fontFamily: modeSerif }}
               />
               <div className="pointer-events-none absolute bottom-5 right-5 text-sm tracking-[0.12em] text-black/45" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
@@ -1060,18 +1068,18 @@ function FreeTextScreen({
               </div>
             </div>
 
-            <div className="mt-9">
-              <h2 className="mb-6 flex items-center gap-3 text-lg font-extrabold">
+            <div className="mt-6">
+              <h2 className="mb-4 flex items-center gap-3 text-lg font-extrabold">
                 <span className="text-[#c0392b]">✧</span>
                 {copy.common}
               </h2>
-              <div className="grid gap-4 md:grid-cols-3">
+              <div className="grid gap-3 md:grid-cols-3">
                 {copy.examples.map((example) => (
                   <button
                     key={example.label}
                     type="button"
                     onClick={() => useExample(example.label)}
-                    className="flex min-h-[58px] items-center gap-4 rounded-full border border-[#efb1aa] bg-white/35 px-6 text-left text-base font-medium transition hover:-translate-y-0.5 hover:border-[#c0392b] hover:bg-white"
+                    className="flex min-h-[50px] items-center gap-4 rounded-full border border-[#efb1aa] bg-white/35 px-6 text-left text-sm font-medium transition hover:-translate-y-0.5 hover:border-[#c0392b] hover:bg-white md:text-base"
                   >
                     <span className="w-5 text-xl text-[#e13f36]">{example.icon}</span>
                     <span>{example.label}</span>
@@ -1081,26 +1089,19 @@ function FreeTextScreen({
             </div>
           </div>
 
-          <div className="border-t border-black/10 px-7 py-7 md:px-16">
-            <div className="grid items-center gap-4 md:grid-cols-[220px_1fr_282px]">
+          <div className="border-t border-black/10 px-7 py-5 md:px-16">
+            <div className="grid items-center gap-4 md:grid-cols-[220px_282px] md:justify-between">
               <button
                 type="button"
                 onClick={onBack}
-                className="h-[62px] rounded-md border border-black/60 bg-white/40 text-base font-bold transition hover:border-[#c0392b] hover:text-[#c0392b]"
+                className="h-[56px] rounded-md border border-black/60 bg-white/40 text-base font-bold transition hover:border-[#c0392b] hover:text-[#c0392b]"
               >
                 ←　{copy.back}
               </button>
               <button
                 type="button"
-                onClick={onSkip}
-                className="h-[62px] text-base font-medium transition hover:text-[#c0392b]"
-              >
-                {copy.skip}
-              </button>
-              <button
-                type="button"
                 onClick={onSubmit}
-                className="h-[62px] rounded-md bg-[#c7352d] text-base font-extrabold text-white shadow-[0_16px_35px_rgba(192,57,43,0.22)] transition hover:-translate-y-0.5 hover:bg-[#b92f28]"
+                className="h-[56px] rounded-md bg-[#c7352d] text-base font-extrabold text-white shadow-[0_16px_35px_rgba(192,57,43,0.22)] transition hover:-translate-y-0.5 hover:bg-[#b92f28]"
               >
                 {copy.submit}　→
               </button>
@@ -1108,7 +1109,7 @@ function FreeTextScreen({
           </div>
         </section>
 
-        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-3 whitespace-nowrap text-sm text-black/45">
+        <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 items-center gap-3 whitespace-nowrap text-sm text-black/45">
           <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M7 10V8a5 5 0 0 1 10 0v2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
             <path d="M6.5 10h11A1.5 1.5 0 0 1 19 11.5v8A1.5 1.5 0 0 1 17.5 21h-11A1.5 1.5 0 0 1 5 19.5v-8A1.5 1.5 0 0 1 6.5 10Z" stroke="currentColor" strokeWidth="1.7" />
@@ -1159,19 +1160,6 @@ export default function App() {
       return () => clearInterval(interval);
     }
   }, [screen]);
-
-  useEffect(() => {
-    if (screen !== "loading") return;
-    const interval = setInterval(() => {
-      setLoadingMangaIndex((prev) => {
-        const length = loadingRecommendations.length;
-        if (length <= 1) return prev;
-        const jump = 1 + Math.floor(Math.random() * Math.min(3, length - 1));
-        return (prev + jump) % length;
-      });
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [screen, loadingRecommendations.length]);
 
   const startMode = (selectedMode) => {
     trackEvent("diagnosis_start", { diagnosis_type: getDiagnosisType(selectedMode) });
@@ -1527,7 +1515,6 @@ export default function App() {
           freeText={freeText}
           setFreeText={setFreeText}
           onBack={() => { setScreen("quiz"); setCurrentQ(QUESTIONS.length - 1); }}
-          onSkip={submitQuiz}
           onSubmit={submitQuiz}
           error={error}
         />
@@ -1577,6 +1564,7 @@ export default function App() {
           results={results}
           recommendations={loadingRecommendations}
           loadingMangaIndex={loadingMangaIndex}
+          onPrevDiscovery={() => setLoadingMangaIndex((prev) => (prev - 1 + loadingRecommendations.length) % loadingRecommendations.length)}
           onNextDiscovery={() => setLoadingMangaIndex((prev) => (prev + 1) % loadingRecommendations.length)}
           onSelectDiscovery={(index) => setLoadingMangaIndex(index)}
           onViewResults={() => setScreen("results")}
