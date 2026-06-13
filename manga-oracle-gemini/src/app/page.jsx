@@ -142,6 +142,38 @@ const LOADING_SIDE_DISCOVERIES = [
   { title_ja: "クジャクのダンス、誰が見た？", title_en: "Who Saw the Peacock Dance in the Jungle?", lead_ja: "静かな疑念がじわじわ広がるミステリー。", lead_en: "A mystery where quiet doubt keeps widening.", avoid: ["healing", "sports"] },
   { title_ja: "リバーエンド・カフェ", title_en: "River End Cafe", lead_ja: "土地と人の傷を、ゆっくり見つめる。", lead_en: "A slow look at place, wounds, and recovery.", avoid: ["battle", "virtual"] },
   { title_ja: "あかね噺", title_en: "Akane-banashi", lead_ja: "芸の世界の勝負を、熱すぎず熱く読ませる。", lead_en: "A performance manga with clean, controlled heat.", avoid: ["horror", "romance"] },
+  { title_ja: "ダンダダン", title_en: "Dandadan", lead_ja: "オカルト、恋、バトルの勢いが一気に押し寄せる近年型の娯楽作。", lead_en: "A high-energy mix of occult chaos, romance, and action." },
+  { title_ja: "メダリスト", title_en: "Medalist", lead_ja: "氷上の夢に向かう師弟の熱が、静かに胸を掴むスポーツ漫画。", lead_en: "A sharp, emotional skating manga about a coach and a young dreamer." },
+  { title_ja: "黄泉のツガイ", title_en: "Daemons of the Shadow Realm", lead_ja: "民俗感のある異能バトルと謎が、じわじわ世界を広げていく。", lead_en: "A supernatural action mystery with folklore texture and widening stakes." },
+  { title_ja: "ガチアクタ", title_en: "Gachiakuta", lead_ja: "荒れた世界観と勢いのある作画で読ませる、怒りと再起のバトル漫画。", lead_en: "A gritty action manga driven by anger, survival, and raw visual force." },
+  { title_ja: "ルリドラゴン", title_en: "RuriDragon", lead_ja: "突然ドラゴンになった少女の日常を、軽やかに楽しめる学校漫画。", lead_en: "A charming school manga about an ordinary girl with a very unordinary change." },
+  { title_ja: "極楽街", title_en: "Gokurakugai", lead_ja: "裏社会の空気とスタイリッシュな退魔アクションが映える作品。", lead_en: "Stylish supernatural action with a strong underworld atmosphere." },
+  { title_ja: "ケントゥリア", title_en: "Centuria", lead_ja: "重い運命と荒々しい冒険が重なる、濃度の高いファンタジー。", lead_en: "A dense fantasy adventure built on harsh fate and survival." },
+  { title_ja: "光が死んだ夏", title_en: "The Summer Hikaru Died", lead_ja: "親しい存在への違和感が、静かな恐怖として染みてくるホラー。", lead_en: "A quiet horror story where intimacy and wrongness blur together." },
+  { title_ja: "平和の国の島崎へ", title_en: "Shimazaki in the Land of Peace", lead_ja: "元戦闘工作員の日常と過去が交差する、大人向けの緊張感。", lead_en: "A tense adult drama about a former operative trying to live normally." },
+  { title_ja: "住みにごり", title_en: "Suminigori", lead_ja: "家族の気まずさと不穏さを、息苦しいほどリアルに描く人間ドラマ。", lead_en: "A suffocatingly realistic family drama about unease and resentment." },
+  { title_ja: "アオのハコ", title_en: "Blue Box", lead_ja: "部活、恋、青春のまぶしさをまっすぐ味わえる王道青春漫画。", lead_en: "A bright school romance and sports story with clean emotional momentum." },
+  { title_ja: "薫る花は凛と咲く", title_en: "The Fragrant Flower Blooms with Dignity", lead_ja: "誠実な関係性と優しい空気で読ませる、近年人気の青春恋愛。", lead_en: "A tender youth romance built on sincerity, distance, and kindness." },
+  { title_ja: "WIND BREAKER", title_en: "WIND BREAKER", lead_ja: "不良漫画の熱さに、仲間と居場所のテーマを重ねた爽快作。", lead_en: "A punchy delinquent action manga about strength, friendship, and belonging." },
+  { title_ja: "SAKAMOTO DAYS", title_en: "SAKAMOTO DAYS", lead_ja: "殺し屋アクションを軽快なテンポとギャグで読ませるジャンプ作品。", lead_en: "A fast, funny assassin action manga with clean choreography." },
+  { title_ja: "女の園の星", title_en: "Hoshi in the Girls' Garden", lead_ja: "女子校教師たちの日常を、絶妙な間で笑わせるコメディ。", lead_en: "A dry, perfectly timed comedy about teachers at a girls' school." },
+  { title_ja: "九龍ジェネリックロマンス", title_en: "Kowloon Generic Romance", lead_ja: "懐かしさと違和感が混ざる街で、恋と謎がゆっくり滲む。", lead_en: "A moody romance where nostalgia, mystery, and city life blur together." },
+  { title_ja: "天国大魔境", title_en: "Heavenly Delusion", lead_ja: "旅と閉ざされた施設の謎が並走する、考察したくなるSF漫画。", lead_en: "A layered sci-fi mystery split between a journey and a sealed-off world." },
+  { title_ja: "ハイパーインフレーション", title_en: "Hyperinflation", lead_ja: "経済と駆け引きを極端な熱量で押し切る、クセの強い頭脳戦。", lead_en: "A wildly intense battle of economics, deception, and survival." },
+  { title_ja: "Thisコミュニケーション", title_en: "This Communication", lead_ja: "極限状況の判断と倫理のズレが面白い、黒いサバイバル作品。", lead_en: "A dark survival manga about strategy, ethics, and impossible decisions." },
+  { title_ja: "スキップとローファー", title_en: "Skip and Loafer", lead_ja: "人の良さと不器用さが心地よい、青春群像の名作候補。", lead_en: "A warm school ensemble about kindness, awkwardness, and growing up." },
+  { title_ja: "ブルーピリオド", title_en: "Blue Period", lead_ja: "絵を描くことの苦しさと高揚を、青春の熱で読ませる作品。", lead_en: "A coming-of-age art manga about ambition, frustration, and discovery." },
+  { title_ja: "チ。―地球の運動について―", title_en: "Orb: On the Movements of the Earth", lead_ja: "知を信じる怖さと美しさを描く、重厚な歴史ドラマ。", lead_en: "A powerful historical drama about knowledge, faith, and conviction." },
+  { title_ja: "九条の大罪", title_en: "Kujo's Deadly Sins", lead_ja: "社会の暗部と法の距離感を描く、苦味の強い青年漫画。", lead_en: "A bitter seinen drama about law, society, and the people in between." },
+  { title_ja: "スーパーの裏でヤニ吸うふたり", title_en: "Smoking Behind the Supermarket with You", lead_ja: "大人の疲れと小さな癒しがじんわり効く、距離感の恋愛漫画。", lead_en: "A quiet adult romance about fatigue, comfort, and small nightly meetings." },
+  { title_ja: "正反対な君と僕", title_en: "You and I Are Polar Opposites", lead_ja: "明るさと不器用さが自然に混ざる、読みやすい青春ラブコメ。", lead_en: "An easygoing school romance about opposite personalities meeting honestly." },
+  { title_ja: "カモのネギには毒がある", title_en: "Kamo no Negi ni wa Doku ga Aru", lead_ja: "心理とお金のからくりを、痛快に見せる社会派エンタメ。", lead_en: "A sharp social entertainment manga about psychology, money, and scams." },
+  { title_ja: "ラーメン赤猫", title_en: "Red Cat Ramen", lead_ja: "猫たちのラーメン店を舞台にした、ゆるく働く癒し系作品。", lead_en: "A cozy workplace manga about a ramen shop run by cats." },
+  { title_ja: "幼稚園WARS", title_en: "Kindergarten WARS", lead_ja: "物騒なアクションとギャグの落差で読ませる、勢い重視の作品。", lead_en: "A loud action comedy built on absurd contrast and chaotic momentum." },
+  { title_ja: "鵺の陰陽師", title_en: "Nue's Exorcist", lead_ja: "少年漫画らしい異能と退魔のノリを楽しめる新しめの作品。", lead_en: "A newer exorcist action manga with a very shonen sense of momentum." },
+  { title_ja: "カグラバチ", title_en: "Kagurabachi", lead_ja: "刀と復讐の王道を、鋭い絵とテンポで押し出すバトル漫画。", lead_en: "A sword revenge action manga with crisp visuals and strong pacing." },
+  { title_ja: "一勝千金", title_en: "Issho Senkin", lead_ja: "女子格闘の熱とクセのある人間模様を楽しめる格闘漫画。", lead_en: "A fighting manga with women's combat, rough humor, and colorful characters." },
+  { title_ja: "日本三國", title_en: "Nihon Sangoku", lead_ja: "分断された日本を舞台にした、政治と戦略の読み応えある作品。", lead_en: "A strategy-heavy political manga set in a divided future Japan." },
 ];
 
 const LOADING_SIDE_DISCOVERY_DETAILS = {
@@ -239,9 +271,8 @@ function seededShuffle(items, seed) {
 }
 
 function getLoadingRecommendations(answers = {}, language = "ja", seed = 1) {
-  const values = Object.values(answers).flat();
-  const sideShelf = LOADING_SIDE_DISCOVERIES.filter((rec) => !(rec.avoid || []).some((value) => values.includes(value)));
-  const recommendations = seededShuffle(sideShelf.length >= 8 ? sideShelf : LOADING_SIDE_DISCOVERIES, seed);
+  const answerNoise = Object.values(answers).flat().join("|").length;
+  const recommendations = seededShuffle(LOADING_SIDE_DISCOVERIES, seed + answerNoise * 97).slice(0, 16);
 
   return recommendations.map((rec) => ({
     title: language === "ja" ? rec.title_ja : rec.title_en,
