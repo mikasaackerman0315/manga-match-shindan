@@ -78,7 +78,7 @@ const sortChips = ["あなた向け順", "人気順", "新着順", "完結済み
 
 function LogoMark() {
   return (
-    <svg className="h-11 w-11 shrink-0" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <svg className="h-12 w-12 shrink-0" viewBox="0 0 48 48" fill="none" aria-hidden="true">
       <path d="M24 4 41 14v20L24 44 7 34V14L24 4Z" stroke="#0a0a0a" strokeWidth="4" strokeLinejoin="round" />
       <path d="M14 18.5c4.1 0 7 .9 10 3.3 3-2.4 5.9-3.3 10-3.3v12.7c-4.1 0-7 .9-10 3.3-3-2.4-5.9-3.3-10-3.3V18.5Z" fill="#0a0a0a" />
       <path d="M24 21.8v12.7" stroke="#f5f3ee" strokeWidth="2" strokeLinecap="round" />
@@ -116,13 +116,16 @@ function MangaBrowseHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-black/10 bg-[#f7f4ed]/92 backdrop-blur-xl">
+    <header
+      className="sticky top-0 z-40 border-b"
+      style={{ borderColor: "rgba(10,10,10,0.1)", backgroundColor: "rgba(245,243,238,0.92)", backdropFilter: "blur(18px)" }}
+    >
       <div className="mx-auto flex max-w-[1920px] items-center justify-between gap-4 px-4 py-2 md:px-8">
         <a href="/" className="flex min-w-0 items-center gap-3">
           <LogoMark />
           <div className="min-w-0">
-            <div className="whitespace-nowrap text-base font-extrabold md:text-xl" style={{ fontFamily: browseSans }}>マンガマッチ診断</div>
-            <div className="hidden text-[11px] font-semibold text-black/60 md:block" style={{ fontFamily: browseSans }}>あなたにぴったりの漫画が見つかる</div>
+            <div className="whitespace-nowrap text-base font-extrabold tracking-[0.01em] md:text-xl" style={{ fontFamily: browseSans }}>マンガマッチ診断</div>
+            <div className="hidden text-[11px] font-semibold md:block" style={{ color: "#555", fontFamily: browseSans }}>あなたにぴったりの漫画が見つかる</div>
           </div>
         </a>
         <nav className="hidden flex-1 items-center justify-center gap-5 text-sm font-bold lg:flex" style={{ fontFamily: browseSans }}>
@@ -134,18 +137,22 @@ function MangaBrowseHeader() {
           ))}
         </nav>
         <div className="flex shrink-0 items-start gap-3">
-          <a href="/manga" className="group flex flex-col items-center gap-1" aria-label="検索">
+          <a href="/manga" className="group flex flex-col items-center gap-1 text-[#0a0a0a]" aria-label="検索">
             <span className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-white/60 transition-colors group-hover:border-[#c0392b]/30 group-hover:text-[#c0392b]">
               <SearchIcon />
             </span>
             <span className="hidden text-[11px] font-semibold md:block">検索</span>
           </a>
-          <a href="/watchlist" className="group flex flex-col items-center gap-1" aria-label="マイページ">
+          <a href="/watchlist" className="group flex flex-col items-center gap-1 text-[#0a0a0a]" aria-label="マイページ">
             <span className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-white/60 transition-colors group-hover:border-[#c0392b]/30 group-hover:text-[#c0392b]">
               <UserIcon />
             </span>
             <span className="hidden text-[11px] font-semibold md:block">マイページ</span>
           </a>
+          <div className="hidden gap-1 pt-1 md:flex" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+            <span className="px-2 py-1 text-[10px]" style={{ border: "1px solid #0a0a0a", backgroundColor: "#0a0a0a", color: "#f5f3ee" }}>JA</span>
+            <span className="px-2 py-1 text-[10px]" style={{ border: "1px solid #0a0a0a", color: "#0a0a0a" }}>EN</span>
+          </div>
         </div>
       </div>
     </header>
@@ -198,7 +205,7 @@ function Pagination({ basePath, currentPage, totalPages }) {
 
 function FilterPanel({ activeGenre }) {
   return (
-    <aside className="rounded-xl border border-black/10 bg-white/82 p-5 shadow-[0_18px_44px_rgba(10,10,10,0.04)] lg:sticky lg:top-24">
+    <aside className="self-start rounded-xl border border-black/10 bg-white/82 p-5 shadow-[0_18px_44px_rgba(10,10,10,0.04)] lg:sticky lg:top-24">
       <div className="text-lg font-black">絞り込み</div>
 
       <div className="mt-5 space-y-6">
@@ -305,7 +312,7 @@ function MangaCard({ manga, index, pageType }) {
   const tags = (manga.tags || []).slice(0, 3).map((tag) => tagLabels[tag]).filter(Boolean);
 
   return (
-    <article className="group relative min-h-[246px] overflow-hidden rounded-xl border border-black/10 bg-white/88 p-4 shadow-[0_14px_34px_rgba(10,10,10,0.035)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(10,10,10,0.06)]">
+    <article className="group relative min-h-[246px] overflow-hidden rounded-xl border border-black/10 bg-white/88 p-4 shadow-[0_14px_34px_rgba(10,10,10,0.035)] transition-shadow hover:shadow-[0_18px_40px_rgba(10,10,10,0.06)]">
       <a href={`/manga/${manga.id}`} className="absolute inset-0 z-0" aria-label={`${title}の詳細を見る`} />
       <div className="relative z-10 flex gap-4 pointer-events-none">
         <div className="relative shrink-0">
@@ -359,7 +366,7 @@ function QuickEntryCards() {
   return (
     <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
       {quickLinks.map((link) => (
-        <a key={link.href} href={link.href} className="rounded-xl border border-black/10 bg-white/76 p-4 transition hover:-translate-y-0.5 hover:border-[#c0392b]/40 hover:text-[#c0392b]">
+        <a key={link.href} href={link.href} className="rounded-xl border border-black/10 bg-white/76 p-4 transition-colors hover:border-[#c0392b]/40 hover:text-[#c0392b]">
           <div className="text-base font-black">{link.label}</div>
           <p className="mt-1 text-xs leading-5 text-black/55">{link.text}</p>
         </a>
@@ -414,7 +421,7 @@ export default function MangaListView({
               </div>
             )}
 
-            <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+            <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
               {items.map((manga, index) => (
                 <MangaCard key={`${manga.id}-${index}`} manga={manga} index={(currentPage - 1) * 30 + index} pageType={pageType} />
               ))}

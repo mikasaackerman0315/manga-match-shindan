@@ -54,7 +54,7 @@ function SearchResultCard({ manga }) {
   const tags = (manga.tags || []).slice(0, 3).map((tag) => tagLabels[tag]).filter(Boolean);
 
   return (
-    <article className="group relative overflow-hidden rounded-xl border border-black/10 bg-white/88 p-4 shadow-[0_14px_34px_rgba(10,10,10,0.035)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(10,10,10,0.06)]">
+    <article className="group relative overflow-hidden rounded-xl border border-black/10 bg-white/88 p-4 shadow-[0_14px_34px_rgba(10,10,10,0.035)] transition-shadow hover:shadow-[0_18px_40px_rgba(10,10,10,0.06)]">
       <a href={`/manga/${manga.id}`} className="absolute inset-0 z-0" aria-label={`${title}の詳細を見る`} />
       <div className="relative z-10 flex gap-4 pointer-events-none">
         <MangaCover
