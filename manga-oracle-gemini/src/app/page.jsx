@@ -253,10 +253,6 @@ function createLoadingSeed() {
   return Date.now() + Math.floor(Math.random() * 2147483647);
 }
 
-function getRandomLoadingIndex(length) {
-  return length > 0 ? Math.floor(Math.random() * length) : 0;
-}
-
 function seededShuffle(items, seed) {
   const shuffled = [...items];
   let state = Math.max(1, Math.floor(seed) % 2147483647);
@@ -1294,7 +1290,7 @@ export default function App() {
     setScreen("loading");
     setLoadingStep(0);
     setLoadingMangaSeed(nextLoadingSeed);
-    setLoadingMangaIndex(getRandomLoadingIndex(nextLoadingRecommendations.length));
+    setLoadingMangaIndex(0);
     setError(null);
     setResults(null);
     try {
