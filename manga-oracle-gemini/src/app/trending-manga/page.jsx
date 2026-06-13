@@ -1,4 +1,3 @@
-import StoreLinks from "../StoreLinks";
 import TrackedArticleLink from "../TrackedArticleLink";
 import MangaCover from "../../components/MangaCover";
 import { getMangaCoverForItem } from "../../data/mangaCovers";
@@ -683,14 +682,6 @@ function JsonLd({ data }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
-function TrendPill({ children }) {
-  return (
-    <span className="px-2 py-0.5 text-[10px] tracking-[0.08em]" style={{ border: "1px solid rgba(192,57,43,0.26)", color: "#c0392b", backgroundColor: "rgba(192,57,43,0.055)", fontFamily: "'JetBrains Mono', 'Noto Serif JP', monospace" }}>
-      {children}
-    </span>
-  );
-}
-
 function getTags(section, item) {
   return Array.from(new Set([...(section.defaultTags || []), ...(item.tags || [])])).slice(0, 6);
 }
@@ -699,12 +690,248 @@ function getSynopsis(item) {
   return SYNOPSIS_BY_TITLE[item.title] || item.synopsis || item.why;
 }
 
-function RelatedCard({ href, label, description }) {
+const navItems = [
+  { label: "ホーム", href: "/" },
+  { label: "診断する", href: "/?start=1" },
+  { label: "漫画を探す", href: "/manga" },
+  { label: "テーマから探す", href: "/themes" },
+  { label: "ランキング", href: "/trending-manga", active: true },
+  { label: "保存リスト", href: "/watchlist" },
+  { label: "好みプロフィール", href: "/?start=1" },
+];
+
+function LogoMark() {
   return (
-    <TrackedArticleLink href={href} label={label} sourcePath="/trending-manga" className="block p-4 transition-all hover:translate-y-[-1px]" style={{ border: "1px solid rgba(10,10,10,0.12)", backgroundColor: "rgba(245,243,238,0.72)" }}>
-      <h3 className="text-base font-semibold mb-2">{label}</h3>
-      <p className="text-sm leading-7" style={{ color: "#555" }}>{description}</p>
+    <svg className="h-12 w-12 shrink-0" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M24 4 41 14v20L24 44 7 34V14L24 4Z" stroke="#0a0a0a" strokeWidth="4" strokeLinejoin="round" />
+      <path d="M14 18.5c4.1 0 7 .9 10 3.3 3-2.4 5.9-3.3 10-3.3v12.7c-4.1 0-7 .9-10 3.3-3-2.4-5.9-3.3-10-3.3V18.5Z" fill="#0a0a0a" />
+      <path d="M24 21.8v12.7" stroke="#f5f3ee" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function SearchGlyph() {
+  return (
+    <span className="relative block h-5 w-5" aria-hidden="true">
+      <span className="absolute left-0 top-0 h-4 w-4 rounded-full border-2 border-current" />
+      <span className="absolute bottom-0 right-0 h-2.5 w-0.5 rotate-[-45deg] rounded-full bg-current" />
+    </span>
+  );
+}
+
+function UserGlyph() {
+  return (
+    <span className="relative block h-5 w-5" aria-hidden="true">
+      <span className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 border-current" />
+      <span className="absolute bottom-0 left-1/2 h-2.5 w-4 -translate-x-1/2 rounded-t-full border-2 border-current border-b-0" />
+    </span>
+  );
+}
+
+function Header() {
+  return (
+    <header className="sticky top-0 z-40 border-b border-black/10 bg-[#f5f3ee]/95 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-[1920px] items-center justify-between gap-4 px-4 py-2 md:px-8">
+        <a href="/" className="flex min-w-0 items-center gap-3">
+          <LogoMark />
+          <div className="min-w-0">
+            <div className="whitespace-nowrap text-base font-extrabold tracking-[0.01em] md:text-xl">マンガマッチ診断</div>
+            <div className="hidden text-[11px] font-semibold text-black/60 md:block">あなたにぴったりの漫画が見つかる</div>
+          </div>
+        </a>
+        <nav className="hidden flex-1 items-center justify-center gap-5 text-sm font-bold lg:flex">
+          {navItems.map((item) => (
+            <a key={item.label} href={item.href} className={`relative pb-2 transition-colors hover:text-[#c0392b] ${item.active ? "text-[#c0392b]" : ""}`}>
+              {item.label}
+              {item.active ? <span className="absolute bottom-0 left-0 h-[3px] w-full rounded-full bg-[#c0392b]" /> : null}
+            </a>
+          ))}
+        </nav>
+        <div className="flex shrink-0 items-start gap-3">
+          <a href="/manga" className="group flex flex-col items-center gap-1 text-[#0a0a0a]" aria-label="検索">
+            <span className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-white/70 transition-colors group-hover:border-[#c0392b]/30 group-hover:text-[#c0392b]">
+              <SearchGlyph />
+            </span>
+            <span className="hidden text-[11px] font-semibold md:block">検索</span>
+          </a>
+          <a href="/watchlist" className="group flex flex-col items-center gap-1 text-[#0a0a0a]" aria-label="マイページ">
+            <span className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-white/70 transition-colors group-hover:border-[#c0392b]/30 group-hover:text-[#c0392b]">
+              <UserGlyph />
+            </span>
+            <span className="hidden text-[11px] font-semibold md:block">マイページ</span>
+          </a>
+          <div className="hidden gap-1 pt-1 md:flex" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+            <span className="border border-black bg-black px-2 py-1 text-[10px] text-[#f5f3ee]">JA</span>
+            <span className="border border-black px-2 py-1 text-[10px] text-[#0a0a0a]">EN</span>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function TrendPill({ children }) {
+  return (
+    <span className="rounded-full border border-black/10 bg-white/70 px-2 py-1 text-[10px] font-semibold leading-none text-black/68">
+      {children}
+    </span>
+  );
+}
+
+function RedPill({ children, active = false }) {
+  return (
+    <span className={`inline-flex items-center justify-center rounded-[6px] border px-5 py-3 text-sm font-extrabold transition-colors ${active ? "border-[#c0392b] bg-[#c0392b] text-white" : "border-[#c0392b]/35 bg-white/80 text-[#0a0a0a]"}`}>
+      {children}
+    </span>
+  );
+}
+
+function CoverBox({ item, size = "medium", className = "" }) {
+  const cover = getMangaCoverForItem(item);
+  return (
+    <div className={`relative overflow-hidden rounded-[6px] bg-[#ebe7de] shadow-[0_8px_20px_rgba(10,10,10,0.10)] ${className}`}>
+      <MangaCover title={item.title} mangaId={item.id} author={item.author} coverImageUrl={cover?.coverImageUrl} coverImageSource={cover?.coverImageSource} verified={cover?.coverImageVerified} size={size} />
+    </div>
+  );
+}
+
+function TrendHeroArt() {
+  const labels = ["#アニメ化", "#SNSで話題", "#ジャンプ＋", "#漫画アプリ", "#新刊で話題"];
+  return (
+    <div className="relative min-h-[250px] overflow-hidden rounded-[18px]">
+      <div
+        className="absolute inset-0 opacity-80"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.18) 1.2px, transparent 1.2px)",
+          backgroundSize: "18px 18px",
+          maskImage: "linear-gradient(90deg, transparent 0%, black 18%, black 82%, transparent 100%)",
+        }}
+      />
+      <svg className="absolute bottom-5 right-10 h-[170px] w-[270px] text-[#c0392b]/26" viewBox="0 0 420 260" fill="none" aria-hidden="true">
+        <rect x="172" y="46" width="70" height="132" rx="10" stroke="currentColor" strokeWidth="4" />
+        <path d="M188 70h38M188 96h38M188 122h30" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        <path d="M92 150c42-24 78-34 116-28 32 5 54 19 84 18 28 0 50-13 78-34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        <path d="M74 182c34-22 76-29 124-20 40 8 72 28 128 8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        <path d="M80 78h70l14 92H92Z" stroke="currentColor" strokeWidth="4" />
+        <path d="M262 176c26-30 58-42 96-30" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+        <path d="M332 154c28 12 42 36 42 66" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+      </svg>
+      {labels.map((label, index) => (
+        <span
+          key={label}
+          className="absolute rounded-[8px] border border-[#c0392b]/25 bg-white/82 px-4 py-2 text-xs font-extrabold text-[#c0392b] shadow-sm"
+          style={{
+            left: `${22 + (index % 2) * 33 + (index === 4 ? 8 : 0)}%`,
+            top: `${12 + index * 14}%`,
+          }}
+        >
+          {label}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function SectionTitle({ number, title, lead, action = true }) {
+  return (
+    <div className="mb-5 flex items-start justify-between gap-4">
+      <div>
+        <div className="mb-1 flex items-center gap-3">
+          <span className="text-2xl font-black text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{number}</span>
+          <h2 className="text-xl font-black tracking-tight md:text-2xl">{title}</h2>
+        </div>
+        {lead ? <p className="text-sm font-medium leading-7 text-black/62">{lead}</p> : null}
+      </div>
+      {action ? <a href="/manga" className="shrink-0 text-sm font-bold hover:text-[#c0392b]">もっと見る →</a> : null}
+    </div>
+  );
+}
+
+function FeatureCard({ item, section, index }) {
+  return (
+    <article id={`rank-${index + 1}`} className="relative flex min-h-full flex-col rounded-[8px] border border-black/10 bg-white p-3 shadow-[0_10px_26px_rgba(10,10,10,0.05)]">
+      <span className="absolute left-2 top-2 z-10 grid h-8 w-8 place-items-center rounded-[4px] bg-[#c0392b] text-lg font-black text-white" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{index + 1}</span>
+      <span className="absolute right-2 top-2 z-10 rounded-[4px] bg-[#175aa6] px-2 py-1 text-[10px] font-bold text-white">{item.tags?.includes("アニメ化") ? "アニメ化" : "SNSで話題"}</span>
+      <div className="mx-auto mb-3 pt-1">
+        <CoverBox item={item} size="large" />
+      </div>
+      <h3 className="mb-1 text-lg font-black leading-tight">{item.title}</h3>
+      <p className="mb-3 text-[11px] font-semibold leading-5 text-black/55">{item.author}</p>
+      <div className="mb-3 flex flex-wrap gap-1">
+        {getTags(section, item).slice(0, 3).map((tag) => <TrendPill key={tag}>{tag}</TrendPill>)}
+      </div>
+      <p className="mb-4 line-clamp-3 text-sm font-medium leading-7 text-black/70">{getSynopsis(item)}</p>
+      <TrackedArticleLink href={`/manga/${item.id}`} label={`${item.title} 詳しく見る`} sourcePath="/trending-manga" className="mt-auto inline-flex w-fit items-center gap-2 rounded-[6px] border border-black/18 bg-white px-4 py-2 text-sm font-bold transition-colors hover:border-[#c0392b]/45 hover:text-[#c0392b]">
+        詳しく見る <span>→</span>
+      </TrackedArticleLink>
+    </article>
+  );
+}
+
+function ListItemRow({ item, section, index }) {
+  return (
+    <TrackedArticleLink href={`/manga/${item.id}`} label={`${item.title} 行リンク`} sourcePath="/trending-manga" className="group flex items-center gap-4 border-b border-black/8 py-3 last:border-b-0">
+      <CoverBox item={item} size="small" className="rounded-[5px]" />
+      <div className="min-w-0 flex-1">
+        <div className="mb-1 flex items-center gap-2">
+          <span className="text-sm font-black text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{index + 1}</span>
+          <h3 className="truncate text-base font-black">{item.title}</h3>
+        </div>
+        <p className="line-clamp-1 text-xs font-semibold text-black/50">{item.author}</p>
+        <p className="line-clamp-1 text-xs leading-5 text-black/62">{getSynopsis(item)}</p>
+        <div className="mt-1 flex flex-wrap gap-1">
+          {getTags(section, item).slice(0, 3).map((tag) => <TrendPill key={tag}>{tag}</TrendPill>)}
+        </div>
+      </div>
+      <span className="text-xl text-black/45 transition-colors group-hover:text-[#c0392b]">›</span>
     </TrackedArticleLink>
+  );
+}
+
+function CompactRankingPanel({ section, number, title }) {
+  return (
+    <section className="rounded-[10px] border border-black/10 bg-white p-5 shadow-[0_10px_28px_rgba(10,10,10,0.045)]">
+      <SectionTitle number={number} title={title || section.heading} lead={section.lead} />
+      <div>
+        {section.items.slice(0, 5).map((item, index) => (
+          <ListItemRow key={item.id} item={item} section={section} index={index} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function StripPanel({ section, number, title }) {
+  return (
+    <section className="rounded-[10px] border border-black/10 bg-white p-5 shadow-[0_10px_28px_rgba(10,10,10,0.045)]">
+      <SectionTitle number={number} title={title || section.heading} lead={section.lead} />
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        {section.items.slice(0, 5).map((item) => (
+          <TrackedArticleLink key={item.id} href={`/manga/${item.id}`} label={`${item.title} ミニカード`} sourcePath="/trending-manga" className="group block">
+            <CoverBox item={item} size="medium" className="mx-auto mb-2" />
+            <h3 className="line-clamp-2 text-center text-sm font-black leading-5 group-hover:text-[#c0392b]">{item.title}</h3>
+          </TrackedArticleLink>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function CtaPanel() {
+  return (
+    <section className="mx-auto mt-10 flex max-w-[1180px] flex-col items-center gap-5 rounded-[12px] border border-[#c0392b]/18 bg-white/72 p-8 text-center shadow-[0_18px_50px_rgba(192,57,43,0.08)] md:flex-row md:justify-center md:text-left">
+      <svg className="h-20 w-28 shrink-0 text-[#c0392b]/28" viewBox="0 0 180 120" fill="none" aria-hidden="true">
+        <path d="M30 30c24 0 42 6 60 20 18-14 36-20 60-20v58c-24 0-42 6-60 20-18-14-36-20-60-20V30Z" stroke="currentColor" strokeWidth="4" />
+        <path d="M90 50v58M46 48c12 2 22 6 34 14M134 48c-12 2-22 6-34 14" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+      </svg>
+      <div className="flex-1">
+        <h2 className="text-2xl font-black">話題作が多すぎて迷ったら、AI診断で探してみよう</h2>
+        <p className="mt-2 text-sm font-medium leading-7 text-black/60">あなたの好みや気分に合う漫画を、AIが候補として提案します。</p>
+      </div>
+      <TrackedArticleLink href="/?start=1" label="AI診断を始める" sourcePath="/trending-manga" className="inline-flex min-w-[280px] items-center justify-center rounded-[6px] bg-[#c0392b] px-8 py-4 text-sm font-black text-white shadow-[0_12px_24px_rgba(192,57,43,0.22)] transition-colors hover:bg-[#a92f23]">
+        AI診断を始める →
+      </TrackedArticleLink>
+    </section>
   );
 }
 
@@ -759,118 +986,57 @@ export default function TrendingMangaPage() {
     ],
   };
 
-  let rank = 0;
+  const firstSection = sections.find((section) => section.id === "first-picks") || sections[0];
+  const jumpSection = sections.find((section) => section.id === "jump-plus") || sections[1];
+  const appSection = sections.find((section) => section.id === "magapoke-mangaone") || sections[2];
+  const snsSection = sections.find((section) => section.id === "anime-sns") || sections[3];
+  const growingSection = sections.find((section) => section.id === "dark-adult") || sections[4];
 
   return (
-    <main className="min-h-screen px-4 py-10 md:py-16" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a" }}>
+    <main className="min-h-screen bg-[#f5f3ee] text-[#0a0a0a]">
       <JsonLd data={itemListJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
       <JsonLd data={faqJsonLd} />
-      <div className="max-w-5xl mx-auto">
-        <a href="/" className="inline-block mb-10 text-xs tracking-[0.24em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>漫画おすすめ診断</a>
+      <Header />
+      <div className="mx-auto max-w-[1440px] px-4 pb-12 md:px-8">
+        <section className="grid gap-8 py-10 md:grid-cols-[0.54fr_0.46fr] md:py-14">
+          <div className="flex flex-col justify-center">
+            <div className="mb-5 text-sm font-black uppercase tracking-[0.2em] text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>Trending Manga</div>
+            <h1 className="text-5xl font-black leading-[1.12] tracking-tight md:text-6xl" style={{ fontFamily: "'Noto Serif JP', serif" }}>今話題の漫画を探す</h1>
+            <p className="mt-5 max-w-2xl text-base font-medium leading-9 text-black/72">
+              漫画アプリ、SNS、アニメ化、新刊・映像化をきっかけに、今読まれている注目作をまとめました。
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <RedPill active>まず読むべき注目作</RedPill>
+              <RedPill>ジャンプ＋系</RedPill>
+              <RedPill>アニメ化</RedPill>
+              <RedPill>SNSで話題</RedPill>
+              <RedPill>完結済み</RedPill>
+            </div>
+          </div>
+          <TrendHeroArt />
+        </section>
 
-        <header className="mb-12">
-          <div className="text-xs tracking-[0.28em] uppercase mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>Trending Manga</div>
-          <h1 className="text-4xl md:text-6xl leading-tight font-semibold mb-6" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>今話題の漫画おすすめランキング</h1>
-          <p className="text-base md:text-lg leading-9 max-w-3xl" style={{ color: "#444" }}>
-            漫画アプリ、SNS、アニメ化、新刊・映像化などをきっかけに、今読まれている注目漫画を紹介します。定番名作だけではなく、2020年代の連載作や、これから伸びそうな作品も中心に選びました。
-          </p>
-        </header>
-
-        <section className="mb-12 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.6)" }}>
-          <h2 className="text-2xl font-semibold mb-3">今本当に読まれているトレンド漫画とは？</h2>
-          <div className="space-y-3 leading-8" style={{ color: "#444" }}>
-            <p>ここでは、昔からの名作ランキングではなく、今注目されている理由がある漫画を優先しています。</p>
-            <p>ジャンプ＋、マガポケ、マンガワン、LINEマンガ、ピッコマなどの漫画アプリ、SNSでの口コミ、アニメ化・映像化、新刊や電子書籍ランキングで読み始める人が増えやすい作品を中心に選びました。</p>
+        <section className="rounded-[12px] border border-black/10 bg-white/72 p-5 shadow-[0_18px_50px_rgba(10,10,10,0.055)]">
+          <SectionTitle number="01" title="まず読むならこの注目作" lead="アニメ化・SNS・アプリ人気から、今入りやすい漫画を厳選！" />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
+            {firstSection.items.slice(0, 6).map((item, index) => (
+              <FeatureCard key={item.id} item={item} section={firstSection} index={index} />
+            ))}
           </div>
         </section>
 
-        {sections.map((section) => (
-          <section key={section.id} className="mb-14">
-            <div className="mb-6">
-              <div className="text-xs tracking-[0.22em] uppercase mb-2" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>{section.id}</div>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-3">{section.heading}</h2>
-              <p className="leading-8" style={{ color: "#555" }}>{section.lead}</p>
-            </div>
+        <div className="mt-5 grid gap-5 lg:grid-cols-2">
+          <CompactRankingPanel section={jumpSection} number="02" title="ジャンプ＋・少年漫画アプリで話題" />
+          <CompactRankingPanel section={appSection} number="03" title="マガポケ・マンガワン系で注目" />
+        </div>
 
-            <div className="space-y-8">
-              {section.items.map((item) => {
-                rank += 1;
-                const cover = getMangaCoverForItem(item);
+        <div className="mt-5 grid gap-5 lg:grid-cols-2">
+          <StripPanel section={snsSection} number="04" title="SNSで話題・考察されやすい作品" />
+          <StripPanel section={growingSection} number="05" title="これから伸びそうな作品" />
+        </div>
 
-                return (
-                  <article id={`rank-${rank}`} key={`${section.id}-${item.title}`} className="grid grid-cols-12 gap-4 md:gap-6 pb-8 scroll-mt-8" style={{ borderBottom: "1px solid rgba(10,10,10,0.1)" }}>
-                    <div className="col-span-2 md:col-span-1 text-3xl md:text-4xl font-bold leading-none" style={{ color: rank === 1 ? "#c0392b" : "#0a0a0a", fontFamily: "'Cormorant Garamond', serif" }}>
-                      {String(rank).padStart(2, "0")}
-                    </div>
-                    <div className="col-span-10 md:col-span-11">
-                      <div className="flex items-start gap-4 md:gap-5">
-                        <MangaCover title={item.title} mangaId={item.id} author={item.author} coverImageUrl={cover?.coverImageUrl} coverProductUrl={cover?.coverProductUrl} coverImageSource={cover?.coverImageSource} verified={cover?.coverImageVerified} pageType="seo_article" />
-                        <div className="min-w-0 flex-1">
-                          <h3 className="text-2xl md:text-3xl font-semibold mb-2" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{item.title}</h3>
-                          <div className="mb-3 text-xs tracking-[0.12em]" style={{ color: "#777", fontFamily: "'JetBrains Mono', monospace" }}>
-                            {item.author} / {item.status} / {item.year}
-                          </div>
-                          <div className="flex flex-wrap gap-1.5 mb-4">
-                            {getTags(section, item).map((tag) => <TrendPill key={tag}>{tag}</TrendPill>)}
-                          </div>
-                          <div className="space-y-3 leading-8" style={{ color: "#333" }}>
-                            <p><strong>あらすじ</strong> {getSynopsis(item)}</p>
-                            <p><strong>おすすめの人</strong> {item.fit}</p>
-                            <p><strong>読む前に</strong> {item.caution}</p>
-                          </div>
-                          <StoreLinks title={item.title} compact pageType="seo_article" />
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </section>
-        ))}
-
-        <section className="mb-14 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.6)" }}>
-          <h2 className="text-2xl font-semibold mb-3">迷ったら漫画診断で選ぶ</h2>
-          <p className="text-sm leading-7 mb-5" style={{ color: "#555" }}>
-            トレンド漫画は数が多く、同じ話題作でも重さや読み味がかなり違います。苦手な展開や読みたい気分がある場合は、診断で条件を入れて候補を絞り込めます。
-          </p>
-          <a href="/?start=1" className="inline-block px-7 py-3 text-xs tracking-[0.22em] uppercase transition-all hover:scale-105" style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>漫画おすすめ診断へ</a>
-        </section>
-
-        <section className="mb-14 p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.45)" }}>
-          <h2 className="text-2xl font-semibold mb-5">ほかの切り口で探す</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <RelatedCard href="/beginner-manga" label="初心者向け漫画" description="久しぶりに漫画を読む人でも入りやすい作品を見る" />
-            <RelatedCard href="/completed-manga" label="完結済み漫画" description="最後まで一気に読める作品を探す" />
-            <RelatedCard href="/binge-read-manga" label="一気読み漫画" description="続きが気になって止まらない作品を探す" />
-            <RelatedCard href="/fantasy-manga" label="ファンタジー漫画" description="世界観に浸れる作品を探す" />
-            <RelatedCard href="/romance-manga" label="恋愛漫画" description="青春、胸きゅん、大人の恋を探す" />
-            <RelatedCard href="/horror-manga" label="ホラー漫画" description="怖さ、不穏さ、サスペンスを楽しめる作品を見る" />
-          </div>
-        </section>
-
-        <section className="p-5 md:p-6" style={{ border: "1px solid rgba(10,10,10,0.14)", backgroundColor: "rgba(245,243,238,0.45)" }}>
-          <h2 className="text-2xl font-semibold mb-5">よくある質問</h2>
-          <div className="space-y-5">
-            <div>
-              <h3 className="font-semibold mb-2">今流行っている漫画はどう選べばいい？</h3>
-              <p className="text-sm leading-7" style={{ color: "#555" }}>アニメ化やSNS人気だけでなく、読みたいジャンル、重さ、完結済みか連載中かを合わせて見ると選びやすくなります。</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-2">初心者でも読みやすいトレンド漫画は？</h3>
-              <p className="text-sm leading-7" style={{ color: "#555" }}>SPY×FAMILY、ダンダダン、葬送のフリーレン、薬屋のひとりごとは入口が分かりやすく、アニメから原作にも入りやすい作品です。</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-2">完結済みで今読んでも面白い作品は？</h3>
-              <p className="text-sm leading-7" style={{ color: "#555" }}>怪獣8号、タコピーの原罪、地獄楽、ザ・ファブル、チ。―地球の運動について―などは、完結済みでまとめ読みしやすい作品です。</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-2">アニメ化された作品から選ぶのはあり？</h3>
-              <p className="text-sm leading-7" style={{ color: "#555" }}>ありです。アニメ化作品は入口が多く、原作では心理描写やテンポの違いも楽しめるので、漫画を選ぶきっかけとして使いやすいです。</p>
-            </div>
-          </div>
-        </section>
+        <CtaPanel />
       </div>
     </main>
   );
