@@ -552,7 +552,7 @@ function ResultDashboardCard({ rec, index, language, t, featured = false }) {
   const score = clampPercent(96 - index * 2 + ((rec.tags || []).length > 3 ? 2 : 0));
 
   return (
-    <article className="grid gap-5 rounded-xl border border-black/10 bg-white/88 p-4 shadow-[0_18px_45px_rgba(10,10,10,0.055)] md:grid-cols-[132px_minmax(0,1fr)_170px] md:p-5">
+    <article className="grid gap-5 rounded-xl border border-black/10 bg-white/88 p-4 shadow-[0_18px_45px_rgba(10,10,10,0.055)] md:grid-cols-[180px_minmax(0,1fr)] md:p-5 2xl:grid-cols-[190px_minmax(0,1fr)_230px]">
       <div className="relative">
         <div className="absolute left-[-8px] top-[-8px] z-10 rounded-md bg-[#c0392b] px-2.5 py-1.5 text-sm font-black text-white">
           {String(index + 1).padStart(2, "0")}
@@ -584,7 +584,7 @@ function ResultDashboardCard({ rec, index, language, t, featured = false }) {
         )}
       </div>
 
-      <div className="flex flex-col justify-between border-black/8 md:border-l md:pl-5">
+      <div className="flex flex-col justify-between border-black/8 md:col-span-2 md:border-t md:pt-4 2xl:col-span-1 2xl:border-l 2xl:border-t-0 2xl:pl-5 2xl:pt-0">
         <div>
           <div className="text-xs font-bold text-black/52">{language === "ja" ? "相性スコア" : "Match Score"}</div>
           <div className="mt-1 text-4xl font-black text-[#c0392b]" style={{ fontFamily: modeSerif }}>{score}%</div>
@@ -624,7 +624,7 @@ function ResultDashboardScreen({ language, setLanguage, results, t, onRetake, on
     >
       <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={onRetake} active="diagnosis" />
 
-      <main className="mx-auto max-w-[1536px] px-5 py-6 md:px-8 xl:px-10">
+      <main className="mx-auto max-w-[1680px] px-5 py-6 md:px-8 xl:px-10">
         <div className="mb-5 flex items-center gap-2 text-xs font-bold text-black/46">
           <a href="/" className="transition hover:text-[#c0392b]">ホーム</a>
           <span>›</span>
@@ -633,7 +633,7 @@ function ResultDashboardScreen({ language, setLanguage, results, t, onRetake, on
           <span className="text-[#c0392b]">診断結果</span>
         </div>
 
-        <div className="grid gap-6 xl:grid-cols-[230px_minmax(0,1fr)_330px]">
+        <div className="grid gap-5 xl:grid-cols-[220px_minmax(0,1fr)_300px] 2xl:gap-6 2xl:grid-cols-[220px_minmax(0,1fr)_310px]">
           <aside className="space-y-5">
             <section className="rounded-xl border border-black/10 bg-white/88 p-5 text-center shadow-[0_16px_38px_rgba(10,10,10,0.045)]">
               <div className="mx-auto grid h-16 w-16 place-items-center rounded-full border border-[#f0c1bb] text-[#c0392b]">
@@ -1759,7 +1759,7 @@ export default function App() {
       fontFamily: "'Noto Serif JP', 'Cormorant Garamond', serif",
       color: "#0a0a0a",
     }}>
-      {!(screen === "landing" && USE_NEW_HOME) && screen !== "mode" && screen !== "quiz" && screen !== "freetext" && screen !== "loading" && <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+      {!(screen === "landing" && USE_NEW_HOME) && screen !== "mode" && screen !== "quiz" && screen !== "freetext" && screen !== "loading" && screen !== "results" && <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
         <button onClick={() => setLanguage("ja")} className="px-3 py-1 text-xs tracking-wider transition-all"
           style={{ backgroundColor: language === "ja" ? "#0a0a0a" : "transparent", color: language === "ja" ? "#f5f3ee" : "#0a0a0a", border: "1px solid #0a0a0a" }}>JA</button>
         <button onClick={() => setLanguage("en")} className="px-3 py-1 text-xs tracking-wider transition-all"

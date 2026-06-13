@@ -54,9 +54,9 @@ export default function StoreLinks({ title, compact = false, pageType = "diagnos
   };
 
   const wrapClass = compact ? "mt-2 w-full" : "mt-4 w-full";
-  const gridClass = compact ? "grid grid-cols-5 gap-1" : "grid grid-cols-2 gap-1.5";
+  const gridClass = compact ? "grid grid-cols-2 gap-1.5" : "grid grid-cols-2 gap-1.5";
   const buttonClass = compact
-    ? "min-h-[26px] px-1 py-1 text-[9px] leading-none text-center transition-all hover:translate-y-[-1px] active:scale-[0.98]"
+    ? "min-h-[34px] px-2 py-1.5 text-[10px] leading-snug text-center transition-all hover:translate-y-[-1px] active:scale-[0.98]"
     : "min-h-[36px] px-3 py-2 text-[11px] leading-snug text-center tracking-[0.04em] transition-all hover:translate-y-[-1px] active:scale-[0.98]";
   const buttonStyle = (key, accent = false) => ({
     display: "flex",
