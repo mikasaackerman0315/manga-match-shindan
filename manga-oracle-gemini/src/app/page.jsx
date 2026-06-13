@@ -510,7 +510,7 @@ function DiagnosisModeCard({ variant, icon, title, meta, desc, stats, button, on
   const dark = variant === "detailed";
   const accent = dark ? "#d7a447" : "#c0392b";
   return (
-    <button onClick={onClick} className={`group rounded-xl p-6 text-left shadow-[0_20px_60px_rgba(10,10,10,0.08)] transition hover:-translate-y-1 md:p-7 ${dark ? "bg-[#0a0a0a] text-[#f5f3ee]" : "bg-white/86 text-[#0a0a0a]"}`} style={{ border: `1px solid ${dark ? "rgba(215,164,71,0.36)" : "rgba(10,10,10,0.16)"}` }}>
+    <button onClick={onClick} className={`rounded-xl p-6 text-left shadow-[0_20px_60px_rgba(10,10,10,0.08)] transition-colors md:p-7 ${dark ? "bg-[#0a0a0a] text-[#f5f3ee]" : "bg-white/86 text-[#0a0a0a]"}`} style={{ border: `1px solid ${dark ? "rgba(215,164,71,0.36)" : "rgba(10,10,10,0.16)"}` }}>
       <div className="mb-6 flex items-start gap-7">
         <ModeIcon type={icon} className="h-14 w-14 shrink-0" style={{ color: accent }} />
         <div>
@@ -528,7 +528,7 @@ function DiagnosisModeCard({ variant, icon, title, meta, desc, stats, button, on
           </div>
         ))}
       </div>
-      <div className={`mt-6 flex items-center justify-center rounded-md px-6 py-3.5 text-sm font-bold transition group-hover:translate-x-1 ${dark ? "border border-[#d7a447] text-[#d7a447]" : "bg-[#c0392b] text-white"}`}>
+      <div className={`mt-6 flex items-center justify-center rounded-md px-6 py-3.5 text-sm font-bold transition-all ${dark ? "border border-[#d7a447] text-[#d7a447] hover:bg-[#d7a447] hover:text-[#0a0a0a] hover:shadow-[0_0_0_4px_rgba(215,164,71,0.14),0_18px_42px_rgba(215,164,71,0.18)]" : "bg-[#c0392b] text-white hover:bg-[#d63e32] hover:shadow-[0_0_0_4px_rgba(192,57,43,0.14),0_18px_42px_rgba(192,57,43,0.26)]"}`}>
         {button} <span className="ml-5">→</span>
       </div>
     </button>
