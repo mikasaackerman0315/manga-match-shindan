@@ -80,7 +80,7 @@ export const metadata = {
 
 function LogoMark() {
   return (
-    <svg className="h-11 w-11 shrink-0" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <svg className="h-12 w-12 shrink-0" viewBox="0 0 48 48" fill="none" aria-hidden="true">
       <path d="M24 4 41 14v20L24 44 7 34V14L24 4Z" stroke="#0a0a0a" strokeWidth="4" strokeLinejoin="round" />
       <path d="M14 18.5c4.1 0 7 .9 10 3.3 3-2.4 5.9-3.3 10-3.3v12.7c-4.1 0-7 .9-10 3.3-3-2.4-5.9-3.3-10-3.3V18.5Z" fill="#0a0a0a" />
       <path d="M24 21.8v12.7" stroke="#f5f3ee" strokeWidth="2" strokeLinecap="round" />
@@ -251,15 +251,15 @@ function UserGlyph() {
 function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-black/10 bg-[#f5f3ee]/95 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-3 md:px-8">
+      <div className="mx-auto flex max-w-[1920px] items-center justify-between gap-4 px-4 py-2 md:px-8">
         <a href="/" className="flex min-w-0 items-center gap-3">
           <LogoMark />
           <div className="min-w-0">
-            <div className="whitespace-nowrap text-lg font-extrabold tracking-[0.01em] md:text-xl">マンガマッチ診断</div>
+            <div className="whitespace-nowrap text-base font-extrabold tracking-[0.01em] md:text-xl">マンガマッチ診断</div>
             <div className="hidden text-[11px] font-semibold text-black/60 md:block">あなたにぴったりの漫画が見つかる</div>
           </div>
         </a>
-        <nav className="hidden flex-1 items-center justify-center gap-6 text-sm font-bold lg:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-5 text-sm font-bold lg:flex">
           {navItems.map((item) => (
             <a key={item.label} href={item.href} className={`relative pb-2 transition-colors hover:text-[#c0392b] ${item.active ? "text-[#c0392b]" : ""}`}>
               {item.label}
@@ -296,9 +296,7 @@ function HeroIllustration() {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(192,57,43,0.18) 1.2px, transparent 1.3px), linear-gradient(90deg, rgba(255,253,249,0.95), rgba(255,253,249,0.2))",
-          backgroundSize: "18px 18px, 100% 100%",
+          backgroundImage: "linear-gradient(90deg, rgba(255,253,249,0.98), rgba(255,253,249,0.62))",
         }}
       />
       <svg className="absolute inset-x-4 bottom-0 mx-auto h-full max-h-[320px] w-[86%] text-[#c0392b]/30" viewBox="0 0 640 360" fill="none" aria-hidden="true">
@@ -382,7 +380,6 @@ function ThemeCard({ theme, index, tone }) {
       themeTitle={theme.label}
       className={`group relative min-h-[250px] overflow-hidden rounded-[10px] border border-black/10 bg-gradient-to-br ${toneClass} p-6 shadow-[0_14px_28px_rgba(10,10,10,0.06)] transition-colors hover:border-[#c0392b]/35`}
     >
-      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)", backgroundSize: "18px 18px" }} />
       <div className="absolute -bottom-8 -right-8 opacity-30">
         <LineIcon type={theme.slug === "horror" ? "ghost" : theme.slug === "mystery" ? "search" : theme.slug === "sports" ? "ball" : theme.slug === "workplace" ? "case" : "openBook"} className="h-36 w-36" />
       </div>
@@ -412,16 +409,18 @@ function ArticleMiniCard({ article, index }) {
       href={article.href}
       label={article.label}
       sourcePath="/themes"
-      className="group relative min-h-[180px] overflow-hidden rounded-[9px] border border-black/10 bg-white/80 p-5 shadow-[0_12px_24px_rgba(10,10,10,0.05)] transition-colors hover:border-[#c0392b]/35"
+      className="group flex min-h-[220px] flex-col rounded-[9px] border border-black/10 bg-white/80 p-5 shadow-[0_12px_24px_rgba(10,10,10,0.05)] transition-colors hover:border-[#c0392b]/35"
     >
-      <div className="absolute bottom-4 right-4 text-[#c0392b]/45">
-        <LineIcon type={article.icon} className="h-12 w-12" />
+      <div className="mb-4 flex items-start justify-between gap-4">
+        <div className="text-xs font-extrabold text-[#c0392b]">{String(index + 1).padStart(2, "0")}</div>
+        <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#c0392b]/8 text-[#c0392b]">
+          <LineIcon type={article.icon} className="h-6 w-6" />
+        </div>
       </div>
-      <div className="relative">
-        <div className="mb-4 text-xs font-extrabold text-[#c0392b]">{String(index + 1).padStart(2, "0")}</div>
+      <div className="flex flex-1 flex-col">
         <h3 className="mb-3 text-lg font-extrabold leading-7">{article.label}</h3>
-        <p className="mb-4 max-w-[13rem] text-sm font-medium leading-6 text-black/65">{article.description}</p>
-        <div className="flex flex-wrap gap-2">
+        <p className="mb-4 text-sm font-medium leading-6 text-black/65">{article.description}</p>
+        <div className="mt-auto flex flex-wrap gap-2">
           {article.tags.map((tag) => (
             <span key={tag} className="rounded-full border border-black/10 bg-[#f5f3ee] px-2 py-1 text-[11px] font-bold text-black/55">
               #{tag}
