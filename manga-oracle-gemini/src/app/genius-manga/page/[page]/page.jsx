@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import MangaListView from "../../../manga/MangaListView";
-import { getGeniusManga, getMangaPage, getTotalMangaPages } from "../../../../data/mangaCatalog";
+import { ALL_MANGA, getGeniusManga, getMangaPage, getTotalMangaPages } from "../../../../data/mangaCatalog";
 
 export function generateStaticParams() {
   const totalPages = getTotalMangaPages(getGeniusManga());
@@ -36,6 +36,7 @@ export default function GeniusMangaPagedPage({ params }) {
       totalPages={totalPages}
       basePath="/genius-manga"
       activeGenre="genius"
+      searchItems={ALL_MANGA}
       pageType="seo_article"
     />
   );

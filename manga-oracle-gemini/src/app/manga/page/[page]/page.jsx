@@ -34,6 +34,7 @@ export default function MangaPagedPage({ params }) {
       currentPage={currentPage}
       totalPages={totalPages}
       basePath="/manga"
+      searchItems={ALL_MANGA}
       pageType="seo_article"
     />
   );

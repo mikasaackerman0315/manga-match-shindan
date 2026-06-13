@@ -1,5 +1,5 @@
 import MangaListView from "../manga/MangaListView";
-import { getGeniusManga, getMangaPage, getTotalMangaPages } from "../../data/mangaCatalog";
+import { ALL_MANGA, getGeniusManga, getMangaPage, getTotalMangaPages } from "../../data/mangaCatalog";
 
 export const metadata = {
   title: "天才・頭脳派漫画一覧 | マンガマッチ診断",
@@ -22,6 +22,7 @@ export default function GeniusMangaPage() {
       totalPages={getTotalMangaPages(items)}
       basePath="/genius-manga"
       activeGenre="genius"
+      searchItems={ALL_MANGA}
       pageType="seo_article"
     />
   );

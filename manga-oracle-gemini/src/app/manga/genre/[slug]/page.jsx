@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import MangaListView from "../../MangaListView";
-import { filterMangaByGenre, getGenreBySlug, getMangaPage, getTotalMangaPages, MANGA_GENRES } from "../../../../data/mangaCatalog";
+import { ALL_MANGA, filterMangaByGenre, getGenreBySlug, getMangaPage, getTotalMangaPages, MANGA_GENRES } from "../../../../data/mangaCatalog";
 
 export function generateStaticParams() {
   return MANGA_GENRES.map((genre) => ({ slug: genre.slug }));
@@ -35,6 +35,7 @@ export default function MangaGenrePage({ params }) {
       totalPages={getTotalMangaPages(items)}
       basePath={`/manga/genre/${genre.slug}`}
       activeGenre={genre.slug}
+      searchItems={ALL_MANGA}
       pageType="seo_article"
     />
   );
