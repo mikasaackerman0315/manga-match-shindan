@@ -378,6 +378,397 @@ function RelatedThemeLinks({ recommendations, language }) {
   );
 }
 
+const RESULT_TAG_LABELS_JA = {
+  fantasy: "ファンタジー",
+  battle: "バトル",
+  romance: "恋愛",
+  mystery: "ミステリー",
+  sports: "スポーツ",
+  horror: "ホラー",
+  healing: "癒し",
+  emotional: "感情描写",
+  light_comedy: "軽い読み味",
+  dark: "ダーク",
+  warm: "温かい",
+  school: "青春",
+  workplace: "仕事",
+  human_drama: "人間ドラマ",
+  worldbuilding: "世界観",
+  psychological: "心理",
+  friendship: "友情",
+  completed: "完結済み",
+  sci_fi: "SF",
+  historical: "歴史",
+  action: "アクション",
+  suspense: "サスペンス",
+  self_discovery: "成長",
+  slice_of_life: "日常",
+  philosophical: "哲学",
+  coming_of_age: "青春",
+};
+
+const RESULT_TAG_LABELS_EN = {
+  fantasy: "Fantasy",
+  battle: "Battle",
+  romance: "Romance",
+  mystery: "Mystery",
+  sports: "Sports",
+  horror: "Horror",
+  healing: "Healing",
+  emotional: "Emotional",
+  light_comedy: "Light",
+  dark: "Dark",
+  warm: "Warm",
+  school: "School",
+  workplace: "Work",
+  human_drama: "Drama",
+  worldbuilding: "World",
+  psychological: "Psychological",
+  friendship: "Friendship",
+  completed: "Completed",
+  sci_fi: "Sci-Fi",
+  historical: "Historical",
+  action: "Action",
+  suspense: "Suspense",
+  self_discovery: "Growth",
+  slice_of_life: "Daily Life",
+  philosophical: "Thoughtful",
+  coming_of_age: "Coming of Age",
+};
+
+const RESULT_AXIS_GROUPS = [
+  { key: "emotion", ja: "感情描写", en: "Emotion", tags: ["emotional", "human_drama", "melancholic", "family_theme", "romance", "warm"] },
+  { key: "world", ja: "世界観の好み", en: "World", tags: ["fantasy", "sci_fi", "historical", "worldbuilding", "mythology", "urban_fantasy", "space"] },
+  { key: "character", ja: "キャラクターの魅力", en: "Characters", tags: ["self_discovery", "group", "underdog_growth", "prodigy", "friendship", "coming_of_age"] },
+  { key: "story", ja: "ストーリーの深さ", en: "Story Depth", tags: ["mystery", "psychological", "philosophical", "twist", "long_arc", "slow_burn"] },
+  { key: "easy", ja: "読みやすさ", en: "Ease", tags: ["light_comedy", "healing", "slice_of_life", "fast_paced", "episodic", "comfort"] },
+  { key: "heavy", ja: "作品の重さ", en: "Weight", tags: ["dark", "brutal", "horror", "serious", "survival", "tense"] },
+];
+
+function getDisplayTitle(rec, language) {
+  return language === "ja" ? (rec.title_ja || rec.title_en || rec.title) : (rec.title_en || rec.title_ja || rec.title);
+}
+
+function getTagLabel(tag, language) {
+  const labels = language === "ja" ? RESULT_TAG_LABELS_JA : RESULT_TAG_LABELS_EN;
+  return labels[tag] || String(tag || "").replace(/_/g, " ");
+}
+
+function clampPercent(value) {
+  return Math.max(48, Math.min(96, Math.round(value)));
+}
+
+function buildResultInsights(recommendations = [], language = "ja") {
+  const tagCounts = new Map();
+  recommendations.forEach((rec) => {
+    (rec.tags || []).forEach((tag) => tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1));
+    if (rec.status === "completed") tagCounts.set("completed", (tagCounts.get("completed") || 0) + 1);
+    if (rec.anime) tagCounts.set("anime_yes", (tagCounts.get("anime_yes") || 0) + 1);
+  });
+
+  const axes = RESULT_AXIS_GROUPS.map((axis) => {
+    const score = axis.tags.reduce((sum, tag) => sum + (tagCounts.get(tag) || 0), 0);
+    const percentage = clampPercent(58 + score * 6 + Math.min(recommendations.length, 20) * 0.5);
+    return { ...axis, label: language === "ja" ? axis.ja : axis.en, percentage };
+  });
+
+  const sortedTags = Array.from(tagCounts.entries())
+    .filter(([tag]) => !["anime_yes"].includes(tag))
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 8)
+    .map(([tag]) => getTagLabel(tag, language));
+
+  const topAxis = [...axes].sort((a, b) => b.percentage - a.percentage)[0];
+  const lowAxes = [...axes].sort((a, b) => a.percentage - b.percentage).slice(0, 3);
+  const typeTitle = language === "ja"
+    ? `${topAxis?.label || "好み"}を大切にする読書タイプ`
+    : `A reader who values ${topAxis?.label || "fit"}`;
+  const typeDescription = language === "ja"
+    ? "回答内容と推薦作品の傾向から、読み味・世界観・キャラクターの相性を整理しました。気になる作品から順番に見ていくのがおすすめです。"
+    : "Your answers and recommendation patterns were used to summarize tone, setting, and character fit. Start with whichever title catches your eye.";
+
+  return {
+    axes,
+    keywords: sortedTags.length ? sortedTags : [language === "ja" ? "漫画" : "Manga"],
+    lowAxes,
+    typeTitle,
+    typeDescription,
+  };
+}
+
+function PreferenceRadar({ axes }) {
+  const center = 116;
+  const maxRadius = 78;
+  const points = axes.map((axis, index) => {
+    const angle = (-90 + index * (360 / axes.length)) * (Math.PI / 180);
+    const radius = maxRadius * (axis.percentage / 100);
+    return `${center + Math.cos(angle) * radius},${center + Math.sin(angle) * radius}`;
+  }).join(" ");
+  const gridLevels = [0.25, 0.5, 0.75, 1];
+
+  return (
+    <div className="relative mx-auto h-[260px] w-full max-w-[300px]">
+      <svg viewBox="0 0 232 232" className="h-full w-full" aria-hidden="true">
+        {gridLevels.map((level) => {
+          const grid = axes.map((_, index) => {
+            const angle = (-90 + index * (360 / axes.length)) * (Math.PI / 180);
+            const radius = maxRadius * level;
+            return `${center + Math.cos(angle) * radius},${center + Math.sin(angle) * radius}`;
+          }).join(" ");
+          return <polygon key={level} points={grid} fill="none" stroke="rgba(192,57,43,0.14)" strokeWidth="1" />;
+        })}
+        {axes.map((_, index) => {
+          const angle = (-90 + index * (360 / axes.length)) * (Math.PI / 180);
+          return <line key={index} x1={center} y1={center} x2={center + Math.cos(angle) * maxRadius} y2={center + Math.sin(angle) * maxRadius} stroke="rgba(10,10,10,0.08)" strokeWidth="1" />;
+        })}
+        <polygon points={points} fill="rgba(192,57,43,0.12)" stroke="#c0392b" strokeWidth="2.5" />
+        {axes.map((axis, index) => {
+          const angle = (-90 + index * (360 / axes.length)) * (Math.PI / 180);
+          return <circle key={axis.key} cx={center + Math.cos(angle) * maxRadius * (axis.percentage / 100)} cy={center + Math.sin(angle) * maxRadius * (axis.percentage / 100)} r="3.5" fill="#c0392b" />;
+        })}
+      </svg>
+      {axes.map((axis, index) => {
+        const angle = (-90 + index * (360 / axes.length)) * (Math.PI / 180);
+        const x = 50 + Math.cos(angle) * 47;
+        const y = 50 + Math.sin(angle) * 45;
+        return (
+          <div
+            key={axis.key}
+            className="absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-center text-[10px] font-bold leading-snug text-black/70"
+            style={{ left: `${x}%`, top: `${y}%` }}
+          >
+            <div>{axis.label}</div>
+            <div className="text-sm text-[#c0392b]">{axis.percentage}%</div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function ResultDashboardCard({ rec, index, language, t, featured = false }) {
+  const title = getDisplayTitle(rec, language);
+  const tags = (rec.tags || []).slice(0, 4);
+  const score = clampPercent(96 - index * 2 + ((rec.tags || []).length > 3 ? 2 : 0));
+
+  return (
+    <article className="grid gap-5 rounded-xl border border-black/10 bg-white/88 p-4 shadow-[0_18px_45px_rgba(10,10,10,0.055)] md:grid-cols-[132px_minmax(0,1fr)_170px] md:p-5">
+      <div className="relative">
+        <div className="absolute left-[-8px] top-[-8px] z-10 rounded-md bg-[#c0392b] px-2.5 py-1.5 text-sm font-black text-white">
+          {String(index + 1).padStart(2, "0")}
+        </div>
+        <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} size={featured ? "hero" : "result"} />
+      </div>
+
+      <div className="min-w-0">
+        <div className="flex flex-wrap items-center gap-2">
+          <h3 className="text-2xl font-bold leading-tight md:text-[28px]" style={{ fontFamily: modeSerif }}>{title}</h3>
+          <AlternativeBadge rec={rec} language={language} />
+        </div>
+        <MangaMetaLine rec={rec} t={t} includeYear includeAnime className="mt-2 text-xs tracking-[0.08em] text-black/48" />
+        {tags.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {tags.map((tag) => (
+              <span key={tag} className="rounded-md border border-black/8 bg-[#f6f2ea] px-2.5 py-1 text-[11px] font-bold text-black/60">
+                {getTagLabel(tag, language)}
+              </span>
+            ))}
+          </div>
+        )}
+        {rec.description && <p className="mt-4 text-sm leading-7 text-black/70">{rec.description}</p>}
+        {rec.reason && (
+          <div className="mt-4 rounded-lg border border-[#e9afa8]/70 bg-[#fff6f4] px-4 py-3">
+            <div className="mb-2 text-xs font-black text-[#c0392b]">{language === "ja" ? "あなたに合う理由" : "Why It Fits"}</div>
+            <p className="text-sm leading-6 text-black/70">{rec.reason}</p>
+          </div>
+        )}
+      </div>
+
+      <div className="flex flex-col justify-between border-black/8 md:border-l md:pl-5">
+        <div>
+          <div className="text-xs font-bold text-black/52">{language === "ja" ? "相性スコア" : "Match Score"}</div>
+          <div className="mt-1 text-4xl font-black text-[#c0392b]" style={{ fontFamily: modeSerif }}>{score}%</div>
+          <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-black/8">
+            <div className="h-full rounded-full bg-[#c0392b]" style={{ width: `${score}%` }} />
+          </div>
+        </div>
+        <div className="mt-4">
+          <StoreLinks title={title} compact pageType="diagnosis_result" />
+          <WatchLaterButton item={rec} sourceContext="診断結果" compact className="mt-2 w-full justify-center" />
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function ResultDashboardScreen({ language, setLanguage, results, t, onRetake, onShare }) {
+  const recommendations = results?.recommendations || [];
+  const insights = buildResultInsights(recommendations, language);
+  const nowLabel = new Date().toLocaleString(language === "ja" ? "ja-JP" : "en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return (
+    <div
+      className="min-h-screen overflow-x-hidden antialiased"
+      style={{
+        backgroundColor: "#f6f2ea",
+        backgroundImage: "linear-gradient(180deg, #fffdf9 0%, #f7f2ea 42%, #f5f3ee 100%)",
+        color: "#0a0a0a",
+        fontFamily: modeSans,
+      }}
+    >
+      <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={onRetake} active="diagnosis" />
+
+      <main className="mx-auto max-w-[1536px] px-5 py-6 md:px-8 xl:px-10">
+        <div className="mb-5 flex items-center gap-2 text-xs font-bold text-black/46">
+          <a href="/" className="transition hover:text-[#c0392b]">ホーム</a>
+          <span>›</span>
+          <span>診断する</span>
+          <span>›</span>
+          <span className="text-[#c0392b]">診断結果</span>
+        </div>
+
+        <div className="grid gap-6 xl:grid-cols-[230px_minmax(0,1fr)_330px]">
+          <aside className="space-y-5">
+            <section className="rounded-xl border border-black/10 bg-white/88 p-5 text-center shadow-[0_16px_38px_rgba(10,10,10,0.045)]">
+              <div className="mx-auto grid h-16 w-16 place-items-center rounded-full border border-[#f0c1bb] text-[#c0392b]">
+                <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.2 4L19 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </div>
+              <h2 className="mt-5 text-lg font-black text-[#c0392b]">{language === "ja" ? "診断が完了しました！" : "Diagnosis Complete"}</h2>
+              <p className="mt-3 text-sm leading-7 text-black/70">
+                {language === "ja" ? `あなたに合う漫画を${recommendations.length}作品見つけました` : `Found ${recommendations.length} manga matches for you.`}
+              </p>
+              <a href="/watchlist" className="mt-5 flex h-11 items-center justify-center rounded-md bg-[#c0392b] text-sm font-black text-white shadow-[0_12px_30px_rgba(192,57,43,0.18)]">
+                {language === "ja" ? "保存リストを見る" : "View Watchlist"}
+              </a>
+              <button type="button" onClick={onRetake} className="mt-2 flex h-11 w-full items-center justify-center rounded-md border border-black/18 bg-white text-sm font-black transition hover:border-[#c0392b] hover:text-[#c0392b]">
+                {language === "ja" ? "もう一度診断する" : "Retake"}
+              </button>
+            </section>
+
+            <section className="rounded-xl border border-black/10 bg-white/82 p-5 shadow-[0_16px_38px_rgba(10,10,10,0.035)]">
+              <div className="text-xs font-black text-black/50">{language === "ja" ? "診断した日時" : "Diagnosed At"}</div>
+              <div className="mt-2 text-sm font-bold text-black/72">{nowLabel}</div>
+            </section>
+
+            <section className="rounded-xl border border-black/10 bg-white/82 p-5 shadow-[0_16px_38px_rgba(10,10,10,0.035)]">
+              <h3 className="text-sm font-black">{language === "ja" ? "結果をシェアする" : "Share Result"}</h3>
+              <button type="button" onClick={onShare} className="mt-4 flex h-10 w-full items-center justify-center rounded-md border border-black/16 bg-white text-sm font-bold transition hover:border-[#c0392b] hover:text-[#c0392b]">
+                {language === "ja" ? "結果を共有する" : "Share"}
+              </button>
+            </section>
+
+            <section className="rounded-xl border border-[#efc8c2] bg-[#fff8f5] p-5 shadow-[0_16px_38px_rgba(192,57,43,0.06)]">
+              <h3 className="text-base font-black">{language === "ja" ? "もっと精度を上げたい方へ" : "Want Better Matches?"}</h3>
+              <p className="mt-3 text-sm leading-7 text-black/66">
+                {language === "ja" ? "気になった作品を保存しておくと、後から読み返しやすくなります。" : "Save interesting titles so you can revisit them later."}
+              </p>
+              <a href="/watchlist" className="mt-4 flex h-10 items-center justify-center rounded-md border border-black/18 bg-white text-sm font-bold transition hover:border-[#c0392b] hover:text-[#c0392b]">
+                {language === "ja" ? "保存リストへ" : "Open Watchlist"} →
+              </a>
+            </section>
+          </aside>
+
+          <section className="min-w-0">
+            {results.matchNotice && (
+              <div className="mb-5 rounded-xl border border-[#e9afa8]/70 bg-[#fff6f4] px-5 py-4">
+                <div className="mb-1 text-xs font-black tracking-[0.12em] text-[#c0392b]">
+                  {results.matchNotice.type === "no_exact_match" ? "CLOSE ALTERNATIVES" : "ALSO RECOMMENDED"}
+                </div>
+                <p className="text-sm leading-7 text-black/72">{language === "ja" ? results.matchNotice.message_ja : results.matchNotice.message_en}</p>
+              </div>
+            )}
+
+            <section className="mb-6 overflow-hidden rounded-xl border border-black/10 bg-white/88 shadow-[0_18px_45px_rgba(10,10,10,0.055)]">
+              <div className="grid md:grid-cols-[minmax(0,1fr)_250px]">
+                <div className="p-6 md:p-8">
+                  <div className="text-sm font-black text-black/68">{language === "ja" ? "あなたのタイプ" : "Your Type"}</div>
+                  <h1 className="mt-3 text-3xl font-black leading-tight md:text-[40px]" style={{ fontFamily: modeSerif }}>{insights.typeTitle}</h1>
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-black/70 md:text-base">{insights.typeDescription}</p>
+                </div>
+                <div className="relative hidden min-h-[190px] border-l border-black/8 bg-[#f7efe8] md:block">
+                  <div className="absolute inset-0 opacity-50" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.14) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
+                  <div className="absolute bottom-0 right-8 h-36 w-28 rounded-t-full border border-[#e6c9bd] bg-white/58" />
+                  <div className="absolute bottom-8 right-16 h-20 w-16 rounded-md border border-[#d8b6a9] bg-[#fffdf9]" />
+                  <div className="absolute bottom-12 right-24 h-12 w-12 rounded-full bg-[#c0392b]/12" />
+                </div>
+              </div>
+            </section>
+
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <h2 className="border-l-4 border-[#c0392b] pl-3 text-xl font-black">
+                {language === "ja" ? `あなたにおすすめの作品 TOP${recommendations.length}` : `Top ${recommendations.length} Manga For You`}
+              </h2>
+              <p className="hidden text-xs text-black/50 md:block">{language === "ja" ? "相性スコアは回答傾向と作品タグからの目安です" : "Scores are estimated from your answers and title tags."}</p>
+            </div>
+
+            <div className="space-y-4">
+              {recommendations.map((rec, index) => (
+                <ResultDashboardCard key={`${rec.rank || index}-${rec.title_en || rec.title_ja}`} rec={rec} index={index} language={language} t={t} featured={index === 0} />
+              ))}
+            </div>
+
+            <AdSlot slot="results-bottom" />
+            <RelatedThemeLinks recommendations={recommendations} language={language} />
+          </section>
+
+          <aside className="space-y-5">
+            <section className="rounded-xl border border-black/10 bg-white/88 p-5 shadow-[0_16px_38px_rgba(10,10,10,0.045)]">
+              <h2 className="text-lg font-black">{language === "ja" ? "あなたの好み傾向" : "Your Taste Pattern"}</h2>
+              <PreferenceRadar axes={insights.axes} />
+            </section>
+
+            <section className="rounded-xl border border-black/10 bg-white/82 p-5 shadow-[0_16px_38px_rgba(10,10,10,0.035)]">
+              <h3 className="text-sm font-black">{language === "ja" ? "あなたのキーワード" : "Keywords"}</h3>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {insights.keywords.map((keyword) => (
+                  <span key={keyword} className="rounded-md border border-black/10 bg-[#f6f2ea] px-3 py-1.5 text-xs font-bold text-black/62">{keyword}</span>
+                ))}
+              </div>
+            </section>
+
+            <section className="rounded-xl border border-black/10 bg-white/82 p-5 shadow-[0_16px_38px_rgba(10,10,10,0.035)]">
+              <h3 className="text-sm font-black">{language === "ja" ? "控えめだった傾向" : "Lower Signals"}</h3>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {insights.lowAxes.map((axis) => (
+                  <span key={axis.key} className="rounded-md border border-black/10 bg-white px-3 py-1.5 text-xs font-bold text-black/56">{axis.label}</span>
+                ))}
+              </div>
+            </section>
+
+            <section className="rounded-xl border border-black/10 bg-white/88 p-5 shadow-[0_16px_38px_rgba(10,10,10,0.045)]">
+              <div className="mb-4 flex items-center justify-between">
+                <h3 className="text-sm font-black">{language === "ja" ? "こんな作品も合いそうです" : "More Matches"}</h3>
+                <a href="/manga" className="text-xs font-bold text-black/48 transition hover:text-[#c0392b]">{language === "ja" ? "もっと見る" : "More"} →</a>
+              </div>
+              <div className="space-y-4">
+                {recommendations.slice(3, 6).map((rec, index) => {
+                  const title = getDisplayTitle(rec, language);
+                  return (
+                    <div key={`${rec.id || title}-${index}`} className="flex gap-3 border-b border-black/8 pb-4 last:border-b-0 last:pb-0">
+                      <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} size="small" />
+                      <div className="min-w-0 flex-1">
+                        <div className="truncate text-sm font-black">{title}</div>
+                        <MangaMetaLine rec={rec} t={t} includeStatus={false} className="mt-1 truncate text-[11px] text-black/45" />
+                        <div className="mt-1 text-xs font-black text-[#c0392b]">{clampPercent(88 - index)}%</div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          </aside>
+        </div>
+      </main>
+    </div>
+  );
+}
+
 function ModeLogoMark({ className = "h-11 w-11" }) {
   return (
     <svg className={`${className} shrink-0`} viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -1698,134 +2089,14 @@ export default function App() {
       )}
 
       {screen === "results" && results && (
-        <div className="min-h-screen px-4 md:px-8 py-16">
-          <div className="max-w-5xl mx-auto">
-            {/* 広告枠 1: プロフィール直後（最も目立つ位置） */}
-            <AdSlot slot="results-top" />
-
-            {results.matchNotice && (
-              <div className="mb-10 border px-5 py-4" style={{ borderColor: "rgba(192,57,43,0.25)", backgroundColor: "rgba(192,57,43,0.04)" }}>
-                <div className="text-xs tracking-[0.24em] uppercase mb-2" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
-                  {results.matchNotice.type === "no_exact_match" ? "Close Alternatives" : "Also Recommended"}
-                </div>
-                <p className="text-sm leading-relaxed" style={{ color: "#333" }}>
-                  {language === "ja" ? results.matchNotice.message_ja : results.matchNotice.message_en}
-                </p>
-              </div>
-            )}
-
-            {results.recommendations && results.recommendations.length > 0 && (
-              <div className="mb-20">
-                <div className="flex items-baseline gap-4 mb-10">
-                  <div className="text-xs tracking-[0.3em]" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>01 — 03</div>
-                  <h3 className="text-2xl md:text-3xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.top3}</h3>
-                  <div className="flex-grow h-px bg-black opacity-20" />
-                </div>
-                <div className="space-y-14">
-                  {results.recommendations.slice(0, 3).map((rec, idx) => (
-                    <article key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="grid grid-cols-12 gap-6 md:gap-10 pb-14 border-b" style={{ borderColor: "rgba(10,10,10,0.1)" }}>
-                      <div className="col-span-12 md:col-span-2">
-                        <div className="text-7xl md:text-8xl font-bold leading-none" style={{ fontFamily: "'Cormorant Garamond', serif", color: idx === 0 ? "#c0392b" : "#0a0a0a" }}>{String(rec.rank).padStart(2, "0")}</div>
-                      </div>
-                      <div className="col-span-12 md:col-span-10 flex flex-col sm:flex-row gap-6 md:gap-8">
-                        <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} size="hero" />
-                        <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-3 mb-2 flex-wrap">
-                          <h4 className="text-3xl md:text-4xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
-                          <AlternativeBadge rec={rec} language={language} />
-                        </div>
-                        <MangaMetaLine rec={rec} t={t} includeYear includeAnime className="text-sm md:text-base mb-5 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
-                        {rec.description && (<p className="text-base md:text-lg leading-8 mb-5" style={{ color: "#333" }}>{rec.description}</p>)}
-                        <div className="mb-3">
-                          <WatchLaterButton item={rec} sourceContext="診断結果" />
-                        </div>
-                        <PurchaseLinks rec={rec} t={t} />
-                        </div>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {results.recommendations && results.recommendations.length > 3 && (
-              <div className="mb-20">
-                <div className="flex items-baseline gap-4 mb-10">
-                  <div className="text-xs tracking-[0.3em]" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>04 — {String(Math.min(10, results.recommendations.length)).padStart(2, "0")}</div>
-                  <h3 className="text-xl md:text-2xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.next7}</h3>
-                  <div className="flex-grow h-px bg-black opacity-10" />
-                </div>
-                <div className="space-y-8">
-                  {results.recommendations.slice(3, 10).map((rec) => (
-                    <article key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="grid grid-cols-12 gap-5 md:gap-6 pb-8 border-b" style={{ borderColor: "rgba(10,10,10,0.08)" }}>
-                      <div className="col-span-2 md:col-span-1">
-                        <div className="text-3xl md:text-4xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#888" }}>{String(rec.rank).padStart(2, "0")}</div>
-                      </div>
-                      <div className="col-span-10 md:col-span-11 flex flex-col sm:flex-row gap-5">
-                        <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} size="result" />
-                        <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-2 mb-1 flex-wrap">
-                          <h4 className="text-2xl md:text-3xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</h4>
-                          <AlternativeBadge rec={rec} language={language} />
-                        </div>
-                        <MangaMetaLine rec={rec} t={t} className="text-xs md:text-sm mb-3 tracking-wider" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#888" }} />
-                        {rec.description && (<p className="text-sm md:text-base leading-7" style={{ color: "#444" }}>{rec.description}</p>)}
-                        <div className="mt-3">
-                          <WatchLaterButton item={rec} sourceContext="診断結果" compact />
-                        </div>
-                        <PurchaseLinks rec={rec} t={t} compact />
-                        </div>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* 広告枠 2: 中間（おすすめリストの途中） */}
-            {results.recommendations && results.recommendations.length > 3 && (
-              <AdSlot slot="results-mid" />
-            )}
-
-            {results.recommendations && results.recommendations.length > 10 && (
-              <div className="mb-20">
-                <div className="flex items-baseline gap-4 mb-8">
-                  <div className="text-xs tracking-[0.3em]" style={{ color: "#888", fontFamily: "'JetBrains Mono', monospace" }}>11 — {String(results.recommendations.length).padStart(2, "0")}</div>
-                  <h3 className="text-xl font-medium" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{t.last10}</h3>
-                  <div className="flex-grow h-px bg-black opacity-10" />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5">
-                  {results.recommendations.slice(10, 20).map((rec) => (
-                    <div key={`${rec.rank}-${rec.title_en || rec.title_ja}`} className="flex gap-4 items-start py-2">
-                      <span className="text-sm" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#c0392b", minWidth: "1.5rem" }}>{String(rec.rank).padStart(2, "0")}</span>
-                      <MangaCover title={rec.title_ja || rec.title_en} id={rec.id} author={rec.author} size="medium" />
-                      <div className="flex-grow">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <div className="text-lg md:text-xl font-medium" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>{language === "ja" ? (rec.title_ja || rec.title_en) : (rec.title_en || rec.title_ja)}</div>
-                          <AlternativeBadge rec={rec} language={language} />
-                        </div>
-                        <MangaMetaLine rec={rec} t={t} includeStatus={false} className="text-xs" style={{ color: "#888" }} />
-                        <div className="mt-2">
-                          <WatchLaterButton item={rec} sourceContext="診断結果" compact />
-                        </div>
-                        <PurchaseLinks rec={rec} t={t} compact />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* 広告枠 3: 最下部（再診断ボタンの前） */}
-            <AdSlot slot="results-bottom" />
-
-            <RelatedThemeLinks recommendations={results.recommendations} language={language} />
-
-            <div className="text-center mt-16">
-              <button onClick={reset} className="px-12 py-4 text-sm tracking-[0.3em] uppercase transition-all hover:scale-105" style={{ backgroundColor: "#0a0a0a", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}>↻ {t.retake}</button>
-            </div>
-          </div>
-        </div>
+        <ResultDashboardScreen
+          language={language}
+          setLanguage={setLanguage}
+          results={results}
+          t={t}
+          onRetake={reset}
+          onShare={shareResults}
+        />
       )}
     </div>
   );
