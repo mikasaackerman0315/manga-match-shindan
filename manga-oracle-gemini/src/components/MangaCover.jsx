@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { trackEvent } from "@/lib/analytics";
 
 const sizeClasses = {
   small: "w-[56px] md:w-[68px]",
@@ -30,32 +29,27 @@ function Placeholder({ title }) {
         }}
       />
       <div className="line-clamp-3 text-[10px] leading-4 md:text-[11px]" style={{ fontFamily: "'Noto Serif JP', serif" }}>
-        {title || "表紙未掲載"}
+        {title || "表紙準備中"}
       </div>
     </div>
   );
 }
 
-export default function MangaCover({
-  title,
-  mangaId,
-  author,
-  coverImageUrl,
-  coverProductUrl,
-  coverImageSource,
-  verified = false,
-  className = "",
-  size = "medium",
-  pageType = "other",
-}) {
+export default function MangaCover(props) {
+  const {
+    title,
+    mangaId,
+    author,
+    coverImageUrl,
+    verified = false,
+    className = "",
+    size = "medium",
+  } = props;
   const [imageFailed, setImageFailed] = useState(false);
   const [fallbackCover, setFallbackCover] = useState(null);
   const dynamicCoverImageUrl = coverImageUrl || fallbackCover?.imageUrl || "";
-  const dynamicCoverProductUrl = coverProductUrl || fallbackCover?.itemUrl || "";
-  const dynamicCoverSource = coverImageSource || fallbackCover?.source || "unknown";
   const dynamicVerified = Boolean(verified || fallbackCover?.imageUrl);
   const hasImage = Boolean(dynamicCoverImageUrl) && !imageFailed;
-  const rel = "nofollow sponsored noopener noreferrer";
   const widthClass = sizeClasses[size] || sizeClasses.medium;
 
   useEffect(() => {
@@ -86,16 +80,7 @@ export default function MangaCover({
     return () => controller.abort();
   }, [author, coverImageUrl, mangaId, title]);
 
-  const handleCoverClick = () => {
-    trackEvent("cover_click", {
-      title: title || "",
-      source: dynamicCoverSource,
-      page_type: pageType,
-      verified: dynamicVerified,
-    });
-  };
-
-  const coverBody = (
+  return (
     <div
       className={`relative aspect-[2/3] ${widthClass} shrink-0 overflow-hidden rounded-[6px] ${className}`}
       style={{
@@ -106,7 +91,7 @@ export default function MangaCover({
       {hasImage ? (
         <img
           src={dynamicCoverImageUrl}
-          alt={`${title || "漫画"} 1巻表紙`}
+          alt={`${title || "漫画"} 表紙`}
           className="h-full w-full object-cover"
           loading="lazy"
           decoding="async"
@@ -125,21 +110,4 @@ export default function MangaCover({
       )}
     </div>
   );
-
-  if (dynamicCoverProductUrl && hasImage) {
-    return (
-      <a
-        href={dynamicCoverProductUrl}
-        target="_blank"
-        rel={rel}
-        aria-label={`${title || "漫画"} 1巻表紙の商品ページを開く`}
-        className="inline-block"
-        onClick={handleCoverClick}
-      >
-        {coverBody}
-      </a>
-    );
-  }
-
-  return coverBody;
 }
