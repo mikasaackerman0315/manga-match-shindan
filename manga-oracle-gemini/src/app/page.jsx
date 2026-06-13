@@ -937,6 +937,195 @@ function LoadingResultScreen({
   );
 }
 
+function FreeTextScreen({
+  language,
+  setLanguage,
+  freeText,
+  setFreeText,
+  onBack,
+  onSkip,
+  onSubmit,
+  error,
+}) {
+  const copy = language === "ja" ? {
+    badge: "任意入力",
+    titleBefore: "AIに伝えたい",
+    titleAccent: "好み",
+    titleAfter: "はありますか？",
+    desc: "ここに書いた内容も含めて、AIがあなたに合う漫画を診断します。",
+    subDesc: "なければ空欄のまま進んでOKです。",
+    placeholder: "例：鬱展開は苦手。伏線回収がある作品が読みたい。",
+    common: "よく選ばれるこだわり",
+    examples: [
+      { icon: "☂", label: "鬱展開は苦手" },
+      { icon: "♡", label: "報われる結末がいい" },
+      { icon: "♧", label: "頭脳戦が好き" },
+      { icon: "◇", label: "重すぎる展開は苦手" },
+      { icon: "♡", label: "恋愛少なめ" },
+      { icon: "▤", label: "完結済みがいい" },
+    ],
+    back: "戻る",
+    skip: "スキップ",
+    submit: "AIに診断してもらう",
+    privacy: "入力内容はAI診断のみに使用されます",
+  } : {
+    badge: "Optional",
+    titleBefore: "Anything you want",
+    titleAccent: "AI to know",
+    titleAfter: "?",
+    desc: "The AI will include this note when choosing manga for you.",
+    subDesc: "You can leave it blank and continue.",
+    placeholder: "e.g. I dislike depressing endings. I want a story with good payoff.",
+    common: "Common preferences",
+    examples: [
+      { icon: "☂", label: "No depressing plots" },
+      { icon: "♡", label: "Rewarding ending" },
+      { icon: "♧", label: "Mind games" },
+      { icon: "◇", label: "Not too heavy" },
+      { icon: "♡", label: "Less romance" },
+      { icon: "▤", label: "Completed series" },
+    ],
+    back: "Back",
+    skip: "Skip",
+    submit: "Ask AI",
+    privacy: "Your note is used only for this AI diagnosis",
+  };
+
+  const useExample = (label) => {
+    setFreeText((current) => {
+      const trimmed = current.trim();
+      if (!trimmed) return label;
+      if (trimmed.includes(label)) return current;
+      const separator = language === "ja" ? "。" : ". ";
+      const next = `${trimmed}${separator}${label}`;
+      return next.slice(0, 200);
+    });
+  };
+
+  return (
+    <div
+      className="min-h-screen overflow-x-hidden antialiased"
+      style={{
+        backgroundColor: "#f6f2ea",
+        backgroundImage: "linear-gradient(180deg, #fffdf9 0%, #f7f2ea 48%, #f5f3ee 100%)",
+        color: "#0a0a0a",
+        fontFamily: modeSans,
+      }}
+    >
+      <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={() => {}} active="diagnosis" />
+
+      <main className="relative mx-auto flex min-h-[calc(100vh-82px)] max-w-[1536px] items-center justify-center px-6 py-10 md:px-10 xl:px-14">
+        <div className="pointer-events-none absolute left-[6%] top-[27%] h-[520px] w-[360px] opacity-65" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.14) 1.25px, transparent 1.25px)", backgroundSize: "18px 18px" }} />
+        <div className="pointer-events-none absolute right-[7%] top-[25%] h-[520px] w-[360px] opacity-65" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.14) 1.25px, transparent 1.25px)", backgroundSize: "18px 18px" }} />
+        <div className="pointer-events-none absolute bottom-[14%] left-[5%] hidden h-48 w-56 rounded-[28px] border-2 border-[#e9afa8]/45 opacity-55 rotate-[-22deg] md:block" />
+        <div className="pointer-events-none absolute bottom-[12%] right-[5%] hidden h-44 w-64 border-2 border-[#e9afa8]/45 opacity-55 rotate-[11deg] md:block" />
+
+        <section className="relative z-10 w-full max-w-[1040px] rounded-[18px] border border-black/10 bg-[#fffdf9]/90 shadow-[0_28px_90px_rgba(10,10,10,0.13)]">
+          <div className="px-7 pb-7 pt-8 md:px-16 md:pb-9 md:pt-10">
+            <div className="flex items-start justify-between gap-8">
+              <div className="min-w-0 flex-1">
+                <span className="inline-flex rounded-md border border-[#e0554a] px-4 py-2 text-sm font-bold text-[#c0392b]">
+                  {copy.badge}
+                </span>
+                <h1 className="mt-7 text-4xl font-medium leading-tight md:text-[46px]" style={{ fontFamily: modeSerif }}>
+                  {copy.titleBefore}
+                  <span className="text-[#c0392b]">{copy.titleAccent}</span>
+                  {copy.titleAfter}
+                </h1>
+                <p className="mt-6 text-base leading-7 text-black/70">{copy.desc}</p>
+                <p className="mt-2 text-base leading-7 text-black/70">{copy.subDesc}</p>
+              </div>
+
+              <div className="relative hidden h-32 w-48 shrink-0 text-[#e8aaa3] md:block" aria-hidden="true">
+                <svg viewBox="0 0 220 150" className="h-full w-full" fill="none">
+                  <path d="M72 22h82a12 12 0 0 1 12 12v92a12 12 0 0 1-12 12H72a12 12 0 0 1-12-12V34a12 12 0 0 1 12-12Z" stroke="currentColor" strokeWidth="5" />
+                  <path d="M88 52h48M88 76h44M88 100h34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  <path d="m160 116 34-34 17 17-34 34-24 7 7-24Z" fill="currentColor" opacity="0.92" />
+                  <path d="M192 18 200 36 218 44 200 52 192 70 184 52 166 44 184 36l8-18ZM40 98l6 14 14 6-14 6-6 14-6-14-14-6 14-6 6-14Z" fill="currentColor" opacity="0.75" />
+                </svg>
+              </div>
+            </div>
+
+            <div className="relative mt-7">
+              <textarea
+                value={freeText}
+                onChange={(e) => setFreeText(e.target.value)}
+                placeholder={copy.placeholder}
+                maxLength={200}
+                className="min-h-[178px] w-full resize-none rounded-lg border border-[#ef9c94] bg-transparent px-5 py-5 text-base leading-8 outline-none transition focus:border-[#c0392b] focus:bg-white/65"
+                style={{ color: "#0a0a0a", fontFamily: modeSerif }}
+              />
+              <div className="pointer-events-none absolute bottom-5 right-5 text-sm tracking-[0.12em] text-black/45" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                {freeText.length} / 200
+              </div>
+            </div>
+
+            <div className="mt-9">
+              <h2 className="mb-6 flex items-center gap-3 text-lg font-extrabold">
+                <span className="text-[#c0392b]">✧</span>
+                {copy.common}
+              </h2>
+              <div className="grid gap-4 md:grid-cols-3">
+                {copy.examples.map((example) => (
+                  <button
+                    key={example.label}
+                    type="button"
+                    onClick={() => useExample(example.label)}
+                    className="flex min-h-[58px] items-center gap-4 rounded-full border border-[#efb1aa] bg-white/35 px-6 text-left text-base font-medium transition hover:-translate-y-0.5 hover:border-[#c0392b] hover:bg-white"
+                  >
+                    <span className="w-5 text-xl text-[#e13f36]">{example.icon}</span>
+                    <span>{example.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-black/10 px-7 py-7 md:px-16">
+            <div className="grid items-center gap-4 md:grid-cols-[220px_1fr_282px]">
+              <button
+                type="button"
+                onClick={onBack}
+                className="h-[62px] rounded-md border border-black/60 bg-white/40 text-base font-bold transition hover:border-[#c0392b] hover:text-[#c0392b]"
+              >
+                ←　{copy.back}
+              </button>
+              <button
+                type="button"
+                onClick={onSkip}
+                className="h-[62px] text-base font-medium transition hover:text-[#c0392b]"
+              >
+                {copy.skip}
+              </button>
+              <button
+                type="button"
+                onClick={onSubmit}
+                className="h-[62px] rounded-md bg-[#c7352d] text-base font-extrabold text-white shadow-[0_16px_35px_rgba(192,57,43,0.22)] transition hover:-translate-y-0.5 hover:bg-[#b92f28]"
+              >
+                {copy.submit}　→
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-3 whitespace-nowrap text-sm text-black/45">
+          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 10V8a5 5 0 0 1 10 0v2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+            <path d="M6.5 10h11A1.5 1.5 0 0 1 19 11.5v8A1.5 1.5 0 0 1 17.5 21h-11A1.5 1.5 0 0 1 5 19.5v-8A1.5 1.5 0 0 1 6.5 10Z" stroke="currentColor" strokeWidth="1.7" />
+          </svg>
+          {copy.privacy}
+        </div>
+      </main>
+
+      {error && (
+        <div className="fixed bottom-6 left-1/2 z-50 w-[min(720px,calc(100vw-32px))] -translate-x-1/2 rounded-md bg-[#c0392b] px-5 py-4 text-center text-sm font-bold text-[#fffdf9] shadow-[0_18px_45px_rgba(10,10,10,0.18)]">
+          {error}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function App() {
   const [screen, setScreen] = useState("landing");
   const [language, setLanguage] = useState("ja");
@@ -1164,7 +1353,7 @@ export default function App() {
       fontFamily: "'Noto Serif JP', 'Cormorant Garamond', serif",
       color: "#0a0a0a",
     }}>
-      {!(screen === "landing" && USE_NEW_HOME) && screen !== "mode" && screen !== "quiz" && screen !== "loading" && <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+      {!(screen === "landing" && USE_NEW_HOME) && screen !== "mode" && screen !== "quiz" && screen !== "freetext" && screen !== "loading" && <div className="fixed top-6 right-6 z-50 flex gap-1 items-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
         <button onClick={() => setLanguage("ja")} className="px-3 py-1 text-xs tracking-wider transition-all"
           style={{ backgroundColor: language === "ja" ? "#0a0a0a" : "transparent", color: language === "ja" ? "#f5f3ee" : "#0a0a0a", border: "1px solid #0a0a0a" }}>JA</button>
         <button onClick={() => setLanguage("en")} className="px-3 py-1 text-xs tracking-wider transition-all"
@@ -1332,6 +1521,19 @@ export default function App() {
       )}
 
       {screen === "freetext" && (
+        <FreeTextScreen
+          language={language}
+          setLanguage={setLanguage}
+          freeText={freeText}
+          setFreeText={setFreeText}
+          onBack={() => { setScreen("quiz"); setCurrentQ(QUESTIONS.length - 1); }}
+          onSkip={submitQuiz}
+          onSubmit={submitQuiz}
+          error={error}
+        />
+      )}
+
+      {false && screen === "freetext" && (
         <div className="min-h-screen flex flex-col px-4 md:px-8 py-12">
           <div className="max-w-3xl mx-auto w-full mb-12">
             <div className="flex justify-between items-center mb-3">
