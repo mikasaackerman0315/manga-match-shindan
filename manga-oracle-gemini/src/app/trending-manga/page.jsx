@@ -1278,7 +1278,7 @@ const navItems = [
   { label: "テーマから探す", href: "/themes" },
   { label: "ランキング", href: "/trending-manga", active: true },
   { label: "保存リスト", href: "/watchlist" },
-  { label: "好みプロフィール", href: "/?start=1" },
+  { label: "好みプロフィール", href: "/profile" },
 ];
 
 function LogoMark() {

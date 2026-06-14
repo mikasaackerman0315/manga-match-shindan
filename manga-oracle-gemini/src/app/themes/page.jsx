@@ -59,7 +59,7 @@ const navItems = [
   { label: "テーマから探す", href: "/themes", active: true },
   { label: "ランキング", href: "/trending-manga" },
   { label: "保存リスト", href: "/watchlist" },
-  { label: "好みプロフィール", href: "/?start=1" },
+  { label: "好みプロフィール", href: "/profile" },
 ];
 
 export const metadata = {

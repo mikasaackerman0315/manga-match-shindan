@@ -3,6 +3,7 @@ import WatchLaterButton from "../../components/WatchLaterButton";
 import { getMangaCoverForItem } from "../../data/mangaCovers";
 import { MANGA_GENRES } from "../../data/mangaCatalog";
 import MangaSearch from "./MangaSearch";
+import ProfileAwareMangaGrid from "./ProfileAwareMangaGrid";
 
 const browseSans = "'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 const browseSerif = "'Noto Serif JP', 'Cormorant Garamond', serif";
@@ -112,7 +113,7 @@ function MangaBrowseHeader() {
     { href: "/themes", label: "テーマから探す" },
     { href: "/trending-manga", label: "ランキング" },
     { href: "/watchlist", label: "保存リスト" },
-    { href: "/?start=1", label: "好みプロフィール" },
+    { href: "/profile", label: "好みプロフィール" },
   ];
 
   return (
@@ -265,7 +266,7 @@ function ProfileNotice() {
           </div>
         </div>
         <div className="flex flex-col gap-2 sm:flex-row">
-          <a href="/?start=1" className="flex h-11 items-center justify-center rounded-md bg-[#c0392b] px-5 text-sm font-black text-white shadow-[0_12px_28px_rgba(192,57,43,0.18)]">
+          <a href="/profile" className="flex h-11 items-center justify-center rounded-md bg-[#c0392b] px-5 text-sm font-black text-white shadow-[0_12px_28px_rgba(192,57,43,0.18)]">
             診断して好みを作る
           </a>
           <a href="/watchlist" className="flex h-11 items-center justify-center rounded-md border border-black/12 bg-white px-5 text-sm font-black transition hover:border-[#c0392b] hover:text-[#c0392b]">
@@ -421,11 +422,7 @@ export default function MangaListView({
               </div>
             )}
 
-            <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {items.map((manga, index) => (
-                <MangaCard key={`${manga.id}-${index}`} manga={manga} index={(currentPage - 1) * 30 + index} pageType={pageType} />
-              ))}
-            </div>
+            <ProfileAwareMangaGrid items={items} startIndex={(currentPage - 1) * 30} pageType={pageType} />
 
             <Pagination basePath={basePath} currentPage={currentPage} totalPages={totalPages} />
 

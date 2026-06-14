@@ -15,7 +15,7 @@ const navItems = [
   { href: "/themes", label: "テーマから探す" },
   { href: "/trending-manga", label: "ランキング" },
   { href: "/watchlist", label: "保存リスト", active: true },
-  { href: "/?start=1", label: "好みプロフィール" },
+  { href: "/profile", label: "好みプロフィール" },
 ];
 
 function statusLabel(status) {

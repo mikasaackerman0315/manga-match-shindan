@@ -253,7 +253,7 @@ export function MangaMatchHeader({ language, setLanguage, onStartQuiz, active = 
     { label: "テーマから探す", href: "/themes" },
     { label: "ランキング", href: "/trending-manga" },
     { label: "保存リスト", href: "/watchlist" },
-    { label: "好みプロフィール", action: onStartQuiz },
+    { label: "好みプロフィール", href: "/profile" },
   ];
 
   const resolvedNavItems = navItems.map((item, index) => ({
@@ -400,13 +400,12 @@ function ProfileCta({ onStartQuiz }) {
         <p className="mb-3 hidden text-xs leading-5 xl:block" style={{ color: "#333" }}>
           好みプロフィールを設定すると、漫画一覧をあなたとの相性順で表示できます。
         </p>
-        <button
-          type="button"
-          onClick={onStartQuiz}
-          className="w-full rounded-[6px] bg-[#c0392b] px-4 py-2.5 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
+        <a
+          href="/profile"
+          className="block w-full rounded-[6px] bg-[#c0392b] px-4 py-2.5 text-center text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
         >
           好みプロフィールを設定する →
-        </button>
+        </a>
       </div>
     </aside>
   );
