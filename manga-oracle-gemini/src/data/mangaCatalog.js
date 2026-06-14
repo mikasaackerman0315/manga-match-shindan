@@ -3,6 +3,7 @@ import { CORE_DB_EXTRA } from "./coreDB_extra";
 import { CORE_DB_EXTRA2 } from "./coreDB_extra2";
 import { CORE_DB_EXTRA3 } from "./coreDB_extra3";
 import { CORE_DB_EXTRA4 } from "./coreDB_extra4";
+import { CORE_DB_EXTRA5 } from "./coreDB_extra5";
 
 export const MANGA_PAGE_SIZE = 30;
 
@@ -67,6 +68,7 @@ export const ALL_MANGA = dedupeMangaDatabase([
   ...CORE_DB_EXTRA2,
   ...CORE_DB_EXTRA3,
   ...CORE_DB_EXTRA4,
+  ...CORE_DB_EXTRA5,
 ]);
 
 export const MANGA_BY_ID = new Map(ALL_MANGA.map((manga) => [manga.id, manga]));

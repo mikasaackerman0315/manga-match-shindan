@@ -14,9 +14,10 @@ import { CORE_DB_EXTRA } from "@/data/coreDB_extra";
 import { CORE_DB_EXTRA2 } from "@/data/coreDB_extra2";
 import { CORE_DB_EXTRA3 } from "@/data/coreDB_extra3";
 import { CORE_DB_EXTRA4 } from "@/data/coreDB_extra4";
+import { CORE_DB_EXTRA5 } from "@/data/coreDB_extra5";
 
 // 既存207作品 + 追加193作品 + 追加600作品 + 追加500作品 + 追加300作品 = 計1800作品
-const CORE_DB_RAW = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3, ...CORE_DB_EXTRA4];
+const CORE_DB_RAW = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3, ...CORE_DB_EXTRA4, ...CORE_DB_EXTRA5];
 
 function normalizeMangaTitle(title) {
   return `${title || ""}`

@@ -8,6 +8,7 @@ const dbFiles = [
   "src/data/coreDB_extra2.js",
   "src/data/coreDB_extra3.js",
   "src/data/coreDB_extra4.js",
+  "src/data/coreDB_extra5.js",
 ];
 
 const outDir = path.join(rootDir, "docs");

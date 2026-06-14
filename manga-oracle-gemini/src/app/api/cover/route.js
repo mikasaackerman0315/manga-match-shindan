@@ -5,6 +5,7 @@ import { CORE_DB_EXTRA } from "@/data/coreDB_extra";
 import { CORE_DB_EXTRA2 } from "@/data/coreDB_extra2";
 import { CORE_DB_EXTRA3 } from "@/data/coreDB_extra3";
 import { CORE_DB_EXTRA4 } from "@/data/coreDB_extra4";
+import { CORE_DB_EXTRA5 } from "@/data/coreDB_extra5";
 import { COVER_OVERRIDES } from "@/data/coverOverrides.generated";
 import { BOOKLIVE_COVER_OVERRIDES } from "@/data/bookliveCoverOverrides";
 
@@ -15,7 +16,7 @@ const AMAZON_PAAPI_ENDPOINT = "https://webservices.amazon.co.jp/paapi5/searchite
 const AMAZON_PAAPI_HOST = "webservices.amazon.co.jp";
 const AMAZON_PAAPI_REGION = "us-west-2";
 const AMAZON_PAAPI_SERVICE = "ProductAdvertisingAPI";
-const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3, ...CORE_DB_EXTRA4];
+const CORE_DB = [...CORE_DB_BASE, ...CORE_DB_EXTRA, ...CORE_DB_EXTRA2, ...CORE_DB_EXTRA3, ...CORE_DB_EXTRA4, ...CORE_DB_EXTRA5];
 const TITLE_ALIASES = {
   "3月のライオン": ["三月のライオン", "3月のライオン 1"],
   "20世紀少年": ["20世紀少年 1"],
