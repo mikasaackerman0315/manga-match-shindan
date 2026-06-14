@@ -41,14 +41,12 @@ export default function MangaCover(props) {
     mangaId,
     author,
     coverImageUrl,
-    verified = false,
     className = "",
     size = "medium",
   } = props;
   const [imageFailed, setImageFailed] = useState(false);
   const [fallbackCover, setFallbackCover] = useState(null);
   const dynamicCoverImageUrl = coverImageUrl || fallbackCover?.imageUrl || "";
-  const dynamicVerified = Boolean(verified || fallbackCover?.imageUrl);
   const hasImage = Boolean(dynamicCoverImageUrl) && !imageFailed;
   const widthClass = sizeClasses[size] || sizeClasses.medium;
 
@@ -99,14 +97,6 @@ export default function MangaCover(props) {
         />
       ) : (
         <Placeholder title={title} />
-      )}
-      {dynamicVerified && hasImage && (
-        <span
-          className="absolute bottom-1 right-1 px-1.5 py-0.5 text-[9px]"
-          style={{ backgroundColor: "rgba(10,10,10,0.72)", color: "#f5f3ee", fontFamily: "'JetBrains Mono', monospace" }}
-        >
-          OK
-        </span>
       )}
     </div>
   );
