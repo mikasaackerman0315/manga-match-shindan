@@ -42,11 +42,11 @@ function UserGlyph() {
 
 function HeaderIconLink({ href, label, children }) {
   return (
-    <a href={href} className="group flex w-12 shrink-0 flex-col items-center gap-1 text-[#0a0a0a]" aria-label={label}>
+    <a href={href} className="group flex min-w-[60px] shrink-0 flex-col items-center gap-1 text-[#0a0a0a]" aria-label={label}>
       <span className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-white/60 transition-colors group-hover:border-[#c0392b]/30 group-hover:text-[#c0392b]">
         {children}
       </span>
-      <span className="hidden w-12 text-center text-[11px] font-semibold leading-none md:block">{label}</span>
+      <span className="hidden whitespace-nowrap text-center text-[11px] font-semibold leading-none md:block">{label}</span>
     </a>
   );
 }
