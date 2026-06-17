@@ -1,5 +1,6 @@
 import TrackedArticleLink from "../TrackedArticleLink";
 import MangaCover from "../../components/MangaCover";
+import SiteHeader from "../../components/SiteHeader";
 import { getMangaCoverForItem } from "../../data/mangaCovers";
 
 const siteUrl = "https://www.mangamatchquiz.com";
@@ -1582,7 +1583,7 @@ export default function TrendingMangaPage() {
       <JsonLd data={itemListJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
       <JsonLd data={faqJsonLd} />
-      <Header />
+      <SiteHeader active="ranking" />
       <div className="mx-auto max-w-[1440px] px-4 pb-12 md:px-8">
         <section className="grid gap-8 py-10 md:grid-cols-[0.54fr_0.46fr] md:py-14">
           <div className="flex flex-col justify-center">

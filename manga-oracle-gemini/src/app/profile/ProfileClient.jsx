@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import SiteHeader from "../../components/SiteHeader";
 import { BROWSE_PROFILE_STORAGE_KEY, DEFAULT_BROWSE_PROFILE, normalizeBrowseProfile } from "@/lib/browseProfile";
 
 const profileSans = "'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
@@ -365,7 +366,7 @@ export default function ProfileClient() {
 
   return (
     <div className="min-h-screen bg-[#f6f2ea] text-[#0a0a0a]" style={{ fontFamily: profileSans }}>
-      <ProfileHeader />
+      <SiteHeader active="profile" />
       <main className="relative overflow-hidden">
         <div className="pointer-events-none absolute left-[5%] top-[220px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(210,58,50,0.13)_1px,transparent_1px)] [background-size:15px_15px] opacity-45" />
         <div className="pointer-events-none absolute right-[5%] top-[210px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(210,58,50,0.12)_1px,transparent_1px)] [background-size:15px_15px] opacity-45" />

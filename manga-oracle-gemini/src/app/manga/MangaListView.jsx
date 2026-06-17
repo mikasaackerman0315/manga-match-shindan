@@ -1,4 +1,5 @@
 import MangaCover from "../../components/MangaCover";
+import SiteHeader from "../../components/SiteHeader";
 import WatchLaterButton from "../../components/WatchLaterButton";
 import { getMangaCoverForItem } from "../../data/mangaCovers";
 import { MANGA_GENRES } from "../../data/mangaCatalog";
@@ -394,7 +395,7 @@ export default function MangaListView({
 
   return (
     <div className="min-h-screen bg-[#f6f2ea] text-[#0a0a0a]" style={{ fontFamily: browseSans }}>
-      <MangaBrowseHeader />
+      <SiteHeader active="manga" />
       <main className="mx-auto max-w-[1680px] px-4 py-6 md:px-8 xl:px-10">
         <div className="mb-4 flex items-center gap-2 text-xs font-bold text-black/50">
           <a href="/" className="hover:text-[#c0392b]">ホーム</a>

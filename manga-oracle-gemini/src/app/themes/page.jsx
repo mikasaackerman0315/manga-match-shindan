@@ -1,4 +1,5 @@
 import { THEME_GUIDES } from "../themeData";
+import SiteHeader from "../../components/SiteHeader";
 import TrackedArticleLink from "../TrackedArticleLink";
 import TrackedThemeLink from "../TrackedThemeLink";
 
@@ -479,7 +480,7 @@ export default function ThemesPage() {
   return (
     <div className="min-h-screen bg-[#f5f3ee] text-[#0a0a0a]" style={{ fontFamily: sans }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
-      <Header />
+      <SiteHeader active="themes" />
 
       <main>
         <section className="relative overflow-hidden border-b border-black/10 bg-[#fffdf9]">

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import MangaCover from "./MangaCover";
 import { trackEvent } from "./analytics";
+import SiteHeader from "../components/SiteHeader";
 
 const homeSans = "'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 const homeSerif = "'Noto Serif JP', 'Cormorant Garamond', serif";
@@ -246,6 +247,8 @@ function UserGlyph() {
 }
 
 export function MangaMatchHeader({ language, setLanguage, onStartQuiz, active = "home" }) {
+  return <SiteHeader active={active} language={language} setLanguage={setLanguage} onStartQuiz={onStartQuiz} />;
+
   const navItems = [
     { label: "ホーム", href: "/", active: true },
     { label: "診断する", action: onStartQuiz },
