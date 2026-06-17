@@ -1,12 +1,13 @@
 export const BROWSE_PROFILE_STORAGE_KEY = "manga_match_browse_profile";
 
 export const DEFAULT_BROWSE_PROFILE = {
-  gender: "female",
-  age: "10s",
-  frequency: "almost_daily",
-  genres: ["battle", "fantasy", "school"],
-  dislikes: ["gore", "violence"],
-  moods: ["exciting", "emotional"],
+  gender: "",
+  age: "",
+  frequency: "",
+  genres: [],
+  dislikes: [],
+  moods: [],
+  updatedAt: "",
 };
 
 export function normalizeBrowseProfile(profile) {
