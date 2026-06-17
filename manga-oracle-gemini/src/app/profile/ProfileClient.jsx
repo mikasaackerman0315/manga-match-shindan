@@ -7,6 +7,16 @@ import { BROWSE_PROFILE_STORAGE_KEY, DEFAULT_BROWSE_PROFILE, normalizeBrowseProf
 const profileSans = "'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 const profileSerif = "'Noto Serif JP', 'Cormorant Garamond', serif";
 
+const EMPTY_BROWSE_PROFILE = {
+  gender: "",
+  age: "",
+  frequency: "",
+  genres: [],
+  dislikes: [],
+  moods: [],
+  updatedAt: "",
+};
+
 const navItems = [
   { href: "/", label: "ホーム" },
   { href: "/?start=1", label: "診断する" },
@@ -56,7 +66,7 @@ const sections = [
   {
     id: "genres",
     title: "好きなジャンル",
-    note: "複数選択可",
+    note: "3個まで",
     type: "multi",
     max: 3,
     options: [
@@ -359,8 +369,9 @@ export default function ProfileClient() {
   }
 
   function resetProfile() {
-    window.localStorage.removeItem(BROWSE_PROFILE_STORAGE_KEY);
-    setProfile(DEFAULT_BROWSE_PROFILE);
+    const payload = { ...EMPTY_BROWSE_PROFILE, updatedAt: new Date().toISOString() };
+    window.localStorage.setItem(BROWSE_PROFILE_STORAGE_KEY, JSON.stringify(payload));
+    setProfile(payload);
     setSaved(false);
   }
 
@@ -408,9 +419,6 @@ export default function ProfileClient() {
                 <button type="button" onClick={resetProfile} className="h-14 rounded-[7px] border border-black/25 bg-white px-8 text-sm font-black transition-colors hover:border-[#d23a32] hover:text-[#d23a32] md:w-[280px]">
                   リセット
                 </button>
-                <a href="/manga" className="flex h-14 items-center justify-center rounded-[7px] border border-black/15 bg-white px-8 text-sm font-black transition-colors hover:border-[#d23a32] hover:text-[#d23a32] md:w-[280px]">
-                  スキップする
-                </a>
                 <button type="button" onClick={saveProfile} className="h-14 flex-1 rounded-[7px] bg-[#d23a32] px-8 text-sm font-black text-white shadow-[0_16px_30px_rgba(210,58,50,0.20)] transition-colors hover:bg-[#b72f28]">
                   この内容で保存する　→
                 </button>
