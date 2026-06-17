@@ -144,7 +144,7 @@ function MangaBrowseHeader() {
             </span>
             <span className="hidden text-[11px] font-semibold md:block">検索</span>
           </a>
-          <a href="/watchlist" className="group flex flex-col items-center gap-1 text-[#0a0a0a]" aria-label="マイページ">
+          <a href="/profile" className="group flex flex-col items-center gap-1 text-[#0a0a0a]" aria-label="マイページ">
             <span className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-white/60 transition-colors group-hover:border-[#c0392b]/30 group-hover:text-[#c0392b]">
               <UserIcon />
             </span>

@@ -269,13 +269,13 @@ function Header() {
         </nav>
         <div className="flex shrink-0 items-start gap-3">
           <a href="/manga" className="group flex flex-col items-center gap-1 text-[#0a0a0a]" aria-label="検索">
-            <span className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-white/70 transition-colors group-hover:border-[#c0392b]/30 group-hover:text-[#c0392b]">
+            <span className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-white/60 transition-colors group-hover:border-[#c0392b]/30 group-hover:text-[#c0392b]">
               <SearchGlyph />
             </span>
             <span className="hidden text-[11px] font-semibold md:block">検索</span>
           </a>
-          <a href="/watchlist" className="group flex flex-col items-center gap-1 text-[#0a0a0a]" aria-label="マイページ">
-            <span className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-white/70 transition-colors group-hover:border-[#c0392b]/30 group-hover:text-[#c0392b]">
+          <a href="/profile" className="group flex flex-col items-center gap-1 text-[#0a0a0a]" aria-label="マイページ">
+            <span className="grid h-11 w-11 place-items-center rounded-full border border-black/10 bg-white/60 transition-colors group-hover:border-[#c0392b]/30 group-hover:text-[#c0392b]">
               <UserGlyph />
             </span>
             <span className="hidden text-[11px] font-semibold md:block">マイページ</span>
