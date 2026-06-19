@@ -1585,8 +1585,8 @@ export default function TrendingMangaPage() {
       <JsonLd data={faqJsonLd} />
       <SiteHeader active="ranking" />
       <div className="mx-auto max-w-[1440px] px-4 pb-12 md:px-8">
-        <section className="grid gap-8 py-10 md:grid-cols-[0.54fr_0.46fr] md:py-14">
-          <div className="flex flex-col justify-center">
+        <section className="py-10 md:py-14">
+          <div className="flex max-w-3xl flex-col justify-center">
             <div className="mb-5 text-sm font-black uppercase tracking-[0.2em] text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>Trending Manga</div>
             <h1 className="text-5xl font-black leading-[1.12] tracking-tight md:text-6xl" style={{ fontFamily: "'Noto Serif JP', serif" }}>今話題の漫画を探す</h1>
             <p className="mt-5 max-w-2xl text-base font-medium leading-9 text-black/72">
@@ -1600,7 +1600,6 @@ export default function TrendingMangaPage() {
               <RedPill>完結済み</RedPill>
             </div>
           </div>
-          <TrendHeroArt />
         </section>
 
         <section className="rounded-[12px] border border-black/10 bg-white/72 p-5 shadow-[0_18px_50px_rgba(10,10,10,0.055)]">

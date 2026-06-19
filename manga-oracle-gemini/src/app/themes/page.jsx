@@ -485,8 +485,8 @@ export default function ThemesPage() {
 
       <main>
         <section className="relative overflow-hidden border-b border-black/10 bg-[#fffdf9]">
-          <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-6 py-14 md:grid-cols-[0.9fr_1.1fr] md:px-10 md:py-20 xl:px-16">
-            <div>
+          <div className="mx-auto max-w-[1440px] px-6 py-14 md:px-10 md:py-20 xl:px-16">
+            <div className="max-w-3xl">
               <div className="mb-4 text-sm font-extrabold tracking-[0.02em] text-[#c0392b]">テーマから漫画を選ぶ</div>
               <h1 className="mb-6 text-5xl font-black leading-tight tracking-normal md:text-7xl" style={{ fontFamily: serif }}>
                 <span className="block text-[#c0392b]">テーマから</span>
@@ -504,7 +504,6 @@ export default function ThemesPage() {
                 </a>
               </div>
             </div>
-            <HeroIllustration />
           </div>
         </section>
 
