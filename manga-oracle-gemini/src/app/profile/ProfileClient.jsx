@@ -314,6 +314,34 @@ function ProfilePreview({ profile }) {
   );
 }
 
+function ProfileHeroIllustration() {
+  return (
+    <div className="relative h-52 w-80 text-[#d23a32]" aria-hidden="true">
+      <div className="absolute inset-4 rounded-full bg-[#d23a32]/8 blur-3xl" />
+      <svg className="relative h-full w-full" viewBox="0 0 320 208" fill="none">
+        <rect x="88" y="26" width="132" height="138" rx="14" fill="#fffaf6" stroke="currentColor" strokeWidth="3" opacity="0.45" />
+        <circle cx="124" cy="62" r="17" fill="#d23a32" opacity="0.14" />
+        <circle cx="124" cy="58" r="7" stroke="currentColor" strokeWidth="2.2" opacity="0.48" />
+        <path d="M110 80c4-11 24-11 28 0" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" opacity="0.48" />
+        <path d="M154 54h42" stroke="currentColor" strokeWidth="3" strokeLinecap="round" opacity="0.35" />
+        <path d="M154 76h38" stroke="currentColor" strokeWidth="3" strokeLinecap="round" opacity="0.28" />
+        <path d="M116 108l7 7 15-18" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.55" />
+        <path d="M154 107h40" stroke="currentColor" strokeWidth="3" strokeLinecap="round" opacity="0.28" />
+        <path d="M116 135l7 7 15-18" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.45" />
+        <path d="M154 134h30" stroke="currentColor" strokeWidth="3" strokeLinecap="round" opacity="0.24" />
+        <g transform="translate(208 94) rotate(38)">
+          <rect x="0" y="0" width="20" height="76" rx="9" fill="#d23a32" opacity="0.8" />
+          <path d="M2 58h16" stroke="#fffaf6" strokeWidth="2" opacity="0.75" />
+          <path d="M4 74h12l-6 15Z" fill="#d23a32" opacity="0.55" />
+        </g>
+        <path d="M59 78l5 14 14 5-14 5-5 14-5-14-14-5 14-5Z" fill="currentColor" opacity="0.22" />
+        <path d="M254 32l4 11 11 4-11 4-4 11-4-11-11-4 11-4Z" fill="currentColor" opacity="0.22" />
+        <path d="M66 168c37 15 129 17 188-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.14" />
+      </svg>
+    </div>
+  );
+}
+
 function PreviewChips({ title, chips }) {
   if (!chips.length) return null;
   return (
@@ -393,13 +421,7 @@ export default function ProfileClient() {
             </p>
           </div>
           <div className="hidden justify-center md:flex">
-            <div className="relative h-48 w-72 text-[#d23a32]/34">
-              <div className="absolute left-8 top-4 h-32 w-44 rounded-[10px] border-4 border-current" />
-              <div className="absolute left-16 top-12 h-3 w-24 rounded-full bg-current opacity-35" />
-              <div className="absolute left-16 top-20 h-3 w-20 rounded-full bg-current opacity-25" />
-              <div className="absolute right-8 bottom-8 h-20 w-5 rotate-45 rounded-full bg-[#d23a32]" />
-              <div className="absolute right-16 top-12 h-12 w-12 rotate-45 bg-current opacity-45" />
-            </div>
+            <ProfileHeroIllustration />
           </div>
         </section>
 

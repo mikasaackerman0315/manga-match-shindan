@@ -294,31 +294,32 @@ function Header() {
 function HeroIllustration() {
   return (
     <div className="relative min-h-[260px] overflow-hidden rounded-[24px]">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "linear-gradient(90deg, rgba(255,253,249,0.98), rgba(255,253,249,0.62))",
-        }}
-      />
-      <svg className="absolute inset-x-4 bottom-0 mx-auto h-full max-h-[320px] w-[86%] text-[#c0392b]/30" viewBox="0 0 640 360" fill="none" aria-hidden="true">
-        <path d="M110 258c40-34 73-52 124-58 67-8 118 18 178-4 43-16 62-49 100-68" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-        <path d="M244 102c-38 4-74 18-108 42v138c38-24 76-38 116-40 32-2 58 4 82 16V120c-26-14-56-22-90-18Z" stroke="currentColor" strokeWidth="4" />
-        <path d="M336 120v138c26-13 55-19 88-16 40 2 78 16 116 40V144c-34-24-70-38-108-42-36-4-68 3-96 18Z" stroke="currentColor" strokeWidth="4" />
-        {Array.from({ length: 8 }).map((_, index) => (
-          <path key={index} d={`M${150 + index * 18} ${146 + index * 7}c20-9 42-14 68-16`} stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        ))}
-        {Array.from({ length: 8 }).map((_, index) => (
-          <path key={index} d={`M${372 + index * 18} ${130 + index * 6}c24 2 46 10 66 24`} stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        ))}
-        <path d="M140 90h58l14 112h-64Z" stroke="currentColor" strokeWidth="4" />
-        <path d="M214 72h58l16 130h-65Z" stroke="currentColor" strokeWidth="4" />
-        <path d="M286 82h58l12 120h-63Z" stroke="currentColor" strokeWidth="4" />
-        <path d="M366 68h60l14 134h-66Z" stroke="currentColor" strokeWidth="4" />
-        <path d="M460 98c26 0 48 20 48 48 0 34-32 58-68 80" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-        <path d="M516 236c28-14 54-12 72 0" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-        <path d="M520 248c26-9 48-8 66 2" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,253,249,0.98),rgba(255,248,244,0.72))]" />
+      <div className="absolute right-8 top-8 h-44 w-72 rounded-full bg-[#d23a32]/8 blur-3xl" />
+      <svg className="absolute inset-0 m-auto h-[92%] w-[90%] max-w-[620px] text-[#c0392b]" viewBox="0 0 640 360" fill="none" aria-hidden="true">
+        <path d="M95 278c54-28 126-42 200-34 86 10 148 4 242-36" stroke="currentColor" strokeWidth="3" strokeLinecap="round" opacity="0.16" />
+        <g opacity="0.42">
+          <path d="M162 126c48-22 91-24 128-5v150c-38-19-80-18-128 5V126Z" fill="#fffaf6" stroke="currentColor" strokeWidth="4" />
+          <path d="M290 121c40-20 83-17 129 8v150c-46-25-89-28-129-8V121Z" fill="#fffaf6" stroke="currentColor" strokeWidth="4" />
+          <path d="M290 122v150" stroke="currentColor" strokeWidth="3" />
+          <path d="M190 158c24-8 47-10 70-4M190 187c24-8 47-10 70-4M190 216c24-8 47-10 70-4" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" opacity="0.55" />
+          <path d="M323 156c26 2 48 9 67 21M323 185c26 2 48 9 67 21M323 214c26 2 48 9 67 21" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" opacity="0.55" />
+        </g>
+        <g opacity="0.34">
+          <rect x="202" y="70" width="44" height="112" rx="5" fill="#fffaf6" stroke="currentColor" strokeWidth="4" />
+          <rect x="252" y="58" width="44" height="126" rx="5" fill="#fffaf6" stroke="currentColor" strokeWidth="4" />
+          <rect x="302" y="74" width="44" height="110" rx="5" fill="#fffaf6" stroke="currentColor" strokeWidth="4" />
+          <path d="M218 96h14M268 88h14M318 102h14" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        </g>
+        <g opacity="0.34">
+          <path d="M454 172c28 0 49 20 49 47 0 33-28 55-63 76" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+          <path d="M506 288c25-11 47-11 67 0M510 306c22-7 42-7 60 1" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        </g>
+        <path d="M118 88l5 14 14 5-14 5-5 14-5-14-14-5 14-5Z" fill="currentColor" opacity="0.18" />
+        <path d="M512 74l4 11 11 4-11 4-4 11-4-11-11-4 11-4Z" fill="currentColor" opacity="0.16" />
+        <path d="M84 318h472" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.12" />
       </svg>
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#fffdf9] to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#fffdf9] to-transparent" />
     </div>
   );
 }
