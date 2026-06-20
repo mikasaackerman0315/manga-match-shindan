@@ -485,14 +485,19 @@ export default function ThemesPage() {
 
       <main>
         <section className="relative overflow-hidden border-b border-black/10 bg-[#fffdf9]">
-          <div className="mx-auto max-w-[1920px] px-6 py-14 md:px-10 md:py-20 xl:px-12 2xl:px-16">
+          <div className="mx-auto max-w-[1920px] px-6 pb-10 pt-7 md:px-7 md:pb-12 md:pt-8 xl:px-8 2xl:px-10">
+            <div className="mb-3 flex items-center gap-2 text-xs font-bold text-black/50">
+              <a href="/" className="hover:text-[#c0392b]">ホーム</a>
+              <span>›</span>
+              <span className="text-[#c0392b]">テーマから探す</span>
+            </div>
             <div className="max-w-3xl">
-              <div className="mb-4 text-sm font-extrabold tracking-[0.02em] text-[#c0392b]">テーマから漫画を選ぶ</div>
-              <h1 className="mb-6 text-5xl font-black leading-tight tracking-normal md:text-7xl" style={{ fontFamily: serif }}>
+              <div className="mb-2 text-sm font-extrabold tracking-[0.02em] text-[#c0392b]">テーマから漫画を選ぶ</div>
+              <h1 className="mb-3 text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-5xl xl:text-[3.55rem]" style={{ fontFamily: serif }}>
                 <span className="block text-[#c0392b]">テーマから</span>
                 <span className="block">漫画を探す</span>
               </h1>
-              <p className="max-w-xl text-base font-medium leading-8 text-black/72">
+              <p className="max-w-xl text-base font-medium leading-7 text-black/72 md:text-[15px]">
                 いま読みたい気分や、好きな世界観から漫画を選べます。診断前にざっくり探したい人にもおすすめです。
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">

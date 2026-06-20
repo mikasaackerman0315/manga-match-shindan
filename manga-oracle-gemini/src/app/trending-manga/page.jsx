@@ -1584,12 +1584,17 @@ export default function TrendingMangaPage() {
       <JsonLd data={breadcrumbJsonLd} />
       <JsonLd data={faqJsonLd} />
       <SiteHeader active="ranking" />
-      <div className="mx-auto max-w-[1920px] px-4 pb-12 md:px-8 xl:px-10 2xl:px-12">
-        <section className="py-10 md:py-14">
+      <div className="mx-auto max-w-[1920px] px-6 pb-12 pt-7 md:px-7 xl:px-8 2xl:px-10">
+        <div className="mb-3 flex items-center gap-2 text-xs font-bold text-black/50">
+          <a href="/" className="hover:text-[#c0392b]">ホーム</a>
+          <span>›</span>
+          <span className="text-[#c0392b]">ランキング</span>
+        </div>
+        <section className="pb-8">
           <div className="flex max-w-3xl flex-col justify-center">
-            <div className="mb-5 text-sm font-black uppercase tracking-[0.2em] text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>Trending Manga</div>
-            <h1 className="text-5xl font-black leading-[1.12] tracking-tight md:text-6xl" style={{ fontFamily: "'Noto Serif JP', serif" }}>今話題の漫画を探す</h1>
-            <p className="mt-5 max-w-2xl text-base font-medium leading-9 text-black/72">
+            <div className="mb-2 text-sm font-black uppercase tracking-[0.2em] text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>Trending Manga</div>
+            <h1 className="text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-5xl xl:text-[3.55rem]" style={{ fontFamily: "'Noto Serif JP', serif" }}>今話題の漫画を探す</h1>
+            <p className="mt-3 max-w-2xl text-base font-medium leading-7 text-black/72 md:text-[15px]">
               漫画アプリ、SNS、アニメ化、新刊・映像化をきっかけに、今読まれている注目作をまとめました。
             </p>
             <div className="mt-8 flex flex-wrap gap-3">

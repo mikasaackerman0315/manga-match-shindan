@@ -396,16 +396,16 @@ export default function MangaListView({
   return (
     <div className="min-h-screen bg-[#f6f2ea] text-[#0a0a0a]" style={{ fontFamily: browseSans }}>
       <SiteHeader active="manga" />
-      <main className="mx-auto max-w-[1920px] px-4 py-6 md:px-8 xl:px-10 2xl:px-12">
-        <div className="mb-4 flex items-center gap-2 text-xs font-bold text-black/50">
+      <main className="mx-auto max-w-[1920px] px-6 pb-12 pt-7 md:px-7 xl:px-8 2xl:px-10">
+        <div className="mb-3 flex items-center gap-2 text-xs font-bold text-black/50">
           <a href="/" className="hover:text-[#c0392b]">ホーム</a>
           <span>›</span>
           <span className="text-[#c0392b]">{activeGenre ? genreLabels[activeGenre] || title : "漫画を探す"}</span>
         </div>
 
-        <section className="mb-6">
-          <h1 className="text-4xl font-black leading-tight md:text-5xl" style={{ fontFamily: browseSerif }}>{displayTitle}</h1>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-black/64 md:text-base">{displayLead}</p>
+        <section className="mb-7">
+          <h1 className="text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-5xl xl:text-[3.55rem]" style={{ fontFamily: browseSerif }}>{displayTitle}</h1>
+          <p className="mt-3 max-w-3xl text-base font-medium leading-7 text-black/64 md:text-[15px]">{displayLead}</p>
         </section>
 
         <ProfileNotice />

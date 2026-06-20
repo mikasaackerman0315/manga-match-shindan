@@ -872,24 +872,20 @@ function DiagnosisModeScreen({ language, setLanguage, t, onStartMode, onBack }) 
     >
       <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={() => {}} active="diagnosis" />
 
-      <main className="relative mx-auto max-w-[1920px] px-6 pb-8 pt-4 md:px-7 xl:px-8 2xl:px-10">
+      <main className="relative mx-auto max-w-[1920px] px-6 pb-8 pt-7 md:px-7 xl:px-8 2xl:px-10">
         <div className="pointer-events-none absolute left-0 top-28 h-72 w-72 opacity-80" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.16) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
         <div className="pointer-events-none absolute right-0 top-0 h-80 w-[520px] rotate-[-8deg] opacity-[0.055]" style={{ backgroundImage: "linear-gradient(90deg, #0a0a0a 1px, transparent 1px), linear-gradient(#0a0a0a 1px, transparent 1px)", backgroundSize: "92px 132px" }} />
 
-        <div className="relative z-10 text-sm">
+        <div className="relative z-10 mb-3 flex items-center gap-2 text-xs font-bold text-black/50">
           <button onClick={onBack} className="hover:text-[#c0392b]">{copy.nav[0]}</button>
-          <span className="mx-3 text-[#c0392b]">›</span>
-          <span>{copy.nav[1]}</span>
+          <span>›</span>
+          <span className="text-[#c0392b]">{copy.nav[1]}</span>
         </div>
 
-        <section className="relative z-10 mx-auto mt-4 max-w-[1120px] text-center">
-          <div className="mx-auto mb-3 flex items-center justify-center gap-7 text-[#c0392b]">
-            <span className="h-px w-16 bg-[#c0392b]" />
-            <span className="grid h-9 w-9 place-items-center rounded-full border border-[#c0392b]/30 bg-white"><ModeLogoMark className="h-6 w-6" /></span>
-            <span className="h-px w-16 bg-[#c0392b]" />
-          </div>
-          <h1 className="text-3xl font-bold tracking-[0.08em] md:text-5xl" style={{ fontFamily: modeSerif, fontWeight: 700 }}>{t.chooseMode}</h1>
-          <p className="mt-4 text-sm text-black/65 md:text-base">{copy.subtitle}</p>
+        <section className="relative z-10 mt-0 max-w-3xl text-left">
+          <div className="mb-2 text-sm font-extrabold tracking-[0.02em] text-[#c0392b]">診断する</div>
+          <h1 className="text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-5xl xl:text-[3.55rem]" style={{ fontFamily: modeSerif, fontWeight: 700 }}>{t.chooseMode}</h1>
+          <p className="mt-3 text-base font-medium leading-7 text-black/65 md:text-[15px]">{copy.subtitle}</p>
         </section>
 
         <section className="relative z-10 mx-auto mt-8 grid max-w-[980px] gap-7 md:grid-cols-2">

@@ -410,13 +410,18 @@ export default function ProfileClient() {
         <div className="pointer-events-none absolute left-[5%] top-[220px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(210,58,50,0.13)_1px,transparent_1px)] [background-size:15px_15px] opacity-45" />
         <div className="pointer-events-none absolute right-[5%] top-[210px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(210,58,50,0.12)_1px,transparent_1px)] [background-size:15px_15px] opacity-45" />
 
-        <section className="relative mx-auto grid max-w-[1920px] items-center gap-8 px-6 py-12 md:grid-cols-[1fr_420px] md:px-12 xl:px-14 2xl:px-16">
+        <section className="relative mx-auto grid max-w-[1920px] items-center gap-8 px-6 pb-10 pt-7 md:grid-cols-[1fr_420px] md:px-7 md:pb-12 md:pt-8 xl:px-8 2xl:px-10">
           <div>
-            <p className="mb-4 inline-flex rounded-[6px] border border-[#d23a32]/30 bg-white/70 px-3 py-1 text-sm font-black text-[#d23a32]">漫画を探す専用</p>
-            <h1 className="text-4xl font-black leading-tight md:text-6xl" style={{ fontFamily: profileSerif }}>
+            <div className="mb-3 flex items-center gap-2 text-xs font-bold text-black/50">
+              <a href="/" className="hover:text-[#d23a32]">ホーム</a>
+              <span>›</span>
+              <span className="text-[#d23a32]">好みプロフィール</span>
+            </div>
+            <p className="mb-2 inline-flex rounded-[6px] border border-[#d23a32]/30 bg-white/70 px-3 py-1 text-sm font-black text-[#d23a32]">漫画を探す専用</p>
+            <h1 className="text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-5xl xl:text-[3.55rem]" style={{ fontFamily: profileSerif }}>
               好みの<span className="text-[#d23a32]">プロフィール</span>を設定しよう
             </h1>
-            <p className="mt-6 max-w-2xl text-base font-medium leading-8 text-black/70">
+            <p className="mt-3 max-w-2xl text-base font-medium leading-7 text-black/70 md:text-[15px]">
               あなたの好みを設定すると、漫画一覧でより探しやすくなります。ここで保存した内容は漫画を探すページだけに使われ、診断モードには影響しません。
             </p>
           </div>
@@ -425,7 +430,7 @@ export default function ProfileClient() {
           </div>
         </section>
 
-        <section className="relative mx-auto max-w-[1920px] px-6 pb-10 md:px-12 xl:px-14 2xl:px-16">
+        <section className="relative mx-auto max-w-[1920px] px-6 pb-10 md:px-7 xl:px-8 2xl:px-10">
           <div className="overflow-hidden rounded-[14px] border border-black/10 bg-white/90 shadow-[0_24px_60px_rgba(10,10,10,0.08)]">
             <div className="grid gap-8 p-6 lg:grid-cols-[minmax(0,1fr)_360px] xl:p-10">
               <div className="space-y-9">

@@ -205,16 +205,21 @@ export default function WatchlistClient() {
   return (
     <main className="min-h-screen bg-[#f5f3ee] text-[#0a0a0a]" style={{ fontFamily: browseSans }}>
       <SiteHeader active="watchlist" />
-      <div className="mx-auto max-w-[1920px] px-4 pb-14 md:px-8 xl:px-10 2xl:px-12">
-        <section className="grid gap-6 py-8 md:grid-cols-[0.62fr_0.38fr] md:py-10">
-          <div className="rounded-[14px] border border-black/10 bg-white/70 p-6 shadow-[0_18px_50px_rgba(10,10,10,0.05)] md:p-8">
-            <div className="mb-4 text-sm font-black uppercase tracking-[0.2em] text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+      <div className="mx-auto max-w-[1920px] px-6 pb-14 pt-7 md:px-7 xl:px-8 2xl:px-10">
+        <div className="mb-3 flex items-center gap-2 text-xs font-bold text-black/50">
+          <a href="/" className="hover:text-[#c0392b]">ホーム</a>
+          <span>›</span>
+          <span className="text-[#c0392b]">保存リスト</span>
+        </div>
+        <section className="grid gap-6 pb-8 md:grid-cols-[0.62fr_0.38fr]">
+          <div className="py-1">
+            <div className="mb-2 text-sm font-black uppercase tracking-[0.2em] text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
               Saved Manga
             </div>
-            <h1 className="text-4xl font-black leading-tight md:text-6xl" style={{ fontFamily: browseSerif }}>
+            <h1 className="text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-5xl xl:text-[3.55rem]" style={{ fontFamily: browseSerif }}>
               保存リスト
             </h1>
-            <p className="mt-4 max-w-3xl text-sm font-medium leading-8 text-black/64 md:text-base">
+            <p className="mt-3 max-w-3xl text-base font-medium leading-7 text-black/64 md:text-[15px]">
               診断中や診断結果で気になった漫画を、あとからまとめて見返せます。追加順で眺めたり、テーマ別に絞り込んだりできます。
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
@@ -240,7 +245,7 @@ export default function WatchlistClient() {
             </div>
           </div>
 
-          <div className="grid gap-4 rounded-[14px] border border-black/10 bg-white/70 p-5 shadow-[0_18px_50px_rgba(10,10,10,0.05)]">
+          <div className="grid gap-4 self-start rounded-[14px] border border-black/10 bg-white/70 p-5 shadow-[0_18px_50px_rgba(10,10,10,0.05)]">
             <div className="grid grid-cols-2 gap-3">
               <div className="rounded-[10px] border border-black/8 bg-[#fffdf9] p-4">
                 <div className="text-xs font-bold text-black/50">保存数</div>
