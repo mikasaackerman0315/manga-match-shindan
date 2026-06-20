@@ -82,7 +82,7 @@ export default function MangaCover(props) {
     <div
       className={`relative aspect-[2/3] ${widthClass} shrink-0 overflow-hidden rounded-[6px] ${className}`}
       style={{
-        backgroundColor: "#ebe7de",
+        backgroundColor: "#fffdf9",
         boxShadow: "0 8px 18px rgba(10,10,10,0.08)",
       }}
     >
@@ -90,7 +90,7 @@ export default function MangaCover(props) {
         <img
           src={dynamicCoverImageUrl}
           alt={`${title || "漫画"} 表紙`}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain"
           loading="lazy"
           decoding="async"
           onError={() => setImageFailed(true)}
