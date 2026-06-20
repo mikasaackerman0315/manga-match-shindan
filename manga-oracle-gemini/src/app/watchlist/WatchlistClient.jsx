@@ -205,7 +205,7 @@ export default function WatchlistClient() {
   return (
     <main className="min-h-screen bg-[#f5f3ee] text-[#0a0a0a]" style={{ fontFamily: browseSans }}>
       <SiteHeader active="watchlist" />
-      <div className="mx-auto max-w-[1440px] px-4 pb-14 md:px-8">
+      <div className="mx-auto max-w-[1920px] px-4 pb-14 md:px-8 xl:px-10 2xl:px-12">
         <section className="grid gap-6 py-8 md:grid-cols-[0.62fr_0.38fr] md:py-10">
           <div className="rounded-[14px] border border-black/10 bg-white/70 p-6 shadow-[0_18px_50px_rgba(10,10,10,0.05)] md:p-8">
             <div className="mb-4 text-sm font-black uppercase tracking-[0.2em] text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>

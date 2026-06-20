@@ -272,7 +272,7 @@ export function ArticlePage(props) {
   };
 
   return (
-    <main className="min-h-screen px-5 py-14 md:px-8 md:py-20" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
+    <main className="min-h-screen px-5 py-14 md:px-8 md:py-20 xl:px-10 2xl:px-12" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
       {pagePath && (
         <>
           <JsonLd data={itemListJsonLd} />
@@ -280,7 +280,7 @@ export function ArticlePage(props) {
           <JsonLd data={faqJsonLd} />
         </>
       )}
-      <article className="max-w-4xl mx-auto">
+      <article className="max-w-[1920px] mx-auto">
         <a href="/" className="text-xs tracking-[0.25em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>診断トップへ</a>
         <header className="mt-10 mb-12">
           <div className="text-xs tracking-[0.35em] uppercase mb-4" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>{article.eyebrow}</div>

@@ -10,8 +10,8 @@ export const metadata = {
 
 export default function MangaGenresPage() {
   return (
-    <main className="min-h-screen px-5 py-14 md:px-8 md:py-20" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
-      <section className="mx-auto max-w-5xl">
+    <main className="min-h-screen px-5 py-14 md:px-8 md:py-20 xl:px-10 2xl:px-12" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
+      <section className="mx-auto max-w-[1920px]">
         <a href="/" className="text-xs tracking-[0.25em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>
           診断トップへ
         </a>

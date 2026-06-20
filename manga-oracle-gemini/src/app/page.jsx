@@ -624,7 +624,7 @@ function ResultDashboardScreen({ language, setLanguage, results, t, onRetake, on
     >
       <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={onRetake} active="diagnosis" />
 
-      <main className="mx-auto max-w-[1680px] px-5 py-6 md:px-8 xl:px-10">
+      <main className="mx-auto max-w-[1920px] px-5 py-6 md:px-8 xl:px-10 2xl:px-12">
         <div className="mb-5 flex items-center gap-2 text-xs font-bold text-black/46">
           <a href="/" className="transition hover:text-[#c0392b]">ホーム</a>
           <span>›</span>
@@ -1232,7 +1232,7 @@ function LoadingResultScreen({
     >
       <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={() => {}} active="diagnosis" />
 
-      <main className="relative mx-auto grid min-h-[calc(100vh-82px)] max-w-[1536px] items-center gap-10 px-6 py-7 md:px-10 xl:grid-cols-[380px_minmax(0,1fr)] xl:px-14">
+      <main className="relative mx-auto grid min-h-[calc(100vh-82px)] max-w-[1920px] items-center gap-10 px-6 py-7 md:px-10 xl:grid-cols-[380px_minmax(0,1fr)] xl:px-12 2xl:px-16">
         <div className="pointer-events-none absolute left-16 top-[22%] h-80 w-80 opacity-70" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.14) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
         <div className="pointer-events-none absolute right-12 top-24 h-[620px] w-[900px] opacity-25" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.12) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
 
@@ -1440,7 +1440,7 @@ function FreeTextScreen({
     >
       <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={() => {}} active="diagnosis" />
 
-      <main className="relative mx-auto flex h-[calc(100vh-82px)] max-w-[1536px] items-center justify-center overflow-hidden px-6 py-5 md:px-10 md:py-6 xl:px-14">
+      <main className="relative mx-auto flex h-[calc(100vh-82px)] max-w-[1920px] items-center justify-center overflow-hidden px-6 py-5 md:px-10 md:py-6 xl:px-12 2xl:px-16">
         <div className="pointer-events-none absolute left-[6%] top-[27%] h-[520px] w-[360px] opacity-65" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.14) 1.25px, transparent 1.25px)", backgroundSize: "18px 18px" }} />
         <div className="pointer-events-none absolute right-[7%] top-[25%] h-[520px] w-[360px] opacity-65" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.14) 1.25px, transparent 1.25px)", backgroundSize: "18px 18px" }} />
         <div className="pointer-events-none absolute bottom-[14%] left-[5%] hidden h-48 w-56 rounded-[28px] border-2 border-[#e9afa8]/45 opacity-55 rotate-[-22deg] md:block" />

@@ -1505,7 +1505,7 @@ function StripPanel({ section, number, title }) {
 
 function CtaPanel() {
   return (
-    <section className="mx-auto mt-10 flex max-w-[1180px] flex-col items-center gap-5 rounded-[12px] border border-[#c0392b]/18 bg-white/72 p-8 text-center shadow-[0_18px_50px_rgba(192,57,43,0.08)] md:flex-row md:justify-center md:text-left">
+    <section className="mx-auto mt-10 flex max-w-[1920px] flex-col items-center gap-5 rounded-[12px] border border-[#c0392b]/18 bg-white/72 p-8 text-center shadow-[0_18px_50px_rgba(192,57,43,0.08)] md:flex-row md:justify-center md:text-left">
       <svg className="h-20 w-28 shrink-0 text-[#c0392b]/28" viewBox="0 0 180 120" fill="none" aria-hidden="true">
         <path d="M30 30c24 0 42 6 60 20 18-14 36-20 60-20v58c-24 0-42 6-60 20-18-14-36-20-60-20V30Z" stroke="currentColor" strokeWidth="4" />
         <path d="M90 50v58M46 48c12 2 22 6 34 14M134 48c-12 2-22 6-34 14" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
@@ -1584,7 +1584,7 @@ export default function TrendingMangaPage() {
       <JsonLd data={breadcrumbJsonLd} />
       <JsonLd data={faqJsonLd} />
       <SiteHeader active="ranking" />
-      <div className="mx-auto max-w-[1440px] px-4 pb-12 md:px-8">
+      <div className="mx-auto max-w-[1920px] px-4 pb-12 md:px-8 xl:px-10 2xl:px-12">
         <section className="py-10 md:py-14">
           <div className="flex max-w-3xl flex-col justify-center">
             <div className="mb-5 text-sm font-black uppercase tracking-[0.2em] text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>Trending Manga</div>

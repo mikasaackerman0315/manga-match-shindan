@@ -5,8 +5,8 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen px-6 py-16" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
-      <article className="max-w-3xl mx-auto">
+    <main className="min-h-screen px-6 py-16 md:px-8 xl:px-10 2xl:px-12" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Serif JP', serif" }}>
+      <article className="max-w-[1280px] mx-auto">
         <a href="/" className="text-xs tracking-[0.25em] uppercase" style={{ color: "#c0392b", fontFamily: "'JetBrains Mono', monospace" }}>← HOME</a>
         <h1 className="text-4xl md:text-5xl font-bold mt-10 mb-8" style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif JP', serif" }}>プライバシーポリシー</h1>
         <div className="space-y-8 leading-8 text-sm md:text-base">

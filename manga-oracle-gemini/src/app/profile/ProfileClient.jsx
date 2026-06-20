@@ -410,7 +410,7 @@ export default function ProfileClient() {
         <div className="pointer-events-none absolute left-[5%] top-[220px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(210,58,50,0.13)_1px,transparent_1px)] [background-size:15px_15px] opacity-45" />
         <div className="pointer-events-none absolute right-[5%] top-[210px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(210,58,50,0.12)_1px,transparent_1px)] [background-size:15px_15px] opacity-45" />
 
-        <section className="relative mx-auto grid max-w-[1680px] items-center gap-8 px-6 py-12 md:grid-cols-[1fr_420px] md:px-12">
+        <section className="relative mx-auto grid max-w-[1920px] items-center gap-8 px-6 py-12 md:grid-cols-[1fr_420px] md:px-12 xl:px-14 2xl:px-16">
           <div>
             <p className="mb-4 inline-flex rounded-[6px] border border-[#d23a32]/30 bg-white/70 px-3 py-1 text-sm font-black text-[#d23a32]">漫画を探す専用</p>
             <h1 className="text-4xl font-black leading-tight md:text-6xl" style={{ fontFamily: profileSerif }}>
@@ -425,7 +425,7 @@ export default function ProfileClient() {
           </div>
         </section>
 
-        <section className="relative mx-auto max-w-[1680px] px-6 pb-10 md:px-12">
+        <section className="relative mx-auto max-w-[1920px] px-6 pb-10 md:px-12 xl:px-14 2xl:px-16">
           <div className="overflow-hidden rounded-[14px] border border-black/10 bg-white/90 shadow-[0_24px_60px_rgba(10,10,10,0.08)]">
             <div className="grid gap-8 p-6 lg:grid-cols-[minmax(0,1fr)_360px] xl:p-10">
               <div className="space-y-9">

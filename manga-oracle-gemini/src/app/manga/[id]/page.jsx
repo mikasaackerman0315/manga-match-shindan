@@ -205,7 +205,7 @@ export default function MangaDetailPage({ params }) {
   return (
     <main className="min-h-screen" style={{ backgroundColor: "#f5f3ee", color: "#0a0a0a", fontFamily: "'Noto Sans JP', system-ui, sans-serif" }}>
       <SiteHeader active="manga" />
-      <article className="mx-auto max-w-[1536px] px-4 py-7 md:px-8 md:py-9">
+      <article className="mx-auto max-w-[1920px] px-4 py-7 md:px-8 md:py-9 xl:px-10 2xl:px-12">
         <div className="flex flex-wrap items-center gap-2 text-xs font-bold text-black/55">
           <a href="/" className="transition-colors hover:text-[#c0392b]">ホーム</a>
           <span>›</span>

@@ -485,7 +485,7 @@ export default function ThemesPage() {
 
       <main>
         <section className="relative overflow-hidden border-b border-black/10 bg-[#fffdf9]">
-          <div className="mx-auto max-w-[1440px] px-6 py-14 md:px-10 md:py-20 xl:px-16">
+          <div className="mx-auto max-w-[1920px] px-6 py-14 md:px-10 md:py-20 xl:px-12 2xl:px-16">
             <div className="max-w-3xl">
               <div className="mb-4 text-sm font-extrabold tracking-[0.02em] text-[#c0392b]">テーマから漫画を選ぶ</div>
               <h1 className="mb-6 text-5xl font-black leading-tight tracking-normal md:text-7xl" style={{ fontFamily: serif }}>
@@ -507,7 +507,7 @@ export default function ThemesPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1440px] px-6 py-10 md:px-10 xl:px-16">
+        <section className="mx-auto max-w-[1920px] px-6 py-10 md:px-10 xl:px-12 2xl:px-16">
           <SectionHeading title="人気のテーマから探す" />
           <div className="flex gap-3 overflow-x-auto pb-2">
             {popularThemeLinks.map((item) => (
@@ -517,7 +517,7 @@ export default function ThemesPage() {
         </section>
 
         {themeSections.map((section) => (
-          <section key={section.title} className="mx-auto max-w-[1440px] px-6 pb-12 md:px-10 xl:px-16">
+          <section key={section.title} className="mx-auto max-w-[1920px] px-6 pb-12 md:px-10 xl:px-12 2xl:px-16">
             <SectionHeading title={section.title} description={section.description} />
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {section.slugs.map((slug, index) => (
@@ -527,7 +527,7 @@ export default function ThemesPage() {
           </section>
         ))}
 
-        <section className="mx-auto max-w-[1440px] px-6 pb-12 md:px-10 xl:px-16">
+        <section className="mx-auto max-w-[1920px] px-6 pb-12 md:px-10 xl:px-12 2xl:px-16">
           <SectionHeading title="目的・条件から探す" description="完結済み、トレンド、初心者向けなど、条件がはっきりしている人向けです。" />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             {purposeArticles.map((article, index) => (
@@ -536,7 +536,7 @@ export default function ThemesPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1440px] px-6 pb-14 md:px-10 xl:px-16">
+        <section className="mx-auto max-w-[1920px] px-6 pb-14 md:px-10 xl:px-12 2xl:px-16">
           <SectionHeading title="ジャンルから探す" description="バトル、ミステリー、スポーツ、仕事漫画など、定番ジャンルから選べます。" />
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {genreArticles.map((article, index) => (
@@ -545,7 +545,7 @@ export default function ThemesPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1180px] px-6 pb-16 md:px-10">
+        <section className="mx-auto max-w-[1920px] px-6 pb-16 md:px-10 xl:px-12 2xl:px-16">
           <div className="grid items-center gap-8 rounded-[12px] border border-[#c0392b]/18 bg-[#fff9f6] px-7 py-8 shadow-[0_18px_40px_rgba(192,57,43,0.08)] md:grid-cols-[0.28fr_1fr_0.35fr]">
             <div className="hidden justify-center text-[#c0392b]/35 md:flex">
               <LineIcon type="openBook" className="h-28 w-28" />

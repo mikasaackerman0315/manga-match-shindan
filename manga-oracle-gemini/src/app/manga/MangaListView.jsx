@@ -396,7 +396,7 @@ export default function MangaListView({
   return (
     <div className="min-h-screen bg-[#f6f2ea] text-[#0a0a0a]" style={{ fontFamily: browseSans }}>
       <SiteHeader active="manga" />
-      <main className="mx-auto max-w-[1680px] px-4 py-6 md:px-8 xl:px-10">
+      <main className="mx-auto max-w-[1920px] px-4 py-6 md:px-8 xl:px-10 2xl:px-12">
         <div className="mb-4 flex items-center gap-2 text-xs font-bold text-black/50">
           <a href="/" className="hover:text-[#c0392b]">ホーム</a>
           <span>›</span>
