@@ -1584,8 +1584,8 @@ export default function TrendingMangaPage() {
       <JsonLd data={breadcrumbJsonLd} />
       <JsonLd data={faqJsonLd} />
       <SiteHeader active="ranking" />
-      <div className="mx-auto max-w-[1920px] px-6 pb-12 pt-7 md:px-7 xl:px-8 2xl:px-10">
-        <div className="mb-4 flex items-center gap-2 text-xs font-bold text-black/50">
+      <div className="page-heading-frame pb-12">
+        <div className="page-heading-breadcrumb">
           <a href="/" className="hover:text-[#c0392b]">ホーム</a>
           <span>›</span>
           <span className="text-[#c0392b]">ランキング</span>

@@ -872,11 +872,11 @@ function DiagnosisModeScreen({ language, setLanguage, t, onStartMode, onBack }) 
     >
       <MangaMatchHeader language={language} setLanguage={setLanguage} onStartQuiz={() => {}} active="diagnosis" />
 
-      <main className="relative mx-auto max-w-[1920px] px-6 pb-8 pt-7 md:px-7 xl:px-8 2xl:px-10">
+      <main className="page-heading-frame relative pb-8">
         <div className="pointer-events-none absolute left-0 top-28 h-72 w-72 opacity-80" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.16) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
         <div className="pointer-events-none absolute right-0 top-0 h-80 w-[520px] rotate-[-8deg] opacity-[0.055]" style={{ backgroundImage: "linear-gradient(90deg, #0a0a0a 1px, transparent 1px), linear-gradient(#0a0a0a 1px, transparent 1px)", backgroundSize: "92px 132px" }} />
 
-        <div className="relative z-10 mb-4 flex items-center gap-2 text-xs font-bold text-black/50">
+        <div className="page-heading-breadcrumb relative z-10">
           <button onClick={onBack} className="hover:text-[#c0392b]">{copy.nav[0]}</button>
           <span>›</span>
           <span className="text-[#c0392b]">{copy.nav[1]}</span>

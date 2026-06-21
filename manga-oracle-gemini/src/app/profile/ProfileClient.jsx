@@ -410,9 +410,9 @@ export default function ProfileClient() {
         <div className="pointer-events-none absolute left-[5%] top-[220px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(210,58,50,0.13)_1px,transparent_1px)] [background-size:15px_15px] opacity-45" />
         <div className="pointer-events-none absolute right-[5%] top-[210px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(210,58,50,0.12)_1px,transparent_1px)] [background-size:15px_15px] opacity-45" />
 
-        <section className="relative mx-auto grid max-w-[1920px] items-center gap-8 px-6 pb-10 pt-7 md:grid-cols-[1fr_420px] md:px-7 md:pb-12 xl:px-8 2xl:px-10">
+        <section className="page-heading-frame relative grid items-start gap-8 pb-10 md:grid-cols-[1fr_420px] md:pb-12">
           <div>
-            <div className="mb-4 flex items-center gap-2 text-xs font-bold text-black/50">
+            <div className="page-heading-breadcrumb">
               <a href="/" className="hover:text-[#d23a32]">ホーム</a>
               <span>›</span>
               <span className="text-[#d23a32]">好みプロフィール</span>

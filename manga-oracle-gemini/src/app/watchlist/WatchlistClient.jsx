@@ -205,8 +205,8 @@ export default function WatchlistClient() {
   return (
     <main className="min-h-screen bg-[#f5f3ee] text-[#0a0a0a]" style={{ fontFamily: browseSans }}>
       <SiteHeader active="watchlist" />
-      <div className="mx-auto max-w-[1920px] px-6 pb-14 pt-7 md:px-7 xl:px-8 2xl:px-10">
-        <div className="mb-4 flex items-center gap-2 text-xs font-bold text-black/50">
+      <div className="page-heading-frame pb-14">
+        <div className="page-heading-breadcrumb">
           <a href="/" className="hover:text-[#c0392b]">ホーム</a>
           <span>›</span>
           <span className="text-[#c0392b]">保存リスト</span>

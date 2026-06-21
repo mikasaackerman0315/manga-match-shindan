@@ -485,8 +485,8 @@ export default function ThemesPage() {
 
       <main>
         <section className="relative overflow-hidden border-b border-black/10 bg-[#fffdf9]">
-          <div className="mx-auto max-w-[1920px] px-6 pb-10 pt-7 md:px-7 md:pb-12 xl:px-8 2xl:px-10">
-            <div className="mb-4 flex items-center gap-2 text-xs font-bold text-black/50">
+          <div className="page-heading-frame pb-10 md:pb-12">
+            <div className="page-heading-breadcrumb">
               <a href="/" className="hover:text-[#c0392b]">ホーム</a>
               <span>›</span>
               <span className="text-[#c0392b]">テーマから探す</span>
