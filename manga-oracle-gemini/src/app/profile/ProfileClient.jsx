@@ -410,14 +410,13 @@ export default function ProfileClient() {
         <div className="pointer-events-none absolute left-[5%] top-[220px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(210,58,50,0.13)_1px,transparent_1px)] [background-size:15px_15px] opacity-45" />
         <div className="pointer-events-none absolute right-[5%] top-[210px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(210,58,50,0.12)_1px,transparent_1px)] [background-size:15px_15px] opacity-45" />
 
-        <section className="relative mx-auto grid max-w-[1920px] items-center gap-8 px-6 pb-10 pt-7 md:grid-cols-[1fr_420px] md:px-7 md:pb-12 md:pt-8 xl:px-8 2xl:px-10">
+        <section className="relative mx-auto grid max-w-[1920px] items-center gap-8 px-6 pb-10 pt-7 md:grid-cols-[1fr_420px] md:px-7 md:pb-12 xl:px-8 2xl:px-10">
           <div>
-            <div className="mb-3 flex items-center gap-2 text-xs font-bold text-black/50">
+            <div className="mb-4 flex items-center gap-2 text-xs font-bold text-black/50">
               <a href="/" className="hover:text-[#d23a32]">ホーム</a>
               <span>›</span>
               <span className="text-[#d23a32]">好みプロフィール</span>
             </div>
-            <p className="mb-2 inline-flex rounded-[6px] border border-[#d23a32]/30 bg-white/70 px-3 py-1 text-sm font-black text-[#d23a32]">漫画を探す専用</p>
             <h1 className="text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-5xl xl:text-[3.55rem]" style={{ fontFamily: profileSerif }}>
               好みの<span className="text-[#d23a32]">プロフィール</span>を設定しよう
             </h1>

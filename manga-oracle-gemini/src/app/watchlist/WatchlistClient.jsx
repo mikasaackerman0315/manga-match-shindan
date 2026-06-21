@@ -206,16 +206,13 @@ export default function WatchlistClient() {
     <main className="min-h-screen bg-[#f5f3ee] text-[#0a0a0a]" style={{ fontFamily: browseSans }}>
       <SiteHeader active="watchlist" />
       <div className="mx-auto max-w-[1920px] px-6 pb-14 pt-7 md:px-7 xl:px-8 2xl:px-10">
-        <div className="mb-3 flex items-center gap-2 text-xs font-bold text-black/50">
+        <div className="mb-4 flex items-center gap-2 text-xs font-bold text-black/50">
           <a href="/" className="hover:text-[#c0392b]">ホーム</a>
           <span>›</span>
           <span className="text-[#c0392b]">保存リスト</span>
         </div>
         <section className="grid gap-6 pb-8 md:grid-cols-[0.62fr_0.38fr]">
-          <div className="py-1">
-            <div className="mb-2 text-sm font-black uppercase tracking-[0.2em] text-[#c0392b]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-              Saved Manga
-            </div>
+          <div>
             <h1 className="text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-5xl xl:text-[3.55rem]" style={{ fontFamily: browseSerif }}>
               保存リスト
             </h1>

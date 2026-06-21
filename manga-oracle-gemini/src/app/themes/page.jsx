@@ -485,14 +485,13 @@ export default function ThemesPage() {
 
       <main>
         <section className="relative overflow-hidden border-b border-black/10 bg-[#fffdf9]">
-          <div className="mx-auto max-w-[1920px] px-6 pb-10 pt-7 md:px-7 md:pb-12 md:pt-8 xl:px-8 2xl:px-10">
-            <div className="mb-3 flex items-center gap-2 text-xs font-bold text-black/50">
+          <div className="mx-auto max-w-[1920px] px-6 pb-10 pt-7 md:px-7 md:pb-12 xl:px-8 2xl:px-10">
+            <div className="mb-4 flex items-center gap-2 text-xs font-bold text-black/50">
               <a href="/" className="hover:text-[#c0392b]">ホーム</a>
               <span>›</span>
               <span className="text-[#c0392b]">テーマから探す</span>
             </div>
             <div className="max-w-3xl">
-              <div className="mb-2 text-sm font-extrabold tracking-[0.02em] text-[#c0392b]">テーマから漫画を選ぶ</div>
               <h1 className="mb-3 text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-5xl xl:text-[3.55rem]" style={{ fontFamily: serif }}>
                 <span className="block text-[#c0392b]">テーマから</span>
                 <span className="block">漫画を探す</span>

@@ -876,14 +876,13 @@ function DiagnosisModeScreen({ language, setLanguage, t, onStartMode, onBack }) 
         <div className="pointer-events-none absolute left-0 top-28 h-72 w-72 opacity-80" style={{ backgroundImage: "radial-gradient(circle, rgba(192,57,43,0.16) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
         <div className="pointer-events-none absolute right-0 top-0 h-80 w-[520px] rotate-[-8deg] opacity-[0.055]" style={{ backgroundImage: "linear-gradient(90deg, #0a0a0a 1px, transparent 1px), linear-gradient(#0a0a0a 1px, transparent 1px)", backgroundSize: "92px 132px" }} />
 
-        <div className="relative z-10 mb-3 flex items-center gap-2 text-xs font-bold text-black/50">
+        <div className="relative z-10 mb-4 flex items-center gap-2 text-xs font-bold text-black/50">
           <button onClick={onBack} className="hover:text-[#c0392b]">{copy.nav[0]}</button>
           <span>›</span>
           <span className="text-[#c0392b]">{copy.nav[1]}</span>
         </div>
 
         <section className="relative z-10 mt-0 max-w-3xl text-left">
-          <div className="mb-2 text-sm font-extrabold tracking-[0.02em] text-[#c0392b]">診断する</div>
           <h1 className="text-4xl font-bold leading-tight tracking-normal sm:text-5xl md:text-5xl xl:text-[3.55rem]" style={{ fontFamily: modeSerif, fontWeight: 700 }}>{t.chooseMode}</h1>
           <p className="mt-3 text-base font-medium leading-7 text-black/65 md:text-[15px]">{copy.subtitle}</p>
         </section>
