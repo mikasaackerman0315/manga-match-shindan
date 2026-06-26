@@ -104,6 +104,63 @@ function scoreManga(manga, profile) {
   return score;
 }
 
+function tagSet(manga) {
+  return new Set(manga.tags || []);
+}
+
+function popularityScore(manga) {
+  const tags = tagSet(manga);
+  let score = 0;
+  if (manga.anime) score += 28;
+  if (manga.status === "ongoing") score += 5;
+  if ((manga.year || 0) >= 2020) score += 8;
+  if ((manga.year || 0) >= 2023) score += 6;
+  for (const tag of ["bestseller", "global", "viral", "award", "legendary", "classic", "critic", "shonen_classic"]) {
+    if (tags.has(tag)) score += 12;
+  }
+  for (const tag of ["battle", "romance", "mystery", "sports", "fantasy", "human_drama"]) {
+    if (tags.has(tag)) score += 2;
+  }
+  if (manga.volumes && manga.volumes >= 5) score += Math.min(10, Math.floor(manga.volumes / 10));
+  return score;
+}
+
+function readabilityScore(manga) {
+  const tags = tagSet(manga);
+  let score = 0;
+  const volumes = manga.volumes || 999;
+  if (volumes <= 3) score += 26;
+  else if (volumes <= 10) score += 22;
+  else if (volumes <= 20) score += 14;
+  else if (volumes <= 35) score += 6;
+  else score -= 8;
+  if (manga.status === "completed") score += 10;
+  for (const tag of ["light_comedy", "healing", "slice_of_life", "episodic", "fast_paced", "wholesome", "warm", "comfort"]) {
+    if (tags.has(tag)) score += 6;
+  }
+  for (const tag of ["long_arc", "long_running", "mystery_box", "brutal", "dark", "psychological"]) {
+    if (tags.has(tag)) score -= 4;
+  }
+  return score;
+}
+
+function compareBySortMode(a, b, sortMode) {
+  if (sortMode === "profile") return b.score - a.score || a.originalIndex - b.originalIndex;
+  if (sortMode === "popular") return popularityScore(b.manga) - popularityScore(a.manga) || (b.manga.year || 0) - (a.manga.year || 0) || a.originalIndex - b.originalIndex;
+  if (sortMode === "new") return (b.manga.year || 0) - (a.manga.year || 0) || a.originalIndex - b.originalIndex;
+  if (sortMode === "completed") {
+    const completedDiff = (b.manga.status === "completed" ? 1 : 0) - (a.manga.status === "completed" ? 1 : 0);
+    return completedDiff || (b.manga.year || 0) - (a.manga.year || 0) || a.originalIndex - b.originalIndex;
+  }
+  if (sortMode === "short") {
+    const aVolumes = a.manga.volumes && a.manga.volumes > 0 ? a.manga.volumes : 9999;
+    const bVolumes = b.manga.volumes && b.manga.volumes > 0 ? b.manga.volumes : 9999;
+    return aVolumes - bVolumes || (b.manga.year || 0) - (a.manga.year || 0) || a.originalIndex - b.originalIndex;
+  }
+  if (sortMode === "readable") return readabilityScore(b.manga) - readabilityScore(a.manga) || a.originalIndex - b.originalIndex;
+  return a.originalIndex - b.originalIndex;
+}
+
 function MangaCard({ manga, index, pageType, matchScore }) {
   const cover = getMangaCoverForItem(manga);
   const title = manga.title_ja || manga.title_en || manga.id;
@@ -164,7 +221,7 @@ function MangaCard({ manga, index, pageType, matchScore }) {
   );
 }
 
-export default function ProfileAwareMangaGrid({ items, startIndex, pageType }) {
+export default function ProfileAwareMangaGrid({ items, startIndex, pageType, sortMode = "default" }) {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
@@ -178,22 +235,29 @@ export default function ProfileAwareMangaGrid({ items, startIndex, pageType }) {
   }, []);
 
   const sortedItems = useMemo(() => {
-    if (!profile) return items.map((manga, index) => ({ manga, index, score: 0 }));
-    return items
-      .map((manga, index) => ({ manga, index, score: scoreManga(manga, profile) }))
-      .sort((a, b) => b.score - a.score || a.index - b.index);
-  }, [items, profile]);
+    const mapped = items.map((manga, index) => ({
+      manga,
+      originalIndex: index,
+      score: sortMode === "profile" && profile ? scoreManga(manga, profile) : 0,
+    }));
+    return [...mapped].sort((a, b) => compareBySortMode(a, b, sortMode));
+  }, [items, profile, sortMode]);
 
   return (
     <div>
-      {profile && (
+      {sortMode === "profile" && profile && (
         <div className="mt-5 rounded-xl border border-[#efc8c2] bg-[#fff6f4] px-4 py-3 text-sm font-bold text-[#c0392b]">
           好みプロフィールを漫画一覧だけに適用中です。診断結果には影響しません。
         </div>
       )}
+      {sortMode === "profile" && !profile && (
+        <div className="mt-5 rounded-xl border border-black/10 bg-white px-4 py-3 text-sm font-bold text-black/62">
+          あなた向け順を使うには、好みプロフィールを設定してください。
+        </div>
+      )}
       <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {sortedItems.map(({ manga, index, score }) => (
-          <MangaCard key={`${manga.id}-${index}`} manga={manga} index={startIndex + index} pageType={pageType} matchScore={score} />
+        {sortedItems.map(({ manga, originalIndex, score }, displayIndex) => (
+          <MangaCard key={`${manga.id}-${originalIndex}`} manga={manga} index={startIndex + displayIndex} pageType={pageType} matchScore={sortMode === "profile" ? score : 0} />
         ))}
       </div>
     </div>

@@ -3,8 +3,8 @@ import SiteHeader from "../../components/SiteHeader";
 import WatchLaterButton from "../../components/WatchLaterButton";
 import { getMangaCoverForItem } from "../../data/mangaCovers";
 import { MANGA_GENRES } from "../../data/mangaCatalog";
+import MangaBrowseResults from "./MangaBrowseResults";
 import MangaSearch from "./MangaSearch";
-import ProfileAwareMangaGrid from "./ProfileAwareMangaGrid";
 
 const browseSans = "'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 const browseSerif = "'Noto Serif JP', 'Cormorant Garamond', serif";
@@ -67,6 +67,19 @@ const tagLabels = {
   friendship: "友情",
   light_comedy: "軽め",
 };
+
+const filterGenreGroups = [
+  { title: "ジャンル", group: "genre" },
+  { title: "世界観", group: "world" },
+  { title: "読み味", group: "mood" },
+  { title: "テーマ", group: "theme" },
+  { title: "目的", group: "purpose" },
+  { title: "形式・状態", groups: ["format", "status"] },
+];
+
+function getGenreDisplayLabel(slug) {
+  return MANGA_GENRES.find((genre) => genre.slug === slug)?.label || genreLabels[slug] || slug;
+}
 
 const quickLinks = [
   { href: "/trending-manga", label: "トレンド漫画", text: "今話題の作品から探す" },
@@ -207,32 +220,35 @@ function Pagination({ basePath, currentPage, totalPages }) {
 
 function FilterPanel({ activeGenre }) {
   return (
-    <aside className="self-start rounded-xl border border-black/10 bg-white/82 p-5 shadow-[0_18px_44px_rgba(10,10,10,0.04)] lg:sticky lg:top-24">
+    <aside className="self-start rounded-xl border border-black/10 bg-white/82 p-5 shadow-[0_18px_44px_rgba(10,10,10,0.04)] lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:overscroll-contain">
       <div className="text-lg font-black">絞り込み</div>
 
       <div className="mt-5 space-y-6">
         <section>
-          <div className="mb-3 text-sm font-black">ジャンル</div>
+          <div className="mb-3 text-sm font-black">すべて</div>
           <div className="grid gap-2">
             <a href="/manga" className={`rounded-md border px-3 py-2 text-sm font-bold transition hover:border-[#c0392b] ${!activeGenre ? "border-[#c0392b] bg-[#fff4f1] text-[#c0392b]" : "border-black/10 bg-white"}`}>
               すべて
             </a>
-            {MANGA_GENRES.slice(0, 8).map((genre) => (
-              <a key={genre.slug} href={`/manga/genre/${genre.slug}`} className={`rounded-md border px-3 py-2 text-sm font-bold transition hover:border-[#c0392b] ${activeGenre === genre.slug ? "border-[#c0392b] bg-[#fff4f1] text-[#c0392b]" : "border-black/10 bg-white"}`}>
-                {genreLabels[genre.slug] || genre.slug}
-              </a>
-            ))}
           </div>
         </section>
 
-        <section>
-          <div className="mb-3 text-sm font-black">作品の状態</div>
-          <div className="space-y-2 text-sm">
-            <a href="/manga" className="flex items-center gap-2 font-bold text-black/72 hover:text-[#c0392b]"><span className="h-3 w-3 rounded-full border border-[#c0392b]" />すべて</a>
-            <a href="/manga/genre/ongoing" className="flex items-center gap-2 font-bold text-black/72 hover:text-[#c0392b]"><span className="h-3 w-3 rounded-full border border-black/25" />連載中</a>
-            <a href="/manga/genre/completed" className="flex items-center gap-2 font-bold text-black/72 hover:text-[#c0392b]"><span className="h-3 w-3 rounded-full border border-black/25" />完結済み</a>
-          </div>
-        </section>
+        {filterGenreGroups.map((group) => {
+          const genres = MANGA_GENRES.filter((genre) => group.groups ? group.groups.includes(genre.group) : genre.group === group.group);
+          if (!genres.length) return null;
+          return (
+            <section key={group.title}>
+              <div className="mb-3 text-sm font-black">{group.title}</div>
+              <div className="grid gap-2">
+                {genres.map((genre) => (
+                  <a key={genre.slug} href={`/manga/genre/${genre.slug}`} className={`rounded-md border px-3 py-2 text-sm font-bold transition hover:border-[#c0392b] ${activeGenre === genre.slug ? "border-[#c0392b] bg-[#fff4f1] text-[#c0392b]" : "border-black/10 bg-white"}`}>
+                    {genre.label || genreLabels[genre.slug] || genre.slug}
+                  </a>
+                ))}
+              </div>
+            </section>
+          );
+        })}
 
         <section>
           <div className="mb-3 text-sm font-black">人気の探し方</div>
@@ -388,9 +404,10 @@ export default function MangaListView({
   searchItems,
   pageType = "seo_article",
 }) {
-  const displayTitle = activeGenre ? `${genreLabels[activeGenre] || title}漫画` : "漫画を探す";
+  const activeGenreLabel = activeGenre ? getGenreDisplayLabel(activeGenre) : null;
+  const displayTitle = activeGenreLabel ? `${activeGenreLabel}漫画` : "漫画を探す";
   const displayLead = activeGenre
-    ? `${genreLabels[activeGenre] || "選んだジャンル"}に近い漫画を一覧で探せます。気になる作品は保存して、あとから見返せます。`
+    ? `${activeGenreLabel || "選んだジャンル"}に近い漫画を一覧で探せます。気になる作品は保存して、あとから見返せます。`
     : "作品名・作者名・ジャンルから、気になる漫画を探せます。まずは検索やジャンルから、次に読む一冊を見つけてください。";
 
   return (
@@ -400,7 +417,7 @@ export default function MangaListView({
         <div className="page-heading-breadcrumb">
           <a href="/" className="hover:text-[#c0392b]">ホーム</a>
           <span>›</span>
-          <span className="text-[#c0392b]">{activeGenre ? genreLabels[activeGenre] || title : "漫画を探す"}</span>
+          <span className="text-[#c0392b]">{activeGenreLabel || "漫画を探す"}</span>
         </div>
 
         <section className="mb-7">
@@ -415,15 +432,14 @@ export default function MangaListView({
 
           <section className="min-w-0">
             {searchItems?.length > 0 && <MangaSearch items={searchItems} />}
-            <SortControls currentPage={currentPage} totalPages={totalPages} itemsCount={items.length} />
-
-            {!activeGenre && (
-              <div className="mt-5">
-                <QuickEntryCards />
-              </div>
-            )}
-
-            <ProfileAwareMangaGrid items={items} startIndex={(currentPage - 1) * 30} pageType={pageType} />
+            <MangaBrowseResults
+              items={items}
+              startIndex={(currentPage - 1) * 30}
+              pageType={pageType}
+              currentPage={currentPage}
+              totalPages={totalPages}
+              showQuickLinks={!activeGenre}
+            />
 
             <Pagination basePath={basePath} currentPage={currentPage} totalPages={totalPages} />
 
